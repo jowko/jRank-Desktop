@@ -1,0 +1,24 @@
+{
+  "POL" : {
+    "HELP" : "Pomoc",
+    "US_TITLE" : "Ustawienia użytkownika",
+    "LANGUAGE" : "Język",
+    "CANCEL" : "Anuluj",
+    "TITLE" : "jRank Desktop Application",
+    "SETTINGS" : "Ustawienia",
+    "SAVE" : "Zapisz",
+    "FILE" : "Plik",
+    "ABOUT" : "O programie"
+  },
+  "ENG" : {
+    "HELP" : "Help",
+    "US_TITLE" : "User settings",
+    "LANGUAGE" : "Language",
+    "CANCEL" : "Cancel",
+    "TITLE" : "jRank Desktop Application",
+    "SETTINGS" : "Settings",
+    "SAVE" : "Save",
+    "FILE" : "File",
+    "ABOUT" : "About"
+  }
+}
