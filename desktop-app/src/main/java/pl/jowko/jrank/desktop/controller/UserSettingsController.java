@@ -32,7 +32,7 @@ public class UserSettingsController  {
 	
 	public static void createWindow() throws IOException {
 		stage = new Stage();
-		Parent root = new ResourceLoader().load("fxml/userSettings.fxml");
+		Parent root = new ResourceLoader().load("/fxml/userSettings.fxml");
 		
 		stage.setScene(new Scene(root));
 		stage.setTitle("My modal window");

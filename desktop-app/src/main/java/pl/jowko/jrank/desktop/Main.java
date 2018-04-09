@@ -16,7 +16,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Parent root = new ResourceLoader().load("fxml/main.fxml");
+		Parent root = new ResourceLoader().load("/fxml/root.fxml");
 		
 		Scene scene = new Scene(root, 1366, 768);
 		
