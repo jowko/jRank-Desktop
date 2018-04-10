@@ -1,6 +1,7 @@
 package pl.jowko.jrank.generator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import pl.jowko.jrank.desktop.settings.JRankInfo;
 import pl.jowko.jrank.desktop.settings.JRankSettings;
 import pl.jowko.jrank.desktop.settings.SingletonInitializer;
 import pl.jowko.jrank.desktop.settings.UserSettings;
@@ -10,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static pl.jowko.jrank.desktop.settings.JRankConst.*;
 
@@ -53,6 +56,11 @@ public class MainGenerator {
 		JRankLogger.gen("Generating jRank default settings file: " + JRANK_SETTINGS_FILE);
 		mapper.writerWithDefaultPrettyPrinter()
 				.writeValue(new File(JRANK_SETTINGS_FILE), new JRankSettings());
+		
+		JRankLogger.gen("Generating jRank info file");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		mapper.writerWithDefaultPrettyPrinter()
+				.writeValue(new File(JRANK_INFO_FILE), new JRankInfo("0.1", format.format(new Date())));
 
 		JRankLogger.gen("All files generated successfully.");
 	}

@@ -14,11 +14,13 @@ import java.io.IOException;
  */
 public class Main extends Application {
 	
+	private static Scene scene;
+	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Parent root = new ResourceLoader().load("/fxml/root.fxml");
 		
-		Scene scene = new Scene(root, 1366, 768);
+		scene = new Scene(root, 1366, 768);
 		
 		primaryStage.setTitle("jRank Desktop Application");
 		primaryStage.setScene(scene);
@@ -33,6 +35,10 @@ public class Main extends Application {
 		SingletonInitializer.initialize();
 		launch(args);
 		JRankLogger.info("Application closed");
+	}
+	
+	public static Scene getScene() {
+		return scene;
 	}
 	
 }

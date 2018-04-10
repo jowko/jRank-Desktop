@@ -54,8 +54,8 @@ public class MenuController {
 		System.out.println("Help");
 	}
 	
-	public void onAboutAction() {
-		System.out.println("About");
+	public void onAboutAction() throws IOException {
+		AboutController.createWindow();
 	}
 	
 	private void translateLabels() {

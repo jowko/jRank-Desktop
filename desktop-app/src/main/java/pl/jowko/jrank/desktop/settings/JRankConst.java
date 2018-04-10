@@ -13,5 +13,6 @@ public class JRankConst {
 	public static final String LABELS_FILE = DATA_DIRECTORY + "labels.json";
 	public static final String LANGUAGES_FILE = DATA_DIRECTORY + "languages.json";
 	public static final String JRANK_SETTINGS_FILE = DATA_DIRECTORY + "jRankDefaults.json";
+	public static final String JRANK_INFO_FILE = DATA_DIRECTORY + "jRankInfo.json";
 	
 }
