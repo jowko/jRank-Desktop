@@ -17,9 +17,9 @@
 	</properties>
 	
 	<modules>
-		<module>file-generator</module>
-		<module>desktop-app</module>
 		<module>jRank-logger</module>
+		<module>desktop-app</module>
+		<module>file-generator</module>
 	</modules>
 	
 	<build>
