@@ -7,19 +7,17 @@
 
 <TabPane minHeight="200.0" minWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.controller.LowerTabsController">
   <tabs>
-    <Tab text="Untitled Tab 1">
-      <content>
-        <AnchorPane>
-               <children>
-                  <Button layoutX="36.0" layoutY="14.0" mnemonicParsing="false" text="Button" onAction="#onButtonAction" />
-               </children></AnchorPane>
-      </content>
-    </Tab>
+      <Tab text="Logs">
+          <content>
+              <fx:include source="logsTab.fxml" />
+          </content>
+      </Tab>
+      
     <Tab text="Untitled Tab 2">
       <content>
         <AnchorPane>
                <children>
-                  <Button layoutX="28.0" layoutY="23.0" mnemonicParsing="false" text="Button" onAction="#onButtonAction2" />
+                  <Button layoutX="28.0" layoutY="23.0" mnemonicParsing="false" onAction="#onButtonAction" text="Button" />
                </children></AnchorPane>
       </content>
     </Tab>
