@@ -15,23 +15,23 @@ import java.io.IOException;
 public class AboutController {
 	
 	@FXML
-	private Label header;
+	Label appInfo;
 	@FXML
-	private Label appInfo;
+	Label authorLabel;
 	@FXML
-	private Label authorLabel;
+	Label versionLabel;
 	@FXML
-	private Label versionLabel;
+	Label releaseDateLabel;
 	@FXML
-	private Label releaseDateLabel;
+	Label author;
 	@FXML
-	private Label author;
+	Label version;
 	@FXML
-	private Label version;
+	Label releaseDate;
 	@FXML
-	private Label releaseDate;
+	Label bottomText;
 	@FXML
-	private Label bottomText;
+	ButtonType cancelButton;
 	
 	@FXML
 	public void initialize() {
@@ -46,7 +46,7 @@ public class AboutController {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.setResizable(false);
 		dialog.initOwner(Main.getScene().getWindow());
-		dialog.getDialogPane().getButtonTypes().add(new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE));
+		
 		dialog.showAndWait();
 	}
 	
