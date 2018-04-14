@@ -38,4 +38,8 @@ public class JRankLogger {
 		Log.error(msg, throwable);
 	}
 	
+	public static void error(String msg) {
+		Log.error(msg);
+	}
+	
 }

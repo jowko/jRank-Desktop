@@ -6,7 +6,6 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
-import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
 

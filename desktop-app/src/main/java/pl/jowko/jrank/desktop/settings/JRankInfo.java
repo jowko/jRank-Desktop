@@ -8,6 +8,8 @@ public class JRankInfo {
 	private String version;
 	private String releaseDate;
 	
+	public JRankInfo() {}
+	
 	public JRankInfo(String version, String releaseDate) {
 		this.version = version;
 		this.releaseDate = releaseDate;

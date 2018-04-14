@@ -1,4 +1,6 @@
-package pl.jowko.jrank.desktop.settings;
+package pl.jowko.jrank.desktop.service;
+
+import pl.jowko.jrank.desktop.settings.UserSettings;
 
 import static java.util.Objects.isNull;
 

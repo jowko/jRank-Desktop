@@ -2,10 +2,15 @@ package pl.jowko.jrank.desktop.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.service.JRankInfoService;
+import pl.jowko.jrank.desktop.settings.JRankInfo;
 
 import java.io.IOException;
 
@@ -33,11 +38,6 @@ public class AboutController {
 	@FXML
 	ButtonType cancelButton;
 	
-	@FXML
-	public void initialize() {
-	
-	}
-	
 	public static void createWindow() throws IOException {
 		Dialog dialog = new Dialog<>();
 		Parent root = new ResourceLoader().load("/fxml/about.fxml");
@@ -48,6 +48,13 @@ public class AboutController {
 		dialog.initOwner(Main.getScene().getWindow());
 		
 		dialog.showAndWait();
+	}
+	
+	@FXML
+	private void initialize() {
+		JRankInfo info = JRankInfoService.getInstance().getInfo();
+		version.setText(info.getVersion());
+		releaseDate.setText(info.getReleaseDate());
 	}
 	
 }

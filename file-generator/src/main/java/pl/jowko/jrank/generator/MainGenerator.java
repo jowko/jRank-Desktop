@@ -3,7 +3,6 @@ package pl.jowko.jrank.generator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.jowko.jrank.desktop.settings.JRankInfo;
 import pl.jowko.jrank.desktop.settings.JRankSettings;
-import pl.jowko.jrank.desktop.settings.SingletonInitializer;
 import pl.jowko.jrank.desktop.settings.UserSettings;
 import pl.jowko.jrank.logger.JRankLogger;
 
@@ -25,8 +24,6 @@ public class MainGenerator {
 	private ObjectMapper mapper;
 	
 	public static void main(String[] args) throws IOException {
-		SingletonInitializer.initialize();
-		
 		JRankLogger.gen("Starting generating files for settings");
 		MainGenerator generator = new MainGenerator();
 		generator.generateSettingsFile();

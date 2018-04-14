@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.settings;
+package pl.jowko.jrank.desktop.service;
 
 import java.util.Map;
 
