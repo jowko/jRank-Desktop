@@ -16,10 +16,8 @@ public class ConfigurationInitializer {
 		JRankLogger.init("Reading configuration files");
 		
 		initializeInfoService();
-		
-		LanguageService.getInstance();
-		SettingsService.getInstance();
-		LabelTranslator.getInstance();
+		initializeLanguages();
+		initializeUserSettings();
 		
 		if(isError) {
 			throw new ConfigurationException("Application not started because of errors");
@@ -34,6 +32,24 @@ public class ConfigurationInitializer {
 		} catch (ConfigurationException e) {
 			isError = true;
 			JRankLogger.error("Could not load jRankInfo.json file.");
+		}
+	}
+	
+	private void initializeLanguages() {
+		try {
+			LanguageService.getInstance();
+		} catch (ConfigurationException e) {
+			isError = true;
+			JRankLogger.error("Could not load internationalization configuration files.");
+		}
+	}
+	
+	private void initializeUserSettings() {
+		try {
+			SettingsService.getInstance();
+		} catch (ConfigurationException e) {
+			isError = true;
+			JRankLogger.error("Could not load userSettings.json file.");
 		}
 	}
 	

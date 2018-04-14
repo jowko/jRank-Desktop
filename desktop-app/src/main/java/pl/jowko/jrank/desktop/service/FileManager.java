@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.jrank.desktop.settings.JRankConst.JRANK_INFO_FILE;
+import static pl.jowko.jrank.desktop.settings.JRankConst.*;
 
 /**
  * Created by Piotr on 2018-03-16.
@@ -35,7 +35,12 @@ public class FileManager {
 	}
 	
 	public UserSettings readUserSettings() {
-		return new UserSettings();
+		try {
+			return mapper.readValue(new File(USER_SETTING_FILE), UserSettings.class);
+		} catch (IOException e) {
+			JRankLogger.error(e.getMessage());
+			throw new ConfigurationException(e.getMessage());
+		}
 	}
 	
 	public JRankInfo readJRankInfo() {
@@ -52,11 +57,21 @@ public class FileManager {
 	}
 	
 	public Map<String, String> readLanguages() {
-		return null;
+		try {
+			return mapper.readValue(new File(LANGUAGES_FILE), Map.class);
+		} catch (IOException e) {
+			JRankLogger.error(e.getMessage());
+			throw new ConfigurationException(e.getMessage());
+		}
 	}
 	
 	public Map<String, Map<String, String>> readLabels() {
-		return null;
+		try {
+			return mapper.readValue(new File(LABELS_FILE), Map.class);
+		} catch (IOException e) {
+			JRankLogger.error(e.getMessage());
+			throw new ConfigurationException(e.getMessage());
+		}
 	}
 
 }

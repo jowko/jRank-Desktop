@@ -10,10 +10,10 @@ import static java.util.Objects.isNull;
 public class SettingsService {
 	
 	private static SettingsService instance;
-	private static UserSettings userSettings;
+	private UserSettings userSettings;
 	
 	private SettingsService() {
-		userSettings = new UserSettings(); //TODO get from file
+		userSettings = FileManager.getInstance().readUserSettings();
 	}
 	
 	public static SettingsService getInstance() {
@@ -23,11 +23,11 @@ public class SettingsService {
 		return instance;
 	}
 	
-	public static String getLanguage() {
+	public String getLanguage() {
 		return userSettings.getLanguage();
 	}
 	
-	public static void setUserSettings(UserSettings newUserSettings) {
+	public void setUserSettings(UserSettings newUserSettings) {
 		userSettings = newUserSettings;
 	}
 	
