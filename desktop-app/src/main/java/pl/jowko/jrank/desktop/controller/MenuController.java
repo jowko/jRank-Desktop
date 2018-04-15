@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.service.LanguageService;
+import pl.jowko.jrank.desktop.settings.Labels;
 
 import java.io.IOException;
 
@@ -33,9 +35,11 @@ public class MenuController {
 	@FXML
 	private MenuItem aboutMenu;
 	
+	private LanguageService labels;
+	
 	@FXML
 	public void initialize() {
-		System.out.println("second");
+		labels = LanguageService.getInstance();
 		translateLabels();
 	}
 	
@@ -55,7 +59,7 @@ public class MenuController {
 		UserSettingsController.setStage(stage);
 		
 		stage.setScene(new Scene(root));
-		stage.setTitle("User settings");
+		stage.setTitle(labels.get(Labels.US_TITLE));
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setResizable(false);
 		stage.initOwner(Main.getScene().getWindow());

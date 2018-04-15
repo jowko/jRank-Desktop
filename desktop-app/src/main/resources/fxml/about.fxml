@@ -40,7 +40,7 @@
                   <Label fx:id="releaseDate" text="2060-01-01" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Label fx:id="bottomText" prefHeight="40.0" text="jRank Desktop Edition was developed as part of &#10;Master Thesis.">
+            <Label fx:id="bottomText" prefHeight="40.0" text="jRank Desktop Edition was developed as part of &#10;Master Thesis." wrapText="true">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

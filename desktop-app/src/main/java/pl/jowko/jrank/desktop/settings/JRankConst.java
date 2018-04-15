@@ -15,6 +15,9 @@ public class JRankConst {
 	public static final String JRANK_SETTINGS_FILE = DATA_DIRECTORY + "jRankDefaults.json";
 	public static final String JRANK_INFO_FILE = DATA_DIRECTORY + "jRankInfo.json";
 	
+	public static final String MSG = "[MSG]";
+	public static final String NO_LABEL = "TRANSLATION_NOT_FOUND";
+	
 	public static final double MIN_WIDTH = 1366;
 	public static final double MIN_HEIGHT = 768;
 	

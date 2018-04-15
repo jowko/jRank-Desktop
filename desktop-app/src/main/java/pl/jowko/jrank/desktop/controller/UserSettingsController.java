@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.desktop.service.SettingsService;
+import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.settings.UserSettings;
 import pl.jowko.jrank.logger.JRankLogger;
 
@@ -14,6 +15,8 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+
+import static pl.jowko.jrank.desktop.settings.JRankConst.MSG;
 
 /**
  * Created by Piotr on 2018-03-17.
@@ -34,12 +37,16 @@ public class UserSettingsController  {
 	Label workspaceLabel;
 	@FXML
 	TextField workspaceField;
+	@FXML
+	Label infoText;
 	
 	private UserSettings settings;
 	private Map<String, String> languages;
+	private LanguageService labels;
 	
 	@FXML
 	private void initialize() {
+		labels = LanguageService.getInstance();
 		translateLabels();
 		settings = SettingsService.getInstance().getUserSettings();
 		initializeLanguages();
@@ -74,7 +81,11 @@ public class UserSettingsController  {
 	}
 	
 	private void translateLabels() {
-		//TODO translate labels here
+		saveButton.setText(labels.get(Labels.BUTTON_SAVE));
+		cancelButton.setText(labels.get(Labels.BUTTON_CANCEL));
+		languageText.setText(labels.get(Labels.LANGUAGE));
+		workspaceLabel.setText(labels.get(Labels.WORKSPACE));
+		infoText.setText(labels.get(Labels.US_INFO));
 	}
 	
 	private boolean isFormValid() {
@@ -87,11 +98,12 @@ public class UserSettingsController  {
 		File f = new File(workspacePath);
 		
 		if(!f.exists() || !f.isDirectory()) {
-			errorMsg += "Provided path: " + workspacePath + " is not correct\n";
+			
+			errorMsg += labels.get(Labels.WORKSPACE_ERROR).replace(MSG, workspacePath);
 		}
 		
 		if(Objects.isNull(languagesChoice.getValue())) {
-			errorMsg += "Language code is not valid. Please choose language.\n";
+			errorMsg += labels.get(Labels.LANGUAGE_ERROR);
 		}
 		
 		if(errorMsg.length() == 0) {
@@ -104,23 +116,23 @@ public class UserSettingsController  {
 	
 	private void showErrorDialog(String msg) {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setTitle("Unexpected error");
-		alert.setHeaderText("Error when saving user options: ");
+		alert.setTitle(labels.get(Labels.US_ERROR_DIALOG_TITLE));
+		alert.setHeaderText(labels.get(Labels.US_ERROR_DIALOG_HEADER));
 		alert.setContentText(msg);
 		alert.showAndWait();
 	}
 	
 	private void showValidationFailedDialog(String msg) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setTitle("Validation Fail");
-		alert.setHeaderText("There were some validation errors: ");
+		alert.setTitle(labels.get(Labels.US_VALIDATION_DIALOG_TITLE));
+		alert.setHeaderText(labels.get(Labels.US_VALIDATION_DIALOG_HEADER));
 		alert.setContentText(msg);
 		
 		alert.showAndWait();
 	}
 	
 	private void initializeLanguages() {
-		languages = LanguageService.getInstance().getLanguages();
+		languages = labels.getLanguages();
 		languagesChoice.getItems().addAll(languages.values());
 		languagesChoice.setValue(languages.get(settings.getLanguage()));
 	}
