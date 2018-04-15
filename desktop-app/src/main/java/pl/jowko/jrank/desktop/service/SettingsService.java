@@ -2,6 +2,8 @@ package pl.jowko.jrank.desktop.service;
 
 import pl.jowko.jrank.desktop.settings.UserSettings;
 
+import java.io.IOException;
+
 import static java.util.Objects.isNull;
 
 /**
@@ -27,7 +29,8 @@ public class SettingsService {
 		return userSettings.getLanguage();
 	}
 	
-	public void setUserSettings(UserSettings newUserSettings) {
+	public void saveUserSettings(UserSettings newUserSettings) throws IOException {
+		FileManager.getInstance().saveUserSettings(newUserSettings);
 		userSettings = newUserSettings;
 	}
 	

@@ -57,7 +57,7 @@ public class MainGenerator {
 		JRankLogger.gen("Generating jRank info file");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(JRANK_INFO_FILE), new JRankInfo("0.1", format.format(new Date())));
+				.writeValue(new File(JRANK_INFO_FILE), new JRankInfo("0.1-SNAPSHOT", format.format(new Date())));
 
 		JRankLogger.gen("All files generated successfully.");
 	}

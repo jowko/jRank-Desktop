@@ -43,6 +43,12 @@ public class FileManager {
 		}
 	}
 	
+	public void saveUserSettings(UserSettings settings) throws IOException {
+		JRankLogger.info("Saving user settings: " + USER_SETTING_FILE);
+		mapper.writerWithDefaultPrettyPrinter()
+				.writeValue(new File(USER_SETTING_FILE), settings);
+	}
+	
 	public JRankInfo readJRankInfo() {
 		try {
 			return mapper.readValue(new File(JRANK_INFO_FILE), JRankInfo.class);
