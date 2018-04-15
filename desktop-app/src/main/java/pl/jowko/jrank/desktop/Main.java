@@ -11,6 +11,9 @@ import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
 
+import static pl.jowko.jrank.desktop.settings.JRankConst.MIN_HEIGHT;
+import static pl.jowko.jrank.desktop.settings.JRankConst.MIN_WIDTH;
+
 /**
  * Created by Piotr on 2018-03-16.
  */
@@ -22,10 +25,12 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		Parent root = new ResourceLoader().load("/fxml/root.fxml");
 		
-		scene = new Scene(root, 1366, 768);
+		scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
 		
 		primaryStage.setTitle("jRank Desktop Application");
 		primaryStage.setScene(scene);
+		primaryStage.setMinWidth(MIN_WIDTH);
+		primaryStage.setMinHeight(MIN_HEIGHT);
 		//primaryStage.setMaximized(true);
 		
 		primaryStage.show();

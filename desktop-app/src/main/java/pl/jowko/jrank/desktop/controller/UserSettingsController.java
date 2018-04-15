@@ -11,8 +11,9 @@ import pl.jowko.jrank.logger.JRankLogger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Created by Piotr on 2018-03-17.
