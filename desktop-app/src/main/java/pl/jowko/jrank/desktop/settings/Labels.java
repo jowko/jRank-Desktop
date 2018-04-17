@@ -15,6 +15,7 @@ public class Labels {
 	public static final String MENU_SETTINGS = "MENU_SETTINGS";
 	public static final String MENU_USER_SETTINGS = "MENU_USER_SETTINGS";
 	public static final String MENU_HELP = "MENU_HELP";
+	public static final String MENU_ITEM_HELP = "MENU_ITEM_HELP";
 	public static final String MENU_ABOUT = "MENU_ABOUT";
 	
 	// General buttons
@@ -32,5 +33,16 @@ public class Labels {
 	public static final String US_VALIDATION_DIALOG_TITLE = "US_VALIDATION_DIALOG_TITLE";
 	public static final String US_ERROR_DIALOG_HEADER = "US_ERROR_DIALOG_HEADER";
 	public static final String US_VALIDATION_DIALOG_HEADER = "US_VALIDATION_DIALOG_HEADER";
+	
+	// About dialog
+	public static final String ABOUT_TITLE = "ABOUT_TITLE";
+	public static final String ABOUT_APP_INFO = "ABOUT_APP_INFO";
+	public static final String ABOUT_AUTHOR = "ABOUT_AUTHOR";
+	public static final String ABOUT_VERSION = "ABOUT_VERSION";
+	public static final String ABOUT_RELEASE_DATE = "ABOUT_RELEASE_DATE";
+	public static final String ABOUT_BOTTOM_INFO = "ABOUT_BOTTOM_INFO";
+	
+	// Lower tabs
+	public static final String LOGS_TAB = "LOGS_TAB";
 	
 }

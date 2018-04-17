@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,18 +22,21 @@ import java.io.IOException;
 public class MenuController {
 	
 	@FXML
-	private Button button;
-	
+	private Menu fileMenu;
 	@FXML
-	private MenuItem quitMenu;
+	private MenuItem quitMenuItem;
 	@FXML
-	private MenuItem userSettings;
+	private Menu settingsMenu;
 	@FXML
-	private MenuItem jRankSettings;
+	private MenuItem userSettingsItem;
 	@FXML
-	private MenuItem helpMenu;
+	private MenuItem jRankSettingsItem;
 	@FXML
-	private MenuItem aboutMenu;
+	private Menu helpMenu;
+	@FXML
+	private MenuItem helpMenuItem;
+	@FXML
+	private MenuItem aboutMenuItem;
 	
 	private LanguageService labels;
 	
@@ -41,11 +44,6 @@ public class MenuController {
 	public void initialize() {
 		labels = LanguageService.getInstance();
 		translateLabels();
-	}
-	
-	public void onButtonAction() {
-		System.out.println("button");
-		button.setText("Przycisk");
 	}
 	
 	public void onQuitAction() {
@@ -79,7 +77,13 @@ public class MenuController {
 	}
 	
 	private void translateLabels() {
-		//TODO translate labels here
+		fileMenu.setText(labels.get(Labels.MENU_FILE));
+		quitMenuItem.setText(labels.get(Labels.MENU_QUIT));
+		settingsMenu.setText(labels.get(Labels.MENU_SETTINGS));
+		userSettingsItem.setText(labels.get(Labels.MENU_USER_SETTINGS));
+		helpMenu.setText(labels.get(Labels.MENU_HELP));
+		helpMenuItem.setText(labels.get(Labels.MENU_ITEM_HELP));
+		aboutMenuItem.setText(labels.get(Labels.MENU_ABOUT));
 	}
 	
 }

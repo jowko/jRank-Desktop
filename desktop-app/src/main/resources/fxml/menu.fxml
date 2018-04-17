@@ -7,23 +7,23 @@
 
 <MenuBar minHeight="25.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.controller.MenuController">
    <menus>
-      <Menu mnemonicParsing="false" text="File">
+      <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
          <items>
-            <MenuItem fx:id="quitMenu" mnemonicParsing="false" onAction="#onQuitAction" text="Quit" />
+            <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" onAction="#onQuitAction" text="Quit" />
          </items>
       </Menu>
-      <Menu mnemonicParsing="false" text="Settings">
+      <Menu fx:id="settingsMenu" mnemonicParsing="false" text="Settings">
          <items>
-            <MenuItem fx:id="userSettings" mnemonicParsing="false" onAction="#onUserSettingsAction" text="User Settings" />
+            <MenuItem fx:id="userSettingsItem" mnemonicParsing="false" onAction="#onUserSettingsAction" text="User Settings" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="jRankSettings" mnemonicParsing="false" onAction="#onJRankSettingsAction" text="jRank Default Settings" />
+            <MenuItem fx:id="jRankSettingsItem" mnemonicParsing="false" onAction="#onJRankSettingsAction" text="jRank Default Settings" />
          </items>
       </Menu>
-      <Menu mnemonicParsing="false" text="Help">
+      <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
          <items>
-            <MenuItem fx:id="helpMenu" mnemonicParsing="false" onAction="#onHelpAction" text="Help" />
+            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#onHelpAction" text="Help" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="aboutMenu" mnemonicParsing="false" onAction="#onAboutAction" text="About" />
+            <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAboutAction" text="About" />
          </items>
       </Menu>
    </menus>

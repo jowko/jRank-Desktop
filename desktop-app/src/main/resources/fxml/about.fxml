@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<DialogPane maxHeight="220.0" maxWidth="300.0" minHeight="220.0" minWidth="300.0" prefHeight="220.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.controller.AboutController">
+<DialogPane maxHeight="220.0" maxWidth="350.0" minHeight="220.0" minWidth="350.0" prefHeight="220.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.controller.AboutController">
     <buttonTypes>
-        <ButtonType fx:id="cancelButton" buttonData="CANCEL_CLOSE" text="Ok" />
+        <ButtonType fx:id="cancelButton" buttonData="CANCEL_CLOSE" text="OK" />
     </buttonTypes>
    <content>
       <VBox maxHeight="220.0" maxWidth="300.0" minHeight="220.0" minWidth="300.0" prefHeight="220.0" prefWidth="300.0">
@@ -40,7 +40,7 @@
                   <Label fx:id="releaseDate" text="2060-01-01" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Label fx:id="bottomText" prefHeight="40.0" text="jRank Desktop Edition was developed as part of &#10;Master Thesis." wrapText="true">
+            <Label fx:id="bottomText" prefHeight="40.0" text="JRank Ultimate Desktop Edition was developed as part of master thesis." wrapText="true">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

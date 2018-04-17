@@ -10,7 +10,9 @@ import javafx.stage.Modality;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.service.JRankInfoService;
+import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.desktop.settings.JRankInfo;
+import pl.jowko.jrank.desktop.settings.Labels;
 
 import java.io.IOException;
 
@@ -38,11 +40,13 @@ public class AboutController {
 	@FXML
 	ButtonType cancelButton;
 	
+	private static LanguageService labels;
+	
 	public static void createWindow() throws IOException {
 		Dialog dialog = new Dialog<>();
 		Parent root = new ResourceLoader().load("/fxml/about.fxml");
 		dialog.setDialogPane((DialogPane) root);
-		dialog.setTitle("About jRank Desktop Application");
+		dialog.setTitle(labels.get(Labels.ABOUT_TITLE));
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.setResizable(false);
 		dialog.initOwner(Main.getScene().getWindow());
@@ -52,9 +56,20 @@ public class AboutController {
 	
 	@FXML
 	private void initialize() {
+		labels = LanguageService.getInstance();
+		translateLabels();
+		
 		JRankInfo info = JRankInfoService.getInstance().getInfo();
 		version.setText(info.getVersion());
 		releaseDate.setText(info.getReleaseDate());
+	}
+	
+	private void translateLabels() {
+		appInfo.setText(labels.get(Labels.ABOUT_APP_INFO));
+		authorLabel.setText(labels.get(Labels.ABOUT_AUTHOR));
+		versionLabel.setText(labels.get(Labels.ABOUT_VERSION));
+		releaseDateLabel.setText(labels.get(Labels.ABOUT_RELEASE_DATE));
+		bottomText.setText(labels.get(Labels.ABOUT_BOTTOM_INFO));
 	}
 	
 }

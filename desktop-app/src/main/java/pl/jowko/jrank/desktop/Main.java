@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
 import pl.jowko.jrank.desktop.service.ConfigurationInitializer;
+import pl.jowko.jrank.desktop.service.LanguageService;
+import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
@@ -21,13 +23,16 @@ public class Main extends Application {
 	
 	private static Scene scene;
 	
+	private LanguageService labels;
+	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Parent root = new ResourceLoader().load("/fxml/root.fxml");
 		
 		scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
+		labels = LanguageService.getInstance();
 		
-		primaryStage.setTitle("jRank Desktop Application");
+		primaryStage.setTitle(labels.get(Labels.APP_TITLE));
 		primaryStage.setScene(scene);
 		primaryStage.setMinWidth(MIN_WIDTH);
 		primaryStage.setMinHeight(MIN_HEIGHT);
