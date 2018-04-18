@@ -1,7 +1,5 @@
 package pl.jowko.jrank.desktop.service;
 
-import pl.jowko.jrank.logger.JRankLogger;
-
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.Objects;

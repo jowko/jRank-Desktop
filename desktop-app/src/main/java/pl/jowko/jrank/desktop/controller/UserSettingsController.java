@@ -43,7 +43,7 @@ public class UserSettingsController  {
 	@FXML
 	Label infoText;
 	
-	private UserSettings settings;
+	private static UserSettings newUserSettings;
 	private Map<String, String> languages;
 	private LanguageService labels;
 	private UserSettingsValidator settingsValidator;
@@ -52,9 +52,9 @@ public class UserSettingsController  {
 	private void initialize() {
 		labels = LanguageService.getInstance();
 		translateLabels();
-		settings = SettingsService.getInstance().getUserSettings();
+		initializeNewSettings();
 		initializeLanguages();
-		workspaceField.setText(settings.getWorkspacePath());
+		workspaceField.setText(newUserSettings.getWorkspacePath());
 		settingsValidator = new UserSettingsValidator();
 	}
 	
@@ -64,7 +64,8 @@ public class UserSettingsController  {
 		}
 		
 		try {
-			SettingsService.getInstance().saveUserSettings(createNewSettings());
+			updateNewSettings();
+			SettingsService.getInstance().saveUserSettings(newUserSettings);
 			onCancelAction();
 		} catch (IOException e) {
 			JRankLogger.error("Error when saving user options: ", e);
@@ -82,11 +83,16 @@ public class UserSettingsController  {
 		UserSettingsController.stage = stage;
 	}
 	
-	private UserSettings createNewSettings() {
-		UserSettings newSettings = new UserSettings();
-		newSettings.setWorkspacePath(workspaceField.getText());
-		newSettings.setLanguage(getLangCode());
-		return newSettings;
+	private void initializeNewSettings() {
+		if(Objects.isNull(newUserSettings)) {
+			UserSettings settings = SettingsService.getInstance().getUserSettings();
+			newUserSettings = new UserSettings(settings.getLanguage(), settings.getWorkspacePath());
+		}
+	}
+	
+	private void updateNewSettings() {
+		newUserSettings.setWorkspacePath(workspaceField.getText());
+		newUserSettings.setLanguage(getLangCode());
 	}
 	
 	private void translateLabels() {
@@ -100,7 +106,7 @@ public class UserSettingsController  {
 	private void initializeLanguages() {
 		languages = labels.getLanguages();
 		languagesChoice.getItems().addAll(languages.values());
-		languagesChoice.setValue(languages.get(settings.getLanguage()));
+		languagesChoice.setValue(languages.get(newUserSettings.getLanguage()));
 	}
 	
 	private String getLangCode() {

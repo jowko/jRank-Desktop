@@ -2,7 +2,6 @@ package pl.jowko.jrank.desktop.controller;
 
 import javafx.fxml.FXML;
 import pl.jowko.jrank.desktop.validator.UserSettingsValidator;
-import pl.jowko.jrank.logger.JRankLogger;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
