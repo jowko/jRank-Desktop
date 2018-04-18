@@ -28,7 +28,12 @@ public class LanguageService {
 	}
 	
 	public String get(String code) {
-		String label = labels.get(SettingsService.getInstance().getLanguage()).get(code);
+		Map<String, String> langCodes = labels.get(SettingsService.getInstance().getLanguage());
+		if(Objects.isNull(langCodes)) {
+			return NO_LABEL;
+		}
+		
+		String label = langCodes.get(code);
 		if(Objects.isNull(label)) {
 			return NO_LABEL;
 		}

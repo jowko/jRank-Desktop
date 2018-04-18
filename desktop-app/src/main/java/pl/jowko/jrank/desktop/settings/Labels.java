@@ -7,7 +7,9 @@ public class Labels {
 	
 	private Labels() {}
 	
+	// General
 	public static final String APP_TITLE = "APP_TITLE";
+	public static final String US_SETTINGS_ERROR = "US_SETTINGS_ERROR";
 	
 	// menu items
 	public static final String MENU_FILE = "MENU_FILE";
@@ -22,6 +24,12 @@ public class Labels {
 	public static final String BUTTON_SAVE = "BUTTON_SAVE";
 	public static final String BUTTON_CANCEL = "BUTTON_CANCEL";
 	
+	// Dialogs
+	public static final String ERROR_DIALOG_TITLE = "ERROR_DIALOG_TITLE";
+	public static final String VALIDATION_DIALOG_TITLE = "VALIDATION_DIALOG_TITLE";
+	public static final String US_ERROR_DIALOG_HEADER = "US_ERROR_DIALOG_HEADER";
+	public static final String VALIDATION_DIALOG_HEADER = "VALIDATION_DIALOG_HEADER";
+	
 	// User Settings
 	public static final String US_TITLE = "US_TITLE";
 	public static final String LANGUAGE = "LANGUAGE";
@@ -29,10 +37,6 @@ public class Labels {
 	public static final String US_INFO = "US_INFO";
 	public static final String LANGUAGE_ERROR = "LANGUAGE_ERROR";
 	public static final String WORKSPACE_ERROR = "WORKSPACE_ERROR";
-	public static final String US_ERROR_DIALOG_TITLE = "US_ERROR_DIALOG_TITLE";
-	public static final String US_VALIDATION_DIALOG_TITLE = "US_VALIDATION_DIALOG_TITLE";
-	public static final String US_ERROR_DIALOG_HEADER = "US_ERROR_DIALOG_HEADER";
-	public static final String US_VALIDATION_DIALOG_HEADER = "US_VALIDATION_DIALOG_HEADER";
 	
 	// About dialog
 	public static final String ABOUT_TITLE = "ABOUT_TITLE";

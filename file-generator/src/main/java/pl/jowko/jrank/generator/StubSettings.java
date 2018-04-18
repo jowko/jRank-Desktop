@@ -39,6 +39,7 @@ class StubSettings {
 		Map<String, String> language = new HashMap<>();
 		
 		language.put(Labels.APP_TITLE, "JRank Ultimate Desktop Edition");
+		language.put(Labels.US_SETTINGS_ERROR, "Ustawienia użytkownika nie zostały poprawnie skonfigurowane: ");
 		
 		// menu items
 		language.put(Labels.MENU_FILE, "Plik");
@@ -59,11 +60,11 @@ class StubSettings {
 		language.put(Labels.WORKSPACE, "Scieżka robocza: ");
 		language.put(Labels.US_INFO, "Ustawienia zostaną zastosowane po restarcie aplikacji.");
 		language.put(Labels.LANGUAGE_ERROR, "Kod języka jest nieprawidłowy. Wybierz inny język.\n");
-		language.put(Labels.WORKSPACE_ERROR, "Podana ścieżka: " + MSG + " nie jest prawidłowa\n");
-		language.put(Labels.US_ERROR_DIALOG_TITLE, "Niespodziewany błąd");
-		language.put(Labels.US_VALIDATION_DIALOG_TITLE, "Błąd walidacji");
+		language.put(Labels.WORKSPACE_ERROR, "Podana ścieżka katalogu roboczego: " + MSG + " nie jest prawidłowa\n");
+		language.put(Labels.ERROR_DIALOG_TITLE, "Niespodziewany błąd");
+		language.put(Labels.VALIDATION_DIALOG_TITLE, "Błąd walidacji");
 		language.put(Labels.US_ERROR_DIALOG_HEADER, "Błąd przy zapisie opcji użytkownika: ");
-		language.put(Labels.US_VALIDATION_DIALOG_HEADER, "Wykryto błędy na formularzu: ");
+		language.put(Labels.VALIDATION_DIALOG_HEADER, "Wykryto błędy na formularzu: ");
 		
 		// About dialog
 		language.put(Labels.ABOUT_TITLE, "O JRank Ultimate Desktop Edition");
@@ -83,6 +84,7 @@ class StubSettings {
 		Map<String, String> language = new HashMap<>();
 		
 		language.put(Labels.APP_TITLE, "JRank Ultimate Desktop Edition");
+		language.put(Labels.US_SETTINGS_ERROR, "User settings are not correctly configured: ");
 		
 		// menu items
 		language.put(Labels.MENU_FILE, "File");
@@ -103,11 +105,11 @@ class StubSettings {
 		language.put(Labels.WORKSPACE, "Workspace path: ");
 		language.put(Labels.US_INFO, "Settings will be allied after application restart.");
 		language.put(Labels.LANGUAGE_ERROR, "Language code is not valid. Choose another language.\n");
-		language.put(Labels.WORKSPACE_ERROR, "Provided path: " + MSG + " is not correct\n");
-		language.put(Labels.US_ERROR_DIALOG_TITLE, "Unexpected error");
-		language.put(Labels.US_VALIDATION_DIALOG_TITLE, "Validation Fail");
+		language.put(Labels.WORKSPACE_ERROR, "Provided workspace folder path: " + MSG + " is not correct\n");
+		language.put(Labels.ERROR_DIALOG_TITLE, "Unexpected error");
+		language.put(Labels.VALIDATION_DIALOG_TITLE, "Validation Fail");
 		language.put(Labels.US_ERROR_DIALOG_HEADER, "Error when saving user options: ");
-		language.put(Labels.US_VALIDATION_DIALOG_HEADER, "There were validation errors: ");
+		language.put(Labels.VALIDATION_DIALOG_HEADER, "There were validation errors: ");
 		
 		// About dialog
 		language.put(Labels.ABOUT_TITLE, "About JRank Ultimate Desktop Edition");
