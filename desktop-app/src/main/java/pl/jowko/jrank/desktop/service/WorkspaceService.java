@@ -1,7 +1,10 @@
 package pl.jowko.jrank.desktop.service;
 
+import pl.jowko.jrank.logger.JRankLogger;
+
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 import static java.util.Objects.isNull;
 
@@ -26,13 +29,21 @@ public class WorkspaceService {
 	}
 	
 	public boolean isWorkspacePathValid(String path) {
-		if(!Paths.get(path).isAbsolute()) {
-			path =  new File("").getAbsolutePath() + path;
+		if(Objects.isNull(path) || path.isEmpty()) {
+			return false;
 		}
 		
-		File f = new File(path);
-		
-		if(!f.exists() || !f.isDirectory()) {
+		try {
+			if(!Paths.get(path).isAbsolute()) {
+				path =  new File("").getAbsolutePath() + path;
+			}
+			
+			File f = new File(path);
+			
+			if(!f.exists() || !f.isDirectory()) {
+				return false;
+			}
+		} catch (RuntimeException e) {
 			return false;
 		}
 		
