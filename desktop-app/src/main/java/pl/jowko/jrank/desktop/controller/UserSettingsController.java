@@ -63,11 +63,8 @@ public class UserSettingsController  {
 			return;
 		}
 		
-		settings.setWorkspacePath(workspaceField.getText());
-		settings.setLanguage(getLangCode());
-		
 		try {
-			SettingsService.getInstance().saveUserSettings(settings);
+			SettingsService.getInstance().saveUserSettings(createNewSettings());
 			onCancelAction();
 		} catch (IOException e) {
 			JRankLogger.error("Error when saving user options: ", e);
@@ -83,6 +80,13 @@ public class UserSettingsController  {
 	
 	public static void setStage(Stage stage) {
 		UserSettingsController.stage = stage;
+	}
+	
+	private UserSettings createNewSettings() {
+		UserSettings newSettings = new UserSettings();
+		newSettings.setWorkspacePath(workspaceField.getText());
+		newSettings.setLanguage(getLangCode());
+		return newSettings;
 	}
 	
 	private void translateLabels() {

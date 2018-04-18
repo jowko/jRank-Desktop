@@ -31,7 +31,6 @@ public class SettingsService {
 	
 	public void saveUserSettings(UserSettings newUserSettings) throws IOException {
 		FileManager.getInstance().saveUserSettings(newUserSettings);
-		userSettings = newUserSettings;
 	}
 	
 	public UserSettings getUserSettings() {
