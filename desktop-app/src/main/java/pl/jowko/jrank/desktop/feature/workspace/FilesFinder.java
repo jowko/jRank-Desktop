@@ -71,13 +71,29 @@ class FilesFinder {
 	}
 	
 	private WorkspaceItem mapPathToWorkspaceFile(Path path) {
-		FileType type;
+		FileType type = resolveFileType(path.toString());
 		String absolutePath = path.toAbsolutePath().toString();
 		
-		//TODO resolve file types later
-		type = FileType.DATA_TABLE;
-		
 		return new WorkspaceItem(path.getFileName().toString(), absolutePath, type);
+	}
+	
+	private FileType resolveFileType(String path) {
+		if(path.endsWith(".properties"))
+			return FileType.JRANK_SETTINGS;
+		if(path.endsWith(".graph"))
+			return FileType.GRAPH;
+		if(path.endsWith(".ranking"))
+			return FileType.RANKING;
+		if(path.endsWith(".rules"))
+			return FileType.RULES;
+		if(path.endsWith(".apx"))
+			return FileType.DOMINANCE;
+		if(path.endsWith("_partialPCT.isf"))
+			return FileType.COMPARISION_TABLE;
+		if(path.endsWith(".isf"))
+			return FileType.DATA_TABLE;
+		
+		return FileType.UNKNOWN;
 	}
 	
 }

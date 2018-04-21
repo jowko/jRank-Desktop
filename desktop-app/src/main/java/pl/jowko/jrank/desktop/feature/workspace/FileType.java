@@ -5,13 +5,15 @@ package pl.jowko.jrank.desktop.feature.workspace;
  */
 enum FileType {
 	
+	COMPARISION_TABLE,
 	DATA_TABLE,
 	DOMINANCE,
 	FOLDER,
 	GRAPH,
-	JRANK_SETTINGFS,
+	JRANK_SETTINGS,
 	RANKING,
 	ROOT,
-	RULES;
+	RULES,
+	UNKNOWN;
 
 }
