@@ -1,0 +1,158 @@
+[FILEINFO]
+Program: jrs
+Algorithm: VC-DOMLEM
+DataFileDirectory: 
+DataFileName: Houses7_partialPCT.isf
+Objects: 25
+Decision: Comprehensive_preference_grade
+Duration: 15 [ms]
+Comment: Rules generated with VC-DOMLEM algorithm
+
+[PARAMETERS]
+RulesFormat: PCT_PARETO
+ConsistencyLevel: 0.85
+Classes: -1.0, 0.0
+
+[ATTRIBUTES]
++ Pair_of_examples: (numbercoded) (pair), none, description
++ Evaluations_difference_on_distance: (integer), cost
++ Evaluations_difference_on_price: (integer), cost
++ Evaluations_on_comfort: [Basic, Medium, Good] (pair), gain
++ Comprehensive_preference_grade: (continuous), gain, decision
+
+decision: Comprehensive_preference_grade
+
+[PREFERENCES]
+Pair_of_examples: none
+Evaluations_difference_on_distance: cost
+Evaluations_difference_on_price: cost
+Evaluations_on_comfort: gain
+Comprehensive_preference_grade: gain
+
+[RULES]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_price) <= -30] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+2: [DIFF(Evaluations_difference_on_distance) <= -32] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+3: [DIFF(Evaluations_difference_on_distance) <= 0] & {PAIR(Evaluations_on_comfort) D (Good,Good)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+#Certain at most rules
+4: {(Medium,Good) D PAIR(Evaluations_on_comfort)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+5: [DIFF(Evaluations_difference_on_distance) >= 45] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+6: [DIFF(Evaluations_difference_on_distance) >= 5] & {(Basic,Medium) D PAIR(Evaluations_on_comfort)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+
+[RULESINFO]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_price) <= -30] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15, 19, 20, 24, 25
+Support: 5
+SupportingExamples: 4, 6, 8, 9, 24
+Strength: 0.2
+Confidence: 1.0
+CoverageFactor: 0.294
+Coverage: 5
+CoveredExamples: 4, 6, 8, 9, 24
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.118
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.559
+
+2: [DIFF(Evaluations_difference_on_distance) <= -32] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15, 19, 20, 24, 25
+Support: 4
+SupportingExamples: 2, 5, 15, 20
+Strength: 0.16
+Confidence: 1.0
+CoverageFactor: 0.235
+Coverage: 4
+CoveredExamples: 2, 5, 15, 20
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.09
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.545
+
+3: [DIFF(Evaluations_difference_on_distance) <= 0] & {PAIR(Evaluations_on_comfort) D (Good,Good)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15, 19, 20, 24, 25
+Support: 12
+SupportingExamples: 1, 2, 3, 4, 5, 7, 10, 13, 14, 15, 19, 25
+Strength: 0.48
+Confidence: 1.0
+CoverageFactor: 0.706
+Coverage: 12
+CoveredExamples: 1, 2, 3, 4, 5, 7, 10, 13, 14, 15, 19, 25
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.434
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.717
+
+#Certain at most rules
+4: {(Medium,Good) D PAIR(Evaluations_on_comfort)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 11, 12, 16, 17, 18, 21, 22, 23
+Support: 6
+SupportingExamples: 11, 12, 16, 17, 21, 22
+Strength: 0.24
+Confidence: 1.0
+CoverageFactor: 0.75
+Coverage: 6
+CoveredExamples: 11, 12, 16, 17, 21, 22
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.671
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.836
+
+5: [DIFF(Evaluations_difference_on_distance) >= 45] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 11, 12, 16, 17, 18, 21, 22, 23
+Support: 2
+SupportingExamples: 21, 23
+Strength: 0.08
+Confidence: 1.0
+CoverageFactor: 0.25
+Coverage: 2
+CoveredExamples: 21, 23
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.185
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.592
+
+6: [DIFF(Evaluations_difference_on_distance) >= 5] & {(Basic,Medium) D PAIR(Evaluations_on_comfort)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 11, 12, 16, 17, 18, 21, 22, 23
+Support: 2
+SupportingExamples: 16, 18
+Strength: 0.08
+Confidence: 1.0
+CoverageFactor: 0.25
+Coverage: 2
+CoveredExamples: 16, 18
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.185
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.592
+
