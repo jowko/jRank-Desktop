@@ -11,6 +11,7 @@ module jRank.desktop {
 	requires com.fasterxml.jackson.databind;
 	
 	opens pl.jowko.jrank.desktop.controller;
+	opens pl.jowko.jrank.desktop.feature.workspace;
 	opens pl.jowko.jrank.desktop.settings;
  	
  	exports pl.jowko.jrank.desktop.settings;

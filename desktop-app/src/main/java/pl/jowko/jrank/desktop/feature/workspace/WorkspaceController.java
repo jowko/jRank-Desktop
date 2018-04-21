@@ -1,6 +1,7 @@
-package pl.jowko.jrank.desktop.controller;
+package pl.jowko.jrank.desktop.feature.workspace;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TreeView;
 import pl.jowko.jrank.desktop.validator.UserSettingsValidator;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
@@ -10,7 +11,11 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  */
 public class WorkspaceController {
 	
+	@FXML
+	private TreeView<WorkspaceItem> workspaceTree;
+	
 	private UserSettingsValidator settingsValidator;
+	private TreeBuilder treeBuilder;
 	private boolean isConfigValid = true;
 	
 	@FXML
@@ -22,11 +27,8 @@ public class WorkspaceController {
 			return;
 			//TODO set some info on workspace panel
 		}
-		
-	}
-	
-	public void onButtonAction() {
-		System.out.println("button in workspace");
+		treeBuilder = new TreeBuilder(workspaceTree);
+		treeBuilder.buildTree();
 	}
 	
 }
