@@ -6,15 +6,20 @@ import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Piotr on 2018-04-21.
  */
 class TreeBuilder {
 	
 	private TreeView<WorkspaceItem> workspaceTree;
+	private FilesFinder filesFinder;
 	
 	TreeBuilder(TreeView<WorkspaceItem> treeView) {
 		workspaceTree = treeView;
+		filesFinder = new FilesFinder();
 	}
 	
 	public void buildTree() {
@@ -46,15 +51,40 @@ class TreeBuilder {
 	}
 	
 	private void initializeWorkspaceTree() {
-		//TODO replace stubs with real data
-		TreeItem<WorkspaceItem> rootItem = new TreeItem<> (new WorkspaceItem("root", "asfas", FileType.ROOT));
+		List<WorkspaceItem> directories = filesFinder.findAllDirectories();
+		
+		WorkspaceItem root = findRootInDirectories(directories);
+		TreeItem<WorkspaceItem> rootItem = new TreeItem<> (root);
 		rootItem.setExpanded(true);
-		for (int i = 1; i < 6; i++) {
-			TreeItem<WorkspaceItem> item = new TreeItem<> (new WorkspaceItem(String.valueOf(i), "asfas", FileType.FOLDER));
-			rootItem.getChildren().add(item);
-		}
+		directories.remove(root);
+		
+		directories.forEach(directory -> {
+			rootItem.getChildren().add(createItemForDirectory(directory));
+		});
 		
 		workspaceTree.setRoot(rootItem);
+	}
+	
+	private WorkspaceItem findRootInDirectories(List<WorkspaceItem> directories) {
+		return directories.stream()
+				.filter(item -> FileType.ROOT.equals(item.getFileType()))
+				.findAny()
+				.orElse(new WorkspaceItem("ERROR", "", FileType.ROOT));
+	}
+	
+	private TreeItem<WorkspaceItem> createItemForDirectory(WorkspaceItem directory) {
+		TreeItem<WorkspaceItem> directoryItem = new TreeItem<>(directory);
+		List<TreeItem<WorkspaceItem>> filesItems = new ArrayList<>();
+		List<WorkspaceItem> files = filesFinder.findAllFiles(directory.getFilePath());
+		
+		files.forEach(item -> {
+			TreeItem<WorkspaceItem> fileItem = new TreeItem<>(item);
+			filesItems.add(fileItem);
+		});
+		
+		directoryItem.getChildren().addAll(filesItems);
+		
+		return directoryItem;
 	}
 	
 }

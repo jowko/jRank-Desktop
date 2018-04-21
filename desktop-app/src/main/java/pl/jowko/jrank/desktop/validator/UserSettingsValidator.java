@@ -1,9 +1,9 @@
 package pl.jowko.jrank.desktop.validator;
 
+import pl.jowko.jrank.desktop.feature.workspace.WorkspaceService;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.desktop.service.SettingsService;
-import pl.jowko.jrank.desktop.feature.workspace.WorkspaceService;
 import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.settings.UserSettings;
 

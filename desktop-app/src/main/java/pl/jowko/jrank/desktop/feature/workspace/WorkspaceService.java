@@ -34,10 +34,7 @@ public class WorkspaceService {
 		}
 		
 		try {
-			if(!Paths.get(path).isAbsolute()) {
-				path =  new File("").getAbsolutePath() + path;
-			}
-			
+			path = getAbsolutePath(path);
 			File f = new File(path);
 			
 			if(!f.exists() || !f.isDirectory()) {
@@ -48,6 +45,18 @@ public class WorkspaceService {
 		}
 		
 		return true;
+	}
+	
+	public String getWorkspacePath() {
+		String workspacePath = settingsService.getUserSettings().getWorkspacePath();
+		return getAbsolutePath(workspacePath);
+	}
+	
+	private String getAbsolutePath(String path) {
+		if(!Paths.get(path).isAbsolute()) {
+			return new File("").getAbsolutePath() + path;
+		}
+		return path;
 	}
 	
 }
