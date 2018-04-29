@@ -9,6 +9,7 @@ module jRank.desktop {
 	
  	requires jRankLogger;
 	requires com.fasterxml.jackson.databind;
+	requires jRS;
 	
 	opens pl.jowko.jrank.desktop.controller;
 	opens pl.jowko.jrank.desktop.feature.workspace;

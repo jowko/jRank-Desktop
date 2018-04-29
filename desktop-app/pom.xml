@@ -27,6 +27,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>pl.poznan.put.cs.idss</groupId>
+			<artifactId>jRS</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/jRS.jar</systemPath>
+		</dependency>
 	</dependencies>
 	
 	<build>
