@@ -3,7 +3,7 @@ package pl.jowko.jrank.desktop.feature.workspace;
 /**
  * Created by Piotr on 2018-04-21.
  */
-class WorkspaceItem {
+public class WorkspaceItem {
 	
 	private String fileName;
 	private String filePath;

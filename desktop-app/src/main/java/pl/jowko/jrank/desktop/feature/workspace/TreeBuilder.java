@@ -3,8 +3,6 @@ package pl.jowko.jrank.desktop.feature.workspace;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,26 +26,12 @@ class TreeBuilder {
 	}
 	
 	private void initializeCellFactory() {
+		ClickEventHandler clickEventHandler = new ClickEventHandler();
 		workspaceTree.setCellFactory(tree -> {
 			TreeCell<WorkspaceItem> cell = new WorkspaceTreeCell();
-			cell.setOnMouseClicked(event -> onItemClickEvent(event, cell));
+			cell.setOnMouseClicked(event -> clickEventHandler.onItemClickEvent(event, cell));
 			return cell ;
 		});
-	}
-	
-	private void onItemClickEvent(MouseEvent event, TreeCell<WorkspaceItem> cell) {
-		if(!event.getButton().equals(MouseButton.PRIMARY) || event.getClickCount() != 2 || cell.isEmpty()) {
-			return;
-		}
-		
-		TreeItem<WorkspaceItem> treeItem = cell.getTreeItem();
-		FileType itemType = treeItem.getValue().getFileType();
-		System.out.println(treeItem.getValue()); //TODO remove this later
-		
-		if(FileType.ROOT.equals(itemType) || FileType.FOLDER.equals(itemType)) {
-			// Do nothing
-			return;
-		}
 	}
 	
 	private void initializeWorkspaceTree() {
@@ -58,9 +42,9 @@ class TreeBuilder {
 		rootItem.setExpanded(true);
 		directories.remove(root);
 		
-		directories.forEach(directory -> {
-			rootItem.getChildren().add(createItemForDirectory(directory));
-		});
+		directories.forEach(directory ->
+			rootItem.getChildren().add(createItemForDirectory(directory))
+		);
 		
 		workspaceTree.setRoot(rootItem);
 	}

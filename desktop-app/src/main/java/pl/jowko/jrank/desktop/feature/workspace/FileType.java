@@ -3,7 +3,7 @@ package pl.jowko.jrank.desktop.feature.workspace;
 /**
  * Created by Piotr on 2018-04-21.
  */
-enum FileType {
+public enum FileType {
 	
 	COMPARISION_TABLE,
 	DATA_TABLE,
