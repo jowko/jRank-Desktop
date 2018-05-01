@@ -5,8 +5,6 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import pl.jowko.jrank.desktop.feature.upperTabs.UpperTabsController;
 
-import java.io.File;
-
 /**
  * Created by Piotr on 2018-04-29.
  */

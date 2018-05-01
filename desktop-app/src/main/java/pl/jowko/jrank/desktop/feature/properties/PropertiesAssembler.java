@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import pl.poznan.put.cs.idss.jrs.ranking.RankerParameters;
+
 import java.util.Properties;
 
 /**
@@ -9,8 +11,11 @@ public class PropertiesAssembler {
 	
 	public JRankProperties toJrankProperties(Properties properties) {
 		JRankProperties jRankProperties = new JRankProperties();
-		jRankProperties.setTest("test");
 		return jRankProperties;
+	}
+	
+	public RankerParameters toRankerParameters(JRankProperties jRankProperties) {
+		return null;
 	}
 	
 }
