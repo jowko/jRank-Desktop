@@ -12,7 +12,7 @@ class JRankParametersService {
 	
 	private static JRankParametersService instance;
 	
-	private LanguageService labels;
+	private LanguageService labels; //TODO make labels
 	
 	private List<JRankParameter> typeOfFamilyOfCriteria;
 	private List<JRankParameter> consistencyMeasure;

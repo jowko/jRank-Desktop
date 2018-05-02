@@ -24,12 +24,16 @@ class PropertiesTab extends JRankTab {
 		loadProperties();
 	}
 	
+	public JRankProperties getjRankProperties() {
+		return jRankProperties;
+	}
+	
 	private void loadProperties() {
 		Properties properties = new Properties();
 		try {
 			properties.load(new FileInputStream(workspaceItem.getFilePath()));
-			PropertiesAssembler propertiesAssembler = new PropertiesAssembler();
-			jRankProperties = propertiesAssembler.toJrankProperties(properties);
+			PropertiesAssembler propertiesAssembler = new PropertiesAssembler(properties);
+			jRankProperties = propertiesAssembler.toJrankProperties();
 		} catch (IOException e) {
 			JRankLogger.error("Error when reading file: " + workspaceItem.getFileName(), e);
 		}
