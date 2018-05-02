@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 
 import java.util.List;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.feature.properties.Names.*;
@@ -10,6 +11,8 @@ import static pl.jowko.jrank.desktop.feature.properties.Names.*;
  * Created by Piotr on 2018-04-29.
  */
 public class PropertiesAssembler {
+	
+	private static Pattern commentsPattern = Pattern.compile("[ \t]*#.*");
 	
 	private Properties properties;
 	private JRankParametersService paramService;
@@ -103,7 +106,7 @@ public class PropertiesAssembler {
 		if (value == null) {
 			return null;
 		}
-		return value.replaceFirst("[ \t]*#.*", "");
+		return commentsPattern.matcher(value).replaceFirst("").trim();
 	}
 	
 }
