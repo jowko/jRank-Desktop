@@ -27,7 +27,7 @@ public class LanguageService {
 	}
 	
 	public String get(String code) {
-		String lang = SettingsService.getInstance().getLanguage();
+		String lang = UserSettingsService.getInstance().getLanguage();
 		Map<String, String> langCodes = labels.get(lang);
 		if(Objects.isNull(langCodes)) {
 			return '[' + lang + ":" + code + ']';

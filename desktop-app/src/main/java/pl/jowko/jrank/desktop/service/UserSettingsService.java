@@ -9,18 +9,18 @@ import static java.util.Objects.isNull;
 /**
  * Created by Piotr on 2018-03-17.
  */
-public class SettingsService {
+public class UserSettingsService {
 	
-	private static SettingsService instance;
+	private static UserSettingsService instance;
 	private UserSettings userSettings;
 	
-	private SettingsService() {
+	private UserSettingsService() {
 		userSettings = FileManager.getInstance().readUserSettings();
 	}
 	
-	public static SettingsService getInstance() {
+	public static UserSettingsService getInstance() {
 		if(isNull(instance)) {
-			instance = new SettingsService();
+			instance = new UserSettingsService();
 		}
 		return instance;
 	}

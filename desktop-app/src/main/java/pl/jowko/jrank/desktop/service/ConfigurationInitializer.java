@@ -46,7 +46,7 @@ public class ConfigurationInitializer {
 	
 	private void initializeUserSettings() {
 		try {
-			SettingsService.getInstance();
+			UserSettingsService.getInstance();
 		} catch (ConfigurationException e) {
 			isError = true;
 			JRankLogger.error("Could not load userSettings.json file.");

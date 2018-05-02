@@ -1,6 +1,6 @@
 package pl.jowko.jrank.desktop.feature.workspace;
 
-import pl.jowko.jrank.desktop.service.SettingsService;
+import pl.jowko.jrank.desktop.service.UserSettingsService;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -15,10 +15,10 @@ public class WorkspaceService {
 	
 	private static WorkspaceService instance;
 	
-	private SettingsService settingsService;
+	private UserSettingsService userSettingsService;
 	
 	private WorkspaceService() {
-		settingsService = SettingsService.getInstance();
+		userSettingsService = UserSettingsService.getInstance();
 	}
 	
 	public static WorkspaceService getInstance() {
@@ -48,7 +48,7 @@ public class WorkspaceService {
 	}
 	
 	public String getWorkspacePath() {
-		String workspacePath = settingsService.getUserSettings().getWorkspacePath();
+		String workspacePath = userSettingsService.getUserSettings().getWorkspacePath();
 		return getAbsolutePath(workspacePath);
 	}
 	

@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.service.SettingsService;
+import pl.jowko.jrank.desktop.service.UserSettingsService;
 import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.settings.UserSettings;
 import pl.jowko.jrank.desktop.validator.UserSettingsValidator;
@@ -65,7 +65,7 @@ public class UserSettingsController  {
 		
 		try {
 			updateNewSettings();
-			SettingsService.getInstance().saveUserSettings(newUserSettings);
+			UserSettingsService.getInstance().saveUserSettings(newUserSettings);
 			onCancelAction();
 		} catch (IOException e) {
 			JRankLogger.error("Error when saving user options: ", e);
@@ -85,7 +85,7 @@ public class UserSettingsController  {
 	
 	private void initializeNewSettings() {
 		if(Objects.isNull(newUserSettings)) {
-			UserSettings settings = SettingsService.getInstance().getUserSettings();
+			UserSettings settings = UserSettingsService.getInstance().getUserSettings();
 			newUserSettings = new UserSettings(settings.getLanguage(), settings.getWorkspacePath());
 		}
 	}

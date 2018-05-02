@@ -16,17 +16,17 @@ import static pl.jowko.jrank.desktop.settings.Labels.MENU_FILE;
 class LanguageServiceTest extends MasterTest {
 	
 	private LanguageService labels;
-	private SettingsService settingsService;
+	private UserSettingsService userSettingsService;
 	
 	@BeforeEach
 	void setUpEach() {
 		labels = LanguageService.getInstance();
-		settingsService = SettingsService.getInstance();
+		userSettingsService = UserSettingsService.getInstance();
 	}
 	
 	@AfterEach
 	void setEngLanguage() {
-		settingsService.setLanguage("ENG");
+		userSettingsService.setLanguage("ENG");
 	}
 	
 	@Test
@@ -48,21 +48,21 @@ class LanguageServiceTest extends MasterTest {
 	
 	@Test
 	void shouldGetEngCode() {
-		settingsService.setLanguage("ENG");
+		userSettingsService.setLanguage("ENG");
 		String label = labels.get(MENU_FILE);
 		assertEquals("File", label);
 	}
 	
 	@Test
 	void shouldGetPolCode() {
-		settingsService.setLanguage("POL");
+		userSettingsService.setLanguage("POL");
 		String label = labels.get(MENU_FILE);
 		assertEquals("Plik", label);
 	}
 	
 	@Test
 	void shouldNotFindLanguage() {
-		settingsService.setLanguage("HAHA");
+		userSettingsService.setLanguage("HAHA");
 		String label = labels.get(MENU_FILE);
 		assertEquals("[HAHA:MENU_FILE]", label);
 	}

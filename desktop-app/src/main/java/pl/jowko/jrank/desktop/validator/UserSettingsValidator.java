@@ -3,7 +3,7 @@ package pl.jowko.jrank.desktop.validator;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceService;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.service.SettingsService;
+import pl.jowko.jrank.desktop.service.UserSettingsService;
 import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.settings.UserSettings;
 
@@ -49,7 +49,7 @@ public class UserSettingsValidator {
 	}
 	
 	public boolean isConfigurationValid() {
-		UserSettings settings = SettingsService.getInstance().getUserSettings();
+		UserSettings settings = UserSettingsService.getInstance().getUserSettings();
 		errorMsg = "";
 		
 		if(not(labels.getLanguages().containsKey(settings.getLanguage()))) {
