@@ -46,6 +46,8 @@ class TreeBuilder {
 			rootItem.getChildren().add(createItemForDirectory(directory))
 		);
 		
+		rootItem.getChildren().add(new TreeItem<>(filesFinder.findDefaultProperties()));
+		
 		workspaceTree.setRoot(rootItem);
 	}
 	

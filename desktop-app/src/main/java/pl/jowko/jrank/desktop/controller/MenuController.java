@@ -30,8 +30,6 @@ public class MenuController {
 	@FXML
 	private MenuItem userSettingsItem;
 	@FXML
-	private MenuItem jRankSettingsItem;
-	@FXML
 	private Menu helpMenu;
 	@FXML
 	private MenuItem helpMenuItem;
@@ -62,10 +60,6 @@ public class MenuController {
 		stage.setResizable(false);
 		stage.initOwner(Main.getScene().getWindow());
 		stage.showAndWait();
-	}
-	
-	public void onJRankSettingsAction() {
-		System.out.println("Jrank opcje");
 	}
 	
 	public void onHelpAction() {

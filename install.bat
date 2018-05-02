@@ -28,5 +28,8 @@ ROBOCOPY workspace\Houses7 JRank\workspace\Houses7
 echo Copying Houses11
 ROBOCOPY workspace\Houses11 JRank\workspace\Houses11
 
+echo Copying default.properties file
+ROBOCOPY workspace\ JRank\workspace\
+
 echo creating run.bat file
 @echo java -jar JRank-0.1-SNAPSHOT.jar -Xms128m -Xmx4G > JRank\run.bat

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
 import pl.jowko.jrank.desktop.settings.ConfigPaths;
 import pl.jowko.jrank.desktop.settings.JRankInfo;
-import pl.jowko.jrank.desktop.settings.JRankSettings;
 import pl.jowko.jrank.desktop.settings.UserSettings;
 import pl.jowko.jrank.logger.JRankLogger;
 
@@ -58,10 +57,6 @@ public class FileManager {
 			JRankLogger.error(e.getMessage());
 			throw new ConfigurationException(e.getMessage());
 		}
-	}
-	
-	public JRankSettings readJRankSettings() {
-		return new JRankSettings();
 	}
 	
 	public Map<String, String> readLanguages() {

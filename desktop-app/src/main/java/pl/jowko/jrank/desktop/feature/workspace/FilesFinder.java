@@ -57,6 +57,19 @@ class FilesFinder {
 		return files;
 	}
 	
+	WorkspaceItem findDefaultProperties() {
+		String workspacePath = workspaceService.getWorkspacePath();
+		
+		try {
+			Path path = Paths.get(workspacePath + "\\default.properties");
+			return mapPathToWorkspaceFile(path);
+		} catch (Exception e) {
+			JRankLogger.error("Error when reading default.properties file: ", e);
+		}
+		
+		return null; //TODO get default properties from memory and save?
+	}
+	
 	private WorkspaceItem mapPathToWorkspaceDirectory(Path path, String workspacePath) {
 		FileType type;
 		String absolutePath = path.toAbsolutePath().toString();

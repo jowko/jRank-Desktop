@@ -53,11 +53,6 @@ public class MainGenerator {
 				.writeValue(new File(configPaths.getLanguagesPath()), new StubSettings().getLanguages());
 		
 		
-		JRankLogger.gen("Generating jRank default settings file: " + configPaths.getJRankSettingsPath());
-		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(configPaths.getJRankSettingsPath()), new JRankSettings());
-		
-		
 		JRankLogger.gen("Generating jRank info file: " + configPaths.getJRankInfoPath());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		mapper.writerWithDefaultPrettyPrinter()

@@ -15,8 +15,6 @@
       <Menu fx:id="settingsMenu" mnemonicParsing="false" text="Settings">
          <items>
             <MenuItem fx:id="userSettingsItem" mnemonicParsing="false" onAction="#onUserSettingsAction" text="User Settings" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="jRankSettingsItem" mnemonicParsing="false" onAction="#onJRankSettingsAction" text="jRank Default Settings" />
          </items>
       </Menu>
       <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
