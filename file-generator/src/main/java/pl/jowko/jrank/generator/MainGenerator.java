@@ -1,9 +1,7 @@
 package pl.jowko.jrank.generator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import pl.jowko.jrank.desktop.settings.JRankInfo;
-import pl.jowko.jrank.desktop.settings.JRankSettings;
-import pl.jowko.jrank.desktop.settings.UserSettings;
+import pl.jowko.jrank.desktop.settings.*;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.File;
@@ -34,31 +32,38 @@ public class MainGenerator {
 	}
 	
 	private void generateSettingsFile() throws IOException {
-		JRankLogger.gen("Generating data directory: " + DATA_DIRECTORY);
-		Files.createDirectories(Paths.get(DATA_DIRECTORY));
+		ConfigPaths configPaths = ConfigPaths.getInstance();
+		JRankLogger.gen("Generating data directory: " + configPaths.getDataDirectory());
+		Files.createDirectories(Paths.get(configPaths.getDataDirectory()));
 		JRankLogger.gen("Data directory created successfully.");
 		
-		JRankLogger.gen("Generating UserSettings file: " + USER_SETTING_FILE);
-		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(USER_SETTING_FILE), new UserSettings());
 		
-		JRankLogger.gen("Generating labels file: " + LABELS_FILE);
+		JRankLogger.gen("Generating UserSettings file: " + configPaths.getUserSettingsPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(LABELS_FILE), new StubSettings().getLabels());
+				.writeValue(new File(configPaths.getUserSettingsPath()), new UserSettings());
 		
-		JRankLogger.gen("Generating languages file: " + LANGUAGES_FILE);
+		
+		JRankLogger.gen("Generating labels file: " + configPaths.getLabelsPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(LANGUAGES_FILE), new StubSettings().getLanguages());
+				.writeValue(new File(configPaths.getLabelsPath()), new StubSettings().getLabels());
 		
-		JRankLogger.gen("Generating jRank default settings file: " + JRANK_SETTINGS_FILE);
+		
+		JRankLogger.gen("Generating languages file: " + configPaths.getLanguagesPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(JRANK_SETTINGS_FILE), new JRankSettings());
+				.writeValue(new File(configPaths.getLanguagesPath()), new StubSettings().getLanguages());
 		
-		JRankLogger.gen("Generating jRank info file");
+		
+		JRankLogger.gen("Generating jRank default settings file: " + configPaths.getJRankSettingsPath());
+		mapper.writerWithDefaultPrettyPrinter()
+				.writeValue(new File(configPaths.getJRankSettingsPath()), new JRankSettings());
+		
+		
+		JRankLogger.gen("Generating jRank info file: " + configPaths.getJRankInfoPath());
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(JRANK_INFO_FILE), new JRankInfo("0.1-SNAPSHOT", format.format(new Date())));
+				.writeValue(new File(configPaths.getJRankInfoPath()), new JRankInfo("0.1-SNAPSHOT", format.format(new Date())));
 
+		
 		JRankLogger.gen("All files generated successfully.");
 	}
 	

@@ -7,14 +7,6 @@ public class JRankConst {
 	
 	private JRankConst() {}
 	
-	// files
-	public static final String DATA_DIRECTORY = "data/";
-	public static final String USER_SETTING_FILE = DATA_DIRECTORY + "userSettings.json";
-	public static final String LABELS_FILE = DATA_DIRECTORY + "labels.json";
-	public static final String LANGUAGES_FILE = DATA_DIRECTORY + "languages.json";
-	public static final String JRANK_SETTINGS_FILE = DATA_DIRECTORY + "jRankDefaults.json";
-	public static final String JRANK_INFO_FILE = DATA_DIRECTORY + "jRankInfo.json";
-	
 	public static final String MSG = "[MSG]";
 	public static final String NO_LABEL = "TRANSLATION_NOT_FOUND";
 	

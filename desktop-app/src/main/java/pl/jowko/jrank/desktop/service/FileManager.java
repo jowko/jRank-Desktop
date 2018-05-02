@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
+import pl.jowko.jrank.desktop.settings.ConfigPaths;
 import pl.jowko.jrank.desktop.settings.JRankInfo;
 import pl.jowko.jrank.desktop.settings.JRankSettings;
 import pl.jowko.jrank.desktop.settings.UserSettings;
@@ -22,9 +23,11 @@ public class FileManager {
 	private static FileManager instance;
 	
 	private ObjectMapper mapper;
+	private ConfigPaths configPaths;
 	
 	private FileManager() {
 		mapper = new ObjectMapper();
+		configPaths = ConfigPaths.getInstance();
 	}
 	
 	public static FileManager getInstance() {
@@ -36,7 +39,7 @@ public class FileManager {
 	
 	public UserSettings readUserSettings() {
 		try {
-			return mapper.readValue(new File(USER_SETTING_FILE), UserSettings.class);
+			return mapper.readValue(new File(configPaths.getUserSettingsPath()), UserSettings.class);
 		} catch (IOException e) {
 			JRankLogger.error(e.getMessage());
 			throw new ConfigurationException(e.getMessage());
@@ -44,14 +47,14 @@ public class FileManager {
 	}
 	
 	public void saveUserSettings(UserSettings settings) throws IOException {
-		JRankLogger.info("Saving user settings: " + USER_SETTING_FILE);
+		JRankLogger.info("Saving user settings: " + configPaths.getUserSettingsPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(USER_SETTING_FILE), settings);
+				.writeValue(new File(configPaths.getUserSettingsPath()), settings);
 	}
 	
 	public JRankInfo readJRankInfo() {
 		try {
-			return mapper.readValue(new File(JRANK_INFO_FILE), JRankInfo.class);
+			return mapper.readValue(new File(configPaths.getJRankInfoPath()), JRankInfo.class);
 		} catch (IOException e) {
 			JRankLogger.error(e.getMessage());
 			throw new ConfigurationException(e.getMessage());
@@ -64,7 +67,7 @@ public class FileManager {
 	
 	public Map<String, String> readLanguages() {
 		try {
-			return mapper.readValue(new File(LANGUAGES_FILE), Map.class);
+			return mapper.readValue(new File(configPaths.getLanguagesPath()), Map.class);
 		} catch (IOException e) {
 			JRankLogger.error(e.getMessage());
 			throw new ConfigurationException(e.getMessage());
@@ -73,7 +76,7 @@ public class FileManager {
 	
 	public Map<String, Map<String, String>> readLabels() {
 		try {
-			return mapper.readValue(new File(LABELS_FILE), Map.class);
+			return mapper.readValue(new File(configPaths.getLabelsPath()), Map.class);
 		} catch (IOException e) {
 			JRankLogger.error(e.getMessage());
 			throw new ConfigurationException(e.getMessage());
