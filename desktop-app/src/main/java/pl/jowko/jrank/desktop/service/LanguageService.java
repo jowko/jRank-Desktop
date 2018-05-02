@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.Objects;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.jrank.desktop.settings.JRankConst.NO_LABEL;
 
 /**
  * Created by Piotr on 2018-03-16.
@@ -28,14 +27,15 @@ public class LanguageService {
 	}
 	
 	public String get(String code) {
-		Map<String, String> langCodes = labels.get(SettingsService.getInstance().getLanguage());
+		String lang = SettingsService.getInstance().getLanguage();
+		Map<String, String> langCodes = labels.get(lang);
 		if(Objects.isNull(langCodes)) {
-			return NO_LABEL;
+			return '[' + lang + ":" + code + ']';
 		}
 		
 		String label = langCodes.get(code);
 		if(Objects.isNull(label)) {
-			return NO_LABEL;
+			return '[' + lang + ":" + code + ']';
 		}
 		return label;
 	}

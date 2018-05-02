@@ -3,8 +3,6 @@ package pl.jowko.jrank.desktop;
 import org.junit.jupiter.api.BeforeAll;
 import pl.jowko.jrank.desktop.settings.ConfigPaths;
 
-import java.io.File;
-
 /**
  * Created by Piotr on 2018-05-02.
  */

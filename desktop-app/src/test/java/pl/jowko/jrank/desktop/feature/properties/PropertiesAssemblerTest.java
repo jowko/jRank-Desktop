@@ -4,6 +4,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
+
 import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

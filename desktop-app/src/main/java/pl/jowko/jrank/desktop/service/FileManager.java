@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Map;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.jrank.desktop.settings.JRankConst.*;
 
 /**
  * Created by Piotr on 2018-03-16.

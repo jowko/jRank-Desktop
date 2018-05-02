@@ -29,6 +29,11 @@ public class SettingsService {
 		return userSettings.getLanguage();
 	}
 	
+	/** Used in tests */
+	public void setLanguage(String language) {
+		userSettings.setLanguage(language);
+	}
+	
 	public void saveUserSettings(UserSettings newUserSettings) throws IOException {
 		FileManager.getInstance().saveUserSettings(newUserSettings);
 	}
