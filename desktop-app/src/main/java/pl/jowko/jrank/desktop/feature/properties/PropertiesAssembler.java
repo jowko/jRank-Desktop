@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.feature.properties.Names.*;
 
 /**
@@ -66,7 +67,10 @@ public class PropertiesAssembler {
 	}
 	
 	private String getStringFromProperty(String parameterName) {
-		return deleteTrailingWhiteSpacesAndComment(properties.getProperty(parameterName));
+		String parameterValue = deleteTrailingWhiteSpacesAndComment(properties.getProperty(parameterName));
+		if(nonNull(parameterValue) && parameterValue.isEmpty())
+			return null;
+		return parameterValue;
 	}
 	
 	private Double getDoubleFromProperty(String parameterName) {
