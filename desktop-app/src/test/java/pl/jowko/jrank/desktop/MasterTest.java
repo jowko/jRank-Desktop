@@ -5,6 +5,8 @@ import pl.jowko.jrank.desktop.settings.ConfigPaths;
 
 /**
  * Created by Piotr on 2018-05-02.
+ * MasterTest should be used in tests, where configuration files are used.
+ * This class sets paths to configuration files in resources catalog.
  */
 public abstract class MasterTest {
 	

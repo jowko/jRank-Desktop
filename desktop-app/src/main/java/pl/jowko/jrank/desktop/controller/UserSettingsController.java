@@ -59,7 +59,7 @@ public class UserSettingsController  {
 	}
 	
 	public void onSaveAction() {
-		if(not(settingsValidator.isUserSettingsFormValid(workspaceField.getText(), (String) languagesChoice.getValue()))) {
+		if(not(isSettingsFormValid())) {
 			return;
 		}
 		
@@ -83,7 +83,7 @@ public class UserSettingsController  {
 		UserSettingsController.stage = stage;
 	}
 	
-	private void initializeNewSettings() {
+	private static void initializeNewSettings() {
 		if(Objects.isNull(newUserSettings)) {
 			UserSettings settings = UserSettingsService.getInstance().getUserSettings();
 			newUserSettings = new UserSettings(settings.getLanguage(), settings.getWorkspacePath());
@@ -93,6 +93,16 @@ public class UserSettingsController  {
 	private void updateNewSettings() {
 		newUserSettings.setWorkspacePath(workspaceField.getText());
 		newUserSettings.setLanguage(getLangCode());
+	}
+	
+	private boolean isSettingsFormValid() {
+		String validationErrors = settingsValidator.validateUserSettingsForm((String) languagesChoice.getValue(), workspaceField.getText());
+		if(not(validationErrors.isEmpty())) {
+			String errorDialogHeader = labels.get(Labels.VALIDATION_DIALOG_HEADER);
+			new DialogsService().showValidationFailedDialog(errorDialogHeader, validationErrors);
+			return false;
+		}
+		return true;
 	}
 	
 	private void translateLabels() {
@@ -121,7 +131,6 @@ public class UserSettingsController  {
 			return langCode.get();
 		}
 		return null;
-		
 	}
 	
 }

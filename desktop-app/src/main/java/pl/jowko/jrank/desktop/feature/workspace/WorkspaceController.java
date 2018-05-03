@@ -2,6 +2,9 @@ package pl.jowko.jrank.desktop.feature.workspace;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeView;
+import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.desktop.service.LanguageService;
+import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.validator.UserSettingsValidator;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
@@ -15,20 +18,32 @@ public class WorkspaceController {
 	private TreeView<WorkspaceItem> workspaceTree;
 	
 	private UserSettingsValidator settingsValidator;
+	private LanguageService labels;
 	private TreeBuilder treeBuilder;
 	private boolean isConfigValid = true;
 	
 	@FXML
 	private void initialize() {
 		settingsValidator = new UserSettingsValidator();
+		labels = LanguageService.getInstance();
 		
-		if(not(settingsValidator.isConfigurationValid())) {
-			isConfigValid = false;
+		validateConfiguration();
+		if(not(isConfigValid)) {
 			return;
-			//TODO set some info on workspace panel
 		}
+		
 		treeBuilder = new TreeBuilder(workspaceTree);
 		treeBuilder.buildTree();
+	}
+	
+	private void validateConfiguration() {
+		String validationErrors = settingsValidator.validateConfiguration();
+		if(not(validationErrors.isEmpty())) {
+			String errorDialogHeader = labels.get(Labels.US_SETTINGS_ERROR);
+			new DialogsService().showErrorDialog(errorDialogHeader, validationErrors);
+			isConfigValid = false;
+			//TODO set some info on workspace panel
+		}
 	}
 	
 }
