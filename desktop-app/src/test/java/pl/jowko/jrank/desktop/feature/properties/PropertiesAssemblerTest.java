@@ -156,14 +156,46 @@ class PropertiesAssemblerTest extends MasterTest {
 	}
 	
 	@Test
+	void shouldMapToEmptyParameters() {
+		JRankProperties jRankProperties = toJRankProperties(properties);
+		
+		assertEquals("", jRankProperties.getTypeOfFamilyOfCriteria().getTextValue());
+		assertEquals("", jRankProperties.getConsistencyMeasure().getTextValue());
+		assertEquals("", jRankProperties.getTypeOfRules().getTextValue());
+		assertEquals("", jRankProperties.getConsideredSetOfRules().getTextValue());
+		assertEquals("", jRankProperties.getSatisfactionDegreesInPreferenceGraph().getTextValue());
+		assertEquals("", jRankProperties.getFuzzySatisfactionDegreeCalculationMethod().getTextValue());
+		assertEquals("", jRankProperties.getRankingProcedure().getTextValue());
+		assertEquals("", jRankProperties.getDominance().getTextValue());
+		assertEquals("", jRankProperties.getDominanceForPairsOfOrdinalValues().getTextValue());
+		assertEquals("", jRankProperties.getNegativeExamplesTreatmentForVCDRSA().getTextValue());
+		assertEquals("", jRankProperties.getRuleConditionsSelectionMethodInVCDomLEM().getTextValue());
+		assertEquals("", jRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt().getTextValue());
+	}
+	
+	@Test
 	void shouldMapToNulls() {
 		JRankProperties jRankProperties = toJRankProperties(properties);
 		
 		assertNull(jRankProperties.getRankingFile());
 		assertNull(jRankProperties.getConsistencyMeasureThreshold());
-		assertNull(jRankProperties.getTypeOfRules());
 		assertNull(jRankProperties.getAllowEmptyRulesInVCDomLEM());
 		assertNull(jRankProperties.getPrecision());
+	}
+	
+	@Test
+	void shouldMapToNullsWhenWrongParameters() {
+		properties.setProperty(TYPE_OF_FAMILY_CRITERIA, "some key");
+		properties.setProperty(CONSISTENCY_MEASURE, "other key");
+		properties.setProperty(TYPE_OF_RULES, "not a key");
+		properties.setProperty(CONSIDERED_SET_OF_RULES, "SuperKey");
+		
+		JRankProperties jRankProperties = toJRankProperties(properties);
+		
+		assertNull(jRankProperties.getTypeOfFamilyOfCriteria());
+		assertNull(jRankProperties.getConsistencyMeasure());
+		assertNull(jRankProperties.getTypeOfRules());
+		assertNull(jRankProperties.getConsideredSetOfRules());
 	}
 	
 	private JRankProperties toJRankProperties(Properties properties) {

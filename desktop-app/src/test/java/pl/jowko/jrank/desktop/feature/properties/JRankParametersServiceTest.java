@@ -37,6 +37,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "any").getValue());
 		assertEquals(1, service.findByTextValue(params, "consistent").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -47,6 +48,7 @@ class JRankParametersServiceTest extends MasterTest {
 		assertEquals(1, service.findByTextValue(params, "epsilon*").getValue());
 		assertEquals(2, service.findByTextValue(params, "epsilon'").getValue());
 		assertEquals(-1, service.findByTextValue(params, "rough-membership").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -55,6 +57,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "certain").getValue());
 		assertEquals(1, service.findByTextValue(params, "possible").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -63,6 +66,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "minimal").getValue());
 		assertEquals(1, service.findByTextValue(params, "exhaustive").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -71,6 +75,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "fuzzy").getValue());
 		assertEquals(1, service.findByTextValue(params, "crisp").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -79,6 +84,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "max-credibility").getValue());
 		assertEquals(1, service.findByTextValue(params, "max-credibility-x-coverage-factor").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -91,6 +97,7 @@ class JRankParametersServiceTest extends MasterTest {
 		assertEquals(3, service.findByTextValue(params, "rnfs-*").getValue());
 		assertEquals(4, service.findByTextValue(params, "nfs-p-*").getValue());
 		assertEquals(5, service.findByTextValue(params, "rnfs-p-*").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -99,6 +106,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "pareto").getValue());
 		assertEquals(1, service.findByTextValue(params, "lorenz").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -107,6 +115,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(4, service.findByTextValue(params, "strict").getValue());
 		assertEquals(5, service.findByTextValue(params, "classic").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -116,6 +125,7 @@ class JRankParametersServiceTest extends MasterTest {
 		assertEquals(1, service.findByTextValue(params, "only-inconsistent").getValue());
 		assertEquals(2, service.findByTextValue(params, "only-inconsistent-and-boundary").getValue());
 		assertEquals(3, service.findByTextValue(params, "any").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -124,6 +134,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "base").getValue());
 		assertEquals(1, service.findByTextValue(params, "mix").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 	@Test
@@ -132,6 +143,7 @@ class JRankParametersServiceTest extends MasterTest {
 		
 		assertEquals(0, service.findByTextValue(params, "approximation").getValue());
 		assertEquals(1, service.findByTextValue(params, "set").getValue());
+		assertEquals(Integer.MIN_VALUE, service.findByTextValue(params, "").getValue());
 	}
 	
 }

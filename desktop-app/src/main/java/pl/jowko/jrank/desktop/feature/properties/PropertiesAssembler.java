@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import pl.jowko.jrank.logger.JRankLogger;
+
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
@@ -99,7 +101,16 @@ public class PropertiesAssembler {
 	
 	private JRankParameter getParameter(List<JRankParameter> parameters, String parameterName) {
 		String parameterValue = getStringFromProperty(parameterName);
-		return paramService.findByTextValue(parameters, parameterValue);
+		
+		if(isNull(parameterValue))
+			return paramService.getEmptyParameter();
+		
+		JRankParameter parameter = paramService.findByTextValue(parameters, parameterValue);
+		if(isNull(parameter)) {
+			JRankLogger.error("Value for property: " + parameterName + " is not recognized. Value: " + parameterValue);
+		}
+		
+		return parameter;
 	}
 	
 	private String deleteTrailingWhiteSpacesAndComment(String value) {

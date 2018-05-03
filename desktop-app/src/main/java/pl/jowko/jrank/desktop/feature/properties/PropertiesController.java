@@ -12,11 +12,14 @@ public class PropertiesController {
 	private ComboBox<JRankParameter> testComboBox;
 	
 	private JRankParametersService parametersService;
+	private JRankParameter emptyParameter;
 
 	@FXML
 	public void initialize() {
 		parametersService = JRankParametersService.getInstance();
+		emptyParameter = parametersService.getEmptyParameter();
 		testComboBox.getItems().setAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
+		testComboBox.getSelectionModel().select(emptyParameter);
 	}
 	
 	public void onButtonAction() {
