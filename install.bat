@@ -32,4 +32,4 @@ echo Copying default.properties file
 ROBOCOPY workspace\ JRank\workspace\
 
 echo creating run.bat file
-@echo java -jar JRank-0.1-SNAPSHOT.jar -Xms128m -Xmx4G > JRank\run.bat
+@echo java -jar JRank-0.1-SNAPSHOT.jar -Xms128m > JRank\run.bat
