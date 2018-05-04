@@ -63,11 +63,14 @@ public class PropertiesAssembler {
 		
 		prop.setPrecision(getIntegerFromProperty(PRECISION)); //TODO what is this?
 		
+		validatePropertiesAndShowWarnings();
+		
 		return prop;
 	}
 	
 	private String getStringFromProperty(String parameterName) {
 		String parameterValue = deleteTrailingWhiteSpacesAndComment(properties.getProperty(parameterName));
+		properties.keySet().remove(parameterName);
 		if(nonNull(parameterValue) && parameterValue.isEmpty())
 			return null;
 		return parameterValue;
@@ -122,6 +125,12 @@ public class PropertiesAssembler {
 			return null;
 		}
 		return commentsPattern.matcher(value).replaceFirst("").trim();
+	}
+	
+	private void validatePropertiesAndShowWarnings() {
+		if(properties.keySet().size() > 0) {
+			JRankLogger.warn("Some properties were not recognized: " + properties + ". Check spelling of properties names.");
+		}
 	}
 	
 }
