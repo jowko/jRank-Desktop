@@ -4,6 +4,7 @@ import javafx.scene.Parent;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
 import pl.jowko.jrank.desktop.feature.properties.PropertiesAssembler;
+import pl.jowko.jrank.desktop.feature.properties.PropertiesController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.logger.JRankLogger;
 
@@ -19,12 +20,16 @@ class PropertiesTab extends JRankTab {
 	private JRankProperties jRankProperties;
 	
 	PropertiesTab(WorkspaceItem workspaceItem, String tabText) throws IOException {
-		Parent tabContent = new ResourceLoader().load("/fxml/upperTabs/jRankSettingsTab.fxml");
+		ResourceLoader loader = new ResourceLoader("/fxml/upperTabs/jRankSettingsTab.fxml");
+		Parent tabContent = loader.load();
 		initializeTab(workspaceItem, tabContent, tabText);
+		
 		loadProperties();
+		PropertiesController controller = loader.getController();
+		controller.initializeProperties(getJRankProperties());
 	}
 	
-	public JRankProperties getjRankProperties() {
+	public JRankProperties getJRankProperties() {
 		return jRankProperties;
 	}
 	

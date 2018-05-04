@@ -9,10 +9,19 @@ import java.io.IOException;
  */
 public class ResourceLoader {
 	
-	public <T> T load(String name) throws IOException {
-		FXMLLoader fxml = new FXMLLoader();
-		fxml.setLocation(getClass().getResource(name));
-		return fxml.load();
+	private FXMLLoader fxmlLoader;
+	
+	public ResourceLoader(String resourceName) {
+		fxmlLoader = new FXMLLoader();
+		fxmlLoader.setLocation(getClass().getResource(resourceName));
+	}
+	
+	public <T> T load() throws IOException {
+		return fxmlLoader.load();
+	}
+	
+	public <T> T getController() {
+		return fxmlLoader.getController();
 	}
 	
 }

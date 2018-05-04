@@ -49,7 +49,7 @@ public class MenuController {
 	}
 	
 	public void onUserSettingsAction() throws IOException {
-		Parent root = new ResourceLoader().load("/fxml/userSettings.fxml");
+		Parent root = new ResourceLoader("/fxml/userSettings.fxml").load();
 		
 		Stage stage = new Stage(StageStyle.DECORATED);
 		UserSettingsController.setStage(stage);

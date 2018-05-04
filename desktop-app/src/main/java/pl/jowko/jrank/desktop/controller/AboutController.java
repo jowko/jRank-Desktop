@@ -44,7 +44,7 @@ public class AboutController {
 	
 	public static void createWindow() throws IOException {
 		Dialog dialog = new Dialog<>();
-		Parent root = new ResourceLoader().load("/fxml/about.fxml");
+		Parent root = new ResourceLoader("/fxml/about.fxml").load();
 		dialog.setDialogPane((DialogPane) root);
 		dialog.setTitle(labels.get(Labels.ABOUT_TITLE));
 		dialog.initModality(Modality.APPLICATION_MODAL);

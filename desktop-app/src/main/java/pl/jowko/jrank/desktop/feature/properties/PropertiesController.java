@@ -13,6 +13,7 @@ public class PropertiesController {
 	
 	private JRankParametersService parametersService;
 	private JRankParameter emptyParameter;
+	private JRankProperties properties;
 
 	@FXML
 	public void initialize() {
@@ -20,6 +21,12 @@ public class PropertiesController {
 		emptyParameter = parametersService.getEmptyParameter();
 //		testComboBox.getItems().setAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
 //		testComboBox.getSelectionModel().select(emptyParameter);
+	
+	}
+	
+	public void initializeProperties(JRankProperties properties) {
+		System.out.println(properties);
+		this.properties = properties;
 	}
 
 }
