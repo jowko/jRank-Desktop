@@ -34,6 +34,10 @@ public class JRankLogger {
 		Log.info(category, msg);
 	}
 	
+	public static void warn(String msg) {
+		Log.warn(msg);
+	}
+	
 	public static void error(String msg, Throwable throwable) {
 		Log.error(msg, throwable);
 	}

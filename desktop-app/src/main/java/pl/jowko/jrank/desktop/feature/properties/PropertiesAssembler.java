@@ -111,7 +111,7 @@ public class PropertiesAssembler {
 		
 		JRankParameter parameter = paramService.findByTextValue(parameters, parameterValue);
 		if(isNull(parameter)) {
-			JRankLogger.error("Value for property: " + parameterName + " is not recognized. Value: " + parameterValue);
+			JRankLogger.warn("Value: [" + parameterValue + "] for property: [" + parameterName + "] is not recognized.");
 		}
 		
 		return parameter;
