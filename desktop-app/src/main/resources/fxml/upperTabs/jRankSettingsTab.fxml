@@ -167,8 +167,8 @@
             <ComboBox fx:id="rankingProcedure" minWidth="180.0" GridPane.columnIndex="1" />
             <Label GridPane.columnIndex="6" />
             <ComboBox fx:id="dominance" minWidth="180.0" GridPane.columnIndex="4" />
-            <Label fx:id="dominanceForPairsOfOrdinalValuesLabel" text="Dominance for pairs of ordinal values:" GridPane.columnIndex="6" />
-            <ComboBox fx:id="dominanceForPairsOfOrdinalValues" minWidth="70.0" GridPane.columnIndex="7" />
+            <Label fx:id="dominanceForPairsLabel" text="Dominance for pairs of ordinal values:" GridPane.columnIndex="6" />
+            <ComboBox fx:id="dominanceForPairs" minWidth="70.0" GridPane.columnIndex="7" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" top="5.0" />
@@ -188,16 +188,16 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="satisfactionDegreesInPreferenceGraphLabel" text="Satisfaction degrees in preference graph:" />
-            <Label fx:id="fuzzySatisfactionDegreeCalculationMethodLabel" text="Fuzzy satisfaction degree calculation method:" GridPane.columnIndex="3" />
-            <ComboBox fx:id="satisfactionDegreesInPreferenceGraph" minWidth="180.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="fuzzySatisfactionDegreeCalculationMethod" minWidth="180.0" GridPane.columnIndex="4" />
-            <Label fx:id="negativeExamplesTreatmentForVCDRSALabel" text="Negative examples treatment for VCDRSA:" GridPane.rowIndex="1" />
-            <Label fx:id="optimizeRuleConsistencyInVCDomLEMWrtLabel" text="Optimize rule consistency in VCDomLEMWrt:" GridPane.rowIndex="2" />
-            <Label fx:id="ruleConditionsSelectionMethodInVCDomLEMLabel" text="Rule conditions selection method in VCDomLEM:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ComboBox fx:id="negativeExamplesTreatmentForVCDRSA" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="optimizeRuleConsistencyInVCDomLEMWrt" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="ruleConditionsSelectionMethodInVCDomLEM" minWidth="180.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label fx:id="satisfactionDegreesInGraphLabel" text="Satisfaction degrees in preference graph:" />
+            <Label fx:id="fuzzyCalculationMethodLabel" text="Fuzzy satisfaction degree calculation method:" GridPane.columnIndex="3" />
+            <ComboBox fx:id="satisfactionDegreesInGraph" minWidth="180.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="fuzzyCalculationMethod" minWidth="180.0" GridPane.columnIndex="4" />
+            <Label fx:id="negativeExamplesTreatmentLabel" text="Negative examples treatment for VCDRSA:" GridPane.rowIndex="1" />
+            <Label fx:id="optimizeRuleConsistencyLabel" text="Optimize rule consistency in VCDomLEMWrt:" GridPane.rowIndex="2" />
+            <Label fx:id="ruleConditionsSelectionMethodLabel" text="Rule conditions selection method in VCDomLEM:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="negativeExamplesTreatment" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="optimizeRuleConsistency" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="ruleConditionsSelectionMethod" minWidth="180.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
          </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" top="5.0" />
@@ -212,8 +212,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <CheckBox fx:id="allowEmptyRulesInVCDomLEM" mnemonicParsing="false" text="Allow empty rules in VCDomLEM" />
-            <CheckBox fx:id="useEdgeRegionsInVCDomLEM" mnemonicParsing="false" text="Use edge regions in VCDomLEM" GridPane.columnIndex="1" />
+            <CheckBox fx:id="allowEmptyRules" mnemonicParsing="false" text="Allow empty rules in VCDomLEM" />
+            <CheckBox fx:id="useEdgeRegions" mnemonicParsing="false" text="Use edge regions in VCDomLEM" GridPane.columnIndex="1" />
          </children>
          <padding>
             <Insets left="10.0" right="10.0" top="5.0" />
