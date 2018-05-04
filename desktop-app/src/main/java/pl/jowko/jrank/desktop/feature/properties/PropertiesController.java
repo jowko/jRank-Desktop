@@ -73,6 +73,7 @@ public class PropertiesController {
 	@FXML Button cancelButton;
 	@FXML Button setDefaultsButton;
 	@FXML Button clearButton;
+	@FXML Button restoreValuesButton;
 	
 	private PropertiesControllerHelper controllerHelper;
 	JRankProperties properties;
@@ -88,6 +89,12 @@ public class PropertiesController {
 	
 	public void clearFormAction() {
 		controllerHelper.clearForm();
+	}
+	
+	public void restoreOriginalValuesAction() {
+		editableProperties = (JRankProperties) Cloner.deepClone(properties);
+		controllerHelper.setEditableProperties(editableProperties);
+		controllerHelper.fillFieldsValues();
 	}
 	
 }

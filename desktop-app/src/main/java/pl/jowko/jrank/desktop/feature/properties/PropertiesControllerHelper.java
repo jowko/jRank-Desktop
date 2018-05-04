@@ -17,6 +17,10 @@ class PropertiesControllerHelper {
 		editableProperties = controller.editableProperties;
 	}
 	
+	public void setEditableProperties(JRankProperties editableProperties) {
+		this.editableProperties = editableProperties;
+	}
+	
 	void fillComboBoxes() {
 		controller.typeOfFamilyCriteria.getItems().addAll(parametersService.getTypeOfFamilyOfCriteria());
 		controller.typeOfRules.getItems().addAll(parametersService.getTypeOfRules());
