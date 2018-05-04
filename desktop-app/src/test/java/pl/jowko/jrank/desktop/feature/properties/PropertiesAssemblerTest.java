@@ -5,10 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static pl.jowko.jrank.desktop.feature.properties.Names.*;
 
 /**
@@ -201,6 +202,19 @@ class PropertiesAssemblerTest extends MasterTest {
 	private JRankProperties toJRankProperties(Properties properties) {
 		PropertiesAssembler assembler = new PropertiesAssembler(properties);
 		return assembler.toJrankProperties();
+	}
+	
+	@Test
+	void shouldWriteLogWhenPropertyIsNotRecognized() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+		
+		properties.setProperty("SomeUnknownProperty", "Key");
+		toJRankProperties(properties);
+		
+		assertTrue(outContent.toString().contains("WARN") && outContent.toString().contains("SomeUnknownProperty"));
+		
+		System.setOut(System.out);
 	}
 	
 }

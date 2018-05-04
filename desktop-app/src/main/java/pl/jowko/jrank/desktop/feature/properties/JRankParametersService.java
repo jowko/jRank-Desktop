@@ -5,8 +5,6 @@ import pl.jowko.jrank.desktop.service.LanguageService;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.isNull;
-
 /**
  * Created by Piotr on 2018-05-01.
  */

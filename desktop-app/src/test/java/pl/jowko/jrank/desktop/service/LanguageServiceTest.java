@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -71,6 +73,31 @@ class LanguageServiceTest extends MasterTest {
 	void shouldNotFindCode() {
 		String label = labels.get("SOME_CODE");
 		assertEquals("[ENG:SOME_CODE]", label);
+	}
+	
+	@Test
+	void shouldWriteLogWhenNotFoundLanguage() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+		
+		userSettingsService.setLanguage("HAHA");
+		labels.get(MENU_FILE);
+		
+		assertTrue(outContent.toString().contains("WARN") && outContent.toString().contains("HAHA"));
+		
+		System.setOut(System.out);
+	}
+	
+	@Test
+	void shouldWriteLogWhenNotFoundCode() {
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(outContent));
+		
+		labels.get("SOME_CODE");
+		
+		assertTrue(outContent.toString().contains("WARN") && outContent.toString().contains("SOME_CODE"));
+		
+		System.setOut(System.out);
 	}
 	
 }
