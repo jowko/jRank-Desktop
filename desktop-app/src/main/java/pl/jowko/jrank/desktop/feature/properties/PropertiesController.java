@@ -3,6 +3,9 @@ package pl.jowko.jrank.desktop.feature.properties;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.utils.Cloner;
+import pl.jowko.jrank.logger.JRankLogger;
+
+import java.io.IOException;
 
 /**
  * Created by Piotr on 2018-04-29.
@@ -85,6 +88,16 @@ public class PropertiesController {
 		controllerHelper = new PropertiesControllerHelper(this);
 		controllerHelper.fillComboBoxes();
 		controllerHelper.fillFieldsValues();
+	}
+	
+	public void setDefaultsAction() {
+		try {
+			editableProperties = new DefaultPropertiesProvider().getDefaultProperties();
+			controllerHelper.setEditableProperties(editableProperties);
+			controllerHelper.fillFieldsValues();
+		} catch (IOException e) {
+			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
+		}
 	}
 	
 	public void clearFormAction() {
