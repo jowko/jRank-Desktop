@@ -11,7 +11,7 @@
    <SplitPane dividerPositions="0.2" layoutY="65.0" VBox.vgrow="ALWAYS">
      <items>
        <fx:include maxWidth="500.0" minWidth="250.0" source="workspace.fxml" />
-       <SplitPane dividerPositions="0.6" orientation="VERTICAL">
+       <SplitPane dividerPositions="0.72" orientation="VERTICAL">
          <items>
            <fx:include minWidth="1000.0" source="upperTabs/tabs.fxml" />
            <fx:include minWidth="1000.0" source="lowerTabs.fxml" />

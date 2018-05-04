@@ -8,8 +8,8 @@ import javafx.scene.control.ComboBox;
  */
 public class PropertiesController {
 	
-	@FXML
-	private ComboBox<JRankParameter> testComboBox;
+//	@FXML
+//	private ComboBox<JRankParameter> testComboBox;
 	
 	private JRankParametersService parametersService;
 	private JRankParameter emptyParameter;
@@ -18,13 +18,8 @@ public class PropertiesController {
 	public void initialize() {
 		parametersService = JRankParametersService.getInstance();
 		emptyParameter = parametersService.getEmptyParameter();
-		testComboBox.getItems().setAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
-		testComboBox.getSelectionModel().select(emptyParameter);
-	}
-	
-	public void onButtonAction() {
-		System.out.println(testComboBox.getValue());
-		System.out.println(testComboBox.getValue().getTextValue());
+//		testComboBox.getItems().setAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
+//		testComboBox.getSelectionModel().select(emptyParameter);
 	}
 
 }
