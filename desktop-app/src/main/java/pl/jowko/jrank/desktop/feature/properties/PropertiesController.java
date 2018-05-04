@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.utils.Cloner;
 
 import static java.util.Objects.isNull;
 
@@ -77,6 +78,7 @@ public class PropertiesController {
 	private JRankParametersService parametersService;
 	private JRankParameter emptyParameter;
 	private JRankProperties properties;
+	private JRankProperties editableProperties;
 
 	@FXML
 	public void initialize() {
@@ -86,6 +88,7 @@ public class PropertiesController {
 	
 	public void initializeProperties(JRankProperties properties) {
 		this.properties = properties;
+		editableProperties = (JRankProperties) Cloner.deepClone(properties);
 		fillComboBoxes();
 		initializeFieldsValues();
 	}
@@ -110,42 +113,42 @@ public class PropertiesController {
 	}
 	
 	private void initializeFieldsValues() {
-		learningDataFile.setText(properties.getLearningDataFile());
-		testDataFile.setText(properties.getTestDataFile());
-		pctFile.setText(properties.getPctFile());
-		pctApxFile.setText(properties.getPctApxFile());
-		pctRulesFile.setText(properties.getPctRulesFile());
-		graphFile.setText(properties.getPreferenceGraphFile());
-		rankingFile.setText(properties.getRankingFile());
+		learningDataFile.setText(editableProperties.getLearningDataFile());
+		testDataFile.setText(editableProperties.getTestDataFile());
+		pctFile.setText(editableProperties.getPctFile());
+		pctApxFile.setText(editableProperties.getPctApxFile());
+		pctRulesFile.setText(editableProperties.getPctRulesFile());
+		graphFile.setText(editableProperties.getPreferenceGraphFile());
+		rankingFile.setText(editableProperties.getRankingFile());
 		
-		referenceRanking.setText(properties.getReferenceRanking());
-		pairs.setText(properties.getPairs());
+		referenceRanking.setText(editableProperties.getReferenceRanking());
+		pairs.setText(editableProperties.getPairs());
 		
-		typeOfFamilyCriteria.getSelectionModel().select(properties.getTypeOfFamilyOfCriteria());
-		typeOfRules.getSelectionModel().select(properties.getTypeOfRules());
-		consideredSetOfRules.getSelectionModel().select(properties.getConsideredSetOfRules());
+		typeOfFamilyCriteria.getSelectionModel().select(editableProperties.getTypeOfFamilyOfCriteria());
+		typeOfRules.getSelectionModel().select(editableProperties.getTypeOfRules());
+		consideredSetOfRules.getSelectionModel().select(editableProperties.getConsideredSetOfRules());
 		
-		consistencyMeasure.getSelectionModel().select(properties.getConsistencyMeasure());
-		consistencyMeasureThreshold.setText(getStringOrNull(properties.getConsistencyMeasureThreshold()));
-		precision.setText(getStringOrNull(properties.getPrecision()));
+		consistencyMeasure.getSelectionModel().select(editableProperties.getConsistencyMeasure());
+		consistencyMeasureThreshold.setText(getStringOrNull(editableProperties.getConsistencyMeasureThreshold()));
+		precision.setText(getStringOrNull(editableProperties.getPrecision()));
 		
-		rankingProcedure.getSelectionModel().select(properties.getRankingProcedure());
-		dominance.getSelectionModel().select(properties.getDominance());
-		dominanceForPairs.getSelectionModel().select(properties.getDominanceForPairsOfOrdinalValues());
+		rankingProcedure.getSelectionModel().select(editableProperties.getRankingProcedure());
+		dominance.getSelectionModel().select(editableProperties.getDominance());
+		dominanceForPairs.getSelectionModel().select(editableProperties.getDominanceForPairsOfOrdinalValues());
 		
-		satisfactionDegreesInGraph.getSelectionModel().select(properties.getSatisfactionDegreesInPreferenceGraph());
-		fuzzyCalculationMethod.getSelectionModel().select(properties.getFuzzySatisfactionDegreeCalculationMethod());
+		satisfactionDegreesInGraph.getSelectionModel().select(editableProperties.getSatisfactionDegreesInPreferenceGraph());
+		fuzzyCalculationMethod.getSelectionModel().select(editableProperties.getFuzzySatisfactionDegreeCalculationMethod());
 		
-		negativeExamplesTreatment.getSelectionModel().select(properties.getNegativeExamplesTreatmentForVCDRSA());
-		optimizeRuleConsistency.getSelectionModel().select(properties.getOptimizeRuleConsistencyInVCDomLEMWrt());
-		ruleConditionsSelectionMethod.getSelectionModel().select(properties.getRuleConditionsSelectionMethodInVCDomLEM());
+		negativeExamplesTreatment.getSelectionModel().select(editableProperties.getNegativeExamplesTreatmentForVCDRSA());
+		optimizeRuleConsistency.getSelectionModel().select(editableProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		ruleConditionsSelectionMethod.getSelectionModel().select(editableProperties.getRuleConditionsSelectionMethodInVCDomLEM());
 		
-		allowEmptyRules.setSelected(getBoolean(properties.getAllowEmptyRulesInVCDomLEM()));
-		useEdgeRegions.setSelected(getBoolean(properties.getUseEdgeRegionsInVCDomLEM()));
+		allowEmptyRules.setSelected(getBoolean(editableProperties.getAllowEmptyRulesInVCDomLEM()));
+		useEdgeRegions.setSelected(getBoolean(editableProperties.getUseEdgeRegionsInVCDomLEM()));
 		
-		writeDominationInformation.setSelected(getBoolean(properties.getWriteDominationInformation()));
-		writeRulesStatistics.setSelected(getBoolean(properties.getWriteRulesStatistics()));
-		writeLearningPositiveExamples.setSelected(getBoolean(properties.getWriteLearningPositiveExamples()));
+		writeDominationInformation.setSelected(getBoolean(editableProperties.getWriteDominationInformation()));
+		writeRulesStatistics.setSelected(getBoolean(editableProperties.getWriteRulesStatistics()));
+		writeLearningPositiveExamples.setSelected(getBoolean(editableProperties.getWriteLearningPositiveExamples()));
 	}
 
 	private String getStringOrNull(Object value) {

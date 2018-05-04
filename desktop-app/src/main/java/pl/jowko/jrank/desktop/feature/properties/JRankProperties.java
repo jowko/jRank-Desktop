@@ -1,11 +1,12 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Created by Piotr on 2018-04-29.
  */
-public class JRankProperties {
+public class JRankProperties implements Serializable {
 	
 	private String learningDataFile;
 	private String testDataFile;

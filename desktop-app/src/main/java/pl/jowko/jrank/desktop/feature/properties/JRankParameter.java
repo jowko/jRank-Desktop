@@ -1,11 +1,12 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Created by Piotr on 2018-05-01.
  */
-public class JRankParameter {
+public class JRankParameter implements Serializable {
 	
 	private String label;
 	/**
