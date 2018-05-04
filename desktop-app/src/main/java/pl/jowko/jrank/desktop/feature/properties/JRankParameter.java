@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import java.util.Objects;
+
 /**
  * Created by Piotr on 2018-05-01.
  */
@@ -38,4 +40,17 @@ public class JRankParameter {
 		return label;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		JRankParameter that = (JRankParameter) o;
+		return value == that.value &&
+				Objects.equals(textValue, that.textValue);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(textValue, value);
+	}
 }

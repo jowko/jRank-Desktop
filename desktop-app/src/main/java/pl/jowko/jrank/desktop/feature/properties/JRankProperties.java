@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import java.util.Objects;
+
 /**
  * Created by Piotr on 2018-04-29.
  */
@@ -264,4 +266,84 @@ public class JRankProperties {
 		this.precision = precision;
 	}
 	
+	@Override
+	public String toString() {
+		return "JRankProperties{" + '\n' +
+				"learningDataFile='" + learningDataFile + '\'' + '\n' +
+				", testDataFile='" + testDataFile + '\'' + '\n' +
+				", pctFile='" + pctFile + '\'' + '\n' +
+				", pctApxFile='" + pctApxFile + '\'' + '\n' +
+				", pctRulesFile='" + pctRulesFile + '\'' + '\n' +
+				", preferenceGraphFile='" + preferenceGraphFile + '\'' + '\n' +
+				", rankingFile='" + rankingFile + '\'' + '\n' +
+				", referenceRanking='" + referenceRanking + '\'' + '\n' +
+				", pairs='" + pairs + '\'' + '\n' +
+				", typeOfFamilyOfCriteria=" + typeOfFamilyOfCriteria + '\n' +
+				", consistencyMeasure=" + consistencyMeasure + '\n' +
+				", consistencyMeasureThreshold=" + consistencyMeasureThreshold + '\n' +
+				", typeOfRules=" + typeOfRules + '\n' +
+				", consideredSetOfRules=" + consideredSetOfRules + '\n' +
+				", satisfactionDegreesInPreferenceGraph=" + satisfactionDegreesInPreferenceGraph + '\n' +
+				", fuzzySatisfactionDegreeCalculationMethod=" + fuzzySatisfactionDegreeCalculationMethod + '\n' +
+				", rankingProcedure=" + rankingProcedure + '\n' +
+				", dominance=" + dominance + '\n' +
+				", dominanceForPairsOfOrdinalValues=" + dominanceForPairsOfOrdinalValues + '\n' +
+				", negativeExamplesTreatmentForVCDRSA=" + negativeExamplesTreatmentForVCDRSA + '\n' +
+				", ruleConditionsSelectionMethodInVCDomLEM=" + ruleConditionsSelectionMethodInVCDomLEM + '\n' +
+				", allowEmptyRulesInVCDomLEM=" + allowEmptyRulesInVCDomLEM + '\n' +
+				", useEdgeRegionsInVCDomLEM=" + useEdgeRegionsInVCDomLEM + '\n' +
+				", optimizeRuleConsistencyInVCDomLEMWrt=" + optimizeRuleConsistencyInVCDomLEMWrt + '\n' +
+				", writeDominationInformation=" + writeDominationInformation + '\n' +
+				", writeRulesStatistics=" + writeRulesStatistics + '\n' +
+				", writeLearningPositiveExamples=" + writeLearningPositiveExamples + '\n' +
+				", precision=" + precision + '\n' +
+				'}';
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		JRankProperties that = (JRankProperties) o;
+		return Objects.equals(learningDataFile, that.learningDataFile) &&
+				Objects.equals(testDataFile, that.testDataFile) &&
+				Objects.equals(pctFile, that.pctFile) &&
+				Objects.equals(pctApxFile, that.pctApxFile) &&
+				Objects.equals(pctRulesFile, that.pctRulesFile) &&
+				Objects.equals(preferenceGraphFile, that.preferenceGraphFile) &&
+				Objects.equals(rankingFile, that.rankingFile) &&
+				Objects.equals(referenceRanking, that.referenceRanking) &&
+				Objects.equals(pairs, that.pairs) &&
+				Objects.equals(typeOfFamilyOfCriteria, that.typeOfFamilyOfCriteria) &&
+				Objects.equals(consistencyMeasure, that.consistencyMeasure) &&
+				Objects.equals(consistencyMeasureThreshold, that.consistencyMeasureThreshold) &&
+				Objects.equals(typeOfRules, that.typeOfRules) &&
+				Objects.equals(consideredSetOfRules, that.consideredSetOfRules) &&
+				Objects.equals(satisfactionDegreesInPreferenceGraph, that.satisfactionDegreesInPreferenceGraph) &&
+				Objects.equals(fuzzySatisfactionDegreeCalculationMethod, that.fuzzySatisfactionDegreeCalculationMethod) &&
+				Objects.equals(rankingProcedure, that.rankingProcedure) &&
+				Objects.equals(dominance, that.dominance) &&
+				Objects.equals(dominanceForPairsOfOrdinalValues, that.dominanceForPairsOfOrdinalValues) &&
+				Objects.equals(negativeExamplesTreatmentForVCDRSA, that.negativeExamplesTreatmentForVCDRSA) &&
+				Objects.equals(ruleConditionsSelectionMethodInVCDomLEM, that.ruleConditionsSelectionMethodInVCDomLEM) &&
+				Objects.equals(allowEmptyRulesInVCDomLEM, that.allowEmptyRulesInVCDomLEM) &&
+				Objects.equals(useEdgeRegionsInVCDomLEM, that.useEdgeRegionsInVCDomLEM) &&
+				Objects.equals(optimizeRuleConsistencyInVCDomLEMWrt, that.optimizeRuleConsistencyInVCDomLEMWrt) &&
+				Objects.equals(writeDominationInformation, that.writeDominationInformation) &&
+				Objects.equals(writeRulesStatistics, that.writeRulesStatistics) &&
+				Objects.equals(writeLearningPositiveExamples, that.writeLearningPositiveExamples) &&
+				Objects.equals(precision, that.precision);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(learningDataFile, testDataFile, pctFile, pctApxFile, pctRulesFile,
+				preferenceGraphFile, rankingFile, referenceRanking, pairs, typeOfFamilyOfCriteria,
+				consistencyMeasure, consistencyMeasureThreshold, typeOfRules, consideredSetOfRules,
+				satisfactionDegreesInPreferenceGraph, fuzzySatisfactionDegreeCalculationMethod,
+				rankingProcedure, dominance, dominanceForPairsOfOrdinalValues, negativeExamplesTreatmentForVCDRSA,
+				ruleConditionsSelectionMethodInVCDomLEM, allowEmptyRulesInVCDomLEM, useEdgeRegionsInVCDomLEM,
+				optimizeRuleConsistencyInVCDomLEMWrt, writeDominationInformation, writeRulesStatistics,
+				writeLearningPositiveExamples, precision);
+	}
 }
