@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.feature.upperTabs.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
@@ -81,12 +82,14 @@ public class PropertiesController {
 	
 	private PropertiesControllerHelper controllerHelper;
 	private WorkspaceItem workspaceItem;
+	private Tab propertiesTab;
 	JRankProperties properties;
 	JRankProperties editableProperties;
 	
-	public void initializeProperties(JRankProperties properties, WorkspaceItem workspaceItem) {
+	public void initializeProperties(JRankProperties properties, WorkspaceItem workspaceItem, Tab propertiesTab) {
 		this.properties = properties;
 		this.workspaceItem = workspaceItem;
+		this.propertiesTab = propertiesTab;
 		editableProperties = (JRankProperties) Cloner.deepClone(properties);
 		controllerHelper = new PropertiesControllerHelper(this);
 		controllerHelper.fillComboBoxes();
@@ -99,6 +102,7 @@ public class PropertiesController {
 		try {
 			new PropertiesSaver(editableProperties).save(workspaceItem.getFilePath());
 			JRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
+			cancelAction();
 		} catch (IOException e) {
 			JRankLogger.error("Error when saving properties: " + workspaceItem.getFileName() + " - " + e.getMessage());
 			//TODO show error dialog
@@ -106,7 +110,7 @@ public class PropertiesController {
 	}
 	
 	public void cancelAction() {
-	
+		UpperTabsController.getInstance().closeTab(propertiesTab);
 	}
 	
 	public void setDefaultsAction() {

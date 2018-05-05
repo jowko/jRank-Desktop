@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.upperTabs;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -46,6 +48,15 @@ public class UpperTabsController {
 			upperTabs.getSelectionModel().select(tab);
 		} catch (IOException e) {
 			JRankLogger.error("Error when creating properties tab: ", e);
+		}
+	}
+	
+	public void closeTab(Tab tab) {
+		EventHandler<Event> handler = tab.getOnClosed();
+		if (null != handler) {
+			handler.handle(null);
+		} else {
+			tab.getTabPane().getTabs().remove(tab);
 		}
 	}
 	

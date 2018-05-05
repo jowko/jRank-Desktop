@@ -26,7 +26,7 @@ class PropertiesTab extends JRankTab {
 		
 		loadProperties();
 		PropertiesController controller = loader.getController();
-		controller.initializeProperties(getJRankProperties(), workspaceItem);
+		controller.initializeProperties(getJRankProperties(), workspaceItem, this);
 	}
 	
 	public JRankProperties getJRankProperties() {
