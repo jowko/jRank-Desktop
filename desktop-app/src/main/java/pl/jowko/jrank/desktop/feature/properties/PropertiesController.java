@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
 
@@ -79,15 +80,33 @@ public class PropertiesController {
 	@FXML Button restoreValuesButton;
 	
 	private PropertiesControllerHelper controllerHelper;
+	private WorkspaceItem workspaceItem;
 	JRankProperties properties;
 	JRankProperties editableProperties;
 	
-	public void initializeProperties(JRankProperties properties) {
+	public void initializeProperties(JRankProperties properties, WorkspaceItem workspaceItem) {
 		this.properties = properties;
+		this.workspaceItem = workspaceItem;
 		editableProperties = (JRankProperties) Cloner.deepClone(properties);
 		controllerHelper = new PropertiesControllerHelper(this);
 		controllerHelper.fillComboBoxes();
 		controllerHelper.fillFieldsValues();
+	}
+	
+	public void saveAction() {
+		editableProperties = controllerHelper.getPropertiesFromForm();
+		//TODO validate form
+		try {
+			new PropertiesSaver(editableProperties).save(workspaceItem.getFilePath());
+			JRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
+		} catch (IOException e) {
+			JRankLogger.error("Error when saving properties: " + workspaceItem.getFileName() + " - " + e.getMessage());
+			//TODO show error dialog
+		}
+	}
+	
+	public void cancelAction() {
+	
 	}
 	
 	public void setDefaultsAction() {

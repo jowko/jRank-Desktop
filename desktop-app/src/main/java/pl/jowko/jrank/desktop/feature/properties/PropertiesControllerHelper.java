@@ -1,6 +1,9 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
+import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
  * Created by Piotr on 2018-05-04.
@@ -122,11 +125,68 @@ class PropertiesControllerHelper {
 		controller.writeLearningPositiveExamples.setSelected(getBoolean(editableProperties.getWriteLearningPositiveExamples()));
 	}
 	
+	JRankProperties getPropertiesFromForm() {
+		JRankProperties jRankProperties = new JRankProperties();
+		
+		jRankProperties.setLearningDataFile(controller.learningDataFile.getText());
+		jRankProperties.setTestDataFile(controller.testDataFile.getText());
+		jRankProperties.setPctFile(controller.pctFile.getText());
+		jRankProperties.setPctApxFile(controller.pctApxFile.getText());
+		jRankProperties.setPctRulesFile(controller.pctRulesFile.getText());
+		jRankProperties.setPreferenceGraphFile(controller.graphFile.getText());
+		jRankProperties.setRankingFile(controller.rankingFile.getText());
+		
+		jRankProperties.setReferenceRanking(controller.referenceRanking.getText());
+		jRankProperties.setPairs(controller.pairs.getText());
+		
+		jRankProperties.setTypeOfFamilyOfCriteria(controller.typeOfFamilyCriteria.getValue());
+		jRankProperties.setTypeOfRules(controller.typeOfRules.getValue());
+		jRankProperties.setConsideredSetOfRules(controller.consideredSetOfRules.getValue());
+		
+		jRankProperties.setConsistencyMeasure(controller.consistencyMeasure.getValue());
+		jRankProperties.setConsistencyMeasureThreshold(getDoubleOrNull(controller.consistencyMeasureThreshold.getText()));
+		jRankProperties.setPrecision(getIntegerOrNull(controller.precision.getText()));
+		
+		jRankProperties.setRankingProcedure(controller.rankingProcedure.getValue());
+		jRankProperties.setDominance(controller.dominance.getValue());
+		jRankProperties.setDominanceForPairsOfOrdinalValues(controller.dominanceForPairs.getValue());
+		
+		jRankProperties.setSatisfactionDegreesInPreferenceGraph(controller.satisfactionDegreesInGraph.getValue());
+		jRankProperties.setFuzzySatisfactionDegreeCalculationMethod(controller.fuzzyCalculationMethod.getValue());
+		
+		jRankProperties.setNegativeExamplesTreatmentForVCDRSA(controller.negativeExamplesTreatment.getValue());
+		jRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(controller.optimizeRuleConsistency.getValue());
+		jRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(controller.ruleConditionsSelectionMethod.getValue());
+		
+		jRankProperties.setAllowEmptyRulesInVCDomLEM(controller.allowEmptyRules.isSelected());
+		jRankProperties.setUseEdgeRegionsInVCDomLEM(controller.useEdgeRegions.isSelected());
+		
+		jRankProperties.setWriteDominationInformation(controller.writeDominationInformation.isSelected());
+		jRankProperties.setWriteRulesStatistics(controller.writeRulesStatistics.isSelected());
+		jRankProperties.setWriteLearningPositiveExamples(controller.writeLearningPositiveExamples.isSelected());
+		
+		return jRankProperties;
+	}
+	
 	private String getStringOrNull(Object value) {
 		if(isNull(value)) {
 			return null;
 		}
 		return value.toString();
+	}
+	
+	private Double getDoubleOrNull(String value) {
+		if(isNotNullOrEmpty(value)) {
+			return Double.valueOf(value);
+		}
+		return null;
+	}
+	
+	private Integer getIntegerOrNull(String value) {
+		if(isNotNullOrEmpty(value)) {
+			return Integer.valueOf(value);
+		}
+		return null;
 	}
 	
 	private boolean getBoolean(Boolean value) {
