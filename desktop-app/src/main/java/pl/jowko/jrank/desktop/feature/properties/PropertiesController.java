@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.upperTabs.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
+import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
 
@@ -104,8 +105,9 @@ public class PropertiesController {
 			JRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
 			cancelAction();
 		} catch (IOException e) {
-			JRankLogger.error("Error when saving properties: " + workspaceItem.getFileName() + " - " + e.getMessage());
-			//TODO show error dialog
+			String msg = "Error when saving properties: "; //TODO make label
+			JRankLogger.error( msg + workspaceItem.getFileName() + " - " + e.getMessage());
+			new DialogsService().showErrorDialog(msg, e.getMessage());
 		}
 	}
 	
