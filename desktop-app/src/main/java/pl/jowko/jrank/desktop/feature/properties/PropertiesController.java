@@ -10,6 +10,8 @@ import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
 
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
+
 /**
  * Created by Piotr on 2018-04-29.
  */
@@ -95,6 +97,7 @@ public class PropertiesController {
 		controllerHelper = new PropertiesControllerHelper(this);
 		controllerHelper.fillComboBoxes();
 		controllerHelper.fillFieldsValues();
+		initializeCloseEvent();
 	}
 	
 	public void saveAction() {
@@ -103,7 +106,7 @@ public class PropertiesController {
 		try {
 			new PropertiesSaver(editableProperties).save(workspaceItem.getFilePath());
 			JRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
-			cancelAction();
+			closeTab();
 		} catch (IOException e) {
 			String msg = "Error when saving properties: "; //TODO make label
 			JRankLogger.error( msg + workspaceItem.getFileName() + " - " + e.getMessage());
@@ -112,7 +115,15 @@ public class PropertiesController {
 	}
 	
 	public void cancelAction() {
-		UpperTabsController.getInstance().closeTab(propertiesTab);
+		editableProperties = controllerHelper.getPropertiesFromForm();
+		if(not(editableProperties.equals(properties))) {
+			boolean isConfirmed = new DialogsService().showConfirmationDialog("Do you want to abandon changes in form?"); //TODO make label
+			
+			if(not(isConfirmed)) {
+				return;
+			}
+		}
+		closeTab();
 	}
 	
 	public void setDefaultsAction() {
@@ -133,6 +144,23 @@ public class PropertiesController {
 		editableProperties = (JRankProperties) Cloner.deepClone(properties);
 		controllerHelper.setEditableProperties(editableProperties);
 		controllerHelper.fillFieldsValues();
+	}
+	
+	private void closeTab() {
+		UpperTabsController.getInstance().closeTab(propertiesTab);
+	}
+	
+	private void initializeCloseEvent() {
+		propertiesTab.setOnCloseRequest(event -> {
+			editableProperties = controllerHelper.getPropertiesFromForm();
+			if(not(editableProperties.equals(properties))) {
+				boolean isConfirmed = new DialogsService().showConfirmationDialog("Do you want to abandon changes in form?"); //TODO make label
+				
+				if(not(isConfirmed)) {
+					event.consume();
+				}
+			}
+		});
 	}
 	
 }

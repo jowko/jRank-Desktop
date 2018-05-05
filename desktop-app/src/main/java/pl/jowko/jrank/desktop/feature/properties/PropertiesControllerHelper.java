@@ -1,8 +1,6 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
-import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**

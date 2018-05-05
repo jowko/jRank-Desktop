@@ -1,6 +1,8 @@
 package pl.jowko.jrank.desktop.service;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import pl.jowko.jrank.desktop.settings.Labels;
 
 /**
@@ -29,6 +31,18 @@ public class DialogsService {
 		alert.setContentText(msg);
 		
 		alert.showAndWait();
+	}
+	
+	public boolean showConfirmationDialog(String header) {
+		ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES); //TODO make labels
+		ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+		
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yesButton, noButton);
+		alert.setTitle("Confirm action");
+		alert.setHeaderText(header);
+		alert.showAndWait();
+		
+		return alert.getResult() == yesButton;
 	}
 	
 }
