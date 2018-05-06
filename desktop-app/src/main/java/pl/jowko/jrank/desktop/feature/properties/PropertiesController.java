@@ -83,6 +83,7 @@ public class PropertiesController {
 	@FXML Button clearButton;
 	@FXML Button restoreValuesButton;
 	@FXML Button validateFormButton;
+	@FXML Button validateFormDefaults;
 	
 	private PropertiesControllerHelper controllerHelper;
 	private WorkspaceItem workspaceItem;
@@ -153,6 +154,26 @@ public class PropertiesController {
 	public void validateFormAction() {
 		if(isFormValid()) {
 			new DialogsService().showInfoDialog("Validation", "Form does not contain any errors."); //TODO make label
+		}
+	}
+	
+	public void validateFormDefaultsAction() {
+		try {
+			editableProperties = controllerHelper.getPropertiesFromForm();
+			JRankProperties defaultProperties = new DefaultPropertiesProvider().getDefaultProperties();
+			
+			RunnerPropertiesProvider runnerPropertiesProvider = new RunnerPropertiesProvider(editableProperties, defaultProperties);
+			JRankProperties propertiesWithDefaults = runnerPropertiesProvider.getPropertiesWithDefaults();
+			
+			PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults);
+			
+			if(not(validator.isValid())) {
+				new DialogsService().showValidationFailedDialog("", validator.getErrorMessages());
+			} else {
+				new DialogsService().showInfoDialog("Validation with defaults", "Form does not contain any errors.");
+			}
+		} catch (IOException e) {
+			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
 		}
 	}
 	
