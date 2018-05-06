@@ -82,6 +82,7 @@ public class PropertiesController {
 	@FXML Button setDefaultsButton;
 	@FXML Button clearButton;
 	@FXML Button restoreValuesButton;
+	@FXML Button validateFormButton;
 	
 	private PropertiesControllerHelper controllerHelper;
 	private WorkspaceItem workspaceItem;
@@ -101,8 +102,9 @@ public class PropertiesController {
 	}
 	
 	public void saveAction() {
-		editableProperties = controllerHelper.getPropertiesFromForm();
-		//TODO validate form
+		if(not(isFormValid()))
+			return;
+		
 		try {
 			new PropertiesSaver(editableProperties).save(workspaceItem.getFilePath());
 			JRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
@@ -148,6 +150,12 @@ public class PropertiesController {
 		controllerHelper.fillFieldsValues();
 	}
 	
+	public void validateFormAction() {
+		if(isFormValid()) {
+			new DialogsService().showInfoDialog("Validation", "Form does not contain any errors."); //TODO make label
+		}
+	}
+	
 	private void closeTab() {
 		UpperTabsController.getInstance().closeTab(propertiesTab);
 	}
@@ -158,6 +166,17 @@ public class PropertiesController {
 				event.consume();
 			}
 		});
+	}
+	
+	private boolean isFormValid() {
+		editableProperties = controllerHelper.getPropertiesFromForm();
+		PropertiesValidator validator = new PropertiesValidator(editableProperties);
+		
+		if(not(validator.isValid())) {
+			new DialogsService().showValidationFailedDialog("", validator.getErrorMessages());
+		}
+		
+		return validator.isValid();
 	}
 	
 	private boolean isUserWishToKeepChanges() {

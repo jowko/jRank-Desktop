@@ -24,6 +24,14 @@ public class DialogsService {
 		alert.showAndWait();
 	}
 	
+	public void showInfoDialog(String title, String msg) {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText("");
+		alert.setContentText(msg);
+		alert.showAndWait();
+	}
+	
 	public void showValidationFailedDialog(String header, String msg) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
 		alert.setTitle(labels.get(Labels.VALIDATION_DIALOG_TITLE));

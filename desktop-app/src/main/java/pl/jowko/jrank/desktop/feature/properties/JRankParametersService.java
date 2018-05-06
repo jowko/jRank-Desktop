@@ -42,7 +42,7 @@ class JRankParametersService {
 	
 	public JRankParameter findByTextValue(List<JRankParameter> parameters, String textValue) {
 		return parameters.stream()
-				.filter(param -> param.getTextValue().equals(textValue))
+				.filter(param -> param.getTextValue().equalsIgnoreCase(textValue))
 				.findAny()
 				.orElse(null);
 	}
