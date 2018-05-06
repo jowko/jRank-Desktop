@@ -42,12 +42,17 @@ public class DialogsService {
 	}
 	
 	public boolean showConfirmationDialog(String header) {
+		return showConfirmationDialog(header, "");
+	}
+	
+	public boolean showConfirmationDialog(String header, String content) {
 		ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES); //TODO make labels
 		ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
 		
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yesButton, noButton);
 		alert.setTitle("Confirm action");
 		alert.setHeaderText(header);
+		alert.setContentText(content);
 		alert.showAndWait();
 		
 		return alert.getResult() == yesButton;

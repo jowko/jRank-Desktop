@@ -103,7 +103,7 @@ public class PropertiesController {
 	}
 	
 	public void saveAction() {
-		if(not(isFormValid()))
+		if(not(isFormValidForSave()))
 			return;
 		
 		try {
@@ -198,6 +198,16 @@ public class PropertiesController {
 		}
 		
 		return validator.isValid();
+	}
+	
+	private boolean isFormValidForSave() {
+		editableProperties = controllerHelper.getPropertiesFromForm();
+		PropertiesValidator validator = new PropertiesValidator(editableProperties);
+		
+		if(not(validator.isValid())) {
+			return new DialogsService().showConfirmationDialog("Do you want to save form? There are validation errors:", validator.getErrorMessages());
+		}
+		return true;
 	}
 	
 	private boolean isUserWishToKeepChanges() {
