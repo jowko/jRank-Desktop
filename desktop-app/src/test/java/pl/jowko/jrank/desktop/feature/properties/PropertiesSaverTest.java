@@ -4,11 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
 
-import java.io.IOException;
 import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static pl.jowko.jrank.desktop.feature.properties.Names.*;
+import static pl.jowko.jrank.desktop.feature.properties.TestPropertiesProvider.*;
 
 /**
  * Created by Piotr on 2018-05-05.
@@ -17,31 +17,6 @@ class PropertiesSaverTest extends MasterTest {
 	
 	private JRankProperties jRankProperties;
 	
-	private String dataFile = "dataFile";
-	private String testDataFile = "testDataFile";
-	private String pctFile = "pctFile";
-	private String pctApxFile = "pctApxFile";
-	private String pctRulesFile = "pctRulesFile";
-	private String rankingFile = "rankingFile";
-	private String graphFile = "graphFile";
-	private String referenceRanking = "referenceRanking";
-	private String pairs = "pairs";
-	
-	private String typeOfFamilyOfCriteria = "typeOfFamilyOfCriteria";
-	private String consistencyMeasure = "consistencyMeasure";
-	private Double consistencyMeasureThreshold = 0.5d;
-	private String consideredSetOfRules = "consideredSetOfRules";
-	private String satisfactionDegreesInPreferenceGraph = "satisfactionDegreesInPreferenceGraph";
-	private String fuzzySatisfactionDegreeCalculationMethod = "fuzzySatisfactionDegreeCalculationMethod";
-	private String rankingProcedure = "rankingProcedure";
-	private String dominance = "dominance";
-	private String dominanceForPairsOfOrdinalValues = "dominanceForPairsOfOrdinalValues";
-	private String negativeExamplesTreatmentForVCDRSA = "negativeExamplesTreatmentForVCDRSA";
-	private String ruleConditionsSelectionMethodInVCDomLEM = "ruleConditionsSelectionMethodInVCDomLEM";
-	private String optimizeRuleConsistencyInVCDomLEMWrt = "optimizeRuleConsistencyInVCDomLEMWrt";
-	
-	private Integer precision = -1;
-	
 	@BeforeEach
 	void setUpEach() {
 		jRankProperties = new JRankProperties();
@@ -49,9 +24,6 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldMapStringProperty() {
-		String dataFile = "dataFile";
-		String graphFile = "graphFile";
-		
 		jRankProperties.setLearningDataFile(dataFile);
 		jRankProperties.setPreferenceGraphFile(graphFile);
 		Properties properties = getProperties();
@@ -121,7 +93,6 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldMapJRankParameter() {
-		String consistencyMeasure = "consistencyMeasure";
 		jRankProperties.setConsistencyMeasure(createParameter(consistencyMeasure));
 		Properties properties = getProperties();
 		assertEquals(consistencyMeasure, properties.getProperty(CONSISTENCY_MEASURE));
@@ -143,7 +114,7 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldMapAllProperties() {
-		fillJRankProperties();
+		jRankProperties = getFullProperties();
 		Properties properties = getProperties();
 		
 		assertEquals(dataFile, properties.getProperty(LEARNING_DATA_FILE));
@@ -181,43 +152,6 @@ class PropertiesSaverTest extends MasterTest {
 	private Properties getProperties() {
 		PropertiesSaver saver = new PropertiesSaver(jRankProperties);
 		return saver.getProperties();
-	}
-	
-	private JRankParameter createParameter(String textValue) {
-		return new JRankParameter("label", textValue, 0);
-	}
-	
-	private void fillJRankProperties() {
-		jRankProperties.setLearningDataFile(dataFile);
-		jRankProperties.setTestDataFile(testDataFile);
-		jRankProperties.setPctFile(pctFile);
-		jRankProperties.setPctApxFile(pctApxFile);
-		jRankProperties.setPctRulesFile(pctRulesFile);
-		jRankProperties.setRankingFile(rankingFile);
-		jRankProperties.setPreferenceGraphFile(graphFile);
-		jRankProperties.setReferenceRanking(referenceRanking);
-		jRankProperties.setPairs(pairs);
-		
-		jRankProperties.setTypeOfFamilyOfCriteria(createParameter(typeOfFamilyOfCriteria));
-		jRankProperties.setConsistencyMeasure(createParameter(consistencyMeasure));
-		jRankProperties.setConsistencyMeasureThreshold(consistencyMeasureThreshold);
-		jRankProperties.setConsideredSetOfRules(createParameter(consideredSetOfRules));
-		jRankProperties.setSatisfactionDegreesInPreferenceGraph(createParameter(satisfactionDegreesInPreferenceGraph));
-		jRankProperties.setFuzzySatisfactionDegreeCalculationMethod(createParameter(fuzzySatisfactionDegreeCalculationMethod));
-		jRankProperties.setRankingProcedure(createParameter(rankingProcedure));
-		jRankProperties.setDominance(createParameter(dominance));
-		jRankProperties.setDominanceForPairsOfOrdinalValues(createParameter(dominanceForPairsOfOrdinalValues));
-		jRankProperties.setNegativeExamplesTreatmentForVCDRSA(createParameter(negativeExamplesTreatmentForVCDRSA));
-		jRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(createParameter(ruleConditionsSelectionMethodInVCDomLEM));
-		jRankProperties.setAllowEmptyRulesInVCDomLEM(true);
-		jRankProperties.setUseEdgeRegionsInVCDomLEM(false);
-		jRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(createParameter(optimizeRuleConsistencyInVCDomLEMWrt));
-		
-		jRankProperties.setWriteDominationInformation(true);
-		jRankProperties.setWriteRulesStatistics(true);
-		jRankProperties.setWriteLearningPositiveExamples(false);
-		
-		jRankProperties.setPrecision(precision);
 	}
 	
 }
