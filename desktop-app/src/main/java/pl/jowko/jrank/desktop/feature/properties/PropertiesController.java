@@ -115,18 +115,15 @@ public class PropertiesController {
 	}
 	
 	public void cancelAction() {
-		editableProperties = controllerHelper.getPropertiesFromForm();
-		if(not(editableProperties.equals(properties))) {
-			boolean isConfirmed = new DialogsService().showConfirmationDialog("Do you want to abandon changes in form?"); //TODO make label
-			
-			if(not(isConfirmed)) {
-				return;
-			}
-		}
+		if(isUserWishToKeepChanges())
+			return;
 		closeTab();
 	}
 	
 	public void setDefaultsAction() {
+		if(isUserWishToKeepChanges())
+			return;
+		
 		try {
 			editableProperties = new DefaultPropertiesProvider().getDefaultProperties();
 			controllerHelper.setEditableProperties(editableProperties);
@@ -137,10 +134,15 @@ public class PropertiesController {
 	}
 	
 	public void clearFormAction() {
+		if(isUserWishToKeepChanges())
+			return;
 		controllerHelper.clearForm();
 	}
 	
 	public void restoreOriginalValuesAction() {
+		if(isUserWishToKeepChanges())
+			return;
+		
 		editableProperties = (JRankProperties) Cloner.deepClone(properties);
 		controllerHelper.setEditableProperties(editableProperties);
 		controllerHelper.fillFieldsValues();
@@ -152,15 +154,19 @@ public class PropertiesController {
 	
 	private void initializeCloseEvent() {
 		propertiesTab.setOnCloseRequest(event -> {
-			editableProperties = controllerHelper.getPropertiesFromForm();
-			if(not(editableProperties.equals(properties))) {
-				boolean isConfirmed = new DialogsService().showConfirmationDialog("Do you want to abandon changes in form?"); //TODO make label
-				
-				if(not(isConfirmed)) {
-					event.consume();
-				}
+			if(isUserWishToKeepChanges()) {
+				event.consume();
 			}
 		});
+	}
+	
+	private boolean isUserWishToKeepChanges() {
+		editableProperties = controllerHelper.getPropertiesFromForm();
+		return not(editableProperties.equals(properties)) && not(showConfirmActionDialog());
+	}
+	
+	private boolean showConfirmActionDialog() {
+		return new DialogsService().showConfirmationDialog("Do you want to abandon changes in form?"); //TODO make label
 	}
 	
 }
