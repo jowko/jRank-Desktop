@@ -8,11 +8,12 @@ module jRank.desktop {
 	requires javafx.controls;
 	
  	requires jRankLogger;
+	requires customFX;
+	
 	requires com.fasterxml.jackson.databind;
 	requires jRS;
 	
 	opens pl.jowko.jrank.desktop.controller;
-	opens pl.jowko.jrank.desktop.feature.javafx;
 	opens pl.jowko.jrank.desktop.feature.properties;
 	opens pl.jowko.jrank.desktop.feature.upperTabs;
 	opens pl.jowko.jrank.desktop.feature.workspace;

@@ -14,8 +14,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import pl.jowko.jrank.desktop.feature.javafx.IntegerField?>
-<?import pl.jowko.jrank.desktop.feature.javafx.DecimalField?>
+<?import pl.jowko.jrank.feature.customfx.DecimalField?>
+<?import pl.jowko.jrank.feature.customfx.IntegerField?>
 <ScrollPane minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.PropertiesController">
 	<VBox minWidth="1000.0">
       <Label text="Input and output files:">
@@ -139,7 +139,7 @@
          </rowConstraints>
          <children>
             <Label fx:id="consistencyMeasureLabel" text="Consistency measure:" />
-            <Label fx:id="consistencyMeasureThresholdLabel" prefHeight="17.0" prefWidth="197.0" text="Consistency measure threadshold:" GridPane.columnIndex="3" />
+            <Label fx:id="consistencyMeasureThresholdLabel" prefHeight="17.0" prefWidth="197.0" text="Consistency measure threshold:" GridPane.columnIndex="3" />
             <ComboBox fx:id="consistencyMeasure" minWidth="180.0" GridPane.columnIndex="1" />
             <DecimalField fx:id="consistencyMeasureThreshold" maxWidth="80.0" GridPane.columnIndex="4" />
             <Label fx:id="precisionLabel" text="Precision:" GridPane.columnIndex="6" />

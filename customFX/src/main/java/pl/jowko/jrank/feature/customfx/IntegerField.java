@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.feature.javafx;
+package pl.jowko.jrank.feature.customfx;
 
 import javafx.scene.control.TextField;
 

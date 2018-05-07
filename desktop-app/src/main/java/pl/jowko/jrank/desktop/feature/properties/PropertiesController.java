@@ -6,6 +6,8 @@ import pl.jowko.jrank.desktop.feature.upperTabs.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.utils.Cloner;
+import pl.jowko.jrank.feature.customfx.DecimalField;
+import pl.jowko.jrank.feature.customfx.IntegerField;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
@@ -47,9 +49,9 @@ public class PropertiesController {
 	@FXML Label consistencyMeasureLabel;
 	@FXML ComboBox<JRankParameter> consistencyMeasure;
 	@FXML Label consistencyMeasureThresholdLabel;
-	@FXML TextField consistencyMeasureThreshold;
+	@FXML DecimalField consistencyMeasureThreshold;
 	@FXML Label precisionLabel;
-	@FXML TextField precision;
+	@FXML IntegerField precision;
 	
 	@FXML Label rankingProcedureLabel;
 	@FXML ComboBox<JRankParameter> rankingProcedure;
