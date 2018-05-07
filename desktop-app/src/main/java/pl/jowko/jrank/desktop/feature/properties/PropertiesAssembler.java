@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.feature.properties.Names.*;
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-04-29.
@@ -82,7 +83,12 @@ public class PropertiesAssembler {
 		if(isNull(parameterValue))
 			return null;
 		
-		return Double.valueOf(parameterValue);
+		try{
+			return Double.valueOf(parameterValue);
+		} catch(NumberFormatException e) {
+			logNumberError(parameterName, parameterValue);
+		}
+		return null;
 	}
 	
 	private Integer getIntegerFromProperty(String parameterName) {
@@ -91,7 +97,16 @@ public class PropertiesAssembler {
 		if(isNull(parameterValue))
 			return null;
 		
-		return Integer.valueOf(parameterValue);
+		try{
+			return Integer.valueOf(parameterValue);
+		} catch(NumberFormatException e) {
+			logNumberError(parameterName, parameterValue);
+		}
+		return null;
+	}
+	
+	private void logNumberError(String parameterName, String parameterValue) {
+		JRankLogger.error("Error when reading parameter: [" + parameterName + "]. Value: [" + parameterValue + "] is not a valid number.");
 	}
 	
 	private Boolean getBooleanFromProperty(String parameterName) {
@@ -128,7 +143,7 @@ public class PropertiesAssembler {
 	}
 	
 	private void validatePropertiesAndShowWarnings() {
-		if(properties.keySet().size() > 0) {
+		if(not(properties.keySet().isEmpty())) {
 			JRankLogger.warn("Some properties were not recognized: " + properties + ". Check spelling of properties names.");
 		}
 	}

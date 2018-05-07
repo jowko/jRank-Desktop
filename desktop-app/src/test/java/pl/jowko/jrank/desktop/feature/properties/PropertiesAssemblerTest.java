@@ -29,7 +29,6 @@ class PropertiesAssemblerTest extends MasterTest {
 	@Test
 	void shouldMapSimpleProperties() {
 		JRankProperties jRankProperties = toJRankProperties(properties);
-
 		assertEquals("someFile.isf", jRankProperties.getLearningDataFile());
 		assertEquals("1, 2, 3", jRankProperties.getReferenceRanking());
 	}
@@ -58,9 +57,7 @@ class PropertiesAssemblerTest extends MasterTest {
 	@Test
 	void shouldMapIntegers() {
 		properties.setProperty(PRECISION, "-1");
-		
 		JRankProperties jRankProperties = toJRankProperties(properties);
-		
 		assertEquals(-1, jRankProperties.getPrecision().intValue());
 	}
 	
@@ -82,11 +79,20 @@ class PropertiesAssemblerTest extends MasterTest {
 	}
 	
 	@Test
-	void shouldMapDoubles() {
-		properties.setProperty(CONSISTENCY_MEASURE_THREASHOLD, "0.6");
+	void shouldNotMapInvalidNumbers() {
+		properties.setProperty(PRECISION, "1de");
+		properties.setProperty(CONSISTENCY_MEASURE_THREASHOLD, "0.a1");
 		
 		JRankProperties jRankProperties = toJRankProperties(properties);
 		
+		assertNull(jRankProperties.getPrecision());
+		assertNull(jRankProperties.getConsistencyMeasureThreshold());
+	}
+	
+	@Test
+	void shouldMapDoubles() {
+		properties.setProperty(CONSISTENCY_MEASURE_THREASHOLD, "0.6");
+		JRankProperties jRankProperties = toJRankProperties(properties);
 		assertEquals(0.6, jRankProperties.getConsistencyMeasureThreshold().doubleValue());
 	}
 	
@@ -199,11 +205,6 @@ class PropertiesAssemblerTest extends MasterTest {
 		assertNull(jRankProperties.getConsideredSetOfRules());
 	}
 	
-	private JRankProperties toJRankProperties(Properties properties) {
-		PropertiesAssembler assembler = new PropertiesAssembler(properties);
-		return assembler.toJrankProperties();
-	}
-	
 	@Test
 	void shouldWriteLogWhenPropertyIsNotRecognized() {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -215,6 +216,11 @@ class PropertiesAssemblerTest extends MasterTest {
 		assertTrue(outContent.toString().contains("WARN") && outContent.toString().contains("SomeUnknownProperty"));
 		
 		System.setOut(System.out);
+	}
+	
+	private JRankProperties toJRankProperties(Properties properties) {
+		PropertiesAssembler assembler = new PropertiesAssembler(properties);
+		return assembler.toJrankProperties();
 	}
 	
 }
