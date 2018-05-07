@@ -67,6 +67,11 @@ class StubSettings {
 		language.put(Labels.US_ERROR_DIALOG_HEADER, "Błąd przy zapisie opcji użytkownika: ");
 		language.put(Labels.VALIDATION_DIALOG_HEADER, "Wykryto błędy na formularzu: ");
 		
+		// Dialogs
+		language.put(Labels.CONFIRM_DIALOG_TITLE, "Potwierdź akcję");
+		language.put(Labels.CONFIRM_DIALOG_YES, "Tak");
+		language.put(Labels.CONFIRM_DIALOG_NO, "Nie");
+		
 		// About dialog
 		language.put(Labels.ABOUT_TITLE, "O JRank Ultimate Desktop Edition");
 		language.put(Labels.ABOUT_APP_INFO, "Informacje o aplikacji:");
@@ -79,6 +84,8 @@ class StubSettings {
 		language.put(Labels.LOGS_TAB, "Logi");
 		
 		createPolishPropertiesLabels(language);
+		createPolishPropertiesMessages(language);
+		createPolishPropertiesValidationMessages(language);
 		createPolishPropertiesTooltips(language);
 		
 		return language;
@@ -129,6 +136,29 @@ class StubSettings {
 		language.put(Labels.RESTORE_VALUES_BUTTON, "Przywróć początkowe wartości");
 		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
 		language.put(Labels.VALIDATE_FORM_DEFAULTS, "Validate form with defaults");
+	}
+	
+	private void createPolishPropertiesMessages(Map<String, String> language) {
+		//TODO translate this text
+		language.put(Labels.PROP_ERROR_SAVE, "Błąd przy zapisywaniu ustawień:");
+		language.put(Labels.PROP_VALIDATE_DIALOG_TITLE, "Walidacja");
+		language.put(Labels.PROP_VALIDATE_DIALOG_CONTENT, "Formularz nie zawiera żadnych błędów.");
+		language.put(Labels.PROP_VD_DIALOG_TITLE, "Walidacja z domyślnymi wartościami");
+		language.put(Labels.PROP_VD_DIALOG_CONTENT, "Formularz nie zawiera żadnych błędów.");
+		language.put(Labels.PROP_SAVE_ERROR_CONFIRM, "Czy chcesz zapisać zmiany? Na formularzu występują błędy:");
+		language.put(Labels.PROP_ABANDON_CHANGES, "Czy chcesz porzucić zmiany na formularzu?");
+	}
+	
+	private void createPolishPropertiesValidationMessages(Map<String, String> language) {
+		//TODO tranlate this
+		language.put(Labels.LEARNING_DATA_FILE_EMPTY, "Learning data file is empty.\n");
+		language.put(Labels.CONSISTENCY_MEASURE_LESS_THAN_ZERO, "Consistency measure threshold is smaller than zero.\n");
+		language.put(Labels.FUZZY_EXHAUSTIVE_SET, "Incorrect fuzzy satisfaction degrees calculation method for exhaustive set of decision rules.\n");
+		language.put(Labels.INCORRECT_CONSISTENCY_MEASURE, "Incorrect consistency measure threshold. Value has to be not greater than 1.0.\n");
+		language.put(Labels.INCORRECT_CERTAIN_RULES, "In VC-DRSA only certain rules may be induced.\n");
+		language.put(Labels.EXHAUSTIVE_SET_CERTAIN_RULES, "In VC-DRSA, exhaustive set of certain rules may be used only for monotonic consistency measures: epsilon, epsilon*, and epsilon', not for rough membership.\n");
+		language.put(Labels.FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP, "Fuzzy satisfaction degrees cannot be used in DRSA for exhaustive set of possible rules with rough membership measure. Assuming crisp satisfaction degrees in preference graph.\n");
+		language.put(Labels.OPTIMIZE_POSSIBLE_RULES, "In VC-DomLEM, consistency of possible rules cannot be optimized w.r.t. set, only w.r.t. upper approximation of that set. Assuming optimization of rule consistency measure w.r.t. upper approximation.\n");
 	}
 	
 	private void createPolishPropertiesTooltips(Map<String, String> language) {
@@ -202,6 +232,11 @@ class StubSettings {
 		language.put(Labels.US_ERROR_DIALOG_HEADER, "Error when saving user options: ");
 		language.put(Labels.VALIDATION_DIALOG_HEADER, "There were validation errors: ");
 		
+		// Dialogs
+		language.put(Labels.CONFIRM_DIALOG_TITLE, "Confirm action");
+		language.put(Labels.CONFIRM_DIALOG_YES, "Yes");
+		language.put(Labels.CONFIRM_DIALOG_NO, "No");
+		
 		// About dialog
 		language.put(Labels.ABOUT_TITLE, "About JRank Ultimate Desktop Edition");
 		language.put(Labels.ABOUT_APP_INFO, "Application information:");
@@ -214,6 +249,8 @@ class StubSettings {
 		language.put(Labels.LOGS_TAB, "Logs");
 		
 		createEnglishPropertiesLabels(language);
+		createEnglishPropertiesMessages(language);
+		createEnglishPropertiesValidationMessages(language);
 		createEnglishPropertiesTooltips(language);
 		
 		return language;
@@ -263,6 +300,27 @@ class StubSettings {
 		language.put(Labels.RESTORE_VALUES_BUTTON, "Restore original values");
 		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
 		language.put(Labels.VALIDATE_FORM_DEFAULTS, "Validate form with defaults");
+	}
+	
+	private void createEnglishPropertiesMessages(Map<String, String> language) {
+		language.put(Labels.PROP_ERROR_SAVE, "Error when saving properties:");
+		language.put(Labels.PROP_VALIDATE_DIALOG_TITLE, "Validation");
+		language.put(Labels.PROP_VALIDATE_DIALOG_CONTENT, "Form does not contain any errors.");
+		language.put(Labels.PROP_VD_DIALOG_TITLE, "Validation with defaults");
+		language.put(Labels.PROP_VD_DIALOG_CONTENT, "Form does not contain any errors.");
+		language.put(Labels.PROP_SAVE_ERROR_CONFIRM, "Do you want to save form? There are validation errors:");
+		language.put(Labels.PROP_ABANDON_CHANGES, "Do you want to abandon changes in form?");
+	}
+	
+	private void createEnglishPropertiesValidationMessages(Map<String, String> language) {
+		language.put(Labels.LEARNING_DATA_FILE_EMPTY, "Learning data file is empty.\n");
+		language.put(Labels.CONSISTENCY_MEASURE_LESS_THAN_ZERO, "Consistency measure threshold is smaller than zero.\n");
+		language.put(Labels.FUZZY_EXHAUSTIVE_SET, "Incorrect fuzzy satisfaction degrees calculation method for exhaustive set of decision rules.\n");
+		language.put(Labels.INCORRECT_CONSISTENCY_MEASURE, "Incorrect consistency measure threshold. Value has to be not greater than 1.0.\n");
+		language.put(Labels.INCORRECT_CERTAIN_RULES, "In VC-DRSA only certain rules may be induced.\n");
+		language.put(Labels.EXHAUSTIVE_SET_CERTAIN_RULES, "In VC-DRSA, exhaustive set of certain rules may be used only for monotonic consistency measures: epsilon, epsilon*, and epsilon', not for rough membership.\n");
+		language.put(Labels.FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP, "Fuzzy satisfaction degrees cannot be used in DRSA for exhaustive set of possible rules with rough membership measure. Assuming crisp satisfaction degrees in preference graph.\n");
+		language.put(Labels.OPTIMIZE_POSSIBLE_RULES, "In VC-DomLEM, consistency of possible rules cannot be optimized w.r.t. set, only w.r.t. upper approximation of that set. Assuming optimization of rule consistency measure w.r.t. upper approximation.\n");
 	}
 	
 	private void createEnglishPropertiesTooltips(Map<String, String> language) {

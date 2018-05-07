@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
 import pl.jowko.jrank.desktop.service.LanguageService;
+import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.utils.StringUtils;
 
 import static java.util.Objects.isNull;
@@ -31,30 +32,30 @@ class PropertiesValidator {
 		return errorMsg;
 	}
 	
-	private void validate() { //TODO make labels
+	private void validate() {
 		if(StringUtils.isNullOrEmpty(properties.getLearningDataFile()))
-			errorMsg += "Learning data file is empty.\n";
+			errorMsg += labels.get(Labels.LEARNING_DATA_FILE_EMPTY);
 		
 		if(validateConsistencyMeasureThreshold())
-			errorMsg += "Consistency measure threshold is smaller than zero.\n";
+			errorMsg += labels.get(Labels.CONSISTENCY_MEASURE_LESS_THAN_ZERO);
 		
 		if(validateFuzzyDegreesForExhaustiveSet())
-			errorMsg += "Incorrect fuzzy satisfaction degrees calculation method for exhaustive set of decision rules.\n";
+			errorMsg += labels.get(Labels.FUZZY_EXHAUSTIVE_SET);
 		
 		if(validateConsistencyMeasure())
-			errorMsg += "Incorrect consistency measure threshold. Value has to be not greater than 1.0.\n";
+			errorMsg += labels.get(Labels.INCORRECT_CONSISTENCY_MEASURE);
 		
 		if(validateCertainRules())
-			errorMsg += "In VC-DRSA only certain rules may be induced.\n";
+			errorMsg += labels.get(Labels.INCORRECT_CERTAIN_RULES);
 		
 		if(validateExhaustiveSetOfCertainRules())
-			errorMsg += "In VC-DRSA, exhaustive set of certain rules may be used only for monotonic consistency measures: epsilon, epsilon*, and epsilon', not for rough membership.\n";
+			errorMsg += labels.get(Labels.EXHAUSTIVE_SET_CERTAIN_RULES);
 		
 		if(validateFuzzyDegreesForExhaustivePossibleRulesWithRoughMembership())
-			errorMsg += "Fuzzy satisfaction degrees cannot be used in DRSA for exhaustive set of possible rules with rough membership measure. Assuming crisp satisfaction degrees in preference graph.\n";
+			errorMsg += labels.get(Labels.FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP);
 		
 		if(validateOptimizePossibleRules())
-			errorMsg += "In VC-DomLEM, consistency of possible rules cannot be optimized w.r.t. set, only w.r.t. upper approximation of that set. Assuming optimization of rule consistency measure w.r.t. upper approximation.\n";
+			errorMsg += labels.get(Labels.OPTIMIZE_POSSIBLE_RULES);
 	}
 	
 	private boolean validateConsistencyMeasureThreshold() {

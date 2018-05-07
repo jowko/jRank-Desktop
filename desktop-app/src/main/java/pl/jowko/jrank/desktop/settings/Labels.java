@@ -29,6 +29,9 @@ public class Labels {
 	public static final String VALIDATION_DIALOG_TITLE = "VALIDATION_DIALOG_TITLE";
 	public static final String US_ERROR_DIALOG_HEADER = "US_ERROR_DIALOG_HEADER";
 	public static final String VALIDATION_DIALOG_HEADER = "VALIDATION_DIALOG_HEADER";
+	public static final String CONFIRM_DIALOG_TITLE = "CONFIRM_DIALOG_TITLE";
+	public static final String CONFIRM_DIALOG_YES = "CONFIRM_DIALOG_YES";
+	public static final String CONFIRM_DIALOG_NO = "CONFIRM_DIALOG_NO";
 	
 	// User Settings
 	public static final String US_TITLE = "US_TITLE";
@@ -94,6 +97,25 @@ public class Labels {
 	public static final String RESTORE_VALUES_BUTTON = "RESTORE_VALUES_BUTTON";
 	public static final String PROP_VALIDATE_FORM = "PROP_VALIDATE_FORM";
 	public static final String VALIDATE_FORM_DEFAULTS = "VALIDATE_FORM_DEFAULTS";
+	
+	// Properties form messages
+	public static final String PROP_ERROR_SAVE = "PROP_ERROR_SAVE";
+	public static final String PROP_VALIDATE_DIALOG_TITLE = "PROP_VALIDATE_DIALOG_TITLE";
+	public static final String PROP_VALIDATE_DIALOG_CONTENT = "PROP_VALIDATE_DIALOG_CONTENT";
+	public static final String PROP_VD_DIALOG_TITLE = "PROP_VD_DIALOG_TITLE";
+	public static final String PROP_VD_DIALOG_CONTENT = "PROP_VD_DIALOG_CONTENT";
+	public static final String PROP_SAVE_ERROR_CONFIRM = "PROP_SAVE_ERROR_CONFIRM";
+	public static final String PROP_ABANDON_CHANGES = "PROP_ABANDON_CHANGES";
+	
+	// Properties validation messages
+	public static final String LEARNING_DATA_FILE_EMPTY = "LEARNING_DATA_FILE_EMPTY";
+	public static final String CONSISTENCY_MEASURE_LESS_THAN_ZERO = "CONSISTENCY_MEASURE_LESS_THAN_ZERO";
+	public static final String FUZZY_EXHAUSTIVE_SET = "FUZZY_EXHAUSTIVE_SET";
+	public static final String INCORRECT_CONSISTENCY_MEASURE = "INCORRECT_CONSISTENCY_MEASURE";
+	public static final String INCORRECT_CERTAIN_RULES = "INCORRECT_CERTAIN_RULES";
+	public static final String EXHAUSTIVE_SET_CERTAIN_RULES = "EXHAUSTIVE_SET_CERTAIN_RULES";
+	public static final String FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP = "FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP";
+	public static final String OPTIMIZE_POSSIBLE_RULES = "OPTIMIZE_POSSIBLE_RULES";
 	
 	// Properties form tooltips
 	public static final String LEARNING_FILE_TOOLTIP = "LEARNING_FILE_TOOLTIP";

@@ -5,6 +5,8 @@ import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.upperTabs.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.desktop.service.LanguageService;
+import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.feature.customfx.DecimalField;
 import pl.jowko.jrank.feature.customfx.IntegerField;
@@ -91,6 +93,7 @@ public class PropertiesController {
 	@FXML Button validateFormButton;
 	@FXML Button validateFormDefaults;
 	
+	private LanguageService labels;
 	private PropertiesControllerHelper controllerHelper;
 	private WorkspaceItem workspaceItem;
 	private Tab propertiesTab;
@@ -101,6 +104,8 @@ public class PropertiesController {
 		this.properties = properties;
 		this.workspaceItem = workspaceItem;
 		this.propertiesTab = propertiesTab;
+		
+		labels = LanguageService.getInstance();
 		editableProperties = (JRankProperties) Cloner.deepClone(properties);
 		controllerHelper = new PropertiesControllerHelper(this);
 		controllerHelper.fillComboBoxes();
@@ -119,7 +124,7 @@ public class PropertiesController {
 			JRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
 			closeTab();
 		} catch (IOException e) {
-			String msg = "Error when saving properties: "; //TODO make label
+			String msg = labels.get(Labels.PROP_ERROR_SAVE);
 			JRankLogger.error( msg + workspaceItem.getFileName() + " - " + e.getMessage());
 			new DialogsService().showErrorDialog(msg, e.getMessage());
 		}
@@ -161,7 +166,9 @@ public class PropertiesController {
 	
 	public void validateFormAction() {
 		if(isFormValid()) {
-			new DialogsService().showInfoDialog("Validation", "Form does not contain any errors."); //TODO make label
+			String title = labels.get(Labels.PROP_VALIDATE_DIALOG_TITLE);
+			String content = labels.get(Labels.PROP_VALIDATE_DIALOG_CONTENT);
+			new DialogsService().showInfoDialog(title, content);
 		}
 	}
 	
@@ -178,7 +185,9 @@ public class PropertiesController {
 			if(not(validator.isValid())) {
 				new DialogsService().showValidationFailedDialog("", validator.getErrorMessages());
 			} else {
-				new DialogsService().showInfoDialog("Validation with defaults", "Form does not contain any errors.");
+				String title = labels.get(Labels.PROP_VD_DIALOG_TITLE);
+				String content = labels.get(Labels.PROP_VD_DIALOG_CONTENT);
+				new DialogsService().showInfoDialog(title, content);
 			}
 		} catch (IOException e) {
 			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
@@ -213,7 +222,8 @@ public class PropertiesController {
 		PropertiesValidator validator = new PropertiesValidator(editableProperties);
 		
 		if(not(validator.isValid())) {
-			return new DialogsService().showConfirmationDialog("Do you want to save form? There are validation errors:", validator.getErrorMessages());
+			String header = labels.get(Labels.PROP_SAVE_ERROR_CONFIRM);
+			return new DialogsService().showConfirmationDialog(header, validator.getErrorMessages());
 		}
 		return true;
 	}
@@ -224,7 +234,8 @@ public class PropertiesController {
 	}
 	
 	private boolean showConfirmActionDialog() {
-		return new DialogsService().showConfirmationDialog("Do you want to abandon changes in form?"); //TODO make label
+		String header = labels.get(Labels.PROP_ABANDON_CHANGES);
+		return new DialogsService().showConfirmationDialog(header);
 	}
 	
 }
