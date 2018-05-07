@@ -102,6 +102,7 @@ public class PropertiesController {
 		controllerHelper.fillComboBoxes();
 		controllerHelper.fillFieldsValues();
 		initializeCloseEvent();
+		new PropertiesTooltipsHelper(this).initializeTooltips();
 	}
 	
 	public void saveAction() {
