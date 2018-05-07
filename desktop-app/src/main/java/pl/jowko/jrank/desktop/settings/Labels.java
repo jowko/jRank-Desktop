@@ -34,6 +34,7 @@ public class Labels {
 	public static final String US_TITLE = "US_TITLE";
 	public static final String LANGUAGE = "LANGUAGE";
 	public static final String WORKSPACE = "WORKSPACE";
+	public static final String TOOLTIPS_ENABLED = "TOOLTIPS_ENABLED";
 	public static final String US_INFO = "US_INFO";
 	public static final String LANGUAGE_ERROR = "LANGUAGE_ERROR";
 	public static final String WORKSPACE_ERROR = "WORKSPACE_ERROR";

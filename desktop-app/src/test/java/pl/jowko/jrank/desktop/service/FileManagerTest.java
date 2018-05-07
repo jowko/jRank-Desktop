@@ -26,7 +26,7 @@ class FileManagerTest extends MasterTest {
 	
 	@AfterAll
 	static void restoreUserSettings() throws IOException {
-		UserSettings userSettings = new UserSettings("ENG", "\\workspace");
+		UserSettings userSettings = new UserSettings("ENG", "\\workspace", true);
 		FileManager.getInstance().saveUserSettings(userSettings);
 		FileManager.getInstance().readUserSettings();
 	}
@@ -63,7 +63,7 @@ class FileManagerTest extends MasterTest {
 	
 	@Test
 	void shouldSaveUserSettings() throws IOException {
-		UserSettings userSettings = new UserSettings("LANG", "workspacePath");
+		UserSettings userSettings = new UserSettings("LANG", "workspacePath", true);
 		fileManager.saveUserSettings(userSettings);
 		UserSettings newSettings = fileManager.readUserSettings();
 		

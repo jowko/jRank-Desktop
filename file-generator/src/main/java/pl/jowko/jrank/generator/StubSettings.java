@@ -58,6 +58,7 @@ class StubSettings {
 		language.put(Labels.US_TITLE, "Ustawienia użytkownika");
 		language.put(Labels.LANGUAGE, "Język: ");
 		language.put(Labels.WORKSPACE, "Scieżka robocza: ");
+		language.put(Labels.TOOLTIPS_ENABLED, "Podpowiedzi aktywne");
 		language.put(Labels.US_INFO, "Ustawienia zostaną zastosowane po restarcie aplikacji.");
 		language.put(Labels.LANGUAGE_ERROR, "Kod języka jest nieprawidłowy. Wybierz inny język.\n");
 		language.put(Labels.WORKSPACE_ERROR, "Podana ścieżka katalogu roboczego: " + MSG + " nie jest prawidłowa\n");
@@ -103,6 +104,7 @@ class StubSettings {
 		language.put(Labels.US_TITLE, "User settings");
 		language.put(Labels.LANGUAGE, "Language: ");
 		language.put(Labels.WORKSPACE, "Workspace path: ");
+		language.put(Labels.TOOLTIPS_ENABLED, "Tooltips enabled");
 		language.put(Labels.US_INFO, "Settings will be allied after application restart.");
 		language.put(Labels.LANGUAGE_ERROR, "Language code is not valid. Choose another language.\n");
 		language.put(Labels.WORKSPACE_ERROR, "Provided workspace folder path: " + MSG + " is not correct\n");

@@ -2,6 +2,7 @@
   "POL" : {
     "MENU_ITEM_HELP" : "Pomoc",
     "MENU_FILE" : "Plik",
+    "TOOLTIPS_ENABLED" : "Podpowiedzi aktywne",
     "VALIDATION_DIALOG_TITLE" : "Błąd walidacji",
     "US_TITLE" : "Ustawienia użytkownika",
     "US_SETTINGS_ERROR" : "Ustawienia użytkownika nie zostały poprawnie skonfigurowane: ",
@@ -32,6 +33,7 @@
   "ENG" : {
     "MENU_ITEM_HELP" : "Help",
     "MENU_FILE" : "File",
+    "TOOLTIPS_ENABLED" : "Tooltips enabled",
     "VALIDATION_DIALOG_TITLE" : "Validation Fail",
     "US_TITLE" : "User settings",
     "US_SETTINGS_ERROR" : "User settings are not correctly configured: ",

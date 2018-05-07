@@ -1,10 +1,7 @@
 package pl.jowko.jrank.desktop.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.LanguageService;
@@ -41,6 +38,8 @@ public class UserSettingsController  {
 	@FXML
 	TextField workspaceField;
 	@FXML
+	CheckBox tooltipsEnabled;
+	@FXML
 	Label infoText;
 	
 	private static UserSettings newUserSettings;
@@ -55,6 +54,7 @@ public class UserSettingsController  {
 		initializeNewSettings();
 		initializeLanguages();
 		workspaceField.setText(newUserSettings.getWorkspacePath());
+		tooltipsEnabled.setSelected(newUserSettings.isTooltipsEnabled());
 		settingsValidator = new UserSettingsValidator();
 	}
 	
@@ -86,13 +86,14 @@ public class UserSettingsController  {
 	private static void initializeNewSettings() {
 		if(Objects.isNull(newUserSettings)) {
 			UserSettings settings = UserSettingsService.getInstance().getUserSettings();
-			newUserSettings = new UserSettings(settings.getLanguage(), settings.getWorkspacePath());
+			newUserSettings = new UserSettings(settings.getLanguage(), settings.getWorkspacePath(), settings.isTooltipsEnabled());
 		}
 	}
 	
 	private void updateNewSettings() {
 		newUserSettings.setWorkspacePath(workspaceField.getText());
 		newUserSettings.setLanguage(getLangCode());
+		newUserSettings.setTooltipsEnabled(tooltipsEnabled.isSelected());
 	}
 	
 	private boolean isSettingsFormValid() {
@@ -110,6 +111,7 @@ public class UserSettingsController  {
 		cancelButton.setText(labels.get(Labels.BUTTON_CANCEL));
 		languageText.setText(labels.get(Labels.LANGUAGE));
 		workspaceLabel.setText(labels.get(Labels.WORKSPACE));
+		tooltipsEnabled.setText(labels.get(Labels.TOOLTIPS_ENABLED));
 		infoText.setText(labels.get(Labels.US_INFO));
 	}
 	

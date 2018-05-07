@@ -10,13 +10,15 @@ public class UserSettings implements Serializable {
 
 	private String language = "ENG";
 	private String workspacePath = "\\workspace";
+	private boolean tooltipsEnabled = true;
 	
 	public UserSettings() {
 	}
 	
-	public UserSettings(String language, String workspacePath) {
+	public UserSettings(String language, String workspacePath, boolean tooltipsEnabled) {
 		this.language = language;
 		this.workspacePath = workspacePath;
+		this.tooltipsEnabled = tooltipsEnabled;
 	}
 	
 	public void setLanguage(String language) {
@@ -35,4 +37,11 @@ public class UserSettings implements Serializable {
 		this.workspacePath = workspacePath;
 	}
 	
+	public boolean isTooltipsEnabled() {
+		return tooltipsEnabled;
+	}
+	
+	public void setTooltipsEnabled(boolean tooltipsEnabled) {
+		this.tooltipsEnabled = tooltipsEnabled;
+	}
 }

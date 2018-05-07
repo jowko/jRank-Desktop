@@ -1,4 +1,5 @@
 {
   "language" : "ENG",
-  "workspacePath" : "\\workspace"
+  "workspacePath" : "\\workspace",
+  "tooltipsEnabled" : true
 }

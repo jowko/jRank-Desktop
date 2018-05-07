@@ -28,7 +28,7 @@ class UserSettingsValidatorTest extends MasterTest {
 	
 	@AfterEach
 	void restoreCorrectSettings() {
-		settingsService.setUserSettings(new UserSettings("ENG", "\\"));
+		settingsService.setUserSettings(new UserSettings("ENG", "\\", true));
 	}
 	
 	@Test
@@ -67,8 +67,7 @@ class UserSettingsValidatorTest extends MasterTest {
 			",\\",
 			"ENG,"})
 	void configurationShouldBeNotBeValid(String language, String workspacePath) {
-		UserSettingsService settingsService = UserSettingsService.getInstance();
-		settingsService.setUserSettings(new UserSettings(language, workspacePath));
+		settingsService.setUserSettings(new UserSettings(language, workspacePath, true));
 		String validationErrors = validator.validateConfiguration();
 		
 		assertFalse(validationErrors.isEmpty());
@@ -76,8 +75,7 @@ class UserSettingsValidatorTest extends MasterTest {
 	
 	@Test
 	void configurationShouldBeNotBeValidEmptyLanguage() {
-		UserSettingsService settingsService = UserSettingsService.getInstance();
-		settingsService.setUserSettings(new UserSettings("", "\\"));
+		settingsService.setUserSettings(new UserSettings("", "\\", true));
 		String validationErrors = validator.validateConfiguration();
 		
 		assertFalse(validationErrors.isEmpty());
