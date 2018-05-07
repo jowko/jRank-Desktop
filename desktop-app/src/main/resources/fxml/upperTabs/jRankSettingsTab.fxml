@@ -13,12 +13,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-
 <?import pl.jowko.jrank.feature.customfx.DecimalField?>
 <?import pl.jowko.jrank.feature.customfx.IntegerField?>
+
 <ScrollPane minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.PropertiesController">
 	<VBox minWidth="1000.0">
-      <Label text="Input and output files:">
+      <Label fx:id="filesPanelLabel" text="Input and output files:">
          <VBox.margin>
             <Insets left="10.0" top="10.0" />
          </VBox.margin>
@@ -60,7 +60,7 @@
             <Insets left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
       </GridPane>
-      <Label text="Some text">
+      <Label fx:id="dataPanelLabel" text="Some text">
          <VBox.margin>
             <Insets left="10.0" top="10.0" />
          </VBox.margin>
@@ -90,7 +90,7 @@
             <Insets left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
       </GridPane>
-      <Label text="Properties">
+      <Label fx:id="parametersPanelLabel" text="Parameters">
          <VBox.margin>
             <Insets left="10.0" top="10.0" />
          </VBox.margin>
@@ -157,7 +157,7 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="210.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
          </columnConstraints>
          <rowConstraints>
@@ -221,7 +221,7 @@
             <Insets left="10.0" right="10.0" top="5.0" />
          </padding>
       </GridPane>
-      <Label text="Write:">
+      <Label fx:id="writePanelLabel" text="Write:">
          <VBox.margin>
             <Insets left="10.0" top="10.0" />
          </VBox.margin>
@@ -245,7 +245,7 @@
             <Insets left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
       </GridPane>
-      <FlowPane minHeight="40.0" minWidth="1000.0">
+      <FlowPane minHeight="40.0" minWidth="1000.0" prefWrapLength="1000.0">
          <children>
             <Button fx:id="saveButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#saveAction" text="Save" />
             <Button fx:id="cancelButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#cancelAction" text="Cancel">

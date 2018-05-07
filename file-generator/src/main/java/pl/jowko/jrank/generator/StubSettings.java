@@ -78,9 +78,57 @@ class StubSettings {
 		// Lower tabs
 		language.put(Labels.LOGS_TAB, "Logi");
 		
+		createPolishPropertiesLabels(language);
 		createPolishPropertiesTooltips(language);
 		
 		return language;
+	}
+	
+	private void createPolishPropertiesLabels(Map<String, String> language) {
+		//TODO translate this text
+		language.put(Labels.PROP_FILES_PANEL, "Input and output files");
+		language.put(Labels.LEARNING_FILE, "Learning data file:");
+		language.put(Labels.TEST_FILE, "Test data file:");
+		language.put(Labels.PCT_FILE, "PCT file:");
+		language.put(Labels.PCT_APX_FILE, "PCT APX file:");
+		language.put(Labels.PCT_RULES_FILE, "PCT rules file:");
+		language.put(Labels.GRAPH_FILE, "Preference graph file:");
+		language.put(Labels.RANKING_FILE, "Ranking file:");
+		
+		language.put(Labels.PROP_DATA_PANEL, "Some text");
+		language.put(Labels.REFERENCE_RANKING, "Reference Ranking:");
+		language.put(Labels.PAIRS, "Pairs:");
+		
+		language.put(Labels.PROP_PARAMETERS_PANEL, "Parameters");
+		language.put(Labels.TYPE_OF_FAMILY_CRITERIA, "Type of family criteria");
+		language.put(Labels.TYPE_OF_RULES, "Type of rules:");
+		language.put(Labels.CONSIDERED_SET_OF_RULES, "Considered set of rules:");
+		language.put(Labels.CONSISTENCY_MEASURE, "Consistency measure:");
+		language.put(Labels.CONSISTENCY_MEASURE_THRESHOLD, "Consistency measure threshold:");
+		language.put(Labels.PRECISION, "Precision:");
+		language.put(Labels.RANKING_PROCEDURE, "Ranking procedure:");
+		language.put(Labels.DOMINANCE, "Dominance:");
+		language.put(Labels.DOMINANCE_FOR_PAIRS, "Dominance for pairs of ordinal values:");
+		language.put(Labels.SATISFACTION_DEGREES, "Satisfaction degrees in preference graph:");
+		language.put(Labels.FUZZY_CALCULATION_METHOD, "Fuzzy satisfaction degree calculation method:");
+		language.put(Labels.NEGATIVE_EXAMPLE_TREATMENT, "Negative examples treatment for VCDRSA:");
+		language.put(Labels.OPTIMIZE_RULE_CONSISTENCY, "Optimize rule consistency in VCDomLEMWrt:");
+		language.put(Labels.RULE_CONDITIONS_SELECTION_METHOD, "Rule conditions selection method in VCDomLEM:");
+		
+		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM");
+		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM");
+		language.put(Labels.PROP_WRITE_PANEL, "Write:");
+		language.put(Labels.WRITE_DOMINATION_INFO, "Domination information");
+		language.put(Labels.WRITE_RULES_STAT, "Rule statistics");
+		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Learning positive examples");
+		
+		language.put(Labels.PROP_SAVE_BUTTON, "Zapisz");
+		language.put(Labels.PROP_CANCEL_BUTTON, "Anuluj");
+		language.put(Labels.SET_DEFAULTS_BUTTON, "Ustaw domyślne");
+		language.put(Labels.PROP_CLEAR_BUTTON, "Wyczyść formularz");
+		language.put(Labels.RESTORE_VALUES_BUTTON, "Przywróć początkowe wartości");
+		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
+		language.put(Labels.VALIDATE_FORM_DEFAULTS, "Validate form with defaults");
 	}
 	
 	private void createPolishPropertiesTooltips(Map<String, String> language) {
@@ -165,9 +213,56 @@ class StubSettings {
 		// Lower tabs
 		language.put(Labels.LOGS_TAB, "Logs");
 		
+		createEnglishPropertiesLabels(language);
 		createEnglishPropertiesTooltips(language);
 		
 		return language;
+	}
+	
+	private void createEnglishPropertiesLabels(Map<String, String> language) {
+		language.put(Labels.PROP_FILES_PANEL, "Input and output files");
+		language.put(Labels.LEARNING_FILE, "Learning data file:");
+		language.put(Labels.TEST_FILE, "Test data file:");
+		language.put(Labels.PCT_FILE, "PCT file:");
+		language.put(Labels.PCT_APX_FILE, "PCT APX file:");
+		language.put(Labels.PCT_RULES_FILE, "PCT rules file:");
+		language.put(Labels.GRAPH_FILE, "Preference graph file:");
+		language.put(Labels.RANKING_FILE, "Ranking file:");
+		
+		language.put(Labels.PROP_DATA_PANEL, "Some text");
+		language.put(Labels.REFERENCE_RANKING, "Reference Ranking:");
+		language.put(Labels.PAIRS, "Pairs:");
+		
+		language.put(Labels.PROP_PARAMETERS_PANEL, "Parameters");
+		language.put(Labels.TYPE_OF_FAMILY_CRITERIA, "Type of family criteria");
+		language.put(Labels.TYPE_OF_RULES, "Type of rules:");
+		language.put(Labels.CONSIDERED_SET_OF_RULES, "Considered set of rules:");
+		language.put(Labels.CONSISTENCY_MEASURE, "Consistency measure:");
+		language.put(Labels.CONSISTENCY_MEASURE_THRESHOLD, "Consistency measure threshold:");
+		language.put(Labels.PRECISION, "Precision:");
+		language.put(Labels.RANKING_PROCEDURE, "Ranking procedure:");
+		language.put(Labels.DOMINANCE, "Dominance:");
+		language.put(Labels.DOMINANCE_FOR_PAIRS, "Dominance for pairs of ordinal values:");
+		language.put(Labels.SATISFACTION_DEGREES, "Satisfaction degrees in preference graph:");
+		language.put(Labels.FUZZY_CALCULATION_METHOD, "Fuzzy satisfaction degree calculation method:");
+		language.put(Labels.NEGATIVE_EXAMPLE_TREATMENT, "Negative examples treatment for VCDRSA:");
+		language.put(Labels.OPTIMIZE_RULE_CONSISTENCY, "Optimize rule consistency in VCDomLEMWrt:");
+		language.put(Labels.RULE_CONDITIONS_SELECTION_METHOD, "Rule conditions selection method in VCDomLEM:");
+		
+		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM");
+		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM");
+		language.put(Labels.PROP_WRITE_PANEL, "Write:");
+		language.put(Labels.WRITE_DOMINATION_INFO, "Domination information");
+		language.put(Labels.WRITE_RULES_STAT, "Rule statistics");
+		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Learning positive examples");
+		
+		language.put(Labels.PROP_SAVE_BUTTON, "Save");
+		language.put(Labels.PROP_CANCEL_BUTTON, "Cancel");
+		language.put(Labels.SET_DEFAULTS_BUTTON, "Set defaults");
+		language.put(Labels.PROP_CLEAR_BUTTON, "Clear form");
+		language.put(Labels.RESTORE_VALUES_BUTTON, "Restore original values");
+		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
+		language.put(Labels.VALIDATE_FORM_DEFAULTS, "Validate form with defaults");
 	}
 	
 	private void createEnglishPropertiesTooltips(Map<String, String> language) {

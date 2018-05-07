@@ -50,7 +50,52 @@ public class Labels {
 	// Lower tabs
 	public static final String LOGS_TAB = "LOGS_TAB";
 	
-	// Properties tooltips
+	// Properties form field labels
+	public static final String PROP_FILES_PANEL = "PROP_FILES_PANEL";
+	public static final String LEARNING_FILE = "LEARNING_FILE";
+	public static final String TEST_FILE = "TEST_FILE";
+	public static final String PCT_FILE = "PCT_FILE";
+	public static final String PCT_APX_FILE = "PCT_APX_FILE";
+	public static final String PCT_RULES_FILE = "PCT_RULES_FILE";
+	public static final String GRAPH_FILE = "GRAPH_FILE";
+	public static final String RANKING_FILE = "RANKING_FILE";
+	
+	public static final String PROP_DATA_PANEL = "PROP_DATA_PANEL";
+	public static final String REFERENCE_RANKING = "REFERENCE_RANKING";
+	public static final String PAIRS = "PAIRS";
+	
+	public static final String PROP_PARAMETERS_PANEL = "PROP_PARAMETERS_PANEL";
+	public static final String TYPE_OF_FAMILY_CRITERIA = "TYPE_OF_FAMILY_CRITERIA";
+	public static final String TYPE_OF_RULES = "TYPE_OF_RULES";
+	public static final String CONSIDERED_SET_OF_RULES = "CONSIDERED_SET_OF_RULES";
+	public static final String CONSISTENCY_MEASURE = "CONSISTENCY_MEASURE";
+	public static final String CONSISTENCY_MEASURE_THRESHOLD = "CONSISTENCY_MEASURE_THRESHOLD";
+	public static final String PRECISION = "PRECISION";
+	public static final String RANKING_PROCEDURE = "RANKING_PROCEDURE";
+	public static final String DOMINANCE = "DOMINANCE";
+	public static final String DOMINANCE_FOR_PAIRS = "DOMINANCE_FOR_PAIRS";
+	public static final String SATISFACTION_DEGREES = "SATISFACTION_DEGREES";
+	public static final String FUZZY_CALCULATION_METHOD = "FUZZY_CALCULATION_METHOD";
+	public static final String NEGATIVE_EXAMPLE_TREATMENT = "NEGATIVE_EXAMPLE_TREATMENT";
+	public static final String OPTIMIZE_RULE_CONSISTENCY = "OPTIMIZE_RULE_CONSISTENCY";
+	public static final String RULE_CONDITIONS_SELECTION_METHOD = "RULE_CONDITIONS_SELECTION_METHOD";
+	
+	public static final String ALLOW_EMPTY_RULES = "ALLOW_EMPTY_RULES";
+	public static final String USE_EDGE_REGIONS = "USE_EDGE_REGIONS";
+	public static final String PROP_WRITE_PANEL = "PROP_WRITE_PANEL";
+	public static final String WRITE_DOMINATION_INFO = "WRITE_DOMINATION_INFO";
+	public static final String WRITE_RULES_STAT = "WRITE_RULES_STAT";
+	public static final String WRITE_LEARNING_EXAMPLES = "WRITE_LEARNING_EXAMPLES";
+	
+	public static final String PROP_SAVE_BUTTON = "PROP_SAVE_BUTTON";
+	public static final String PROP_CANCEL_BUTTON = "PROP_CANCEL_BUTTON";
+	public static final String SET_DEFAULTS_BUTTON = "SET_DEFAULTS_BUTTON";
+	public static final String PROP_CLEAR_BUTTON = "PROP_CLEAR_BUTTON";
+	public static final String RESTORE_VALUES_BUTTON = "RESTORE_VALUES_BUTTON";
+	public static final String PROP_VALIDATE_FORM = "PROP_VALIDATE_FORM";
+	public static final String VALIDATE_FORM_DEFAULTS = "VALIDATE_FORM_DEFAULTS";
+	
+	// Properties form tooltips
 	public static final String LEARNING_FILE_TOOLTIP = "LEARNING_FILE_TOOLTIP";
 	public static final String TEST_FILE_TOOLTIP = "TEST_FILE_TOOLTIP";
 	public static final String PCT_FILE_TOOLTIP = "PCT_FILE_TOOLTIP";
