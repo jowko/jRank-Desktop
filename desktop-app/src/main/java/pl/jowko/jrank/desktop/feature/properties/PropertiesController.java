@@ -2,7 +2,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import pl.jowko.jrank.desktop.feature.upperTabs.UpperTabsController;
+import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.LanguageService;

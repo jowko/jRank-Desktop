@@ -104,7 +104,7 @@ class FilesFinder {
 		if(path.endsWith("_partialPCT.isf"))
 			return FileType.COMPARISION_TABLE;
 		if(path.endsWith(".isf"))
-			return FileType.DATA_TABLE;
+			return FileType.LEARNING_TABLE;
 		
 		return FileType.UNKNOWN;
 	}

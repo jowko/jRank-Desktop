@@ -15,7 +15,7 @@ module jRank.desktop {
 	
 	opens pl.jowko.jrank.desktop.controller;
 	opens pl.jowko.jrank.desktop.feature.properties;
-	opens pl.jowko.jrank.desktop.feature.upperTabs;
+	opens pl.jowko.jrank.desktop.feature.tabs.upper;
 	opens pl.jowko.jrank.desktop.feature.workspace;
 	opens pl.jowko.jrank.desktop.settings;
  	

@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.feature.upperTabs;
+package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -80,18 +80,18 @@ public class UpperTabsController {
 				return null;
 			case JRANK_SETTINGS:
 				return new PropertiesTab(workspaceItem, tabText);
-			case DATA_TABLE:
-				return null;
+			case LEARNING_TABLE:
+				return new LearningTableTab(workspaceItem, tabText);
 			case COMPARISION_TABLE:
-				return null;
+				return new ComparisionTableTab(workspaceItem, tabText);
 			case DOMINANCE:
-				return null;
+				return new DominanceTab(workspaceItem, tabText);
 			case RULES:
-				return null;
+				return new RulesTab(workspaceItem, tabText);
 			case RANKING:
-				return null;
+				return new RankingTab(workspaceItem, tabText);
 			case GRAPH:
-				return null;
+				return new GraphTab(workspaceItem, tabText);
 			case UNKNOWN:
 				return null;
 		}

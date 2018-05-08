@@ -6,7 +6,7 @@ package pl.jowko.jrank.desktop.feature.workspace;
 public enum FileType {
 	
 	COMPARISION_TABLE,
-	DATA_TABLE,
+	LEARNING_TABLE,
 	DOMINANCE,
 	FOLDER,
 	GRAPH,
