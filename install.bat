@@ -18,7 +18,7 @@ echo Creating default workspace folder
 md JRank\workspace
 
 echo Copying and renaming main jar file
-COPY desktop-app\target\desktop-app-0.1-SNAPSHOT-jar-with-dependencies.jar "JRank\JRank-0.1-SNAPSHOT.jar"
+COPY desktop-app\target\desktop-app-0.2-SNAPSHOT-jar-with-dependencies.jar "JRank\JRank-0.2-SNAPSHOT.jar"
 
 echo Copying data directory
 ROBOCOPY data "JRank\data"
@@ -35,4 +35,4 @@ echo Copying default.properties file
 ROBOCOPY workspace\ JRank\workspace\
 
 echo creating run.bat file
-@echo java -jar JRank-0.1-SNAPSHOT.jar -Xms128m > JRank\run.bat
+@echo java -jar JRank-0.2-SNAPSHOT.jar -Xms128m > JRank\run.bat
