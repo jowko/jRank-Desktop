@@ -35,10 +35,8 @@
 		
 		<dependency>
 			<groupId>pl.poznan.put.cs.idss</groupId>
-			<artifactId>jRS</artifactId>
+			<artifactId>jrs</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/jRS.jar</systemPath>
 		</dependency>
 		
 		<dependency>

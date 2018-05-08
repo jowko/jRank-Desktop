@@ -11,7 +11,7 @@ module jRank.desktop {
 	requires customFX;
 	
 	requires com.fasterxml.jackson.databind;
-	requires jRS;
+	requires jrs;
 	
 	opens pl.jowko.jrank.desktop.controller;
 	opens pl.jowko.jrank.desktop.feature.learningtable;
