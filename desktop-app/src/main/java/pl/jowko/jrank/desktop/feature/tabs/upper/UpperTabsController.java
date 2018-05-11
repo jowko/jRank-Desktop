@@ -92,6 +92,8 @@ public class UpperTabsController {
 				return new RankingTab(workspaceItem, tabText);
 			case GRAPH:
 				return new GraphTab(workspaceItem, tabText);
+			case TEXT:
+				return new TextFileTab(workspaceItem, tabText);
 			case UNKNOWN:
 				return null;
 		}

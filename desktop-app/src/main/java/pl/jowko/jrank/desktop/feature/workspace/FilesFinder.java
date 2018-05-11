@@ -47,7 +47,7 @@ class FilesFinder {
 			
 			files = filesPath
 					.filter(Files::isRegularFile)
-					.map(path -> mapPathToWorkspaceFile(path))
+					.map(this::mapPathToWorkspaceFile)
 					.collect(Collectors.toList());
 			
 		} catch (IOException e) {
@@ -67,7 +67,7 @@ class FilesFinder {
 			JRankLogger.error("Error when reading default.properties file: ", e);
 		}
 		
-		return null; //TODO get default properties from memory and save?
+		return null;
 	}
 	
 	private WorkspaceItem mapPathToWorkspaceDirectory(Path path, String workspacePath) {
@@ -105,6 +105,8 @@ class FilesFinder {
 			return FileType.COMPARISION_TABLE;
 		if(path.endsWith(".isf"))
 			return FileType.LEARNING_TABLE;
+		if(path.endsWith(".txt"))
+			return FileType.TEXT;
 		
 		return FileType.UNKNOWN;
 	}

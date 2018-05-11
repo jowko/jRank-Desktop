@@ -14,6 +14,7 @@ public enum FileType {
 	RANKING,
 	ROOT,
 	RULES,
-	UNKNOWN;
+	TEXT,
+	UNKNOWN
 
 }
