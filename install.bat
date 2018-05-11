@@ -25,6 +25,9 @@ ROBOCOPY data "JRank\data"
 
 echo Copying example experiments
 
+echo Copying Airlines
+ROBOCOPY workspace\Airlines JRank\workspace\Airlines
+
 echo Copying Houses7
 ROBOCOPY workspace\Houses7 JRank\workspace\Houses7
 

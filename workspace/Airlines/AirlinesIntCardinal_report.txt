@@ -1,0 +1,8 @@
+Kendal's tau with respect to preference information:	0.691
+Kendal's tau with respect to preference information, ignoring pairs that cannot be preserved:	0.691
+Kendal's tau with respect to preference information, ignoring correct indifference relation:	0.792
+Kendal's tau with respect to preference information, ignoring correct indifference relation and pairs that cannot be preserved:	0.792
+Kendal's tau with respect to true global ranking:	0.445
+Kendal's tau with respect to true global ranking, ignoring pairs that cannot be preserved:	0.462
+Kendal's tau with respect to true global ranking, ignoring correct indifference relation:	0.641
+Kendal's tau with respect to true global ranking, ignoring correct indifference relation and pairs that cannot be preserved:	0.67
