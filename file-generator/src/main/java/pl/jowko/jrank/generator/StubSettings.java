@@ -127,7 +127,7 @@ class StubSettings {
 		language.put(Labels.PAIRS, "Pairs:");
 		
 		language.put(Labels.PROP_PARAMETERS_PANEL, "Parameters");
-		language.put(Labels.TYPE_OF_FAMILY_CRITERIA, "Type of family criteria");
+		language.put(Labels.TYPE_OF_FAMILY_CRITERIA, "Type of family criteria:");
 		language.put(Labels.TYPE_OF_RULES, "Type of rules:");
 		language.put(Labels.CONSIDERED_SET_OF_RULES, "Considered set of rules:");
 		language.put(Labels.CONSISTENCY_MEASURE, "Consistency measure:");
@@ -142,12 +142,12 @@ class StubSettings {
 		language.put(Labels.OPTIMIZE_RULE_CONSISTENCY, "Optimize rule consistency in VCDomLEMWrt:");
 		language.put(Labels.RULE_CONDITIONS_SELECTION_METHOD, "Rule conditions selection method in VCDomLEM:");
 		
-		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM");
-		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM");
+		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM:");
+		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM:");
 		language.put(Labels.PROP_WRITE_PANEL, "Write:");
-		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information");
-		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics");
-		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples");
+		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information:");
+		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics:");
+		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples:");
 		
 		language.put(Labels.PROP_SAVE_BUTTON, "Zapisz");
 		language.put(Labels.PROP_CANCEL_BUTTON, "Anuluj");
@@ -293,7 +293,7 @@ class StubSettings {
 		language.put(Labels.PAIRS, "Pairs:");
 		
 		language.put(Labels.PROP_PARAMETERS_PANEL, "Parameters");
-		language.put(Labels.TYPE_OF_FAMILY_CRITERIA, "Type of family criteria");
+		language.put(Labels.TYPE_OF_FAMILY_CRITERIA, "Type of family criteria:");
 		language.put(Labels.TYPE_OF_RULES, "Type of rules:");
 		language.put(Labels.CONSIDERED_SET_OF_RULES, "Considered set of rules:");
 		language.put(Labels.CONSISTENCY_MEASURE, "Consistency measure:");
@@ -308,12 +308,12 @@ class StubSettings {
 		language.put(Labels.OPTIMIZE_RULE_CONSISTENCY, "Optimize rule consistency in VCDomLEMWrt:");
 		language.put(Labels.RULE_CONDITIONS_SELECTION_METHOD, "Rule conditions selection method in VCDomLEM:");
 		
-		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM");
-		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM");
+		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM:");
+		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM:");
 		language.put(Labels.PROP_WRITE_PANEL, "Write:");
-		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information");
-		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics");
-		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples");
+		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information:");
+		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics:");
+		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples:");
 		
 		language.put(Labels.PROP_SAVE_BUTTON, "Save");
 		language.put(Labels.PROP_CANCEL_BUTTON, "Cancel");

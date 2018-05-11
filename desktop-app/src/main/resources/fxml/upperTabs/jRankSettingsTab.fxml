@@ -214,9 +214,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="allowEmptyRulesLabel" text="Allow empty rules in VCDomLEM" />
+            <Label fx:id="allowEmptyRulesLabel" text="Allow empty rules in VCDomLEM:" />
             <ComboBox fx:id="allowEmptyRules" prefWidth="150.0" GridPane.columnIndex="1" />
-            <Label fx:id="useEdgeRegionsLabel" text="Use edge regions in VCDomLEM" GridPane.columnIndex="3" />
+            <Label fx:id="useEdgeRegionsLabel" text="Use edge regions in VCDomLEM:" GridPane.columnIndex="3" />
             <ComboBox fx:id="useEdgeRegions" prefWidth="150.0" GridPane.columnIndex="4" />
          </children>
          <padding>
