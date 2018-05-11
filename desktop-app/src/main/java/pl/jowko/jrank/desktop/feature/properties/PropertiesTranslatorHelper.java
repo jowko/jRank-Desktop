@@ -73,7 +73,6 @@ class PropertiesTranslatorHelper {
 	private void translateButtons() {
 		controller.saveButton.setText(getText(Labels.PROP_SAVE_BUTTON));
 		controller.cancelButton.setText(getText(Labels.PROP_CANCEL_BUTTON));
-		controller.setDefaultsButton.setText(getText(Labels.SET_DEFAULTS_BUTTON));
 		controller.clearButton.setText(getText(Labels.PROP_CLEAR_BUTTON));
 		controller.restoreValuesButton.setText(getText(Labels.RESTORE_VALUES_BUTTON));
 		controller.validateFormButton.setText(getText(Labels.PROP_VALIDATE_FORM));

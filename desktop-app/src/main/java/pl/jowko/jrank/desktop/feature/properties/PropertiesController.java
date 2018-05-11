@@ -92,7 +92,6 @@ public class PropertiesController {
 	
 	@FXML Button saveButton;
 	@FXML Button cancelButton;
-	@FXML Button setDefaultsButton;
 	@FXML Button clearButton;
 	@FXML Button restoreValuesButton;
 	@FXML Button validateFormButton;
@@ -138,19 +137,6 @@ public class PropertiesController {
 		if(isUserWishToKeepChanges())
 			return;
 		closeTab();
-	}
-	
-	public void setDefaultsAction() {
-		if(isUserWishToKeepChanges())
-			return;
-		
-		try {
-			editableProperties = new DefaultPropertiesProvider().getDefaultProperties();
-			controllerHelper.setEditableProperties(editableProperties);
-			controllerHelper.fillFieldsValues();
-		} catch (IOException e) {
-			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
-		}
 	}
 	
 	public void clearFormAction() {

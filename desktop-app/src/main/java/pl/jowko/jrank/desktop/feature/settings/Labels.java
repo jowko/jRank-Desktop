@@ -94,7 +94,6 @@ public class Labels {
 	
 	public static final String PROP_SAVE_BUTTON = "PROP_SAVE_BUTTON";
 	public static final String PROP_CANCEL_BUTTON = "PROP_CANCEL_BUTTON";
-	public static final String SET_DEFAULTS_BUTTON = "SET_DEFAULTS_BUTTON";
 	public static final String PROP_CLEAR_BUTTON = "PROP_CLEAR_BUTTON";
 	public static final String RESTORE_VALUES_BUTTON = "RESTORE_VALUES_BUTTON";
 	public static final String PROP_VALIDATE_FORM = "PROP_VALIDATE_FORM";
@@ -152,7 +151,6 @@ public class Labels {
 	public static final String WRITE_RULES_STAT_TOOLTIP = "WRITE_RULES_STAT_TOOLTIP";
 	public static final String WRITE_LEARNING_EXAMPLES_TOOLTIP = "WRITE_LEARNING_EXAMPLES_TOOLTIP";
 	
-	public static final String SET_DEFAULTS_BUTTON_TOOLTIP = "SET_DEFAULTS_BUTTON_TOOLTIP";
 	public static final String RESTORE_VALUES_BUTTON_TOOLTIP = "RESTORE_VALUES_BUTTON_TOOLTIP";
 	public static final String VALIDATE_FORM_DEFAULTS_TOOLTIP = "VALIDATE_FORM_DEFAULTS_TOOLTIP";
 	

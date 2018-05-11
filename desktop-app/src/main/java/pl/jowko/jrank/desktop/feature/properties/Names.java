@@ -6,39 +6,39 @@ package pl.jowko.jrank.desktop.feature.properties;
  */
 class Names {
 	
-	public static final String LEARNING_DATA_FILE = "learningDataFile";
-	public static final String TEST_DATA_FILE = "testDataFile";
+	static final String LEARNING_DATA_FILE = "learningDataFile";
+	static final String TEST_DATA_FILE = "testDataFile";
 	
-	public static final String PCT_FILE = "pctFile";
-	public static final String PCT_APX_FILE = "pctApxFile";
-	public static final String PCT_RULES_FILE = "pctRulesFile";
+	static final String PCT_FILE = "pctFile";
+	static final String PCT_APX_FILE = "pctApxFile";
+	static final String PCT_RULES_FILE = "pctRulesFile";
 	
-	public static final String PREFERENCE_GRAPH_FILE = "preferenceGraphFile";
-	public static final String RANKING_FILE = "rankingFile";
+	static final String PREFERENCE_GRAPH_FILE = "preferenceGraphFile";
+	static final String RANKING_FILE = "rankingFile";
 	
-	public static final String REFERENCE_RANKING = "referenceRanking";
-	public static final String PAIRS = "pairs";
+	static final String REFERENCE_RANKING = "referenceRanking";
+	static final String PAIRS = "pairs";
 	
-	public static final String TYPE_OF_FAMILY_CRITERIA = "typeOfFamilyOfCriteria";
-	public static final String CONSISTENCY_MEASURE = "consistencyMeasure";
-	public static final String CONSISTENCY_MEASURE_THREASHOLD = "consistencyMeasureThreshold";
-	public static final String TYPE_OF_RULES = "typeOfRules";
-	public static final String CONSIDERED_SET_OF_RULES = "consideredSetOfRules";
-	public static final String SATISTACTION_DEGREE_IN_GRAPH = "satisfactionDegreesInPreferenceGraph";
-	public static final String FUZZY_SAT_DEGREE_CALC_METHOD = "fuzzySatisfactionDegreeCalculationMethod";
-	public static final String RANKING_PROCEDURE = "rankingProcedure";
-	public static final String DOMINACE = "dominance";
-	public static final String DOMINANCE_FOR_PAIRS = "dominanceForPairsOfOrdinalValues";
-	public static final String NEGATIVE_EXAMPLES_TREATMENT = "negativeExamplesTreatmentForVCDRSA";
-	public static final String RULE_CONDITIONS_SELECTION_METHOD = "ruleConditionsSelectionMethodInVCDomLEM";
-	public static final String ALLOW_EMPTY_RULES = "allowEmptyRulesInVCDomLEM";
-	public static final String USE_EDGE_REGIONS = "useEdgeRegionsInVCDomLEM";
-	public static final String OPTIMIZE_RULES_CONSISTENCY = "optimizeRuleConsistencyInVCDomLEMWrt";
+	static final String TYPE_OF_FAMILY_CRITERIA = "typeOfFamilyOfCriteria";
+	static final String CONSISTENCY_MEASURE = "consistencyMeasure";
+	static final String CONSISTENCY_MEASURE_THREASHOLD = "consistencyMeasureThreshold";
+	static final String TYPE_OF_RULES = "typeOfRules";
+	static final String CONSIDERED_SET_OF_RULES = "consideredSetOfRules";
+	static final String SATISTACTION_DEGREE_IN_GRAPH = "satisfactionDegreesInPreferenceGraph";
+	static final String FUZZY_SAT_DEGREE_CALC_METHOD = "fuzzySatisfactionDegreeCalculationMethod";
+	static final String RANKING_PROCEDURE = "rankingProcedure";
+	static final String DOMINACE = "dominance";
+	static final String DOMINANCE_FOR_PAIRS = "dominanceForPairsOfOrdinalValues";
+	static final String NEGATIVE_EXAMPLES_TREATMENT = "negativeExamplesTreatmentForVCDRSA";
+	static final String RULE_CONDITIONS_SELECTION_METHOD = "ruleConditionsSelectionMethodInVCDomLEM";
+	static final String ALLOW_EMPTY_RULES = "allowEmptyRulesInVCDomLEM";
+	static final String USE_EDGE_REGIONS = "useEdgeRegionsInVCDomLEM";
+	static final String OPTIMIZE_RULES_CONSISTENCY = "optimizeRuleConsistencyInVCDomLEMWrt";
 	
-	public static final String WRITE_DOMINATION_INFORMATION = "writeDominationInformation";
-	public static final String WRITE_RULES_STATISTICS = "writeRulesStatistics";
-	public static final String WRITE_LEARNING_POSITIVE_EXAMPLES = "writeLearningPositiveExamples";
+	static final String WRITE_DOMINATION_INFORMATION = "writeDominationInformation";
+	static final String WRITE_RULES_STATISTICS = "writeRulesStatistics";
+	static final String WRITE_LEARNING_POSITIVE_EXAMPLES = "writeLearningPositiveExamples";
 	
-	public static final String PRECISION = "precision";
+	static final String PRECISION = "precision";
 	
 }

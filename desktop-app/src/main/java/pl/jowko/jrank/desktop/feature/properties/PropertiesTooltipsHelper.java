@@ -85,7 +85,6 @@ class PropertiesTooltipsHelper {
 	}
 	
 	private void initializeTooltipsForButtons() {
-		controller.setDefaultsButton.setTooltip(getTooltip(Labels.SET_DEFAULTS_BUTTON_TOOLTIP));
 		controller.restoreValuesButton.setTooltip(getTooltip(Labels.RESTORE_VALUES_BUTTON_TOOLTIP));
 		controller.validateFormDefaults.setTooltip(getTooltip(Labels.VALIDATE_FORM_DEFAULTS_TOOLTIP));
 	}

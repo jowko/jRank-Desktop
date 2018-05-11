@@ -9,9 +9,9 @@ import java.util.Properties;
 /**
  * Created by Piotr on 2018-05-04.
  */
-public class DefaultPropertiesProvider {
+class DefaultPropertiesProvider {
 	
-	public JRankProperties getDefaultProperties() throws IOException {
+	JRankProperties getDefaultProperties() throws IOException {
 		String propertiesPath = WorkspaceService.getInstance().getWorkspacePath() + "\\default.properties";
 		
 		Properties properties = new Properties();

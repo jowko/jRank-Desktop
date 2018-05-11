@@ -151,7 +151,6 @@ class StubSettings {
 		
 		language.put(Labels.PROP_SAVE_BUTTON, "Zapisz");
 		language.put(Labels.PROP_CANCEL_BUTTON, "Anuluj");
-		language.put(Labels.SET_DEFAULTS_BUTTON, "Ustaw domyślne");
 		language.put(Labels.PROP_CLEAR_BUTTON, "Wyczyść formularz");
 		language.put(Labels.RESTORE_VALUES_BUTTON, "Przywróć początkowe wartości");
 		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
@@ -215,7 +214,6 @@ class StubSettings {
 		language.put(Labels.WRITE_RULES_STAT_TOOLTIP, "Insert rules' statistics into *.rules file?");
 		language.put(Labels.WRITE_LEARNING_EXAMPLES_TOOLTIP, "List learning positive examples of each rule (write LearningPositiveExamples tag) inside [RULESINFO] section of *.rules file? (works only when writeRulesStatistics is true)");
 		
-		language.put(Labels.SET_DEFAULTS_BUTTON_TOOLTIP, "Zastąp wartości z formularza wartościami domyślnymi z pliku default.properties");
 		language.put(Labels.RESTORE_VALUES_BUTTON_TOOLTIP, "Przywróć oryginalne wartości z pliku");
 		language.put(Labels.VALIDATE_FORM_DEFAULTS_TOOLTIP, "Zastąp niewybrane opcje wartościami domyślnymi i dokonaj walidacji");
 	}
@@ -317,7 +315,6 @@ class StubSettings {
 		
 		language.put(Labels.PROP_SAVE_BUTTON, "Save");
 		language.put(Labels.PROP_CANCEL_BUTTON, "Cancel");
-		language.put(Labels.SET_DEFAULTS_BUTTON, "Set defaults");
 		language.put(Labels.PROP_CLEAR_BUTTON, "Clear form");
 		language.put(Labels.RESTORE_VALUES_BUTTON, "Restore original values");
 		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
@@ -378,7 +375,6 @@ class StubSettings {
 		language.put(Labels.WRITE_RULES_STAT_TOOLTIP, "Insert rules' statistics into *.rules file?");
 		language.put(Labels.WRITE_LEARNING_EXAMPLES_TOOLTIP, "List learning positive examples of each rule (write LearningPositiveExamples tag) inside [RULESINFO] section of *.rules file? (works only when writeRulesStatistics is true)");
 		
-		language.put(Labels.SET_DEFAULTS_BUTTON_TOOLTIP, "Replace form values with default values from default.properties file");
 		language.put(Labels.RESTORE_VALUES_BUTTON_TOOLTIP, "Restore original values from file");
 		language.put(Labels.VALIDATE_FORM_DEFAULTS_TOOLTIP, "Replace empty options with defaults and validate result");
 		
