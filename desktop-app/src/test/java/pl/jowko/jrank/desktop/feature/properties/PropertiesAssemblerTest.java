@@ -71,10 +71,10 @@ class PropertiesAssemblerTest extends MasterTest {
 		
 		JRankProperties jRankProperties = toJRankProperties(properties);
 		
-		assertEquals(true, jRankProperties.getAllowEmptyRulesInVCDomLEM());
-		assertEquals(true, jRankProperties.getUseEdgeRegionsInVCDomLEM());
-		assertEquals(false, jRankProperties.getWriteDominationInformation());
-		assertEquals(false, jRankProperties.getWriteLearningPositiveExamples());
+		assertEquals("true", jRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
+		assertEquals("true", jRankProperties.getUseEdgeRegionsInVCDomLEM().getTextValue());
+		assertEquals("false", jRankProperties.getWriteDominationInformation().getTextValue());
+		assertEquals("false", jRankProperties.getWriteLearningPositiveExamples().getTextValue());
 		assertNull(jRankProperties.getWriteRulesStatistics());
 	}
 	
@@ -141,7 +141,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		assertEquals("rankingFile", jRankProperties.getRankingFile());
 		assertEquals(0.8, jRankProperties.getConsistencyMeasureThreshold().doubleValue());
 		assertEquals("certain", jRankProperties.getTypeOfRules().getTextValue());
-		assertEquals(true, jRankProperties.getAllowEmptyRulesInVCDomLEM());
+		assertEquals("true", jRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
 		assertEquals(-1, jRankProperties.getPrecision().intValue());
 	}
 	
@@ -158,7 +158,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		assertEquals("rankingFile", jRankProperties.getRankingFile());
 		assertEquals(0.8, jRankProperties.getConsistencyMeasureThreshold().doubleValue());
 		assertEquals("certain", jRankProperties.getTypeOfRules().getTextValue());
-		assertEquals(true, jRankProperties.getAllowEmptyRulesInVCDomLEM());
+		assertEquals("true", jRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
 		assertEquals(-1, jRankProperties.getPrecision().intValue());
 	}
 	
@@ -186,7 +186,6 @@ class PropertiesAssemblerTest extends MasterTest {
 		
 		assertNull(jRankProperties.getRankingFile());
 		assertNull(jRankProperties.getConsistencyMeasureThreshold());
-		assertNull(jRankProperties.getAllowEmptyRulesInVCDomLEM());
 		assertNull(jRankProperties.getPrecision());
 	}
 	

@@ -125,9 +125,9 @@ class StubSettings {
 		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM");
 		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM");
 		language.put(Labels.PROP_WRITE_PANEL, "Write:");
-		language.put(Labels.WRITE_DOMINATION_INFO, "Domination information");
-		language.put(Labels.WRITE_RULES_STAT, "Rule statistics");
-		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Learning positive examples");
+		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information");
+		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics");
+		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples");
 		
 		language.put(Labels.PROP_SAVE_BUTTON, "Zapisz");
 		language.put(Labels.PROP_CANCEL_BUTTON, "Anuluj");
@@ -289,9 +289,9 @@ class StubSettings {
 		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM");
 		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM");
 		language.put(Labels.PROP_WRITE_PANEL, "Write:");
-		language.put(Labels.WRITE_DOMINATION_INFO, "Domination information");
-		language.put(Labels.WRITE_RULES_STAT, "Rule statistics");
-		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Learning positive examples");
+		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information");
+		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics");
+		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples");
 		
 		language.put(Labels.PROP_SAVE_BUTTON, "Save");
 		language.put(Labels.PROP_CANCEL_BUTTON, "Cancel");

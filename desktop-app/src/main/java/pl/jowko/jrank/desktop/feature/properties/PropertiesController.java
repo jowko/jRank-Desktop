@@ -77,13 +77,18 @@ public class PropertiesController {
 	@FXML Label ruleConditionsSelectionMethodLabel;
 	@FXML ComboBox<JRankParameter> ruleConditionsSelectionMethod;
 	
-	@FXML CheckBox allowEmptyRules;
-	@FXML CheckBox useEdgeRegions;
+	@FXML Label allowEmptyRulesLabel;
+	@FXML ComboBox<JRankParameter> allowEmptyRules;
+	@FXML Label useEdgeRegionsLabel;
+	@FXML ComboBox<JRankParameter> useEdgeRegions;
 	
 	@FXML Label writePanelLabel;
-	@FXML CheckBox writeDominationInformation;
-	@FXML CheckBox writeRulesStatistics;
-	@FXML CheckBox writeLearningPositiveExamples;
+	@FXML Label writeDominationInformationLabel;
+	@FXML ComboBox<JRankParameter> writeDominationInformation;
+	@FXML Label writeRulesStatisticsLabel;
+	@FXML ComboBox<JRankParameter> writeRulesStatistics;
+	@FXML Label writeLearningPositiveExamplesLabel;
+	@FXML ComboBox<JRankParameter> writeLearningPositiveExamples;
 	
 	@FXML Button saveButton;
 	@FXML Button cancelButton;

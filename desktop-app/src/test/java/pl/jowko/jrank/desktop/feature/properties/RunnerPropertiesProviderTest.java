@@ -162,38 +162,38 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	void shouldGetDefaultBooleanProperties() {
 		JRankProperties withDefaults = getPropertiesWithDefaults();
 		
-		assertEquals(true, withDefaults.getAllowEmptyRulesInVCDomLEM());
-		assertEquals(false, withDefaults.getUseEdgeRegionsInVCDomLEM());
-		assertEquals(true, withDefaults.getWriteDominationInformation());
-		assertEquals(true, withDefaults.getWriteRulesStatistics());
-		assertEquals(false, withDefaults.getWriteLearningPositiveExamples());
+		assertEquals("true", withDefaults.getAllowEmptyRulesInVCDomLEM().getTextValue());
+		assertEquals("false", withDefaults.getUseEdgeRegionsInVCDomLEM().getTextValue());
+		assertEquals("true", withDefaults.getWriteDominationInformation().getTextValue());
+		assertEquals("true", withDefaults.getWriteRulesStatistics().getTextValue());
+		assertEquals("false", withDefaults.getWriteLearningPositiveExamples().getTextValue());
 	}
 	
 	@Test
 	void shouldNotGetDefaultBooleanProperties() {
-		properties.setAllowEmptyRulesInVCDomLEM(false);
-		properties.setUseEdgeRegionsInVCDomLEM(false);
-		properties.setWriteDominationInformation(true);
-		properties.setWriteRulesStatistics(false);
-		properties.setWriteLearningPositiveExamples(true);
+		properties.setAllowEmptyRulesInVCDomLEM(createParameter("false"));
+		properties.setUseEdgeRegionsInVCDomLEM(createParameter("false"));
+		properties.setWriteDominationInformation(createParameter("true"));
+		properties.setWriteRulesStatistics(createParameter("false"));
+		properties.setWriteLearningPositiveExamples(createParameter("true"));
 		
 		JRankProperties withDefaults = getPropertiesWithDefaults();
 		
-		assertEquals(false, withDefaults.getAllowEmptyRulesInVCDomLEM());
-		assertEquals(false, withDefaults.getUseEdgeRegionsInVCDomLEM());
-		assertEquals(true, withDefaults.getWriteDominationInformation());
-		assertEquals(false, withDefaults.getWriteRulesStatistics());
-		assertEquals(true, withDefaults.getWriteLearningPositiveExamples());
+		assertEquals("false", withDefaults.getAllowEmptyRulesInVCDomLEM().getTextValue());
+		assertEquals("false", withDefaults.getUseEdgeRegionsInVCDomLEM().getTextValue());
+		assertEquals("true", withDefaults.getWriteDominationInformation().getTextValue());
+		assertEquals("false", withDefaults.getWriteRulesStatistics().getTextValue());
+		assertEquals("true", withDefaults.getWriteLearningPositiveExamples().getTextValue());
 	}
 	
 	@Test
 	void shouldGetDefaultBooleanPropertiesPartially() {
-		properties.setAllowEmptyRulesInVCDomLEM(false);
+		properties.setAllowEmptyRulesInVCDomLEM(createParameter("false"));
 		JRankProperties withDefaults = getPropertiesWithDefaults();
 		
-		assertEquals(false, withDefaults.getAllowEmptyRulesInVCDomLEM());
-		assertEquals(true, withDefaults.getWriteRulesStatistics());
-		assertEquals(false, withDefaults.getWriteLearningPositiveExamples());
+		assertEquals("false", withDefaults.getAllowEmptyRulesInVCDomLEM().getTextValue());
+		assertEquals("true", withDefaults.getWriteRulesStatistics().getTextValue());
+		assertEquals("false", withDefaults.getWriteLearningPositiveExamples().getTextValue());
 	}
 	
 	@Test

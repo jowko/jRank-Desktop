@@ -57,13 +57,13 @@ class PropertiesSaver {
 		setJRankParameterProperty(DOMINANCE_FOR_PAIRS, jRankProperties.getDominanceForPairsOfOrdinalValues());
 		setJRankParameterProperty(NEGATIVE_EXAMPLES_TREATMENT, jRankProperties.getNegativeExamplesTreatmentForVCDRSA());
 		setJRankParameterProperty(RULE_CONDITIONS_SELECTION_METHOD, jRankProperties.getRuleConditionsSelectionMethodInVCDomLEM());
-		setBooleanProperty(ALLOW_EMPTY_RULES, jRankProperties.getAllowEmptyRulesInVCDomLEM());
-		setBooleanProperty(USE_EDGE_REGIONS, jRankProperties.getUseEdgeRegionsInVCDomLEM());
+		setJRankParameterProperty(ALLOW_EMPTY_RULES, jRankProperties.getAllowEmptyRulesInVCDomLEM());
+		setJRankParameterProperty(USE_EDGE_REGIONS, jRankProperties.getUseEdgeRegionsInVCDomLEM());
 		setJRankParameterProperty(OPTIMIZE_RULES_CONSISTENCY, jRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
 		
-		setBooleanProperty(WRITE_DOMINATION_INFORMATION, jRankProperties.getWriteDominationInformation());
-		setBooleanProperty(WRITE_RULES_STATISTICS, jRankProperties.getWriteRulesStatistics());
-		setBooleanProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, jRankProperties.getWriteLearningPositiveExamples());
+		setJRankParameterProperty(WRITE_DOMINATION_INFORMATION, jRankProperties.getWriteDominationInformation());
+		setJRankParameterProperty(WRITE_RULES_STATISTICS, jRankProperties.getWriteRulesStatistics());
+		setJRankParameterProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, jRankProperties.getWriteLearningPositiveExamples());
 		
 		setNumberProperty(PRECISION, jRankProperties.getPrecision());
 	}
@@ -81,12 +81,6 @@ class PropertiesSaver {
 	}
 	
 	private void setNumberProperty(String propertyName, Object value) {
-		if(nonNull(value)) {
-			properties.setProperty(propertyName, value.toString());
-		}
-	}
-	
-	private void setBooleanProperty(String propertyName, Boolean value) {
 		if(nonNull(value)) {
 			properties.setProperty(propertyName, value.toString());
 		}

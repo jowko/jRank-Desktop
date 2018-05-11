@@ -54,13 +54,13 @@ class TestPropertiesProvider {
 		jRankProperties.setDominanceForPairsOfOrdinalValues(createParameter(dominanceForPairsOfOrdinalValues));
 		jRankProperties.setNegativeExamplesTreatmentForVCDRSA(createParameter(negativeExamplesTreatmentForVCDRSA));
 		jRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(createParameter(ruleConditionsSelectionMethodInVCDomLEM));
-		jRankProperties.setAllowEmptyRulesInVCDomLEM(true);
-		jRankProperties.setUseEdgeRegionsInVCDomLEM(false);
+		jRankProperties.setAllowEmptyRulesInVCDomLEM(createParameter("true"));
+		jRankProperties.setUseEdgeRegionsInVCDomLEM(createParameter("false"));
 		jRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(createParameter(optimizeRuleConsistencyInVCDomLEMWrt));
 		
-		jRankProperties.setWriteDominationInformation(true);
-		jRankProperties.setWriteRulesStatistics(true);
-		jRankProperties.setWriteLearningPositiveExamples(false);
+		jRankProperties.setWriteDominationInformation(createParameter("true"));
+		jRankProperties.setWriteRulesStatistics(createParameter("true"));
+		jRankProperties.setWriteLearningPositiveExamples(createParameter("false"));
 		
 		jRankProperties.setPrecision(precision);
 		

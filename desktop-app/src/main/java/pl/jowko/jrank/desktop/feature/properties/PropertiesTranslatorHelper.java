@@ -61,13 +61,13 @@ class PropertiesTranslatorHelper {
 		controller.optimizeRuleConsistencyLabel.setText(getText(Labels.OPTIMIZE_RULE_CONSISTENCY));
 		controller.ruleConditionsSelectionMethodLabel.setText(getText(Labels.RULE_CONDITIONS_SELECTION_METHOD));
 		
-		controller.allowEmptyRules.setText(getText(Labels.ALLOW_EMPTY_RULES));
-		controller.useEdgeRegions.setText(getText(Labels.USE_EDGE_REGIONS));
+		controller.allowEmptyRulesLabel.setText(getText(Labels.ALLOW_EMPTY_RULES));
+		controller.useEdgeRegionsLabel.setText(getText(Labels.USE_EDGE_REGIONS));
 		
 		controller.writePanelLabel.setText(getText(Labels.PROP_WRITE_PANEL));
-		controller.writeDominationInformation.setText(getText(Labels.WRITE_DOMINATION_INFO));
-		controller.writeRulesStatistics.setText(getText(Labels.WRITE_RULES_STAT));
-		controller.writeLearningPositiveExamples.setText(getText(Labels.WRITE_LEARNING_EXAMPLES));
+		controller.writeDominationInformationLabel.setText(getText(Labels.WRITE_DOMINATION_INFO));
+		controller.writeRulesStatisticsLabel.setText(getText(Labels.WRITE_RULES_STAT));
+		controller.writeLearningPositiveExamplesLabel.setText(getText(Labels.WRITE_LEARNING_EXAMPLES));
 	}
 	
 	private void translateButtons() {

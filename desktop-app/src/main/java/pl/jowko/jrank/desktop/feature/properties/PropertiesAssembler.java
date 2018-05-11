@@ -54,15 +54,15 @@ public class PropertiesAssembler {
 		prop.setDominanceForPairsOfOrdinalValues(getParameter(paramService.getDominanceForPairsOfOrdinalValues(), DOMINANCE_FOR_PAIRS));
 		prop.setNegativeExamplesTreatmentForVCDRSA(getParameter(paramService.getNegativeExamplesTreatmentForVCDRSA(), NEGATIVE_EXAMPLES_TREATMENT));
 		prop.setRuleConditionsSelectionMethodInVCDomLEM(getParameter(paramService.getRuleConditionsSelectionMethodInVCDomLEM(), RULE_CONDITIONS_SELECTION_METHOD));
-		prop.setAllowEmptyRulesInVCDomLEM(getBooleanFromProperty(ALLOW_EMPTY_RULES));
-		prop.setUseEdgeRegionsInVCDomLEM(getBooleanFromProperty(USE_EDGE_REGIONS));
+		prop.setAllowEmptyRulesInVCDomLEM(getParameter(paramService.getBooleanParameter(), ALLOW_EMPTY_RULES));
+		prop.setUseEdgeRegionsInVCDomLEM(getParameter(paramService.getBooleanParameter(), USE_EDGE_REGIONS));
 		prop.setOptimizeRuleConsistencyInVCDomLEMWrt(getParameter(paramService.getOptimizeRuleConsistencyInVCDomLEMWrt(), OPTIMIZE_RULES_CONSISTENCY));
 		
-		prop.setWriteDominationInformation(getBooleanFromProperty(WRITE_DOMINATION_INFORMATION));
-		prop.setWriteRulesStatistics(getBooleanFromProperty(WRITE_RULES_STATISTICS));
-		prop.setWriteLearningPositiveExamples(getBooleanFromProperty(WRITE_LEARNING_POSITIVE_EXAMPLES));
+		prop.setWriteDominationInformation(getParameter(paramService.getBooleanParameter(), WRITE_DOMINATION_INFORMATION));
+		prop.setWriteRulesStatistics(getParameter(paramService.getBooleanParameter(), WRITE_RULES_STATISTICS));
+		prop.setWriteLearningPositiveExamples(getParameter(paramService.getBooleanParameter(), WRITE_LEARNING_POSITIVE_EXAMPLES));
 		
-		prop.setPrecision(getIntegerFromProperty(PRECISION)); //TODO what is this?
+		prop.setPrecision(getIntegerFromProperty(PRECISION));
 		
 		validatePropertiesAndShowWarnings();
 		
@@ -107,18 +107,6 @@ public class PropertiesAssembler {
 	
 	private void logNumberError(String parameterName, String parameterValue) {
 		JRankLogger.error("Error when reading parameter: [" + parameterName + "]. Value: [" + parameterValue + "] is not a valid number.");
-	}
-	
-	private Boolean getBooleanFromProperty(String parameterName) {
-		String parameterValue = getStringFromProperty(parameterName);
-		
-		if("TRUE".equalsIgnoreCase(parameterValue))
-			return true;
-		
-		if("FALSE".equalsIgnoreCase(parameterValue))
-			return false;
-		
-		return null;
 	}
 	
 	private JRankParameter getParameter(List<JRankParameter> parameters, String parameterName) {

@@ -33,13 +33,13 @@ public class JRankProperties implements Serializable {
 	private JRankParameter dominanceForPairsOfOrdinalValues;
 	private JRankParameter negativeExamplesTreatmentForVCDRSA;
 	private JRankParameter ruleConditionsSelectionMethodInVCDomLEM;
-	private Boolean allowEmptyRulesInVCDomLEM;
-	private Boolean useEdgeRegionsInVCDomLEM;
+	private JRankParameter allowEmptyRulesInVCDomLEM;
+	private JRankParameter useEdgeRegionsInVCDomLEM;
 	private JRankParameter optimizeRuleConsistencyInVCDomLEMWrt;
 	
-	private Boolean writeDominationInformation;
-	private Boolean writeRulesStatistics;
-	private Boolean writeLearningPositiveExamples;
+	private JRankParameter writeDominationInformation;
+	private JRankParameter writeRulesStatistics;
+	private JRankParameter writeLearningPositiveExamples;
 	
 	private Integer precision;
 	
@@ -211,19 +211,19 @@ public class JRankProperties implements Serializable {
 		this.ruleConditionsSelectionMethodInVCDomLEM = ruleConditionsSelectionMethodInVCDomLEM;
 	}
 	
-	public Boolean getAllowEmptyRulesInVCDomLEM() {
+	public JRankParameter getAllowEmptyRulesInVCDomLEM() {
 		return allowEmptyRulesInVCDomLEM;
 	}
 	
-	public void setAllowEmptyRulesInVCDomLEM(Boolean allowEmptyRulesInVCDomLEM) {
+	public void setAllowEmptyRulesInVCDomLEM(JRankParameter allowEmptyRulesInVCDomLEM) {
 		this.allowEmptyRulesInVCDomLEM = allowEmptyRulesInVCDomLEM;
 	}
 	
-	public Boolean getUseEdgeRegionsInVCDomLEM() {
+	public JRankParameter getUseEdgeRegionsInVCDomLEM() {
 		return useEdgeRegionsInVCDomLEM;
 	}
 	
-	public void setUseEdgeRegionsInVCDomLEM(Boolean useEdgeRegionsInVCDomLEM) {
+	public void setUseEdgeRegionsInVCDomLEM(JRankParameter useEdgeRegionsInVCDomLEM) {
 		this.useEdgeRegionsInVCDomLEM = useEdgeRegionsInVCDomLEM;
 	}
 	
@@ -235,27 +235,27 @@ public class JRankProperties implements Serializable {
 		this.optimizeRuleConsistencyInVCDomLEMWrt = optimizeRuleConsistencyInVCDomLEMWrt;
 	}
 	
-	public Boolean getWriteDominationInformation() {
+	public JRankParameter getWriteDominationInformation() {
 		return writeDominationInformation;
 	}
 	
-	public void setWriteDominationInformation(Boolean writeDominationInformation) {
+	public void setWriteDominationInformation(JRankParameter writeDominationInformation) {
 		this.writeDominationInformation = writeDominationInformation;
 	}
 	
-	public Boolean getWriteRulesStatistics() {
+	public JRankParameter getWriteRulesStatistics() {
 		return writeRulesStatistics;
 	}
 	
-	public void setWriteRulesStatistics(Boolean writeRulesStatistics) {
+	public void setWriteRulesStatistics(JRankParameter writeRulesStatistics) {
 		this.writeRulesStatistics = writeRulesStatistics;
 	}
 	
-	public Boolean getWriteLearningPositiveExamples() {
+	public JRankParameter getWriteLearningPositiveExamples() {
 		return writeLearningPositiveExamples;
 	}
 	
-	public void setWriteLearningPositiveExamples(Boolean writeLearningPositiveExamples) {
+	public void setWriteLearningPositiveExamples(JRankParameter writeLearningPositiveExamples) {
 		this.writeLearningPositiveExamples = writeLearningPositiveExamples;
 	}
 	

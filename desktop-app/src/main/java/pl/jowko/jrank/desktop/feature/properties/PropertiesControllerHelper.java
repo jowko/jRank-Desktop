@@ -18,7 +18,7 @@ class PropertiesControllerHelper {
 		editableProperties = controller.editableProperties;
 	}
 	
-	public void setEditableProperties(JRankProperties editableProperties) {
+	void setEditableProperties(JRankProperties editableProperties) {
 		this.editableProperties = editableProperties;
 	}
 	
@@ -39,6 +39,13 @@ class PropertiesControllerHelper {
 		controller.negativeExamplesTreatment.getItems().addAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
 		controller.optimizeRuleConsistency.getItems().addAll(parametersService.getOptimizeRuleConsistencyInVCDomLEMWrt());
 		controller.ruleConditionsSelectionMethod.getItems().addAll(parametersService.getRuleConditionsSelectionMethodInVCDomLEM());
+		
+		controller.allowEmptyRules.getItems().addAll(parametersService.getBooleanParameter());
+		controller.useEdgeRegions.getItems().addAll(parametersService.getBooleanParameter());
+		
+		controller.writeDominationInformation.getItems().addAll(parametersService.getBooleanParameter());
+		controller.writeRulesStatistics.getItems().addAll(parametersService.getBooleanParameter());
+		controller.writeLearningPositiveExamples.getItems().addAll(parametersService.getBooleanParameter());
 	}
 	
 	void clearForm() {
@@ -74,12 +81,12 @@ class PropertiesControllerHelper {
 		editableProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(emptyParameter);
 		editableProperties.setRuleConditionsSelectionMethodInVCDomLEM(emptyParameter);
 		
-		editableProperties.setAllowEmptyRulesInVCDomLEM(null);
-		editableProperties.setUseEdgeRegionsInVCDomLEM(null);
+		editableProperties.setAllowEmptyRulesInVCDomLEM(emptyParameter);
+		editableProperties.setUseEdgeRegionsInVCDomLEM(emptyParameter);
 		
-		editableProperties.setWriteDominationInformation(null);
-		editableProperties.setWriteRulesStatistics(null);
-		editableProperties.setWriteLearningPositiveExamples(null);
+		editableProperties.setWriteDominationInformation(emptyParameter);
+		editableProperties.setWriteRulesStatistics(emptyParameter);
+		editableProperties.setWriteLearningPositiveExamples(emptyParameter);
 		
 		fillFieldsValues();
 	}
@@ -115,12 +122,12 @@ class PropertiesControllerHelper {
 		controller.optimizeRuleConsistency.getSelectionModel().select(editableProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
 		controller.ruleConditionsSelectionMethod.getSelectionModel().select(editableProperties.getRuleConditionsSelectionMethodInVCDomLEM());
 		
-		controller.allowEmptyRules.setSelected(getBoolean(editableProperties.getAllowEmptyRulesInVCDomLEM()));
-		controller.useEdgeRegions.setSelected(getBoolean(editableProperties.getUseEdgeRegionsInVCDomLEM()));
+		controller.allowEmptyRules.getSelectionModel().select(editableProperties.getAllowEmptyRulesInVCDomLEM());
+		controller.useEdgeRegions.getSelectionModel().select(editableProperties.getUseEdgeRegionsInVCDomLEM());
 		
-		controller.writeDominationInformation.setSelected(getBoolean(editableProperties.getWriteDominationInformation()));
-		controller.writeRulesStatistics.setSelected(getBoolean(editableProperties.getWriteRulesStatistics()));
-		controller.writeLearningPositiveExamples.setSelected(getBoolean(editableProperties.getWriteLearningPositiveExamples()));
+		controller.writeDominationInformation.getSelectionModel().select(editableProperties.getWriteDominationInformation());
+		controller.writeRulesStatistics.getSelectionModel().select(editableProperties.getWriteRulesStatistics());
+		controller.writeLearningPositiveExamples.getSelectionModel().select(editableProperties.getWriteLearningPositiveExamples());
 	}
 	
 	JRankProperties getPropertiesFromForm() {
@@ -156,12 +163,12 @@ class PropertiesControllerHelper {
 		jRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(controller.optimizeRuleConsistency.getValue());
 		jRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(controller.ruleConditionsSelectionMethod.getValue());
 		
-		jRankProperties.setAllowEmptyRulesInVCDomLEM(controller.allowEmptyRules.isSelected());
-		jRankProperties.setUseEdgeRegionsInVCDomLEM(controller.useEdgeRegions.isSelected());
+		jRankProperties.setAllowEmptyRulesInVCDomLEM(controller.allowEmptyRules.getValue());
+		jRankProperties.setUseEdgeRegionsInVCDomLEM(controller.useEdgeRegions.getValue());
 		
-		jRankProperties.setWriteDominationInformation(controller.writeDominationInformation.isSelected());
-		jRankProperties.setWriteRulesStatistics(controller.writeRulesStatistics.isSelected());
-		jRankProperties.setWriteLearningPositiveExamples(controller.writeLearningPositiveExamples.isSelected());
+		jRankProperties.setWriteDominationInformation(controller.writeDominationInformation.getValue());
+		jRankProperties.setWriteRulesStatistics(controller.writeRulesStatistics.getValue());
+		jRankProperties.setWriteLearningPositiveExamples(controller.writeLearningPositiveExamples.getValue());
 		
 		return jRankProperties;
 	}
@@ -185,13 +192,6 @@ class PropertiesControllerHelper {
 			return Integer.valueOf(value);
 		}
 		return null;
-	}
-	
-	private boolean getBoolean(Boolean value) {
-		if(isNull(value)) {
-			return false;
-		}
-		return value;
 	}
 	
 }

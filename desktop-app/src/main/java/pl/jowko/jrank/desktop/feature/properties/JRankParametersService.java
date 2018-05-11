@@ -27,6 +27,7 @@ class JRankParametersService {
 	private List<JRankParameter> negativeExamplesTreatmentForVCDRSA;
 	private List<JRankParameter> ruleConditionsSelectionMethodInVCDomLEM;
 	private List<JRankParameter> optimizeRuleConsistencyInVCDomLEMWrt;
+	private List<JRankParameter> booleanParameter;
 	
 	private JRankParametersService() {
 		labels = LanguageService.getInstance();
@@ -99,6 +100,10 @@ class JRankParametersService {
 		return optimizeRuleConsistencyInVCDomLEMWrt;
 	}
 	
+	public List<JRankParameter> getBooleanParameter() {
+		return booleanParameter;
+	}
+	
 	private void initializeParameters() {
 		emptyParameter = new JRankParameter("", "", Integer.MIN_VALUE);
 		initTypeOfFamilyOfCriteria();
@@ -113,6 +118,7 @@ class JRankParametersService {
 		initNegativeExamplesTreatmentForVCDRSA();
 		initRuleConditionsSelectionMethodInVCDomLEM();
 		initOptimizeRuleConsistencyInVCDomLEMWrt();
+		initBooleanParameter();
 	}
 	
 	private void initTypeOfFamilyOfCriteria() {
@@ -204,6 +210,13 @@ class JRankParametersService {
 		optimizeRuleConsistencyInVCDomLEMWrt.add(getEmptyParameter());
 		optimizeRuleConsistencyInVCDomLEMWrt.add(new JRankParameter("Approximation","approximation", 0));
 		optimizeRuleConsistencyInVCDomLEMWrt.add(new JRankParameter("Set","set", 1));
+	}
+	
+	private void initBooleanParameter() {
+		booleanParameter = new ArrayList<>();
+		booleanParameter.add(getEmptyParameter());
+		booleanParameter.add(new JRankParameter("Yes","true", Integer.MAX_VALUE));
+		booleanParameter.add(new JRankParameter("No","false", Integer.MAX_VALUE));
 	}
 	
 }

@@ -7,6 +7,7 @@ import pl.jowko.jrank.desktop.MasterTest;
 import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static pl.jowko.jrank.desktop.feature.properties.Names.*;
 import static pl.jowko.jrank.desktop.feature.properties.TestPropertiesProvider.*;
 
@@ -36,14 +37,14 @@ class PropertiesSaverTest extends MasterTest {
 	void shouldMapNullStringProperty() {
 		jRankProperties.setRankingFile(null);
 		Properties properties = getProperties();
-		assertEquals(null, properties.getProperty(RANKING_FILE));
+		assertNull(properties.getProperty(RANKING_FILE));
 	}
 	
 	@Test
 	void shouldMapEmptyStringProperty() {
 		jRankProperties.setRankingFile("");
 		Properties properties = getProperties();
-		assertEquals(null, properties.getProperty(RANKING_FILE));
+		assertNull(properties.getProperty(RANKING_FILE));
 	}
 	
 	@Test
@@ -57,7 +58,7 @@ class PropertiesSaverTest extends MasterTest {
 	void shouldNotMapNullDoubleProperty() {
 		jRankProperties.setConsistencyMeasureThreshold(null);
 		Properties properties = getProperties();
-		assertEquals(null, properties.getProperty(CONSISTENCY_MEASURE_THREASHOLD));
+		assertNull(properties.getProperty(CONSISTENCY_MEASURE_THREASHOLD));
 	}
 	
 	@Test
@@ -71,24 +72,24 @@ class PropertiesSaverTest extends MasterTest {
 	void shouldNotMapNullIntegerProperty() {
 		jRankProperties.setPrecision(null);
 		Properties properties = getProperties();
-		assertEquals(null, properties.getProperty(PRECISION));
+		assertNull(properties.getProperty(PRECISION));
 	}
 	
 	@Test
 	void shouldMapBooleanProperty() {
-		jRankProperties.setWriteLearningPositiveExamples(true);
+		jRankProperties.setWriteLearningPositiveExamples(createParameter("true"));
 		Properties properties = getProperties();
-		assertEquals(true, Boolean.valueOf(properties.getProperty(WRITE_LEARNING_POSITIVE_EXAMPLES)));
+		assertEquals("true", properties.getProperty(WRITE_LEARNING_POSITIVE_EXAMPLES));
 	}
 	
 	@Test
 	void shouldNotMapNullBooleanProperty() {
-		jRankProperties.setWriteLearningPositiveExamples(false);
+		jRankProperties.setWriteLearningPositiveExamples(createParameter("false"));
 		jRankProperties.setWriteRulesStatistics(null);
 		Properties properties = getProperties();
 		
-		assertEquals(false, Boolean.valueOf(properties.getProperty(WRITE_LEARNING_POSITIVE_EXAMPLES)));
-		assertEquals(null, properties.getProperty(WRITE_RULES_STATISTICS));
+		assertEquals("false", properties.getProperty(WRITE_LEARNING_POSITIVE_EXAMPLES));
+		assertNull(properties.getProperty(WRITE_RULES_STATISTICS));
 	}
 	
 	@Test
@@ -102,14 +103,14 @@ class PropertiesSaverTest extends MasterTest {
 	void shouldNotMapNullJRankParameter() {
 		jRankProperties.setConsistencyMeasure(null);
 		Properties properties = getProperties();
-		assertEquals(null, properties.getProperty(CONSISTENCY_MEASURE));
+		assertNull(properties.getProperty(CONSISTENCY_MEASURE));
 	}
 	
 	@Test
 	void shouldNotMapEmptyJRankParameter() {
 		jRankProperties.setConsistencyMeasure(JRankParametersService.getInstance().getEmptyParameter());
 		Properties properties = getProperties();
-		assertEquals(null, properties.getProperty(CONSISTENCY_MEASURE));
+		assertNull(properties.getProperty(CONSISTENCY_MEASURE));
 	}
 	
 	@Test
