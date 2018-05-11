@@ -17,51 +17,25 @@
 
 <ScrollPane minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.PropertiesController">
 	<VBox minWidth="1000.0">
-      <Label fx:id="filesPanelLabel" text="Input and output files:">
-         <VBox.margin>
-            <Insets left="10.0" top="10.0" />
-         </VBox.margin>
-      </Label>
-      <Separator />
       <GridPane>
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="pctFileLabel" text="PCT file:" GridPane.rowIndex="1" />
-            <TextField fx:id="pctFile" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="pctApxFileLabel" text="PCT APX file:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="pctApxFile" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Label fx:id="pctRulesFileLabel" text="PCT Rules file:" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <TextField fx:id="pctRulesFile" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-            <Label fx:id="graphFileLabel" text="Preference graph file:" GridPane.rowIndex="2" />
-            <TextField fx:id="graphFile" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="rankingFileLabel" text="Ranking file:" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField fx:id="rankingFile" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <Label fx:id="learningDataFileLabel" text="Learning data file:" />
             <TextField fx:id="learningDataFile" GridPane.columnIndex="1" />
-            <Label fx:id="testDataFileLabel" text="Test data file:" GridPane.columnIndex="3" />
-            <TextField fx:id="testDataFile" GridPane.columnIndex="4" />
          </children>
          <VBox.margin>
-            <Insets left="10.0" right="10.0" top="5.0" />
+            <Insets left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </GridPane>
       <Label fx:id="dataPanelLabel" text="Some text">
          <VBox.margin>
-            <Insets left="10.0" top="10.0" />
+            <Insets left="10.0" top="5.0" />
          </VBox.margin>
       </Label>
       <Separator />
@@ -85,6 +59,48 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" top="5.0" />
+         </VBox.margin>
+      </GridPane>
+      <Label fx:id="filesPanelLabel" text="Input and output files:">
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Label>
+      <Separator />
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="pctFileLabel" text="PCT file:" />
+            <TextField fx:id="pctFile" GridPane.columnIndex="1" />
+            <Label fx:id="pctApxFileLabel" text="PCT APX file:" GridPane.columnIndex="3" />
+            <TextField fx:id="pctApxFile" GridPane.columnIndex="4" />
+            <Label fx:id="pctRulesFileLabel" text="PCT Rules file:" GridPane.columnIndex="6" />
+            <TextField fx:id="pctRulesFile" GridPane.columnIndex="7" />
+            <Label fx:id="graphFileLabel" text="Preference graph file:" GridPane.rowIndex="1" />
+            <TextField fx:id="graphFile" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="rankingFileLabel" text="Ranking file:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="rankingFile" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label fx:id="testDataFileLabel" text="Test data file:" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <TextField fx:id="testDataFile" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+         </children>
          <VBox.margin>
             <Insets left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
