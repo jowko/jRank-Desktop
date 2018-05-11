@@ -1,6 +1,6 @@
 package pl.jowko.jrank.desktop.feature.workspace;
 
-import pl.jowko.jrank.desktop.service.UserSettingsService;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 
 import java.io.File;
 import java.nio.file.Paths;

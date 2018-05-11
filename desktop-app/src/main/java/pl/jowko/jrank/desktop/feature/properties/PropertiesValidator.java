@@ -1,7 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import pl.jowko.jrank.desktop.feature.settings.Labels;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.utils.StringUtils;
 
 import static java.util.Objects.isNull;

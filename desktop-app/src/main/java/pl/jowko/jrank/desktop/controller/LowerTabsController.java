@@ -2,8 +2,8 @@ package pl.jowko.jrank.desktop.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
+import pl.jowko.jrank.desktop.feature.settings.Labels;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.settings.Labels;
 
 /**
  * Created by Piotr on 2018-04-09.

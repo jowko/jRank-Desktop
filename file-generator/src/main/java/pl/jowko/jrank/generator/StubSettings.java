@@ -1,13 +1,13 @@
 package pl.jowko.jrank.generator;
 
-import pl.jowko.jrank.desktop.settings.Labels;
-import pl.jowko.jrank.desktop.settings.UserSettings;
-import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
+import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.settings.UserSettings;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static pl.jowko.jrank.desktop.settings.JRankConst.MSG;
+import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
 
 /**
  * Created by Piotr on 2018-03-16.

@@ -1,15 +1,10 @@
-package pl.jowko.jrank.desktop.controller;
+package pl.jowko.jrank.desktop.feature.settings;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.service.UserSettingsService;
-import pl.jowko.jrank.desktop.settings.Labels;
-import pl.jowko.jrank.desktop.settings.UserSettings;
-import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
-import pl.jowko.jrank.desktop.validator.UserSettingsValidator;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;

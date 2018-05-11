@@ -1,6 +1,6 @@
 package pl.jowko.jrank.desktop.service;
 
-import pl.jowko.jrank.desktop.settings.JRankInfo;
+import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
 
 import static java.util.Objects.isNull;
 

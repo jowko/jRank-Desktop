@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.validator;
+package pl.jowko.jrank.desktop.feature.settings;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import pl.jowko.jrank.desktop.MasterTest;
-import pl.jowko.jrank.desktop.service.UserSettingsService;
-import pl.jowko.jrank.desktop.settings.UserSettings;
-import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

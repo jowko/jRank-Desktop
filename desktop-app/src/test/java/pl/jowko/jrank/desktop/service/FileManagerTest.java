@@ -4,9 +4,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
-import pl.jowko.jrank.desktop.settings.JRankInfo;
-import pl.jowko.jrank.desktop.settings.UserSettings;
-import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
+import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
+import pl.jowko.jrank.desktop.feature.settings.UserSettings;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsBuilder;
 
 import java.io.IOException;
 import java.util.Map;

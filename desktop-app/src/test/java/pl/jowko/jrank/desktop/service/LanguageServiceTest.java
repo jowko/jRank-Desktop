@@ -4,13 +4,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static pl.jowko.jrank.desktop.settings.Labels.MENU_FILE;
+import static pl.jowko.jrank.desktop.feature.settings.Labels.MENU_FILE;
 
 /**
  * Created by Piotr on 2018-05-02.

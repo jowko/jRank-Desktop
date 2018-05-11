@@ -11,8 +11,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsController;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.settings.Labels;
+import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
 
@@ -63,7 +65,7 @@ public class MenuController {
 	}
 	
 	public void onHelpAction() {
-		System.out.println("Help");
+		JRankLogger.info("Help window is not implemented yet.");
 	}
 	
 	public void onAboutAction() throws IOException {

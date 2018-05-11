@@ -9,10 +9,10 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
+import pl.jowko.jrank.desktop.feature.settings.Labels;
 import pl.jowko.jrank.desktop.service.JRankInfoService;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.settings.JRankInfo;
-import pl.jowko.jrank.desktop.settings.Labels;
 
 import java.io.IOException;
 

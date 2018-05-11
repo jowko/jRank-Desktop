@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.settings;
+package pl.jowko.jrank.desktop.feature.settings;
 
 /**
  * Created by Piotr on 2018-05-11.

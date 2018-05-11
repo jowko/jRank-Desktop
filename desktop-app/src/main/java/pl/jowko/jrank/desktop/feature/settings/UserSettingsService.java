@@ -1,6 +1,6 @@
-package pl.jowko.jrank.desktop.service;
+package pl.jowko.jrank.desktop.feature.settings;
 
-import pl.jowko.jrank.desktop.settings.UserSettings;
+import pl.jowko.jrank.desktop.service.FileManager;
 
 import java.io.IOException;
 

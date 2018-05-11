@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.service;
 
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
+import pl.jowko.jrank.desktop.feature.settings.ConfigurationInitializer;
 
 /**
  * Created by Piotr on 2018-05-02.

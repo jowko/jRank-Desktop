@@ -1,7 +1,8 @@
 package pl.jowko.jrank.generator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import pl.jowko.jrank.desktop.settings.*;
+import pl.jowko.jrank.desktop.feature.settings.ConfigPaths;
+import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.File;

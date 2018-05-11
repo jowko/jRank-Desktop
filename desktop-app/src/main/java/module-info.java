@@ -16,11 +16,10 @@ module jRank.desktop {
 	opens pl.jowko.jrank.desktop.controller;
 	opens pl.jowko.jrank.desktop.feature.learningtable;
 	opens pl.jowko.jrank.desktop.feature.properties;
+	opens pl.jowko.jrank.desktop.feature.settings;
 	opens pl.jowko.jrank.desktop.feature.tabs.upper;
 	opens pl.jowko.jrank.desktop.feature.workspace;
-	opens pl.jowko.jrank.desktop.settings;
  	
- 	exports pl.jowko.jrank.desktop.settings;
- 	exports pl.jowko.jrank.desktop.controller;
+ 	exports pl.jowko.jrank.desktop.feature.settings;
  	exports pl.jowko.jrank.desktop;
 }

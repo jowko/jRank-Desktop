@@ -2,9 +2,9 @@ package pl.jowko.jrank.desktop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
-import pl.jowko.jrank.desktop.settings.ConfigPaths;
-import pl.jowko.jrank.desktop.settings.JRankInfo;
-import pl.jowko.jrank.desktop.settings.UserSettings;
+import pl.jowko.jrank.desktop.feature.settings.ConfigPaths;
+import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
+import pl.jowko.jrank.desktop.feature.settings.UserSettings;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.File;

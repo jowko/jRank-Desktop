@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.settings;
+package pl.jowko.jrank.desktop.feature.settings;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

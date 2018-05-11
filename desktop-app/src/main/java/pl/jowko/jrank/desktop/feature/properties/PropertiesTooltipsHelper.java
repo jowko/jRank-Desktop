@@ -2,9 +2,9 @@ package pl.jowko.jrank.desktop.feature.properties;
 
 import javafx.scene.control.Tooltip;
 import javafx.util.Duration;
+import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.service.UserSettingsService;
-import pl.jowko.jrank.desktop.settings.Labels;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 

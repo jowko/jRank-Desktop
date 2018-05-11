@@ -3,7 +3,7 @@ package pl.jowko.jrank.desktop.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
-import pl.jowko.jrank.desktop.settings.JRankInfo;
+import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

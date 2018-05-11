@@ -1,16 +1,13 @@
-package pl.jowko.jrank.desktop.validator;
+package pl.jowko.jrank.desktop.feature.settings;
 
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceService;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.service.UserSettingsService;
-import pl.jowko.jrank.desktop.settings.Labels;
-import pl.jowko.jrank.desktop.settings.UserSettings;
 
 import java.util.Objects;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.jrank.desktop.settings.JRankConst.MSG;
-import static pl.jowko.jrank.desktop.settings.Labels.WORKSPACE_ERROR;
+import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
+import static pl.jowko.jrank.desktop.feature.settings.Labels.WORKSPACE_ERROR;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**

@@ -3,11 +3,9 @@ package pl.jowko.jrank.desktop.service;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import pl.jowko.jrank.desktop.settings.Labels;
+import pl.jowko.jrank.desktop.feature.settings.Labels;
 
-import static pl.jowko.jrank.desktop.settings.Labels.CONFIRM_DIALOG_NO;
-import static pl.jowko.jrank.desktop.settings.Labels.CONFIRM_DIALOG_TITLE;
-import static pl.jowko.jrank.desktop.settings.Labels.CONFIRM_DIALOG_YES;
+import static pl.jowko.jrank.desktop.feature.settings.Labels.*;
 
 /**
  * Created by Piotr on 2018-04-18.

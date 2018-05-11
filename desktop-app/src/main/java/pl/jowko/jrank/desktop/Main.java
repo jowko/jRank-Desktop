@@ -6,15 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
-import pl.jowko.jrank.desktop.service.ConfigurationInitializer;
+import pl.jowko.jrank.desktop.feature.settings.ConfigurationInitializer;
+import pl.jowko.jrank.desktop.feature.settings.Labels;
 import pl.jowko.jrank.desktop.service.LanguageService;
-import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
 
-import static pl.jowko.jrank.desktop.settings.JRankConst.MIN_HEIGHT;
-import static pl.jowko.jrank.desktop.settings.JRankConst.MIN_WIDTH;
+import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MIN_HEIGHT;
+import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MIN_WIDTH;
 
 /**
  * Created by Piotr on 2018-03-16.

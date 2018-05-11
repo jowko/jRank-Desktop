@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.service;
 
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.util.Map;
