@@ -1,6 +1,8 @@
 package pl.jowko.jrank.generator;
 
 import pl.jowko.jrank.desktop.settings.Labels;
+import pl.jowko.jrank.desktop.settings.UserSettings;
+import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +17,11 @@ class StubSettings {
 	
 	private Map<String, Map<String, String>> labels;
 	private Map<String, String> languages;
+	private UserSettings settings;
 	
 	StubSettings() {
+		createStubSettings();
+		
 		labels = new HashMap<>();
 		labels.put("POL", createPolishLabels());
 		labels.put("ENG", createEnglishLabels());
@@ -27,12 +32,25 @@ class StubSettings {
 		
 	}
 	
-	public Map<String, Map<String, String>> getLabels() {
+	Map<String, Map<String, String>> getLabels() {
 		return labels;
 	}
 	
-	public Map<String, String> getLanguages() {
+	Map<String, String> getLanguages() {
 		return languages;
+	}
+	
+	UserSettings getSettings() {
+		return settings;
+	}
+	
+	private void createStubSettings() {
+		settings = new UserSettingsBuilder()
+				.setLanguage("ENG")
+				.setWorkspacePath("\\workspace")
+				.setTooltipsEnabled(true)
+				.setAdvancedPropertiesEnabled(false)
+				.createUserSettings();
 	}
 	
 	private Map<String, String> createPolishLabels() {
@@ -59,6 +77,8 @@ class StubSettings {
 		language.put(Labels.LANGUAGE, "Język: ");
 		language.put(Labels.WORKSPACE, "Scieżka robocza: ");
 		language.put(Labels.TOOLTIPS_ENABLED, "Podpowiedzi aktywne");
+		language.put(Labels.ADVANCED_PROPERTIES_ENABLED, "Advanced properties enabled");
+		language.put(Labels.ADVANCED_PROPERTIES_ENABLED_TOOLTIP, "When advanced properties are enabled, all fields on properties form are visible by default. If this option is not enabled, most fields are hidden and you need to expand panels to edit them.");
 		language.put(Labels.US_INFO, "Ustawienia zostaną zastosowane po restarcie aplikacji.");
 		language.put(Labels.LANGUAGE_ERROR, "Kod języka jest nieprawidłowy. Wybierz inny język.\n");
 		language.put(Labels.WORKSPACE_ERROR, "Podana ścieżka katalogu roboczego: " + MSG + " nie jest prawidłowa\n");
@@ -224,6 +244,8 @@ class StubSettings {
 		language.put(Labels.LANGUAGE, "Language: ");
 		language.put(Labels.WORKSPACE, "Workspace path: ");
 		language.put(Labels.TOOLTIPS_ENABLED, "Tooltips enabled");
+		language.put(Labels.ADVANCED_PROPERTIES_ENABLED, "Advanced properties enabled");
+		language.put(Labels.ADVANCED_PROPERTIES_ENABLED_TOOLTIP, "When advanced properties are enabled, all fields on properties form are visible by default. If this option is not enabled, most fields are hidden and you need to expand panels to edit them.");
 		language.put(Labels.US_INFO, "Settings will be allied after application restart.");
 		language.put(Labels.LANGUAGE_ERROR, "Language code is not valid. Choose another language.\n");
 		language.put(Labels.WORKSPACE_ERROR, "Provided workspace folder path: " + MSG + " is not correct\n");

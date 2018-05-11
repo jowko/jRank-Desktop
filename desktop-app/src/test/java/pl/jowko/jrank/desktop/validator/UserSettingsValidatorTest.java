@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import pl.jowko.jrank.desktop.MasterTest;
 import pl.jowko.jrank.desktop.service.UserSettingsService;
 import pl.jowko.jrank.desktop.settings.UserSettings;
+import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -28,7 +29,7 @@ class UserSettingsValidatorTest extends MasterTest {
 	
 	@AfterEach
 	void restoreCorrectSettings() {
-		settingsService.setUserSettings(new UserSettings("ENG", "\\", true));
+		settingsService.setUserSettings(createUserSettings("ENG", "\\"));
 	}
 	
 	@Test
@@ -67,7 +68,7 @@ class UserSettingsValidatorTest extends MasterTest {
 			",\\",
 			"ENG,"})
 	void configurationShouldBeNotBeValid(String language, String workspacePath) {
-		settingsService.setUserSettings(new UserSettings(language, workspacePath, true));
+		settingsService.setUserSettings(createUserSettings(language, workspacePath));
 		String validationErrors = validator.validateConfiguration();
 		
 		assertFalse(validationErrors.isEmpty());
@@ -75,10 +76,16 @@ class UserSettingsValidatorTest extends MasterTest {
 	
 	@Test
 	void configurationShouldBeNotBeValidEmptyLanguage() {
-		settingsService.setUserSettings(new UserSettings("", "\\", true));
+		settingsService.setUserSettings(createUserSettings("", "\\"));
 		String validationErrors = validator.validateConfiguration();
 		
 		assertFalse(validationErrors.isEmpty());
 	}
 	
+	private UserSettings createUserSettings(String language, String workspacePath) {
+		return new UserSettingsBuilder()
+				.setLanguage(language)
+				.setWorkspacePath(workspacePath)
+				.createUserSettings();
+	}
 }

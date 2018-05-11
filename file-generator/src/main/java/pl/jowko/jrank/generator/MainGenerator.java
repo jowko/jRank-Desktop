@@ -11,8 +11,6 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static pl.jowko.jrank.desktop.settings.JRankConst.*;
-
 /**
  * Created by Piotr on 2018-03-16.
  * Used to generate settings files for desktop application. Only used for development.
@@ -36,21 +34,22 @@ public class MainGenerator {
 		JRankLogger.gen("Generating data directory: " + configPaths.getDataDirectory());
 		Files.createDirectories(Paths.get(configPaths.getDataDirectory()));
 		JRankLogger.gen("Data directory created successfully.");
+		StubSettings stubSettings = new StubSettings();
 		
 		
 		JRankLogger.gen("Generating UserSettings file: " + configPaths.getUserSettingsPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(configPaths.getUserSettingsPath()), new UserSettings());
+				.writeValue(new File(configPaths.getUserSettingsPath()), stubSettings.getSettings());
 		
 		
 		JRankLogger.gen("Generating labels file: " + configPaths.getLabelsPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(configPaths.getLabelsPath()), new StubSettings().getLabels());
+				.writeValue(new File(configPaths.getLabelsPath()), stubSettings.getLabels());
 		
 		
 		JRankLogger.gen("Generating languages file: " + configPaths.getLanguagesPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(configPaths.getLanguagesPath()), new StubSettings().getLanguages());
+				.writeValue(new File(configPaths.getLanguagesPath()), stubSettings.getLanguages());
 		
 		
 		JRankLogger.gen("Generating jRank info file: " + configPaths.getJRankInfoPath());

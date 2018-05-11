@@ -8,18 +8,10 @@ import java.io.Serializable;
  */
 public class UserSettings implements Serializable {
 
-	private String language = "ENG";
-	private String workspacePath = "\\workspace";
-	private boolean tooltipsEnabled = true;
-	
-	public UserSettings() {
-	}
-	
-	public UserSettings(String language, String workspacePath, boolean tooltipsEnabled) {
-		this.language = language;
-		this.workspacePath = workspacePath;
-		this.tooltipsEnabled = tooltipsEnabled;
-	}
+	private String language;
+	private String workspacePath;
+	private boolean tooltipsEnabled;
+	private boolean advancedPropertiesEnabled;
 	
 	public void setLanguage(String language) {
 		this.language = language;
@@ -44,4 +36,13 @@ public class UserSettings implements Serializable {
 	public void setTooltipsEnabled(boolean tooltipsEnabled) {
 		this.tooltipsEnabled = tooltipsEnabled;
 	}
+	
+	public boolean isAdvancedPropertiesEnabled() {
+		return advancedPropertiesEnabled;
+	}
+	
+	public void setAdvancedPropertiesEnabled(boolean advancedPropertiesEnabled) {
+		this.advancedPropertiesEnabled = advancedPropertiesEnabled;
+	}
+	
 }

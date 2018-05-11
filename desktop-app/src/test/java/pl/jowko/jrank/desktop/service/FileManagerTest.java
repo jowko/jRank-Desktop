@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.MasterTest;
 import pl.jowko.jrank.desktop.settings.JRankInfo;
 import pl.jowko.jrank.desktop.settings.UserSettings;
+import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
 
 import java.io.IOException;
 import java.util.Map;
@@ -26,7 +27,10 @@ class FileManagerTest extends MasterTest {
 	
 	@AfterAll
 	static void restoreUserSettings() throws IOException {
-		UserSettings userSettings = new UserSettings("ENG", "\\workspace", true);
+		UserSettings userSettings = new UserSettingsBuilder()
+				.setLanguage("ENG")
+				.setWorkspacePath("\\workspace")
+				.createUserSettings();
 		FileManager.getInstance().saveUserSettings(userSettings);
 		FileManager.getInstance().readUserSettings();
 	}
@@ -63,7 +67,10 @@ class FileManagerTest extends MasterTest {
 	
 	@Test
 	void shouldSaveUserSettings() throws IOException {
-		UserSettings userSettings = new UserSettings("LANG", "workspacePath", true);
+		UserSettings userSettings = new UserSettingsBuilder()
+				.setLanguage("LANG")
+				.setWorkspacePath("workspacePath")
+				.createUserSettings();
 		fileManager.saveUserSettings(userSettings);
 		UserSettings newSettings = fileManager.readUserSettings();
 		

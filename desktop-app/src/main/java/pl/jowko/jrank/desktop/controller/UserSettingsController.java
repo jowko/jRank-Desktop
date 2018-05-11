@@ -8,6 +8,7 @@ import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.desktop.service.UserSettingsService;
 import pl.jowko.jrank.desktop.settings.Labels;
 import pl.jowko.jrank.desktop.settings.UserSettings;
+import pl.jowko.jrank.desktop.settings.UserSettingsBuilder;
 import pl.jowko.jrank.desktop.validator.UserSettingsValidator;
 import pl.jowko.jrank.logger.JRankLogger;
 
@@ -32,13 +33,15 @@ public class UserSettingsController  {
 	@FXML
 	Label languageText;
 	@FXML
-	ChoiceBox languagesChoice;
+	ChoiceBox<String> languagesChoice;
 	@FXML
 	Label workspaceLabel;
 	@FXML
 	TextField workspaceField;
 	@FXML
 	CheckBox tooltipsEnabled;
+	@FXML
+	CheckBox advancedPropertiesEnabled;
 	@FXML
 	Label infoText;
 	
@@ -55,6 +58,7 @@ public class UserSettingsController  {
 		initializeLanguages();
 		workspaceField.setText(newUserSettings.getWorkspacePath());
 		tooltipsEnabled.setSelected(newUserSettings.isTooltipsEnabled());
+		advancedPropertiesEnabled.setSelected(newUserSettings.isAdvancedPropertiesEnabled());
 		settingsValidator = new UserSettingsValidator();
 	}
 	
@@ -86,7 +90,13 @@ public class UserSettingsController  {
 	private static void initializeNewSettings() {
 		if(Objects.isNull(newUserSettings)) {
 			UserSettings settings = UserSettingsService.getInstance().getUserSettings();
-			newUserSettings = new UserSettings(settings.getLanguage(), settings.getWorkspacePath(), settings.isTooltipsEnabled());
+			
+			newUserSettings = new UserSettingsBuilder()
+					.setLanguage(settings.getLanguage())
+					.setWorkspacePath(settings.getWorkspacePath())
+					.setTooltipsEnabled(settings.isTooltipsEnabled())
+					.setAdvancedPropertiesEnabled(settings.isAdvancedPropertiesEnabled())
+					.createUserSettings();
 		}
 	}
 	
@@ -94,10 +104,11 @@ public class UserSettingsController  {
 		newUserSettings.setWorkspacePath(workspaceField.getText());
 		newUserSettings.setLanguage(getLangCode());
 		newUserSettings.setTooltipsEnabled(tooltipsEnabled.isSelected());
+		newUserSettings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled.isSelected());
 	}
 	
 	private boolean isSettingsFormValid() {
-		String validationErrors = settingsValidator.validateUserSettingsForm((String) languagesChoice.getValue(), workspaceField.getText());
+		String validationErrors = settingsValidator.validateUserSettingsForm(languagesChoice.getValue(), workspaceField.getText());
 		if(not(validationErrors.isEmpty())) {
 			String errorDialogHeader = labels.get(Labels.VALIDATION_DIALOG_HEADER);
 			new DialogsService().showValidationFailedDialog(errorDialogHeader, validationErrors);
@@ -112,6 +123,8 @@ public class UserSettingsController  {
 		languageText.setText(labels.get(Labels.LANGUAGE));
 		workspaceLabel.setText(labels.get(Labels.WORKSPACE));
 		tooltipsEnabled.setText(labels.get(Labels.TOOLTIPS_ENABLED));
+		advancedPropertiesEnabled.setText(labels.get(Labels.ADVANCED_PROPERTIES_ENABLED));
+		advancedPropertiesEnabled.setTooltip(new Tooltip(labels.get(Labels.ADVANCED_PROPERTIES_ENABLED_TOOLTIP)));
 		infoText.setText(labels.get(Labels.US_INFO));
 	}
 	
@@ -122,7 +135,7 @@ public class UserSettingsController  {
 	}
 	
 	private String getLangCode() {
-		String language = languagesChoice.getValue().toString();
+		String language = languagesChoice.getValue();
 		
 		Optional<String> langCode = languages.entrySet()
 				.stream()

@@ -1,5 +1,6 @@
 {
   "language" : "ENG",
   "workspacePath" : "\\workspace",
-  "tooltipsEnabled" : true
+  "tooltipsEnabled" : true,
+  "advancedPropertiesEnabled" : false
 }
