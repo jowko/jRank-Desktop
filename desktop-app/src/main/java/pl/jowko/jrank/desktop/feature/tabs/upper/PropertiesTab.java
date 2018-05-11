@@ -23,6 +23,7 @@ class PropertiesTab extends JRankTab {
 		controller.initializeProperties(getJRankProperties(), workspaceItem, this);
 	}
 	
+	@Override
 	String getResourceName() {
 		return "/fxml/upperTabs/jRankSettingsTab.fxml";
 	}

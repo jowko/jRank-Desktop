@@ -13,6 +13,7 @@ class ComparisionTableTab extends JRankTab {
 		initializeTabAndGetController(workspaceItem, tabText);
 	}
 	
+	@Override
 	String getResourceName() {
 		return "/fxml/upperTabs/comparisionTableTab.fxml";
 	}

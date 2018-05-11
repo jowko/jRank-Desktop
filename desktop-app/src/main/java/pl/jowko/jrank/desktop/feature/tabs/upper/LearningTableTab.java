@@ -18,6 +18,7 @@ class LearningTableTab extends JRankTab {
 		System.out.println(container);
 	}
 	
+	@Override
 	String getResourceName() {
 		return "/fxml/upperTabs/learningTableTab.fxml";
 	}
