@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,8 +16,8 @@
 <?import pl.jowko.jrank.feature.customfx.DecimalField?>
 <?import pl.jowko.jrank.feature.customfx.IntegerField?>
 
-<ScrollPane minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.PropertiesController">
-	<VBox minWidth="1000.0">
+<ScrollPane fitToWidth="true" minHeight="250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.PropertiesController">
+	<VBox>
       <GridPane>
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
@@ -33,7 +34,7 @@
             <Insets left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </GridPane>
-      <Label fx:id="dataPanelLabel" text="Some text">
+      <Label fx:id="dataPanelLabel" text="Learning information">
          <VBox.margin>
             <Insets left="10.0" top="5.0" />
          </VBox.margin>
@@ -42,13 +43,13 @@
       <GridPane>
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="35.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="60.0" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="35.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label fx:id="referenceRankingLabel" text="Reference ranking:" />
@@ -63,214 +64,191 @@
             <Insets left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
       </GridPane>
-      <Label fx:id="filesPanelLabel" text="Input and output files:">
+      <TitledPane fx:id="parametersPane" text="Parameters">
          <VBox.margin>
-            <Insets left="10.0" />
-         </VBox.margin>
-         <padding>
             <Insets top="10.0" />
-         </padding>
-      </Label>
-      <Separator />
-      <GridPane>
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label fx:id="pctFileLabel" text="PCT file:" />
-            <TextField fx:id="pctFile" GridPane.columnIndex="1" />
-            <Label fx:id="pctApxFileLabel" text="PCT APX file:" GridPane.columnIndex="3" />
-            <TextField fx:id="pctApxFile" GridPane.columnIndex="4" />
-            <Label fx:id="pctRulesFileLabel" text="PCT Rules file:" GridPane.columnIndex="6" />
-            <TextField fx:id="pctRulesFile" GridPane.columnIndex="7" />
-            <Label fx:id="graphFileLabel" text="Preference graph file:" GridPane.rowIndex="1" />
-            <TextField fx:id="graphFile" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="rankingFileLabel" text="Ranking file:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="rankingFile" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Label fx:id="testDataFileLabel" text="Test data file:" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <TextField fx:id="testDataFile" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-         </children>
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" top="5.0" />
          </VBox.margin>
-      </GridPane>
-      <Label fx:id="parametersPanelLabel" text="Parameters">
-         <VBox.margin>
-            <Insets left="10.0" top="10.0" />
-         </VBox.margin>
-      </Label>
-      <Separator prefWidth="200.0" />
-      <GridPane>
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" top="5.0" />
-         </VBox.margin>
-         <children>
-            <Label fx:id="typeOfFamilyCriteriaLabel" text="Type of family criteria:" />
-            <Label fx:id="typeOfRulesLabel" text="Type of rules:" GridPane.columnIndex="3" />
-            <ComboBox fx:id="typeOfFamilyCriteria" minWidth="180.0" GridPane.columnIndex="1" />
-            <Label GridPane.columnIndex="6" />
-            <ComboBox fx:id="typeOfRules" minWidth="180.0" GridPane.columnIndex="4" />
-            <Label fx:id="consideredSetOfRulesLabel" text="Considered set of rules:" GridPane.columnIndex="6" />
-            <ComboBox fx:id="consideredSetOfRules" minWidth="160.0" GridPane.columnIndex="7" />
-         </children>
-      </GridPane>
-      <GridPane>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="210.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label fx:id="consistencyMeasureLabel" text="Consistency measure:" />
-            <Label fx:id="consistencyMeasureThresholdLabel" prefHeight="17.0" prefWidth="197.0" text="Consistency measure threshold:" GridPane.columnIndex="3" />
-            <ComboBox fx:id="consistencyMeasure" minWidth="180.0" GridPane.columnIndex="1" />
-            <DecimalField fx:id="consistencyMeasureThreshold" maxWidth="80.0" GridPane.columnIndex="4" />
-         </children>
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </VBox.margin>
-      </GridPane>
-      <GridPane>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="210.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label fx:id="rankingProcedureLabel" text="Ranking procedure:" />
-            <Label fx:id="dominanceLabel" text="Dominance:" GridPane.columnIndex="3" />
-            <ComboBox fx:id="rankingProcedure" minWidth="180.0" GridPane.columnIndex="1" />
-            <Label GridPane.columnIndex="6" />
-            <ComboBox fx:id="dominance" minWidth="180.0" GridPane.columnIndex="4" />
-            <Label fx:id="dominanceForPairsLabel" text="Dominance for pairs of ordinal values:" GridPane.columnIndex="6" />
-            <ComboBox fx:id="dominanceForPairs" minWidth="90.0" GridPane.columnIndex="7" />
-         </children>
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </VBox.margin>
-      </GridPane>
-      <GridPane>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="260.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="280.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label fx:id="satisfactionDegreesInGraphLabel" text="Satisfaction degrees in preference graph:" />
-            <Label fx:id="fuzzyCalculationMethodLabel" text="Fuzzy satisfaction degree calculation method:" GridPane.columnIndex="3" />
-            <ComboBox fx:id="satisfactionDegreesInGraph" minWidth="180.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="fuzzyCalculationMethod" minWidth="180.0" GridPane.columnIndex="4" />
-            <Label fx:id="negativeExamplesTreatmentLabel" text="Negative examples treatment for VCDRSA:" GridPane.rowIndex="1" />
-            <Label fx:id="optimizeRuleConsistencyLabel" text="Optimize rule consistency in VCDomLEMWrt:" GridPane.rowIndex="2" />
-            <Label fx:id="ruleConditionsSelectionMethodLabel" text="Rule conditions selection method in VCDomLEM:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ComboBox fx:id="negativeExamplesTreatment" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="optimizeRuleConsistency" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="ruleConditionsSelectionMethod" minWidth="180.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-         </children>
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" top="5.0" />
-         </VBox.margin>
-      </GridPane>
-      <GridPane>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label fx:id="allowEmptyRulesLabel" text="Allow empty rules in VCDomLEM:" />
-            <ComboBox fx:id="allowEmptyRules" prefWidth="150.0" GridPane.columnIndex="1" />
-            <Label fx:id="useEdgeRegionsLabel" text="Use edge regions in VCDomLEM:" GridPane.columnIndex="3" />
-            <ComboBox fx:id="useEdgeRegions" prefWidth="150.0" GridPane.columnIndex="4" />
-         </children>
-         <padding>
-            <Insets left="10.0" right="10.0" top="5.0" />
-         </padding>
-      </GridPane>
-      <Label fx:id="writePanelLabel" text="Write:">
-         <VBox.margin>
-            <Insets left="10.0" top="10.0" />
-         </VBox.margin>
-      </Label>
-      <Separator prefWidth="200.0" />
-      <GridPane>
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label fx:id="writeDominationInformationLabel" text="Write domination information:" />
-            <Label fx:id="writeLearningPositiveExamplesLabel" text="Write learning positive examples:" GridPane.rowIndex="1" />
-            <ComboBox fx:id="writeDominationInformation" prefWidth="150.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="writeLearningPositiveExamples" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="writeRulesStatistics" prefWidth="150.0" GridPane.columnIndex="4" />
-            <Label fx:id="writeRulesStatisticsLabel" text="Write rules statistics:" GridPane.columnIndex="3" />
-            <Label fx:id="precisionLabel" text="Precision:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <IntegerField fx:id="precision" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-         </children>
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" top="5.0" />
-         </VBox.margin>
-      </GridPane>
+         <content>
+            <VBox>
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="typeOfFamilyCriteriaLabel" text="Type of family criteria:" />
+                        <Label fx:id="typeOfRulesLabel" text="Type of rules:" GridPane.columnIndex="3" />
+                        <ComboBox fx:id="typeOfFamilyCriteria" minWidth="180.0" GridPane.columnIndex="1" />
+                        <Label GridPane.columnIndex="6" />
+                        <ComboBox fx:id="typeOfRules" minWidth="180.0" GridPane.columnIndex="4" />
+                        <Label fx:id="consideredSetOfRulesLabel" text="Considered set of rules:" GridPane.columnIndex="6" />
+                        <ComboBox fx:id="consideredSetOfRules" minWidth="160.0" GridPane.columnIndex="7" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="210.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="consistencyMeasureLabel" text="Consistency measure:" />
+                        <Label fx:id="consistencyMeasureThresholdLabel" prefHeight="17.0" prefWidth="197.0" text="Consistency measure threshold:" GridPane.columnIndex="3" />
+                        <ComboBox fx:id="consistencyMeasure" minWidth="180.0" GridPane.columnIndex="1" />
+                        <DecimalField fx:id="consistencyMeasureThreshold" maxWidth="80.0" GridPane.columnIndex="4" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="210.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="rankingProcedureLabel" text="Ranking procedure:" />
+                        <Label fx:id="dominanceLabel" text="Dominance:" GridPane.columnIndex="3" />
+                        <ComboBox fx:id="rankingProcedure" minWidth="180.0" GridPane.columnIndex="1" />
+                        <Label GridPane.columnIndex="6" />
+                        <ComboBox fx:id="dominance" minWidth="180.0" GridPane.columnIndex="4" />
+                        <Label fx:id="dominanceForPairsLabel" text="Dominance for pairs of ordinal values:" GridPane.columnIndex="6" />
+                        <ComboBox fx:id="dominanceForPairs" minWidth="90.0" GridPane.columnIndex="7" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="260.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="280.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="satisfactionDegreesInGraphLabel" text="Satisfaction degrees in preference graph:" />
+                        <Label fx:id="fuzzyCalculationMethodLabel" text="Fuzzy satisfaction degree calculation method:" GridPane.columnIndex="3" />
+                        <ComboBox fx:id="satisfactionDegreesInGraph" minWidth="180.0" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="fuzzyCalculationMethod" minWidth="180.0" GridPane.columnIndex="4" />
+                        <Label fx:id="negativeExamplesTreatmentLabel" text="Negative examples treatment for VCDRSA:" GridPane.rowIndex="1" />
+                        <Label fx:id="optimizeRuleConsistencyLabel" text="Optimize rule consistency in VCDomLEMWrt:" GridPane.rowIndex="2" />
+                        <Label fx:id="ruleConditionsSelectionMethodLabel" text="Rule conditions selection method in VCDomLEM:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="negativeExamplesTreatment" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="optimizeRuleConsistency" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="ruleConditionsSelectionMethod" minWidth="180.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="allowEmptyRulesLabel" text="Allow empty rules in VCDomLEM:" />
+                        <ComboBox fx:id="allowEmptyRules" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <Label fx:id="useEdgeRegionsLabel" text="Use edge regions in VCDomLEM:" GridPane.columnIndex="3" />
+                        <ComboBox fx:id="useEdgeRegions" prefWidth="150.0" GridPane.columnIndex="4" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="additionalInfoPane" text="Write additional information to files">
+         <content>
+            <GridPane>
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="writeDominationInformationLabel" text="Write domination information:" />
+                  <Label fx:id="writeLearningPositiveExamplesLabel" text="Write learning positive examples:" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="writeDominationInformation" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="writeLearningPositiveExamples" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="writeRulesStatistics" prefWidth="150.0" GridPane.columnIndex="4" />
+                  <Label fx:id="writeRulesStatisticsLabel" text="Write rules statistics:" GridPane.columnIndex="3" />
+                  <Label fx:id="precisionLabel" text="Precision:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <IntegerField fx:id="precision" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="filesPane" text="Input and output files:">
+         <content>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="pctFileLabel" text="PCT file:" />
+                  <TextField fx:id="pctFile" GridPane.columnIndex="1" />
+                  <Label fx:id="pctApxFileLabel" text="PCT APX file:" GridPane.columnIndex="3" />
+                  <TextField fx:id="pctApxFile" GridPane.columnIndex="4" />
+                  <Label fx:id="pctRulesFileLabel" text="PCT Rules file:" GridPane.columnIndex="6" />
+                  <TextField fx:id="pctRulesFile" GridPane.columnIndex="7" />
+                  <Label fx:id="graphFileLabel" text="Preference graph file:" GridPane.rowIndex="1" />
+                  <TextField fx:id="graphFile" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="rankingFileLabel" text="Ranking file:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="rankingFile" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Label fx:id="testDataFileLabel" text="Test data file:" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <TextField fx:id="testDataFile" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </content>
+      </TitledPane>
       <FlowPane minHeight="40.0" minWidth="1000.0" prefWrapLength="1000.0">
          <children>
             <Button fx:id="saveButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#saveAction" text="Save" />

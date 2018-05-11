@@ -36,6 +36,7 @@ class PropertiesTooltipsHelper {
 		initializeTooltipsForParameters();
 		initializeTooltipsForBooleanParameters();
 		initializeTooltipsForButtons();
+		initializeTooltipsForPanes();
 	}
 	
 	private void initializeTooltipsForFilesFields() {
@@ -87,6 +88,12 @@ class PropertiesTooltipsHelper {
 		controller.setDefaultsButton.setTooltip(getTooltip(Labels.SET_DEFAULTS_BUTTON_TOOLTIP));
 		controller.restoreValuesButton.setTooltip(getTooltip(Labels.RESTORE_VALUES_BUTTON_TOOLTIP));
 		controller.validateFormDefaults.setTooltip(getTooltip(Labels.VALIDATE_FORM_DEFAULTS_TOOLTIP));
+	}
+	
+	private void initializeTooltipsForPanes() {
+		controller.parametersPane.setTooltip(getTooltip(Labels.PARAMETERS_TOOLTIP));
+		controller.additionalInfoPane.setTooltip(getTooltip(Labels.WRITE_INFO_TOOLTIP));
+		controller.filesPane.setTooltip(getTooltip(Labels.FILE_PANE_TOOLTIP));
 	}
 	
 	private Tooltip getTooltip(String labelCode) {

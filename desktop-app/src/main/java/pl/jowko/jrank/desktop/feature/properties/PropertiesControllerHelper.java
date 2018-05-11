@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
+
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
@@ -16,10 +18,21 @@ class PropertiesControllerHelper {
 		parametersService = JRankParametersService.getInstance();
 		this.controller = controller;
 		editableProperties = controller.editableProperties;
+		
+		initTitledPanes();
+		fillComboBoxes();
+		fillFieldsValues();
 	}
 	
 	void setEditableProperties(JRankProperties editableProperties) {
 		this.editableProperties = editableProperties;
+	}
+	
+	void initTitledPanes() {
+		boolean isAdvancedPropertiesEnabled = UserSettingsService.getInstance().getUserSettings().isAdvancedPropertiesEnabled();
+		controller.filesPane.setExpanded(isAdvancedPropertiesEnabled);
+		controller.parametersPane.setExpanded(isAdvancedPropertiesEnabled);
+		controller.additionalInfoPane.setExpanded(isAdvancedPropertiesEnabled);
 	}
 	
 	void fillComboBoxes() {

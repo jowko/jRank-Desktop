@@ -122,7 +122,7 @@ class StubSettings {
 		language.put(Labels.GRAPH_FILE, "Preference graph file:");
 		language.put(Labels.RANKING_FILE, "Ranking file:");
 		
-		language.put(Labels.PROP_DATA_PANEL, "Some text");
+		language.put(Labels.PROP_DATA_PANEL, "Learning information");
 		language.put(Labels.REFERENCE_RANKING, "Reference Ranking:");
 		language.put(Labels.PAIRS, "Pairs:");
 		
@@ -144,7 +144,7 @@ class StubSettings {
 		
 		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM:");
 		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM:");
-		language.put(Labels.PROP_WRITE_PANEL, "Write:");
+		language.put(Labels.PROP_WRITE_PANEL, "Write additional information to files");
 		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information:");
 		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics:");
 		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples:");
@@ -288,7 +288,7 @@ class StubSettings {
 		language.put(Labels.GRAPH_FILE, "Preference graph file:");
 		language.put(Labels.RANKING_FILE, "Ranking file:");
 		
-		language.put(Labels.PROP_DATA_PANEL, "Some text");
+		language.put(Labels.PROP_DATA_PANEL, "Learning information");
 		language.put(Labels.REFERENCE_RANKING, "Reference Ranking:");
 		language.put(Labels.PAIRS, "Pairs:");
 		
@@ -310,7 +310,7 @@ class StubSettings {
 		
 		language.put(Labels.ALLOW_EMPTY_RULES, "Allow empty rules in VCDomLEM:");
 		language.put(Labels.USE_EDGE_REGIONS, "Use edge regions in VCDomLEM:");
-		language.put(Labels.PROP_WRITE_PANEL, "Write:");
+		language.put(Labels.PROP_WRITE_PANEL, "Write additional information to files");
 		language.put(Labels.WRITE_DOMINATION_INFO, "Write domination information:");
 		language.put(Labels.WRITE_RULES_STAT, "Write rule statistics:");
 		language.put(Labels.WRITE_LEARNING_EXAMPLES, "Write learning positive examples:");
@@ -381,6 +381,10 @@ class StubSettings {
 		language.put(Labels.SET_DEFAULTS_BUTTON_TOOLTIP, "Replace form values with default values from default.properties file");
 		language.put(Labels.RESTORE_VALUES_BUTTON_TOOLTIP, "Restore original values from file");
 		language.put(Labels.VALIDATE_FORM_DEFAULTS_TOOLTIP, "Replace empty options with defaults and validate result");
+		
+		language.put(Labels.PARAMETERS_TOOLTIP, "This panel contains all parameters related with used algorithms in jRank");
+		language.put(Labels.WRITE_INFO_TOOLTIP, "This panel contains all options related with saving results to files");
+		language.put(Labels.FILE_PANE_TOOLTIP, "This panel contains file names to with results will be saved. All options can be derived from 'Learning data file' field.");
 	}
 	
 }

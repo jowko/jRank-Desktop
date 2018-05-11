@@ -24,7 +24,7 @@ class PropertiesTranslatorHelper {
 	}
 	
 	private void translateFilesFields() {
-		controller.filesPanelLabel.setText(getText(Labels.PROP_FILES_PANEL));
+		controller.filesPane.setText(getText(Labels.PROP_FILES_PANEL));
 		controller.learningDataFileLabel.setText(getText(Labels.LEARNING_FILE));
 		controller.testDataFileLabel.setText(getText(Labels.TEST_FILE));
 		controller.pctFileLabel.setText(getText(Labels.PCT_FILE));
@@ -41,7 +41,7 @@ class PropertiesTranslatorHelper {
 	}
 	
 	private void translateParametersFields() {
-		controller.parametersPanelLabel.setText(getText(Labels.PROP_PARAMETERS_PANEL));
+		controller.parametersPane.setText(getText(Labels.PROP_PARAMETERS_PANEL));
 		controller.typeOfFamilyCriteriaLabel.setText(getText(Labels.TYPE_OF_FAMILY_CRITERIA));
 		controller.typeOfRulesLabel.setText(getText(Labels.TYPE_OF_RULES));
 		controller.consideredSetOfRulesLabel.setText(getText(Labels.CONSIDERED_SET_OF_RULES));
@@ -64,7 +64,7 @@ class PropertiesTranslatorHelper {
 		controller.allowEmptyRulesLabel.setText(getText(Labels.ALLOW_EMPTY_RULES));
 		controller.useEdgeRegionsLabel.setText(getText(Labels.USE_EDGE_REGIONS));
 		
-		controller.writePanelLabel.setText(getText(Labels.PROP_WRITE_PANEL));
+		controller.additionalInfoPane.setText(getText(Labels.PROP_WRITE_PANEL));
 		controller.writeDominationInformationLabel.setText(getText(Labels.WRITE_DOMINATION_INFO));
 		controller.writeRulesStatisticsLabel.setText(getText(Labels.WRITE_RULES_STAT));
 		controller.writeLearningPositiveExamplesLabel.setText(getText(Labels.WRITE_LEARNING_EXAMPLES));

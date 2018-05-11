@@ -21,7 +21,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  */
 public class PropertiesController {
 	
-	@FXML Label filesPanelLabel;
+	@FXML TitledPane filesPane;
 	@FXML Label pctFileLabel;
 	@FXML TextField pctFile;
 	@FXML Label pctApxFileLabel;
@@ -43,7 +43,7 @@ public class PropertiesController {
 	@FXML Label pairsLabel;
 	@FXML TextField pairs;
 	
-	@FXML Label parametersPanelLabel;
+	@FXML TitledPane parametersPane;
 	@FXML Label typeOfFamilyCriteriaLabel;
 	@FXML ComboBox<JRankParameter> typeOfFamilyCriteria;
 	@FXML Label typeOfRulesLabel;
@@ -82,7 +82,7 @@ public class PropertiesController {
 	@FXML Label useEdgeRegionsLabel;
 	@FXML ComboBox<JRankParameter> useEdgeRegions;
 	
-	@FXML Label writePanelLabel;
+	@FXML TitledPane additionalInfoPane;
 	@FXML Label writeDominationInformationLabel;
 	@FXML ComboBox<JRankParameter> writeDominationInformation;
 	@FXML Label writeRulesStatisticsLabel;
@@ -113,8 +113,7 @@ public class PropertiesController {
 		labels = LanguageService.getInstance();
 		editableProperties = (JRankProperties) Cloner.deepClone(properties);
 		controllerHelper = new PropertiesControllerHelper(this);
-		controllerHelper.fillComboBoxes();
-		controllerHelper.fillFieldsValues();
+		
 		initializeCloseEvent();
 		new PropertiesTooltipsHelper(this).initializeTooltips();
 		new PropertiesTranslatorHelper(this).translateFields();
