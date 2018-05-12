@@ -15,7 +15,7 @@ class LearningTableTab extends JRankTab {
 	LearningTableTab(WorkspaceItem workspaceItem, String tabText) throws IOException {
 		LearningTableController controller = initializeTabAndGetController(workspaceItem, tabText);
 		MemoryContainer container = ISFLoader.loadISFIntoMemoryContainer(workspaceItem.getFilePath());
-		System.out.println(container);
+		controller.initializeTable(container);
 	}
 	
 	@Override
