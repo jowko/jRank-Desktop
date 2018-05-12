@@ -9,7 +9,7 @@ import static java.util.Objects.isNull;
 /**
  * Created by Piotr on 2018-05-09.
  */
-class NumberField extends TextField {
+public class NumberField extends TextField {
 	
 	private Pattern numberPattern;
 	
