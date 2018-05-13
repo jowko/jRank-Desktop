@@ -1,12 +1,9 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import javafx.event.Event;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import pl.jowko.jrank.feature.customfx.NumberField;
+import pl.jowko.jrank.feature.customfx.CustomTextField;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
@@ -14,9 +11,9 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 /**
  * Created by Piotr on 2018-05-11.
  */
-abstract class NumberFieldTableCell <T> extends TableCell<T, Field> {
+abstract class CustomFieldTableCell<T> extends TableCell<T, Field> {
 	
-	NumberField textField;
+	CustomTextField textField;
 	
 	abstract void createTextField();
 	

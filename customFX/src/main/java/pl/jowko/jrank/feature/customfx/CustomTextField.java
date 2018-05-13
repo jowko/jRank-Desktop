@@ -9,12 +9,12 @@ import static java.util.Objects.isNull;
 /**
  * Created by Piotr on 2018-05-09.
  */
-public class NumberField extends TextField {
+public class CustomTextField extends TextField {
 	
-	private Pattern numberPattern;
+	private Pattern pattern;
 	
-	NumberField(String pattern) {
-		numberPattern = Pattern.compile(pattern);
+	CustomTextField(String pattern) {
+		this.pattern = Pattern.compile(pattern);
 	}
 	
 	@Override
@@ -34,9 +34,9 @@ public class NumberField extends TextField {
 	private boolean validate(int start, String text) {
 		String currentText = isNull(getText()) ? "" : getText();
 		if(start == 0) {
-			return numberPattern.matcher(text + currentText).matches();
+			return pattern.matcher(text + currentText).matches();
 		} else {
-			return numberPattern.matcher(currentText + text).matches();
+			return pattern.matcher(currentText + text).matches();
 		}
 	}
 	

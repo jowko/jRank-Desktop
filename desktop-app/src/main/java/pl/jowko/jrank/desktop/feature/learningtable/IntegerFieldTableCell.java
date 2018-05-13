@@ -5,7 +5,7 @@ import pl.jowko.jrank.feature.customfx.IntegerField;
 /**
  * Created by Piotr on 2018-05-09.
  */
-class IntegerFieldTableCell <T> extends NumberFieldTableCell <T> {
+class IntegerFieldTableCell <T> extends CustomFieldTableCell<T> {
 	
 	@Override
 	void createTextField() {

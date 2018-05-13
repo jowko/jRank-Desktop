@@ -5,7 +5,7 @@ import pl.jowko.jrank.feature.customfx.DecimalField;
 /**
  * Created by Piotr on 2018-05-11.
  */
-class DecimalFieldTableCell <T> extends NumberFieldTableCell <T> {
+class DecimalFieldTableCell <T> extends CustomFieldTableCell<T> {
 	
 	@Override
 	void createTextField() {

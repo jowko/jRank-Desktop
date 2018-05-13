@@ -76,7 +76,7 @@ public class LearningTableController {
 		} else if(attribute.getInitialValue() instanceof TableEnumField){
 			handleEnumFieldFactory(column, attribute);
 		} else {
-			column.setCellFactory(TextFieldTableCell.forTableColumn(new FieldStringConverter()));
+			column.setCellFactory(col -> new StringFieldTableCell<>());
 		}
 	}
 	
