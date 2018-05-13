@@ -87,6 +87,14 @@ public class ColumnDialogController {
 		stage.close();
 	}
 	
+	public void clearFormAction() {
+		nameField.setText("");
+		typeField.getSelectionModel().clearSelection();
+		kindField.getSelectionModel().selectFirst();
+		preferenceField.getSelectionModel().clearSelection();
+		enumsField.setText("");
+	}
+	
 	private void initializeAddAttributeForm() {
 		nameField.setPattern("[A-Za-z_][A-Za-z_0-9]*");
 		paramService = new AttributeParamService();

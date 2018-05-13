@@ -64,7 +64,7 @@
                <children>
       			 <Button fx:id="saveButton" minHeight="30.0" minWidth="80.0" onAction="#addNewColumnAction" text="Save" />
                   <Button fx:id="cancelButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
-      			 <Button fx:id="clearFormButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" text="Clear form">
+      			 <Button fx:id="clearFormButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#clearFormAction" text="Clear form">
 			 </Button>
                </children>
                <opaqueInsets>
