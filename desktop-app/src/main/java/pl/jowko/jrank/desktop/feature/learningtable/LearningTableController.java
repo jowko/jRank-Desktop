@@ -5,8 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogController;
@@ -16,7 +15,9 @@ import pl.poznan.put.cs.idss.jrs.types.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
 import static javafx.collections.FXCollections.observableArrayList;
 
 /**
@@ -25,16 +26,26 @@ import static javafx.collections.FXCollections.observableArrayList;
 public class LearningTableController {
 	
 	@FXML
+	Button addAttributeButton;
+	@FXML
+	Label selectAttributeLabel;
+	@FXML
+	ComboBox<String> selectAttribute;
+	@FXML
+	Button removeAttributeButton;
+	@FXML
+	Button editAttributeButton;
+	
+	@FXML
 	TableView<ObservableList<Field>> learningTable;
 	
 	private LearningTable table;
-	private List<Attribute> columns; //TODO is this needed?
 	
 	public void initializeTable(MemoryContainer container) {
 		table = new LearningTable(container);
-		columns = new ArrayList<>();
 		new EnumReplacer().replaceJRSEnumsWithTableEnumFields(table);
 		initializeTable();
+		setItemsToAttributeComboBox();
 	}
 	
 	public void addNewAttributeAction() throws IOException  {
@@ -45,14 +56,32 @@ public class LearningTableController {
 	}
 	
 	public void createNewColumn(Attribute attribute) {
-		TableColumn<ObservableList<Field>, Field> column = new TableColumn<>(attribute.getName());
+		AttributeTableColumn column = new AttributeTableColumn(attribute.getName(), attribute);
 		int attributeIndex = learningTable.getColumns().size();
-		setCellFactories(column, attribute, attributeIndex);
+		setCellFactories(column, attributeIndex);
 		column.setOnEditCommit(this::handleEditCellAction);
 		column.setMinWidth(50d);
 		
 		learningTable.getColumns().add(column);
-		columns.add(attribute);
+		setItemsToAttributeComboBox();
+	}
+	
+	public void removeAttributeAction() {
+		TableColumn tableColumn = getSelectedColumn();
+		if(isNull(tableColumn))
+			return;
+		
+		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
+		learningTable.getColumns().remove(tableColumn);
+		
+		ObservableList<ObservableList<Field>> list = getLearningTable().getItems();
+		list.forEach(row -> row.remove(attributeIndex));
+		recreateCellValuesFactories();
+		setItemsToAttributeComboBox();
+	}
+	
+	public void editAttributeAction() {
+	
 	}
 	
 	public TableView<ObservableList<Field>> getLearningTable() {
@@ -69,10 +98,43 @@ public class LearningTableController {
 		}
 	}
 	
-	private void setCellFactories(TableColumn<ObservableList<Field>, Field> column, Attribute attribute, int finalIdx) {
+	private TableColumn getSelectedColumn() {
+		String attributeName = selectAttribute.getValue();
+		
+		return learningTable.getColumns().stream()
+				.filter(column -> column.getText().equalsIgnoreCase(attributeName))
+				.findAny()
+				.orElse(null);
+	}
+	
+	private void setItemsToAttributeComboBox() {
+		selectAttribute.setItems(observableArrayList(
+				learningTable.getColumns().stream()
+						.map(TableColumn::getText)
+						.collect(Collectors.toList()))
+		);
+	}
+	
+	/**
+	 * When removing column from table, indexes are not correctly related to columns.
+	 * After column removal cellValueFactory must be recreated with new indexes.
+	 */
+	private void recreateCellValuesFactories() {
+		List<TableColumn<ObservableList<Field>, ?>> columns = learningTable.getColumns();
+		for(int i=0; i<columns.size(); i++) {
+			AttributeTableColumn column = (AttributeTableColumn) columns.get(i);
+			final int finalIdx = i;
+			column.setCellValueFactory(param ->
+					new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
+			);
+		}
+	}
+	
+	private void setCellFactories(AttributeTableColumn column, int finalIdx) {
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
 		);
+		Attribute attribute = column.getAttribute();
 		
 		if(attribute.getInitialValue() instanceof IntegerField) {
 			column.setCellFactory(col -> new IntegerFieldTableCell<>());
