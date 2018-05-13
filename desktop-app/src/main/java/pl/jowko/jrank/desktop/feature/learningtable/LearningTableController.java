@@ -1,14 +1,17 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static javafx.collections.FXCollections.observableArrayList;
@@ -26,6 +29,7 @@ public class LearningTableController {
 	
 	public void initializeTable(MemoryContainer container) {
 		table = new LearningTable(container);
+		new EnumReplacer().replaceJRSEnumsWithTableEnumFields(table);
 		initializeTable();
 	}
 	
@@ -69,9 +73,27 @@ public class LearningTableController {
 			column.setCellFactory(col -> new IntegerFieldTableCell<>());
 		} else if(attribute.getInitialValue() instanceof FloatField) {
 			column.setCellFactory(col -> new DecimalFieldTableCell<>());
+		} else if(attribute.getInitialValue() instanceof TableEnumField){
+			handleEnumFieldFactory(column, attribute);
 		} else {
 			column.setCellFactory(TextFieldTableCell.forTableColumn(new FieldStringConverter()));
 		}
+	}
+	
+	private void handleEnumFieldFactory(TableColumn<ObservableList<Field>, Field> column, Attribute attribute) {
+		TableEnumField enumField = (TableEnumField) attribute.getInitialValue();
+		List<String> comboValues = new ArrayList<>(enumField.getDomain().getElementsNames());
+		List<TableEnumField> fields = new ArrayList<>();
+		
+		for(String value: comboValues) {
+			fields.add(new TableEnumField(value, enumField.getDomain()));
+		}
+		
+		column.setCellFactory(ComboBoxTableCell.forTableColumn(
+				new EnumFieldConverter(enumField.getDomain()),
+				FXCollections.observableArrayList(fields)
+		));
+		column.setMinWidth(100d);
 	}
 	
 	private void handleEditCellAction(TableColumn.CellEditEvent<ObservableList<Field>, Field> t) {
@@ -86,8 +108,8 @@ public class LearningTableController {
 			((StringField) field).set(fieldValue);
 		}
 		
-		if(field instanceof EnumField) {
-			((EnumField) field).set(fieldValue);
+		if(field instanceof TableEnumField) {
+			((TableEnumField) field).set(fieldValue);
 		}
 		
 		if(field instanceof FloatField) {
