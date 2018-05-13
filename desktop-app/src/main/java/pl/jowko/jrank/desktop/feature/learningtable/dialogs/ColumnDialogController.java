@@ -4,16 +4,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableController;
+import pl.jowko.jrank.desktop.feature.learningtable.TableEnumField;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.feature.customfx.CustomTextArea;
 import pl.jowko.jrank.feature.customfx.StringTextField;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.*;
@@ -46,7 +46,7 @@ public class ColumnDialogController {
 	@FXML
 	Label enumsLabel;
 	@FXML
-	TextArea enumsField;
+	CustomTextArea enumsField;
 	@FXML
 	Button saveButton;
 	@FXML
@@ -88,32 +88,52 @@ public class ColumnDialogController {
 	}
 	
 	public void clearFormAction() {
-		nameField.setText("");
+		nameField.clear();
 		typeField.getSelectionModel().clearSelection();
 		kindField.getSelectionModel().selectFirst();
 		preferenceField.getSelectionModel().clearSelection();
-		enumsField.setText("");
+		enumsField.clear();
 	}
 	
 	private void initializeAddAttributeForm() {
 		nameField.setPattern("[A-Za-z_][A-Za-z_0-9]*");
+		enumsField.setPattern("[A-Za-z_,0-9]*");
 		paramService = new AttributeParamService();
 		typeField.getItems().addAll(FieldType.values());
+		addFieldTypeListener();
 		kindField.setItems(observableArrayList(paramService.getKinds()));
 		kindField.getSelectionModel().selectFirst();
 		addKindFieldListener();
 		preferenceField.setItems(observableArrayList(paramService.getPreferences()));
+		initializeTooltips();
 	}
 	
 	private void addKindFieldListener() {
 		kindField.valueProperty().addListener((observable, oldValue, newValue) -> {
-			if(not(newValue.equals(paramService.getDefaultKind()))) {
+			if(newValue.equals(paramService.getDefaultKind())) {
 				preferenceField.getSelectionModel().clearSelection();
-				preferenceField.setDisable(true);
-			} else {
 				preferenceField.setDisable(false);
+			} else {
+				preferenceField.setDisable(true);
 			}
 		});
+	}
+	
+	private void addFieldTypeListener() {
+		typeField.valueProperty().addListener((observable, oldValue, newValue) -> {
+			if(FieldType.ENUM_FIELD.equals(typeField.getValue())) {
+				enumsField.setDisable(false);
+			} else {
+				enumsField.setDisable(true);
+				enumsField.clear();
+			}
+		});
+	}
+	
+	private void initializeTooltips() {
+		boolean isTooltipsEnabled = UserSettingsService.getInstance().getUserSettings().isTooltipsEnabled();
+		if(isTooltipsEnabled)
+			enumsField.setTooltip(new Tooltip("Write cardinal values here separated by coma."));
 	}
 	
 	private boolean isAddNewColumnFormValid() {
@@ -126,6 +146,9 @@ public class ColumnDialogController {
 		}
 		if(isNull(preferenceField.getValue()) && kindField.getValue().getValue() == 0) {
 			errorsMsg += "Preference type should be set\n";
+		}
+		if(FieldType.ENUM_FIELD.equals(typeField.getValue()) && enumsField.getText().isEmpty()) {
+			errorsMsg += "Enum values should not be empty\n";
 		}
 		
 		if(not(errorsMsg.isEmpty())) {
@@ -157,10 +180,16 @@ public class ColumnDialogController {
 			case DECIMAL_FIELD:
 				return new FloatField();
 			case ENUM_FIELD:
-				return new StringField(); //TODO finish him
+				return createEnumFromForm();
 		}
 		JRankLogger.warn("Field type was not recognized. Setting default StringField.");
 		
 		return new StringField();
+	}
+	
+	private TableEnumField createEnumFromForm() {
+		String[] enums = enumsField.getText().split(",");
+		EnumDomain domain = new EnumDomain(enums);
+		return new TableEnumField(enums[0], domain);
 	}
 }

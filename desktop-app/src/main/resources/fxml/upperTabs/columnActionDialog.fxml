@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import pl.jowko.jrank.feature.customfx.StringTextField?>
+<?import pl.jowko.jrank.feature.customfx.CustomTextArea?>
 <DialogPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogController">
    <content>
       <VBox>
@@ -47,11 +48,11 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </Label>
-      			 <TextArea fx:id="enumsField" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      			 <CustomTextArea fx:id="enumsField" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
-                  </TextArea>
+                  </CustomTextArea>
                </children>
                <opaqueInsets>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

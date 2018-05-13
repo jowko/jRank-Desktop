@@ -8,13 +8,13 @@ import pl.poznan.put.cs.idss.jrs.types.EnumField;
  * This class replaces equals method due to JavaFX passing null to equals method when ComboBox is created.
  * Using original EnumField results in NullPointerException
  */
-class TableEnumField extends EnumField {
+public class TableEnumField extends EnumField {
 	
-	TableEnumField(EnumField field) {
+	public TableEnumField(EnumField field) {
 		super(field.getIndex(), field.getDomain());
 	}
 	
-	TableEnumField(String name, EnumDomain domain) {
+	public TableEnumField(String name, EnumDomain domain) {
 		super(name, domain);
 	}
 	
