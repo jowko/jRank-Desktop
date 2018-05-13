@@ -17,6 +17,10 @@ public class CustomTextField extends TextField {
 		this.pattern = Pattern.compile(pattern);
 	}
 	
+	public void setPattern(String pattern) {
+		this.pattern = Pattern.compile(pattern);
+	}
+	
 	@Override
 	public void replaceText(int start, int end, String text) {
 		if (validate(start, text)) {

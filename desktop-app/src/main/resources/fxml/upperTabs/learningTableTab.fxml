@@ -4,20 +4,22 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.learningtable.LearningTableController">
   <children>
-     <TitledPane animated="false" expanded="false" text="Add new attribute">
-       <content>
-         <AnchorPane minHeight="0.0" minWidth="0.0">
-             <Button onAction="#addNewColumnAction" text="Add column" />
-         </AnchorPane>
-       </content>
+     <TitledPane animated="false" text="Column actions">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
+         <content>
+            <FlowPane>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#addNewAttributeAction" text="Add new attribute" />
+               </children>
+            </FlowPane>
+         </content>
      </TitledPane>
       <TableView fx:id="learningTable" editable="true" layoutX="10.0" layoutY="100.0">
           <columns>

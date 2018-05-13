@@ -1,7 +1,10 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import javafx.event.Event;
-import javafx.scene.control.*;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
+import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
 import pl.jowko.jrank.feature.customfx.CustomTextField;
 import pl.poznan.put.cs.idss.jrs.types.Field;

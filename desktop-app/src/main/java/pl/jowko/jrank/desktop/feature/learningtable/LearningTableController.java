@@ -4,13 +4,16 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
-import javafx.scene.control.cell.TextFieldTableCell;
+import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogController;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,36 +28,23 @@ public class LearningTableController {
 	TableView<ObservableList<Field>> learningTable;
 	
 	private LearningTable table;
-	private List<Attribute> columns;
+	private List<Attribute> columns; //TODO is this needed?
 	
 	public void initializeTable(MemoryContainer container) {
 		table = new LearningTable(container);
+		columns = new ArrayList<>();
 		new EnumReplacer().replaceJRSEnumsWithTableEnumFields(table);
 		initializeTable();
 	}
 	
-	private void initializeTable() {
-		columns = table.getAttributes();
-		
-		for(Attribute attribute : columns) {
-			createNewColumn(attribute);
-		}
-		
-		for(Example example : table.getExamples()) {
-			learningTable.getItems().add(observableArrayList(example.getFields()));
-		}
+	public void addNewAttributeAction() throws IOException  {
+		ResourceLoader resourceLoader = new ResourceLoader("/fxml/upperTabs/columnActionDialog.fxml");
+		Parent parent = resourceLoader.load();
+		ColumnDialogController controller = resourceLoader.getController();
+		controller.initializeDialog(this, parent);
 	}
 	
-	public void addNewColumnAction() {
-		Attribute attribute = new Attribute("someName", new StringField());
-		columns.add(attribute);
-		createNewColumn(attribute);
-		
-		ObservableList<ObservableList<Field>> list = learningTable.getItems();
-		list.forEach(row -> row.add(new StringField()));
-	}
-	
-	private void createNewColumn(Attribute attribute) {
+	public void createNewColumn(Attribute attribute) {
 		TableColumn<ObservableList<Field>, Field> column = new TableColumn<>(attribute.getName());
 		int attributeIndex = learningTable.getColumns().size();
 		setCellFactories(column, attribute, attributeIndex);
@@ -62,6 +52,21 @@ public class LearningTableController {
 		column.setMinWidth(50d);
 		
 		learningTable.getColumns().add(column);
+		columns.add(attribute);
+	}
+	
+	public TableView<ObservableList<Field>> getLearningTable() {
+		return learningTable;
+	}
+	
+	private void initializeTable() {
+		for(Attribute attribute : table.getAttributes()) {
+			createNewColumn(attribute);
+		}
+		
+		for(Example example : table.getExamples()) {
+			learningTable.getItems().add(observableArrayList(example.getFields()));
+		}
 	}
 	
 	private void setCellFactories(TableColumn<ObservableList<Field>, Field> column, Attribute attribute, int finalIdx) {
