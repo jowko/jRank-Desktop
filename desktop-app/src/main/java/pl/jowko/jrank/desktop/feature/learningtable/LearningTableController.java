@@ -7,9 +7,7 @@ import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogController;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
-import pl.poznan.put.cs.idss.jrs.types.Attribute;
-import pl.poznan.put.cs.idss.jrs.types.Example;
-import pl.poznan.put.cs.idss.jrs.types.Field;
+import pl.poznan.put.cs.idss.jrs.types.*;
 
 import java.io.IOException;
 import java.util.stream.Collectors;
@@ -55,7 +53,7 @@ public class LearningTableController {
 	}
 	
 	public void createNewColumn(Attribute attribute) {
-		AttributeTableColumn column = new AttributeTableColumn(attribute.getName(), attribute);
+		AttributeTableColumn column = new AttributeTableColumn(getColumnText(attribute), attribute);
 		int attributeIndex = learningTable.getColumns().size();
 		tableHelper.setCellFactories(column, attributeIndex);
 		column.setOnEditCommit(col -> tableHelper.handleEditCellAction(col));
@@ -101,7 +99,9 @@ public class LearningTableController {
 		String attributeName = selectAttribute.getValue();
 		
 		return learningTable.getColumns().stream()
-				.filter(column -> column.getText().equalsIgnoreCase(attributeName))
+				.filter(column ->
+					((AttributeTableColumn) column).getAttribute().getName().equalsIgnoreCase(attributeName)
+				)
 				.findAny()
 				.orElse(null);
 	}
@@ -109,9 +109,42 @@ public class LearningTableController {
 	private void setItemsToAttributeComboBox() {
 		selectAttribute.setItems(observableArrayList(
 				learningTable.getColumns().stream()
-						.map(TableColumn::getText)
+						.map(column -> ((AttributeTableColumn) column).getAttribute().getName())
 						.collect(Collectors.toList()))
 		);
+	}
+	
+	private String getColumnText(Attribute attribute) {
+		return attribute.getName() +
+				'\n' +
+				getColumnFieldType(attribute.getInitialValue()) +
+				'\n' +
+				getColumnPreference(attribute.getPreferenceType(), attribute.getKind());
+	}
+	
+	private String getColumnPreference(int preference, int kind) {
+		if(preference == 1)
+			return "Gain";
+		if(preference == 2)
+			return "Cost";
+		if(kind == 1)
+			return "Decision";
+		if(kind == 2)
+			return "Description";
+		return "";
+	}
+	
+	private String getColumnFieldType(Field initialValue) {
+		if(initialValue instanceof StringField)
+			return "String";
+		if(initialValue instanceof IntegerField)
+			return "Integer";
+		if(initialValue instanceof FloatField)
+			return "Float";
+		if(initialValue instanceof TableEnumField)
+			return "Enum";
+		
+		return "";
 	}
 	
 }
