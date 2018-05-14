@@ -1,8 +1,13 @@
 package pl.jowko.jrank.desktop.feature.settings;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.logger.JRankLogger;
@@ -19,7 +24,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  */
 public class UserSettingsController  {
 	
-	private static Stage stage;
+	private Stage stage;
 	
 	@FXML
 	Button saveButton;
@@ -57,6 +62,16 @@ public class UserSettingsController  {
 		settingsValidator = new UserSettingsValidator();
 	}
 	
+	public void createWindow(Parent root) {
+		stage = new Stage(StageStyle.DECORATED);
+		stage.setScene(new Scene(root));
+		stage.setTitle(labels.get(Labels.US_TITLE));
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.setResizable(false);
+		stage.initOwner(Main.getScene().getWindow());
+		stage.showAndWait();
+	}
+	
 	public void onSaveAction() {
 		if(not(isSettingsFormValid())) {
 			return;
@@ -76,10 +91,6 @@ public class UserSettingsController  {
 	
 	public void onCancelAction() {
 		stage.close();
-	}
-	
-	public static void setStage(Stage stage) {
-		UserSettingsController.stage = stage;
 	}
 	
 	private static void initializeNewSettings() {
@@ -137,10 +148,8 @@ public class UserSettingsController  {
 				.filter(entry -> Objects.equals(entry.getValue(), language))
 				.map(Map.Entry::getKey)
 				.findFirst();
-		if(langCode.isPresent()) {
-			return langCode.get();
-		}
-		return null;
+		
+		return langCode.orElse(null);
 	}
 	
 }

@@ -40,11 +40,10 @@ public class AboutController {
 	@FXML
 	ButtonType cancelButton;
 	
-	private static LanguageService labels;
+	private LanguageService labels;
 	
-	public static void createWindow() throws IOException {
+	void createWindow(Parent root) {
 		Dialog dialog = new Dialog<>();
-		Parent root = new ResourceLoader("/fxml/about.fxml").load();
 		dialog.setDialogPane((DialogPane) root);
 		dialog.setTitle(labels.get(Labels.ABOUT_TITLE));
 		dialog.initModality(Modality.APPLICATION_MODAL);

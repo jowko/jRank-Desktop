@@ -51,17 +51,10 @@ public class MenuController {
 	}
 	
 	public void onUserSettingsAction() throws IOException {
-		Parent root = new ResourceLoader("/fxml/userSettings.fxml").load();
-		
-		Stage stage = new Stage(StageStyle.DECORATED);
-		UserSettingsController.setStage(stage);
-		
-		stage.setScene(new Scene(root));
-		stage.setTitle(labels.get(Labels.US_TITLE));
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setResizable(false);
-		stage.initOwner(Main.getScene().getWindow());
-		stage.showAndWait();
+		ResourceLoader loader = new ResourceLoader("/fxml/userSettings.fxml");
+		Parent root = loader.load();
+		UserSettingsController controller = loader.getController();
+		controller.createWindow(root);
 	}
 	
 	public void onHelpAction() {
@@ -69,7 +62,10 @@ public class MenuController {
 	}
 	
 	public void onAboutAction() throws IOException {
-		AboutController.createWindow();
+		ResourceLoader loader = new ResourceLoader("/fxml/about.fxml");
+		Parent root = loader.load();
+		AboutController controller = loader.getController();
+		controller.createWindow(root);
 	}
 	
 	private void translateLabels() {
