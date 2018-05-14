@@ -4,6 +4,8 @@ import javafx.util.StringConverter;
 import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
+import static java.util.Objects.isNull;
+
 /**
  * Created by Piotr on 2018-05-12.
  */
@@ -17,6 +19,8 @@ class EnumFieldConverter extends StringConverter<Field> {
 	
 	@Override
 	public String toString(Field object) {
+		if(isNull(object))
+			return "";
 		return object.toString();
 	}
 	
