@@ -150,7 +150,7 @@ public class ColumnDialogController {
 	
 	private void initializeAddAttributeForm() {
 		nameField.setPattern("[A-Za-z_][A-Za-z_0-9]*");
-		enumsField.setPattern("[A-Za-z_,0-9]*");
+		enumsField.setPattern("([A-Za-z_0-9]+[,]?)*");
 		paramService = new AttributeParamService();
 		typeField.getItems().addAll(FieldType.values());
 		addFieldTypeListener();
