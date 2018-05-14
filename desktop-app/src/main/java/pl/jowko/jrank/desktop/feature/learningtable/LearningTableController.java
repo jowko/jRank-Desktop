@@ -10,7 +10,10 @@ import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.poznan.put.cs.idss.jrs.types.Attribute;
+import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
+import pl.poznan.put.cs.idss.jrs.types.Example;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import java.io.IOException;
 import java.util.stream.Collectors;
@@ -119,7 +122,7 @@ public class LearningTableController {
 		if(learningTable.getColumns().size() == 0) {
 			JRankLogger.info("No attributes in table. Add attributes first.");
 		}
-		ObservableList<Field> newFields = tableHelper.getEmptyExample(learningTable.getColumns());
+		ObservableList<Field> newFields = tableHelper.getEmptyExample(learningTable.getItems().get(0));
 		learningTable.getItems().add(newFields);
 	}
 	

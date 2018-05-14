@@ -18,6 +18,10 @@ public class TableEnumField extends EnumField {
 		super(name, domain);
 	}
 	
+	public TableEnumField(int index, EnumDomain domain) {
+		super(index, domain);
+	}
+	
 	/**
 	 * Check if argument is equal to this object
 	 * @param object to check equality

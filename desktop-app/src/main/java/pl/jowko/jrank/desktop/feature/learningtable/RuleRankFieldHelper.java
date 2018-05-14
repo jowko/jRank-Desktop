@@ -10,15 +10,15 @@ import pl.poznan.put.cs.idss.jrs.types.StringField;
  */
 class RuleRankFieldHelper {
 	
-	Field copyField(Field field) {
+	Field createNewFieldOfProvidedType(Field field) {
 		if(field instanceof StringField)
-			return new StringField(((StringField) field).get());
+			return new StringField();
 		if(field instanceof IntegerField)
-			return new IntegerField(((IntegerField) field).get());
+			return new IntegerField();
 		if(field instanceof FloatField)
-			return new FloatField(((FloatField) field).get());
+			return new FloatField();
 		if(field instanceof TableEnumField)
-			return new TableEnumField(((TableEnumField)field));
+			return new TableEnumField(0, ((TableEnumField) field).getDomain());
 		
 		return null;
 	}

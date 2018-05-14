@@ -5,7 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.ComboBoxTableCell;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.poznan.put.cs.idss.jrs.types.Attribute;
+import pl.poznan.put.cs.idss.jrs.types.Field;
+import pl.poznan.put.cs.idss.jrs.types.FloatField;
+import pl.poznan.put.cs.idss.jrs.types.IntegerField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,13 +55,13 @@ class LearningTableHelper {
 		}
 	}
 	
-	ObservableList<Field> getEmptyExample(ObservableList<TableColumn<ObservableList<Field>, ?>> columns) {
+	ObservableList<Field> getEmptyExample(ObservableList<Field> rowItems) {
 		ObservableList<Field> fields = FXCollections.observableArrayList();
-		for(int i=0; i<columns.size(); i++) {
-			AttributeTableColumn column = (AttributeTableColumn) columns.get(i);
-			Field newField = fieldHelper.copyField(column.getAttribute().getInitialValue());
-			fields.add(newField);
+		
+		for(Field field: rowItems) {
+			fields.add(fieldHelper.createNewFieldOfProvidedType(field));
 		}
+		
 		return fields;
 	}
 	
