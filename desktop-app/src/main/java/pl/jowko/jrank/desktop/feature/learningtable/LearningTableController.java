@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ import pl.poznan.put.cs.idss.jrs.types.Example;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -39,6 +41,8 @@ public class LearningTableController {
 	@FXML
 	Button addExampleButton;
 	@FXML
+	Button removeSelectedExamplesButton;
+	@FXML
 	Button removeAllExamplesButton;
 	
 	@FXML
@@ -55,6 +59,7 @@ public class LearningTableController {
 		new EnumReplacer().replaceJRSEnumsWithTableEnumFields(table);
 		initializeTable();
 		setItemsToAttributeComboBox();
+		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
 	
 	public void addNewAttributeAction() throws IOException  {
@@ -124,6 +129,17 @@ public class LearningTableController {
 		}
 		ObservableList<Field> newFields = tableHelper.getEmptyExample(learningTable.getItems().get(0));
 		learningTable.getItems().add(newFields);
+	}
+	
+	public void removeSelectedExamplesAction() {
+		ObservableList<ObservableList<Field>> selectedRows = learningTable.getSelectionModel().getSelectedItems();
+		if(selectedRows.isEmpty()) {
+			JRankLogger.info("No examples were selected. Select examples first.");
+			return;
+		}
+		// we don't want to iterate on same collection on with we remove items
+		ArrayList<ObservableList<Field>> rows = new ArrayList<>(selectedRows);
+		rows.forEach(row -> learningTable.getItems().remove(row));
 	}
 	
 	public void removeAllExamplesAction() {
