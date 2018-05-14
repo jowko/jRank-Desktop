@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogController;
+import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -34,6 +35,8 @@ public class LearningTableController {
 	Button editAttributeButton;
 	@FXML
 	Button addExampleButton;
+	@FXML
+	Button removeAllExamplesButton;
 	
 	@FXML
 	TableView<ObservableList<Field>> learningTable;
@@ -118,6 +121,12 @@ public class LearningTableController {
 		}
 		ObservableList<Field> newFields = tableHelper.getEmptyExample(learningTable.getColumns());
 		learningTable.getItems().add(newFields);
+	}
+	
+	public void removeAllExamplesAction() {
+		String header = "Do you want to remove ALL examples from table?";
+		if(new DialogsService().showConfirmationDialog(header))
+			learningTable.getItems().clear();
 	}
 	
 	public TableView<ObservableList<Field>> getLearningTable() {
