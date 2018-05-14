@@ -22,6 +22,7 @@ abstract class JRankTab extends Tab {
 		
 		ResourceLoader loader = new ResourceLoader(getResourceName());
 		Parent tabContent = loader.load();
+		tabContent.getStylesheets().add("common.css");
 		super.setContent(tabContent);
 		
 		return loader.getController();
