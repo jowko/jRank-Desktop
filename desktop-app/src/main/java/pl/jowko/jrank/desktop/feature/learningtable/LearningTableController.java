@@ -32,16 +32,20 @@ public class LearningTableController {
 	Button removeAttributeButton;
 	@FXML
 	Button editAttributeButton;
+	@FXML
+	Button addExampleButton;
 	
 	@FXML
 	TableView<ObservableList<Field>> learningTable;
 	
 	private LearningTable table;
 	private LearningTableHelper tableHelper;
+	private RuleRankFieldHelper fieldHelper;
 	
 	public void initializeTable(MemoryContainer container) {
 		table = new LearningTable(container);
 		tableHelper = new LearningTableHelper();
+		fieldHelper = new RuleRankFieldHelper();
 		new EnumReplacer().replaceJRSEnumsWithTableEnumFields(table);
 		initializeTable();
 		setItemsToAttributeComboBox();
@@ -71,7 +75,7 @@ public class LearningTableController {
 		AttributeTableColumn column = new AttributeTableColumn(tableHelper.getColumnText(attribute), attribute);
 		int attributeIndex = learningTable.getColumns().size();
 		tableHelper.setCellFactories(column, attributeIndex);
-		column.setOnEditCommit(col -> tableHelper.handleEditCellAction(col));
+		column.setOnEditCommit(col -> fieldHelper.setFieldValue(col.getOldValue(), col.getNewValue().toString()));
 		column.setMinWidth(50d);
 		
 		learningTable.getColumns().add(column);
@@ -88,7 +92,7 @@ public class LearningTableController {
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		learningTable.getColumns().remove(tableColumn);
 		
-		ObservableList<ObservableList<Field>> list = getLearningTable().getItems();
+		ObservableList<ObservableList<Field>> list = learningTable.getItems();
 		list.forEach(row -> row.remove(attributeIndex));
 		tableHelper.recreateCellValuesFactories(learningTable.getColumns());
 		setItemsToAttributeComboBox();
@@ -106,6 +110,14 @@ public class LearningTableController {
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		tableHelper.setCellFactories(tableColumn, attributeIndex);
 		setItemsToAttributeComboBox();
+	}
+	
+	public void addExampleAction() {
+		if(learningTable.getColumns().size() == 0) {
+			JRankLogger.info("No attributes in table. Add attributes first.");
+		}
+		ObservableList<Field> newFields = tableHelper.getEmptyExample(learningTable.getColumns());
+		learningTable.getItems().add(newFields);
 	}
 	
 	public TableView<ObservableList<Field>> getLearningTable() {
@@ -144,7 +156,7 @@ public class LearningTableController {
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		EnumDomain domain = enumField.getDomain();
 		
-		ObservableList<ObservableList<Field>> list = getLearningTable().getItems();
+		ObservableList<ObservableList<Field>> list = learningTable.getItems();
 		list.forEach(row -> {
 			TableEnumField field = (TableEnumField) row.get(attributeIndex);
 			String previousValue = field.getName();

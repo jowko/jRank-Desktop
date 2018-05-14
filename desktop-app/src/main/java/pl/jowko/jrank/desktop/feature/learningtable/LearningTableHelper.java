@@ -15,6 +15,12 @@ import java.util.List;
  */
 class LearningTableHelper {
 	
+	private RuleRankFieldHelper fieldHelper;
+	
+	LearningTableHelper() {
+		fieldHelper = new RuleRankFieldHelper();
+	}
+	
 	/**
 	 * When removing column from table, indexes are not correctly related to columns.
 	 * After column removal cellValueFactory must be recreated with new indexes.
@@ -46,31 +52,20 @@ class LearningTableHelper {
 		}
 	}
 	
-	void handleEditCellAction(TableColumn.CellEditEvent<ObservableList<Field>, Field> t) {
-		Field field = t.getOldValue();
-		String fieldValue = t.getNewValue().toString();
-		
-		if(field instanceof IntegerField) {
-			((IntegerField) field).set(Integer.valueOf(fieldValue));
+	ObservableList<Field> getEmptyExample(ObservableList<TableColumn<ObservableList<Field>, ?>> columns) {
+		ObservableList<Field> fields = FXCollections.observableArrayList();
+		for(int i=0; i<columns.size(); i++) {
+			AttributeTableColumn column = (AttributeTableColumn) columns.get(i);
+			Field newField = fieldHelper.copyField(column.getAttribute().getInitialValue());
+			fields.add(newField);
 		}
-		
-		if(field instanceof StringField) {
-			((StringField) field).set(fieldValue);
-		}
-		
-		if(field instanceof TableEnumField) {
-			((TableEnumField) field).set(fieldValue);
-		}
-		
-		if(field instanceof FloatField) {
-			((FloatField) field).set(Double.valueOf(fieldValue));
-		}
+		return fields;
 	}
 	
 	String getColumnText(Attribute attribute) {
 		return attribute.getName() +
 				'\n' +
-				getColumnFieldType(attribute.getInitialValue()) +
+				fieldHelper.getColumnFieldType(attribute.getInitialValue()) +
 				'\n' +
 				getColumnPreference(attribute.getPreferenceType(), attribute.getKind());
 	}
@@ -84,19 +79,6 @@ class LearningTableHelper {
 			return "Decision";
 		if(kind == 2)
 			return "Description";
-		return "";
-	}
-	
-	private String getColumnFieldType(Field initialValue) {
-		if(initialValue instanceof StringField)
-			return "String";
-		if(initialValue instanceof IntegerField)
-			return "Integer";
-		if(initialValue instanceof FloatField)
-			return "Float";
-		if(initialValue instanceof TableEnumField)
-			return "Enum";
-		
 		return "";
 	}
 	
