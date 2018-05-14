@@ -67,6 +67,39 @@ class LearningTableHelper {
 		}
 	}
 	
+	String getColumnText(Attribute attribute) {
+		return attribute.getName() +
+				'\n' +
+				getColumnFieldType(attribute.getInitialValue()) +
+				'\n' +
+				getColumnPreference(attribute.getPreferenceType(), attribute.getKind());
+	}
+	
+	private String getColumnPreference(int preference, int kind) {
+		if(preference == 1)
+			return "Gain";
+		if(preference == 2)
+			return "Cost";
+		if(kind == 1)
+			return "Decision";
+		if(kind == 2)
+			return "Description";
+		return "";
+	}
+	
+	private String getColumnFieldType(Field initialValue) {
+		if(initialValue instanceof StringField)
+			return "String";
+		if(initialValue instanceof IntegerField)
+			return "Integer";
+		if(initialValue instanceof FloatField)
+			return "Float";
+		if(initialValue instanceof TableEnumField)
+			return "Enum";
+		
+		return "";
+	}
+	
 	private void handleEnumFieldFactory(TableColumn<ObservableList<Field>, Field> column, Attribute attribute) {
 		TableEnumField enumField = (TableEnumField) attribute.getInitialValue();
 		List<String> comboValues = new ArrayList<>(enumField.getDomain().getElementsNames());

@@ -53,7 +53,7 @@ public class LearningTableController {
 	}
 	
 	public void createNewColumn(Attribute attribute) {
-		AttributeTableColumn column = new AttributeTableColumn(getColumnText(attribute), attribute);
+		AttributeTableColumn column = new AttributeTableColumn(tableHelper.getColumnText(attribute), attribute);
 		int attributeIndex = learningTable.getColumns().size();
 		tableHelper.setCellFactories(column, attributeIndex);
 		column.setOnEditCommit(col -> tableHelper.handleEditCellAction(col));
@@ -112,39 +112,6 @@ public class LearningTableController {
 						.map(column -> ((AttributeTableColumn) column).getAttribute().getName())
 						.collect(Collectors.toList()))
 		);
-	}
-	
-	private String getColumnText(Attribute attribute) {
-		return attribute.getName() +
-				'\n' +
-				getColumnFieldType(attribute.getInitialValue()) +
-				'\n' +
-				getColumnPreference(attribute.getPreferenceType(), attribute.getKind());
-	}
-	
-	private String getColumnPreference(int preference, int kind) {
-		if(preference == 1)
-			return "Gain";
-		if(preference == 2)
-			return "Cost";
-		if(kind == 1)
-			return "Decision";
-		if(kind == 2)
-			return "Description";
-		return "";
-	}
-	
-	private String getColumnFieldType(Field initialValue) {
-		if(initialValue instanceof StringField)
-			return "String";
-		if(initialValue instanceof IntegerField)
-			return "Integer";
-		if(initialValue instanceof FloatField)
-			return "Float";
-		if(initialValue instanceof TableEnumField)
-			return "Enum";
-		
-		return "";
 	}
 	
 }
