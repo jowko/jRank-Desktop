@@ -9,6 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.jowko.jrank.desktop.Main;
+import pl.jowko.jrank.desktop.feature.learningtable.EnumListProvider;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableController;
 import pl.jowko.jrank.desktop.feature.learningtable.TableEnumField;
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
@@ -57,29 +58,35 @@ public class ColumnDialogController {
 	private AttributeParamService paramService;
 	private LearningTableController controller;
 	private Stage stage;
+	private boolean isAddAction;
+	private Attribute oldAttribute;
 	
-	public void initializeDialog(LearningTableController controller, Parent parent) {
+	public void initializeAddAction(LearningTableController controller, Parent parent) {
 		this.controller = controller;
+		isAddAction = true;
 		initializeAddAttributeForm();
-		
-		stage = new Stage(StageStyle.DECORATED);
-		stage.setScene(new Scene(parent));
-		stage.setTitle("Add new attribute");
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setResizable(false);
-		stage.initOwner(Main.getScene().getWindow());
-		stage.showAndWait();
+		initializeDialog(parent, "Add attribute action");
 	}
 	
-	public void addNewColumnAction() {
-		if(not(isAddNewColumnFormValid())) {
+	public void initializeEditAction(LearningTableController controller, Parent parent, Attribute attribute) {
+		this.controller = controller;
+		oldAttribute = attribute;
+		isAddAction = false;
+		initializeAddAttributeForm();
+		initializeFieldsForEdit(attribute);
+		initializeDialog(parent, "Edit attribute " + attribute.getName());
+	}
+	
+	public void saveAction() {
+		if(not(isFormValid())) {
 			return;
 		}
-		Attribute attribute = createAttributeFromForm();
-		controller.createNewColumn(attribute);
 		
-		ObservableList<ObservableList<Field>> list = controller.getLearningTable().getItems();
-		list.forEach(row -> row.add(getFieldTypeFromForm()));
+		if(isAddAction)
+			saveNewColumn();
+		else
+			saveEditedColumn();
+		
 		stage.close();
 	}
 	
@@ -93,6 +100,52 @@ public class ColumnDialogController {
 		kindField.getSelectionModel().selectFirst();
 		preferenceField.getSelectionModel().clearSelection();
 		enumsField.clear();
+	}
+	
+	private void saveNewColumn() {
+		Attribute attribute = createAttributeFromForm();
+		controller.createNewColumn(attribute);
+		
+		ObservableList<ObservableList<Field>> list = controller.getLearningTable().getItems();
+		list.forEach(row -> row.add(getFieldFromForm()));
+	}
+	
+	private void saveEditedColumn() {
+		Attribute attribute = createAttributeFromForm();
+		controller.editAttribute(oldAttribute, attribute);
+	}
+	
+	private void initializeFieldsForEdit(Attribute attribute) {
+		nameField.setText(attribute.getName());
+		typeField.setDisable(true);
+		typeField.getSelectionModel().select(getFieldTypeFromField(attribute.getInitialValue()));
+		kindField.getSelectionModel().select(paramService.getKindByValue(attribute.getKind()));
+		preferenceField.getSelectionModel().select(paramService.getPreferenceByValue(attribute.getPreferenceType()));
+		initializeEnumFieldForEdit(attribute);
+	}
+	
+	private void initializeEnumFieldForEdit(Attribute attribute) {
+		if(attribute.getInitialValue() instanceof TableEnumField) {
+			TableEnumField field = (TableEnumField)attribute.getInitialValue();
+			StringBuilder builder = new StringBuilder();
+			for(String value : new EnumListProvider(field).getValues()) {
+				builder.append(value);
+				builder.append(',');
+			}
+			
+			enumsField.setText(builder.toString());
+			enumsField.setDisable(false);
+		}
+	}
+	
+	private void initializeDialog(Parent parent, String title) {
+		stage = new Stage(StageStyle.DECORATED);
+		stage.setScene(new Scene(parent));
+		stage.setTitle(title);
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.setResizable(false);
+		stage.initOwner(Main.getScene().getWindow());
+		stage.showAndWait();
 	}
 	
 	private void initializeAddAttributeForm() {
@@ -111,9 +164,9 @@ public class ColumnDialogController {
 	private void addKindFieldListener() {
 		kindField.valueProperty().addListener((observable, oldValue, newValue) -> {
 			if(newValue.equals(paramService.getDefaultKind())) {
-				preferenceField.getSelectionModel().clearSelection();
 				preferenceField.setDisable(false);
 			} else {
+				preferenceField.getSelectionModel().clearSelection();
 				preferenceField.setDisable(true);
 			}
 		});
@@ -136,7 +189,7 @@ public class ColumnDialogController {
 			enumsField.setTooltip(new Tooltip("Write cardinal values here separated by coma."));
 	}
 	
-	private boolean isAddNewColumnFormValid() {
+	private boolean isFormValid() {
 		String errorsMsg = "";
 		if(nameField.getText().trim().isEmpty()) {
 			errorsMsg += "Name for attribute should not be empty\n";
@@ -152,14 +205,14 @@ public class ColumnDialogController {
 		}
 		
 		if(not(errorsMsg.isEmpty())) {
-			new DialogsService().showValidationFailedDialog("There are errors on add new attribute form", errorsMsg);
+			new DialogsService().showValidationFailedDialog("There are errors on form", errorsMsg);
 		}
 		
 		return errorsMsg.isEmpty();
 	}
 	
 	private Attribute createAttributeFromForm() {
-		Field newField = getFieldTypeFromForm();
+		Field newField = getFieldFromForm();
 		Attribute attribute = new Attribute(nameField.getText(), newField);
 		attribute.setKind(kindField.getValue().getValue());
 		
@@ -171,7 +224,7 @@ public class ColumnDialogController {
 		return attribute;
 	}
 	
-	private Field getFieldTypeFromForm() {
+	private Field getFieldFromForm() {
 		switch (typeField.getValue()) {
 			case STRING_FIELD:
 				return new StringField();
@@ -185,6 +238,19 @@ public class ColumnDialogController {
 		JRankLogger.warn("Field type was not recognized. Setting default StringField.");
 		
 		return new StringField();
+	}
+	
+	private FieldType getFieldTypeFromField(Field field) {
+		if(field instanceof StringField)
+			return FieldType.STRING_FIELD;
+		if(field instanceof IntegerField)
+			return FieldType.INTEGER_FIELD;
+		if(field instanceof FloatField)
+			return FieldType.DECIMAL_FIELD;
+		if(field instanceof TableEnumField)
+			return FieldType.ENUM_FIELD;
+		
+		return FieldType.STRING_FIELD;
 	}
 	
 	private TableEnumField createEnumFromForm() {

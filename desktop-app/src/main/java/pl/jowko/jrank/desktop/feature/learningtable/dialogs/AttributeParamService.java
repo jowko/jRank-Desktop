@@ -1,7 +1,10 @@
 package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 
+import pl.jowko.jrank.logger.JRankLogger;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Piotr on 2018-05-13.
@@ -16,16 +19,40 @@ class AttributeParamService {
 		initializePreferences();
 	}
 	
-	public List<AttributeParam> getKinds() {
+	List<AttributeParam> getKinds() {
 		return kinds;
 	}
 	
-	public List<AttributeParam> getPreferences() {
+	List<AttributeParam> getPreferences() {
 		return preferences;
 	}
 	
-	public AttributeParam getDefaultKind() {
+	AttributeParam getDefaultKind() {
 		return kinds.get(0);
+	}
+	
+	AttributeParam getKindByValue(int value) {
+		Optional<AttributeParam> param =  kinds.stream()
+				.filter(kind -> kind.getValue() == value)
+				.findFirst();
+		
+		if(param.isPresent()) {
+			return param.get();
+		}
+		JRankLogger.warn("Value: " + value + " for kind type not found. Setting default value.");
+		return kinds.get(0);
+	}
+	
+	AttributeParam getPreferenceByValue(int value) {
+		Optional<AttributeParam> param =  preferences.stream()
+				.filter(preference -> preference.getValue() == value)
+				.findFirst();
+		
+		if(param.isPresent()) {
+			return param.get();
+		}
+		JRankLogger.warn("Value: " + value + " for preference type not found. Setting empty value.");
+		return null;
 	}
 	
 	private void initializeKinds() {

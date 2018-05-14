@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogController;
+import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
@@ -49,7 +51,20 @@ public class LearningTableController {
 		ResourceLoader resourceLoader = new ResourceLoader("/fxml/upperTabs/columnActionDialog.fxml");
 		Parent parent = resourceLoader.load();
 		ColumnDialogController controller = resourceLoader.getController();
-		controller.initializeDialog(this, parent);
+		controller.initializeAddAction(this, parent);
+	}
+	
+	public void editAttributeAction() throws IOException {
+		AttributeTableColumn tableColumn = ((AttributeTableColumn) getColumnByAttributeName(selectAttribute.getValue()));
+		if(isNull(tableColumn)) {
+			JRankLogger.warn("No attribute was selected. Edit action aborted.");
+			return;
+		}
+		
+		ResourceLoader resourceLoader = new ResourceLoader("/fxml/upperTabs/columnActionDialog.fxml");
+		Parent parent = resourceLoader.load();
+		ColumnDialogController controller = resourceLoader.getController();
+		controller.initializeEditAction(this, parent, tableColumn.getAttribute());
 	}
 	
 	public void createNewColumn(Attribute attribute) {
@@ -64,9 +79,11 @@ public class LearningTableController {
 	}
 	
 	public void removeAttributeAction() {
-		TableColumn tableColumn = getSelectedColumn();
-		if(isNull(tableColumn))
+		TableColumn tableColumn = getColumnByAttributeName(selectAttribute.getValue());
+		if(isNull(tableColumn)) {
+			JRankLogger.warn("No attribute was selected. Remove action aborted.");
 			return;
+		}
 		
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		learningTable.getColumns().remove(tableColumn);
@@ -77,8 +94,18 @@ public class LearningTableController {
 		setItemsToAttributeComboBox();
 	}
 	
-	public void editAttributeAction() {
-	
+	public void editAttribute(Attribute oldAttribute, Attribute editedAttribute) {
+		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttributeName(oldAttribute.getName());
+		tableColumn.setText(tableHelper.getColumnText(editedAttribute));
+		tableColumn.setAttribute(editedAttribute);
+		
+		if(editedAttribute.getInitialValue() instanceof TableEnumField) {
+			handleEnumEdition(tableColumn);
+		}
+		
+		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
+		tableHelper.setCellFactories(tableColumn, attributeIndex);
+		setItemsToAttributeComboBox();
 	}
 	
 	public TableView<ObservableList<Field>> getLearningTable() {
@@ -95,9 +122,7 @@ public class LearningTableController {
 		}
 	}
 	
-	private TableColumn getSelectedColumn() {
-		String attributeName = selectAttribute.getValue();
-		
+	private TableColumn getColumnByAttributeName(String attributeName) {
 		return learningTable.getColumns().stream()
 				.filter(column ->
 					((AttributeTableColumn) column).getAttribute().getName().equalsIgnoreCase(attributeName)
@@ -114,4 +139,23 @@ public class LearningTableController {
 		);
 	}
 	
+	private void handleEnumEdition(AttributeTableColumn tableColumn) {
+		TableEnumField enumField = (TableEnumField) tableColumn.getAttribute().getInitialValue();
+		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
+		EnumDomain domain = enumField.getDomain();
+		
+		ObservableList<ObservableList<Field>> list = getLearningTable().getItems();
+		list.forEach(row -> {
+			TableEnumField field = (TableEnumField) row.get(attributeIndex);
+			String previousValue = field.getName();
+			try {
+				int previousIndex = domain.getIndex(previousValue);
+				row.set(attributeIndex, new TableEnumField(domain.getName(previousIndex), domain));
+			} catch (InvalidValueException e) {
+				JRankLogger.warn("Value: " + previousValue + " is not available now for field [" + tableColumn.getAttribute().getName() + "]. Setting first element into field.");
+				row.set(attributeIndex, new TableEnumField(domain.getName(0), domain));
+			}
+			
+		});
+	}
 }

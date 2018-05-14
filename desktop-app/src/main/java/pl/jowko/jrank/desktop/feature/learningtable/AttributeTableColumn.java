@@ -21,4 +21,8 @@ class AttributeTableColumn extends TableColumn<ObservableList<Field>, Field> {
 		return attribute;
 	}
 	
+	void setAttribute(Attribute attribute) {
+		this.attribute = attribute;
+	}
+	
 }

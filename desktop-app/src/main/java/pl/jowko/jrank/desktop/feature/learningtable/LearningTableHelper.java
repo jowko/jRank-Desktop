@@ -102,7 +102,7 @@ class LearningTableHelper {
 	
 	private void handleEnumFieldFactory(TableColumn<ObservableList<Field>, Field> column, Attribute attribute) {
 		TableEnumField enumField = (TableEnumField) attribute.getInitialValue();
-		List<String> comboValues = new ArrayList<>(enumField.getDomain().getElementsNames());
+		List<String> comboValues = new EnumListProvider(enumField).getValues();
 		List<TableEnumField> fields = new ArrayList<>();
 		
 		for(String value: comboValues) {
