@@ -12,17 +12,31 @@ import static java.util.Objects.isNull;
 public class CustomTextField extends TextField {
 	
 	private Pattern pattern;
+	private int charLimit;
 	
 	CustomTextField(String pattern) {
 		this.pattern = Pattern.compile(pattern);
+		charLimit = 10_000;
+	}
+	
+	CustomTextField(String pattern, int charLimit) {
+		this.pattern = Pattern.compile(pattern);
+		this.charLimit = charLimit;
 	}
 	
 	public void setPattern(String pattern) {
 		this.pattern = Pattern.compile(pattern);
 	}
 	
+	public void setCharLimit(int charLimit) {
+		this.charLimit = charLimit;
+	}
+	
 	@Override
 	public void replaceText(int start, int end, String text) {
+		if(getCurrentText().length() > charLimit && !"".equals(text))
+			return;
+		
 		if (validate(start, text)) {
 			super.replaceText(start, end, text);
 		}
@@ -36,12 +50,17 @@ public class CustomTextField extends TextField {
 	}
 	
 	private boolean validate(int start, String text) {
-		String currentText = isNull(getText()) ? "" : getText();
+		String currentText = getCurrentText();
+		
 		if(start == 0) {
 			return pattern.matcher(text + currentText).matches();
 		} else {
 			return pattern.matcher(currentText + text).matches();
 		}
+	}
+	
+	private String getCurrentText() {
+		return isNull(getText()) ? "" : getText();
 	}
 	
 }
