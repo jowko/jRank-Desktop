@@ -23,21 +23,25 @@ class RuleRankFieldHelper {
 		return null;
 	}
 	
-	void setFieldValue(Field field, String fieldValue) {
+	void setFieldValue(Field field, Field newValue) {
 		if(field instanceof IntegerField) {
-			((IntegerField) field).set(Integer.valueOf(fieldValue));
+			IntegerField newField = (IntegerField) newValue;
+			((IntegerField) field).set(newField.get());
 		}
 		
 		if(field instanceof StringField) {
-			((StringField) field).set(fieldValue);
+			StringField newField = (StringField) newValue;
+			((StringField) field).set(newField.get());
 		}
 		
 		if(field instanceof TableEnumField) {
-			((TableEnumField) field).set(fieldValue);
+			TableEnumField newField = (TableEnumField) newValue;
+			((TableEnumField) field).set(newField.getName());
 		}
 		
 		if(field instanceof FloatField) {
-			((FloatField) field).set(Double.valueOf(fieldValue));
+			FloatField newField = (FloatField) newValue;
+			((FloatField) field).set(newField.get());
 		}
 	}
 	
