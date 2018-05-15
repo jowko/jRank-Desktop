@@ -53,6 +53,18 @@
                         <Button fx:id="removeSelectedExamplesButton" mnemonicParsing="false" onAction="#removeSelectedExamplesAction" text="Remove selected examples" />
                         <Button fx:id="removeAllExamplesButton" mnemonicParsing="false" onAction="#removeAllExamplesAction" text="Remove all examples" />
                      </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </FlowPane>
+                  <FlowPane hgap="20.0">
+                     <children>
+                        <Button fx:id="saveButton" minWidth="80.0" mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                        <Button fx:id="cancelButton" minWidth="80.0" mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </FlowPane>
                </children>
             </VBox>

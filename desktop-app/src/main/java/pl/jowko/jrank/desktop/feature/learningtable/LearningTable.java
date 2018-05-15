@@ -6,14 +6,18 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Example;
 import pl.poznan.put.cs.idss.jrs.types.FileInfo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Piotr on 2018-05-08.
  */
-class LearningTable {
+class LearningTable implements Serializable {
+	
+	private static final long serialVersionUID = 3110217394426748894L;
 	
 	private List<Attribute> attributes;
 	private List<Example> examples;
@@ -31,6 +35,15 @@ class LearningTable {
 		id = container.getId();
 		
 		examples.addAll(container.getExamples());
+	}
+	
+	LearningTable(FileInfo fileInfo, MemoryContainerDescription description, String id) {
+		attributes = new ArrayList<>();
+		examples = new ArrayList<>();
+		
+		this.fileInfo = fileInfo;
+		this.memoryContainerDescription = description;
+		this.id = id;
 	}
 	
 	public List<Attribute> getAttributes() {
@@ -71,6 +84,23 @@ class LearningTable {
 	
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		LearningTable table = (LearningTable) o;
+		return Objects.equals(attributes, table.attributes) &&
+				Objects.equals(examples, table.examples) &&
+				Objects.equals(fileInfo, table.fileInfo) &&
+				Objects.equals(memoryContainerDescription, table.memoryContainerDescription) &&
+				Objects.equals(id, table.id);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(attributes, examples, fileInfo, memoryContainerDescription, id);
 	}
 	
 }

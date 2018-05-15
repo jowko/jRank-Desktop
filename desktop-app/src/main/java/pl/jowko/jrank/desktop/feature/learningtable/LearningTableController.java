@@ -1,13 +1,15 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogController;
+import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
+import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -15,13 +17,16 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
 import pl.poznan.put.cs.idss.jrs.types.Example;
 import pl.poznan.put.cs.idss.jrs.types.Field;
+import pl.poznan.put.cs.idss.jrs.utilities.ISFWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static javafx.collections.FXCollections.observableArrayList;
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-08.
@@ -44,19 +49,33 @@ public class LearningTableController {
 	Button removeSelectedExamplesButton;
 	@FXML
 	Button removeAllExamplesButton;
+	@FXML
+	Button saveButton;
+	@FXML
+	Button cancelButton;
 	
 	@FXML
 	TableView<ObservableList<Field>> learningTable;
 	
+	private LearningTable oldTable;
 	private LearningTable table;
+	private List<Attribute> attributes;
+	private Tab learningTableTab;
+	private WorkspaceItem workspaceItem;
 	private LearningTableHelper tableHelper;
 	private RuleRankFieldHelper fieldHelper;
+	private EnumReplacer enumReplacer;
 	
-	public void initializeTable(MemoryContainer container) {
+	public void initializeTable(MemoryContainer container, Tab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
+		enumReplacer = new EnumReplacer();
+		enumReplacer.replaceJRSEnumsWithTableEnumFields(table);
+		oldTable = (LearningTable) Cloner.deepClone(table);
+		attributes = new ArrayList<>();
+		learningTableTab = tableTab;
+		this.workspaceItem = workspaceItem;
 		tableHelper = new LearningTableHelper();
 		fieldHelper = new RuleRankFieldHelper();
-		new EnumReplacer().replaceJRSEnumsWithTableEnumFields(table);
 		initializeTable();
 		setItemsToAttributeComboBox();
 		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -90,11 +109,12 @@ public class LearningTableController {
 		column.setMinWidth(50d);
 		
 		learningTable.getColumns().add(column);
+		attributes.add(attribute);
 		setItemsToAttributeComboBox();
 	}
 	
 	public void removeAttributeAction() {
-		TableColumn tableColumn = getColumnByAttributeName(selectAttribute.getValue());
+		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttributeName(selectAttribute.getValue());
 		if(isNull(tableColumn)) {
 			JRankLogger.warn("No attribute was selected. Remove action aborted.");
 			return;
@@ -102,6 +122,7 @@ public class LearningTableController {
 		
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		learningTable.getColumns().remove(tableColumn);
+		attributes.remove(tableColumn.getAttribute());
 		
 		ObservableList<ObservableList<Field>> list = learningTable.getItems();
 		list.forEach(row -> row.remove(attributeIndex));
@@ -118,6 +139,7 @@ public class LearningTableController {
 			handleEnumEdition(tableColumn);
 		}
 		
+		replaceAttributeInLearningTable(oldAttribute, editedAttribute);
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		tableHelper.setCellFactories(tableColumn, attributeIndex);
 		setItemsToAttributeComboBox();
@@ -127,7 +149,7 @@ public class LearningTableController {
 		if(learningTable.getColumns().size() == 0) {
 			JRankLogger.info("No attributes in table. Add attributes first.");
 		}
-		ObservableList<Field> newFields = tableHelper.getEmptyExample(learningTable.getItems().get(0));
+		ObservableList<Field> newFields = tableHelper.getEmptyExample(attributes);
 		learningTable.getItems().add(newFields);
 	}
 	
@@ -148,6 +170,25 @@ public class LearningTableController {
 			learningTable.getItems().clear();
 	}
 	
+	public void saveAction() {
+		try {
+			LearningTable tableToSave = matchDataFromUIToLearningTable();
+			enumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
+			MemoryContainer container = MemoryContainerAssembler.assembleContainerFromTable(tableToSave);
+			ISFWriter.saveMemoryContainerIntoISF(workspaceItem.getFilePath(), container);
+			closeTab();
+		} catch (Exception e) {
+			JRankLogger.error("Error when saving data table: " + e.getMessage());
+		}
+	}
+	
+	public void cancelAction() {
+		if(isUserWishToKeepChanges()) {
+			return;
+		}
+		closeTab();
+	}
+	
 	public TableView<ObservableList<Field>> getLearningTable() {
 		return learningTable;
 	}
@@ -160,6 +201,37 @@ public class LearningTableController {
 		for(Example example : table.getExamples()) {
 			learningTable.getItems().add(observableArrayList(example.getFields()));
 		}
+		initializeCloseEvent();
+	}
+	
+	private void initializeCloseEvent() {
+		learningTableTab.setOnCloseRequest(event -> {
+			if(isUserWishToKeepChanges()) {
+				event.consume();
+			}
+		});
+	}
+	
+	private boolean isUserWishToKeepChanges() {
+		if(learningTable.getColumns().isEmpty()) {
+			return not(showConfirmationDialog());
+		}
+		
+		LearningTable actualTable = matchDataFromUIToLearningTable();
+		return not(oldTable.equals(actualTable)) && not(showConfirmationDialog());
+	}
+	
+	private LearningTable matchDataFromUIToLearningTable() {
+		return new LearningTableAssembler(learningTable, table, attributes).getLearningTableFromUITable();
+	}
+	
+	private boolean showConfirmationDialog() {
+		String header = "Do you want to abandon changes in form?";
+		return new DialogsService().showConfirmationDialog(header, "");
+	}
+	
+	private void closeTab() {
+		UpperTabsController.getInstance().closeTab(learningTableTab);
 	}
 	
 	private TableColumn getColumnByAttributeName(String attributeName) {
@@ -198,4 +270,10 @@ public class LearningTableController {
 			
 		});
 	}
+	
+	private void replaceAttributeInLearningTable(Attribute oldAttribute, Attribute newAttribute) {
+		int index = attributes.indexOf(oldAttribute);
+		attributes.set(index, newAttribute);
+	}
+	
 }

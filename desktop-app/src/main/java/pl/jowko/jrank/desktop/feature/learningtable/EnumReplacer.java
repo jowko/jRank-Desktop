@@ -18,11 +18,16 @@ class EnumReplacer {
 	 * @param table containing examples and attributes
 	 */
 	void replaceJRSEnumsWithTableEnumFields(LearningTable table) {
-		replaceInAttributes(table);
-		replaceInExamples(table);
+		replaceJRSEnumsInAttributes(table);
+		replaceJRSEnumsInExamples(table);
 	}
 	
-	private void replaceInAttributes(LearningTable table) {
+	void replaceTableEnumsWithJRSEnums(LearningTable table) {
+		replaceTableEnumsInAttributes(table);
+		replaceTableEnumsInExamples(table);
+	}
+	
+	private void replaceJRSEnumsInAttributes(LearningTable table) {
 		for(Attribute attribute : table.getAttributes()) {
 			if(attribute.getInitialValue() instanceof EnumField) {
 				EnumField field = (EnumField) attribute.getInitialValue();
@@ -31,13 +36,35 @@ class EnumReplacer {
 		}
 	}
 	
-	private void replaceInExamples(LearningTable table) {
+	private void replaceJRSEnumsInExamples(LearningTable table) {
 		for(Example example : table.getExamples()) {
 			Field[] fields = example.getFields();
 			
 			for(int i=0; i<fields.length; i++) {
 				if(fields[i] instanceof EnumField) {
 					fields[i] = new TableEnumField((EnumField) fields[i]);
+				}
+			}
+		}
+	}
+	
+	private void replaceTableEnumsInAttributes(LearningTable table) {
+		for(Attribute attribute : table.getAttributes()) {
+			if(attribute.getInitialValue() instanceof TableEnumField) {
+				TableEnumField field = (TableEnumField) attribute.getInitialValue();
+				attribute.setInitialValue(new EnumField(field.getIndex(), field.getDomain()));
+			}
+		}
+	}
+	
+	private void replaceTableEnumsInExamples(LearningTable table) {
+		for(Example example : table.getExamples()) {
+			Field[] fields = example.getFields();
+			
+			for(int i=0; i<fields.length; i++) {
+				if(fields[i] instanceof TableEnumField) {
+					TableEnumField field = ((TableEnumField) fields[i]);
+					fields[i] = new EnumField(field.getIndex(), field.getDomain());
 				}
 			}
 		}

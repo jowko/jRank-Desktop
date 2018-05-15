@@ -55,11 +55,11 @@ class LearningTableHelper {
 		}
 	}
 	
-	ObservableList<Field> getEmptyExample(ObservableList<Field> rowItems) {
+	ObservableList<Field> getEmptyExample(List<Attribute> attributes) {
 		ObservableList<Field> fields = FXCollections.observableArrayList();
 		
-		for(Field field: rowItems) {
-			fields.add(fieldHelper.createNewFieldOfProvidedType(field));
+		for(Attribute attribute: attributes) {
+			fields.add(fieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue()));
 		}
 		
 		return fields;
