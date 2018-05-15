@@ -3,7 +3,7 @@ REM Script for creating jrank installation
 @echo off
 
 echo Copying jRS.jar to local maven repo
-call mvn install:install-file -Dfile=lib\jRS.jar -DgroupId=pl.poznan.put.cs.idss -DartifactId=jrs -Dversion=2018.05.12 -Dpackaging=jar
+call mvn install:install-file -Dfile=lib\jRS.jar -DgroupId=pl.poznan.put.cs.idss -DartifactId=jrs -Dversion=2018.05.15 -Dpackaging=jar
 
 echo Building whole project
 call mvn clean install
