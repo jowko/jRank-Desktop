@@ -12,6 +12,8 @@ import java.io.ObjectOutputStream;
  */
 public class Cloner {
 	
+	private Cloner() {}
+	
 	/**
 	 * This method makes a "deep clone" of any Java object it is given.
 	 * https://alvinalexander.com/java/java-deep-clone-example-source-code
