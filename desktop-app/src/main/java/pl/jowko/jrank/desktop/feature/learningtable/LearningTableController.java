@@ -9,6 +9,7 @@ import pl.jowko.jrank.desktop.feature.learningtable.dialogs.ColumnDialogControll
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.desktop.service.JRSFileMediator;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
@@ -17,7 +18,6 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
 import pl.poznan.put.cs.idss.jrs.types.Example;
 import pl.poznan.put.cs.idss.jrs.types.Field;
-import pl.poznan.put.cs.idss.jrs.utilities.ISFWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -171,7 +171,7 @@ public class LearningTableController {
 			LearningTable tableToSave = matchDataFromUIToLearningTable();
 			EnumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
 			MemoryContainer container = MemoryContainerAssembler.assembleContainerFromTable(tableToSave);
-			ISFWriter.saveMemoryContainerIntoISF(workspaceItem.getFilePath(), container);
+			JRSFileMediator.saveMemoryContainer(workspaceItem, container);
 			closeTab();
 		} catch (Exception e) {
 			JRankLogger.error("Error when saving data table: " + e.getMessage());
