@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.Objects.isNull;
+
 /**
  * Created by Piotr on 2018-05-08.
  */
@@ -28,6 +30,9 @@ class LearningTable implements Serializable {
 	LearningTable(MemoryContainer container) {
 		attributes = new ArrayList<>();
 		examples = new ArrayList<>();
+		
+		if(isNull(container))
+			return;
 		
 		attributes.addAll(Arrays.asList(container.getAttributes()));
 		fileInfo = container.getFileInfo();
