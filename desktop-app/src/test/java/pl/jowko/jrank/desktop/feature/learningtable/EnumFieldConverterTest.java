@@ -3,29 +3,27 @@ package pl.jowko.jrank.desktop.feature.learningtable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
-import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.createEnumDomain;
 
 /**
  * Created by Piotr on 2018-05-16.
  */
 class EnumFieldConverterTest {
 	
-	private EnumDomain domain;
 	private EnumFieldConverter converter;
 	
 	@BeforeEach
 	void setUpEach() {
-		domain = new EnumDomain(new String[]{"1", "2", "3"});
-		converter = new EnumFieldConverter(domain);
+		converter = new EnumFieldConverter(createEnumDomain());
 	}
 	
 	@Test
 	void shouldGetValidString() {
-		String convertedValue = converter.toString(new TableEnumField("1", domain));
+		String convertedValue = converter.toString(new TableEnumField("1", createEnumDomain()));
 		assertEquals("1", convertedValue);
 	}
 	

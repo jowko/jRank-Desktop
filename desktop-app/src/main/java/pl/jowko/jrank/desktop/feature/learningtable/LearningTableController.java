@@ -170,6 +170,11 @@ public class LearningTableController {
 		try {
 			LearningTable tableToSave = matchDataFromUIToLearningTable();
 			EnumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
+			
+			if(not(isTableValid(tableToSave))) {
+				return;
+			}
+			
 			MemoryContainer container = MemoryContainerAssembler.assembleContainerFromTable(tableToSave);
 			JRSFileMediator.saveMemoryContainer(workspaceItem, container);
 			closeTab();
@@ -270,6 +275,15 @@ public class LearningTableController {
 	private void replaceAttributeInLearningTable(Attribute oldAttribute, Attribute newAttribute) {
 		int index = attributes.indexOf(oldAttribute);
 		attributes.set(index, newAttribute);
+	}
+	
+	private boolean isTableValid(LearningTable tableToSave) {
+		LearningTableValidator validator = new LearningTableValidator(tableToSave);
+		if(validator.isValid())
+			return true;
+		
+		DialogsService.showValidationFailedDialog("Table contains errors:", validator.getErrorMsg());
+		return false;
 	}
 	
 }

@@ -1,13 +1,11 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestTemplate;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.FieldType;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.createEnumDomain;
 
 /**
  * Created by Piotr on 2018-05-16.
@@ -52,8 +50,7 @@ class RuleRankFieldHelperTest {
 	
 	@Test
 	void shouldCreateNewEnumField() {
-		EnumDomain domain = new EnumDomain(new String[]{"1", "2"});
-		TableEnumField field = new TableEnumField(1, domain);
+		TableEnumField field = new TableEnumField(1, createEnumDomain());
 		Field newField = RuleRankFieldHelper.createNewFieldOfProvidedType(field);
 		
 		assertTrue(newField instanceof TableEnumField);
@@ -87,8 +84,7 @@ class RuleRankFieldHelperTest {
 	
 	@Test
 	void shouldGetColumnTypeForEnumField() {
-		EnumDomain domain = new EnumDomain(new String[]{"1", "2"});
-		String fieldName = RuleRankFieldHelper.getColumnFieldType(new TableEnumField(0, domain));
+		String fieldName = RuleRankFieldHelper.getColumnFieldType(new TableEnumField(0, createEnumDomain()));
 		assertEquals(FieldType.ENUM_FIELD.toString(), fieldName);
 	}
 	
