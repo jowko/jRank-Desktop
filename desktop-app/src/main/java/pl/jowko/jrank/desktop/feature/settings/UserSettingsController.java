@@ -84,7 +84,7 @@ public class UserSettingsController  {
 		} catch (IOException e) {
 			JRankLogger.error("Error when saving user options: ", e);
 			String errorDialogHeader = labels.get(Labels.US_ERROR_DIALOG_HEADER);
-			new DialogsService().showErrorDialog(errorDialogHeader, e.getMessage());
+			DialogsService.showErrorDialog(errorDialogHeader, e.getMessage());
 		}
 		
 	}
@@ -117,7 +117,7 @@ public class UserSettingsController  {
 		String validationErrors = settingsValidator.validateUserSettingsForm(languagesChoice.getValue(), workspaceField.getText());
 		if(not(validationErrors.isEmpty())) {
 			String errorDialogHeader = labels.get(Labels.VALIDATION_DIALOG_HEADER);
-			new DialogsService().showValidationFailedDialog(errorDialogHeader, validationErrors);
+			DialogsService.showValidationFailedDialog(errorDialogHeader, validationErrors);
 			return false;
 		}
 		return true;

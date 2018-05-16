@@ -129,7 +129,7 @@ public class PropertiesController {
 		} catch (IOException e) {
 			String msg = labels.get(Labels.PROP_ERROR_SAVE);
 			JRankLogger.error( msg + workspaceItem.getFileName() + " - " + e.getMessage());
-			new DialogsService().showErrorDialog(msg, e.getMessage());
+			DialogsService.showErrorDialog(msg, e.getMessage());
 		}
 	}
 	
@@ -158,7 +158,7 @@ public class PropertiesController {
 		if(isFormValid()) {
 			String title = labels.get(Labels.PROP_VALIDATE_DIALOG_TITLE);
 			String content = labels.get(Labels.PROP_VALIDATE_DIALOG_CONTENT);
-			new DialogsService().showInfoDialog(title, content);
+			DialogsService.showInfoDialog(title, content);
 		}
 	}
 	
@@ -173,11 +173,11 @@ public class PropertiesController {
 			PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults);
 			
 			if(not(validator.isValid())) {
-				new DialogsService().showValidationFailedDialog("", validator.getErrorMessages());
+				DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
 			} else {
 				String title = labels.get(Labels.PROP_VD_DIALOG_TITLE);
 				String content = labels.get(Labels.PROP_VD_DIALOG_CONTENT);
-				new DialogsService().showInfoDialog(title, content);
+				DialogsService.showInfoDialog(title, content);
 			}
 		} catch (IOException e) {
 			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
@@ -201,7 +201,7 @@ public class PropertiesController {
 		PropertiesValidator validator = new PropertiesValidator(editableProperties);
 		
 		if(not(validator.isValid())) {
-			new DialogsService().showValidationFailedDialog("", validator.getErrorMessages());
+			DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
 		}
 		
 		return validator.isValid();
@@ -213,7 +213,7 @@ public class PropertiesController {
 		
 		if(not(validator.isValid())) {
 			String header = labels.get(Labels.PROP_SAVE_ERROR_CONFIRM);
-			return new DialogsService().showConfirmationDialog(header, validator.getErrorMessages());
+			return DialogsService.showConfirmationDialog(header, validator.getErrorMessages());
 		}
 		return true;
 	}
@@ -225,7 +225,7 @@ public class PropertiesController {
 	
 	private boolean showConfirmActionDialog() {
 		String header = labels.get(Labels.PROP_ABANDON_CHANGES);
-		return new DialogsService().showConfirmationDialog(header);
+		return DialogsService.showConfirmationDialog(header);
 	}
 	
 }

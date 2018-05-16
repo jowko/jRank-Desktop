@@ -166,7 +166,7 @@ public class LearningTableController {
 	
 	public void removeAllExamplesAction() {
 		String header = "Do you want to remove ALL examples from table?";
-		if(new DialogsService().showConfirmationDialog(header))
+		if(DialogsService.showConfirmationDialog(header))
 			learningTable.getItems().clear();
 	}
 	
@@ -227,7 +227,7 @@ public class LearningTableController {
 	
 	private boolean showConfirmationDialog() {
 		String header = "Do you want to abandon changes in form?";
-		return new DialogsService().showConfirmationDialog(header, "");
+		return DialogsService.showConfirmationDialog(header, "");
 	}
 	
 	private void closeTab() {

@@ -40,7 +40,7 @@ public class WorkspaceController {
 		String validationErrors = settingsValidator.validateConfiguration();
 		if(not(validationErrors.isEmpty())) {
 			String errorDialogHeader = labels.get(Labels.US_SETTINGS_ERROR);
-			new DialogsService().showErrorDialog(errorDialogHeader, validationErrors);
+			DialogsService.showErrorDialog(errorDialogHeader, validationErrors);
 			isConfigValid = false;
 			//TODO set some info on workspace panel
 		}

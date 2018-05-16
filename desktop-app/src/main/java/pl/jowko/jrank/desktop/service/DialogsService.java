@@ -12,13 +12,10 @@ import static pl.jowko.jrank.desktop.feature.settings.Labels.*;
  */
 public class DialogsService {
 	
-	private LanguageService labels;
+	private DialogsService() {}
 	
-	public DialogsService() {
-		labels = LanguageService.getInstance();
-	}
-	
-	public void showErrorDialog(String header, String msg) {
+	public static void showErrorDialog(String header, String msg) {
+		LanguageService labels = LanguageService.getInstance();
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setTitle(labels.get(Labels.ERROR_DIALOG_TITLE));
 		alert.setHeaderText(header);
@@ -26,7 +23,7 @@ public class DialogsService {
 		alert.showAndWait();
 	}
 	
-	public void showInfoDialog(String title, String msg) {
+	public static void showInfoDialog(String title, String msg) {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle(title);
 		alert.setHeaderText("");
@@ -34,7 +31,8 @@ public class DialogsService {
 		alert.showAndWait();
 	}
 	
-	public void showValidationFailedDialog(String header, String msg) {
+	public static void showValidationFailedDialog(String header, String msg) {
+		LanguageService labels = LanguageService.getInstance();
 		Alert alert = new Alert(Alert.AlertType.WARNING);
 		alert.setTitle(labels.get(Labels.VALIDATION_DIALOG_TITLE));
 		alert.setHeaderText(header);
@@ -43,11 +41,12 @@ public class DialogsService {
 		alert.showAndWait();
 	}
 	
-	public boolean showConfirmationDialog(String header) {
+	public static boolean showConfirmationDialog(String header) {
 		return showConfirmationDialog(header, "");
 	}
 	
-	public boolean showConfirmationDialog(String header, String content) {
+	public static boolean showConfirmationDialog(String header, String content) {
+		LanguageService labels = LanguageService.getInstance();
 		ButtonType yesButton = new ButtonType(labels.get(CONFIRM_DIALOG_YES), ButtonBar.ButtonData.YES);
 		ButtonType noButton = new ButtonType(labels.get(CONFIRM_DIALOG_NO), ButtonBar.ButtonData.NO);
 		

@@ -208,7 +208,7 @@ public class ColumnDialogController {
 		}
 		
 		if(not(errorsMsg.isEmpty())) {
-			new DialogsService().showValidationFailedDialog("There are errors on form", errorsMsg);
+			DialogsService.showValidationFailedDialog("There are errors on form", errorsMsg);
 		}
 		
 		return errorsMsg.isEmpty();
