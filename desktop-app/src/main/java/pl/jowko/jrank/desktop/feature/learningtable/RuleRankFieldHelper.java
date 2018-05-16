@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.learningtable.dialogs.FieldType;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 /**
@@ -24,44 +25,17 @@ class RuleRankFieldHelper {
 		return null;
 	}
 	
-	static void setFieldValue(Field field, Field newValue) {
-		if(field instanceof CardinalField) {
-			CardinalField newField = (CardinalField) newValue;
-			((CardinalField) field).set(newField.get());
-		}
-		
-		if(field instanceof IntegerField) {
-			IntegerField newField = (IntegerField) newValue;
-			((IntegerField) field).set(newField.get());
-		}
-		
-		if(field instanceof StringField) {
-			StringField newField = (StringField) newValue;
-			((StringField) field).set(newField.get());
-		}
-		
-		if(field instanceof TableEnumField) {
-			TableEnumField newField = (TableEnumField) newValue;
-			((TableEnumField) field).set(newField.getName());
-		}
-		
-		if(field instanceof FloatField) {
-			FloatField newField = (FloatField) newValue;
-			((FloatField) field).set(newField.get());
-		}
-	}
-	
 	static String getColumnFieldType(Field initialValue) {
 		if(initialValue instanceof StringField)
-			return "String";
+			return FieldType.STRING_FIELD.toString();
 		if(initialValue instanceof CardinalField)
-			return "Cardinal";
+			return FieldType.CARDINAL_FIELD.toString();
 		if(initialValue instanceof IntegerField)
-			return "Integer";
+			return FieldType.INTEGER_FIELD.toString();
 		if(initialValue instanceof FloatField)
-			return "Float";
+			return FieldType.DECIMAL_FIELD.toString();
 		if(initialValue instanceof TableEnumField)
-			return "Enum";
+			return FieldType.ENUM_FIELD.toString();
 		
 		return "";
 	}

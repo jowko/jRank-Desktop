@@ -101,7 +101,7 @@ public class LearningTableController {
 		AttributeTableColumn column = new AttributeTableColumn(tableHelper.getColumnText(attribute), attribute);
 		int attributeIndex = learningTable.getColumns().size();
 		tableHelper.setCellFactories(column, attributeIndex);
-		column.setOnEditCommit(col -> RuleRankFieldHelper.setFieldValue(col.getOldValue(), col.getNewValue()));
+		column.setOnEditCommit(col -> col.getOldValue().copy(col.getNewValue()));
 		column.setMinWidth(50d);
 		
 		learningTable.getColumns().add(column);

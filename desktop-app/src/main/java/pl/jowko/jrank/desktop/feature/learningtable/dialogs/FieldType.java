@@ -3,7 +3,7 @@ package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 /**
  * Created by Piotr on 2018-05-13.
  */
-enum FieldType {
+public enum FieldType {
 	
 	INTEGER_FIELD("Integer"),
 	CARDINAL_FIELD("Cardinal"),
