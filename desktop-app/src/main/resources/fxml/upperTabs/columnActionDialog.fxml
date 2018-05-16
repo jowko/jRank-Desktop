@@ -48,7 +48,7 @@
                         <Insets top="5.0" />
                      </GridPane.margin>
                   </Label>
-      			 <CustomTextArea fx:id="enumsField" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      			 <CustomTextArea fx:id="enumsField" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" wrapText="true">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>
