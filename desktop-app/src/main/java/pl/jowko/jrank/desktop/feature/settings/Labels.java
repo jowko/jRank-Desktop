@@ -5,8 +5,6 @@ package pl.jowko.jrank.desktop.feature.settings;
  */
 public class Labels {
 	
-	private Labels() {}
-	
 	// General
 	public static final String APP_TITLE = "APP_TITLE";
 	public static final String US_SETTINGS_ERROR = "US_SETTINGS_ERROR";
@@ -157,5 +155,7 @@ public class Labels {
 	public static final String PARAMETERS_TOOLTIP = "PARAMETERS_TOOLTIP";
 	public static final String WRITE_INFO_TOOLTIP = "WRITE_INFO_TOOLTIP";
 	public static final String FILE_PANE_TOOLTIP = "FILE_PANE_TOOLTIP";
+	
+	private Labels() {}
 	
 }

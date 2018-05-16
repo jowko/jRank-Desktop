@@ -5,11 +5,11 @@ package pl.jowko.jrank.desktop.feature.settings;
  */
 public class JRankConst {
 	
-	private JRankConst() {}
-	
 	public static final String MSG = "[MSG]";
 	
 	public static final double MIN_WIDTH = 1366;
 	public static final double MIN_HEIGHT = 768;
+	
+	private JRankConst() {}
 	
 }
