@@ -1,7 +1,6 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
-import pl.jowko.jrank.logger.JRankLogger;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;

@@ -23,7 +23,6 @@ import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.requireNonNull;
 import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
