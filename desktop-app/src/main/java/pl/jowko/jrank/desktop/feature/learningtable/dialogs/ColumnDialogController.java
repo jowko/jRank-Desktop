@@ -23,6 +23,7 @@ import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.requireNonNull;
 import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
@@ -233,6 +234,8 @@ public class ColumnDialogController {
 				return new StringField();
 			case INTEGER_FIELD:
 				return new IntegerField();
+			case CARDINAL_FIELD:
+				return new CardinalField();
 			case DECIMAL_FIELD:
 				return new FloatField();
 			case ENUM_FIELD:
@@ -246,6 +249,8 @@ public class ColumnDialogController {
 	private FieldType getFieldTypeFromField(Field field) {
 		if(field instanceof StringField)
 			return FieldType.STRING_FIELD;
+		if(field instanceof CardinalField)
+			return FieldType.CARDINAL_FIELD;
 		if(field instanceof IntegerField)
 			return FieldType.INTEGER_FIELD;
 		if(field instanceof FloatField)

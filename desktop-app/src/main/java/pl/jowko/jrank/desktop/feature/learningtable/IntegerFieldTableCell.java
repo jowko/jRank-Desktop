@@ -11,7 +11,7 @@ class IntegerFieldTableCell <T> extends CustomFieldTableCell<T> {
 	@Override
 	void createTextField() {
 		textField = new IntegerField(IntegerField.NEGATIVE_INTEGER_PATTERN);
-		textField.setCharLimit(12);
+		textField.setCharLimit(10);
 		textField.setText(getString());
 		textField.setOnAction(evt -> {
 			if(textField.getText() != null && !textField.getText().isEmpty()){

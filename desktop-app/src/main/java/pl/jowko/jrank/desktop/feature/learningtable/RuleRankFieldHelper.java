@@ -1,9 +1,6 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
-import pl.poznan.put.cs.idss.jrs.types.Field;
-import pl.poznan.put.cs.idss.jrs.types.FloatField;
-import pl.poznan.put.cs.idss.jrs.types.IntegerField;
-import pl.poznan.put.cs.idss.jrs.types.StringField;
+import pl.poznan.put.cs.idss.jrs.types.*;
 
 /**
  * Created by Piotr on 2018-05-14.
@@ -13,6 +10,8 @@ class RuleRankFieldHelper {
 	Field createNewFieldOfProvidedType(Field field) {
 		if(field instanceof StringField)
 			return new StringField();
+		if(field instanceof CardinalField)
+			return new CardinalField();
 		if(field instanceof IntegerField)
 			return new IntegerField();
 		if(field instanceof FloatField)
@@ -24,6 +23,11 @@ class RuleRankFieldHelper {
 	}
 	
 	void setFieldValue(Field field, Field newValue) {
+		if(field instanceof CardinalField) {
+			CardinalField newField = (CardinalField) newValue;
+			((CardinalField) field).set(newField.get());
+		}
+		
 		if(field instanceof IntegerField) {
 			IntegerField newField = (IntegerField) newValue;
 			((IntegerField) field).set(newField.get());
@@ -48,6 +52,8 @@ class RuleRankFieldHelper {
 	String getColumnFieldType(Field initialValue) {
 		if(initialValue instanceof StringField)
 			return "String";
+		if(initialValue instanceof CardinalField)
+			return "Cardinal";
 		if(initialValue instanceof IntegerField)
 			return "Integer";
 		if(initialValue instanceof FloatField)

@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.ComboBoxTableCell;
-import pl.poznan.put.cs.idss.jrs.types.Attribute;
-import pl.poznan.put.cs.idss.jrs.types.Field;
-import pl.poznan.put.cs.idss.jrs.types.FloatField;
-import pl.poznan.put.cs.idss.jrs.types.IntegerField;
+import pl.poznan.put.cs.idss.jrs.types.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +41,9 @@ class LearningTableHelper {
 		);
 		Attribute attribute = column.getAttribute();
 		
-		if(attribute.getInitialValue() instanceof IntegerField) {
+		if(attribute.getInitialValue() instanceof CardinalField) {
+			column.setCellFactory(col -> new CardinalFieldTableCell<>());
+		} else if(attribute.getInitialValue() instanceof IntegerField) {
 			column.setCellFactory(col -> new IntegerFieldTableCell<>());
 		} else if(attribute.getInitialValue() instanceof FloatField) {
 			column.setCellFactory(col -> new DecimalFieldTableCell<>());

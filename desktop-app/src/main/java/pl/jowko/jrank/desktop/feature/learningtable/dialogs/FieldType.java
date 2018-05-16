@@ -6,6 +6,7 @@ package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 enum FieldType {
 	
 	INTEGER_FIELD("Integer"),
+	CARDINAL_FIELD("Cardinal"),
 	DECIMAL_FIELD("Decimal"),
 	STRING_FIELD("String"),
 	ENUM_FIELD("Enum");
