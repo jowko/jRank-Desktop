@@ -7,7 +7,9 @@ import pl.poznan.put.cs.idss.jrs.types.*;
  */
 class RuleRankFieldHelper {
 	
-	Field createNewFieldOfProvidedType(Field field) {
+	private RuleRankFieldHelper() {}
+	
+	static Field createNewFieldOfProvidedType(Field field) {
 		if(field instanceof StringField)
 			return new StringField();
 		if(field instanceof CardinalField)
@@ -22,7 +24,7 @@ class RuleRankFieldHelper {
 		return null;
 	}
 	
-	void setFieldValue(Field field, Field newValue) {
+	static void setFieldValue(Field field, Field newValue) {
 		if(field instanceof CardinalField) {
 			CardinalField newField = (CardinalField) newValue;
 			((CardinalField) field).set(newField.get());
@@ -49,7 +51,7 @@ class RuleRankFieldHelper {
 		}
 	}
 	
-	String getColumnFieldType(Field initialValue) {
+	static String getColumnFieldType(Field initialValue) {
 		if(initialValue instanceof StringField)
 			return "String";
 		if(initialValue instanceof CardinalField)

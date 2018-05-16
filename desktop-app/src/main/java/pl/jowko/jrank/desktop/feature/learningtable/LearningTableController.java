@@ -63,19 +63,15 @@ public class LearningTableController {
 	private Tab learningTableTab;
 	private WorkspaceItem workspaceItem;
 	private LearningTableHelper tableHelper;
-	private RuleRankFieldHelper fieldHelper;
-	private EnumReplacer enumReplacer;
 	
 	public void initializeTable(MemoryContainer container, Tab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
-		enumReplacer = new EnumReplacer();
-		enumReplacer.replaceJRSEnumsWithTableEnumFields(table);
+		EnumReplacer.replaceJRSEnumsWithTableEnumFields(table);
 		oldTable = (LearningTable) Cloner.deepClone(table);
 		attributes = new ArrayList<>();
 		learningTableTab = tableTab;
 		this.workspaceItem = workspaceItem;
 		tableHelper = new LearningTableHelper();
-		fieldHelper = new RuleRankFieldHelper();
 		initializeTable();
 		setItemsToAttributeComboBox();
 		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -105,7 +101,7 @@ public class LearningTableController {
 		AttributeTableColumn column = new AttributeTableColumn(tableHelper.getColumnText(attribute), attribute);
 		int attributeIndex = learningTable.getColumns().size();
 		tableHelper.setCellFactories(column, attributeIndex);
-		column.setOnEditCommit(col -> fieldHelper.setFieldValue(col.getOldValue(), col.getNewValue()));
+		column.setOnEditCommit(col -> RuleRankFieldHelper.setFieldValue(col.getOldValue(), col.getNewValue()));
 		column.setMinWidth(50d);
 		
 		learningTable.getColumns().add(column);
@@ -173,7 +169,7 @@ public class LearningTableController {
 	public void saveAction() {
 		try {
 			LearningTable tableToSave = matchDataFromUIToLearningTable();
-			enumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
+			EnumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
 			MemoryContainer container = MemoryContainerAssembler.assembleContainerFromTable(tableToSave);
 			ISFWriter.saveMemoryContainerIntoISF(workspaceItem.getFilePath(), container);
 			closeTab();

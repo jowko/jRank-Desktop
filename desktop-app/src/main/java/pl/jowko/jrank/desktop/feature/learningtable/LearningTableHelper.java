@@ -15,12 +15,6 @@ import java.util.List;
  */
 class LearningTableHelper {
 	
-	private RuleRankFieldHelper fieldHelper;
-	
-	LearningTableHelper() {
-		fieldHelper = new RuleRankFieldHelper();
-	}
-	
 	/**
 	 * When removing column from table, indexes are not correctly related to columns.
 	 * After column removal cellValueFactory must be recreated with new indexes.
@@ -58,7 +52,7 @@ class LearningTableHelper {
 		ObservableList<Field> fields = FXCollections.observableArrayList();
 		
 		for(Attribute attribute: attributes) {
-			fields.add(fieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue()));
+			fields.add(RuleRankFieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue()));
 		}
 		
 		return fields;
@@ -67,7 +61,7 @@ class LearningTableHelper {
 	String getColumnText(Attribute attribute) {
 		return attribute.getName() +
 				'\n' +
-				fieldHelper.getColumnFieldType(attribute.getInitialValue()) +
+				RuleRankFieldHelper.getColumnFieldType(attribute.getInitialValue()) +
 				'\n' +
 				getColumnPreference(attribute.getPreferenceType(), attribute.getKind());
 	}

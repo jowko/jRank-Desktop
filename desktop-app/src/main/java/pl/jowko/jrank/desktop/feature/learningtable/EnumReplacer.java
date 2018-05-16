@@ -12,22 +12,24 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
  */
 class EnumReplacer {
 	
+	private EnumReplacer() {}
+	
 	/**
 	 * This method replace EnumField in table to TableEnumField.
 	 * All EnumField from attributes and examples are replaced.
 	 * @param table containing examples and attributes
 	 */
-	void replaceJRSEnumsWithTableEnumFields(LearningTable table) {
+	static void replaceJRSEnumsWithTableEnumFields(LearningTable table) {
 		replaceJRSEnumsInAttributes(table);
 		replaceJRSEnumsInExamples(table);
 	}
 	
-	void replaceTableEnumsWithJRSEnums(LearningTable table) {
+	static void replaceTableEnumsWithJRSEnums(LearningTable table) {
 		replaceTableEnumsInAttributes(table);
 		replaceTableEnumsInExamples(table);
 	}
 	
-	private void replaceJRSEnumsInAttributes(LearningTable table) {
+	static private void replaceJRSEnumsInAttributes(LearningTable table) {
 		for(Attribute attribute : table.getAttributes()) {
 			if(attribute.getInitialValue() instanceof EnumField) {
 				EnumField field = (EnumField) attribute.getInitialValue();
@@ -36,7 +38,7 @@ class EnumReplacer {
 		}
 	}
 	
-	private void replaceJRSEnumsInExamples(LearningTable table) {
+	private static void replaceJRSEnumsInExamples(LearningTable table) {
 		for(Example example : table.getExamples()) {
 			Field[] fields = example.getFields();
 			
@@ -48,7 +50,7 @@ class EnumReplacer {
 		}
 	}
 	
-	private void replaceTableEnumsInAttributes(LearningTable table) {
+	private static void replaceTableEnumsInAttributes(LearningTable table) {
 		for(Attribute attribute : table.getAttributes()) {
 			if(attribute.getInitialValue() instanceof TableEnumField) {
 				TableEnumField field = (TableEnumField) attribute.getInitialValue();
@@ -57,7 +59,7 @@ class EnumReplacer {
 		}
 	}
 	
-	private void replaceTableEnumsInExamples(LearningTable table) {
+	private static void replaceTableEnumsInExamples(LearningTable table) {
 		for(Example example : table.getExamples()) {
 			Field[] fields = example.getFields();
 			
