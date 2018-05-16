@@ -8,6 +8,7 @@ public class DecimalField extends CustomTextField {
 	
 	public static final String POSITIVE_DECIMAL_PATTERN = "[0-9]*(\\.[0-9]*)?";
 	public static final String NEGATIVE_DECIMAL_PATTERN = "[-]?[0-9]*(\\.[0-9]*)?";
+	public static final String NEGATIVE_SCIENTIFIC_DECIMAL_PATTERN = "[-]?[0-9]*(\\.[0-9]*([0-9][eE][0-9]*)?)?";
 	
 	public DecimalField() {
 		super(POSITIVE_DECIMAL_PATTERN);
