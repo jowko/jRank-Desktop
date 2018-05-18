@@ -25,6 +25,8 @@ public class UpperTabsController {
 	@FXML
 	private TabPane upperTabs;
 	
+	private TabsContextMenuCreator menuCreator;
+	
 	public static UpperTabsController getInstance() {
 		return instance;
 	}
@@ -32,6 +34,7 @@ public class UpperTabsController {
 	@FXML
 	void initialize() {
 		instance = this;
+		menuCreator = new TabsContextMenuCreator(upperTabs);
 	}
 	
 	public void createTab(WorkspaceItem workspaceItem) {
@@ -44,6 +47,7 @@ public class UpperTabsController {
 			}
 			
 			JRankTab tab = createTabForFile(workspaceItem, tabText);
+			menuCreator.create(tab);
 			upperTabs.getTabs().add(tab);
 			upperTabs.getSelectionModel().select(tab);
 		} catch (IOException e) {
