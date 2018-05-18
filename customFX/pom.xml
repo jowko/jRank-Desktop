@@ -7,11 +7,10 @@
     <parent>
         <groupId>pl.jowko.jRank</groupId>
         <artifactId>jRank-Desktop</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.3-SNAPSHOT</version>
     </parent>
     
     <artifactId>customFX</artifactId>
-    <version>0.2-SNAPSHOT</version>
     
     <build>
         <plugins>
