@@ -23,11 +23,9 @@ class StubSettings {
 		createStubSettings();
 		
 		labels = new HashMap<>();
-		labels.put("POL", createPolishLabels());
 		labels.put("ENG", createEnglishLabels());
 		
 		languages = new HashMap<>();
-		languages.put("POL", "Polski");
 		languages.put("ENG", "English");
 		
 	}
@@ -51,65 +49,6 @@ class StubSettings {
 				.setTooltipsEnabled(true)
 				.setAdvancedPropertiesEnabled(false)
 				.createUserSettings();
-	}
-	
-	private Map<String, String> createPolishLabels() {
-		Map<String, String> language = new HashMap<>();
-		
-		language.put(Labels.APP_TITLE, "JRank Ultimate Desktop Edition");
-		language.put(Labels.US_SETTINGS_ERROR, "Ustawienia użytkownika nie zostały poprawnie skonfigurowane: ");
-		
-		// menu items
-		language.put(Labels.MENU_FILE, "Plik");
-		language.put(Labels.MENU_QUIT, "Wyjście");
-		language.put(Labels.MENU_SETTINGS, "Ustawienia");
-		language.put(Labels.MENU_USER_SETTINGS, "Ustawienia użytkownika");
-		language.put(Labels.MENU_HELP, "Pomoc");
-		language.put(Labels.MENU_ITEM_HELP, "Pomoc");
-		language.put(Labels.MENU_ABOUT, "O programie");
-		
-		// General buttons
-		language.put(Labels.BUTTON_SAVE, "Zapisz");
-		language.put(Labels.BUTTON_CANCEL, "Anuluj");
-		
-		// User Settings
-		language.put(Labels.US_TITLE, "Ustawienia użytkownika");
-		language.put(Labels.LANGUAGE, "Język: ");
-		language.put(Labels.WORKSPACE, "Scieżka robocza: ");
-		language.put(Labels.TOOLTIPS_ENABLED, "Podpowiedzi aktywne");
-		language.put(Labels.ADVANCED_PROPERTIES_ENABLED, "Advanced properties enabled");
-		language.put(Labels.ADVANCED_PROPERTIES_ENABLED_TOOLTIP, "When advanced properties are enabled, all fields on properties form are visible by default. If this option is not enabled, most fields are hidden and you need to expand panels to edit them.");
-		language.put(Labels.US_INFO, "Ustawienia zostaną zastosowane po restarcie aplikacji.");
-		language.put(Labels.LANGUAGE_ERROR, "Kod języka jest nieprawidłowy. Wybierz inny język.\n");
-		language.put(Labels.WORKSPACE_ERROR, "Podana ścieżka katalogu roboczego: " + MSG + " nie jest prawidłowa\n");
-		language.put(Labels.ERROR_DIALOG_TITLE, "Niespodziewany błąd");
-		language.put(Labels.VALIDATION_DIALOG_TITLE, "Błąd walidacji");
-		language.put(Labels.US_ERROR_DIALOG_HEADER, "Błąd przy zapisie opcji użytkownika: ");
-		language.put(Labels.VALIDATION_DIALOG_HEADER, "Wykryto błędy na formularzu: ");
-		
-		// Dialogs
-		language.put(Labels.CONFIRM_DIALOG_TITLE, "Potwierdź akcję");
-		language.put(Labels.CONFIRM_DIALOG_YES, "Tak");
-		language.put(Labels.CONFIRM_DIALOG_NO, "Nie");
-		
-		// About dialog
-		language.put(Labels.ABOUT_TITLE, "O JRank Ultimate Desktop Edition");
-		language.put(Labels.ABOUT_APP_INFO, "Informacje o aplikacji:");
-		language.put(Labels.ABOUT_AUTHOR, "Autor:");
-		language.put(Labels.ABOUT_VERSION, "Wersja:");
-		language.put(Labels.ABOUT_RELEASE_DATE, "Data wydania:");
-		language.put(Labels.ABOUT_BOTTOM_INFO, "JRank Ultimate Desktop Edition został stworzony w ramach pracy magisterkiej.");
-		
-		// Lower tabs
-		language.put(Labels.LOGS_TAB, "Logi");
-		
-		//TODO translate or remove polish language support
-		createEnglishPropertiesLabels(language);
-		createEnglishPropertiesMessages(language);
-		createEnglishPropertiesValidationMessages(language);
-		createEnglishPropertiesTooltips(language);
-		
-		return language;
 	}
 	
 	private Map<String, String> createEnglishLabels() {
