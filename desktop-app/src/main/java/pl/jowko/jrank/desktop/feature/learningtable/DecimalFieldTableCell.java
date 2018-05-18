@@ -2,12 +2,13 @@ package pl.jowko.jrank.desktop.feature.learningtable;
 
 import pl.jowko.jrank.feature.customfx.DecimalField;
 import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 import pl.poznan.put.cs.idss.jrs.types.FloatField;
 
 /**
  * Created by Piotr on 2018-05-11.
  */
-class DecimalFieldTableCell <T> extends CustomFieldTableCell<T> {
+class DecimalFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	
 	@Override
 	void createTextField() {
@@ -23,12 +24,18 @@ class DecimalFieldTableCell <T> extends CustomFieldTableCell<T> {
 						JRankLogger.warn("Value: [" + textField.getText() + "] is not valid for decimal field type. Select smaller number.");
 						return;
 					}
-					commitEdit(new FloatField(value));
+					commitEdit(getField());
 				} catch (NumberFormatException e) {
 					JRankLogger.warn("Value [" + textField.getText() + "] is not valid for decimal field type. Select valid number.");
 				}
 			}
 		});
+	}
+	
+	@Override
+	protected Field getField() {
+		Double value = Double.valueOf(textField.getText());
+		return new FloatField(value);
 	}
 	
 }

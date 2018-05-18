@@ -16,7 +16,9 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  */
 abstract class CustomFieldTableCell<T> extends TableCell<T, Field> {
 	
+	boolean escapePressed = false;
 	CustomTextField textField;
+	String valueBeforeEdit;
 	
 	abstract void createTextField();
 	
@@ -25,6 +27,7 @@ abstract class CustomFieldTableCell<T> extends TableCell<T, Field> {
 		if(editableProperty().get() && not(isEmpty())){
 			super.startEdit();
 			createTextField();
+			valueBeforeEdit = getString();
 			setTextFieldProperties();
 			setText(null);
 			setGraphic(textField);
@@ -69,14 +72,7 @@ abstract class CustomFieldTableCell<T> extends TableCell<T, Field> {
 		if (isEditing()) {
 			super.commitEdit(item);
 		} else {
-			final TableView<T> table = getTableView();
-			if (table != null) {
-				TablePosition<T, Field> position = new TablePosition<>(getTableView(),
-						getTableRow().getIndex(), getTableColumn());
-				TableColumn.CellEditEvent<T, Field> editEvent = new TableColumn.CellEditEvent<>(table, position,
-						TableColumn.editCommitEvent(), item);
-				Event.fireEvent(getTableColumn(), editEvent);
-			}
+			final TableView<T> table = handleCellEdit(item);
 			updateItem(item, false);
 			if (table != null) {
 				table.edit(-1, null);
@@ -84,13 +80,27 @@ abstract class CustomFieldTableCell<T> extends TableCell<T, Field> {
 		}
 	}
 	
+	TableView<T> handleCellEdit(Field item) {
+		TableView<T> table = getTableView();
+		if (table != null) {
+			TablePosition<T, Field> position = new TablePosition<>(getTableView(),
+					getTableRow().getIndex(), getTableColumn());
+			TableColumn.CellEditEvent<T, Field> editEvent = new TableColumn.CellEditEvent<>(table, position,
+					TableColumn.editCommitEvent(), item);
+			Event.fireEvent(getTableColumn(), editEvent);
+		}
+		return table;
+	}
+	
 	private void setTextFieldProperties() {
 		textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
 		
 		textField.setOnKeyPressed(key -> {
 			if (key.getCode().equals(KeyCode.ESCAPE)) {
+				escapePressed = true;
 				cancelEdit();
 			}
+			escapePressed = false;
 		});
 	}
 	
