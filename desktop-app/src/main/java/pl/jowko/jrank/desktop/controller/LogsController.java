@@ -1,7 +1,12 @@
 package pl.jowko.jrank.desktop.controller;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.OutputStream;
@@ -21,7 +26,20 @@ public class LogsController {
 		PrintStream ps = new PrintStream(console, true);
 		System.setOut(ps);
 		System.setErr(ps);
+		initializeContextMenu();
 		JRankLogger.init("Initialized logs tab");
+	}
+	
+	private void initializeContextMenu() {
+		ContextMenu menu = new ContextMenu();
+		menu.getItems().add(createClearLogMenuItem());
+		logsTextArea.setContextMenu(menu);
+	}
+	
+	private MenuItem createClearLogMenuItem() {
+		MenuItem item = new MenuItem("Clear logs");
+		item.setOnAction(event -> logsTextArea.clear());
+		return item;
 	}
 	
 	public static class Console extends OutputStream {
