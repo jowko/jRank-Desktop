@@ -15,10 +15,6 @@ public class LowerTabsController {
 	
 	private LanguageService labels;
 	
-	public void onButtonAction() {
-		System.out.println("button in lower tabs in second tab");
-	}
-	
 	@FXML
 	private void initialize() {
 		labels = LanguageService.getInstance();
