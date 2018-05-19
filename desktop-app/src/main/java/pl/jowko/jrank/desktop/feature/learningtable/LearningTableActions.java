@@ -74,6 +74,9 @@ public class LearningTableActions {
 		tableHelper.setCellFactories(column, attributeIndex);
 		column.setOnEditCommit(col -> col.getOldValue().copy(col.getNewValue()));
 		column.setMinWidth(50d);
+		if(not(attribute.getActive())) {
+			column.getStyleClass().add("not-active");
+		}
 		
 		learningTable.getColumns().add(column);
 		attributes.add(attribute);
@@ -186,6 +189,8 @@ public class LearningTableActions {
 		tableColumn.setText(tableHelper.getColumnText(editedAttribute));
 		tableColumn.setAttribute(editedAttribute);
 		int attributeIndex = attributes.indexOf(oldAttribute);
+		handleStyleChange(tableColumn);
+		
 		
 		if(editedAttribute.getInitialValue() instanceof TableEnumField) {
 			tableHelper.handleEnumEdition(tableColumn.getAttribute(), attributeIndex, learningTable);
@@ -194,6 +199,18 @@ public class LearningTableActions {
 		
 		replaceAttributeInLearningTable(oldAttribute, editedAttribute);
 		setItemsToAttributeComboBox();
+	}
+	
+	/**
+	 * This method marks inactive attribute with style from common.css.
+	 * @param tableColumn with was edited
+	 */
+	private void handleStyleChange(AttributeTableColumn tableColumn) {
+		if(not(tableColumn.getAttribute().getActive())) {
+			tableColumn.getStyleClass().add("not-active");
+		} else {
+			tableColumn.getStyleClass().remove("not-active");
+		}
 	}
 	
 	/**

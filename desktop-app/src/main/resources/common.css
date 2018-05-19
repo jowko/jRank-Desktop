@@ -1,3 +1,11 @@
 .table-row-cell {
 	-fx-cell-size: 32px;
 }
+
+.table-column {
+	-fx-alignment: CENTER-LEFT;
+}
+
+.table-view .column-header.not-active {
+	-fx-base: yellow;
+}
