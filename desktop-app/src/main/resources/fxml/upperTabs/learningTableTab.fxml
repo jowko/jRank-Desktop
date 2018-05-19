@@ -6,10 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.learningtable.LearningTableController">
@@ -23,36 +20,16 @@
                <children>
                   <FlowPane hgap="20.0">
                      <children>
-                        <Button fx:id="addAttributeButton" mnemonicParsing="false" onAction="#addNewAttributeAction" text="Add new attribute" />
                         <Label fx:id="selectAttributeLabel" text="Select attribute:" />
                         <ComboBox fx:id="selectAttribute" prefWidth="150.0" />
-                        <GridPane>
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Button fx:id="removeAttributeButton" minWidth="160.0" mnemonicParsing="false" onAction="#removeAttributeAction" text="Remove selected attribute" />
-                              <Button fx:id="editAttributeButton" minWidth="160.0" mnemonicParsing="false" onAction="#editAttributeAction" text="Edit selected attribute" GridPane.rowIndex="1" />
-                           </children>
-                        </GridPane>
+                         <Button fx:id="removeAttributeButton" minWidth="160.0" mnemonicParsing="false" onAction="#removeAttributeAction" text="Remove selected attribute" />
+                        <Button fx:id="removeAllExamplesButton" mnemonicParsing="false" onAction="#removeAllExamplesAction" text="Remove all examples" />
                      </children>
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <VBox.margin>
-                        <Insets top="-10.0" />
-                     </VBox.margin>
-                  </FlowPane>
-                  <FlowPane hgap="20.0">
-                     <children>
-                        <Button fx:id="removeAllExamplesButton" mnemonicParsing="false" onAction="#removeAllExamplesAction" text="Remove all examples" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets />
                      </VBox.margin>
                   </FlowPane>
                   <FlowPane hgap="20.0">
@@ -68,7 +45,7 @@
             </VBox>
          </content>
      </TitledPane>
-      <TableView fx:id="learningTable" editable="true" layoutX="10.0" layoutY="100.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="learningTable" editable="true" layoutX="10.0" layoutY="100.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
           <columns>
           </columns>
       </TableView>

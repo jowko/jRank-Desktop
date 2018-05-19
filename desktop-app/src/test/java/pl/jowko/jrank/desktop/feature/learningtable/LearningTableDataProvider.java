@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Piotr on 2018-05-16.
  */
-class LearningTableDataProvider {
+public class LearningTableDataProvider {
 	
 	static final String STRING_COLUMN_NAME = "SomeStringColumn";
 	
@@ -68,7 +68,7 @@ class LearningTableDataProvider {
 		return fields;
 	}
 	
-	static EnumDomain createEnumDomain() {
+	public static EnumDomain createEnumDomain() {
 		return new EnumDomain(new String[]{"1", "2", "3"});
 	}
 }

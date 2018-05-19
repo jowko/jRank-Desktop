@@ -23,9 +23,9 @@ class TableContextMenuCreator {
 		ContextMenu menu = new ContextMenu();
 		
 		menu.getItems().add(createAddExampleItem());
-		menu.getItems().add(createRemoveExamplesItem());
 		menu.getItems().add(createCustomizeAttributesItem());
 		menu.getItems().add(createAddAttributeItem());
+		menu.getItems().add(createRemoveExamplesItem());
 		
 		table.setContextMenu(menu);
 	}
@@ -44,21 +44,13 @@ class TableContextMenuCreator {
 	
 	private MenuItem createCustomizeAttributesItem() {
 		MenuItem item = new MenuItem("Customize attributes");
-		
-		item.setOnAction(event -> {
-		
-		});
-		
+		item.setOnAction(event -> actions.customizeAttributes());
 		return item;
 	}
 	
 	private MenuItem createAddAttributeItem() {
 		MenuItem item = new MenuItem("Add attribute");
-		
-		item.setOnAction(event -> {
-		
-		});
-		
+		item.setOnAction(event -> actions.addNewAttribute());
 		return item;
 	}
 	

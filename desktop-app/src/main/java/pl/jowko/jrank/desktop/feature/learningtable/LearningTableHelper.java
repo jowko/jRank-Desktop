@@ -4,7 +4,10 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
+import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 import java.util.ArrayList;
@@ -56,6 +59,25 @@ class LearningTableHelper {
 		}
 		
 		return fields;
+	}
+	
+	void handleEnumEdition(Attribute attribute, int attributeIndex, TableView<ObservableList<Field>> learningTable) {
+		TableEnumField enumField = (TableEnumField) attribute.getInitialValue();
+		EnumDomain domain = enumField.getDomain();
+		
+		ObservableList<ObservableList<Field>> list = learningTable.getItems();
+		list.forEach(row -> {
+			TableEnumField field = (TableEnumField) row.get(attributeIndex);
+			String previousValue = field.getName();
+			try {
+				int previousIndex = domain.getIndex(previousValue);
+				row.set(attributeIndex, new TableEnumField(domain.getName(previousIndex), domain));
+			} catch (InvalidValueException e) {
+				JRankLogger.warn("Value: " + previousValue + " is not available now for field [" + attribute.getName() + "]. Setting first element into field.");
+				row.set(attributeIndex, new TableEnumField(domain.getName(0), domain));
+			}
+			
+		});
 	}
 	
 	String getColumnText(Attribute attribute) {
