@@ -134,10 +134,19 @@ public class LearningTableController {
 	
 	private boolean isTableValid(LearningTable tableToSave) {
 		LearningTableValidator validator = new LearningTableValidator(tableToSave);
-		if(validator.isValid())
+		if(validator.isValid() && validator.isDecisionAttributesValid())
 			return true;
 		
-		DialogsService.showValidationFailedDialog("Table contains errors:", validator.getErrorMsg());
+		if(not(validator.isValid())) {
+			DialogsService.showValidationFailedDialog("Table contains errors:", validator.getErrorMsg() + "\n" + validator.getDecisionMsg());
+			return false;
+		}
+		
+		if(not(validator.isDecisionAttributesValid())) {
+			return DialogsService.showConfirmationDialog("Do you want to save form?", validator.getDecisionMsg());
+		}
+		
+		
 		return false;
 	}
 	

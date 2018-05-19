@@ -30,6 +30,15 @@ public class LearningTableDataProvider {
 		return table;
 	}
 	
+	static LearningTable createLearningTable(List<Attribute> attributes) {
+		LearningTable table = new LearningTable(null, null, null);
+		
+		table.getAttributes().addAll(attributes);
+		table.getExamples().addAll(createExamples(attributes));
+		
+		return table;
+	}
+	
 	static List<Attribute> createAttributes() {
 		List<Attribute> attributes = new ArrayList<>();
 		attributes.add(new Attribute("integer", new IntegerField()));
