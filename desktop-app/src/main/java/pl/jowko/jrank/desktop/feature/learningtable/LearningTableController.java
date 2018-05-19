@@ -44,10 +44,6 @@ public class LearningTableController {
 	@FXML
 	Button editAttributeButton;
 	@FXML
-	Button addExampleButton;
-	@FXML
-	Button removeSelectedExamplesButton;
-	@FXML
 	Button removeAllExamplesButton;
 	@FXML
 	Button saveButton;
@@ -59,10 +55,16 @@ public class LearningTableController {
 	
 	private LearningTable oldTable;
 	private LearningTable table;
+	/**
+	 * Temporary attribute, move it to LearningTableActions
+	 */
+	@Deprecated
 	private List<Attribute> attributes;
 	private Tab learningTableTab;
 	private WorkspaceItem workspaceItem;
 	private LearningTableHelper tableHelper;
+	private LearningTableActions tableActions;
+	private TableContextMenuCreator menuCreator;
 	
 	public void initializeTable(MemoryContainer container, Tab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
@@ -72,6 +74,9 @@ public class LearningTableController {
 		learningTableTab = tableTab;
 		this.workspaceItem = workspaceItem;
 		tableHelper = new LearningTableHelper();
+		tableActions = new LearningTableActions(learningTable, attributes);
+		menuCreator = new TableContextMenuCreator(learningTable, tableActions);
+		menuCreator.create();
 		initializeTable();
 		setItemsToAttributeComboBox();
 		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -139,25 +144,6 @@ public class LearningTableController {
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		tableHelper.setCellFactories(tableColumn, attributeIndex);
 		setItemsToAttributeComboBox();
-	}
-	
-	public void addExampleAction() {
-		if(learningTable.getColumns().size() == 0) {
-			JRankLogger.info("No attributes in table. Add attributes first.");
-		}
-		ObservableList<Field> newFields = tableHelper.getEmptyExample(attributes);
-		learningTable.getItems().add(newFields);
-	}
-	
-	public void removeSelectedExamplesAction() {
-		ObservableList<ObservableList<Field>> selectedRows = learningTable.getSelectionModel().getSelectedItems();
-		if(selectedRows.isEmpty()) {
-			JRankLogger.info("No examples were selected. Select examples first.");
-			return;
-		}
-		// we don't want to iterate on same collection on with we remove items
-		ArrayList<ObservableList<Field>> rows = new ArrayList<>(selectedRows);
-		rows.forEach(row -> learningTable.getItems().remove(row));
 	}
 	
 	public void removeAllExamplesAction() {
