@@ -3,6 +3,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.tabs.upper.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
@@ -100,11 +101,11 @@ public class PropertiesController {
 	private LanguageService labels;
 	private PropertiesControllerHelper controllerHelper;
 	private WorkspaceItem workspaceItem;
-	private Tab propertiesTab;
+	private JRankTab propertiesTab;
 	JRankProperties properties;
 	JRankProperties editableProperties;
 	
-	public void initializeProperties(JRankProperties properties, WorkspaceItem workspaceItem, Tab propertiesTab) {
+	public void initializeProperties(JRankProperties properties, WorkspaceItem workspaceItem, JRankTab propertiesTab) {
 		this.properties = properties;
 		this.workspaceItem = workspaceItem;
 		this.propertiesTab = propertiesTab;
@@ -116,6 +117,7 @@ public class PropertiesController {
 		initializeCloseEvent();
 		new PropertiesTooltipsHelper(this).initializeTooltips();
 		new PropertiesTranslatorHelper(this).translateFields();
+		new PropertiesChangeListener(this, propertiesTab).setUpListeners();
 	}
 	
 	public void saveAction() {
@@ -220,7 +222,7 @@ public class PropertiesController {
 	
 	private boolean isUserWishToKeepChanges() {
 		editableProperties = controllerHelper.getPropertiesFromForm();
-		return not(editableProperties.equals(properties)) && not(showConfirmActionDialog());
+		return propertiesTab.isTabEdited() && not(showConfirmActionDialog());
 	}
 	
 	private boolean showConfirmActionDialog() {
