@@ -35,7 +35,7 @@ public class MainGenerator {
 		JRankLogger.gen("Generating data directory: " + configPaths.getDataDirectory());
 		Files.createDirectories(Paths.get(configPaths.getDataDirectory()));
 		JRankLogger.gen("Data directory created successfully.");
-		StubSettings stubSettings = new StubSettings();
+		StubSettings stubSettings = new StubSettings(true);
 		
 		
 		JRankLogger.gen("Generating UserSettings file: " + configPaths.getUserSettingsPath());

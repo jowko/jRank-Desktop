@@ -6,6 +6,7 @@ import pl.jowko.jrank.desktop.feature.settings.UserSettingsBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
 
@@ -19,7 +20,11 @@ class StubSettings {
 	private Map<String, String> languages;
 	private UserSettings settings;
 	
-	StubSettings() {
+	/**
+	 * Creates instance of this class.
+	 * @param stubLanguageEnabled if is set to true, additional language will be generated. This language should be used only for tests.
+	 */
+	StubSettings(boolean stubLanguageEnabled) {
 		createStubSettings();
 		
 		labels = new HashMap<>();
@@ -28,6 +33,8 @@ class StubSettings {
 		languages = new HashMap<>();
 		languages.put("ENG", "English");
 		
+		if(stubLanguageEnabled)
+			generateStubLanguage();
 	}
 	
 	Map<String, Map<String, String>> getLabels() {
@@ -214,6 +221,19 @@ class StubSettings {
 		language.put(Labels.PARAMETERS_TOOLTIP, "This panel contains all parameters related with used algorithms in jRank");
 		language.put(Labels.WRITE_INFO_TOOLTIP, "This panel contains all options related with saving results to files");
 		language.put(Labels.FILE_PANE_TOOLTIP, "This panel contains file names to with results will be saved. All options can be derived from 'Learning data file' field.");
+	}
+	
+	private void generateStubLanguage() {
+		languages.put("STUB", "Stub language");
+		labels.put("STUB", createStubLabels());
+	}
+	
+	private Map<String, String> createStubLabels() {
+		return labels.get("ENG").entrySet().stream()
+				.collect(Collectors.toMap(
+						Map.Entry::getKey,
+						entry -> entry.getValue() + "1")
+				);
 	}
 	
 }
