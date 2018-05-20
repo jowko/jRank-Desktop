@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.poznan.put.cs.idss.jrs.types.Attribute;
 
 import java.util.List;
 
@@ -34,12 +35,12 @@ class AttributeParamServiceTest {
 	@Test
 	void shouldGetDefaultKind() {
 		AttributeParam param = service.getDefaultKind();
-		assertEquals(0, param.getValue());
+		assertEquals(Attribute.NONE, param.getValue());
 	}
 	
 	@Test
 	void shouldFindKindByValue() {
-		AttributeParam param = service.getKindByValue(1);
+		AttributeParam param = service.getKindByValue(Attribute.DECISION);
 		assertNotNull(param);
 	}
 	
@@ -51,7 +52,7 @@ class AttributeParamServiceTest {
 	
 	@Test
 	void shouldFindPreferenceByValue() {
-		AttributeParam param = service.getPreferenceByValue(1);
+		AttributeParam param = service.getPreferenceByValue(Attribute.GAIN);
 		assertNotNull(param);
 	}
 	

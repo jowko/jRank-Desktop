@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 
 import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.types.Attribute;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,15 +58,16 @@ class AttributeParamService {
 	
 	private void initializeKinds() {
 		kinds = new ArrayList<>();
-		kinds.add(new AttributeParam("Field", 0));
-		kinds.add(new AttributeParam("Decision", 1));
-		kinds.add(new AttributeParam("Description", 2));
+		kinds.add(new AttributeParam("Condition", Attribute.NONE));
+		kinds.add(new AttributeParam("Decision", Attribute.DECISION));
+		kinds.add(new AttributeParam("Description", Attribute.DESCRIPTION));
 	}
 	
 	private void initializePreferences() {
 		preferences = new ArrayList<>();
-		preferences.add(new AttributeParam("Gain", 1));
-		preferences.add(new AttributeParam("Cost", 2));
+		preferences.add(new AttributeParam("None", Attribute.NONE));
+		preferences.add(new AttributeParam("Gain", Attribute.GAIN));
+		preferences.add(new AttributeParam("Cost", Attribute.COST));
 	}
 	
 }

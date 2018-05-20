@@ -288,20 +288,8 @@ public class AttributeDialogController {
 		addFieldTypeListener();
 		kindField.setItems(observableArrayList(paramService.getKinds()));
 		kindField.getSelectionModel().selectFirst();
-		addKindFieldListener();
 		preferenceField.setItems(observableArrayList(paramService.getPreferences()));
 		initializeTooltips();
-	}
-	
-	private void addKindFieldListener() {
-		kindField.valueProperty().addListener((observable, oldValue, newValue) -> {
-			if(newValue.equals(paramService.getDefaultKind())) {
-				preferenceField.setDisable(false);
-			} else {
-				preferenceField.getSelectionModel().clearSelection();
-				preferenceField.setDisable(true);
-			}
-		});
 	}
 	
 	/**
