@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
@@ -180,7 +181,7 @@ public class AttributeDialogController {
 		if(isNull(typeField.getValue())) {
 			errorsMsg += "Field type should be set\n";
 		}
-		if(isNull(preferenceField.getValue()) && kindField.getValue().getValue() == 0) {
+		if(isNull(preferenceField.getValue()) && kindField.getValue().getValue() == Attribute.NONE) {
 			errorsMsg += "Preference type should be set\n";
 		}
 		if(FieldType.ENUM_FIELD.equals(typeField.getValue()) && enumsField.getText().isEmpty()) {
@@ -204,9 +205,7 @@ public class AttributeDialogController {
 		attribute.setKind(kindField.getValue().getValue());
 		attribute.setActive(activeCheckBox.isSelected());
 		
-		if(attribute.getKind() != 0)
-			attribute.setPreferenceType(Attribute.NONE);
-		else
+		if(nonNull(preferenceField.getValue()))
 			attribute.setPreferenceType(preferenceField.getValue().getValue());
 		
 		return attribute;
