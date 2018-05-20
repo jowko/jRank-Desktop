@@ -8,6 +8,9 @@ call mvn install:install-file -Dfile=lib\jRS.jar -DgroupId=pl.poznan.put.cs.idss
 echo Building whole project
 call mvn clean install
 
+echo Generating labels and config files
+call java -jar file-generator\target\file-generator-0.3-SNAPSHOT-jar-with-dependencies.jar
+
 echo Removing old JRank files
 if exist JRank\ del /s /f /q JRank\*.*
 
