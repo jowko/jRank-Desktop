@@ -12,8 +12,7 @@ class AttributeTableColumn extends TableColumn<ObservableList<Field>, Field> {
 	
 	private Attribute attribute;
 	
-	AttributeTableColumn(String header, Attribute attribute) {
-		super(header);
+	AttributeTableColumn(Attribute attribute) {
 		this.attribute = attribute;
 	}
 	

@@ -65,7 +65,6 @@ public class AttributeDialogController {
 	@FXML
 	Button clearButton;
 	
-	private AttributeDialogHelper helper;
 	private AttributeParamService paramService;
 	private LearningTableActions actions;
 	private List<Attribute> attributes;
@@ -163,7 +162,7 @@ public class AttributeDialogController {
 		nameField.setText(editedAttribute.getName());
 		activeCheckBox.setSelected(editedAttribute.getActive());
 		typeField.setDisable(true);
-		typeField.getSelectionModel().select(helper.getFieldTypeFromField(editedAttribute.getInitialValue()));
+		typeField.getSelectionModel().select(AttributeDialogHelper.getFieldTypeFromField(editedAttribute.getInitialValue()));
 		kindField.getSelectionModel().select(paramService.getKindByValue(editedAttribute.getKind()));
 		preferenceField.getSelectionModel().select(paramService.getPreferenceByValue(editedAttribute.getPreferenceType()));
 		initializeEnumFieldForEdit(editedAttribute);
@@ -200,7 +199,7 @@ public class AttributeDialogController {
 	 * @return attribute extracted from form
 	 */
 	Attribute createAttributeFromForm() {
-		Field newField = helper.getFieldFromForm(typeField.getValue(), enumsField.getText());
+		Field newField = AttributeDialogHelper.getFieldFromForm(typeField.getValue(), enumsField.getText());
 		Attribute attribute = new Attribute(nameField.getText(), newField);
 		attribute.setKind(kindField.getValue().getValue());
 		attribute.setActive(activeCheckBox.isSelected());
@@ -279,7 +278,6 @@ public class AttributeDialogController {
 	 * Initialize attribute form. Common for edit and add action.
 	 */
 	private void initializeAttributeForm() {
-		helper = new AttributeDialogHelper();
 		nameField.setPattern("[A-Za-z_][A-Za-z_0-9]*");
 		enumsField.setPattern("([A-Za-z_0-9]+[,]?)*");
 		activeCheckBox.setSelected(true);

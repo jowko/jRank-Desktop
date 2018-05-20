@@ -8,7 +8,7 @@ import pl.poznan.put.cs.idss.jrs.types.*;
  * Created by Piotr on 2018-05-19.
  * This class contains some methods used in attribute dialog form.
  */
-class AttributeDialogHelper {
+public class AttributeDialogHelper {
 	
 	/**
 	 * This method checks what type was selected in form and return new Field object with corresponding type.
@@ -16,7 +16,7 @@ class AttributeDialogHelper {
 	 * @param enumText from TextArea containing enum categories
 	 * @return new Field of type corresponding to value param
 	 */
-	Field getFieldFromForm(FieldType value, String enumText) {
+	static Field getFieldFromForm(FieldType value, String enumText) {
 		switch (value) {
 			case STRING_FIELD:
 				return new StringField();
@@ -39,7 +39,7 @@ class AttributeDialogHelper {
 	 * @param field from attribute
 	 * @return enum corresponding to field type of attribute
 	 */
-	FieldType getFieldTypeFromField(Field field) {
+	public static FieldType getFieldTypeFromField(Field field) {
 		if(field instanceof StringField)
 			return FieldType.STRING_FIELD;
 		if(field instanceof CardinalField)
@@ -54,7 +54,7 @@ class AttributeDialogHelper {
 		return FieldType.STRING_FIELD;
 	}
 	
-	private TableEnumField createEnumFromForm(String enumText) {
+	private static TableEnumField createEnumFromForm(String enumText) {
 		String[] enums = enumText.split(",");
 		EnumDomain domain = new EnumDomain(enums);
 		return new TableEnumField(enums[0], domain);

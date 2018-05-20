@@ -69,14 +69,18 @@ public class LearningTableActions {
 	 * @param attribute from with new column will be created
 	 */
 	void createNewColumn(Attribute attribute) {
-		AttributeTableColumn column = new AttributeTableColumn(tableHelper.getColumnText(attribute), attribute);
-		int attributeIndex = learningTable.getColumns().size();
-		tableHelper.setCellFactories(column, attributeIndex);
-		column.setOnEditCommit(col -> col.getOldValue().copy(col.getNewValue()));
-		column.setMinWidth(50d);
+		AttributeTableColumn column = new AttributeTableColumn(attribute);
+		column.setGraphic(tableHelper.getColumnLabel(attribute));
+		column.setMinWidth(50);
+		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
+		
 		if(not(attribute.getActive())) {
 			column.getStyleClass().add("not-active");
 		}
+		
+		int attributeIndex = learningTable.getColumns().size();
+		tableHelper.setCellFactories(column, attributeIndex);
+		column.setOnEditCommit(col -> col.getOldValue().copy(col.getNewValue()));
 		
 		learningTable.getColumns().add(column);
 		attributes.add(attribute);
@@ -186,15 +190,15 @@ public class LearningTableActions {
 	 */
 	private void editAttribute(Attribute oldAttribute, Attribute editedAttribute) {
 		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttributeName(oldAttribute.getName());
-		tableColumn.setText(tableHelper.getColumnText(editedAttribute));
+		tableColumn.setGraphic(tableHelper.getColumnLabel(editedAttribute));
 		tableColumn.setAttribute(editedAttribute);
+		tableColumn.setMinWidth(50);
+		tableColumn.setPrefWidth(tableHelper.getColumnPrefWidth(editedAttribute));
 		int attributeIndex = attributes.indexOf(oldAttribute);
 		handleStyleChange(tableColumn);
 		
-		
 		if(editedAttribute.getInitialValue() instanceof TableEnumField) {
-			tableHelper.handleEnumEdition(tableColumn.getAttribute(), attributeIndex, learningTable);
-			tableHelper.setCellFactories(tableColumn, attributeIndex);
+			tableHelper.handleEnumEdition(tableColumn, attributeIndex, learningTable);
 		}
 		
 		replaceAttributeInLearningTable(oldAttribute, editedAttribute);
