@@ -54,7 +54,7 @@ public class UserSettingsController  {
 	@FXML
 	private void initialize() {
 		labels = LanguageService.getInstance();
-		translateLabels();
+		new UserSettingsTranslator(this).translateFields();
 		initializeNewSettings();
 		initializeLanguages();
 		workspaceField.setText(newUserSettings.getWorkspacePath());
@@ -122,17 +122,6 @@ public class UserSettingsController  {
 			return false;
 		}
 		return true;
-	}
-	
-	private void translateLabels() {
-		saveButton.setText(labels.get(Labels.BUTTON_SAVE));
-		cancelButton.setText(labels.get(Labels.BUTTON_CANCEL));
-		languageText.setText(labels.get(Labels.LANGUAGE));
-		workspaceLabel.setText(labels.get(Labels.WORKSPACE));
-		tooltipsEnabled.setText(labels.get(Labels.TOOLTIPS_ENABLED));
-		advancedPropertiesEnabled.setText(labels.get(Labels.ADVANCED_PROPERTIES_ENABLED));
-		advancedPropertiesEnabled.setTooltip(new Tooltip(labels.get(Labels.ADVANCED_PROPERTIES_ENABLED_TOOLTIP)));
-		infoText.setText(labels.get(Labels.US_INFO));
 	}
 	
 	private void initializeLanguages() {
