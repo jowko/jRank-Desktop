@@ -2,15 +2,13 @@ package pl.jowko.jrank.desktop.feature.learningtable;
 
 import org.junit.jupiter.api.Test;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
-import pl.poznan.put.cs.idss.jrs.types.IntegerField;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.STRING_COLUMN_NAME;
-import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.createLearningTable;
+import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.*;
 
 /**
  * Created by Piotr on 2018-05-16.
@@ -72,11 +70,20 @@ class LearningTableValidatorTest {
 		assertTrue(validator.getDecisionMsg().contains("decision2"));
 	}
 	
-	private Attribute createDecisionAttribute(String name, boolean isActive) {
-		Attribute attribute = new Attribute(name, new IntegerField());
-		attribute.setKind(Attribute.DECISION);
-		attribute.setActive(isActive);
-		return attribute;
+	@Test
+	void shouldDetectNonUniqueAttributeNames() {
+		List<Attribute> attributes = new ArrayList<>();
+		attributes.add(createAttribute("name"));
+		attributes.add(createAttribute("name"));
+		attributes.add(createAttribute("name2"));
+		attributes.add(createAttribute("name2"));
+		LearningTable table = createLearningTable(attributes);
+		
+		LearningTableValidator validator = new LearningTableValidator(table);
+		
+		assertFalse(validator.isValid());
+		assertTrue(validator.getErrorMsg().contains("name"));
+		assertTrue(validator.getErrorMsg().contains("name2"));
 	}
 	
 }

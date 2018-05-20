@@ -41,11 +41,26 @@ public class LearningTableDataProvider {
 	
 	static List<Attribute> createAttributes() {
 		List<Attribute> attributes = new ArrayList<>();
-		attributes.add(new Attribute("integer", new IntegerField()));
-		attributes.add(new Attribute(STRING_COLUMN_NAME, new StringField()));
-		attributes.add(new Attribute("enum", new EnumField(0, createEnumDomain())));
-		attributes.add(new Attribute("decimal", new FloatField()));
+		attributes.add(createAttribute("integer", new IntegerField()));
+		attributes.add(createAttribute(STRING_COLUMN_NAME, new StringField()));
+		attributes.add(createAttribute("enum", new EnumField(0, createEnumDomain())));
+		attributes.add(createAttribute("decimal", new FloatField()));
 		return attributes;
+	}
+	
+	static  Attribute createDecisionAttribute(String name, boolean isActive) {
+		Attribute attribute = createAttribute(name);
+		attribute.setKind(Attribute.DECISION);
+		attribute.setActive(isActive);
+		return attribute;
+	}
+	
+	static Attribute createAttribute(String name) {
+		return createAttribute(name, new IntegerField());
+	}
+	
+	static Attribute createAttribute(String name, Field field) {
+		return new Attribute(name, field);
 	}
 	
 	static List<Example> createExamples(List<Attribute> attributes) {

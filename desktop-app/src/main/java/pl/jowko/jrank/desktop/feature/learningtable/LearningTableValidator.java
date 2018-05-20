@@ -5,8 +5,12 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 import pl.poznan.put.cs.idss.jrs.types.StringField;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNullOrEmpty;
 
 /**
@@ -44,6 +48,7 @@ class LearningTableValidator {
 	private void validateTable() {
 		validateDecisionAttributes();
 		validateStringFields();
+		validateAttributeUniqueness();
 	}
 	
 	private void validateStringFields() {
@@ -83,6 +88,29 @@ class LearningTableValidator {
 			}
 			decisionMsg.append('\n');
 		}
+	}
+	
+	private void validateAttributeUniqueness() {
+		List<String> notUniqueAttributesNames = table.getAttributes().stream()
+				.map(Attribute::getName)
+				.collect(groupingBy(Function.identity(), counting()))
+				.entrySet()
+				.stream()
+				.filter(entry -> entry.getValue() > 1)
+				.map(Map.Entry::getKey)
+				.distinct()
+				.collect(Collectors.toList());
+		
+		if(notUniqueAttributesNames.isEmpty())
+			return;
+		
+		errorMsg.append("Attribute names should be unique. Non unique attribute names:\n");
+		
+		notUniqueAttributesNames.forEach(name ->
+				errorMsg.append('[')
+						.append(name)
+						.append("] ")
+		);
 	}
 	
 }
