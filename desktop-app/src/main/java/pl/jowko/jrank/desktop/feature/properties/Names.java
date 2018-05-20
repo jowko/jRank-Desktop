@@ -24,10 +24,10 @@ class Names {
 	static final String CONSISTENCY_MEASURE_THREASHOLD = "consistencyMeasureThreshold";
 	static final String TYPE_OF_RULES = "typeOfRules";
 	static final String CONSIDERED_SET_OF_RULES = "consideredSetOfRules";
-	static final String SATISTACTION_DEGREE_IN_GRAPH = "satisfactionDegreesInPreferenceGraph";
+	static final String SATISFACTION_DEGREE_IN_GRAPH = "satisfactionDegreesInPreferenceGraph";
 	static final String FUZZY_SAT_DEGREE_CALC_METHOD = "fuzzySatisfactionDegreeCalculationMethod";
 	static final String RANKING_PROCEDURE = "rankingProcedure";
-	static final String DOMINACE = "dominance";
+	static final String DOMINANCE = "dominance";
 	static final String DOMINANCE_FOR_PAIRS = "dominanceForPairsOfOrdinalValues";
 	static final String NEGATIVE_EXAMPLES_TREATMENT = "negativeExamplesTreatmentForVCDRSA";
 	static final String RULE_CONDITIONS_SELECTION_METHOD = "ruleConditionsSelectionMethodInVCDomLEM";
@@ -40,5 +40,7 @@ class Names {
 	static final String WRITE_LEARNING_POSITIVE_EXAMPLES = "writeLearningPositiveExamples";
 	
 	static final String PRECISION = "precision";
+	
+	private Names() {}
 	
 }

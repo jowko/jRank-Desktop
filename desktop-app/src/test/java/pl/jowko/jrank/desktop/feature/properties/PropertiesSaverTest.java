@@ -132,10 +132,10 @@ class PropertiesSaverTest extends MasterTest {
 		assertEquals(consistencyMeasure, properties.getProperty(CONSISTENCY_MEASURE));
 		assertEquals(consistencyMeasureThreshold.toString(), properties.getProperty(CONSISTENCY_MEASURE_THREASHOLD));
 		assertEquals(consideredSetOfRules, properties.getProperty(CONSIDERED_SET_OF_RULES));
-		assertEquals(satisfactionDegreesInPreferenceGraph, properties.getProperty(SATISTACTION_DEGREE_IN_GRAPH));
+		assertEquals(satisfactionDegreesInPreferenceGraph, properties.getProperty(SATISFACTION_DEGREE_IN_GRAPH));
 		assertEquals(fuzzySatisfactionDegreeCalculationMethod, properties.getProperty(FUZZY_SAT_DEGREE_CALC_METHOD));
 		assertEquals(rankingProcedure, properties.getProperty(RANKING_PROCEDURE));
-		assertEquals(dominance, properties.getProperty(DOMINACE));
+		assertEquals(dominance, properties.getProperty(DOMINANCE));
 		assertEquals(dominanceForPairsOfOrdinalValues, properties.getProperty(DOMINANCE_FOR_PAIRS));
 		assertEquals(negativeExamplesTreatmentForVCDRSA, properties.getProperty(NEGATIVE_EXAMPLES_TREATMENT));
 		assertEquals(ruleConditionsSelectionMethodInVCDomLEM, properties.getProperty(RULE_CONDITIONS_SELECTION_METHOD));

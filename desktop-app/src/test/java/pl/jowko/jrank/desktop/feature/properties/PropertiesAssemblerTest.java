@@ -102,10 +102,10 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(CONSISTENCY_MEASURE, "rough-membership");
 		properties.setProperty(TYPE_OF_RULES, "certain");
 		properties.setProperty(CONSIDERED_SET_OF_RULES, "exhaustive");
-		properties.setProperty(SATISTACTION_DEGREE_IN_GRAPH, "crisp");
+		properties.setProperty(SATISFACTION_DEGREE_IN_GRAPH, "crisp");
 		properties.setProperty(FUZZY_SAT_DEGREE_CALC_METHOD, "max-credibility-x-coverage-factor");
 		properties.setProperty(RANKING_PROCEDURE, "rnfs");
-		properties.setProperty(DOMINACE, "pareto");
+		properties.setProperty(DOMINANCE, "pareto");
 		properties.setProperty(DOMINANCE_FOR_PAIRS, "classic");
 		properties.setProperty(NEGATIVE_EXAMPLES_TREATMENT, "any");
 		properties.setProperty(RULE_CONDITIONS_SELECTION_METHOD, "mix");

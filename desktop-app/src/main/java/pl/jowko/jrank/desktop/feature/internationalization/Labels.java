@@ -116,6 +116,41 @@ public class Labels {
 	public static final String FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP = "FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP";
 	public static final String OPTIMIZE_POSSIBLE_RULES = "OPTIMIZE_POSSIBLE_RULES";
 	
+	// Properties parameters
+	public static final String ANY_FAMILY_OF_CRITERIA = "ANY_FAMILY_OF_CRITERIA";
+	public static final String CONSISTENT_FAMILY_OF_CRITERIA = "CONSISTENT_FAMILY_OF_CRITERIA";
+	public static final String EPSILON = "EPSILON";
+	public static final String EPSILON_STAR = "EPSILON_STAR";
+	public static final String EPSILON_PRIM = "EPSILON_PRIM";
+	public static final String ROUGH_MEMBERSHIP = "ROUGH_MEMBERSHIP";
+	public static final String RULE_CERTAIN = "RULE_CERTAIN";
+	public static final String RULE_POSSIBLE = "RULE_POSSIBLE";
+	public static final String MINIMAL_SET_OF_RULES = "MINIMAL_SET_OF_RULES";
+	public static final String EXHAUSTIVE_SET_OF_RULES = "EXHAUSTIVE_SET_OF_RULES";
+	public static final String SATISFACTION_FUZZY = "SATISFACTION_FUZZY";
+	public static final String SATISFACTION_CRISP = "SATISFACTION_CRISP";
+	public static final String MAX_CREDIBILITY = "MAX_CREDIBILITY";
+	public static final String MAX_CREDIBILITY_X_FACTOR = "MAX_CREDIBILITY_X_FACTOR";
+	public static final String NFS = "NFS";
+	public static final String REPEATED_NFS = "REPEATED_NFS";
+	public static final String NFS_CLOSURE = "NFS_CLOSURE";
+	public static final String REPEATED_NFS_CLOSURE = "REPEATED_NFS_CLOSURE";
+	public static final String NFS_P_CLOSURE = "NFS_P_CLOSURE";
+	public static final String REPEATED_NFS_P_CLOSURE = "REPEATED_NFS_P_CLOSURE";
+	public static final String PARETO = "PARETO";
+	public static final String LORENZ = "LORENZ";
+	public static final String STRICT_ORDINAL_DOMINANCE_CHECK_METHOD = "STRICT_ORDINAL_DOMINANCE_CHECK_METHOD";
+	public static final String CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD = "CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD";
+	public static final String ONLY_INCONSISTENT_NEGATIVE_EXAMPLES = "ONLY_INCONSISTENT_NEGATIVE_EXAMPLES";
+	public static final String ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES = "ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES";
+	public static final String ANY_NEGATIVE_EXAMPLES = "ANY_NEGATIVE_EXAMPLES";
+	public static final String CHOOSE_CONDITIONS_FROM_ONE_OBJECT = "CHOOSE_CONDITIONS_FROM_ONE_OBJECT";
+	public static final String MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS = "MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS";
+	public static final String CONSISTENCY_APPROXIMATION = "CONSISTENCY_APPROXIMATION";
+	public static final String CONSISTENCY_SET = "CONSISTENCY_SET";
+	public static final String BOOLEAN_YES = "BOOLEAN_YES";
+	public static final String BOOLEAN_NO = "BOOLEAN_NO";
+	
 	// Properties form tooltips
 	public static final String LEARNING_FILE_TOOLTIP = "LEARNING_FILE_TOOLTIP";
 	public static final String TEST_FILE_TOOLTIP = "TEST_FILE_TOOLTIP";

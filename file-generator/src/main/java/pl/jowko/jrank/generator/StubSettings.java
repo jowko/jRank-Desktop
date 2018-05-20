@@ -112,6 +112,7 @@ class StubSettings {
 		createEnglishPropertiesMessages(language);
 		createEnglishPropertiesValidationMessages(language);
 		createEnglishPropertiesTooltips(language);
+		createEnglishParametersLabels(language);
 		
 		return language;
 	}
@@ -221,6 +222,42 @@ class StubSettings {
 		language.put(Labels.PARAMETERS_TOOLTIP, "This panel contains all parameters related with used algorithms in jRank");
 		language.put(Labels.WRITE_INFO_TOOLTIP, "This panel contains all options related with saving results to files");
 		language.put(Labels.FILE_PANE_TOOLTIP, "This panel contains file names to with results will be saved. All options can be derived from 'Learning data file' field.");
+	}
+	
+	private void createEnglishParametersLabels(Map<String, String> language) {
+		language.put(Labels.ANY_FAMILY_OF_CRITERIA, "Any");
+		language.put(Labels.CONSISTENT_FAMILY_OF_CRITERIA, "Consistent");
+		language.put(Labels.EPSILON, "Epsilon");
+		language.put(Labels.EPSILON_STAR, "Epsilon*");
+		language.put(Labels.EPSILON_PRIM, "Epsilon'");
+		language.put(Labels.ROUGH_MEMBERSHIP, "Rough Membership");
+		language.put(Labels.RULE_CERTAIN, "Certain");
+		language.put(Labels.RULE_POSSIBLE, "Possible");
+		language.put(Labels.MINIMAL_SET_OF_RULES, "Minimal");
+		language.put(Labels.EXHAUSTIVE_SET_OF_RULES, "Exhaustive");
+		language.put(Labels.SATISFACTION_FUZZY, "Fuzzy");
+		language.put(Labels.SATISFACTION_CRISP, "Crisp");
+		language.put(Labels.MAX_CREDIBILITY, "Max credibility");
+		language.put(Labels.MAX_CREDIBILITY_X_FACTOR, "Max credibility X coverage factor");
+		language.put(Labels.NFS, "NFS");
+		language.put(Labels.REPEATED_NFS, "RNFS");
+		language.put(Labels.NFS_CLOSURE, "NFS-*");
+		language.put(Labels.REPEATED_NFS_CLOSURE, "RNFS-*");
+		language.put(Labels.NFS_P_CLOSURE, "NFS-P-*");
+		language.put(Labels.REPEATED_NFS_P_CLOSURE, "RNFS-P-*");
+		language.put(Labels.PARETO, "Pareto");
+		language.put(Labels.LORENZ, "Lorenz");
+		language.put(Labels.STRICT_ORDINAL_DOMINANCE_CHECK_METHOD, "Strict");
+		language.put(Labels.CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD, "Classic");
+		language.put(Labels.ONLY_INCONSISTENT_NEGATIVE_EXAMPLES, "Only inconsistent");
+		language.put(Labels.ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES, "Only inconsistent and boundary");
+		language.put(Labels.ANY_NEGATIVE_EXAMPLES, "Any");
+		language.put(Labels.CHOOSE_CONDITIONS_FROM_ONE_OBJECT, "Base");
+		language.put(Labels.MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS, "Mix");
+		language.put(Labels.CONSISTENCY_APPROXIMATION, "Approximation");
+		language.put(Labels.CONSISTENCY_SET, "Set");
+		language.put(Labels.BOOLEAN_YES, "Yes");
+		language.put(Labels.BOOLEAN_NO, "No");
 	}
 	
 	private void generateStubLanguage() {

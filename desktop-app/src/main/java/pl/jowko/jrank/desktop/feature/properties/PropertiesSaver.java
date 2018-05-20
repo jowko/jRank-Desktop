@@ -50,10 +50,10 @@ class PropertiesSaver {
 		setNumberProperty(CONSISTENCY_MEASURE_THREASHOLD, jRankProperties.getConsistencyMeasureThreshold());
 		setJRankParameterProperty(TYPE_OF_RULES, jRankProperties.getTypeOfRules());
 		setJRankParameterProperty(CONSIDERED_SET_OF_RULES, jRankProperties.getConsideredSetOfRules());
-		setJRankParameterProperty(SATISTACTION_DEGREE_IN_GRAPH, jRankProperties.getSatisfactionDegreesInPreferenceGraph());
+		setJRankParameterProperty(SATISFACTION_DEGREE_IN_GRAPH, jRankProperties.getSatisfactionDegreesInPreferenceGraph());
 		setJRankParameterProperty(FUZZY_SAT_DEGREE_CALC_METHOD, jRankProperties.getFuzzySatisfactionDegreeCalculationMethod());
 		setJRankParameterProperty(RANKING_PROCEDURE, jRankProperties.getRankingProcedure());
-		setJRankParameterProperty(DOMINACE, jRankProperties.getDominance());
+		setJRankParameterProperty(DOMINANCE, jRankProperties.getDominance());
 		setJRankParameterProperty(DOMINANCE_FOR_PAIRS, jRankProperties.getDominanceForPairsOfOrdinalValues());
 		setJRankParameterProperty(NEGATIVE_EXAMPLES_TREATMENT, jRankProperties.getNegativeExamplesTreatmentForVCDRSA());
 		setJRankParameterProperty(RULE_CONDITIONS_SELECTION_METHOD, jRankProperties.getRuleConditionsSelectionMethodInVCDomLEM());

@@ -47,10 +47,10 @@ public class PropertiesAssembler {
 		prop.setConsistencyMeasureThreshold(getDoubleFromProperty(CONSISTENCY_MEASURE_THREASHOLD));
 		prop.setTypeOfRules(getParameter(paramService.getTypeOfRules(), TYPE_OF_RULES));
 		prop.setConsideredSetOfRules(getParameter(paramService.getConsideredSetOfRules(), CONSIDERED_SET_OF_RULES));
-		prop.setSatisfactionDegreesInPreferenceGraph(getParameter(paramService.getSatisfactionDegreesInPreferenceGraph(), SATISTACTION_DEGREE_IN_GRAPH));
+		prop.setSatisfactionDegreesInPreferenceGraph(getParameter(paramService.getSatisfactionDegreesInPreferenceGraph(), SATISFACTION_DEGREE_IN_GRAPH));
 		prop.setFuzzySatisfactionDegreeCalculationMethod(getParameter(paramService.getFuzzySatisfactionDegreeCalculationMethod(), FUZZY_SAT_DEGREE_CALC_METHOD));
 		prop.setRankingProcedure(getParameter(paramService.getRankingProcedure(), RANKING_PROCEDURE));
-		prop.setDominance(getParameter(paramService.getDominance(), DOMINACE));
+		prop.setDominance(getParameter(paramService.getDominance(), DOMINANCE));
 		prop.setDominanceForPairsOfOrdinalValues(getParameter(paramService.getDominanceForPairsOfOrdinalValues(), DOMINANCE_FOR_PAIRS));
 		prop.setNegativeExamplesTreatmentForVCDRSA(getParameter(paramService.getNegativeExamplesTreatmentForVCDRSA(), NEGATIVE_EXAMPLES_TREATMENT));
 		prop.setRuleConditionsSelectionMethodInVCDomLEM(getParameter(paramService.getRuleConditionsSelectionMethodInVCDomLEM(), RULE_CONDITIONS_SELECTION_METHOD));

@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ class JRankParametersService {
 	
 	private static JRankParametersService instance;
 	
-	private LanguageService labels; //TODO make labels
+	private LanguageService labels;
 	
 	private JRankParameter emptyParameter;
 	private List<JRankParameter> typeOfFamilyOfCriteria;
@@ -138,99 +139,103 @@ class JRankParametersService {
 	private void initTypeOfFamilyOfCriteria() {
 		typeOfFamilyOfCriteria = new ArrayList<>();
 		typeOfFamilyOfCriteria.add(getEmptyParameter());
-		typeOfFamilyOfCriteria.add(new JRankParameter("Any","any", ANY_FAMILY_OF_CRITERIA));
-		typeOfFamilyOfCriteria.add(new JRankParameter("Consistent","consistent", CONSISTENT_FAMILY_OF_CRITERIA));
+		typeOfFamilyOfCriteria.add(new JRankParameter(get(Labels.ANY_FAMILY_OF_CRITERIA),"any", ANY_FAMILY_OF_CRITERIA));
+		typeOfFamilyOfCriteria.add(new JRankParameter(get(Labels.CONSISTENT_FAMILY_OF_CRITERIA),"consistent", CONSISTENT_FAMILY_OF_CRITERIA));
 	}
 	
 	private void initConsistencyMeasure() {
 		consistencyMeasure = new ArrayList<>();
 		consistencyMeasure.add(getEmptyParameter());
-		consistencyMeasure.add(new JRankParameter("Epsilon","epsilon", EPSILON));
-		consistencyMeasure.add(new JRankParameter("Epsilon*","epsilon*", EPSILON_STAR));
-		consistencyMeasure.add(new JRankParameter("Epsilon'","epsilon'", EPSILON_PRIM));
-		consistencyMeasure.add(new JRankParameter("Rough Membership","rough-membership", ROUGH_MEMBERSHIP));
+		consistencyMeasure.add(new JRankParameter(get(Labels.EPSILON),"epsilon", EPSILON));
+		consistencyMeasure.add(new JRankParameter(get(Labels.EPSILON_STAR),"epsilon*", EPSILON_STAR));
+		consistencyMeasure.add(new JRankParameter(get(Labels.EPSILON_PRIM),"epsilon'", EPSILON_PRIM));
+		consistencyMeasure.add(new JRankParameter(get(Labels.ROUGH_MEMBERSHIP),"rough-membership", ROUGH_MEMBERSHIP));
 	}
 	
 	private void initTypeOfRules() {
 		typeOfRules = new ArrayList<>();
 		typeOfRules.add(getEmptyParameter());
-		typeOfRules.add(new JRankParameter("Certain","certain", CERTAIN));
-		typeOfRules.add(new JRankParameter("Possible","possible", POSSIBLE));
+		typeOfRules.add(new JRankParameter(get(Labels.RULE_CERTAIN),"certain", CERTAIN));
+		typeOfRules.add(new JRankParameter(get(Labels.RULE_POSSIBLE),"possible", POSSIBLE));
 	}
 	
 	private void initConsideredSetOfRules() {
 		consideredSetOfRules = new ArrayList<>();
 		consideredSetOfRules.add(getEmptyParameter());
-		consideredSetOfRules.add(new JRankParameter("Minimal","minimal", MINIMAL_SET_OF_RULES));
-		consideredSetOfRules.add(new JRankParameter("Exhaustive","exhaustive", EXHAUSTIVE_SET_OF_RULES));
+		consideredSetOfRules.add(new JRankParameter(get(Labels.MINIMAL_SET_OF_RULES),"minimal", MINIMAL_SET_OF_RULES));
+		consideredSetOfRules.add(new JRankParameter(get(Labels.EXHAUSTIVE_SET_OF_RULES),"exhaustive", EXHAUSTIVE_SET_OF_RULES));
 	}
 	
 	private void initSatisfactionDegreesInPreferenceGraph() {
 		satisfactionDegreesInPreferenceGraph = new ArrayList<>();
 		satisfactionDegreesInPreferenceGraph.add(getEmptyParameter());
-		satisfactionDegreesInPreferenceGraph.add(new JRankParameter("Fuzzy","fuzzy", FUZZY));
-		satisfactionDegreesInPreferenceGraph.add(new JRankParameter("Crisp","crisp", CRISP));
+		satisfactionDegreesInPreferenceGraph.add(new JRankParameter(get(Labels.SATISFACTION_FUZZY),"fuzzy", FUZZY));
+		satisfactionDegreesInPreferenceGraph.add(new JRankParameter(get(Labels.SATISFACTION_CRISP),"crisp", CRISP));
 	}
 	
 	private void initFuzzySatisfactionDegreeCalculationMethod() {
 		fuzzySatisfactionDegreeCalculationMethod = new ArrayList<>();
 		fuzzySatisfactionDegreeCalculationMethod.add(getEmptyParameter());
-		fuzzySatisfactionDegreeCalculationMethod.add(new JRankParameter("Max credibility","max-credibility", MAX_CREDIBILITY));
-		fuzzySatisfactionDegreeCalculationMethod.add(new JRankParameter("Max credibility X coverage factor","max-credibility-x-coverage-factor", MAX_PRODUCT_OF_CREDIBILITY_AND_COVERAGE_FACTOR));
+		fuzzySatisfactionDegreeCalculationMethod.add(new JRankParameter(get(Labels.MAX_CREDIBILITY),"max-credibility", MAX_CREDIBILITY));
+		fuzzySatisfactionDegreeCalculationMethod.add(new JRankParameter(get(Labels.MAX_CREDIBILITY_X_FACTOR),"max-credibility-x-coverage-factor", MAX_PRODUCT_OF_CREDIBILITY_AND_COVERAGE_FACTOR));
 	}
 	
 	private void initRankingProcedure() {
 		rankingProcedure = new ArrayList<>();
 		rankingProcedure.add(emptyParameter);
-		rankingProcedure.add(new JRankParameter("NFS","nfs", NFS));
-		rankingProcedure.add(new JRankParameter("RNFS","rnfs", REPEATED_NFS));
-		rankingProcedure.add(new JRankParameter("NFS-*","nfs-*", NFS_CLOSURE));
-		rankingProcedure.add(new JRankParameter("RNFS-*","rnfs-*", REPEATED_NFS_CLOSURE));
-		rankingProcedure.add(new JRankParameter("NFS-P-*","nfs-p-*", NFS_P_CLOSURE));
-		rankingProcedure.add(new JRankParameter("RNFS-P-*","rnfs-p-*", REPEATED_NFS_P_CLOSURE));
+		rankingProcedure.add(new JRankParameter(get(Labels.NFS),"nfs", NFS));
+		rankingProcedure.add(new JRankParameter(get(Labels.REPEATED_NFS),"rnfs", REPEATED_NFS));
+		rankingProcedure.add(new JRankParameter(get(Labels.NFS_CLOSURE),"nfs-*", NFS_CLOSURE));
+		rankingProcedure.add(new JRankParameter(get(Labels.REPEATED_NFS_CLOSURE),"rnfs-*", REPEATED_NFS_CLOSURE));
+		rankingProcedure.add(new JRankParameter(get(Labels.NFS_P_CLOSURE),"nfs-p-*", NFS_P_CLOSURE));
+		rankingProcedure.add(new JRankParameter(get(Labels.REPEATED_NFS_P_CLOSURE),"rnfs-p-*", REPEATED_NFS_P_CLOSURE));
 	}
 	
 	private void initDominance() {
 		dominance = new ArrayList<>();
 		dominance.add(getEmptyParameter());
-		dominance.add(new JRankParameter("Pareto","pareto", PARETO));
-		dominance.add(new JRankParameter("Lorenz","lorenz", LORENZ));
+		dominance.add(new JRankParameter(get(Labels.PARETO),"pareto", PARETO));
+		dominance.add(new JRankParameter(get(Labels.LORENZ),"lorenz", LORENZ));
 	}
 	
 	private void initDominanceForPairsOfOrdinalValues() {
 		dominanceForPairsOfOrdinalValues = new ArrayList<>();
 		dominanceForPairsOfOrdinalValues.add(getEmptyParameter());
-		dominanceForPairsOfOrdinalValues.add(new JRankParameter("Strict","strict", STRICT_ORDINAL_DOMINANCE_CHECK_METHOD));
-		dominanceForPairsOfOrdinalValues.add(new JRankParameter("Classic","classic", CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD));
+		dominanceForPairsOfOrdinalValues.add(new JRankParameter(get(Labels.STRICT_ORDINAL_DOMINANCE_CHECK_METHOD),"strict", STRICT_ORDINAL_DOMINANCE_CHECK_METHOD));
+		dominanceForPairsOfOrdinalValues.add(new JRankParameter(get(Labels.CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD),"classic", CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD));
 	}
 	
 	private void initNegativeExamplesTreatmentForVCDRSA() {
 		negativeExamplesTreatmentForVCDRSA = new ArrayList<>();
 		negativeExamplesTreatmentForVCDRSA.add(getEmptyParameter());
-		negativeExamplesTreatmentForVCDRSA.add(new JRankParameter("Only inconsistent","only-inconsistent", COVER_ONLY_INCONSISTENT_NEGATIVE_EXAMPLES));
-		negativeExamplesTreatmentForVCDRSA.add(new JRankParameter("Only inconsistent and boundary","only-inconsistent-and-boundary", COVER_ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES));
-		negativeExamplesTreatmentForVCDRSA.add(new JRankParameter("Any","any", COVER_ANY_NEGATIVE_EXAMPLES));
+		negativeExamplesTreatmentForVCDRSA.add(new JRankParameter(get(Labels.ONLY_INCONSISTENT_NEGATIVE_EXAMPLES),"only-inconsistent", COVER_ONLY_INCONSISTENT_NEGATIVE_EXAMPLES));
+		negativeExamplesTreatmentForVCDRSA.add(new JRankParameter(get(Labels.ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES),"only-inconsistent-and-boundary", COVER_ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES));
+		negativeExamplesTreatmentForVCDRSA.add(new JRankParameter(get(Labels.ANY_NEGATIVE_EXAMPLES),"any", COVER_ANY_NEGATIVE_EXAMPLES));
 	}
 	
 	private void initRuleConditionsSelectionMethodInVCDomLEM() {
 		ruleConditionsSelectionMethodInVCDomLEM = new ArrayList<>();
 		ruleConditionsSelectionMethodInVCDomLEM.add(getEmptyParameter());
-		ruleConditionsSelectionMethodInVCDomLEM.add(new JRankParameter("Base","base", CHOOSE_CONDITIONS_FROM_ONE_OBJECT));
-		ruleConditionsSelectionMethodInVCDomLEM.add(new JRankParameter("Mix","mix", MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS));
+		ruleConditionsSelectionMethodInVCDomLEM.add(new JRankParameter(get(Labels.CHOOSE_CONDITIONS_FROM_ONE_OBJECT),"base", CHOOSE_CONDITIONS_FROM_ONE_OBJECT));
+		ruleConditionsSelectionMethodInVCDomLEM.add(new JRankParameter(get(Labels.MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS),"mix", MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS));
 	}
 	
 	private void initOptimizeRuleConsistencyInVCDomLEMWrt() {
 		optimizeRuleConsistencyInVCDomLEMWrt = new ArrayList<>();
 		optimizeRuleConsistencyInVCDomLEMWrt.add(getEmptyParameter());
-		optimizeRuleConsistencyInVCDomLEMWrt.add(new JRankParameter("Approximation","approximation", APPROXIMATION));
-		optimizeRuleConsistencyInVCDomLEMWrt.add(new JRankParameter("Set","set", SET));
+		optimizeRuleConsistencyInVCDomLEMWrt.add(new JRankParameter(get(Labels.CONSISTENCY_APPROXIMATION),"approximation", APPROXIMATION));
+		optimizeRuleConsistencyInVCDomLEMWrt.add(new JRankParameter(get(Labels.CONSISTENCY_SET),"set", SET));
 	}
 	
 	private void initBooleanParameter() {
 		booleanParameter = new ArrayList<>();
 		booleanParameter.add(getEmptyParameter());
-		booleanParameter.add(new JRankParameter("Yes","true", Integer.MAX_VALUE));
-		booleanParameter.add(new JRankParameter("No","false", Integer.MAX_VALUE));
+		booleanParameter.add(new JRankParameter(get(Labels.BOOLEAN_YES),"true", Integer.MAX_VALUE));
+		booleanParameter.add(new JRankParameter(get(Labels.BOOLEAN_NO),"false", Integer.MAX_VALUE));
+	}
+	
+	private String get(String labelCode) {
+		return labels.get(labelCode);
 	}
 	
 }

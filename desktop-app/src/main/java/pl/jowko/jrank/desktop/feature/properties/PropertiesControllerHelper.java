@@ -31,39 +31,6 @@ class PropertiesControllerHelper {
 		this.editableProperties = editableProperties;
 	}
 	
-	void initTitledPanes() {
-		boolean isAdvancedPropertiesEnabled = UserSettingsService.getInstance().getUserSettings().isAdvancedPropertiesEnabled();
-		controller.filesPane.setExpanded(isAdvancedPropertiesEnabled);
-		controller.parametersPane.setExpanded(isAdvancedPropertiesEnabled);
-		controller.additionalInfoPane.setExpanded(isAdvancedPropertiesEnabled);
-	}
-	
-	void fillComboBoxes() {
-		controller.typeOfFamilyCriteria.getItems().addAll(parametersService.getTypeOfFamilyOfCriteria());
-		controller.typeOfRules.getItems().addAll(parametersService.getTypeOfRules());
-		controller.consideredSetOfRules.getItems().addAll(parametersService.getConsideredSetOfRules());
-		
-		controller.consistencyMeasure.getItems().addAll(parametersService.getConsistencyMeasure());
-		
-		controller.rankingProcedure.getItems().addAll(parametersService.getRankingProcedure());
-		controller.dominance.getItems().addAll(parametersService.getDominance());
-		controller.dominanceForPairs.getItems().addAll(parametersService.getDominanceForPairsOfOrdinalValues());
-		
-		controller.satisfactionDegreesInGraph.getItems().addAll(parametersService.getSatisfactionDegreesInPreferenceGraph());
-		controller.fuzzyCalculationMethod.getItems().addAll(parametersService.getFuzzySatisfactionDegreeCalculationMethod());
-		
-		controller.negativeExamplesTreatment.getItems().addAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
-		controller.optimizeRuleConsistency.getItems().addAll(parametersService.getOptimizeRuleConsistencyInVCDomLEMWrt());
-		controller.ruleConditionsSelectionMethod.getItems().addAll(parametersService.getRuleConditionsSelectionMethodInVCDomLEM());
-		
-		controller.allowEmptyRules.getItems().addAll(parametersService.getBooleanParameter());
-		controller.useEdgeRegions.getItems().addAll(parametersService.getBooleanParameter());
-		
-		controller.writeDominationInformation.getItems().addAll(parametersService.getBooleanParameter());
-		controller.writeRulesStatistics.getItems().addAll(parametersService.getBooleanParameter());
-		controller.writeLearningPositiveExamples.getItems().addAll(parametersService.getBooleanParameter());
-	}
-	
 	void clearForm() {
 		JRankParameter emptyParameter = parametersService.getEmptyParameter();
 		
@@ -187,6 +154,39 @@ class PropertiesControllerHelper {
 		jRankProperties.setWriteLearningPositiveExamples(controller.writeLearningPositiveExamples.getValue());
 		
 		return jRankProperties;
+	}
+	
+	private void initTitledPanes() {
+		boolean isAdvancedPropertiesEnabled = UserSettingsService.getInstance().getUserSettings().isAdvancedPropertiesEnabled();
+		controller.filesPane.setExpanded(isAdvancedPropertiesEnabled);
+		controller.parametersPane.setExpanded(isAdvancedPropertiesEnabled);
+		controller.additionalInfoPane.setExpanded(isAdvancedPropertiesEnabled);
+	}
+	
+	private void fillComboBoxes() {
+		controller.typeOfFamilyCriteria.getItems().addAll(parametersService.getTypeOfFamilyOfCriteria());
+		controller.typeOfRules.getItems().addAll(parametersService.getTypeOfRules());
+		controller.consideredSetOfRules.getItems().addAll(parametersService.getConsideredSetOfRules());
+		
+		controller.consistencyMeasure.getItems().addAll(parametersService.getConsistencyMeasure());
+		
+		controller.rankingProcedure.getItems().addAll(parametersService.getRankingProcedure());
+		controller.dominance.getItems().addAll(parametersService.getDominance());
+		controller.dominanceForPairs.getItems().addAll(parametersService.getDominanceForPairsOfOrdinalValues());
+		
+		controller.satisfactionDegreesInGraph.getItems().addAll(parametersService.getSatisfactionDegreesInPreferenceGraph());
+		controller.fuzzyCalculationMethod.getItems().addAll(parametersService.getFuzzySatisfactionDegreeCalculationMethod());
+		
+		controller.negativeExamplesTreatment.getItems().addAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
+		controller.optimizeRuleConsistency.getItems().addAll(parametersService.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		controller.ruleConditionsSelectionMethod.getItems().addAll(parametersService.getRuleConditionsSelectionMethodInVCDomLEM());
+		
+		controller.allowEmptyRules.getItems().addAll(parametersService.getBooleanParameter());
+		controller.useEdgeRegions.getItems().addAll(parametersService.getBooleanParameter());
+		
+		controller.writeDominationInformation.getItems().addAll(parametersService.getBooleanParameter());
+		controller.writeRulesStatistics.getItems().addAll(parametersService.getBooleanParameter());
+		controller.writeLearningPositiveExamples.getItems().addAll(parametersService.getBooleanParameter());
 	}
 	
 	private String getStringOrNull(Object value) {
