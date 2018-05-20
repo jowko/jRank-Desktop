@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogController;
+import pl.jowko.jrank.desktop.feature.tabs.upper.JRankTab;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
@@ -31,11 +32,13 @@ public class LearningTableActions {
 	private LearningTableHelper tableHelper;
 	private List<Attribute> attributes;
 	private ComboBox<String> selectAttribute;
+	private JRankTab learningTableTab;
 	
-	LearningTableActions(TableView<ObservableList<Field>> learningTable, ComboBox<String> selectAttribute) {
+	LearningTableActions(TableView<ObservableList<Field>> learningTable, ComboBox<String> selectAttribute, JRankTab learningTableTab) {
 		this.learningTable = learningTable;
 		this.tableHelper = new LearningTableHelper();
 		this.selectAttribute = selectAttribute;
+		this.learningTableTab = learningTableTab;
 		attributes = new ArrayList<>();
 	}
 	
@@ -52,6 +55,7 @@ public class LearningTableActions {
 				editAttribute(currentAttribute, attribute);
 			}
 		}
+		learningTableTab.setTabEdited(true);
 	}
 	
 	/**

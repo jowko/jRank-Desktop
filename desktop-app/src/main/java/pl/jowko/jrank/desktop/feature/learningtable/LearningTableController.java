@@ -1,8 +1,11 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import javafx.beans.value.ChangeListener;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.feature.tabs.upper.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
@@ -40,21 +43,22 @@ public class LearningTableController {
 	
 	private LearningTable oldTable;
 	private LearningTable table;
-	private Tab learningTableTab;
+	private JRankTab learningTableTab;
 	private WorkspaceItem workspaceItem;
 	private LearningTableActions tableActions;
 	
-	public void initializeTable(MemoryContainer container, Tab tableTab, WorkspaceItem workspaceItem) {
+	public void initializeTable(MemoryContainer container, JRankTab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
 		EnumReplacer.replaceJRSEnumsWithTableEnumFields(table);
 		oldTable = (LearningTable) Cloner.deepClone(table);
 		learningTableTab = tableTab;
 		this.workspaceItem = workspaceItem;
-		tableActions = new LearningTableActions(learningTable, selectAttribute);
+		tableActions = new LearningTableActions(learningTable, selectAttribute, learningTableTab);
 		new TableContextMenuCreator(learningTable, tableActions).create();
 		initializeTable();
 		tableActions.setItemsToAttributeComboBox();
 		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		initializeTableEditionHandler();
 	}
 	
 	public void removeAttributeAction() {
@@ -91,6 +95,18 @@ public class LearningTableController {
 		closeTab();
 	}
 	
+	private void initializeTableEditionHandler() {
+		learningTable.getItems().addListener((ListChangeListener<? super ObservableList<Field>>) listener ->
+				learningTableTab.setTabEdited(true)
+		);
+		learningTable.getColumns().addListener((ListChangeListener<? super TableColumn<ObservableList<Field>, ?>>) listener ->
+				learningTableTab.setTabEdited(true)
+		);
+		learningTable.editingCellProperty().addListener((ChangeListener<? super TablePosition<ObservableList<Field>, ?>>) (ov, o, n) ->
+				learningTableTab.setTabEdited(true)
+		);
+	}
+	
 	private void initializeTable() {
 		for(Attribute attribute : table.getAttributes()) {
 			tableActions.createNewColumn(attribute);
@@ -114,9 +130,7 @@ public class LearningTableController {
 		if(learningTable.getColumns().isEmpty()) {
 			return not(showConfirmationDialog());
 		}
-		
-		LearningTable actualTable = matchDataFromUIToLearningTable();
-		return not(oldTable.equals(actualTable)) && not(showConfirmationDialog());
+		return learningTableTab.isTabEdited() && not(showConfirmationDialog());
 	}
 	
 	private LearningTable matchDataFromUIToLearningTable() {

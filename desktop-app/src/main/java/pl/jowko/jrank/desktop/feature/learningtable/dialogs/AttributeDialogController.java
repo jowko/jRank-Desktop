@@ -140,7 +140,7 @@ public class AttributeDialogController {
 		kindField.getSelectionModel().selectFirst();
 		preferenceField.getSelectionModel().clearSelection();
 		enumsField.clear();
-		activeCheckBox.setSelected(false);
+		activeCheckBox.setSelected(true);
 		
 		if(isAddAction)
 			typeField.getSelectionModel().clearSelection();
