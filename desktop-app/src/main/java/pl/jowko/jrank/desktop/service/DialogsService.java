@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.service;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import pl.jowko.jrank.desktop.feature.settings.Labels;
@@ -47,16 +48,23 @@ public class DialogsService {
 	
 	public static boolean showConfirmationDialog(String header, String content) {
 		LanguageService labels = LanguageService.getInstance();
-		ButtonType yesButton = new ButtonType(labels.get(CONFIRM_DIALOG_YES), ButtonBar.ButtonData.YES);
-		ButtonType noButton = new ButtonType(labels.get(CONFIRM_DIALOG_NO), ButtonBar.ButtonData.NO);
+		ButtonType yesButtonType = new ButtonType(labels.get(CONFIRM_DIALOG_YES), ButtonBar.ButtonData.YES);
+		ButtonType noButtonType = new ButtonType(labels.get(CONFIRM_DIALOG_NO), ButtonBar.ButtonData.NO);
 		
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yesButton, noButton);
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", yesButtonType, noButtonType);
 		alert.setTitle(labels.get(CONFIRM_DIALOG_TITLE));
 		alert.setHeaderText(header);
 		alert.setContentText(content);
+		
+		// change default button to No
+		Button yesButton = (Button) alert.getDialogPane().lookupButton(yesButtonType);
+		yesButton.setDefaultButton(false);
+		Button noButton = (Button) alert.getDialogPane().lookupButton(noButtonType);
+		noButton.setDefaultButton(true);
+		
 		alert.showAndWait();
 		
-		return alert.getResult() == yesButton;
+		return alert.getResult() == yesButtonType;
 	}
 	
 }
