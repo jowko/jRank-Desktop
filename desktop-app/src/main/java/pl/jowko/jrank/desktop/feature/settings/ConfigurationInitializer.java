@@ -1,8 +1,8 @@
 package pl.jowko.jrank.desktop.feature.settings;
 
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.service.JRankInfoService;
-import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.logger.JRankLogger;
 
 /**

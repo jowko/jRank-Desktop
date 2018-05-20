@@ -6,9 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.settings.ConfigurationInitializer;
-import pl.jowko.jrank.desktop.feature.settings.Labels;
-import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;

@@ -1,6 +1,7 @@
-package pl.jowko.jrank.desktop.service;
+package pl.jowko.jrank.desktop.feature.internationalization;
 
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
+import pl.jowko.jrank.desktop.service.FileManager;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.util.Map;

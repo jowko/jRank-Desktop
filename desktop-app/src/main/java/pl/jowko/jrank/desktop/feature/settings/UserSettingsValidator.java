@@ -1,13 +1,14 @@
 package pl.jowko.jrank.desktop.feature.settings;
 
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceService;
-import pl.jowko.jrank.desktop.service.LanguageService;
 
 import java.util.Objects;
 
 import static java.util.Objects.isNull;
+import static pl.jowko.jrank.desktop.feature.internationalization.Labels.WORKSPACE_ERROR;
 import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
-import static pl.jowko.jrank.desktop.feature.settings.Labels.WORKSPACE_ERROR;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**

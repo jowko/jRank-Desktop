@@ -8,10 +8,10 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import pl.jowko.jrank.desktop.Main;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
-import pl.jowko.jrank.desktop.feature.settings.Labels;
 import pl.jowko.jrank.desktop.service.JRankInfoService;
-import pl.jowko.jrank.desktop.service.LanguageService;
 
 /**
  * Created by Piotr on 2018-04-10.

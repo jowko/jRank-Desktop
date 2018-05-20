@@ -22,6 +22,7 @@ module jRank.desktop {
 	opens pl.jowko.jrank.desktop.feature.textfile;
 	opens pl.jowko.jrank.desktop.feature.workspace;
  	
+ 	exports pl.jowko.jrank.desktop.feature.internationalization;
  	exports pl.jowko.jrank.desktop.feature.settings;
  	exports pl.jowko.jrank.desktop;
 }

@@ -1,12 +1,9 @@
 package pl.jowko.jrank.desktop.controller;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.OutputStream;

@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.service;
+package pl.jowko.jrank.desktop.feature.internationalization;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +11,7 @@ import java.io.PrintStream;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static pl.jowko.jrank.desktop.feature.settings.Labels.MENU_FILE;
+import static pl.jowko.jrank.desktop.feature.internationalization.Labels.MENU_FILE;
 
 /**
  * Created by Piotr on 2018-05-02.

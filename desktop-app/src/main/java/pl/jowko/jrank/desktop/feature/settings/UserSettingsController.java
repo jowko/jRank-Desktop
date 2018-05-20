@@ -8,8 +8,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.jowko.jrank.desktop.Main;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.service.DialogsService;
-import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;

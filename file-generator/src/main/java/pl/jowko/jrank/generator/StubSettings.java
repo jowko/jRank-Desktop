@@ -1,6 +1,6 @@
 package pl.jowko.jrank.generator;
 
-import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.settings.UserSettings;
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsBuilder;
 

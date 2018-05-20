@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.feature.settings;
+package pl.jowko.jrank.desktop.feature.internationalization;
 
 /**
  * Created by Piotr on 2018-03-16.

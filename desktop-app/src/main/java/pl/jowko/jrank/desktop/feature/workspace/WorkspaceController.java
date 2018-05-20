@@ -2,10 +2,10 @@ package pl.jowko.jrank.desktop.feature.workspace;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeView;
-import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsValidator;
 import pl.jowko.jrank.desktop.service.DialogsService;
-import pl.jowko.jrank.desktop.service.LanguageService;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 

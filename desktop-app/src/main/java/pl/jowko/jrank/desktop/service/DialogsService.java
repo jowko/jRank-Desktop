@@ -4,9 +4,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 
-import static pl.jowko.jrank.desktop.feature.settings.Labels.*;
+import static pl.jowko.jrank.desktop.feature.internationalization.Labels.*;
 
 /**
  * Created by Piotr on 2018-04-18.

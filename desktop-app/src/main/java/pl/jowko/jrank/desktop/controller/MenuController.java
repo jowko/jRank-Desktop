@@ -6,9 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import pl.jowko.jrank.desktop.ResourceLoader;
-import pl.jowko.jrank.desktop.feature.settings.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsController;
-import pl.jowko.jrank.desktop.service.LanguageService;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;

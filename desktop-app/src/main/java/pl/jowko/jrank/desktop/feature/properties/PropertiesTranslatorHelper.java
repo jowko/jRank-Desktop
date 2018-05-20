@@ -1,7 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
-import pl.jowko.jrank.desktop.feature.settings.Labels;
-import pl.jowko.jrank.desktop.service.LanguageService;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 
 /**
  * Created by Piotr on 2018-05-07.
