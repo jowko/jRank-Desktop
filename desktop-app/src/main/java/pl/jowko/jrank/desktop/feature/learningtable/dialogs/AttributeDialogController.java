@@ -205,7 +205,7 @@ public class AttributeDialogController {
 		attribute.setActive(activeCheckBox.isSelected());
 		
 		if(attribute.getKind() != 0)
-			attribute.setPreferenceType(0);
+			attribute.setPreferenceType(Attribute.NONE);
 		else
 			attribute.setPreferenceType(preferenceField.getValue().getValue());
 		

@@ -7,6 +7,8 @@ import pl.jowko.jrank.desktop.utils.StringUtils;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
+import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.DRSA;
+import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
 
 /**
  * Created by Piotr on 2018-05-06.
@@ -82,7 +84,7 @@ class PropertiesValidator {
 	
 	private boolean validateCertainRules() {
 		return nonNull(properties.getTypeOfRules())
-				&& getApproach() == 1
+				&& getApproach() == VCDRSA
 				&& properties.getTypeOfRules().getTextValue().equalsIgnoreCase("possible");
 	}
 	
@@ -101,7 +103,7 @@ class PropertiesValidator {
 				&& nonNull(properties.getConsideredSetOfRules())
 				&& nonNull(properties.getConsistencyMeasure())
 				&& properties.getSatisfactionDegreesInPreferenceGraph().getTextValue().equalsIgnoreCase("fuzzy")
-				&& getApproach() == 0
+				&& getApproach() == DRSA
 				&& properties.getTypeOfRules().getTextValue().equalsIgnoreCase("possible")
 				&& properties.getConsideredSetOfRules().getTextValue().equalsIgnoreCase("exhaustive")
 				&& properties.getConsistencyMeasure().getTextValue().equalsIgnoreCase("rough-membership");
@@ -118,14 +120,14 @@ class PropertiesValidator {
 	
 	private int getApproach() {
 		if(isNull(properties.getConsistencyMeasure()) || isNull(properties.getConsistencyMeasureThreshold()))
-			return 0;
+			return DRSA;
 		
 		if((properties.getConsistencyMeasure().getTextValue().equalsIgnoreCase("rough-membership") && properties.getConsistencyMeasureThreshold() < 1.0d) ||
 				(not(properties.getConsistencyMeasure().getTextValue().equalsIgnoreCase("rough-membership")) && properties.getConsistencyMeasureThreshold() > 0.0d)
 				) {
-			return 1;
+			return VCDRSA;
 		} else {
-			return 0;
+			return DRSA;
  		}
 	}
 	
