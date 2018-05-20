@@ -10,7 +10,6 @@ import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
-import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
@@ -41,7 +40,6 @@ public class LearningTableController {
 	@FXML
 	TableView<ObservableList<Field>> learningTable;
 	
-	private LearningTable oldTable;
 	private LearningTable table;
 	private JRankTab learningTableTab;
 	private WorkspaceItem workspaceItem;
@@ -50,7 +48,6 @@ public class LearningTableController {
 	public void initializeTable(MemoryContainer container, JRankTab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
 		EnumReplacer.replaceJRSEnumsWithTableEnumFields(table);
-		oldTable = (LearningTable) Cloner.deepClone(table);
 		learningTableTab = tableTab;
 		this.workspaceItem = workspaceItem;
 		tableActions = new LearningTableActions(learningTable, selectAttribute, learningTableTab);
@@ -74,12 +71,11 @@ public class LearningTableController {
 	public void saveAction() {
 		try {
 			LearningTable tableToSave = matchDataFromUIToLearningTable();
-			EnumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
-			
 			if(not(isTableValid(tableToSave))) {
 				return;
 			}
 			
+			EnumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
 			MemoryContainer container = MemoryContainerAssembler.assembleContainerFromTable(tableToSave);
 			JRSFileMediator.saveMemoryContainer(workspaceItem, container);
 			closeTab();
