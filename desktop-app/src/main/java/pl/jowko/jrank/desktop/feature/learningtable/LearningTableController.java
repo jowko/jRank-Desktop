@@ -5,6 +5,8 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.tabs.upper.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -44,18 +46,21 @@ public class LearningTableController {
 	private JRankTab learningTableTab;
 	private WorkspaceItem workspaceItem;
 	private LearningTableActions tableActions;
+	private LanguageService labels;
 	
 	public void initializeTable(MemoryContainer container, JRankTab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
 		EnumReplacer.replaceJRSEnumsWithTableEnumFields(table);
 		learningTableTab = tableTab;
 		this.workspaceItem = workspaceItem;
+		labels = LanguageService.getInstance();
 		tableActions = new LearningTableActions(learningTable, selectAttribute, learningTableTab);
 		new TableContextMenuCreator(learningTable, tableActions).create();
 		initializeTable();
 		tableActions.setItemsToAttributeComboBox();
 		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		initializeTableEditionHandler();
+		new LearningTableTranslator(this).translateFields();
 	}
 	
 	public void removeAttributeAction() {
@@ -63,7 +68,7 @@ public class LearningTableController {
 	}
 	
 	public void removeAllExamplesAction() {
-		String header = "Do you want to remove ALL examples from table?";
+		String header = labels.get(Labels.LEARN_TABLE_REMOVE_ALL_HEADER);
 		if(DialogsService.showConfirmationDialog(header))
 			learningTable.getItems().clear();
 	}
@@ -134,7 +139,7 @@ public class LearningTableController {
 	}
 	
 	private boolean showConfirmationDialog() {
-		String header = "Do you want to abandon changes in form?";
+		String header = labels.get(Labels.LEARN_TABLE_ABANDON_CHANGES);
 		return DialogsService.showConfirmationDialog(header, "");
 	}
 	
@@ -148,14 +153,13 @@ public class LearningTableController {
 			return true;
 		
 		if(not(validator.isValid())) {
-			DialogsService.showValidationFailedDialog("Table contains errors:", validator.getErrorMsg() + "\n" + validator.getDecisionMsg());
+			DialogsService.showValidationFailedDialog(labels.get(Labels.LEARN_TABLE_ERRORS), validator.getErrorMsg() + "\n" + validator.getDecisionMsg());
 			return false;
 		}
 		
 		if(not(validator.isDecisionAttributesValid())) {
-			return DialogsService.showConfirmationDialog("Do you want to save form?", validator.getDecisionMsg());
+			return DialogsService.showConfirmationDialog(labels.get(Labels.LEARN_TABLE_SAVE_CONFIRM), validator.getDecisionMsg());
 		}
-		
 		
 		return false;
 	}

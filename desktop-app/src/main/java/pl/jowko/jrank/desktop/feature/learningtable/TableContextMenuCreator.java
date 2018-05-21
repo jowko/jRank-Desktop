@@ -4,6 +4,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
@@ -13,10 +15,12 @@ class TableContextMenuCreator {
 	
 	private TableView<ObservableList<Field>> table;
 	private LearningTableActions actions;
+	private LanguageService labels;
 	
 	TableContextMenuCreator(TableView<ObservableList<Field>> table, LearningTableActions tableActions) {
 		this.table = table;
 		this.actions = tableActions;
+		labels = LanguageService.getInstance();
 	}
 	
 	void create() {
@@ -31,25 +35,25 @@ class TableContextMenuCreator {
 	}
 	
 	private MenuItem createAddExampleItem() {
-		MenuItem item = new MenuItem("Add example");
+		MenuItem item = new MenuItem(labels.get(Labels.LEARN_TABLE_ADD_EXAMPLE));
 		item.setOnAction(event -> actions.addExampleAction());
 		return item;
 	}
 	
 	private MenuItem createRemoveExamplesItem() {
-		MenuItem item = new MenuItem("Remove selected examples");
+		MenuItem item = new MenuItem(labels.get(Labels.LEARN_TABLE_REMOVE_EXAMPLES));
 		item.setOnAction(event -> actions.removeSelectedExamplesAction());
 		return item;
 	}
 	
 	private MenuItem createCustomizeAttributesItem() {
-		MenuItem item = new MenuItem("Customize attributes");
+		MenuItem item = new MenuItem(labels.get(Labels.LEARN_TABLE_CUSTOMIZE_ATTRIBUTES));
 		item.setOnAction(event -> actions.customizeAttributes());
 		return item;
 	}
 	
 	private MenuItem createAddAttributeItem() {
-		MenuItem item = new MenuItem("Add attribute");
+		MenuItem item = new MenuItem(labels.get(Labels.LEARN_TABLE_ADD_ATTRIBUTE));
 		item.setOnAction(event -> actions.addNewAttribute());
 		return item;
 	}

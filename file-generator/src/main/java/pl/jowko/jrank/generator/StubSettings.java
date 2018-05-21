@@ -65,7 +65,33 @@ class StubSettings {
 		language.put(Labels.APP_TITLE, "JRank Ultimate Desktop Edition");
 		language.put(Labels.US_SETTINGS_ERROR, "User settings are not correctly configured: ");
 		
-		// menu items
+		// General buttons
+		language.put(Labels.BUTTON_SAVE, "Save");
+		language.put(Labels.BUTTON_CANCEL, "Cancel");
+		
+		// Dialogs
+		language.put(Labels.CONFIRM_DIALOG_TITLE, "Confirm action");
+		language.put(Labels.CONFIRM_DIALOG_YES, "Yes");
+		language.put(Labels.CONFIRM_DIALOG_NO, "No");
+		
+		// Lower tabs
+		language.put(Labels.LOGS_TAB, "Logs");
+		
+		createEnglishMenuLabels(language);
+		createEnglishUserSettingsLabels(language);
+		createEnglishAboutLabels(language);
+		createEnglishPropertiesLabels(language);
+		createEnglishPropertiesMessages(language);
+		createEnglishPropertiesValidationMessages(language);
+		createEnglishPropertiesTooltips(language);
+		createEnglishParametersLabels(language);
+		createEnglishAttributeDialogLabels(language);
+		createEnglishLearningTableLabels(language);
+		
+		return language;
+	}
+	
+	private void createEnglishMenuLabels(Map<String, String> language) {
 		language.put(Labels.MENU_FILE, "File");
 		language.put(Labels.MENU_QUIT, "Quit");
 		language.put(Labels.MENU_SETTINGS, "Settings");
@@ -73,12 +99,9 @@ class StubSettings {
 		language.put(Labels.MENU_HELP, "Help");
 		language.put(Labels.MENU_ITEM_HELP, "Help");
 		language.put(Labels.MENU_ABOUT, "About");
-		
-		// General buttons
-		language.put(Labels.BUTTON_SAVE, "Save");
-		language.put(Labels.BUTTON_CANCEL, "Cancel");
-		
-		// User Settings
+	}
+	
+	private void createEnglishUserSettingsLabels(Map<String, String> language) {
 		language.put(Labels.US_TITLE, "User settings");
 		language.put(Labels.LANGUAGE, "Language: ");
 		language.put(Labels.WORKSPACE, "Workspace path: ");
@@ -92,31 +115,15 @@ class StubSettings {
 		language.put(Labels.VALIDATION_DIALOG_TITLE, "Validation Fail");
 		language.put(Labels.US_ERROR_DIALOG_HEADER, "Error when saving user options: ");
 		language.put(Labels.VALIDATION_DIALOG_HEADER, "There were validation errors: ");
-		
-		// Dialogs
-		language.put(Labels.CONFIRM_DIALOG_TITLE, "Confirm action");
-		language.put(Labels.CONFIRM_DIALOG_YES, "Yes");
-		language.put(Labels.CONFIRM_DIALOG_NO, "No");
-		
-		// About dialog
+	}
+	
+	private void createEnglishAboutLabels(Map<String, String> language) {
 		language.put(Labels.ABOUT_TITLE, "About JRank Ultimate Desktop Edition");
 		language.put(Labels.ABOUT_APP_INFO, "Application information:");
 		language.put(Labels.ABOUT_AUTHOR, "Author:");
 		language.put(Labels.ABOUT_VERSION, "Version:");
 		language.put(Labels.ABOUT_RELEASE_DATE, "Release Date:");
 		language.put(Labels.ABOUT_BOTTOM_INFO, "JRank Ultimate Desktop Edition was developed as part of master thesis.");
-		
-		// Lower tabs
-		language.put(Labels.LOGS_TAB, "Logs");
-		
-		createEnglishPropertiesLabels(language);
-		createEnglishPropertiesMessages(language);
-		createEnglishPropertiesValidationMessages(language);
-		createEnglishPropertiesTooltips(language);
-		createEnglishParametersLabels(language);
-		createEnglishAttributeDialogLabels(language);
-		
-		return language;
 	}
 	
 	private void createEnglishPropertiesLabels(Map<String, String> language) {
@@ -288,6 +295,39 @@ class StubSettings {
 		language.put(Labels.ATT_DIALOG_ENUMS_EMPTY, "Enum values should not be empty\n");
 		language.put(Labels.ATT_DIALOG_VALIDATION_FAIL, "There are errors on form");
 		language.put(Labels.ATT_DIALOG_ENUMS_TOOLTIP, "Write cardinal values here separated by coma.");
+	}
+	
+	private void createEnglishLearningTableLabels(Map<String, String> language) {
+		language.put(Labels.LEARN_TABLE_NO_PREFERENCE, "No preference type, ");
+		language.put(Labels.LEARN_TABLE_GAIN, "Gain criterion, ");
+		language.put(Labels.LEARN_TABLE_COST, "Cost criterion, ");
+		language.put(Labels.LEARN_TABLE_DECISION, "decision, ");
+		language.put(Labels.LEARN_TABLE_DESCRIPTION, "description, ");
+		language.put(Labels.LEARN_TABLE_ACTIVE, "active, ");
+		language.put(Labels.LEARN_TABLE_INACTIVE, "inactive, ");
+		language.put(Labels.LEARN_TABLE_FIELD, " field");
+		
+		language.put(Labels.LEARN_TABLE_STRING_VALIDATION_1, "Field in row:");
+		language.put(Labels.LEARN_TABLE_STRING_VALIDATION_2, "and column: ");
+		language.put(Labels.LEARN_TABLE_STRING_VALIDATION_3, " is empty.\n");
+		language.put(Labels.LEARN_TABLE_DECISION_VALIDATION, "Table can only have one active decision attribute. Current decision attributes: ");
+		language.put(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE, "Attribute names should be unique. Non unique attribute names:\n");
+		
+		language.put(Labels.LEARN_TABLE_ADD_EXAMPLE, "Add example");
+		language.put(Labels.LEARN_TABLE_REMOVE_EXAMPLES, "Remove selected examples");
+		language.put(Labels.LEARN_TABLE_CUSTOMIZE_ATTRIBUTES, "Customize attributes");
+		language.put(Labels.LEARN_TABLE_ADD_ATTRIBUTE, "Add attribute");
+		
+		language.put(Labels.LEARN_TABLE_REMOVE_ALL_HEADER, "Do you want to remove ALL examples from table?");
+		language.put(Labels.LEARN_TABLE_ABANDON_CHANGES, "Do you want to abandon changes in form?");
+		language.put(Labels.LEARN_TABLE_ERRORS, "Table contains errors:");
+		language.put(Labels.LEARN_TABLE_SAVE_CONFIRM, "Do you want to save form?");
+		
+		language.put(Labels.LEARN_TABLE_SELECT_ATTRIBUTE, "Select attribute:");
+		language.put(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE, "Remove selected attribute");
+		language.put(Labels.LEARN_TABLE_REMOVE_ALL_EXAMPLES, "Remove all examples");
+		language.put(Labels.LEARN_TABLE_SAVE_BUTTON, "Save");
+		language.put(Labels.LEARN_TABLE_CANCEL_BUTTON, "Cancel");
 	}
 	
 	private void generateStubLanguage() {

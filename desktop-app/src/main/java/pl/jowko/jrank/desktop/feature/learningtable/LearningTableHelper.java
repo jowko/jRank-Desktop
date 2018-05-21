@@ -8,6 +8,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.ComboBoxTableCell;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogHelper;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
@@ -21,6 +23,12 @@ import java.util.List;
  * Class contains useful methods for managing learning table.
  */
 class LearningTableHelper {
+	
+	private LanguageService labels;
+	
+	LearningTableHelper() {
+		labels = LanguageService.getInstance();
+	}
 	
 	/**
 	 * When removing column from table, indexes are not correctly related to columns.
@@ -157,24 +165,24 @@ class LearningTableHelper {
 		int kind = attribute.getKind();
 		
 		if(preference == Attribute.NONE)
-			builder.append("No preference type, ");
+			builder.append(labels.get(Labels.LEARN_TABLE_NO_PREFERENCE));
 		else if(preference == Attribute.GAIN)
-			builder.append("Gain criterion, ");
+			builder.append(labels.get(Labels.LEARN_TABLE_GAIN));
 		else if(preference == Attribute.COST)
-			builder.append("Cost criterion, ");
+			builder.append(labels.get(Labels.LEARN_TABLE_COST));
 		
 		if(kind == Attribute.DECISION)
-			builder.append("decision, ");
+			builder.append(labels.get(Labels.LEARN_TABLE_DECISION));
 		else if(kind == Attribute.DESCRIPTION)
-			builder.append("description, ");
+			builder.append(labels.get(Labels.LEARN_TABLE_DESCRIPTION));
 		
 		if(attribute.getActive())
-			builder.append("active, ");
+			builder.append(labels.get(Labels.LEARN_TABLE_ACTIVE));
 		else
-			builder.append("inactive, ");
+			builder.append(labels.get(Labels.LEARN_TABLE_INACTIVE));
 		
 		builder.append(AttributeDialogHelper.getFieldTypeFromField(attribute.getInitialValue()).toString());
-		builder.append(" field");
+		builder.append(labels.get(Labels.LEARN_TABLE_FIELD));
 		
 		return new Tooltip(builder.toString());
 	}

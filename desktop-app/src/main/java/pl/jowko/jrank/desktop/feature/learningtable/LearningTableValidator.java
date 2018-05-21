@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 import pl.poznan.put.cs.idss.jrs.types.StringField;
@@ -18,6 +20,7 @@ import static pl.jowko.jrank.desktop.utils.StringUtils.isNullOrEmpty;
  */
 class LearningTableValidator {
 	
+	private LanguageService labels;
 	private LearningTable table;
 	private StringBuilder errorMsg;
 	private StringBuilder decisionMsg;
@@ -26,6 +29,7 @@ class LearningTableValidator {
 		this.table = table;
 		errorMsg = new StringBuilder();
 		decisionMsg = new StringBuilder();
+		labels = LanguageService.getInstance();
 		validateTable();
 	}
 	
@@ -64,11 +68,13 @@ class LearningTableValidator {
 				String value = ((StringField)fields[i]).get();
 				
 				if(isNullOrEmpty(value)) {
-					errorMsg.append("Field in row: [")
+					errorMsg.append(labels.get(Labels.LEARN_TABLE_STRING_VALIDATION_1))
+							.append(" [")
 							.append(rowIndex)
-							.append("] and column: ")
+							.append("] ")
+							.append(labels.get(Labels.LEARN_TABLE_STRING_VALIDATION_2))
 							.append(table.getAttributes().get(i).getName())
-							.append(" is empty.\n");
+							.append(labels.get(Labels.LEARN_TABLE_STRING_VALIDATION_3));
 				}
 			}
 		}
@@ -80,7 +86,7 @@ class LearningTableValidator {
 				.collect(Collectors.toList());
 		
 		if(decisionAttributes.size() > 1) {
-			decisionMsg.append("Table can only have one active decision attribute. Current decision attributes: ");
+			decisionMsg.append(labels.get(Labels.LEARN_TABLE_DECISION_VALIDATION));
 			for(Attribute attribute: decisionAttributes) {
 				decisionMsg.append('[')
 						.append(attribute.getName())
@@ -104,7 +110,7 @@ class LearningTableValidator {
 		if(notUniqueAttributesNames.isEmpty())
 			return;
 		
-		errorMsg.append("Attribute names should be unique. Non unique attribute names:\n");
+		errorMsg.append(labels.get(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE));
 		
 		notUniqueAttributesNames.forEach(name ->
 				errorMsg.append('[')
