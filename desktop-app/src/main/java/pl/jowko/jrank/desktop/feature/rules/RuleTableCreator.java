@@ -12,13 +12,13 @@ import java.util.List;
 /**
  * Created by Piotr on 2018-05-21.
  * This class creates columns and row items for rule table.
- * It converts list of rules to table containing
+ * It converts list of rules to table containing decisions and conditions from rules
  */
 class RuleTableCreator {
 	
 	private List<Rule> rules;
 	
-	private List<TableColumn<RuleRow, String>> columns;
+	private List<TableColumn<RuleRow, ?>> columns;
 	private List<RuleRow> items;
 	
 	private int rowId;
@@ -55,7 +55,7 @@ class RuleTableCreator {
 	 * Gets columns
 	 * @return list of table columns with appropriate headers and column properties
 	 */
-	List<TableColumn<RuleRow, String>> getColumns() {
+	List<TableColumn<RuleRow, ?>> getColumns() {
 		return columns;
 	}
 	
@@ -88,7 +88,7 @@ class RuleTableCreator {
 	 */
 	private void createColumns() {
 		columns = new ArrayList<>();
-		columns.add(createColumn("ID", 0));
+		columns.add(createIDColumn());
 		
 		int decisionColumnNumber = 1;
 		int conditionColumnNumber = 1;
@@ -134,6 +134,22 @@ class RuleTableCreator {
 	}
 	
 	/**
+	 * Creates ID column with have Integer type.
+	 * Integer type is needed for proper number sorting.
+	 * @return column with integer type for ID
+	 */
+	private TableColumn<RuleRow, Integer> createIDColumn() {
+		TableColumn<RuleRow, Integer> column = new TableColumn<>("ID");
+		column.setCellValueFactory(param ->
+				new ReadOnlyObjectWrapper<>(param.getValue().getId())
+		);
+		column.setReorderable(false);
+		column.setMinWidth(30d);
+		
+		return column;
+	}
+	
+	/**
 	 * Creates items(rows) for rules table.
 	 */
 	private void createItems() {
@@ -151,7 +167,6 @@ class RuleTableCreator {
 	 */
 	private RuleRow createItem(Rule rule) {
 		List<String> cells = new ArrayList<>(Collections.nCopies(columnsCount, ""));
-		cells.set(0, String.valueOf(rowId++));
 		
 		for (int j = 0; j < rule.getDecisions().length; j++) {
 			cells.set(firstDecisionPartColumnID + 2 * j,
@@ -174,7 +189,7 @@ class RuleTableCreator {
 			}
 		}
 		
-		return new RuleRow(cells, rule);
+		return new RuleRow(rowId++, cells, rule);
 	}
 	
 	/**
