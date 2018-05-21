@@ -51,7 +51,7 @@ public class UpperTabsController {
 			upperTabs.getTabs().add(tab);
 			upperTabs.getSelectionModel().select(tab);
 		} catch (IOException e) {
-			JRankLogger.error("Error when creating properties tab: ", e);
+			JRankLogger.error("Error when creating tab for file: [" + workspaceItem.getFileName() + "]. Cause: ", e);
 		}
 	}
 	
@@ -99,7 +99,7 @@ public class UpperTabsController {
 			case TEXT:
 				return new TextFileTab(workspaceItem, tabText);
 			case UNKNOWN:
-				return null;
+				return new UnknownFileTab(workspaceItem, tabText);
 		}
 		return null;
 	}

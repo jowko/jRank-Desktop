@@ -4,7 +4,6 @@ import javafx.scene.control.TreeCell;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
-import pl.jowko.jrank.logger.JRankLogger;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
@@ -23,22 +22,12 @@ class ClickEventHandler {
 			return;
 		
 		UpperTabsController.getInstance().createTab(workspaceItem);
-		
 	}
 	
 	private boolean isFileTypeValid(WorkspaceItem workspaceItem) {
 		FileType itemType = workspaceItem.getFileType();
 		
-		if(FileType.ROOT.equals(itemType) || FileType.FOLDER.equals(itemType)) {
-			// do nothing
-			return false;
-		}
-		
-		if(FileType.UNKNOWN.equals(itemType)) {
-			JRankLogger.warn("File: [" + workspaceItem.getFilePath() + "] was not recognized");
-			return false;
-		}
-		return true;
+		return !FileType.ROOT.equals(itemType) && !FileType.FOLDER.equals(itemType);
 	}
 
 

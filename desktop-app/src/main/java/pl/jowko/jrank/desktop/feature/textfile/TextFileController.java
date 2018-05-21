@@ -9,10 +9,10 @@ import javafx.scene.control.TextArea;
 public class TextFileController {
 	
 	@FXML
-	private TextArea textFileVIew;
+	private TextArea textFileView;
 
 	public void initializeTab(String fileContent) {
-		textFileVIew.setText(fileContent);
+		textFileView.setText(fileContent);
 	}
 
 }
