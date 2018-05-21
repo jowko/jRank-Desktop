@@ -52,6 +52,8 @@ public class UpperTabsController {
 			upperTabs.getSelectionModel().select(tab);
 		} catch (IOException e) {
 			JRankLogger.error("Error when creating tab for file: [" + workspaceItem.getFileName() + "]. Cause: ", e);
+		} catch (WrongFileTypeException e) {
+			JRankLogger.error(e.getMessage());
 		}
 	}
 	
@@ -75,13 +77,13 @@ public class UpperTabsController {
 		return path.getParent().getFileName().toString() + "\\" + workspaceItem.getFileName();
 	}
 	
-	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws IOException {
+	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws IOException, WrongFileTypeException {
 		FileType itemType = workspaceItem.getFileType();
 		switch (itemType) {
 			case ROOT:
-				return null;
+				throw new WrongFileTypeException("Cannot open root node as file.");
 			case FOLDER:
-				return null;
+				throw new WrongFileTypeException("Cannot open experiment directory: [" + workspaceItem.getFileName() + "] as file");
 			case JRANK_SETTINGS:
 				return new PropertiesTab(workspaceItem, tabText);
 			case LEARNING_TABLE:
