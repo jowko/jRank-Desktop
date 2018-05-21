@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.feature.tabs.upper;
+package pl.jowko.jrank.desktop.feature.tabs;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Tab;
@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public abstract class JRankTab extends Tab {
 	
-	WorkspaceItem workspaceItem;
+	protected WorkspaceItem workspaceItem;
 	
 	private boolean tabEdited;
 	
@@ -21,9 +21,9 @@ public abstract class JRankTab extends Tab {
 	 * This method returns path to fxml resource.
 	 * @return path to fxml resource
 	 */
-	abstract String getResourceName();
+	protected abstract String getResourceName();
 	
-	<T> T initializeTabAndGetController(WorkspaceItem workspaceItem, String tabText) throws IOException {
+	protected <T> T initializeTabAndGetController(WorkspaceItem workspaceItem, String tabText) throws IOException {
 		this.workspaceItem = workspaceItem;
 		setText(tabText);
 		

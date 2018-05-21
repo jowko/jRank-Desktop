@@ -14,6 +14,7 @@ module jRank.desktop {
 	requires jrs;
 	
 	opens pl.jowko.jrank.desktop.controller;
+	opens pl.jowko.jrank.desktop.feature.approximations;
 	opens pl.jowko.jrank.desktop.feature.learningtable;
 	opens pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 	opens pl.jowko.jrank.desktop.feature.properties;

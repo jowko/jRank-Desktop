@@ -6,6 +6,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.service.DialogsService;
 
 import java.util.ArrayList;

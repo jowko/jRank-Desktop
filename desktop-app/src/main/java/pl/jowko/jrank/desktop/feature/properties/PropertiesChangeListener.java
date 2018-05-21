@@ -3,7 +3,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import pl.jowko.jrank.desktop.feature.tabs.upper.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 
 /**
  * Created by Piotr on 2018-05-20.

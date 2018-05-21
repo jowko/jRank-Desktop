@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
 import pl.jowko.jrank.desktop.feature.properties.PropertiesController;
+import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 
@@ -21,7 +22,7 @@ class PropertiesTab extends JRankTab {
 	}
 	
 	@Override
-	String getResourceName() {
+	protected String getResourceName() {
 		return "/fxml/upperTabs/jRankSettingsTab.fxml";
 	}
 	

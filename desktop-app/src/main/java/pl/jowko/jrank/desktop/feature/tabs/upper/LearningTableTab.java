@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableController;
+import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -19,7 +20,7 @@ class LearningTableTab extends JRankTab {
 	}
 	
 	@Override
-	String getResourceName() {
+	protected String getResourceName() {
 		return "/fxml/upperTabs/learningTableTab.fxml";
 	}
 

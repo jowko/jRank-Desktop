@@ -1,9 +1,9 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.rules.RulesController;
+import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
-import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ class RulesTab extends JRankTab {
 	}
 	
 	@Override
-	String getResourceName() {
+	protected String getResourceName() {
 		return "/fxml/upperTabs/rulesTab.fxml";
 	}
 	

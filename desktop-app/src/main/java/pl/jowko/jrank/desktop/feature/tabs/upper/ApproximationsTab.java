@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.approximations.ApproximationsController;
+import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 
@@ -19,7 +20,7 @@ class ApproximationsTab extends JRankTab {
 	}
 	
 	@Override
-	String getResourceName() {
+	protected String getResourceName() {
 		return "/fxml/upperTabs/approximationsTab.fxml";
 	}
 	
