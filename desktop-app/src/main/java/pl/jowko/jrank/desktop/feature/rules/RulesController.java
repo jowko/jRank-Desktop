@@ -2,13 +2,18 @@ package pl.jowko.jrank.desktop.feature.rules;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-import pl.jowko.jrank.desktop.feature.tabs.upper.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.lower.LowerTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
 
+import java.io.IOException;
 import java.util.List;
+
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 /**
  * Created by Piotr on 2018-05-21.
@@ -20,10 +25,10 @@ public class RulesController {
 	@FXML
 	TableView<RuleRow> rulesTable;
 	
-	private RulesContainer container;
 	private List<Rule> rules;
 	private WorkspaceItem workspaceItem;
-	private JRankTab tab;
+	private JRankTab rulesTab;
+	private StatisticsTab statisticsTab;
 	
 	/**
 	 * Initializes rule tab.
@@ -32,9 +37,8 @@ public class RulesController {
 	 * @param rulesTab with contains rules table
 	 */
 	public void initializeRules(RulesContainer rulesContainer, WorkspaceItem workspaceItem, JRankTab rulesTab) {
-		this.container = rulesContainer;
 		this.workspaceItem = workspaceItem;
-		this.tab = rulesTab;
+		this.rulesTab = rulesTab;
 		this.rules = new RulesExtractor(rulesContainer).extract();
 		
 		if(rules.size() == 0) {
@@ -45,15 +49,54 @@ public class RulesController {
 		}
 		
 		initializeTable();
+		initializeCloseEventForRulesTab();
 	}
 	
 	/**
 	 * Initialize table content. It creates appropriate number of columns and items.
+	 * Also sets listener to selection event to display rules statistics in new tab
 	 */
 	private void initializeTable() {
 		RuleTableCreator tableCreator = new RuleTableCreator(rules);
 		rulesTable.getColumns().addAll(tableCreator.getColumns());
 		rulesTable.getItems().addAll(tableCreator.getItems());
+		
+		rulesTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			if (nonNull(newSelection)) {
+				showRuleStatistics(newSelection.getRule());
+			}
+		});
+	}
+	
+	/**
+	 * Show statistics tab in lower tabs.
+	 * If Statistics tab wasn't created, this method will create new tab.
+	 * If Statistics tab was created, this method will display new data on existing statistics tab.
+	 * It also adds close listener to statistics tab to remove statisticsTab reference. This enables recreating statistics tab if user closed it manually.
+	 * @param rule to display
+	 */
+	private void showRuleStatistics(Rule rule) {
+		if(isNull(statisticsTab)) {
+			try {
+				statisticsTab = new StatisticsTab(rule, "Statistics of " + workspaceItem.getFileName());
+				LowerTabsController.getInstance().addTab(statisticsTab);
+				statisticsTab.setOnCloseRequest(event -> statisticsTab = null);
+			} catch (IOException e) {
+				JRankLogger.error("Error when opening rule statistics: " + e);
+			}
+		} else {
+			statisticsTab.getController().showRule(rule);
+		}
+	}
+	
+	/**
+	 * Initializes close event for rules tab.
+	 * If rules tab are closed, statistics tab are also automatically closed.
+	 */
+	private void initializeCloseEventForRulesTab() {
+		rulesTab.setOnCloseRequest(event -> {
+			LowerTabsController.getInstance().removeTab(statisticsTab);
+		});
 	}
 	
 }
