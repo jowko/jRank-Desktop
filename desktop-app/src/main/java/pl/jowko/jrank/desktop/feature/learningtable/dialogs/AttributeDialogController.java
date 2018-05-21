@@ -8,6 +8,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pl.jowko.jrank.desktop.Main;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.EnumListProvider;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableActions;
 import pl.jowko.jrank.desktop.feature.learningtable.TableEnumField;
@@ -66,6 +68,7 @@ public class AttributeDialogController {
 	@FXML
 	Button clearButton;
 	
+	private LanguageService labels;
 	private AttributeParamService paramService;
 	private LearningTableActions actions;
 	private List<Attribute> attributes;
@@ -86,11 +89,13 @@ public class AttributeDialogController {
 		this.actions = actions;
 		this.attributes = attributes;
 		isAddAction = false;
+		labels = LanguageService.getInstance();
 		initializeAttributeForm();
 		editedAttribute = attributes.get(0);
 		initializeFieldsForEdit();
 		initializeAttributesListView();
-		initializeDialog(parent, "Customize attributes");
+		new AttributeDialogTranslator(this).translateFields();
+		initializeDialog(parent, labels.get(Labels.ATT_DIALOG_CUSTOMIZE_TITLE));
 	}
 	
 	/**
@@ -104,7 +109,7 @@ public class AttributeDialogController {
 		attributesList.setVisible(false);
 		attributesList.setMaxSize(0, 0);
 		initializeAttributeForm();
-		initializeDialog(parent, "Add attribute action");
+		initializeDialog(parent, labels.get(Labels.ATT_DIALOG_EDIT_TITLE));
 	}
 	
 	/**
@@ -176,20 +181,20 @@ public class AttributeDialogController {
 	boolean isFormValid() {
 		String errorsMsg = "";
 		if(nameField.getText().trim().isEmpty()) {
-			errorsMsg += "Name for attribute should not be empty\n";
+			errorsMsg += labels.get(Labels.ATT_DIALOG_NAME_EMPTY);
 		}
 		if(isNull(typeField.getValue())) {
-			errorsMsg += "Field type should be set\n";
+			errorsMsg += labels.get(Labels.ATT_DIALOG_FIELD_EMPTY);
 		}
 		if(isNull(preferenceField.getValue()) && kindField.getValue().getValue() == Attribute.NONE) {
-			errorsMsg += "Preference type should be set\n";
+			errorsMsg += labels.get(Labels.ATT_DIALOG_PREFERENCE_EMPTY);
 		}
 		if(FieldType.ENUM_FIELD.equals(typeField.getValue()) && enumsField.getText().isEmpty()) {
-			errorsMsg += "Enum values should not be empty\n";
+			errorsMsg += labels.get(Labels.ATT_DIALOG_ENUMS_EMPTY);
 		}
 		
 		if(not(errorsMsg.isEmpty())) {
-			DialogsService.showValidationFailedDialog("There are errors on form", errorsMsg);
+			DialogsService.showValidationFailedDialog(labels.get(Labels.ATT_DIALOG_VALIDATION_FAIL), errorsMsg);
 		}
 		
 		return errorsMsg.isEmpty();
@@ -306,7 +311,7 @@ public class AttributeDialogController {
 	private void initializeTooltips() {
 		boolean isTooltipsEnabled = UserSettingsService.getInstance().getUserSettings().isTooltipsEnabled();
 		if(isTooltipsEnabled)
-			enumsField.setTooltip(new Tooltip("Write cardinal values here separated by coma."));
+			enumsField.setTooltip(new Tooltip(labels.get(Labels.ATT_DIALOG_ENUMS_TOOLTIP)));
 	}
 	
 }

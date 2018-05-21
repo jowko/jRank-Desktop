@@ -13,6 +13,7 @@ import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
 /**
  * Created by Piotr on 2018-03-16.
  * This class serves as container to different settings with will be saved to file.
+ * It could be replaced with external resource bundle.
  */
 class StubSettings {
 	
@@ -113,6 +114,7 @@ class StubSettings {
 		createEnglishPropertiesValidationMessages(language);
 		createEnglishPropertiesTooltips(language);
 		createEnglishParametersLabels(language);
+		createEnglishAttributeDialogLabels(language);
 		
 		return language;
 	}
@@ -258,6 +260,34 @@ class StubSettings {
 		language.put(Labels.CONSISTENCY_SET, "Set");
 		language.put(Labels.BOOLEAN_YES, "Yes");
 		language.put(Labels.BOOLEAN_NO, "No");
+	}
+	
+	private void createEnglishAttributeDialogLabels(Map<String, String> language) {
+		language.put(Labels.ATT_DIALOG_NAME, "Name:");
+		language.put(Labels.ATT_DIALOG_ACTIVE, "Active:");
+		language.put(Labels.ATT_DIALOG_TYPE, "Field type:");
+		language.put(Labels.ATT_DIALOG_KIND, "Kind:");
+		language.put(Labels.ATT_DIALOG_PREFERENCE, "Preference type:");
+		language.put(Labels.ATT_DIALOG_ENUMS, "Enum values:");
+		language.put(Labels.ATT_DIALOG_SAVE_BUTTON, "Save");
+		language.put(Labels.ATT_DIALOG_CANCEL_BUTTON, "Cancel");
+		language.put(Labels.ATT_DIALOG_CLEAR_BUTTON, "Clear form");
+		
+		language.put(Labels.ATT_DIALOG_CONDITION, "Condition");
+		language.put(Labels.ATT_DIALOG_DECISION, "Decision");
+		language.put(Labels.ATT_DIALOG_DESCRIPTION, "Description");
+		language.put(Labels.ATT_DIALOG_NONE, "None");
+		language.put(Labels.ATT_DIALOG_GAIN, "Gain");
+		language.put(Labels.ATT_DIALOG_COST, "Cost");
+		
+		language.put(Labels.ATT_DIALOG_CUSTOMIZE_TITLE, "Customize attributes");
+		language.put(Labels.ATT_DIALOG_EDIT_TITLE, "Add attribute action");
+		language.put(Labels.ATT_DIALOG_NAME_EMPTY, "Name for attribute should not be empty\n");
+		language.put(Labels.ATT_DIALOG_FIELD_EMPTY, "Field type should be set\n");
+		language.put(Labels.ATT_DIALOG_PREFERENCE_EMPTY, "Preference type should be set\n");
+		language.put(Labels.ATT_DIALOG_ENUMS_EMPTY, "Enum values should not be empty\n");
+		language.put(Labels.ATT_DIALOG_VALIDATION_FAIL, "There are errors on form");
+		language.put(Labels.ATT_DIALOG_ENUMS_TOOLTIP, "Write cardinal values here separated by coma.");
 	}
 	
 	private void generateStubLanguage() {

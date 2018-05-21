@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.internationalization;
 
 /**
  * Created by Piotr on 2018-03-16.
+ * This class contains constants values for internationalization.
  */
 public class Labels {
 	
@@ -190,6 +191,34 @@ public class Labels {
 	public static final String PARAMETERS_TOOLTIP = "PARAMETERS_TOOLTIP";
 	public static final String WRITE_INFO_TOOLTIP = "WRITE_INFO_TOOLTIP";
 	public static final String FILE_PANE_TOOLTIP = "FILE_PANE_TOOLTIP";
+	
+	
+	// Learning table attribute dialog
+	public static final String ATT_DIALOG_NAME = "ATT_DIALOG_NAME";
+	public static final String ATT_DIALOG_ACTIVE = "ATT_DIALOG_ACTIVE";
+	public static final String ATT_DIALOG_TYPE = "ATT_DIALOG_TYPE";
+	public static final String ATT_DIALOG_KIND = "ATT_DIALOG_KIND";
+	public static final String ATT_DIALOG_PREFERENCE = "ATT_DIALOG_PREFERENCE";
+	public static final String ATT_DIALOG_ENUMS = "ATT_DIALOG_ENUMS";
+	public static final String ATT_DIALOG_SAVE_BUTTON = "ATT_DIALOG_SAVE_BUTTON";
+	public static final String ATT_DIALOG_CANCEL_BUTTON = "ATT_DIALOG_CANCEL_BUTTON";
+	public static final String ATT_DIALOG_CLEAR_BUTTON = "ATT_DIALOG_CLEAR_BUTTON";
+	
+	public static final String ATT_DIALOG_CONDITION = "ATT_DIALOG_CONDITION";
+	public static final String ATT_DIALOG_DECISION = "ATT_DIALOG_DECISION";
+	public static final String ATT_DIALOG_DESCRIPTION = "ATT_DIALOG_DESCRIPTION";
+	public static final String ATT_DIALOG_NONE = "ATT_DIALOG_NONE";
+	public static final String ATT_DIALOG_GAIN = "ATT_DIALOG_GAIN";
+	public static final String ATT_DIALOG_COST = "ATT_DIALOG_COST";
+	
+	public static final String ATT_DIALOG_CUSTOMIZE_TITLE = "ATT_DIALOG_CUSTOMIZE_TITLE";
+	public static final String ATT_DIALOG_EDIT_TITLE = "ATT_DIALOG_EDIT_TITLE";
+	public static final String ATT_DIALOG_NAME_EMPTY = "ATT_DIALOG_NAME_EMPTY";
+	public static final String ATT_DIALOG_FIELD_EMPTY = "ATT_DIALOG_FIELD_EMPTY";
+	public static final String ATT_DIALOG_PREFERENCE_EMPTY = "ATT_DIALOG_PREFERENCE_EMPTY";
+	public static final String ATT_DIALOG_ENUMS_EMPTY = "ATT_DIALOG_ENUMS_EMPTY";
+	public static final String ATT_DIALOG_VALIDATION_FAIL = "ATT_DIALOG_VALIDATION_FAIL";
+	public static final String ATT_DIALOG_ENUMS_TOOLTIP = "ATT_DIALOG_ENUMS_TOOLTIP";
 	
 	private Labels() {}
 	
