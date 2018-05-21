@@ -5,10 +5,12 @@ import pl.jowko.jrank.desktop.feature.properties.PropertiesAssembler;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
+import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
 import pl.poznan.put.cs.idss.jrs.utilities.ISFLoader;
 import pl.poznan.put.cs.idss.jrs.utilities.ISFWriter;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -67,6 +69,16 @@ public class JRSFileMediator {
 	public static void saveMemoryContainer(WorkspaceItem item, MemoryContainer container) {
 		ISFWriter.saveMemoryContainerIntoISF(item.getFilePath(), container);
 		JRankLogger.info(item.getFileName() + " saved successfully in: " + item.getFilePath());
+	}
+	
+	/**
+	 * Loads RulesContainer from .rules file using jRS library
+	 * @param item from workspace tree, file path is read from this object
+	 * @return RulesContainer containing rules with its statistics
+	 * @throws FileNotFoundException when file is not found
+	 */
+	public static RulesContainer loadRules(WorkspaceItem item) throws FileNotFoundException {
+		return RulesContainer.loadRules(item.getFilePath());
 	}
 	
 }

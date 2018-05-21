@@ -52,7 +52,7 @@ public class UpperTabsController {
 			upperTabs.getSelectionModel().select(tab);
 		} catch (IOException e) {
 			JRankLogger.error("Error when creating tab for file: [" + workspaceItem.getFileName() + "]. Cause: ", e);
-		} catch (WrongFileTypeException e) {
+		} catch (WrongFileTypeException | TabInitializationException e) {
 			JRankLogger.error(e.getMessage());
 		}
 	}
@@ -68,7 +68,7 @@ public class UpperTabsController {
 	
 	private Tab getTabIfExists(String newTabText) {
 		return upperTabs.getTabs().stream()
-				.filter(tab -> tab.getText().equals(newTabText))
+				.filter(tab -> nonNull(tab.getText()) && tab.getText().equals(newTabText))
 				.findAny().orElse(null);
 	}
 	
@@ -77,7 +77,7 @@ public class UpperTabsController {
 		return path.getParent().getFileName().toString() + "\\" + workspaceItem.getFileName();
 	}
 	
-	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws IOException, WrongFileTypeException {
+	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws IOException, WrongFileTypeException, TabInitializationException {
 		FileType itemType = workspaceItem.getFileType();
 		switch (itemType) {
 			case ROOT:
