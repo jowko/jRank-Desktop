@@ -17,3 +17,10 @@
 	-fx-border-style: solid;
 	-fx-border-color: lightgrey;
 }
+
+.selectable-label {
+	-fx-background-color: transparent;
+	-fx-background-insets: 0;
+	-fx-background-radius: 0;
+	-fx-padding: 0;
+}

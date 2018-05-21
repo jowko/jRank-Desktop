@@ -1,7 +1,7 @@
 package pl.jowko.jrank.desktop.feature.rules;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import pl.jowko.jrank.feature.customfx.SelectableLabel;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RuleStatistics;
 import pl.poznan.put.cs.idss.jrs.utilities.HumanReadableListOfNumbers;
@@ -16,44 +16,44 @@ import static pl.jowko.jrank.desktop.feature.rules.RuleConstantsTranslator.getUs
  */
 public class StatisticsController {
 	
-	@FXML Label ruleTypeLabel;
-	@FXML Label ruleType;
-	@FXML Label usageTypeLabel;
-	@FXML Label usageType;
-	@FXML Label characteristicClassLabel;
-	@FXML Label characteristicClass;
+	@FXML SelectableLabel ruleTypeLabel;
+	@FXML SelectableLabel ruleType;
+	@FXML SelectableLabel usageTypeLabel;
+	@FXML SelectableLabel usageType;
+	@FXML SelectableLabel characteristicClassLabel;
+	@FXML SelectableLabel characteristicClass;
 	
 	
-	@FXML Label supportLabel;
-	@FXML Label supportExamplesLabel;
-	@FXML Label strengthLabel;
-	@FXML Label confidenceLabel;
-	@FXML Label coverageFactorLabel;
-	@FXML Label coverageLabel;
-	@FXML Label coveredExamplesLabel;
-	@FXML Label negativeCoverageLabel;
-	@FXML Label negativeExamplesLabel;
-	@FXML Label inconsistencyMeasureLabel;
-	@FXML Label fMeasureLabel;
-	@FXML Label aMeasureLabel;
-	@FXML Label zMeasureLabel;
-	@FXML Label lMeasureLabel;
+	@FXML SelectableLabel supportLabel;
+	@FXML SelectableLabel supportExamplesLabel;
+	@FXML SelectableLabel strengthLabel;
+	@FXML SelectableLabel confidenceLabel;
+	@FXML SelectableLabel coverageFactorLabel;
+	@FXML SelectableLabel coverageLabel;
+	@FXML SelectableLabel coveredExamplesLabel;
+	@FXML SelectableLabel negativeCoverageLabel;
+	@FXML SelectableLabel negativeExamplesLabel;
+	@FXML SelectableLabel inconsistencyMeasureLabel;
+	@FXML SelectableLabel fMeasureLabel;
+	@FXML SelectableLabel aMeasureLabel;
+	@FXML SelectableLabel zMeasureLabel;
+	@FXML SelectableLabel lMeasureLabel;
 	
 	
-	@FXML Label support;
-	@FXML Label supportExamples;
-	@FXML Label strength;
-	@FXML Label confidence;
-	@FXML Label coverageFactor;
-	@FXML Label coverage;
-	@FXML Label coveredExamples;
-	@FXML Label negativeCoverage;
-	@FXML Label negativeExamples;
-	@FXML Label inconsistencyMeasure;
-	@FXML Label fMeasure;
-	@FXML Label aMeasure;
-	@FXML Label zMeasure;
-	@FXML Label lMeasure;
+	@FXML SelectableLabel support;
+	@FXML SelectableLabel supportExamples;
+	@FXML SelectableLabel strength;
+	@FXML SelectableLabel confidence;
+	@FXML SelectableLabel coverageFactor;
+	@FXML SelectableLabel coverage;
+	@FXML SelectableLabel coveredExamples;
+	@FXML SelectableLabel negativeCoverage;
+	@FXML SelectableLabel negativeExamples;
+	@FXML SelectableLabel inconsistencyMeasure;
+	@FXML SelectableLabel fMeasure;
+	@FXML SelectableLabel aMeasure;
+	@FXML SelectableLabel zMeasure;
+	@FXML SelectableLabel lMeasure;
 	
 	@FXML
 	private void initialize() {
