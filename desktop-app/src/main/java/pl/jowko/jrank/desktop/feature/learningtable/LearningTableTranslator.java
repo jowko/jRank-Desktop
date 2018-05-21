@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import javafx.scene.control.Label;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.internationalization.Translator;
@@ -20,6 +21,7 @@ class LearningTableTranslator implements Translator {
 	
 	@Override
 	public void translateFields() {
+		controller.learningTable.setPlaceholder(new Label(labels.get(Labels.LEARN_TABLE_EMPTY)));
 		controller.selectAttributeLabel.setText(labels.get(Labels.LEARN_TABLE_SELECT_ATTRIBUTE));
 		controller.removeAttributeButton.setText(labels.get(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE));
 		controller.removeAllExamplesButton.setText(labels.get(Labels.LEARN_TABLE_REMOVE_ALL_EXAMPLES));

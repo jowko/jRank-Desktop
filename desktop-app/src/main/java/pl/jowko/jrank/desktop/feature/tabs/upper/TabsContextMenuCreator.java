@@ -4,6 +4,8 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.service.DialogsService;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 class TabsContextMenuCreator {
 	
 	private TabPane tabPane;
+	private LanguageService labels;
 	
 	/**
 	 * Create instance of this class
@@ -25,6 +28,7 @@ class TabsContextMenuCreator {
 	 */
 	TabsContextMenuCreator(TabPane tabPane) {
 		this.tabPane = tabPane;
+		labels = LanguageService.getInstance();
 	}
 	
 	/**
@@ -44,11 +48,11 @@ class TabsContextMenuCreator {
 	}
 	
 	private MenuItem createCloseTabMenuItem(JRankTab tab) {
-		MenuItem closeTab = new MenuItem("Close this tab");
+		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_THIS));
 		closeTab.setOnAction(event -> {
 			
 			if(tab.isTabEdited()) {
-				boolean isActionConfirmed = DialogsService.showConfirmationDialog("Do you want to close this tab? You loose unsaved changes.");
+				boolean isActionConfirmed = DialogsService.showConfirmationDialog(labels.get(Labels.TABS_CLOSE_THIS_CONFIRM));
 				if(not(isActionConfirmed))
 					return;
 			}
@@ -59,12 +63,12 @@ class TabsContextMenuCreator {
 	}
 	
 	private MenuItem createCloseAllTabMenuItem() {
-		MenuItem closeTab = new MenuItem("Close all tabs");
+		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_ALL));
 		closeTab.setOnAction(event -> {
 			long editedTabsCount = getEditedTabsCount(tabPane.getTabs());
 			
 			if(editedTabsCount > 0) {
-				boolean isActionConfirmed = DialogsService.showConfirmationDialog("At least one tab have unsaved changes. Do you want to close all tabs and loose unsaved changes?");
+				boolean isActionConfirmed = DialogsService.showConfirmationDialog(labels.get(Labels.TABS_CLOSE_ALL_CONFIRM));
 				if(not(isActionConfirmed))
 					return;
 			}
@@ -75,7 +79,7 @@ class TabsContextMenuCreator {
 	}
 	
 	private MenuItem createCloseOtherTabMenuItem(Tab tab) {
-		MenuItem closeTab = new MenuItem("Close all except this");
+		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_OTHERS));
 		closeTab.setOnAction(event -> {
 			List<Tab> tabsToRemove = new ArrayList<>();
 			
@@ -88,7 +92,7 @@ class TabsContextMenuCreator {
 			long editedTabsCount = getEditedTabsCount(tabsToRemove);
 			
 			if(editedTabsCount > 0) {
-				boolean isActionConfirmed = DialogsService.showConfirmationDialog("At least one tab have unsaved changes. Do you want to close this tabs and loose unsaved changes?");
+				boolean isActionConfirmed = DialogsService.showConfirmationDialog(labels.get(Labels.TABS_CLOSE_OTHERS_CONFIRM));
 				if(not(isActionConfirmed))
 					return;
 			}

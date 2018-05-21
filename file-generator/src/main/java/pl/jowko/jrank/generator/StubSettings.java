@@ -74,12 +74,10 @@ class StubSettings {
 		language.put(Labels.CONFIRM_DIALOG_YES, "Yes");
 		language.put(Labels.CONFIRM_DIALOG_NO, "No");
 		
-		// Lower tabs
-		language.put(Labels.LOGS_TAB, "Logs");
-		
 		createEnglishMenuLabels(language);
 		createEnglishUserSettingsLabels(language);
 		createEnglishAboutLabels(language);
+		createEnglishTabsLabels(language);
 		createEnglishPropertiesLabels(language);
 		createEnglishPropertiesMessages(language);
 		createEnglishPropertiesValidationMessages(language);
@@ -124,6 +122,17 @@ class StubSettings {
 		language.put(Labels.ABOUT_VERSION, "Version:");
 		language.put(Labels.ABOUT_RELEASE_DATE, "Release Date:");
 		language.put(Labels.ABOUT_BOTTOM_INFO, "JRank Ultimate Desktop Edition was developed as part of master thesis.");
+	}
+	
+	private void createEnglishTabsLabels(Map<String, String> language) {
+		language.put(Labels.LOGS_TAB, "Logs");
+		
+		language.put(Labels.TABS_CLOSE_THIS, "Close this tab");
+		language.put(Labels.TABS_CLOSE_THIS_CONFIRM, "Do you want to close this tab? You loose unsaved changes.");
+		language.put(Labels.TABS_CLOSE_ALL, "Close all tabs");
+		language.put(Labels.TABS_CLOSE_ALL_CONFIRM, "At least one tab have unsaved changes. Do you want to close all tabs and loose unsaved changes?");
+		language.put(Labels.TABS_CLOSE_OTHERS, "Close all except this");
+		language.put(Labels.TABS_CLOSE_OTHERS_CONFIRM, "At least one tab have unsaved changes. Do you want to close this tabs and loose unsaved changes?");
 	}
 	
 	private void createEnglishPropertiesLabels(Map<String, String> language) {
@@ -323,6 +332,7 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_ERRORS, "Table contains errors:");
 		language.put(Labels.LEARN_TABLE_SAVE_CONFIRM, "Do you want to save form?");
 		
+		language.put(Labels.LEARN_TABLE_EMPTY, "Table is empty. Add some examples");
 		language.put(Labels.LEARN_TABLE_SELECT_ATTRIBUTE, "Select attribute:");
 		language.put(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE, "Remove selected attribute");
 		language.put(Labels.LEARN_TABLE_REMOVE_ALL_EXAMPLES, "Remove all examples");

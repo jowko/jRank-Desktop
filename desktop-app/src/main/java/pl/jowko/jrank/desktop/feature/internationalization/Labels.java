@@ -51,6 +51,16 @@ public class Labels {
 	public static final String ABOUT_RELEASE_DATE = "ABOUT_RELEASE_DATE";
 	public static final String ABOUT_BOTTOM_INFO = "ABOUT_BOTTOM_INFO";
 	
+	
+	// tabs
+	public static final String TABS_CLOSE_THIS = "TABS_CLOSE_THIS";
+	public static final String TABS_CLOSE_THIS_CONFIRM = "TABS_CLOSE_THIS_CONFIRM";
+	public static final String TABS_CLOSE_ALL = "TABS_CLOSE_ALL";
+	public static final String TABS_CLOSE_ALL_CONFIRM = "TABS_CLOSE_ALL_CONFIRM";
+	public static final String TABS_CLOSE_OTHERS = "TABS_CLOSE_OTHERS";
+	public static final String TABS_CLOSE_OTHERS_CONFIRM = "TABS_CLOSE_OTHERS_CONFIRM";
+	
+	
 	// Lower tabs
 	public static final String LOGS_TAB = "LOGS_TAB";
 	
@@ -245,6 +255,7 @@ public class Labels {
 	public static final String LEARN_TABLE_ERRORS = "LEARN_TABLE_ERRORS";
 	public static final String LEARN_TABLE_SAVE_CONFIRM = "LEARN_TABLE_SAVE_CONFIRM";
 	
+	public static final String LEARN_TABLE_EMPTY = "LEARN_TABLE_EMPTY";
 	public static final String LEARN_TABLE_SELECT_ATTRIBUTE = "LEARN_TABLE_SELECT_ATTRIBUTE";
 	public static final String LEARN_TABLE_REMOVE_ATTRIBUTE = "LEARN_TABLE_REMOVE_ATTRIBUTE";
 	public static final String LEARN_TABLE_REMOVE_ALL_EXAMPLES = "LEARN_TABLE_REMOVE_ALL_EXAMPLES";
