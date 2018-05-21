@@ -1,4 +1,4 @@
-package pl.jowko.jrank.desktop.controller;
+package pl.jowko.jrank.desktop.feature.tabs.lower;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;

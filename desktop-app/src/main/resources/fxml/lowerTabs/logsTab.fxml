@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <BorderPane xmlns="http://javafx.com/javafx"
 			xmlns:fx="http://javafx.com/fxml"
-			fx:controller="pl.jowko.jrank.desktop.controller.LogsController">
+			fx:controller="pl.jowko.jrank.desktop.feature.tabs.lower.LogsController">
 	
 	<center>
 		<TextArea fx:id="logsTextArea" editable="false" BorderPane.alignment="CENTER">

@@ -13,8 +13,8 @@
        <fx:include maxWidth="500.0" minWidth="250.0" source="workspace.fxml" />
        <SplitPane dividerPositions="0.72" orientation="VERTICAL">
          <items>
-           <fx:include minWidth="1000.0" source="upperTabs/tabs.fxml" />
-           <fx:include minWidth="1000.0" source="lowerTabs.fxml" />
+           <fx:include source="upperTabs/tabs.fxml" />
+           <fx:include source="lowerTabs/tabs.fxml" />
          </items>
        </SplitPane>
      </items>
