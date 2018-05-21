@@ -91,7 +91,7 @@ public class UpperTabsController {
 			case COMPARISION_TABLE:
 				return new ComparisionTableTab(workspaceItem, tabText);
 			case DOMINANCE:
-				return new DominanceTab(workspaceItem, tabText);
+				return new ApproximationsTab(workspaceItem, tabText);
 			case RULES:
 				return new RulesTab(workspaceItem, tabText);
 			case RANKING:
