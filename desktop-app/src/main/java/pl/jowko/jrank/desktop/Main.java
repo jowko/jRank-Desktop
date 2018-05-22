@@ -28,6 +28,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Parent root = new ResourceLoader("/fxml/root.fxml").load();
+		root.getStylesheets().add("common.css");
 		
 		scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
 		labels = LanguageService.getInstance();

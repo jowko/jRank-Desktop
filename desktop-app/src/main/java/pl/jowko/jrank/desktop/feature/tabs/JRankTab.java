@@ -28,7 +28,7 @@ public abstract class JRankTab extends Tab {
 	/**
 	 * Initialize tab from provided workspace item.
 	 * It loads fxml file for tab by getResourceName method
-	 * It will loads needed css and return Controller from fxml file.
+	 * It will return Controller from fxml file.
 	 * @param workspaceItem with will be loaded
 	 * @param tabText to display on tab
 	 * @param <T> controller from fxml file
@@ -41,7 +41,6 @@ public abstract class JRankTab extends Tab {
 		
 		ResourceLoader loader = new ResourceLoader(getResourceName());
 		Parent tabContent = loader.load();
-		tabContent.getStylesheets().add("common.css");
 		super.setContent(tabContent);
 		
 		return loader.getController();
