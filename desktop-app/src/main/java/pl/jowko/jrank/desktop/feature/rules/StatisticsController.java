@@ -1,6 +1,8 @@
 package pl.jowko.jrank.desktop.feature.rules;
 
 import javafx.fxml.FXML;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.feature.customfx.SelectableLabel;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RuleStatistics;
@@ -55,9 +57,12 @@ public class StatisticsController {
 	@FXML SelectableLabel zMeasure;
 	@FXML SelectableLabel lMeasure;
 	
+	private LanguageService labels;
+	
 	@FXML
 	private void initialize() {
-	
+		labels = LanguageService.getInstance();
+		new StatisticsTranslator(this).translateFields();
 	}
 	
 	/**
@@ -84,10 +89,10 @@ public class StatisticsController {
 		String supportingExamplesText = HumanReadableListOfNumbers.getIntArrayAsText(stats.getNumbersOfSupportingExamples());
 		supportExamples.setText(supportingExamplesText);
 		
-		strength.setText(String.valueOf(stats.getStrength()));
-		confidence.setText(String.valueOf(stats.getConfidence()));
+		strength.setText(doubleToString(stats.getStrength()));
+		confidence.setText(doubleToString(stats.getConfidence()));
 		
-		coverageFactor.setText(String.valueOf(stats.getCoverageFactor()));
+		coverageFactor.setText(doubleToString(stats.getCoverageFactor()));
 		coverage.setText(String.valueOf(stats.getQuantityOfCoveredExamples()));
 		String coveredExamplesText = HumanReadableListOfNumbers.getIntArrayAsText(stats.getNumbersOfCoveredExamples());
 		coveredExamples.setText(coveredExamplesText);
@@ -96,12 +101,19 @@ public class StatisticsController {
 		String negativeExamplesText = HumanReadableListOfNumbers.getIntArrayAsText(stats.getNumbersOfNegativeCoveredExamples());
 		negativeExamples.setText(negativeExamplesText);
 		
-		inconsistencyMeasure.setText(String.valueOf(stats.getInconsistencyMeasureValue()));
+		inconsistencyMeasure.setText(doubleToString(stats.getInconsistencyMeasureValue()));
 		
-		fMeasure.setText(String.valueOf(stats.getFConfirmationMeasureValue()));
-		aMeasure.setText(String.valueOf(stats.getAConfirmationMeasureValue()));
-		zMeasure.setText(String.valueOf(stats.getZConfirmationMeasureValue()));
-		lMeasure.setText(String.valueOf(stats.getLConfirmationMeasureValue()));
+		fMeasure.setText(doubleToString(stats.getFConfirmationMeasureValue()));
+		aMeasure.setText(doubleToString(stats.getAConfirmationMeasureValue()));
+		zMeasure.setText(doubleToString(stats.getZConfirmationMeasureValue()));
+		lMeasure.setText(doubleToString(stats.getLConfirmationMeasureValue()));
+	}
+	
+	private String doubleToString(Double number) {
+		if(number.isInfinite())
+			return labels.get(Labels.STAT_DOUBLE_INFINITY);
+		
+		return String.valueOf(number);
 	}
 	
 }

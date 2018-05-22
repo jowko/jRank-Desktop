@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.rules;
 
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 
 /**
@@ -7,6 +9,8 @@ import pl.poznan.put.cs.idss.jrs.rules.Rule;
  * This class translates Rule constants to string values.
  */
 class RuleConstantsTranslator {
+	
+	private static LanguageService labels = LanguageService.getInstance();
 	
 	/**
 	 * Translates rule types to string values.
@@ -16,11 +20,11 @@ class RuleConstantsTranslator {
 	static String getRuleType(int type) {
 		switch (type) {
 			case Rule.CERTAIN:
-				return "CERTAIN";
+				return labels.get(Labels.RULES_CERTAIN);
 			case Rule.POSSIBLE:
-				return "POSSIBLE";
+				return labels.get(Labels.RULES_POSSIBLE);
 			default:
-				return "APPROXIMATE";
+				return labels.get(Labels.RULES_APPROXIMATE);
 		}
 	}
 	
@@ -32,11 +36,11 @@ class RuleConstantsTranslator {
 	static String getUsageType(int type) {
 		switch (type) {
 			case Rule.AT_LEAST:
-				return "AT LEAST";
+				return labels.get(Labels.RULES_AT_LEAST);
 			case Rule.AT_MOST:
-				return "AT MOST";
+				return labels.get(Labels.RULES_AT_MOST);
 			default:
-				return "EQUAL";
+				return labels.get(Labels.RULES_EQUAL);
 		}
 	}
 	

@@ -262,6 +262,40 @@ public class Labels {
 	public static final String LEARN_TABLE_SAVE_BUTTON = "LEARN_TABLE_SAVE_BUTTON";
 	public static final String LEARN_TABLE_CANCEL_BUTTON = "LEARN_TABLE_CANCEL_BUTTON";
 	
+	
+	// Rules
+	public static final String RULES_DECISION_PART = "RULES_DECISION_PART";
+	public static final String RULES_CONDITION_PART = "RULES_CONDITION_PART";
+	public static final String RULES_ID = "RULES_ID";
+	public static final String RULES_CERTAIN = "RULES_CERTAIN";
+	public static final String RULES_POSSIBLE = "RULES_POSSIBLE";
+	public static final String RULES_APPROXIMATE = "RULES_APPROXIMATE";
+	public static final String RULES_AT_LEAST = "RULES_AT_LEAST";
+	public static final String RULES_AT_MOST = "RULES_AT_MOST";
+	public static final String RULES_EQUAL = "RULES_EQUAL";
+	
+	// Rules statistics
+	public static final String STAT_TAB_HEADER = "STAT_TAB_HEADER";
+	public static final String STAT_RULE_TYPE = "STAT_RULE_TYPE";
+	public static final String STAT_USAGE_TYPE = "STAT_USAGE_TYPE";
+	public static final String STAT_CHARACTERISTIC_CLASS = "STAT_CHARACTERISTIC_CLASS";
+	public static final String STAT_SUPPORT = "STAT_SUPPORT";
+	public static final String STAT_SUPPORT_EXAMPLES = "STAT_SUPPORT_EXAMPLES";
+	public static final String STAT_STRENGTH = "STAT_STRENGTH";
+	public static final String STAT_CONFIDENCE = "STAT_CONFIDENCE";
+	public static final String STAT_COVERAGE_FACTOR = "STAT_COVERAGE_FACTOR";
+	public static final String STAT_COVERAGE = "STAT_COVERAGE";
+	public static final String STAT_COVERED_EXAMPLES = "STAT_COVERED_EXAMPLES";
+	public static final String STAT_NEGATIVE_COVERAGE = "STAT_NEGATIVE_COVERAGE";
+	public static final String STAT_NEGATIVE_EXAMPLES = "STAT_NEGATIVE_EXAMPLES";
+	public static final String STAT_INCONSISTENCY_MEASURE = "STAT_INCONSISTENCY_MEASURE";
+	public static final String STAT_F_MEASURE = "STAT_F_MEASURE";
+	public static final String STAT_A_MEASURE = "STAT_A_MEASURE";
+	public static final String STAT_Z_MEASURE = "STAT_Z_MEASURE";
+	public static final String STAT_L_MEASURE = "STAT_L_MEASURE";
+	public static final String STAT_DOUBLE_INFINITY = "STAT_DOUBLE_INFINITY";
+	
+	
 	private Labels() {}
 	
 }

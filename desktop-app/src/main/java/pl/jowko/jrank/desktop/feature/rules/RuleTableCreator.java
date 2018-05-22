@@ -2,6 +2,8 @@ package pl.jowko.jrank.desktop.feature.rules;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableColumn;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.poznan.put.cs.idss.jrs.rules.Condition;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 
@@ -15,6 +17,8 @@ import java.util.List;
  * It converts list of rules to table containing decisions and conditions from rules
  */
 class RuleTableCreator {
+	
+	private LanguageService labels;
 	
 	private List<Rule> rules;
 	
@@ -46,6 +50,7 @@ class RuleTableCreator {
 	RuleTableCreator(List<Rule> rules) {
 		this.rules = rules;
 		rowId = 1;
+		labels = LanguageService.getInstance();
 		calculateColumnsCounts();
 		createColumns();
 		createItems();
@@ -101,7 +106,7 @@ class RuleTableCreator {
 				columns.add(column);
 				
 			} else if(i < thenOperatorColumnID) {
-				columns.add(createColumn("Decision Part " + decisionColumnNumber++, i));
+				columns.add(createColumn(labels.get(Labels.RULES_DECISION_PART) + decisionColumnNumber++, i));
 				
 			} else if(i == thenOperatorColumnID) {
 				TableColumn<RuleRow, String> column = createColumn("<=", i);
@@ -111,7 +116,7 @@ class RuleTableCreator {
 				columns.add(column);
 				
 			} else {
-				columns.add(createColumn("Condition " + conditionColumnNumber++, i));
+				columns.add(createColumn(labels.get(Labels.RULES_CONDITION_PART) + conditionColumnNumber++, i));
 			}
 		}
 	}
@@ -139,7 +144,7 @@ class RuleTableCreator {
 	 * @return column with integer type for ID
 	 */
 	private TableColumn<RuleRow, Integer> createIDColumn() {
-		TableColumn<RuleRow, Integer> column = new TableColumn<>("ID");
+		TableColumn<RuleRow, Integer> column = new TableColumn<>(labels.get(Labels.RULES_ID));
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getId())
 		);

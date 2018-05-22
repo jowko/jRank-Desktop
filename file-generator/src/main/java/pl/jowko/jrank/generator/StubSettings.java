@@ -85,6 +85,8 @@ class StubSettings {
 		createEnglishParametersLabels(language);
 		createEnglishAttributeDialogLabels(language);
 		createEnglishLearningTableLabels(language);
+		createEnglishRulesLabels(language);
+		createEnglishRulesStatisticsLabels(language);
 		
 		return language;
 	}
@@ -332,12 +334,46 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_ERRORS, "Table contains errors:");
 		language.put(Labels.LEARN_TABLE_SAVE_CONFIRM, "Do you want to save form?");
 		
-		language.put(Labels.LEARN_TABLE_EMPTY, "Table is empty. Add some examples");
+		language.put(Labels.LEARN_TABLE_EMPTY, "Table is empty. Add some data to it.");
 		language.put(Labels.LEARN_TABLE_SELECT_ATTRIBUTE, "Select attribute:");
 		language.put(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE, "Remove selected attribute");
 		language.put(Labels.LEARN_TABLE_REMOVE_ALL_EXAMPLES, "Remove all examples");
 		language.put(Labels.LEARN_TABLE_SAVE_BUTTON, "Save");
 		language.put(Labels.LEARN_TABLE_CANCEL_BUTTON, "Cancel");
+	}
+	
+	private void createEnglishRulesLabels(Map<String, String> language) {
+		language.put(Labels.RULES_DECISION_PART, "Decision Part ");
+		language.put(Labels.RULES_CONDITION_PART, "Condition ");
+		language.put(Labels.RULES_ID, "ID");
+		language.put(Labels.RULES_CERTAIN, "CERTAIN");
+		language.put(Labels.RULES_POSSIBLE, "POSSIBLE");
+		language.put(Labels.RULES_APPROXIMATE, "APPROXIMATE");
+		language.put(Labels.RULES_AT_LEAST, "AT LEAST");
+		language.put(Labels.RULES_AT_MOST, "AT MOST");
+		language.put(Labels.RULES_EQUAL, "EQUAL");
+	}
+	
+	private void createEnglishRulesStatisticsLabels(Map<String, String> language) {
+		language.put(Labels.STAT_TAB_HEADER, "Statistics of ");
+		language.put(Labels.STAT_RULE_TYPE, "Rule type:");
+		language.put(Labels.STAT_USAGE_TYPE, "Usage type:");
+		language.put(Labels.STAT_CHARACTERISTIC_CLASS, "Characteristic class:");
+		language.put(Labels.STAT_SUPPORT, "Support:");
+		language.put(Labels.STAT_SUPPORT_EXAMPLES, "Supporting examples:");
+		language.put(Labels.STAT_STRENGTH, "Strength:");
+		language.put(Labels.STAT_CONFIDENCE, "Confidence:");
+		language.put(Labels.STAT_COVERAGE_FACTOR, "Coverage factor:");
+		language.put(Labels.STAT_COVERAGE, "Coverage:");
+		language.put(Labels.STAT_COVERED_EXAMPLES, "Covered examples:");
+		language.put(Labels.STAT_NEGATIVE_COVERAGE, "Negative coverage:");
+		language.put(Labels.STAT_NEGATIVE_EXAMPLES, "Negative examples:");
+		language.put(Labels.STAT_INCONSISTENCY_MEASURE, "Inconsistency measure:");
+		language.put(Labels.STAT_F_MEASURE, "f-confirmation measure:");
+		language.put(Labels.STAT_A_MEASURE, "A-confirmation measure:");
+		language.put(Labels.STAT_Z_MEASURE, "Z-confirmation measure:");
+		language.put(Labels.STAT_L_MEASURE, "l-confirmation measure:");
+		language.put(Labels.STAT_DOUBLE_INFINITY, "Infinity");
 	}
 	
 	private void generateStubLanguage() {

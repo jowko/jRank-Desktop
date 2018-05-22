@@ -2,6 +2,8 @@ package pl.jowko.jrank.desktop.feature.rules;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.lower.LowerTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -30,6 +32,8 @@ public class RulesController {
 	private JRankTab rulesTab;
 	private StatisticsTab statisticsTab;
 	
+	private LanguageService labels;
+	
 	/**
 	 * Initializes rule tab.
 	 * @param rulesContainer from with rules are extracted
@@ -40,6 +44,7 @@ public class RulesController {
 		this.workspaceItem = workspaceItem;
 		this.rulesTab = rulesTab;
 		this.rules = new RulesExtractor(rulesContainer).extract();
+		labels = LanguageService.getInstance();
 		
 		if(rules.size() == 0) {
 			JRankLogger.warn("No rules to display. Check if rules file is correct.");
@@ -78,7 +83,7 @@ public class RulesController {
 	private void showRuleStatistics(Rule rule) {
 		if(isNull(statisticsTab)) {
 			try {
-				statisticsTab = new StatisticsTab(rule, "Statistics of " + workspaceItem.getFileName());
+				statisticsTab = new StatisticsTab(rule, labels.get(Labels.STAT_TAB_HEADER) + workspaceItem.getFileName());
 				LowerTabsController.getInstance().addTab(statisticsTab);
 				statisticsTab.setOnCloseRequest(event -> statisticsTab = null);
 			} catch (IOException e) {
@@ -94,9 +99,9 @@ public class RulesController {
 	 * If rules tab are closed, statistics tab are also automatically closed.
 	 */
 	private void initializeCloseEventForRulesTab() {
-		rulesTab.setOnCloseRequest(event -> {
-			LowerTabsController.getInstance().removeTab(statisticsTab);
-		});
+		rulesTab.setOnCloseRequest(event ->
+			LowerTabsController.getInstance().removeTab(statisticsTab)
+		);
 	}
 	
 }
