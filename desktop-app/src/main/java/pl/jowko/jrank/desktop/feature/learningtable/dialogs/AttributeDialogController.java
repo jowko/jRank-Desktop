@@ -89,7 +89,6 @@ public class AttributeDialogController {
 		this.actions = actions;
 		this.attributes = attributes;
 		isAddAction = false;
-		labels = LanguageService.getInstance();
 		initializeAttributeForm();
 		editedAttribute = attributes.get(0);
 		initializeFieldsForEdit();
@@ -282,6 +281,7 @@ public class AttributeDialogController {
 	 * Initialize attribute form. Common for edit and add action.
 	 */
 	private void initializeAttributeForm() {
+		labels = LanguageService.getInstance();
 		nameField.setPattern("[A-Za-z_][A-Za-z_0-9]*");
 		enumsField.setPattern("([A-Za-z_0-9]+[,]?)*");
 		activeCheckBox.setSelected(true);
