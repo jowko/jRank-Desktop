@@ -18,6 +18,7 @@ module jRank.desktop {
 	opens pl.jowko.jrank.desktop.feature.learningtable;
 	opens pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 	opens pl.jowko.jrank.desktop.feature.properties;
+	opens pl.jowko.jrank.desktop.feature.ranking;
 	opens pl.jowko.jrank.desktop.feature.rules;
 	opens pl.jowko.jrank.desktop.feature.settings;
 	opens pl.jowko.jrank.desktop.feature.tabs.lower;

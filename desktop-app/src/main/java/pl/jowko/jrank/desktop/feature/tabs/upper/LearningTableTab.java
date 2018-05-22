@@ -17,7 +17,7 @@ class LearningTableTab extends JRankTab {
 	LearningTableTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
 		try {
 			LearningTableController controller = initializeTabAndGetController(workspaceItem, tabText);
-			MemoryContainer container = JRSFileMediator.loadMemoryContainer(workspaceItem);
+			MemoryContainer container = JRSFileMediator.loadMemoryContainer(workspaceItem.getFilePath());
 			controller.initializeTable(container, this, workspaceItem);
 		} catch (RuntimeException | IOException e) {
 			throwInitializationException("isf", workspaceItem.getFileName(), e);

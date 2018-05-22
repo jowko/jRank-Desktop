@@ -40,25 +40,20 @@ public class JRSFileMediator {
 	 * @param item from workspace tree, file path is read from this object
 	 * @return JRankProperties filled with properties values
 	 */
-	public static JRankProperties loadProperties(WorkspaceItem item) {
+	public static JRankProperties loadProperties(WorkspaceItem item) throws IOException {
 		Properties properties = new Properties();
-		try {
-			properties.load(new FileInputStream(item.getFilePath()));
-			PropertiesAssembler propertiesAssembler = new PropertiesAssembler(properties);
-			return propertiesAssembler.toJrankProperties();
-		} catch (IOException e) {
-			JRankLogger.error("Error when reading file: " + item.getFileName(), e);
-		}
-		return null;
+		properties.load(new FileInputStream(item.getFilePath()));
+		PropertiesAssembler propertiesAssembler = new PropertiesAssembler(properties);
+		return propertiesAssembler.toJrankProperties();
 	}
 	
 	/**
 	 * Loads MemoryContainer using IFSLoader from jRS library
-	 * @param item from workspace tree, file path is read from this object
+	 * @param isfPath read from workspace tree
 	 * @return MemoryContainer loaded from isf file
 	 */
-	public static MemoryContainer loadMemoryContainer(WorkspaceItem item) {
-		return ISFLoader.loadISFIntoMemoryContainer(item.getFilePath());
+	public static MemoryContainer loadMemoryContainer(String isfPath) {
+		return ISFLoader.loadISFIntoMemoryContainer(isfPath);
 	}
 	
 	/**

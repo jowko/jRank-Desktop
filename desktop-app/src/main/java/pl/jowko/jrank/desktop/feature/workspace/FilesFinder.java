@@ -14,11 +14,11 @@ import java.util.stream.Stream;
 /**
  * Created by Piotr on 2018-04-21.
  */
-class FilesFinder {
+public class FilesFinder {
 	
 	private WorkspaceService workspaceService;
 	
-	FilesFinder() {
+	public FilesFinder() {
 		workspaceService = WorkspaceService.getInstance();
 	}
 	
@@ -40,7 +40,7 @@ class FilesFinder {
 		return paths;
 	}
 	
-	List<WorkspaceItem> findAllFiles(String directoryPath) {
+	public List<WorkspaceItem> findAllFiles(String directoryPath) {
 		List<WorkspaceItem> files = new ArrayList<>();
 		
 		try (Stream<Path> filesPath = Files.walk(Paths.get(directoryPath))) {

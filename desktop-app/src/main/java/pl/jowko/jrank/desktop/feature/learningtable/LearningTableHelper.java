@@ -22,11 +22,11 @@ import java.util.List;
  * Created by Piotr on 2018-05-13.
  * Class contains useful methods for managing learning table.
  */
-class LearningTableHelper {
+public class LearningTableHelper {
 	
 	private LanguageService labels;
 	
-	LearningTableHelper() {
+	public LearningTableHelper() {
 		labels = LanguageService.getInstance();
 	}
 	
@@ -118,7 +118,7 @@ class LearningTableHelper {
 	 * @param attribute from with label is created
 	 * @return Label with tooltip
 	 */
-	Label getColumnLabel(Attribute attribute) {
+	public Label getColumnLabel(Attribute attribute) {
 		Label label = new Label(getColumnText(attribute));
 		label.setTooltip(createColumnTooltip(attribute));
 		return label;
@@ -129,7 +129,7 @@ class LearningTableHelper {
 	 * @param attribute from with prefWidth is calculated
 	 * @return preferred width of column
 	 */
-	int getColumnPrefWidth(Attribute attribute) {
+	public int getColumnPrefWidth(Attribute attribute) {
 		int prefWidth = 70;
 		int nameLength = attribute.getName().length();
 		
