@@ -276,6 +276,7 @@ public class Labels {
 	
 	// Rules statistics
 	public static final String STAT_TAB_HEADER = "STAT_TAB_HEADER";
+	public static final String STAT_UNAVAILABLE = "STAT_UNAVAILABLE";
 	public static final String STAT_RULE_TYPE = "STAT_RULE_TYPE";
 	public static final String STAT_USAGE_TYPE = "STAT_USAGE_TYPE";
 	public static final String STAT_CHARACTERISTIC_CLASS = "STAT_CHARACTERISTIC_CLASS";

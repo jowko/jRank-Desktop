@@ -8,6 +8,7 @@ import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RuleStatistics;
 import pl.poznan.put.cs.idss.jrs.utilities.HumanReadableListOfNumbers;
 
+import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.feature.rules.RuleConstantsTranslator.getRuleType;
 import static pl.jowko.jrank.desktop.feature.rules.RuleConstantsTranslator.getUsageType;
 
@@ -58,6 +59,7 @@ public class StatisticsController {
 	@FXML SelectableLabel lMeasure;
 	
 	private LanguageService labels;
+	private Rule previousRule;
 	
 	@FXML
 	private void initialize() {
@@ -71,14 +73,27 @@ public class StatisticsController {
 	 * @param rule from with statistics will be extracted
 	 */
 	void showRule(Rule rule) {
-		reloadFieldsValues(rule);
+		if(nonNull(previousRule) && previousRule.equals(rule)) {
+			return; // Rule already displayed
+		}
+		previousRule = rule;
+		
+		try {
+			reloadFieldsValues(rule);
+		} catch (RuntimeException e) {
+			setStatisticsUnavailable();
+		}
+		
 	}
 	
 	/**
 	 * Sets text values for labels in statistics grid.
+	 * Also remove error style from support field, because it is only used when statistics are not available.
 	 * @param rule from with statistics will be extracted
 	 */
 	private void reloadFieldsValues(Rule rule) {
+		support.getStyleClass().remove("error-label");
+		
 		ruleType.setText(getRuleType(rule.getType()));
 		usageType.setText(getUsageType(rule.getCharacteristicDecisionClassUsageTip()));
 		characteristicClass.setText(rule.getCharacteristicDecisionClass().toString());
@@ -107,6 +122,29 @@ public class StatisticsController {
 		aMeasure.setText(doubleToString(stats.getAConfirmationMeasureValue()));
 		zMeasure.setText(doubleToString(stats.getZConfirmationMeasureValue()));
 		lMeasure.setText(doubleToString(stats.getLConfirmationMeasureValue()));
+	}
+	
+	/**
+	 * Sets information on statistics tab, that statistics for provided rule are not available.
+	 * Also clears all fields on GridPane.
+	 */
+	private void setStatisticsUnavailable() {
+		support.setText(labels.get(Labels.STAT_UNAVAILABLE));
+		support.getStyleClass().add("error-label");
+		
+		supportExamples.setText("");
+		strength.setText("");
+		confidence.setText("");
+		coverageFactor.setText("");
+		coverage.setText("");
+		coveredExamples.setText("");
+		negativeCoverage.setText("");
+		negativeExamples.setText("");
+		inconsistencyMeasure.setText("");
+		fMeasure.setText("");
+		aMeasure.setText("");
+		zMeasure.setText("");
+		lMeasure.setText("");
 	}
 	
 	private String doubleToString(Double number) {

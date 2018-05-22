@@ -357,6 +357,7 @@ class StubSettings {
 	
 	private void createEnglishRulesStatisticsLabels(Map<String, String> language) {
 		language.put(Labels.STAT_TAB_HEADER, "Statistics of ");
+		language.put(Labels.STAT_UNAVAILABLE, "Statistics are not available for selected rule.");
 		language.put(Labels.STAT_RULE_TYPE, "Rule type:");
 		language.put(Labels.STAT_USAGE_TYPE, "Usage type:");
 		language.put(Labels.STAT_CHARACTERISTIC_CLASS, "Characteristic class:");
