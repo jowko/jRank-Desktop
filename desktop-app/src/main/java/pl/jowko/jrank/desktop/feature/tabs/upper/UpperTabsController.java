@@ -6,11 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.FileType;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.logger.JRankLogger;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -51,8 +51,6 @@ public class UpperTabsController {
 			menuCreator.create(tab);
 			upperTabs.getTabs().add(tab);
 			upperTabs.getSelectionModel().select(tab);
-		} catch (IOException e) {
-			JRankLogger.error("Error when creating tab for file: [" + workspaceItem.getFileName() + "]. Cause: ", e);
 		} catch (WrongFileTypeException | TabInitializationException e) {
 			JRankLogger.error(e.getMessage());
 		}
@@ -78,7 +76,7 @@ public class UpperTabsController {
 		return path.getParent().getFileName().toString() + "\\" + workspaceItem.getFileName();
 	}
 	
-	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws IOException, WrongFileTypeException, TabInitializationException {
+	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws WrongFileTypeException, TabInitializationException {
 		FileType itemType = workspaceItem.getFileType();
 		switch (itemType) {
 			case ROOT:

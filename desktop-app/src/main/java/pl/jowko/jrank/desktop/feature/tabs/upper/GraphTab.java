@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 
 import java.io.IOException;
@@ -10,8 +11,12 @@ import java.io.IOException;
  */
 class GraphTab extends JRankTab {
 	
-	GraphTab(WorkspaceItem workspaceItem, String tabText) throws IOException {
-		initializeTabAndGetController(workspaceItem, tabText);
+	GraphTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+		try {
+			initializeTabAndGetController(workspaceItem, tabText);
+		} catch (RuntimeException | IOException e) {
+			throwInitializationException("graph", workspaceItem.getFileName(), e);
+		}
 	}
 	
 	@Override

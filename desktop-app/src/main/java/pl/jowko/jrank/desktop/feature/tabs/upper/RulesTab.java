@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.rules.RulesController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
@@ -14,13 +15,19 @@ import java.io.IOException;
  */
 class RulesTab extends JRankTab {
 	
+	/**
+	 * Creates rules tab for .rules files.
+	 * @param workspaceItem with file name and path
+	 * @param tabText to display on tab
+	 * @throws TabInitializationException when something goes wrong
+	 */
 	RulesTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
 		try {
 			RulesContainer container = JRSFileMediator.loadRules(workspaceItem);
 			RulesController controller = initializeTabAndGetController(workspaceItem, tabText);
 			controller.initializeRules(container, workspaceItem, this);
 		} catch (RuntimeException | IOException e) {
-			throw new TabInitializationException("Error while reading rules file: [" + workspaceItem.getFileName() + "]. Cause: " + e.getMessage());
+			throwInitializationException("rules", workspaceItem.getFileName(), e);
 		}
 	}
 	

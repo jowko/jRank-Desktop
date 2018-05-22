@@ -3,6 +3,7 @@ package pl.jowko.jrank.desktop.feature.tabs.upper;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
 import pl.jowko.jrank.desktop.feature.properties.PropertiesController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 
@@ -15,10 +16,14 @@ class PropertiesTab extends JRankTab {
 	
 	private JRankProperties jRankProperties;
 	
-	PropertiesTab(WorkspaceItem workspaceItem, String tabText) throws IOException {
-		PropertiesController controller = initializeTabAndGetController(workspaceItem, tabText);
-		jRankProperties = JRSFileMediator.loadProperties(workspaceItem);
-		controller.initializeProperties(getJRankProperties(), workspaceItem, this);
+	PropertiesTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+		try {
+			PropertiesController controller = initializeTabAndGetController(workspaceItem, tabText);
+			jRankProperties = JRSFileMediator.loadProperties(workspaceItem);
+			controller.initializeProperties(getJRankProperties(), workspaceItem, this);
+		} catch (RuntimeException | IOException e) {
+			throwInitializationException("properties", workspaceItem.getFileName(), e);
+		}
 	}
 	
 	@Override

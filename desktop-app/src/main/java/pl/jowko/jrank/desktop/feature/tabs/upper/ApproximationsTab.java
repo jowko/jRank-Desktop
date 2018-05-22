@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.approximations.ApproximationsController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 
@@ -14,9 +15,13 @@ import java.io.IOException;
  */
 class ApproximationsTab extends JRankTab {
 	
-	ApproximationsTab(WorkspaceItem workspaceItem, String tabText) throws IOException {
-		ApproximationsController controller = initializeTabAndGetController(workspaceItem, tabText);
-		controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
+	ApproximationsTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+		try {
+			ApproximationsController controller = initializeTabAndGetController(workspaceItem, tabText);
+			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
+		} catch (RuntimeException | IOException e) {
+			throwInitializationException("approximations", workspaceItem.getFileName(), e);
+		}
 	}
 	
 	@Override

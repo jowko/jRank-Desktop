@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -13,10 +14,14 @@ import java.io.IOException;
  */
 class LearningTableTab extends JRankTab {
 	
-	LearningTableTab(WorkspaceItem workspaceItem, String tabText) throws IOException {
-		LearningTableController controller = initializeTabAndGetController(workspaceItem, tabText);
-		MemoryContainer container = JRSFileMediator.loadMemoryContainer(workspaceItem);
-		controller.initializeTable(container, this, workspaceItem);
+	LearningTableTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+		try {
+			LearningTableController controller = initializeTabAndGetController(workspaceItem, tabText);
+			MemoryContainer container = JRSFileMediator.loadMemoryContainer(workspaceItem);
+			controller.initializeTable(container, this, workspaceItem);
+		} catch (RuntimeException | IOException e) {
+			throwInitializationException("isf", workspaceItem.getFileName(), e);
+		}
 	}
 	
 	@Override
