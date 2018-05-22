@@ -82,9 +82,10 @@ public class RulesController {
 		});
 		rulesTable.setRowFactory( tv -> {
 			TableRow<RuleRow> row = new TableRow<>();
-			row.setOnMouseClicked(event ->
-					showRuleStatistics(row.getItem().getRule())
-			);
+			row.setOnMouseClicked(event -> {
+				if(nonNull(row.getItem()))
+					showRuleStatistics(row.getItem().getRule());
+			});
 			return row ;
 		});
 	}
