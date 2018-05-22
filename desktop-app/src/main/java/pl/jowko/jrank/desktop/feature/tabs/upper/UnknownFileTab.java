@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
+import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.unknown.UnknownFileController;
@@ -15,12 +16,12 @@ import java.io.IOException;
  */
 class UnknownFileTab extends JRankTab {
 	
-	UnknownFileTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+	UnknownFileTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException, IOException {
 		JRankLogger.warn("File [" + workspaceItem.getFileName() + "] is not recognized by application. Trying to open it as text file.");
 		try {
 			UnknownFileController controller = initializeTabAndGetController(workspaceItem, tabText);
 			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
-		} catch (RuntimeException | IOException e) {
+		} catch (JRankRuntimeException e) {
 			throwInitializationException("unknown", workspaceItem.getFileName(), e);
 		}
 	}

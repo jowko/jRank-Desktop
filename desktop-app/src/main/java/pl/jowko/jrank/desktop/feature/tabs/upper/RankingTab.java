@@ -1,8 +1,10 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
+import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
 import pl.jowko.jrank.desktop.feature.ranking.RankingController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.RankingInitializationException;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.FileType;
 import pl.jowko.jrank.desktop.feature.workspace.FilesFinder;
@@ -39,7 +41,7 @@ class RankingTab extends JRankTab {
 	 * @param tabText to display on tab header
 	 * @throws TabInitializationException when something goes wrong
 	 */
-	RankingTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+	RankingTab(WorkspaceItem workspaceItem, String tabText) throws IOException, TabInitializationException {
 		try {
 			String rankingFileContent = JRSFileMediator.loadTextFile(workspaceItem);
 			MemoryContainer container = getMemoryContainer(workspaceItem);
@@ -47,7 +49,7 @@ class RankingTab extends JRankTab {
 			RankingController controller = initializeTabAndGetController(workspaceItem, tabText);
 			controller.initializeRanking(rankingFileContent, container);
 			
-		} catch (RuntimeException | IOException e) {
+		} catch (JRankRuntimeException e) {
 			throwInitializationException("ranking", workspaceItem.getFileName(), e);
 		}
 	}

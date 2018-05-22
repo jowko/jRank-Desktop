@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
+import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.textfile.TextFileController;
@@ -13,11 +14,11 @@ import java.io.IOException;
  */
 class TextFileTab extends JRankTab {
 	
-	TextFileTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+	TextFileTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException, IOException {
 		try {
 			TextFileController controller = initializeTabAndGetController(workspaceItem, tabText);
 			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
-		} catch (RuntimeException | IOException e) {
+		} catch (JRankRuntimeException e) {
 			throwInitializationException("text", workspaceItem.getFileName(), e);
 		}
 	}

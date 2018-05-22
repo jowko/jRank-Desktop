@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
+import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
 import pl.jowko.jrank.desktop.feature.rules.RulesController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
@@ -21,12 +22,12 @@ class RulesTab extends JRankTab {
 	 * @param tabText to display on tab
 	 * @throws TabInitializationException when something goes wrong
 	 */
-	RulesTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+	RulesTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException, IOException {
 		try {
 			RulesContainer container = JRSFileMediator.loadRules(workspaceItem);
 			RulesController controller = initializeTabAndGetController(workspaceItem, tabText);
 			controller.initializeRules(container, workspaceItem, this);
-		} catch (RuntimeException | IOException e) {
+		} catch (JRankRuntimeException e) {
 			throwInitializationException("rules", workspaceItem.getFileName(), e);
 		}
 	}

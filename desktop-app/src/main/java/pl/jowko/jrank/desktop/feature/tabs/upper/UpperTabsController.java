@@ -5,12 +5,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import pl.jowko.jrank.desktop.exception.JRankException;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.FileType;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.logger.JRankLogger;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -51,8 +53,10 @@ public class UpperTabsController {
 			menuCreator.create(tab);
 			upperTabs.getTabs().add(tab);
 			upperTabs.getSelectionModel().select(tab);
-		} catch (WrongFileTypeException | TabInitializationException e) {
+		} catch (JRankException e) {
 			JRankLogger.error(e.getMessage());
+		} catch (IOException | RuntimeException e) {
+			JRankLogger.error("Unexpected error occurred while creating tab: ", e);
 		}
 	}
 	
@@ -76,7 +80,7 @@ public class UpperTabsController {
 		return path.getParent().getFileName().toString() + "\\" + workspaceItem.getFileName();
 	}
 	
-	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws WrongFileTypeException, TabInitializationException {
+	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws JRankException, IOException {
 		FileType itemType = workspaceItem.getFileType();
 		switch (itemType) {
 			case ROOT:

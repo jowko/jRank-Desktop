@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
+import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
 import pl.jowko.jrank.desktop.feature.approximations.ApproximationsController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
@@ -15,11 +16,11 @@ import java.io.IOException;
  */
 class ApproximationsTab extends JRankTab {
 	
-	ApproximationsTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException {
+	ApproximationsTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException, IOException {
 		try {
 			ApproximationsController controller = initializeTabAndGetController(workspaceItem, tabText);
 			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
-		} catch (RuntimeException | IOException e) {
+		} catch (JRankRuntimeException e) {
 			throwInitializationException("approximations", workspaceItem.getFileName(), e);
 		}
 	}

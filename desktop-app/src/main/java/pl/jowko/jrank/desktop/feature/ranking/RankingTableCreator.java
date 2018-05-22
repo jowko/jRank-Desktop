@@ -4,6 +4,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableColumn;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableHelper;
+import pl.jowko.jrank.desktop.feature.tabs.RankingInitializationException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
@@ -53,8 +54,8 @@ class RankingTableCreator {
 		labels = LanguageService.getInstance();
 		tableHelper = new LearningTableHelper();
 		increment = Integer.MIN_VALUE;
-		createColumns();
-		createRows();
+		
+		initializeData();
 	}
 	
 	/**
@@ -75,6 +76,22 @@ class RankingTableCreator {
 	 */
 	List<RankingRow> getItems() {
 		return items;
+	}
+	
+	/**
+	 * Initialize columns and rows for ranking table.
+	 * Also catch and rethrows some exceptions
+	 */
+	private void initializeData() {
+		try {
+			createColumns();
+			createRows();
+		} catch (NumberFormatException e) {
+			throw new RankingInitializationException("Error when parsing numbers: " + e.getMessage());
+		} catch (IndexOutOfBoundsException e) {
+			throw new RankingInitializationException("Ranking contains indexes of examples that do not exists in learning table. " +
+					"Did ranking was created with same data as current learning table?");
+		}
 	}
 	
 	/**
