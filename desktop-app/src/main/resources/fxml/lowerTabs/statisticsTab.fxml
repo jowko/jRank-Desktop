@@ -16,11 +16,11 @@
          <center>
             <FlowPane hgap="10.0" vgap="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <SelectableLabel fx:id="ruleTypeLabel" text="Rule type:" prefWidth="60"/>
-                  <SelectableLabel fx:id="ruleType" prefWidth="60"/>
-                  <SelectableLabel fx:id="usageTypeLabel" prefWidth="80" text="Usage type:"/>
+                  <SelectableLabel fx:id="ruleTypeLabel" prefWidth="60" text="Rule type:" />
+                  <SelectableLabel fx:id="ruleType" prefWidth="60" />
+                  <SelectableLabel fx:id="usageTypeLabel" prefWidth="80" text="Usage type:" />
                   <SelectableLabel fx:id="usageType" prefWidth="80" />
-                  <SelectableLabel fx:id="characteristicClassLabel" text="Characteristic class:"/>
+                  <SelectableLabel fx:id="characteristicClassLabel" text="Characteristic class:" />
                   <SelectableLabel fx:id="characteristicClass" prefWidth="60" />
                </children>
                <padding>
@@ -32,74 +32,67 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin>
       </BorderPane>
-      <ScrollPane fitToWidth="true" styleClass="border-yellow" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-border-color: lightgrey" VBox.vgrow="ALWAYS">
          <content>
-            <BorderPane style="-fx-background-color: FFFFE0;">
-               <center>
-                  <GridPane minHeight="280.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="150.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <SelectableLabel fx:id="supportLabel" text="Support:" />
-                        <SelectableLabel fx:id="supportExamplesLabel" text="Supporting examples:" GridPane.rowIndex="1" />
-                        <SelectableLabel fx:id="strengthLabel" text="Strength:" GridPane.rowIndex="2" />
-                        <SelectableLabel fx:id="confidenceLabel" text="Confidence:" GridPane.rowIndex="3" />
-                        <SelectableLabel fx:id="coverageFactorLabel" text="Coverage factor:" GridPane.rowIndex="4" />
-                        <SelectableLabel fx:id="coverageLabel" text="Coverage:" GridPane.rowIndex="5" />
-                        <SelectableLabel fx:id="coveredExamplesLabel" text="Covered examples:" GridPane.rowIndex="6" />
-                        <SelectableLabel fx:id="negativeCoverageLabel" text="Negative coverage:" GridPane.rowIndex="7" />
-                        <SelectableLabel fx:id="negativeExamplesLabel" text="Negative covered examples:" GridPane.rowIndex="8" />
-                        <SelectableLabel fx:id="inconsistencyMeasureLabel" text="Inconsistency measure:" GridPane.rowIndex="9" />
-                        <SelectableLabel fx:id="fMeasureLabel" text="f-confirmation measure:" GridPane.rowIndex="10" />
-                        <SelectableLabel fx:id="aMeasureLabel" text="A-confirmation measure:" GridPane.rowIndex="11" />
-                        <SelectableLabel fx:id="zMeasureLabel" text="Z-confirmation measure:" GridPane.rowIndex="12" />
-                        <SelectableLabel fx:id="lMeasureLabel" text="l-confirmation measure:" GridPane.rowIndex="13" />
-                        <SelectableLabel fx:id="support" GridPane.columnIndex="1" />
-                        <SelectableLabel fx:id="supportExamples" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <SelectableLabel fx:id="strength" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <SelectableLabel fx:id="confidence" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <SelectableLabel fx:id="coverageFactor" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <SelectableLabel fx:id="coverage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <SelectableLabel fx:id="coveredExamples" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <SelectableLabel fx:id="negativeCoverage" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <SelectableLabel fx:id="negativeExamples" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <SelectableLabel fx:id="inconsistencyMeasure" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <SelectableLabel fx:id="fMeasure" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <SelectableLabel fx:id="aMeasure" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                        <SelectableLabel fx:id="zMeasure" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                        <SelectableLabel fx:id="lMeasure" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                     </children>
-                  </GridPane>
-               </center>
+            <GridPane minHeight="280.0" style="-fx-border-color: transparent;" styleClass="border-yellow">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <SelectableLabel fx:id="supportLabel" text="Support:" />
+                  <SelectableLabel fx:id="supportExamplesLabel" text="Supporting examples:" GridPane.rowIndex="1" />
+                  <SelectableLabel fx:id="strengthLabel" text="Strength:" GridPane.rowIndex="2" />
+                  <SelectableLabel fx:id="confidenceLabel" text="Confidence:" GridPane.rowIndex="3" />
+                  <SelectableLabel fx:id="coverageFactorLabel" text="Coverage factor:" GridPane.rowIndex="4" />
+                  <SelectableLabel fx:id="coverageLabel" text="Coverage:" GridPane.rowIndex="5" />
+                  <SelectableLabel fx:id="coveredExamplesLabel" text="Covered examples:" GridPane.rowIndex="6" />
+                  <SelectableLabel fx:id="negativeCoverageLabel" text="Negative coverage:" GridPane.rowIndex="7" />
+                  <SelectableLabel fx:id="negativeExamplesLabel" text="Negative covered examples:" GridPane.rowIndex="8" />
+                  <SelectableLabel fx:id="inconsistencyMeasureLabel" text="Inconsistency measure:" GridPane.rowIndex="9" />
+                  <SelectableLabel fx:id="fMeasureLabel" text="f-confirmation measure:" GridPane.rowIndex="10" />
+                  <SelectableLabel fx:id="aMeasureLabel" text="A-confirmation measure:" GridPane.rowIndex="11" />
+                  <SelectableLabel fx:id="zMeasureLabel" text="Z-confirmation measure:" GridPane.rowIndex="12" />
+                  <SelectableLabel fx:id="lMeasureLabel" text="l-confirmation measure:" GridPane.rowIndex="13" />
+                  <SelectableLabel fx:id="support" GridPane.columnIndex="1" />
+                  <SelectableLabel fx:id="supportExamples" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <SelectableLabel fx:id="strength" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <SelectableLabel fx:id="confidence" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <SelectableLabel fx:id="coverageFactor" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <SelectableLabel fx:id="coverage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <SelectableLabel fx:id="coveredExamples" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <SelectableLabel fx:id="negativeCoverage" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <SelectableLabel fx:id="negativeExamples" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <SelectableLabel fx:id="inconsistencyMeasure" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <SelectableLabel fx:id="fMeasure" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <SelectableLabel fx:id="aMeasure" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <SelectableLabel fx:id="zMeasure" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <SelectableLabel fx:id="lMeasure" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+               </children>
                <padding>
-                  <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
-            </BorderPane>
+            </GridPane>
          </content>
          <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin>
-         <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
+         </VBox.margin>
       </ScrollPane>
    </children>
 </VBox>
