@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.rules;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
@@ -59,17 +60,32 @@ public class RulesController {
 	
 	/**
 	 * Initialize table content. It creates appropriate number of columns and items.
-	 * Also sets listener to selection event to display rules statistics in new tab
+	 * Also sets listeners to show statistics when user click on or select row
 	 */
 	private void initializeTable() {
 		RuleTableCreator tableCreator = new RuleTableCreator(rules);
 		rulesTable.getColumns().addAll(tableCreator.getColumns());
 		rulesTable.getItems().addAll(tableCreator.getItems());
-		
+		initializeShowStatisticsEvent();
+	}
+	
+	/**
+	 * Initialize listeners to show statistics tab.
+	 * Listener is bind to click and select event.
+	 * This means, that statistics tab will be shown when user click on row or select row by click or arrows.
+	 */
+	private void initializeShowStatisticsEvent() {
 		rulesTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (nonNull(newSelection)) {
 				showRuleStatistics(newSelection.getRule());
 			}
+		});
+		rulesTable.setRowFactory( tv -> {
+			TableRow<RuleRow> row = new TableRow<>();
+			row.setOnMouseClicked(event ->
+					showRuleStatistics(row.getItem().getRule())
+			);
+			return row ;
 		});
 	}
 	
