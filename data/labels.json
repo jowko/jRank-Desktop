@@ -62,6 +62,7 @@
     "STAT_INCONSISTENCY_MEASURE" : "Inconsistency measure:1",
     "MENU_FILE" : "File1",
     "PROP_ABANDON_CHANGES" : "Do you want to abandon changes in form?1",
+    "RANKING_POSITION" : "Position1",
     "FILE_PANE_TOOLTIP" : "This panel contains file names to with results will be saved. All options can be derived from 'Learning data file' field.1",
     "SATISFACTION_DEGREES_TOOLTIP" : "Use fuzzy (i.e., from interval [0,1]) or crisp (i.e., from set {0,1}) satisfaction degrees in preference graph?; fuzzy satisfaction degrees cannot be used for DRSA + exhaustive set of possible rules + rough membership1",
     "CONSISTENCY_MEASURE_TOOLTIP" : "Used consistency measure1",
@@ -236,6 +237,7 @@
     "LEARN_TABLE_CANCEL_BUTTON" : "Cancel1",
     "ATT_DIALOG_NAME_EMPTY" : "Name for attribute should not be empty\n1",
     "ATT_DIALOG_ACTIVE" : "Active:1",
+    "RANKING_EVALUATION" : "Evaluation1",
     "RANKING_FILE_TOOLTIP" : "Absolute or relative path to the file where ranking of all objects will be saved; folders must be separated by / or \\\\; if not given, then set automatically using value of testDataFile parameter1"
   },
   "ENG" : {
@@ -301,6 +303,7 @@
     "STAT_INCONSISTENCY_MEASURE" : "Inconsistency measure:",
     "MENU_FILE" : "File",
     "PROP_ABANDON_CHANGES" : "Do you want to abandon changes in form?",
+    "RANKING_POSITION" : "Position",
     "FILE_PANE_TOOLTIP" : "This panel contains file names to with results will be saved. All options can be derived from 'Learning data file' field.",
     "SATISFACTION_DEGREES_TOOLTIP" : "Use fuzzy (i.e., from interval [0,1]) or crisp (i.e., from set {0,1}) satisfaction degrees in preference graph?; fuzzy satisfaction degrees cannot be used for DRSA + exhaustive set of possible rules + rough membership",
     "CONSISTENCY_MEASURE_TOOLTIP" : "Used consistency measure",
@@ -475,6 +478,7 @@
     "LEARN_TABLE_CANCEL_BUTTON" : "Cancel",
     "ATT_DIALOG_NAME_EMPTY" : "Name for attribute should not be empty\n",
     "ATT_DIALOG_ACTIVE" : "Active:",
+    "RANKING_EVALUATION" : "Evaluation",
     "RANKING_FILE_TOOLTIP" : "Absolute or relative path to the file where ranking of all objects will be saved; folders must be separated by / or \\\\; if not given, then set automatically using value of testDataFile parameter"
   }
 }

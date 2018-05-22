@@ -296,6 +296,10 @@ public class Labels {
 	public static final String STAT_DOUBLE_INFINITY = "STAT_DOUBLE_INFINITY";
 	
 	
+	// Ranking
+	public static final String RANKING_POSITION = "RANKING_POSITION";
+	public static final String RANKING_EVALUATION = "RANKING_EVALUATION";
+	
 	private Labels() {}
 	
 }

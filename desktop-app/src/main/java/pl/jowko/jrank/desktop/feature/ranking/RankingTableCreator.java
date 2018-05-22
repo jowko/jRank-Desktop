@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.ranking;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableColumn;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableHelper;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
@@ -12,6 +13,9 @@ import pl.poznan.put.cs.idss.jrs.types.IntegerField;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static pl.jowko.jrank.desktop.feature.internationalization.Labels.RANKING_EVALUATION;
+import static pl.jowko.jrank.desktop.feature.internationalization.Labels.RANKING_POSITION;
 
 /**
  * Created by Piotr on 2018-05-22.
@@ -25,6 +29,8 @@ class RankingTableCreator {
 	private String rankingFileContent;
 	private MemoryContainer isfTable;
 	private LearningTableHelper tableHelper;
+	
+	private LanguageService labels;
 	
 	private List<TableColumn<RankingRow, ?>> columns;
 	private List<RankingRow> items;
@@ -44,6 +50,7 @@ class RankingTableCreator {
 		this.rankingFileContent = rankingFileContent;
 		this.isfTable = isfTable;
 		
+		labels = LanguageService.getInstance();
 		tableHelper = new LearningTableHelper();
 		increment = Integer.MIN_VALUE;
 		createColumns();
@@ -92,7 +99,7 @@ class RankingTableCreator {
 	 * @return position column
 	 */
 	private TableColumn<RankingRow, Integer> createPositionColumn() {
-		TableColumn<RankingRow, Integer> column = new TableColumn<>("Position");
+		TableColumn<RankingRow, Integer> column = new TableColumn<>(labels.get(RANKING_POSITION));
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getPosition())
 		);
@@ -106,7 +113,7 @@ class RankingTableCreator {
 	 * @return evaluation column.
 	 */
 	private TableColumn<RankingRow, Double> createEvaluationColumn() {
-		TableColumn<RankingRow, Double> column = new TableColumn<>("Evaluation");
+		TableColumn<RankingRow, Double> column = new TableColumn<>(labels.get(RANKING_EVALUATION));
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getEvaluation())
 		);

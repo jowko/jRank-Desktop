@@ -87,6 +87,7 @@ class StubSettings {
 		createEnglishLearningTableLabels(language);
 		createEnglishRulesLabels(language);
 		createEnglishRulesStatisticsLabels(language);
+		createEnglishRankingLabels(language);
 		
 		return language;
 	}
@@ -374,6 +375,12 @@ class StubSettings {
 		language.put(Labels.STAT_Z_MEASURE, "Z-confirmation measure:");
 		language.put(Labels.STAT_L_MEASURE, "l-confirmation measure:");
 		language.put(Labels.STAT_DOUBLE_INFINITY, "Infinity");
+	}
+	
+	
+	private void createEnglishRankingLabels(Map<String,String> language) {
+		language.put(Labels.RANKING_POSITION, "Position");
+		language.put(Labels.RANKING_EVALUATION, "Evaluation");
 	}
 	
 	private void generateStubLanguage() {
