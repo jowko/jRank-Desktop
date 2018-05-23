@@ -15,6 +15,7 @@ import java.io.IOException;
 
 /**
  * Created by Piotr on 2018-03-17.
+ * Controller for main menu bar. It handles actions after menu item click.
  */
 public class MenuController {
 	
@@ -41,10 +42,18 @@ public class MenuController {
 		translateLabels();
 	}
 	
+	/**
+	 * Closes application.
+	 */
 	public void onQuitAction() {
 		Platform.exit();
 	}
 	
+	/**
+	 * Displays user settings modal dialog, on with user can edit own settings.
+	 * It loads fxml file and initializes all necessary data
+	 * @throws IOException when something goes wrong
+	 */
 	public void onUserSettingsAction() throws IOException {
 		ResourceLoader loader = new ResourceLoader("/fxml/userSettings.fxml");
 		Parent root = loader.load();
@@ -56,6 +65,11 @@ public class MenuController {
 		JRankLogger.info("Help window is not implemented yet.");
 	}
 	
+	/**
+	 * Displays user about modal dialog, with displays information about author and version of app.
+	 * It loads fxml file and initializes all necessary data
+	 * @throws IOException when something goes wrong
+	 */
 	public void onAboutAction() throws IOException {
 		ResourceLoader loader = new ResourceLoader("/fxml/about.fxml");
 		Parent root = loader.load();

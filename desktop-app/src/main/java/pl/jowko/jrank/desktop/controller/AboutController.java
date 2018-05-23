@@ -15,6 +15,8 @@ import pl.jowko.jrank.desktop.service.JRankInfoService;
 
 /**
  * Created by Piotr on 2018-04-10.
+ * Controller for about dialog with contains author and version information about application.
+ * @see JRankInfo
  */
 public class AboutController {
 	
@@ -39,6 +41,10 @@ public class AboutController {
 	
 	private LanguageService labels;
 	
+	/**
+	 * Create modal dialog window displaying about application information.
+	 * @param root containing content of dialog
+	 */
 	void createWindow(Parent root) {
 		Dialog dialog = new Dialog<>();
 		dialog.setDialogPane((DialogPane) root);

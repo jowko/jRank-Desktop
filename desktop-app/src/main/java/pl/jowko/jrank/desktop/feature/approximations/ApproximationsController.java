@@ -13,6 +13,11 @@ public class ApproximationsController {
 	@FXML
 	private TextArea approximationsFileView;
 	
+	/**
+	 * Initialize approximations tab.
+	 * It shows .apx file content in TextArea.
+	 * @param fileContent of .apx file
+	 */
 	public void initializeTab(String fileContent) {
 		approximationsFileView.setText(fileContent);
 	}
