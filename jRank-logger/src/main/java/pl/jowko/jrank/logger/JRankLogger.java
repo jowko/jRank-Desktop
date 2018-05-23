@@ -5,6 +5,7 @@ import com.esotericsoftware.minlog.Log;
 /**
  * Created by Piotr on 2018-03-17.
  * This class serves as mediator between application and logger.
+ * Because of this, logger implementation can be easily changed.
  */
 public class JRankLogger {
 	
@@ -16,14 +17,6 @@ public class JRankLogger {
 	
 	public static void init(String msg) {
 		Log.info("INIT", msg);
-	}
-	
-	public static void initialized(String name) {
-		Log.info(name + " initialized.");
-	}
-	
-	public static void closed(String name) {
-		Log.info(name + " closed.");
 	}
 	
 	public static void info(String msg) {
