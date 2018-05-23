@@ -8,6 +8,8 @@ import static java.util.Objects.isNull;
 
 /**
  * Created by Piotr on 2018-03-17.
+ * Service used in places, where UserSettings needs to be used.
+ * @see UserSettings
  */
 public class UserSettingsService {
 	
@@ -18,6 +20,11 @@ public class UserSettingsService {
 		userSettings = FileManager.getInstance().readUserSettings();
 	}
 	
+	/**
+	 * Gets instance of this class or create new when such instance doesn't exists.
+	 * userSettings.json file is read in private constructor of this class.
+	 * @return
+	 */
 	public static UserSettingsService getInstance() {
 		if(isNull(instance)) {
 			instance = new UserSettingsService();
@@ -29,6 +36,14 @@ public class UserSettingsService {
 		return userSettings.getLanguage();
 	}
 	
+	/**
+	 * Saves UserSettings to userSettings.json file in configuration directory.
+	 * Current settings in memory are not replaced.
+	 * To see settings changed, application restart is required.
+	 * @see UserSettingsController
+	 * @param newUserSettings from user settings dialog form
+	 * @throws IOException when something goes wrong with saving file
+	 */
 	public void saveUserSettings(UserSettings newUserSettings) throws IOException {
 		FileManager.getInstance().saveUserSettings(newUserSettings);
 	}

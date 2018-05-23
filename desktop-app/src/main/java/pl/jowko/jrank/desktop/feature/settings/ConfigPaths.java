@@ -2,6 +2,8 @@ package pl.jowko.jrank.desktop.feature.settings;
 
 /**
  * Created by Piotr on 2018-05-02.
+ * This class contains path to configuration files.
+ * Configuration files should be in data directory in main catalog of application.
  */
 public class ConfigPaths {
 	
@@ -25,6 +27,11 @@ public class ConfigPaths {
 		return instance;
 	}
 	
+	/**
+	 * Sets new directory for config files.
+	 * Paths to all config files are updated with new settings.
+	 * @param dataDirectory for new config catalog
+	 */
 	public void setNewDirectory(String dataDirectory) {
 		this.dataDirectory = dataDirectory;
 		

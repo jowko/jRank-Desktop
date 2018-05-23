@@ -13,6 +13,10 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-04-18.
+ * This class validates configuration from userSettings.json file and user settings dialog form from settings menu.
+ * @see UserSettings
+ * @see UserSettingsController
+ * @see pl.jowko.jrank.desktop.feature.workspace.WorkspaceController
  */
 public class UserSettingsValidator {
 	
@@ -25,6 +29,12 @@ public class UserSettingsValidator {
 		labels = LanguageService.getInstance();
 	}
 	
+	/**
+	 * Check if user options from user settings form are valid.
+	 * @param language value from language ComboBox
+	 * @param workspacePath from workspace field
+	 * @return String containing errors when they occurred, or empty String.
+	 */
 	public String validateUserSettingsForm(String language, String workspacePath) {
 		String errorMsg = "";
 		
@@ -40,6 +50,15 @@ public class UserSettingsValidator {
 		return errorMsg;
 	}
 	
+	/**
+	 * Validate current configuration to check if its correct.
+	 * Methods checks if provided language code is valid(exists in languages.json file).
+	 * Also checks if provided workspacePath exists.
+	 * Such problem with configuration can occur, when files were edited manually by user.
+	 * @see WorkspaceService
+	 * @see pl.jowko.jrank.desktop.feature.workspace.WorkspaceController
+	 * @return String containing errors when they occurred, or empty String.
+	 */
 	public String validateConfiguration() {
 		UserSettings settings = UserSettingsService.getInstance().getUserSettings();
 		String errorMsg = "";
@@ -56,6 +75,12 @@ public class UserSettingsValidator {
 		return errorMsg;
 	}
 	
+	/**
+	 * Return provided value of "null" text if value is null.
+	 * It is used to display error message.
+	 * @param value to transform
+	 * @return value or "null" string
+	 */
 	private String getValueOrNullString(String value) {
 		if(isNull(value))
 			return "null";

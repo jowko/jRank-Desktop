@@ -22,6 +22,11 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-03-17.
+ * Controller for User settings dialog from settings menu.
+ * It allows to customize all editable options of application.
+ * Settings are saved in userSettings.json file in data directory, where rest of configuration files resides.
+ * @see UserSettings
+ * @see UserSettingsValidator
  */
 public class UserSettingsController  {
 	
@@ -51,6 +56,10 @@ public class UserSettingsController  {
 	private LanguageService labels;
 	private UserSettingsValidator settingsValidator;
 	
+	/**
+	 * Initialize needed objects.
+	 * Also sets current value from settings into UI fields.
+	 */
 	@FXML
 	private void initialize() {
 		labels = LanguageService.getInstance();
@@ -63,6 +72,11 @@ public class UserSettingsController  {
 		settingsValidator = new UserSettingsValidator();
 	}
 	
+	/**
+	 * Creates dialog for user settings form.
+	 * User settings content from fxml file should be passed to this method.
+	 * @param root with content of dialog
+	 */
 	public void createWindow(Parent root) {
 		stage = new Stage(StageStyle.DECORATED);
 		stage.setScene(new Scene(root));
@@ -73,6 +87,12 @@ public class UserSettingsController  {
 		stage.showAndWait();
 	}
 	
+	/**
+	 * Perform save action.
+	 * Settings are validated and if correct, they are saved to files.
+	 * User settings are not reloaded in application after change.
+	 * Application restart is required to do this.
+	 */
 	public void onSaveAction() {
 		if(not(isSettingsFormValid())) {
 			return;
@@ -90,10 +110,18 @@ public class UserSettingsController  {
 		
 	}
 	
+	/**
+	 * Close user settings dialog without saving.
+	 */
 	public void onCancelAction() {
 		stage.close();
 	}
 	
+	/**
+	 * Initialize user settings for form.
+	 * Deep copy is performed to avoid changing settings with are already used in application.
+	 * Also static reference is remembered, to remember options on form after save and return without application restart.
+	 */
 	private static void initializeNewSettings() {
 		if(Objects.isNull(newUserSettings)) {
 			UserSettings settings = UserSettingsService.getInstance().getUserSettings();
@@ -107,6 +135,9 @@ public class UserSettingsController  {
 		}
 	}
 	
+	/**
+	 * Update user settings with values extracted from UI form.
+	 */
 	private void updateNewSettings() {
 		newUserSettings.setWorkspacePath(workspaceField.getText());
 		newUserSettings.setLanguage(getLangCode());
@@ -114,6 +145,14 @@ public class UserSettingsController  {
 		newUserSettings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled.isSelected());
 	}
 	
+	/**
+	 * Validate user settings if they are correct.
+	 * Application checks if workspace path is valid.
+	 * Application also checks if provided lang code is provided.
+	 * This prevent errors when read in userSettings.json file contains wrong options(like not existing language code)
+	 * @see UserSettingsValidator
+	 * @return true if settings are valid, false otherwise
+	 */
 	private boolean isSettingsFormValid() {
 		String validationErrors = settingsValidator.validateUserSettingsForm(languagesChoice.getValue(), workspaceField.getText());
 		if(not(validationErrors.isEmpty())) {
@@ -124,12 +163,22 @@ public class UserSettingsController  {
 		return true;
 	}
 	
+	/**
+	 * Initialize languages ComboBox.
+	 * It is filled with data from languages.json file.
+	 */
 	private void initializeLanguages() {
 		languages = labels.getLanguages();
 		languagesChoice.getItems().addAll(languages.values());
 		languagesChoice.setValue(languages.get(newUserSettings.getLanguage()));
 	}
 	
+	/**
+	 * Get correct language code using chosen value from language ComboBox.
+	 * If languages contains: "ENG" : "English",
+	 * this method should extract value "ENG" using "English" option from ComboBox.
+	 * @return
+	 */
 	private String getLangCode() {
 		String language = languagesChoice.getValue();
 		
