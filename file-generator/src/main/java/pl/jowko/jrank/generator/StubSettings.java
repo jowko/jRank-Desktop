@@ -1,9 +1,12 @@
 package pl.jowko.jrank.generator;
 
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.settings.JRankInfo;
 import pl.jowko.jrank.desktop.feature.settings.UserSettings;
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsBuilder;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,7 +15,7 @@ import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
 
 /**
  * Created by Piotr on 2018-03-16.
- * This class serves as container to different settings with will be saved to file.
+ * This class serves as container for different settings with will be saved to file.
  * It could be replaced with external resource bundle.
  */
 class StubSettings {
@@ -20,13 +23,16 @@ class StubSettings {
 	private Map<String, Map<String, String>> labels;
 	private Map<String, String> languages;
 	private UserSettings settings;
+	private JRankInfo appInfo;
 	
 	/**
 	 * Creates instance of this class.
+	 * When generating public release version, stubLanguageEnabled should be set to false
 	 * @param stubLanguageEnabled if is set to true, additional language will be generated. This language should be used only for tests.
 	 */
 	StubSettings(boolean stubLanguageEnabled) {
 		createStubSettings();
+		createStubAppInfo();
 		
 		labels = new HashMap<>();
 		labels.put("ENG", createEnglishLabels());
@@ -50,6 +56,14 @@ class StubSettings {
 		return settings;
 	}
 	
+	JRankInfo getAppInfo() {
+		return appInfo;
+	}
+	
+	/**
+	 * Creates default ruleRank settings.
+	 * @see UserSettings
+	 */
 	private void createStubSettings() {
 		settings = new UserSettingsBuilder()
 				.setLanguage("ENG")
@@ -59,6 +73,20 @@ class StubSettings {
 				.createUserSettings();
 	}
 	
+	/**
+	 * Creates stub application information.
+	 * It contains current date and version.
+	 */
+	private void createStubAppInfo() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		appInfo = new JRankInfo("0.3-SNAPSHOT", format.format(new Date()));
+	}
+	
+	/**
+	 * Creates english labels for all Labels code
+	 * @see Labels
+	 * @return map with labels code from Labels class as keys and translation as values
+	 */
 	private Map<String, String> createEnglishLabels() {
 		Map<String, String> language = new HashMap<>();
 		
@@ -378,12 +406,17 @@ class StubSettings {
 		language.put(Labels.STAT_DOUBLE_INFINITY, "Infinity");
 	}
 	
-	
 	private void createEnglishRankingLabels(Map<String,String> language) {
 		language.put(Labels.RANKING_POSITION, "Position");
 		language.put(Labels.RANKING_EVALUATION, "Evaluation");
 	}
 	
+	/**
+	 * Generates stub language - for test only.
+	 * Result of this methods should not be included in public release version.
+	 * It creates stub labels by adding "1" character to all labels values.
+	 * Stub language helps to check, if labels are changing correctly on all screens.
+	 */
 	private void generateStubLanguage() {
 		languages.put("STUB", "Stub language");
 		labels.put("STUB", createStubLabels());
