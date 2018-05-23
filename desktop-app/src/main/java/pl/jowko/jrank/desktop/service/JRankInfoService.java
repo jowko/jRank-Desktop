@@ -28,7 +28,7 @@ public class JRankInfoService {
 	}
 	
 	private void loadInfo() {
-		info = FileManager.getInstance().readJRankInfo();
+		info = ConfigFileManager.getInstance().readJRankInfo();
 	}
 	
 }

@@ -1,6 +1,6 @@
 package pl.jowko.jrank.desktop.feature.settings;
 
-import pl.jowko.jrank.desktop.service.FileManager;
+import pl.jowko.jrank.desktop.service.ConfigFileManager;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class UserSettingsService {
 	private UserSettings userSettings;
 	
 	private UserSettingsService() {
-		userSettings = FileManager.getInstance().readUserSettings();
+		userSettings = ConfigFileManager.getInstance().readUserSettings();
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class UserSettingsService {
 	 * @throws IOException when something goes wrong with saving file
 	 */
 	public void saveUserSettings(UserSettings newUserSettings) throws IOException {
-		FileManager.getInstance().saveUserSettings(newUserSettings);
+		ConfigFileManager.getInstance().saveUserSettings(newUserSettings);
 	}
 	
 	public UserSettings getUserSettings() {

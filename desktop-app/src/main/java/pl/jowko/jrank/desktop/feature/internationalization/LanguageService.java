@@ -1,7 +1,7 @@
 package pl.jowko.jrank.desktop.feature.internationalization;
 
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
-import pl.jowko.jrank.desktop.service.FileManager;
+import pl.jowko.jrank.desktop.service.ConfigFileManager;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.util.Map;
@@ -25,8 +25,8 @@ public class LanguageService {
 	
 	
 	private LanguageService() {
-		languages = FileManager.getInstance().readLanguages();
-		labels = FileManager.getInstance().readLabels();
+		languages = ConfigFileManager.getInstance().readLanguages();
+		labels = ConfigFileManager.getInstance().readLabels();
 	}
 	
 	/**

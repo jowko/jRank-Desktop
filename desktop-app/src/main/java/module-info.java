@@ -1,5 +1,10 @@
 /**
  * Created by Piotr on 2018-03-25.
+ * This is module-info file for Jigsaw module system.
+ * It configures all dependencies for module system.
+ * Also opens all packages with are needed by JavaFX framework.
+ * Also exports catalog related with settings and internationalization, because file-generator project uses them.
+ * File Generator projects generates json files with default settings and labels.
  */
 module jRank.desktop {
 	

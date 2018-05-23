@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by Piotr on 2018-05-02.
  */
-class FileManagerTest extends MasterTest {
+class ConfigFileManagerTest extends MasterTest {
 	
-	private FileManager fileManager;
+	private ConfigFileManager configFileManager;
 	
 	@BeforeEach
 	void setUpEach() {
-		fileManager = FileManager.getInstance();
+		configFileManager = ConfigFileManager.getInstance();
 	}
 	
 	@AfterAll
@@ -31,25 +31,25 @@ class FileManagerTest extends MasterTest {
 				.setLanguage("ENG")
 				.setWorkspacePath("\\workspace")
 				.createUserSettings();
-		FileManager.getInstance().saveUserSettings(userSettings);
-		FileManager.getInstance().readUserSettings();
+		ConfigFileManager.getInstance().saveUserSettings(userSettings);
+		ConfigFileManager.getInstance().readUserSettings();
 	}
 	
 	@Test
 	void shouldReadUserSettings() {
-		UserSettings userSettings = fileManager.readUserSettings();
+		UserSettings userSettings = configFileManager.readUserSettings();
 		assertNotNull(userSettings);
 	}
 	
 	@Test
 	void shouldReadJRankInfo() {
-		JRankInfo info = fileManager.readJRankInfo();
+		JRankInfo info = configFileManager.readJRankInfo();
 		assertNotNull(info);
 	}
 	
 	@Test
 	void shouldReadLabels() {
-		Map<String, Map<String, String> > labels = fileManager.readLabels();
+		Map<String, Map<String, String> > labels = configFileManager.readLabels();
 		
 		assertNotNull(labels);
 		assertTrue(labels.size() > 0);
@@ -59,7 +59,7 @@ class FileManagerTest extends MasterTest {
 	
 	@Test
 	void shouldReadLanguages() {
-		Map<String, String> languages = fileManager.readLanguages();
+		Map<String, String> languages = configFileManager.readLanguages();
 		
 		assertNotNull(languages);
 		assertTrue(languages.size() > 0);
@@ -71,8 +71,8 @@ class FileManagerTest extends MasterTest {
 				.setLanguage("LANG")
 				.setWorkspacePath("workspacePath")
 				.createUserSettings();
-		fileManager.saveUserSettings(userSettings);
-		UserSettings newSettings = fileManager.readUserSettings();
+		configFileManager.saveUserSettings(userSettings);
+		UserSettings newSettings = configFileManager.readUserSettings();
 		
 		assertEquals(userSettings.getWorkspacePath(), newSettings.getWorkspacePath());
 		assertEquals(userSettings.getLanguage(), newSettings.getLanguage());

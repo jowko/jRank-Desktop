@@ -9,6 +9,9 @@ import java.io.ObjectOutputStream;
 
 /**
  * Created by Piotr on 2018-05-04.
+ * This class provides utils methods related with cloning.
+ * All cloned objects should implement Serializable interface
+ * @see java.io.Serializable
  */
 public class Cloner {
 	
@@ -16,6 +19,8 @@ public class Cloner {
 	
 	/**
 	 * This method makes a "deep clone" of any Java object it is given.
+	 * All provided objects should implement Serializable interface
+	 * @see java.io.Serializable
 	 * https://alvinalexander.com/java/java-deep-clone-example-source-code
 	 */
 	public static Object deepClone(Object object) {

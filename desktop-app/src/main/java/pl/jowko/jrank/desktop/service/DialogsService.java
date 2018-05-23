@@ -11,11 +11,17 @@ import static pl.jowko.jrank.desktop.feature.internationalization.Labels.*;
 
 /**
  * Created by Piotr on 2018-04-18.
+ * This class provides api for creating alert dialogs.
  */
 public class DialogsService {
 	
 	private DialogsService() {}
 	
+	/**
+	 * Show default error dialog.
+	 * @param header to display in header field
+	 * @param msg to display as alert content
+	 */
 	public static void showErrorDialog(String header, String msg) {
 		LanguageService labels = LanguageService.getInstance();
 		Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -25,6 +31,11 @@ public class DialogsService {
 		alert.showAndWait();
 	}
 	
+	/**
+	 * Show default information dialog.
+	 * @param title to display in title field
+	 * @param msg to display as alert content text
+	 */
 	public static void showInfoDialog(String title, String msg) {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle(title);
@@ -33,6 +44,11 @@ public class DialogsService {
 		alert.showAndWait();
 	}
 	
+	/**
+	 * Show warning dialog for cases where validation errors are displayed.
+	 * @param header to display in header field
+	 * @param msg to display as alert content text
+	 */
 	public static void showValidationFailedDialog(String header, String msg) {
 		LanguageService labels = LanguageService.getInstance();
 		Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -43,10 +59,22 @@ public class DialogsService {
 		alert.showAndWait();
 	}
 	
+	/**
+	 * Show confirmation dialog with empty content.
+	 * @param header with be displayed in header field
+	 * @return true if user clicks Yes button, false otherwise
+	 */
 	public static boolean showConfirmationDialog(String header) {
 		return showConfirmationDialog(header, "");
 	}
 	
+	/**
+	 * Show default confirmation dialog.
+	 * No button is focused as default.
+	 * @param header to display on header field
+	 * @param content to display as text content
+	 * @return true if user clicks Yes button, false otherwise
+	 */
 	public static boolean showConfirmationDialog(String header, String content) {
 		LanguageService labels = LanguageService.getInstance();
 		ButtonType yesButtonType = new ButtonType(labels.get(CONFIRM_DIALOG_YES), ButtonBar.ButtonData.YES);
