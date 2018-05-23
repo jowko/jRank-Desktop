@@ -11,6 +11,9 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-04-09.
+ * This controller manages TreeView containing all files and directories from workspace directory.
+ * It builds nested tree containing all components.
+ * @see UserSettingsValidator
  */
 public class WorkspaceController {
 	
@@ -22,6 +25,14 @@ public class WorkspaceController {
 	private TreeBuilder treeBuilder;
 	private boolean isConfigValid = true;
 	
+	/**
+	 * Initialize workspace tree.
+	 * This method perform configuration validation before creating workspace tree.
+	 * Such problems can occur when user edits configuration files manually and make mistakes.
+	 * If configuration is valid, its creates workspace tree from files and directories in workspace directory.
+	 * @see UserSettingsValidator
+	 * @see TreeBuilder
+	 */
 	@FXML
 	private void initialize() {
 		settingsValidator = new UserSettingsValidator();
@@ -36,6 +47,11 @@ public class WorkspaceController {
 		treeBuilder.buildTree();
 	}
 	
+	/**
+	 * Perform validation of configuration files.
+	 * If user configuration is not valid, this controller doesn't create workspace tree.
+	 * It checks if workspacePath and user language is valid.
+	 */
 	private void validateConfiguration() {
 		String validationErrors = settingsValidator.validateConfiguration();
 		if(not(validationErrors.isEmpty())) {

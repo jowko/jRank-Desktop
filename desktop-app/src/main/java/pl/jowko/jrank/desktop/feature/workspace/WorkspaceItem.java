@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.workspace;
 
 /**
  * Created by Piotr on 2018-04-21.
+ * This class represents one position in workspace tree.
  */
 public class WorkspaceItem {
 	
@@ -9,6 +10,13 @@ public class WorkspaceItem {
 	private String filePath;
 	private FileType fileType;
 	
+	/**
+	 * Create instance of item used in tree.
+	 * @param fileName with is displayed in tree
+	 * @param filePath with represents absolute path of file
+	 * @param fileType with represents type of file
+	 * @see FileType
+	 */
 	WorkspaceItem(String fileName, String filePath, FileType fileType) {
 		this.fileName = fileName;
 		this.filePath = filePath;

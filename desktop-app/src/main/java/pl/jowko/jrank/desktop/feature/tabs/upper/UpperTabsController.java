@@ -7,7 +7,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import pl.jowko.jrank.desktop.exception.JRankException;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
-import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.FileType;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.logger.JRankLogger;
@@ -85,7 +84,7 @@ public class UpperTabsController {
 		switch (itemType) {
 			case ROOT:
 				throw new WrongFileTypeException("Cannot open root node as file.");
-			case FOLDER:
+			case DIRECTORY:
 				throw new WrongFileTypeException("Cannot open experiment directory: [" + workspaceItem.getFileName() + "] as file");
 			case JRANK_SETTINGS:
 				return new PropertiesTab(workspaceItem, tabText);
@@ -93,7 +92,7 @@ public class UpperTabsController {
 				return new LearningTableTab(workspaceItem, tabText);
 			case COMPARISION_TABLE:
 				return new ComparisionTableTab(workspaceItem, tabText);
-			case DOMINANCE:
+			case APPROXIMATION:
 				return new ApproximationsTab(workspaceItem, tabText);
 			case RULES:
 				return new RulesTab(workspaceItem, tabText);
