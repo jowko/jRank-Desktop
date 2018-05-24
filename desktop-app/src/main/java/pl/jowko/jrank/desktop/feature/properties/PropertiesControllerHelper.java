@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
+import pl.jowko.jrank.feature.customfx.DecimalField;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
@@ -23,6 +24,7 @@ class PropertiesControllerHelper {
 		fillComboBoxes();
 		fillFieldsValues();
 		
+		controller.consistencyMeasureThreshold.setPattern(DecimalField.POSITIVE_DECIMAL_PATTERN);
 		controller.precision.setCharLimit(6);
 		controller.consistencyMeasureThreshold.setCharLimit(50);
 	}
