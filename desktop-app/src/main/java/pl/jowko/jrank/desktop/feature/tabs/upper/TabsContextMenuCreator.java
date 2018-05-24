@@ -17,6 +17,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 /**
  * Created by Piotr on 2018-05-18.
  * This class creates context menus for tab headers.
+ * This actions must be created for each tab with are added to TabPane.
  */
 class TabsContextMenuCreator {
 	
@@ -48,37 +49,56 @@ class TabsContextMenuCreator {
 		tab.setContextMenu(menu);
 	}
 	
+	/**
+	 * Creates close this tab MenuItem for ContextMenu.
+	 * It will check if clicked tab if edited.
+	 * If it was edited, application display confirmation window.
+	 * If it was not edited, application closes tab without confirmation.
+	 * @see JRankTab
+	 * @param tab to with close event will be added.
+	 * @return MenuItem with close this action for provided tab
+	 */
 	private MenuItem createCloseTabMenuItem(JRankTab tab) {
 		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_THIS));
 		closeTab.setOnAction(event -> {
 			
-			if(tab.isTabEdited()) {
-				boolean isActionConfirmed = DialogsService.showConfirmationDialog(labels.get(Labels.TABS_CLOSE_THIS_CONFIRM));
-				if(not(isActionConfirmed))
-					return;
+			if(shouldPerformAction(tab.isTabEdited(), Labels.TABS_CLOSE_THIS_CONFIRM)) {
+				tabPane.getTabs().remove(tab);
 			}
 			
-			tabPane.getTabs().remove(tab);
 		});
 		return closeTab;
 	}
 	
+	/**
+	 * Creates close all tabs MenuItem for ContextMenu.
+	 * It will check, if any opened tab is in edit mode.
+	 * If it is, application ask form confirmation.
+	 * If no tab is in edit mode, all tabs are closed without confirmation.
+	 * @see JRankTab
+	 * @return MenuItem with close all tabs action
+	 */
 	private MenuItem createCloseAllTabMenuItem() {
 		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_ALL));
 		closeTab.setOnAction(event -> {
 			long editedTabsCount = getEditedTabsCount(tabPane.getTabs());
 			
-			if(editedTabsCount > 0) {
-				boolean isActionConfirmed = DialogsService.showConfirmationDialog(labels.get(Labels.TABS_CLOSE_ALL_CONFIRM));
-				if(not(isActionConfirmed))
-					return;
+			if(shouldPerformAction(editedTabsCount > 0, Labels.TABS_CLOSE_ALL_CONFIRM)) {
+				tabPane.getTabs().clear();
 			}
 			
-			tabPane.getTabs().clear();
 		});
 		return closeTab;
 	}
 	
+	/**
+	 * Creates close other tabs MenuItem for ContextMenu.
+	 * If any of other tabs are in edit mode, application ask for confirmation.
+	 * If none of other tabs are in edit mode, application closes all other tabs.
+	 * @see JRankTab
+	 * @param tab with will not be closed on this action
+	 * @return MenuItem with close other tabs action for provided tab
+	 */
 	private MenuItem createCloseOtherTabMenuItem(Tab tab) {
 		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_OTHERS));
 		closeTab.setOnAction(event -> {
@@ -92,15 +112,24 @@ class TabsContextMenuCreator {
 			
 			long editedTabsCount = getEditedTabsCount(tabsToRemove);
 			
-			if(editedTabsCount > 0) {
-				boolean isActionConfirmed = DialogsService.showConfirmationDialog(labels.get(Labels.TABS_CLOSE_OTHERS_CONFIRM));
-				if(not(isActionConfirmed))
-					return;
+			if(shouldPerformAction(editedTabsCount > 0, Labels.TABS_CLOSE_OTHERS_CONFIRM)) {
+				tabPane.getTabs().removeAll(tabsToRemove);
 			}
 			
-			tabPane.getTabs().removeAll(tabsToRemove);
 		});
 		return closeTab;
+	}
+	
+	/**
+	 * Display confirmation dialog if tab edition occurred.
+	 * @param isEditModeOn boolean condition indicating that confirmation dialog should be displayed
+	 * @param labelCode with will be displayed on confirmation dialog
+	 * @return true is user confirm action or no edit action occurred, false otherwise
+	 */
+	private boolean shouldPerformAction(boolean isEditModeOn, String labelCode) {
+		if(isEditModeOn)
+			return DialogsService.showConfirmationDialog(labels.get(labelCode));
+		return true;
 	}
 	
 	private long getEditedTabsCount(List<Tab> tabs) {

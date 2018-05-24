@@ -11,12 +11,19 @@ import java.io.PrintStream;
 
 /**
  * Created by Piotr on 2018-04-10.
+ * Controller for logs tab.
+ * It sets output stream to TextArea in logs tab.
  */
 public class LogsController {
 	
 	@FXML
 	TextArea logsTextArea;
 	
+	/**
+	 * Initializes logs tab.
+	 * It replaces output and error stream with custom solution.
+	 * This enables to add all output text to TextArea component.
+	 */
 	@FXML
 	public void initialize() {
 		Console console = new Console(logsTextArea);
@@ -33,12 +40,21 @@ public class LogsController {
 		logsTextArea.setContextMenu(menu);
 	}
 	
+	/**
+	 * Create context menu item for clear action.
+	 * This action will clear all logs from TextArea.
+	 * @return MenuItem with clear action
+	 */
 	private MenuItem createClearLogMenuItem() {
 		MenuItem item = new MenuItem("Clear logs");
 		item.setOnAction(event -> logsTextArea.clear());
 		return item;
 	}
 	
+	/**
+	 * This class overrides output stream.
+	 * It appends all output text to TextArea.
+	 */
 	public static class Console extends OutputStream {
 		
 		private TextArea output;

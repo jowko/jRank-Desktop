@@ -29,6 +29,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * If experiment contains multiple .properties files, class throws error.
  * Properties file is used to get path to .isf file.
  * If properties doesn't contain isf file path, it is assumed, that isf file is in same directory as ranking file and have same name.
+ * @see RankingController
  */
 class RankingTab extends JRankTab {
 	
@@ -36,10 +37,13 @@ class RankingTab extends JRankTab {
 	private String experimentName;
 	
 	/**
-	 * Creates ranking tab.
+	 * Creates ranking tab for .ranking files.
+	 * It will load fxml file and initialize tab with .ranking file content.
+	 * It also loads MemoryContainer and properties file.
 	 * @param workspaceItem from workspace tree
-	 * @param tabText to display on tab header
-	 * @throws TabInitializationException when something goes wrong
+	 * @param tabText to display on tab header(tab text)
+	 * @throws TabInitializationException when error occur on tab initialization
+	 * @throws IOException when somethings goes wrong with file reading
 	 */
 	RankingTab(WorkspaceItem workspaceItem, String tabText) throws IOException, TabInitializationException {
 		try {

@@ -12,11 +12,23 @@ import java.io.IOException;
 
 /**
  * Created by Piotr on 2018-04-29.
+ * This tab displays properties form from .properties file.
+ * Properties form(ruleRank settings) are fully editable.
+ * @see PropertiesController
+ * @see JRankProperties
  */
 class PropertiesTab extends JRankTab {
 	
 	private JRankProperties jRankProperties;
 	
+	/**
+	 * Creates properties tab for .properties files.
+	 * It will load fxml file and initialize tab with .properties file content.
+	 * @param workspaceItem from workspace tree
+	 * @param tabText to display on tab header(tab text)
+	 * @throws TabInitializationException when error occur on tab initialization
+	 * @throws IOException when somethings goes wrong with file reading
+	 */
 	PropertiesTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException, IOException {
 		try {
 			PropertiesController controller = initializeTabAndGetController(workspaceItem, tabText);

@@ -19,6 +19,12 @@ import static java.util.Objects.nonNull;
 
 /**
  * Created by Piotr on 2018-04-29.
+ * This controller manages upper TabPane.
+ * In this pane main tabs are displayed.
+ * It allows to add and remove(close) tabs from TabPane.
+ * All added tabs should inherit JRankTab class.
+ * @see JRankTab
+ * @see pl.jowko.jrank.desktop.feature.tabs.upper package for all supported tabs
  */
 public class UpperTabsController {
 	
@@ -39,6 +45,16 @@ public class UpperTabsController {
 		menuCreator = new TabsContextMenuCreator(upperTabs);
 	}
 	
+	/**
+	 * Creates tab from provided workspace tree item.
+	 * It will check, if tab for provided item exists.
+	 * If such tab exists, nothing happens.
+	 * If such tab doesn't exits, new tab will be created for provided item.
+	 * Only one tab for each workspace item can be created.
+	 * Created tab will load necessary data and focus will be set on new tab.
+	 * If some error occurs while creating tab, tab will not be created and error will be logged.
+	 * @param workspaceItem from workspace tree
+	 */
 	public void createTab(WorkspaceItem workspaceItem) {
 		try {
 			String tabText = createTabText(workspaceItem);
@@ -59,6 +75,10 @@ public class UpperTabsController {
 		}
 	}
 	
+	/**
+	 * Close provided tab in correct way.
+	 * @param tab to close
+	 */
 	public void closeTab(Tab tab) {
 		EventHandler<Event> handler = tab.getOnClosed();
 		if (null != handler) {
@@ -68,17 +88,40 @@ public class UpperTabsController {
 		}
 	}
 	
+	/**
+	 * Gets tab from TabPane if tab with provided name already exists.
+	 * @param newTabText by with search will be performed
+	 * @return found tab or null
+	 */
 	private Tab getTabIfExists(String newTabText) {
 		return upperTabs.getTabs().stream()
 				.filter(tab -> nonNull(tab.getText()) && tab.getText().equals(newTabText))
 				.findAny().orElse(null);
 	}
 	
+	/**
+	 * Creates tab text(header) from workspace item.
+	 * Experiment name and file name will be concatenated to form tab name.
+	 * @param workspaceItem for with tab text will be created
+	 * @return String containing experiment and file name
+	 */
 	private String createTabText(WorkspaceItem workspaceItem) {
 		Path path = Paths.get(workspaceItem.getFilePath());
 		return path.getParent().getFileName().toString() + "\\" + workspaceItem.getFileName();
 	}
 	
+	/**
+	 * Creates tab of correct type for provided workspace item and tab text.
+	 * Each file type has own tab type and fxml file.
+	 * If application tries to create tab for directory or for root node, WrongFileTypeException will be thrown
+	 * @param workspaceItem from with tab will be created
+	 * @param tabText do display on tab
+	 * @see pl.jowko.jrank.desktop.feature.tabs.upper package for all supported tabs
+	 * @return JRankTab for provided item and will initialized data
+	 * @throws JRankException when something goes wrong with initializing tab
+	 * @throws IOException when something goes wrong with reading files
+	 * @throws WrongFileTypeException when directory or root node will be passed to this methd
+	 */
 	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws JRankException, IOException {
 		FileType itemType = workspaceItem.getFileType();
 		switch (itemType) {
