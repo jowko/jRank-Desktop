@@ -22,6 +22,9 @@ import static pl.poznan.put.cs.idss.jrs.types.PairField.STRICT_ORDINAL_DOMINANCE
 
 /**
  * Created by Piotr on 2018-05-01.
+ * This class creates all data used in ComboBoxes on properties form.
+ * It provides JRankParameter lists with are used to pass and display data from "enum" jRank options.
+ * @see JRankParameter
  */
 class JRankParametersService {
 	
@@ -56,6 +59,12 @@ class JRankParametersService {
 		return instance;
 	}
 	
+	/**
+	 * Extract parameter from provided parameters list by textValue field.
+	 * @param parameters from with parameter will be extracted
+	 * @param textValue from JRankParameter to find
+	 * @return JRankParameter or null
+	 */
 	public JRankParameter findByTextValue(List<JRankParameter> parameters, String textValue) {
 		return parameters.stream()
 				.filter(param -> param.getTextValue().equalsIgnoreCase(textValue))
@@ -63,6 +72,9 @@ class JRankParametersService {
 				.orElse(null);
 	}
 	
+	/**
+	 * @return empty paramter with no label and text value. It is treated as no option were chosen.
+	 */
 	public JRankParameter getEmptyParameter() {
 		return emptyParameter;
 	}

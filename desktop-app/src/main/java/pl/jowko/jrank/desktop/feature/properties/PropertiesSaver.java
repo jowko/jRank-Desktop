@@ -11,6 +11,10 @@ import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
  * Created by Piotr on 2018-05-04.
+ * This class is used to save properties in .properties file.
+ * It converts JRankProperties back to Properties objects and replace old properties file with new one.
+ * @see Properties
+ * @see JRankProperties
  */
 class PropertiesSaver {
 	
@@ -18,6 +22,10 @@ class PropertiesSaver {
 	private JRankProperties jRankProperties;
 	private Properties properties;
 	
+	/**
+	 * Creates instance of this class and converts JRankProperties to properties.
+	 * @param jRankProperties with will be saved.
+	 */
 	PropertiesSaver(JRankProperties jRankProperties) {
 		emptyParameter = JRankParametersService.getInstance().getEmptyParameter();
 		this.jRankProperties = jRankProperties;
@@ -25,6 +33,11 @@ class PropertiesSaver {
 		initializeProperties();
 	}
 	
+	/**
+	 * Save properties to file on provided file path.
+	 * @param filePath where file will be saved
+	 * @throws IOException when something goes wrong with saving file
+	 */
 	void save(String filePath) throws IOException {
 		properties.store(new FileOutputStream(filePath), null);
 	}
@@ -33,6 +46,9 @@ class PropertiesSaver {
 		return properties;
 	}
 	
+	/**
+	 * Converts all JRankProperties to Properties object.
+	 */
 	private void initializeProperties() {
 		setStringProperty(LEARNING_DATA_FILE, jRankProperties.getLearningDataFile());
 		setStringProperty(TEST_DATA_FILE, jRankProperties.getTestDataFile());

@@ -17,12 +17,24 @@ public class RunnerPropertiesProvider {
 	private JRankProperties properties;
 	private JRankProperties defaults;
 	
+	/**
+	 * Initialize instance of this class.
+	 * @param experimentProperties from experiment or form
+	 * @param defaults properties from default.properties file
+	 */
 	public RunnerPropertiesProvider(JRankProperties experimentProperties, JRankProperties defaults) {
 		parametersService = JRankParametersService.getInstance();
 		this.properties = (JRankProperties) Cloner.deepClone(experimentProperties);
 		this.defaults = defaults;
 	}
 	
+	/**
+	 * Merge provided properties with defaults and return result.
+	 * If property from provided properties is null or empty, it will be replaced with default value.
+	 * If both provided properties and defaults have filled property A, property A is taken from provided properties.
+	 * All properties are checked.
+	 * @return merged provided properties and default properties
+	 */
 	public JRankProperties getPropertiesWithDefaults() {
 		setDefaultPropertiesForFiles();
 		setDefaultPropertiesForRankingInformation();

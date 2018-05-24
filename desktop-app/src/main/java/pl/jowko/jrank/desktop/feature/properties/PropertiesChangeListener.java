@@ -10,6 +10,8 @@ import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
  * This class is used to detect changes on properties form.
  * It creates listeners for ComboBox and TextField fields.
  * When value in some field changes, this class sets JRankTab to edit mode.
+ * @see PropertiesController
+ * @see JRankTab
  */
 class PropertiesChangeListener {
 	

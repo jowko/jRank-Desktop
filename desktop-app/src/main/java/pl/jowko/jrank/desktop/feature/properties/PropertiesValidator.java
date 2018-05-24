@@ -12,6 +12,9 @@ import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
 
 /**
  * Created by Piotr on 2018-05-06.
+ * This class perform validation on properties form before save.
+ * Most of validations were extracted from JRank console application.
+ * @see PropertiesController
  */
 class PropertiesValidator {
 	
@@ -19,6 +22,10 @@ class PropertiesValidator {
 	private JRankProperties properties;
 	private String errorMsg;
 	
+	/**
+	 * Creates instance of this class and validates provided properties
+	 * @param properties to validate
+	 */
 	PropertiesValidator(JRankProperties properties) {
 		this.properties = properties;
 		labels = LanguageService.getInstance();
@@ -26,14 +33,26 @@ class PropertiesValidator {
 		validate();
 	}
 	
+	/**
+	 * Check if validator found any validation errors.
+	 * @return true if provided properties are valid, false otherwise
+	 */
 	boolean isValid() {
 		return errorMsg.isEmpty();
 	}
 	
+	/**
+	 * Gets validation messages when validation contains errors.
+	 * @return all error messages in one String
+	 */
 	String getErrorMessages() {
 		return errorMsg;
 	}
 	
+	/**
+	 * Perform validation on properties.
+	 * Code was modeled by validation in jRank console application
+	 */
 	private void validate() {
 		if(StringUtils.isNullOrEmpty(properties.getLearningDataFile()))
 			errorMsg += labels.get(Labels.LEARNING_DATA_FILE_EMPTY);
@@ -118,6 +137,10 @@ class PropertiesValidator {
 				&& properties.getOptimizeRuleConsistencyInVCDomLEMWrt().getTextValue().equalsIgnoreCase("set");
 	}
 	
+	/**
+	 * Checks, what approach used chosen: DRSA or VCDRSA.
+	 * @return 0 if approach is DRSA and 1 if approach is VCDRSA
+	 */
 	private int getApproach() {
 		if(isNull(properties.getConsistencyMeasure()) || isNull(properties.getConsistencyMeasureThreshold()))
 			return DRSA;

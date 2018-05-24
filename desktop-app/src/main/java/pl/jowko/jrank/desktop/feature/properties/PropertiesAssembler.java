@@ -13,6 +13,9 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-04-29.
+ * Transform Properties object to JRankProperties object.
+ * @see Properties
+ * @see JRankProperties
  */
 public class PropertiesAssembler {
 	
@@ -21,11 +24,22 @@ public class PropertiesAssembler {
 	private Properties properties;
 	private JRankParametersService paramService;
 	
+	/**
+	 * Creates instance of this class
+	 * @param properties loaded from .properties file
+	 */
 	public PropertiesAssembler(Properties properties) {
 		this.properties = properties;
 		this.paramService = JRankParametersService.getInstance();
 	}
 	
+	/**
+	 * Convert provided properties to JRankProperties object.
+	 * After getting property from properties, they are removed from properties objects.
+	 * If any properties will remain after mapping, this means that some properties are not recognized by application.
+	 * In such case all remaining properties keys will be logged.
+	 * @return JRankProperties containing options from properties file
+	 */
 	public JRankProperties toJrankProperties() {
 		JRankProperties prop = new JRankProperties();
 		
@@ -69,6 +83,13 @@ public class PropertiesAssembler {
 		return prop;
 	}
 	
+	/**
+	 * Get string value from property.
+	 * This method removes spaces and comments from provided property.
+	 * It will also remove provided property from properties object.
+	 * @param parameterName with will be extracted
+	 * @return String value for provided property name or null
+	 */
 	private String getStringFromProperty(String parameterName) {
 		String parameterValue = deleteTrailingWhiteSpacesAndComment(properties.getProperty(parameterName));
 		properties.keySet().remove(parameterName);
@@ -77,6 +98,11 @@ public class PropertiesAssembler {
 		return parameterValue;
 	}
 	
+	/**
+	 * Gets double value from provided property.
+	 * @param parameterName with will be extracted
+	 * @return Double value for provided property or null
+	 */
 	private Double getDoubleFromProperty(String parameterName) {
 		String parameterValue = getStringFromProperty(parameterName);
 		
@@ -91,6 +117,11 @@ public class PropertiesAssembler {
 		return null;
 	}
 	
+	/**
+	 * Gets integer value from provided property.
+	 * @param parameterName with will be extracted
+	 * @return Integer value for provided property or null
+	 */
 	private Integer getIntegerFromProperty(String parameterName) {
 		String parameterValue = getStringFromProperty(parameterName);
 		
@@ -109,6 +140,15 @@ public class PropertiesAssembler {
 		JRankLogger.error("Error when reading parameter: [" + parameterName + "]. Value: [" + parameterValue + "] is not a valid number.");
 	}
 	
+	/**
+	 * Gets JRankParameter for provided property name.
+	 * After extracting property text value, search is perform in parameters list to extract correct JRankParameter
+	 * @see JRankParameter
+	 * @see JRankParametersService
+	 * @param parameters list with available options for provided property name
+	 * @param parameterName with will be extracted
+	 * @return JRankProperty for provided value or empty property indicating no option selected
+	 */
 	private JRankParameter getParameter(List<JRankParameter> parameters, String parameterName) {
 		String parameterValue = getStringFromProperty(parameterName);
 		
@@ -130,6 +170,11 @@ public class PropertiesAssembler {
 		return commentsPattern.matcher(value).replaceFirst("").trim();
 	}
 	
+	/**
+	 * When properties are extracted, all valid values are removed from properties object.
+	 * If any properties remains after mapping, this means that some properties were not recognized by application.
+	 * In such case all properties keys are logged.
+	 */
 	private void validatePropertiesAndShowWarnings() {
 		if(not(properties.keySet().isEmpty())) {
 			JRankLogger.warn("Some properties were not recognized: " + properties + ". Check spelling of properties names.");

@@ -5,8 +5,13 @@ import java.util.Objects;
 
 /**
  * Created by Piotr on 2018-05-01.
+ * This class is used in properties form as data storage for ComboBox values.
+ * It contains label and also text and int value from jRank application.
+ * @see JRankParametersService
  */
 public class JRankParameter implements Serializable {
+	
+	private static final long serialVersionUID = -9123653248987654173L;
 	
 	private String label;
 	/**
@@ -18,6 +23,11 @@ public class JRankParameter implements Serializable {
 	 */
 	private int value;
 	
+	/**
+	 * @param label to display for user
+	 * @param textValue from jRank application
+	 * @param value from jRank application
+	 */
 	JRankParameter(String label, String textValue, int value) {
 		this.label = label;
 		this.textValue = textValue;

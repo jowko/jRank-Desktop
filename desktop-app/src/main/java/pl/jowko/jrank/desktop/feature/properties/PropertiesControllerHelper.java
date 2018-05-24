@@ -8,6 +8,8 @@ import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
  * Created by Piotr on 2018-05-04.
+ * This class contains useful methods for PropertiesController
+ * @see PropertiesController
  */
 class PropertiesControllerHelper {
 	
@@ -15,6 +17,11 @@ class PropertiesControllerHelper {
 	private PropertiesController controller;
 	private JRankProperties editableProperties;
 	
+	/**
+	 * Initializes instance of this class.
+	 * This class will manipulate controller fields.
+	 * @param controller from properties form
+	 */
 	PropertiesControllerHelper(PropertiesController controller) {
 		parametersService = JRankParametersService.getInstance();
 		this.controller = controller;
@@ -29,10 +36,18 @@ class PropertiesControllerHelper {
 		controller.consistencyMeasureThreshold.setCharLimit(50);
 	}
 	
+	/**
+	 * Sets properties with are used to fill fields in properties form.
+	 * Used when restoring default values in form.
+	 * @param editableProperties with will replace current form values
+	 */
 	void setEditableProperties(JRankProperties editableProperties) {
 		this.editableProperties = editableProperties;
 	}
 	
+	/**
+	 * Clear all fields to empty values.
+	 */
 	void clearForm() {
 		JRankParameter emptyParameter = parametersService.getEmptyParameter();
 		
@@ -76,6 +91,9 @@ class PropertiesControllerHelper {
 		fillFieldsValues();
 	}
 	
+	/**
+	 * Fills all fields with data extracted from editableProperties variable.
+	 */
 	void fillFieldsValues() {
 		controller.learningDataFile.setText(editableProperties.getLearningDataFile());
 		controller.testDataFile.setText(editableProperties.getTestDataFile());
@@ -115,6 +133,10 @@ class PropertiesControllerHelper {
 		controller.writeLearningPositiveExamples.getSelectionModel().select(editableProperties.getWriteLearningPositiveExamples());
 	}
 	
+	/**
+	 * Extract all values from properties form and assembles new JrankProperties from them.
+	 * @return JRankProperties with values from properties form.
+	 */
 	JRankProperties getPropertiesFromForm() {
 		JRankProperties jRankProperties = new JRankProperties();
 		
@@ -158,6 +180,9 @@ class PropertiesControllerHelper {
 		return jRankProperties;
 	}
 	
+	/**
+	 * Sets tiled panes as expanded or collapsed according to user settings.
+	 */
 	private void initTitledPanes() {
 		boolean isAdvancedPropertiesEnabled = UserSettingsService.getInstance().getUserSettings().isAdvancedPropertiesEnabled();
 		controller.filesPane.setExpanded(isAdvancedPropertiesEnabled);
@@ -165,6 +190,10 @@ class PropertiesControllerHelper {
 		controller.additionalInfoPane.setExpanded(isAdvancedPropertiesEnabled);
 	}
 	
+	/**
+	 * Fills all ComboBoxes with options to choose.
+	 * @see JRankParametersService
+	 */
 	private void fillComboBoxes() {
 		controller.typeOfFamilyCriteria.getItems().addAll(parametersService.getTypeOfFamilyOfCriteria());
 		controller.typeOfRules.getItems().addAll(parametersService.getTypeOfRules());

@@ -5,8 +5,12 @@ import java.util.Objects;
 
 /**
  * Created by Piotr on 2018-04-29.
+ * Container for all jRank options from .properties file.
+ * @see PropertiesAssembler
  */
 public class JRankProperties implements Serializable {
+	
+	private static final long serialVersionUID = -1902681242571506452L;
 	
 	private String learningDataFile;
 	private String testDataFile;

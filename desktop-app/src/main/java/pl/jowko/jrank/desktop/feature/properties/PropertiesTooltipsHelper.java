@@ -10,6 +10,9 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-07.
+ * This class creates tooltips for properties form and its fields.
+ * If tooltips are disabled in user settings, they will not be added to form.
+ * @see PropertiesController
  */
 class PropertiesTooltipsHelper {
 	
@@ -19,6 +22,10 @@ class PropertiesTooltipsHelper {
 	private Duration showDuration;
 	private Duration delayDuration;
 	
+	/**
+	 * Create instance of this class and initialize variables.
+	 * @param controller from properties form
+	 */
 	PropertiesTooltipsHelper(PropertiesController controller) {
 		labels = LanguageService.getInstance();
 		this.controller = controller;
@@ -26,6 +33,10 @@ class PropertiesTooltipsHelper {
 		delayDuration = new Duration(1500);
 	}
 	
+	/**
+	 * Add tooltips for fields in properties form.
+	 * If user disabled showing tooltips in user settings, tooltips will not be created.
+	 */
 	void initializeTooltips() {
 		boolean isTooltipsEnabled = UserSettingsService.getInstance().getUserSettings().isTooltipsEnabled();
 		if(not(isTooltipsEnabled))
@@ -95,6 +106,12 @@ class PropertiesTooltipsHelper {
 		controller.filesPane.setTooltip(getTooltip(Labels.FILE_PANE_TOOLTIP));
 	}
 	
+	/**
+	 * Create tooltip with provided label.
+	 * It is initialized with default settings
+	 * @param labelCode with is used to find translation
+	 * @return tooltip containing text translated with labelCode
+	 */
 	private Tooltip getTooltip(String labelCode) {
 		Tooltip tooltip = new Tooltip(labels.get(labelCode));
 		tooltip.setShowDuration(showDuration);
