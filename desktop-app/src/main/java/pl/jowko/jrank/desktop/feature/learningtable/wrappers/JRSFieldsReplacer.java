@@ -49,20 +49,22 @@ public class JRSFieldsReplacer {
 				EnumField field = (EnumField) initialValue;
 				attribute.setInitialValue(new EnumFieldWrapper(field));
 			}
-			
-			if(initialValue instanceof IntegerField) {
+			else if(initialValue instanceof CardinalField) {
+				CardinalFieldWrapper field = new CardinalFieldWrapper();
+				field.set(((CardinalField) initialValue).get());
+				attribute.setInitialValue(field);
+			}
+			else if(initialValue instanceof IntegerField) {
 				IntegerFieldWrapper field = new IntegerFieldWrapper();
 				field.set(((IntegerField) initialValue).get());
 				attribute.setInitialValue(field);
 			}
-			
-			if(initialValue instanceof FloatField) {
+			else if(initialValue instanceof FloatField) {
 				FloatFieldWrapper field = new FloatFieldWrapper();
 				field.set(((FloatField) initialValue).get());
 				attribute.setInitialValue(field);
 			}
-			
-			if(initialValue instanceof StringField) {
+			else if(initialValue instanceof StringField) {
 				StringFieldWrapper field = new StringFieldWrapper();
 				field.set(((StringField) initialValue).get());
 				attribute.setInitialValue(field);
@@ -93,8 +95,16 @@ public class JRSFieldsReplacer {
 					
 					fields[i] = wrapper;
 				}
-				
-				if(fields[i] instanceof IntegerField) {
+				else if(fields[i] instanceof CardinalField) {
+					CardinalFieldWrapper wrapper = new CardinalFieldWrapper();
+					if(fields[i].isUnknown() == 0)
+						wrapper.setUnknown();
+					else
+						wrapper.set(((CardinalField)fields[i]).get());
+					
+					fields[i] = wrapper;
+				}
+				else if(fields[i] instanceof IntegerField) {
 					IntegerFieldWrapper wrapper = new IntegerFieldWrapper();
 					if(fields[i].isUnknown() == 0)
 						wrapper.setUnknown();
@@ -103,8 +113,7 @@ public class JRSFieldsReplacer {
 					
 					fields[i] = wrapper;
 				}
-				
-				if(fields[i] instanceof FloatField) {
+				else if(fields[i] instanceof FloatField) {
 					FloatFieldWrapper wrapper = new FloatFieldWrapper();
 					if(fields[i].isUnknown() == 0)
 						wrapper.setUnknown();
@@ -113,8 +122,7 @@ public class JRSFieldsReplacer {
 					
 					fields[i] = wrapper;
 				}
-				
-				if(fields[i] instanceof StringField) {
+				else if(fields[i] instanceof StringField) {
 					StringFieldWrapper wrapper = new StringFieldWrapper();
 					if(fields[i].isUnknown() == 0)
 						wrapper.setUnknown();
@@ -138,23 +146,19 @@ public class JRSFieldsReplacer {
 				EnumFieldWrapper wrapper = (EnumFieldWrapper) attribute.getInitialValue();
 				attribute.setInitialValue(getEnumField(wrapper));
 			}
-			
-			if(attribute.getInitialValue() instanceof IntegerFieldWrapper) {
+			else if(attribute.getInitialValue() instanceof IntegerFieldWrapper) {
 				IntegerFieldWrapper wrapper = (IntegerFieldWrapper) attribute.getInitialValue();
 				attribute.setInitialValue(new IntegerField(wrapper.get()));
 			}
-			
-			if(attribute.getInitialValue() instanceof CardinalFieldWrapper) {
+			else if(attribute.getInitialValue() instanceof CardinalFieldWrapper) {
 				CardinalFieldWrapper wrapper = (CardinalFieldWrapper) attribute.getInitialValue();
 				attribute.setInitialValue(new CardinalField(wrapper.get()));
 			}
-			
-			if(attribute.getInitialValue() instanceof FloatFieldWrapper) {
+			else if(attribute.getInitialValue() instanceof FloatFieldWrapper) {
 				FloatFieldWrapper wrapper = (FloatFieldWrapper) attribute.getInitialValue();
 				attribute.setInitialValue(new FloatField(wrapper.get()));
 			}
-			
-			if(attribute.getInitialValue() instanceof StringFieldWrapper) {
+			else if(attribute.getInitialValue() instanceof StringFieldWrapper) {
 				StringFieldWrapper wrapper = (StringFieldWrapper) attribute.getInitialValue();
 				attribute.setInitialValue( new StringField(wrapper.get()));
 			}
@@ -180,31 +184,26 @@ public class JRSFieldsReplacer {
 					EnumField wrapper = (EnumField)fields[i];
 					fields[i] = getEnumField(wrapper);
 				}
-				
-				if(fields[i] instanceof EnumFieldWrapper) {
+				else if(fields[i] instanceof EnumFieldWrapper) {
 					EnumFieldWrapper wrapper = ((EnumFieldWrapper) fields[i]);
 					fields[i] = getEnumField(wrapper);
 				}
-
-				if(fields[i] instanceof IntegerFieldWrapper) {
+				else if(fields[i] instanceof IntegerFieldWrapper) {
 					IntegerField field = new IntegerField();
 					field.copy(fields[i]);
 					fields[i] = field;
 				}
-
-				if(fields[i] instanceof CardinalFieldWrapper) {
+				else if(fields[i] instanceof CardinalFieldWrapper) {
 					CardinalField field = new CardinalField();
 					field.copy(fields[i]);
 					fields[i] = field;
 				}
-
-				if(fields[i] instanceof FloatFieldWrapper) {
+				else if(fields[i] instanceof FloatFieldWrapper) {
 					FloatField field = new FloatField();
 					field.copy(fields[i]);
 					fields[i] = field;
 				}
-
-				if(fields[i] instanceof StringFieldWrapper) {
+				else if(fields[i] instanceof StringFieldWrapper) {
 					StringFieldWrapper wrapper = ((StringFieldWrapper) fields[i]);
 					StringField field = new StringField(wrapper.get());
 					if(wrapper.isUnknown() == 0 || wrapper.get().isEmpty()) {
