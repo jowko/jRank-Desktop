@@ -1,10 +1,10 @@
 package pl.jowko.jrank.desktop.controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
@@ -43,10 +43,10 @@ public class MenuController {
 	}
 	
 	/**
-	 * Closes application.
+	 * Closes application in proper way.
 	 */
 	public void onQuitAction() {
-		Platform.exit();
+		Main.closeApplication();
 	}
 	
 	/**

@@ -4,17 +4,23 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tab;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.settings.ConfigurationInitializer;
+import pl.jowko.jrank.desktop.feature.tabs.TabEditionChecker;
+import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
+import java.util.List;
 
 import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MIN_HEIGHT;
 import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MIN_WIDTH;
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-03-16.
@@ -28,6 +34,7 @@ import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MIN_WIDTH;
 public class Main extends Application {
 	
 	private static Scene scene;
+	private static Stage stage;
 	
 	private LanguageService labels;
 	
@@ -45,6 +52,7 @@ public class Main extends Application {
 		root.getStylesheets().add("common.css");
 		
 		scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
+		stage = primaryStage;
 		labels = LanguageService.getInstance();
 		
 		primaryStage.setTitle(labels.get(Labels.APP_TITLE));
@@ -52,6 +60,7 @@ public class Main extends Application {
 		primaryStage.setMinWidth(MIN_WIDTH);
 		primaryStage.setMinHeight(MIN_HEIGHT);
 		//primaryStage.setMaximized(true);
+		setOnCloseEvent(primaryStage);
 		
 		primaryStage.show();
 		JRankLogger.init("Application started");
@@ -88,6 +97,38 @@ public class Main extends Application {
 	 */
 	public static Scene getScene() {
 		return scene;
+	}
+	
+	/**
+	 * Close application properly.
+	 * It will fire onCloseRequest with will close application.
+	 */
+	public static void closeApplication() {
+		stage.fireEvent(
+				new WindowEvent(
+						stage,
+						WindowEvent.WINDOW_CLOSE_REQUEST
+				)
+		);
+	}
+	
+	/**
+	 * Initialize handler for onCloseRequest event.
+	 * It will check if any tabs were edited.
+	 * If at least one tab was edited, applications ask for confirmation to close app.
+	 * If user confirms close action or no tabs were edited, application will be closed.
+	 * If user didn't confirmed close action, nothing happens.
+	 * @see TabEditionChecker
+	 */
+	private void setOnCloseEvent(Stage primaryStage) {
+		TabEditionChecker editionChecker = new TabEditionChecker();
+		primaryStage.setOnCloseRequest(we -> {
+			List<Tab> tabs = UpperTabsController.getInstance().getUpperTabs().getTabs();
+			boolean areTabsEdited = editionChecker.areTabsInEditMode(tabs);
+			if(not(editionChecker.shouldPerformAction(areTabsEdited, Labels.TABS_CLOSE_ALL_CONFIRM))) {
+				we.consume();
+			}
+		});
 	}
 	
 }

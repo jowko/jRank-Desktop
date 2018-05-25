@@ -3,11 +3,10 @@ package pl.jowko.jrank.desktop.feature.tabs.upper;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
-import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.desktop.feature.tabs.TabEditionChecker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +17,13 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * Created by Piotr on 2018-05-18.
  * This class creates context menus for tab headers.
  * This actions must be created for each tab with are added to TabPane.
+ * @see TabEditionChecker
  */
 class TabsContextMenuCreator {
 	
 	private LanguageService labels;
 	private UpperTabsController controller;
+	private TabEditionChecker editionChecker;
 	
 	/**
 	 * Create instance of this class
@@ -30,6 +31,7 @@ class TabsContextMenuCreator {
 	 */
 	TabsContextMenuCreator(UpperTabsController controller) {
 		this.controller = controller;
+		editionChecker = new TabEditionChecker();
 		labels = LanguageService.getInstance();
 	}
 	
@@ -62,7 +64,7 @@ class TabsContextMenuCreator {
 		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_THIS));
 		closeTab.setOnAction(event -> {
 			
-			if(shouldPerformAction(tab.isTabEdited(), Labels.TABS_CLOSE_THIS_CONFIRM)) {
+			if(editionChecker.shouldPerformAction(tab.isTabEdited(), Labels.TABS_CLOSE_THIS_CONFIRM)) {
 				controller.closeTab(tab);
 			}
 			
@@ -81,9 +83,9 @@ class TabsContextMenuCreator {
 	private MenuItem createCloseAllTabMenuItem() {
 		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_ALL));
 		closeTab.setOnAction(event -> {
-			long editedTabsCount = getEditedTabsCount(controller.getUpperTabs().getTabs());
+			boolean areTabsEdited = editionChecker.areTabsInEditMode(controller.getUpperTabs().getTabs());
 			
-			if(shouldPerformAction(editedTabsCount > 0, Labels.TABS_CLOSE_ALL_CONFIRM)) {
+			if(editionChecker.shouldPerformAction(areTabsEdited, Labels.TABS_CLOSE_ALL_CONFIRM)) {
 				controller.closeTab(new ArrayList<>(controller.getUpperTabs().getTabs()));
 			}
 			
@@ -109,10 +111,9 @@ class TabsContextMenuCreator {
 					tabsToRemove.add(tabToRemove);
 				}
 			}
+			boolean areTabsEdited = editionChecker.areTabsInEditMode(tabsToRemove);
 			
-			long editedTabsCount = getEditedTabsCount(tabsToRemove);
-			
-			if(shouldPerformAction(editedTabsCount > 0, Labels.TABS_CLOSE_OTHERS_CONFIRM)) {
+			if(editionChecker.shouldPerformAction(areTabsEdited, Labels.TABS_CLOSE_OTHERS_CONFIRM)) {
 				controller.closeTab(tabsToRemove);
 			}
 			
@@ -120,25 +121,5 @@ class TabsContextMenuCreator {
 		return closeTab;
 	}
 	
-	/**
-	 * Display confirmation dialog if tab edition occurred.
-	 * @param isEditModeOn boolean condition indicating that confirmation dialog should be displayed
-	 * @param labelCode with will be displayed on confirmation dialog
-	 * @return true is user confirm action or no edit action occurred, false otherwise
-	 */
-	private boolean shouldPerformAction(boolean isEditModeOn, String labelCode) {
-		if(isEditModeOn)
-			return DialogsService.showConfirmationDialog(labels.get(labelCode));
-		return true;
-	}
-	
-	private long getEditedTabsCount(List<Tab> tabs) {
-		return tabs.stream()
-				.filter(tab -> {
-					JRankTab jRankTab = (JRankTab) tab;
-					return jRankTab.isTabEdited();
-				})
-				.count();
-	}
 	
 }
