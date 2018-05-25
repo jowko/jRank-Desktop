@@ -52,6 +52,14 @@ public class LowerTabsController {
 	}
 	
 	/**
+	 * This method selects log tab.
+	 * When tab will be selected, it will be focused.
+	 */
+	public void focusOnLogTab() {
+		lowerTabs.getSelectionModel().select(logsTab);
+	}
+	
+	/**
 	 * Remove provided tab from lower tabs.
 	 * Tab will be closed automatically and removed from lower tabs.
 	 * @param tab

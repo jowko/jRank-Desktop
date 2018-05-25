@@ -9,6 +9,8 @@ import pl.jowko.jrank.logger.JRankLogger;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import static java.util.Objects.nonNull;
+
 /**
  * Created by Piotr on 2018-04-10.
  * Controller for logs tab.
@@ -31,7 +33,22 @@ public class LogsController {
 		System.setOut(ps);
 		System.setErr(ps);
 		initializeContextMenu();
+		initializeFocusLogTabEvent();
 		JRankLogger.init("Initialized logs tab");
+	}
+	
+	/**
+	 * This method add listener to TextArea text property.
+	 * On each text change(new logs), log tab will be focused.
+	 * Instance of controller is got by each time, because on the start of application instance of LowerTabsController can be null.
+	 * @see LowerTabsController
+	 */
+	private void initializeFocusLogTabEvent() {
+		logsTextArea.textProperty().addListener((oo, o, n) -> {
+			LowerTabsController controller = LowerTabsController.getInstance();
+			if(nonNull(controller))
+				controller.focusOnLogTab();
+		});
 	}
 	
 	private void initializeContextMenu() {
