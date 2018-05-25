@@ -25,13 +25,14 @@ class PropertiesTab extends JRankTab {
 	 * Creates properties tab for .properties files.
 	 * It will load fxml file and initialize tab with .properties file content.
 	 * @param workspaceItem from workspace tree
-	 * @param tabText to display on tab header(tab text)
+	 * @param tabName to display on tab header(tab text)
 	 * @throws TabInitializationException when error occur on tab initialization
 	 * @throws IOException when somethings goes wrong with file reading
 	 */
-	PropertiesTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException, IOException {
+	PropertiesTab(WorkspaceItem workspaceItem, String tabName) throws TabInitializationException, IOException {
+		super(tabName);
 		try {
-			PropertiesController controller = initializeTabAndGetController(workspaceItem, tabText);
+			PropertiesController controller = initializeTabAndGetController(workspaceItem);
 			jRankProperties = JRSFileMediator.loadProperties(workspaceItem);
 			controller.initializeProperties(getJRankProperties(), workspaceItem, this);
 		} catch (JRankRuntimeException e) {

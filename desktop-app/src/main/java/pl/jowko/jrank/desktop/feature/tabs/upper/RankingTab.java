@@ -41,16 +41,17 @@ class RankingTab extends JRankTab {
 	 * It will load fxml file and initialize tab with .ranking file content.
 	 * It also loads MemoryContainer and properties file.
 	 * @param workspaceItem from workspace tree
-	 * @param tabText to display on tab header(tab text)
+	 * @param tabName to display on tab header(tab text)
 	 * @throws TabInitializationException when error occur on tab initialization
 	 * @throws IOException when somethings goes wrong with file reading
 	 */
-	RankingTab(WorkspaceItem workspaceItem, String tabText) throws IOException, TabInitializationException {
+	RankingTab(WorkspaceItem workspaceItem, String tabName) throws IOException, TabInitializationException {
+		super(tabName);
 		try {
 			String rankingFileContent = JRSFileMediator.loadTextFile(workspaceItem);
 			MemoryContainer container = getMemoryContainer(workspaceItem);
 			
-			RankingController controller = initializeTabAndGetController(workspaceItem, tabText);
+			RankingController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeRanking(rankingFileContent, container);
 			
 		} catch (JRankRuntimeException e) {

@@ -19,11 +19,11 @@ class StatisticsTab extends JRankTab {
 	/**
 	 * Create instance of statistics tab.
 	 * @param rule with will be displayed as first
-	 * @param tabText to set tab header.
+	 * @param tabName to set tab header.
 	 * @throws IOException when something go wrong with loading fxml file
 	 */
-	StatisticsTab(Rule rule, String tabText) throws IOException {
-		setText(tabText);
+	StatisticsTab(Rule rule, String tabName) throws IOException {
+		super(tabName);
 		
 		ResourceLoader loader = new ResourceLoader(getResourceName());
 		Parent tabContent = loader.load();

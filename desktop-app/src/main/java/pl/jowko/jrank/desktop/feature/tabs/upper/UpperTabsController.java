@@ -95,7 +95,10 @@ public class UpperTabsController {
 	 */
 	private Tab getTabIfExists(String newTabText) {
 		return upperTabs.getTabs().stream()
-				.filter(tab -> nonNull(tab.getText()) && tab.getText().equals(newTabText))
+				.filter(tab -> {
+					JRankTab jRankTab = (JRankTab) tab;
+					return nonNull(jRankTab.getTabName()) && jRankTab.getTabName().equals(newTabText);
+				})
 				.findAny().orElse(null);
 	}
 	

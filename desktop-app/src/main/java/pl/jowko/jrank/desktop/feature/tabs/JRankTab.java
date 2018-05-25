@@ -17,7 +17,18 @@ public abstract class JRankTab extends Tab {
 	
 	protected WorkspaceItem workspaceItem;
 	
+	private final String tabName;
 	private boolean tabEdited;
+	
+	/**
+	 * Creates instance of this class.
+	 * Also setting tab text.
+	 * @param tabName to display on table header and with will be final
+	 */
+	protected JRankTab(String tabName) {
+		this.tabName = tabName;
+		setText(tabName);
+	}
 	
 	/**
 	 * This method returns path to fxml resource.
@@ -30,14 +41,12 @@ public abstract class JRankTab extends Tab {
 	 * It loads fxml file for tab by getResourceName method
 	 * It will return Controller from fxml file.
 	 * @param workspaceItem with will be loaded
-	 * @param tabText to display on tab
 	 * @param <T> controller from fxml file
 	 * @return controller loaded from fxml file
 	 * @throws IOException when something goes wrong
 	 */
-	protected <T> T initializeTabAndGetController(WorkspaceItem workspaceItem, String tabText) throws IOException {
+	protected <T> T initializeTabAndGetController(WorkspaceItem workspaceItem) throws IOException {
 		this.workspaceItem = workspaceItem;
-		setText(tabText);
 		
 		ResourceLoader loader = new ResourceLoader(getResourceName());
 		Parent tabContent = loader.load();
@@ -83,6 +92,15 @@ public abstract class JRankTab extends Tab {
 	}
 	
 	/**
+	 * Gets original tab name.
+	 * This value doesn't change, so if tab is in edit mode and has modified name, original value will be returned by this method.
+	 * To get current tab text(header), use getText() method
+	 */
+	public String getTabName() {
+		return tabName;
+	}
+	
+	/**
 	 * Checks if tab was edited.
 	 * If tab was edited, it should have * character in tab name(header).
 	 * @return true if tab was edited, false otherwise
@@ -108,9 +126,8 @@ public abstract class JRankTab extends Tab {
 		
 		if(tabEdited) {
 			setText('*' + getText());
-		} else if(this.tabEdited) {
-			String newText = getText().replaceFirst("\\*", "");
-			setText(newText);
+		} else if(this.tabEdited) { // edition canceled
+			setText(tabName);
 		}
 	}
 	

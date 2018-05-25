@@ -22,14 +22,15 @@ class RulesTab extends JRankTab {
 	 * Creates rules tab for .rules files.
 	 * It will load fxml file and initialize tab with .rules file content.
 	 * @param workspaceItem from workspace tree
-	 * @param tabText to display on tab header(tab text)
+	 * @param tabName to display on tab header(tab text)
 	 * @throws TabInitializationException when error occur on tab initialization
 	 * @throws IOException when somethings goes wrong with file reading
 	 */
-	RulesTab(WorkspaceItem workspaceItem, String tabText) throws TabInitializationException, IOException {
+	RulesTab(WorkspaceItem workspaceItem, String tabName) throws TabInitializationException, IOException {
+		super(tabName);
 		try {
 			RulesContainer container = JRSFileMediator.loadRules(workspaceItem);
-			RulesController controller = initializeTabAndGetController(workspaceItem, tabText);
+			RulesController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeRules(container, workspaceItem, this);
 		} catch (JRankRuntimeException e) {
 			throwInitializationException("rules", workspaceItem.getFileName(), e);
