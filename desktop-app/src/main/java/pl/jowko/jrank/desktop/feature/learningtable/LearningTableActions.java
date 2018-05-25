@@ -84,10 +84,7 @@ public class LearningTableActions {
 		column.setGraphic(tableHelper.getColumnLabel(attribute));
 		column.setMinWidth(50);
 		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
-		
-		if(not(attribute.getActive())) {
-			column.getStyleClass().add("not-active");
-		}
+		setCssStyleForColumn(column);
 		
 		tableHelper.setCellFactories(column, attributeIndex);
 		column.setOnEditCommit(col -> col.getOldValue().copy(col.getNewValue()));
@@ -205,7 +202,7 @@ public class LearningTableActions {
 		tableColumn.setMinWidth(50);
 		tableColumn.setPrefWidth(tableHelper.getColumnPrefWidth(editedAttribute));
 		int attributeIndex = attributes.indexOf(oldAttribute);
-		handleStyleChange(tableColumn);
+		setCssStyleForColumn(tableColumn);
 		
 		if(editedAttribute.getInitialValue() instanceof EnumFieldWrapper) {
 			tableHelper.handleEnumEdition(tableColumn, attributeIndex, learningTable);
@@ -216,14 +213,23 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * This method marks inactive attribute with style from common.css.
-	 * @param tableColumn with was edited
+	 * Sets css styles for column headers.
+	 * If field is not active, all css styles from column are removed to avoid overwriting not active style properties
 	 */
-	private void handleStyleChange(AttributeTableColumn tableColumn) {
+	private void setCssStyleForColumn(AttributeTableColumn tableColumn) {
+		Attribute attribute = tableColumn.getAttribute();
+		if(attribute.getKind() == Attribute.DECISION) {
+			tableColumn.getStyleClass().add("decision");
+		} else if(attribute.getKind() == Attribute.DESCRIPTION) {
+			tableColumn.getStyleClass().add("description");
+		}
+		
 		if(not(tableColumn.getAttribute().getActive())) {
+			tableColumn.getStyleClass().clear();
 			tableColumn.getStyleClass().add("not-active");
 		} else {
 			tableColumn.getStyleClass().remove("not-active");
+			tableColumn.getStyleClass().add("active");
 		}
 	}
 	

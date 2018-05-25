@@ -6,8 +6,18 @@
 	-fx-alignment: CENTER-LEFT;
 }
 
-.table-view .column-header.not-active {
-	-fx-base: yellow;
+.column-header.not-active {
+	-fx-base: pink;
+}
+
+.column-header.active {
+}
+
+.column-header.decision {
+	-fx-base: lightgreen;
+}
+
+.column-header.description {
 }
 
 .border-yellow {
