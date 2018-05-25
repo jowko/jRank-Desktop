@@ -200,8 +200,8 @@ public class LearningTableHelper {
 		else
 			builder.append(labels.get(Labels.LEARN_TABLE_INACTIVE));
 		
-		builder.append(AttributeDialogHelper.getFieldTypeFromField(attribute.getInitialValue()).toString());
-		builder.append(labels.get(Labels.LEARN_TABLE_FIELD));
+		String fieldType = AttributeDialogHelper.getFieldTypeFromField(attribute.getInitialValue()).toString().toLowerCase();
+		builder.append(fieldType);
 		
 		return new Tooltip(builder.toString());
 	}

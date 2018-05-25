@@ -241,7 +241,6 @@ public class Labels {
 	public static final String LEARN_TABLE_DESCRIPTION = "LEARN_TABLE_DESCRIPTION";
 	public static final String LEARN_TABLE_ACTIVE = "LEARN_TABLE_ACTIVE";
 	public static final String LEARN_TABLE_INACTIVE = "LEARN_TABLE_INACTIVE";
-	public static final String LEARN_TABLE_FIELD = "LEARN_TABLE_FIELD";
 	
 	public static final String LEARN_TABLE_DECISION_VALIDATION = "LEARN_TABLE_DECISION_VALIDATION";
 	public static final String LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE = "LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE";
