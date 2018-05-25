@@ -3,8 +3,6 @@ package pl.jowko.jrank.desktop.feature.learningtable;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
-import pl.poznan.put.cs.idss.jrs.types.Field;
-import pl.poznan.put.cs.idss.jrs.types.StringField;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,6 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
-import static pl.jowko.jrank.desktop.utils.StringUtils.isNullOrEmpty;
 
 /**
  * Created by Piotr on 2018-05-16.
@@ -51,33 +48,7 @@ class LearningTableValidator {
 	
 	private void validateTable() {
 		validateDecisionAttributes();
-		validateStringFields();
 		validateAttributeUniqueness();
-	}
-	
-	private void validateStringFields() {
-		for(int index=0; index<table.getExamples().size(); index++) {
-			Field[] fields = table.getExamples().get(index).getFields();
-			validateStringFields(fields, index);
-		}
-	}
-	
-	private void validateStringFields(Field[] fields, int rowIndex) {
-		for(int i=0; i<fields.length; i++) {
-			if(fields[i] instanceof StringField) {
-				String value = ((StringField)fields[i]).get();
-				
-				if(isNullOrEmpty(value)) {
-					errorMsg.append(labels.get(Labels.LEARN_TABLE_STRING_VALIDATION_1))
-							.append(" [")
-							.append(rowIndex)
-							.append("] ")
-							.append(labels.get(Labels.LEARN_TABLE_STRING_VALIDATION_2))
-							.append(table.getAttributes().get(i).getName())
-							.append(labels.get(Labels.LEARN_TABLE_STRING_VALIDATION_3));
-				}
-			}
-		}
 	}
 	
 	private void validateDecisionAttributes() {

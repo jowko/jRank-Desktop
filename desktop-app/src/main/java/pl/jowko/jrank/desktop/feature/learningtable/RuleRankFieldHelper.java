@@ -1,7 +1,8 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.FieldType;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-14.
@@ -11,30 +12,30 @@ class RuleRankFieldHelper {
 	private RuleRankFieldHelper() {}
 	
 	static Field createNewFieldOfProvidedType(Field field) {
-		if(field instanceof StringField)
-			return new StringField();
-		if(field instanceof CardinalField)
-			return new CardinalField();
-		if(field instanceof IntegerField)
-			return new IntegerField();
-		if(field instanceof FloatField)
-			return new FloatField();
-		if(field instanceof TableEnumField)
-			return new TableEnumField(0, ((TableEnumField) field).getDomain());
+		if(field instanceof StringFieldWrapper)
+			return new StringFieldWrapper();
+		if(field instanceof CardinalFieldWrapper)
+			return new CardinalFieldWrapper();
+		if(field instanceof IntegerFieldWrapper)
+			return new IntegerFieldWrapper();
+		if(field instanceof FloatFieldWrapper)
+			return new FloatFieldWrapper();
+		if(field instanceof EnumFieldWrapper)
+			return new EnumFieldWrapper(0, ((EnumFieldWrapper) field).getDomain());
 		
 		return null;
 	}
 	
 	static String getColumnFieldType(Field initialValue) {
-		if(initialValue instanceof StringField)
+		if(initialValue instanceof StringFieldWrapper)
 			return FieldType.STRING_FIELD.toString();
-		if(initialValue instanceof CardinalField)
+		if(initialValue instanceof CardinalFieldWrapper)
 			return FieldType.CARDINAL_FIELD.toString();
-		if(initialValue instanceof IntegerField)
+		if(initialValue instanceof IntegerFieldWrapper)
 			return FieldType.INTEGER_FIELD.toString();
-		if(initialValue instanceof FloatField)
+		if(initialValue instanceof FloatFieldWrapper)
 			return FieldType.DECIMAL_FIELD.toString();
-		if(initialValue instanceof TableEnumField)
+		if(initialValue instanceof EnumFieldWrapper)
 			return FieldType.ENUM_FIELD.toString();
 		
 		return "";

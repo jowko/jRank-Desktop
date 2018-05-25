@@ -17,7 +17,7 @@ import static java.util.Objects.isNull;
 /**
  * Created by Piotr on 2018-05-08.
  */
-class LearningTable implements Serializable {
+public class LearningTable implements Serializable {
 	
 	private static final long serialVersionUID = 3110217394426748894L;
 	
@@ -27,7 +27,7 @@ class LearningTable implements Serializable {
 	private MemoryContainerDescription memoryContainerDescription;
 	private String id;
 	
-	LearningTable(MemoryContainer container) {
+	public LearningTable(MemoryContainer container) {
 		attributes = new ArrayList<>();
 		examples = new ArrayList<>();
 		
@@ -42,7 +42,7 @@ class LearningTable implements Serializable {
 		examples.addAll(container.getExamples());
 	}
 	
-	LearningTable(FileInfo fileInfo, MemoryContainerDescription description, String id) {
+	public LearningTable(FileInfo fileInfo, MemoryContainerDescription description, String id) {
 		attributes = new ArrayList<>();
 		examples = new ArrayList<>();
 		

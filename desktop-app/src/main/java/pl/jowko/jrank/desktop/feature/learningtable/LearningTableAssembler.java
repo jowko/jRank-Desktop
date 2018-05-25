@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * Created by Piotr on 2018-05-15.
+ * This class helps to assemble LearningTable from UI table.
+ * It creates new LearningTable containing newest data from UI table.
  */
 class LearningTableAssembler {
 	
@@ -23,13 +25,23 @@ class LearningTableAssembler {
 	 */
 	private List<Integer> columnsReorderedIndexes;
 	
-	LearningTableAssembler(TableView<ObservableList<Field>> learningTable, LearningTable newTable, List<Attribute> attributes) {
+	/**
+	 * Creates instance of this class and initialize data.
+	 * @param learningTable used in UI
+	 * @param table with is used to extract file info, description and id
+	 * @param attributes with are needed to calculate correct indexes for attributes in case of reorder of columns
+	 */
+	LearningTableAssembler(TableView<ObservableList<Field>> learningTable, LearningTable table, List<Attribute> attributes) {
 		this.learningTable = learningTable;
 		this.attributes = attributes;
 		columnsReorderedIndexes = new ArrayList<>();
-		table = new LearningTable(newTable.getFileInfo(), newTable.getMemoryContainerDescription(), newTable.getId());
+		this.table = new LearningTable(table.getFileInfo(), table.getMemoryContainerDescription(), table.getId());
 	}
 	
+	/**
+	 * Extract all examples and attributes from UI table and return them in new Learning table.
+	 * @return new LearningTable containing newest data from UI table
+	 */
 	LearningTable getLearningTableFromUITable() {
 		addAttributes();
 		addExamples();
@@ -37,7 +49,10 @@ class LearningTableAssembler {
 		return table;
 	}
 	
-	private void addAttributes() throws RuntimeException {
+	/**
+	 * Extract all attributes from UI table using columns.
+	 */
+	private void addAttributes() {
 		ObservableList<TableColumn<ObservableList<Field>, ?>> columns = learningTable.getColumns();
 		
 		for(TableColumn column: columns) {
@@ -47,7 +62,13 @@ class LearningTableAssembler {
 		}
 	}
 	
-	private void addExamples() throws RuntimeException {
+	/**
+	 * Extract all fields from UI table using items and create list of examples from them.
+	 * This method will replace wrapped fields with raw jRS fields.
+	 * This is because of not overriding duplicate method with is used in Example class.
+	 * @see pl.jowko.jrank.desktop.feature.learningtable.wrappers;
+	 */
+	private void addExamples() {
 		ObservableList<ObservableList<Field>> rows = learningTable.getItems();
 		
 		for(ObservableList<Field> row: rows) {

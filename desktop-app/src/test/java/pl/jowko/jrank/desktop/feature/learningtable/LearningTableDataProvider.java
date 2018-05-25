@@ -1,5 +1,9 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.FloatFieldWrapper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.IntegerFieldWrapper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.StringFieldWrapper;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ public class LearningTableDataProvider {
 	 * All fields in examples are empty.
 	 * @return LearningTable with attributes and examples with empty fields
 	 */
-	static LearningTable createLearningTable() {
+	public static LearningTable createLearningTable() {
 		LearningTable table = new LearningTable(null, null, null);
 		
 		table.getAttributes().addAll(createAttributes());
@@ -66,10 +70,10 @@ public class LearningTableDataProvider {
 	 */
 	static List<Attribute> createAttributes() {
 		List<Attribute> attributes = new ArrayList<>();
-		attributes.add(createAttribute("integer", new IntegerField()));
-		attributes.add(createAttribute(STRING_COLUMN_NAME, new StringField()));
-		attributes.add(createAttribute("enum", new EnumField(0, createEnumDomain())));
-		attributes.add(createAttribute("decimal", new FloatField()));
+		attributes.add(createAttribute("integer", new IntegerFieldWrapper()));
+		attributes.add(createAttribute(STRING_COLUMN_NAME, new StringFieldWrapper()));
+		attributes.add(createAttribute("enum", new EnumFieldWrapper(0, createEnumDomain())));
+		attributes.add(createAttribute("decimal", new FloatFieldWrapper()));
 		return attributes;
 	}
 	
@@ -92,7 +96,7 @@ public class LearningTableDataProvider {
 	 * @return attribute with provided name
 	 */
 	static Attribute createAttribute(String name) {
-		return createAttribute(name, new IntegerField());
+		return createAttribute(name, new IntegerFieldWrapper());
 	}
 	
 	/**
@@ -136,18 +140,18 @@ public class LearningTableDataProvider {
 	
 	/**
 	 * Create array of filled fields.
-	 * @param integer for IntegerField
-	 * @param text for StringField
-	 * @param index for EnumField
-	 * @param decimal for FloatField
+	 * @param integer for IntegerFieldWrapper
+	 * @param text for StringFieldWrapper
+	 * @param index for EnumFieldWrapper
+	 * @param decimal for FloatFieldWrapper
 	 * @return array of fields
 	 */
 	static Field[] createFields(int integer, String text, int index, double decimal) {
 		Field[] fields = new Field[4];
-		fields[0] = new IntegerField(integer);
-		fields[1] = new StringField(text);
-		fields[2] = new EnumField(index, createEnumDomain());
-		fields[3] = new FloatField(decimal);
+		fields[0] = new IntegerFieldWrapper(integer);
+		fields[1] = new StringFieldWrapper(text);
+		fields[2] = new EnumFieldWrapper(index, createEnumDomain());
+		fields[3] = new FloatFieldWrapper(decimal);
 		return fields;
 	}
 	

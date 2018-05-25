@@ -16,24 +16,6 @@ import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProv
 class LearningTableValidatorTest {
 	
 	@Test
-	void stringFieldsShouldBeValid() {
-		LearningTable table = LearningTableDataProvider.createFilledLearningTable();
-		LearningTableValidator validator = new LearningTableValidator(table);
-		
-		assertTrue(validator.isValid());
-		assertFalse(validator.getErrorMsg().contains(STRING_COLUMN_NAME));
-	}
-	
-	@Test
-	void tableShouldNotBeValidEmptyStringFields() {
-		LearningTable table = createLearningTable();
-		LearningTableValidator validator = new LearningTableValidator(table);
-		
-		assertFalse(validator.isValid());
-		assertTrue(validator.getErrorMsg().contains(STRING_COLUMN_NAME));
-	}
-	
-	@Test
 	void decisionAttributeShouldBeValid() {
 		List<Attribute> attributes = new ArrayList<>();
 		attributes.add(createDecisionAttribute("decision1", true));

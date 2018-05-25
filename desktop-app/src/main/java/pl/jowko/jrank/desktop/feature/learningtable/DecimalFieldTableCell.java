@@ -1,9 +1,9 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.FloatFieldWrapper;
 import pl.jowko.jrank.feature.customfx.DecimalField;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Field;
-import pl.poznan.put.cs.idss.jrs.types.FloatField;
 
 /**
  * Created by Piotr on 2018-05-11.
@@ -34,8 +34,15 @@ class DecimalFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	
 	@Override
 	protected Field getField() {
+		String text = textField.getText().trim();
+		if(text.isEmpty() || "?".equals(text)) {
+			Field field = new FloatFieldWrapper();
+			field.setUnknown();
+			return field;
+		}
+		
 		Double value = Double.valueOf(textField.getText());
-		return new FloatField(value);
+		return new FloatFieldWrapper(value);
 	}
 	
 }

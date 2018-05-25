@@ -11,12 +11,20 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogHelper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.FloatFieldWrapper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.IntegerFieldWrapper;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.poznan.put.cs.idss.jrs.types.Attribute;
+import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper.UNKNOWN_FIELD_FLAG;
 
 /**
  * Created by Piotr on 2018-05-13.
@@ -56,13 +64,13 @@ public class LearningTableHelper {
 		);
 		Attribute attribute = column.getAttribute();
 		
-		if(attribute.getInitialValue() instanceof CardinalField) {
+		if(attribute.getInitialValue() instanceof CardinalFieldWrapper) {
 			column.setCellFactory(col -> new CardinalFieldTableCell<>());
-		} else if(attribute.getInitialValue() instanceof IntegerField) {
+		} else if(attribute.getInitialValue() instanceof IntegerFieldWrapper) {
 			column.setCellFactory(col -> new IntegerFieldTableCell<>());
-		} else if(attribute.getInitialValue() instanceof FloatField) {
+		} else if(attribute.getInitialValue() instanceof FloatFieldWrapper) {
 			column.setCellFactory(col -> new DecimalFieldTableCell<>());
-		} else if(attribute.getInitialValue() instanceof TableEnumField){
+		} else if(attribute.getInitialValue() instanceof EnumFieldWrapper){
 			handleEnumFieldFactory(column, attribute);
 		} else {
 			column.setCellFactory(col -> new StringFieldTableCell<>());
@@ -78,7 +86,9 @@ public class LearningTableHelper {
 		ObservableList<Field> fields = FXCollections.observableArrayList();
 		
 		for(Attribute attribute: attributes) {
-			fields.add(RuleRankFieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue()));
+			Field field = RuleRankFieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue());
+			field.setUnknown();
+			fields.add(field);
 		}
 		
 		return fields;
@@ -93,19 +103,28 @@ public class LearningTableHelper {
 	 * @param learningTable with is used to extract all row from table
 	 */
 	void handleEnumEdition(AttributeTableColumn column, int attributeIndex, TableView<ObservableList<Field>> learningTable) {
-		TableEnumField enumField = (TableEnumField) column.getAttribute().getInitialValue();
+		EnumFieldWrapper enumField = (EnumFieldWrapper) column.getAttribute().getInitialValue();
 		EnumDomain domain = enumField.getDomain();
 		
 		ObservableList<ObservableList<Field>> list = learningTable.getItems();
 		list.forEach(row -> {
-			TableEnumField field = (TableEnumField) row.get(attributeIndex);
+			EnumFieldWrapper field = (EnumFieldWrapper) row.get(attributeIndex);
+			
+			if(field.isUnknown() == 0) {
+				EnumFieldWrapper wrapper = new EnumFieldWrapper(0, domain);
+				wrapper.setUnknown();
+				row.set(attributeIndex, wrapper);
+				return;
+			}
+			
 			String previousValue = field.getName();
 			try {
 				int previousIndex = domain.getIndex(previousValue);
-				row.set(attributeIndex, new TableEnumField(domain.getName(previousIndex), domain));
+				row.set(attributeIndex, new EnumFieldWrapper(domain.getName(previousIndex), domain));
 			} catch (InvalidValueException e) {
-				JRankLogger.warn("Value: " + previousValue + " is not available now for field [" + column.getAttribute().getName() + "]. Setting first element into field.");
-				row.set(attributeIndex, new TableEnumField(domain.getName(0), domain));
+				JRankLogger.warn("Value: " + previousValue + " is not available now for field [" + column.getAttribute().getName() + "]. Setting field as unknown");
+				domain.addElement(UNKNOWN_FIELD_FLAG);
+				row.set(attributeIndex, new EnumFieldWrapper(UNKNOWN_FIELD_FLAG, domain));
 			}
 			
 		});
@@ -138,7 +157,7 @@ public class LearningTableHelper {
 		else if(nameLength >= 20)
 			prefWidth += nameLength * 5;
 		
-		if(attribute.getInitialValue() instanceof TableEnumField)
+		if(attribute.getInitialValue() instanceof EnumFieldWrapper)
 			prefWidth += 30;
 		
 		return prefWidth;
@@ -189,17 +208,30 @@ public class LearningTableHelper {
 	
 	/**
 	 * This method add values to ComboBox for enum field in editable table.
+	 * It also handles unknown enum value.
+	 * It adds UNKNOWN_FIELD_FLAG to enum domain and to ComboBox as selectable option.
+	 * @see EnumFieldWrapper
 	 * @param column to with add enum field
 	 * @param attribute from with enum values are extracted
 	 */
 	private void handleEnumFieldFactory(TableColumn<ObservableList<Field>, Field> column, Attribute attribute) {
-		TableEnumField enumField = (TableEnumField) attribute.getInitialValue();
+		EnumFieldWrapper enumField = (EnumFieldWrapper) attribute.getInitialValue();
 		List<String> comboValues = new EnumListProvider(enumField).getValues();
-		List<TableEnumField> fields = new ArrayList<>();
+		List<EnumFieldWrapper> fields = new ArrayList<>();
+		
+		try { // check if unknown value in domain already exists
+			enumField.getDomain().getIndex(UNKNOWN_FIELD_FLAG);
+		} catch (InvalidValueException e) { // value doesn't exist
+			enumField.getDomain().addElement(UNKNOWN_FIELD_FLAG);
+		}
 		
 		for(String value: comboValues) {
-			fields.add(new TableEnumField(value, enumField.getDomain()));
+			fields.add(new EnumFieldWrapper(value, enumField.getDomain()));
 		}
+		
+		// add empty option for unknown field value
+		EnumFieldWrapper field = new EnumFieldWrapper(UNKNOWN_FIELD_FLAG, enumField.getDomain());
+		fields.add(field);
 		
 		column.setCellFactory(ComboBoxTableCell.forTableColumn(
 				new EnumFieldConverter(enumField.getDomain()),

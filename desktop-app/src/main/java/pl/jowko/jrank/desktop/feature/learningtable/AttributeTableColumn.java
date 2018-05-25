@@ -12,8 +12,11 @@ class AttributeTableColumn extends TableColumn<ObservableList<Field>, Field> {
 	
 	private Attribute attribute;
 	
-	AttributeTableColumn(Attribute attribute) {
+	private int attributeIndex;
+	
+	AttributeTableColumn(Attribute attribute, int attributeIndex) {
 		this.attribute = attribute;
+		this.attributeIndex = attributeIndex;
 	}
 	
 	Attribute getAttribute() {
@@ -22,6 +25,10 @@ class AttributeTableColumn extends TableColumn<ObservableList<Field>, Field> {
 	
 	void setAttribute(Attribute attribute) {
 		this.attribute = attribute;
+	}
+	
+	public int getAttributeIndex() {
+		return attributeIndex;
 	}
 	
 }

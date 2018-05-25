@@ -1,13 +1,14 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
 import pl.jowko.jrank.feature.customfx.IntegerField;
 import pl.jowko.jrank.logger.JRankLogger;
-import pl.poznan.put.cs.idss.jrs.types.CardinalField;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-16.
  */
-class CardinalFieldTableCell <T> extends CustomFieldTableCell<T> {
+class CardinalFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	
 	@Override
 	void createTextField() {
@@ -17,12 +18,23 @@ class CardinalFieldTableCell <T> extends CustomFieldTableCell<T> {
 		textField.setOnAction(evt -> {
 			if(textField.getText() != null && !textField.getText().isEmpty()){
 				try {
-					commitEdit(new CardinalField(Integer.valueOf(textField.getText())));
+					commitEdit(getField());
 				} catch (NumberFormatException e) {
 					JRankLogger.warn("Value: [" + textField.getText() + "] is to large. Maximum value for cardinal type is: " + Integer.MAX_VALUE);
 				}
 			}
 		});
+	}
+	
+	@Override
+	protected Field getField() {
+		String text = textField.getText().trim();
+		if(text.isEmpty() || "?".equals(text)) {
+			Field field = new CardinalFieldWrapper();
+			field.setUnknown();
+			return field;
+		}
+		return new CardinalFieldWrapper(Integer.valueOf(textField.getText()));
 	}
 	
 }

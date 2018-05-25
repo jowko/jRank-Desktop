@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -50,7 +51,7 @@ public class LearningTableController {
 	
 	public void initializeTable(MemoryContainer container, JRankTab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
-		EnumReplacer.replaceJRSEnumsWithTableEnumFields(table);
+		JRSFieldsReplacer.replaceJRSEnumsWithTableEnumFields(table);
 		learningTableTab = tableTab;
 		this.workspaceItem = workspaceItem;
 		labels = LanguageService.getInstance();
@@ -59,8 +60,25 @@ public class LearningTableController {
 		initializeTable();
 		tableActions.setItemsToAttributeComboBox();
 		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		initializeSorting();
 		initializeTableEditionHandler();
 		new LearningTableTranslator(this).translateFields();
+	}
+	
+	/**
+	 * Change behavior of sorting in UI table.
+	 * This code should remove multi sorting and handle unknown fields on sort action.
+	 * It is needed, because jRS fields will throw exception when comparing unknown fields.
+	 * @see UnknownFieldSortCallback
+	 */
+	private void initializeSorting() {
+		learningTable.getSortOrder().addListener((ListChangeListener.Change<? extends TableColumn> c) -> {
+			while (learningTable.getSortOrder().size() > 1) {
+				learningTable.getSortOrder().remove(1);
+			}
+		});
+		
+		learningTable.sortPolicyProperty().set(new UnknownFieldSortCallback(learningTable.getItems()));
 	}
 	
 	public void removeAttributeAction() {
@@ -80,7 +98,7 @@ public class LearningTableController {
 				return;
 			}
 			
-			EnumReplacer.replaceTableEnumsWithJRSEnums(tableToSave);
+			JRSFieldsReplacer.replaceWrappersWithJRSEnums(tableToSave);
 			MemoryContainer container = MemoryContainerAssembler.assembleContainerFromTable(tableToSave);
 			JRSFileMediator.saveMemoryContainer(workspaceItem, container);
 			closeTab();

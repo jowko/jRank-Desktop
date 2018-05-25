@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import org.junit.jupiter.api.Test;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ class EnumListProviderTest {
 	void shouldGetValues() {
 		String[] values = new String[]{"1", "2", "3"};
 		EnumDomain domain = new EnumDomain(values);
-		TableEnumField field = new TableEnumField("2", domain);
+		EnumFieldWrapper field = new EnumFieldWrapper("2", domain);
 		EnumListProvider provider = new EnumListProvider(field);
 		
 		List<String> providedValues = provider.getValues();

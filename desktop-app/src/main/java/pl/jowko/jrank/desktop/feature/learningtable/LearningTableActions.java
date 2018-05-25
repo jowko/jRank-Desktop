@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogController;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
@@ -60,12 +61,17 @@ public class LearningTableActions {
 	
 	/**
 	 * Creates new column in learning table and adds new field to all examples.
+	 * All added fields are of type unknown.
 	 * @param attribute to save
 	 */
 	public void saveNewAttribute(Attribute attribute) {
 		createNewColumn(attribute);
 		ObservableList<ObservableList<Field>> list = learningTable.getItems();
-		list.forEach(row -> row.add(RuleRankFieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue())));
+		list.forEach(row -> {
+			Field field = RuleRankFieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue());
+			field.setUnknown();
+			row.add(field);
+		});
 	}
 	
 	/**
@@ -73,7 +79,8 @@ public class LearningTableActions {
 	 * @param attribute from with new column will be created
 	 */
 	void createNewColumn(Attribute attribute) {
-		AttributeTableColumn column = new AttributeTableColumn(attribute);
+		int attributeIndex = learningTable.getColumns().size();
+		AttributeTableColumn column = new AttributeTableColumn(attribute, attributeIndex);
 		column.setGraphic(tableHelper.getColumnLabel(attribute));
 		column.setMinWidth(50);
 		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
@@ -82,7 +89,6 @@ public class LearningTableActions {
 			column.getStyleClass().add("not-active");
 		}
 		
-		int attributeIndex = learningTable.getColumns().size();
 		tableHelper.setCellFactories(column, attributeIndex);
 		column.setOnEditCommit(col -> col.getOldValue().copy(col.getNewValue()));
 		
@@ -201,7 +207,7 @@ public class LearningTableActions {
 		int attributeIndex = attributes.indexOf(oldAttribute);
 		handleStyleChange(tableColumn);
 		
-		if(editedAttribute.getInitialValue() instanceof TableEnumField) {
+		if(editedAttribute.getInitialValue() instanceof EnumFieldWrapper) {
 			tableHelper.handleEnumEdition(tableColumn, attributeIndex, learningTable);
 		}
 		

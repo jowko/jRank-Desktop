@@ -347,9 +347,6 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_INACTIVE, "inactive, ");
 		language.put(Labels.LEARN_TABLE_FIELD, " field");
 		
-		language.put(Labels.LEARN_TABLE_STRING_VALIDATION_1, "Field in row:");
-		language.put(Labels.LEARN_TABLE_STRING_VALIDATION_2, "and column: ");
-		language.put(Labels.LEARN_TABLE_STRING_VALIDATION_3, " is empty.\n");
 		language.put(Labels.LEARN_TABLE_DECISION_VALIDATION, "Table can only have one active decision attribute. Current decision attributes: ");
 		language.put(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE, "Attribute names should be unique. Non unique attribute names:\n");
 		

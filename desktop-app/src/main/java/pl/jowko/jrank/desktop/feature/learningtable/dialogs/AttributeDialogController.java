@@ -12,7 +12,7 @@ import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.EnumListProvider;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableActions;
-import pl.jowko.jrank.desktop.feature.learningtable.TableEnumField;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.feature.customfx.CustomTextArea;
@@ -238,8 +238,8 @@ public class AttributeDialogController {
 	 * @param attribute with is currently edited
 	 */
 	private void initializeEnumFieldForEdit(Attribute attribute) {
-		if(attribute.getInitialValue() instanceof TableEnumField) {
-			TableEnumField field = (TableEnumField)attribute.getInitialValue();
+		if(attribute.getInitialValue() instanceof EnumFieldWrapper) {
+			EnumFieldWrapper field = (EnumFieldWrapper)attribute.getInitialValue();
 			StringBuilder builder = new StringBuilder();
 			for(String value : new EnumListProvider(field).getValues()) {
 				builder.append(value);

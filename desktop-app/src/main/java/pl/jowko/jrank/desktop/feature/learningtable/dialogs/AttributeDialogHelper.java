@@ -1,8 +1,10 @@
 package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 
-import pl.jowko.jrank.desktop.feature.learningtable.TableEnumField;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
 import pl.jowko.jrank.logger.JRankLogger;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.poznan.put.cs.idss.jrs.types.CardinalField;
+import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-19.
@@ -19,19 +21,19 @@ public class AttributeDialogHelper {
 	static Field getFieldFromForm(FieldType value, String enumText) {
 		switch (value) {
 			case STRING_FIELD:
-				return new StringField();
+				return new StringFieldWrapper();
 			case INTEGER_FIELD:
-				return new IntegerField();
+				return new IntegerFieldWrapper();
 			case CARDINAL_FIELD:
-				return new CardinalField();
+				return new CardinalFieldWrapper();
 			case DECIMAL_FIELD:
-				return new FloatField();
+				return new FloatFieldWrapper();
 			case ENUM_FIELD:
 				return createEnumFromForm(enumText);
 		}
 		JRankLogger.warn("Field type was not recognized. Setting default StringField.");
 		
-		return new StringField();
+		return new StringFieldWrapper();
 	}
 	
 	/**
@@ -40,24 +42,24 @@ public class AttributeDialogHelper {
 	 * @return enum corresponding to field type of attribute
 	 */
 	public static FieldType getFieldTypeFromField(Field field) {
-		if(field instanceof StringField)
+		if(field instanceof StringFieldWrapper)
 			return FieldType.STRING_FIELD;
 		if(field instanceof CardinalField)
 			return FieldType.CARDINAL_FIELD;
-		if(field instanceof IntegerField)
+		if(field instanceof IntegerFieldWrapper)
 			return FieldType.INTEGER_FIELD;
-		if(field instanceof FloatField)
+		if(field instanceof FloatFieldWrapper)
 			return FieldType.DECIMAL_FIELD;
-		if(field instanceof TableEnumField)
+		if(field instanceof EnumFieldWrapper)
 			return FieldType.ENUM_FIELD;
 		
 		return FieldType.STRING_FIELD;
 	}
 	
-	private static TableEnumField createEnumFromForm(String enumText) {
+	private static Field createEnumFromForm(String enumText) {
 		String[] enums = enumText.split(",");
 		EnumDomain domain = new EnumDomain(enums);
-		return new TableEnumField(enums[0], domain);
+		return new EnumFieldWrapper(enums[0], domain);
 	}
 	
 }

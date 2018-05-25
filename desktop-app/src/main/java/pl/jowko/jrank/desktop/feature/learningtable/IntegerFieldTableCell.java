@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.IntegerFieldWrapper;
 import pl.jowko.jrank.feature.customfx.IntegerField;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Field;
@@ -27,7 +28,13 @@ class IntegerFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	
 	@Override
 	protected Field getField() {
-		return new pl.poznan.put.cs.idss.jrs.types.IntegerField(Integer.valueOf(textField.getText()));
+		String text = textField.getText().trim();
+		if(text.isEmpty() || "?".equals(text)) {
+			Field field = new IntegerFieldWrapper();
+			field.setUnknown();
+			return field;
+		}
+		return new IntegerFieldWrapper(Integer.valueOf(textField.getText()));
 	}
 	
 }

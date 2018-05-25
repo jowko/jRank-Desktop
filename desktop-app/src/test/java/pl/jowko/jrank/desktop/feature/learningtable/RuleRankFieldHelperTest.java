@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.learningtable;
 
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.FieldType;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,77 +15,77 @@ class RuleRankFieldHelperTest {
 	
 	@Test
 	void shouldCreateNewStringField() {
-		StringField field = new StringField("test");
+		StringFieldWrapper field = new StringFieldWrapper("test");
 		Field newField = RuleRankFieldHelper.createNewFieldOfProvidedType(field);
 		
-		assertTrue(newField instanceof StringField);
-		assertNotEquals(field.get(), ((StringField)newField).get());
+		assertTrue(newField instanceof StringFieldWrapper);
+		assertNotEquals(field.get(), ((StringFieldWrapper)newField).get());
 	}
 	
 	@Test
 	void shouldCreateNewCardinalField() {
-		CardinalField field = new CardinalField(3);
+		CardinalFieldWrapper field = new CardinalFieldWrapper(3);
 		Field newField = RuleRankFieldHelper.createNewFieldOfProvidedType(field);
 		
-		assertTrue(newField instanceof CardinalField);
-		assertNotEquals(field.get(), ((CardinalField)newField).get());
+		assertTrue(newField instanceof CardinalFieldWrapper);
+		assertNotEquals(field.get(), ((CardinalFieldWrapper)newField).get());
 	}
 	
 	@Test
 	void shouldCreateNewIntegerField() {
-		IntegerField field = new IntegerField(2);
+		IntegerFieldWrapper field = new IntegerFieldWrapper(2);
 		Field newField = RuleRankFieldHelper.createNewFieldOfProvidedType(field);
 		
-		assertTrue(newField instanceof IntegerField);
-		assertNotEquals(field.get(), ((IntegerField)newField).get());
+		assertTrue(newField instanceof IntegerFieldWrapper);
+		assertNotEquals(field.get(), ((IntegerFieldWrapper)newField).get());
 	}
 	
 	@Test
 	void shouldCreateNewFloatField() {
-		FloatField field = new FloatField(2);
+		FloatFieldWrapper field = new FloatFieldWrapper(2);
 		Field newField = RuleRankFieldHelper.createNewFieldOfProvidedType(field);
 		
-		assertTrue(newField instanceof FloatField);
-		assertNotEquals(field.get(), ((FloatField)newField).get());
+		assertTrue(newField instanceof FloatFieldWrapper);
+		assertNotEquals(field.get(), ((FloatFieldWrapper)newField).get());
 	}
 	
 	@Test
 	void shouldCreateNewEnumField() {
-		TableEnumField field = new TableEnumField(1, createEnumDomain());
+		EnumFieldWrapper field = new EnumFieldWrapper(1, createEnumDomain());
 		Field newField = RuleRankFieldHelper.createNewFieldOfProvidedType(field);
 		
-		assertTrue(newField instanceof TableEnumField);
-		assertEquals(field.getDomain(), ((TableEnumField)newField).getDomain());
-		assertNotEquals(field.getIndex(), ((TableEnumField)newField).getIndex());
+		assertTrue(newField instanceof EnumFieldWrapper);
+		assertEquals(field.getDomain(), ((EnumFieldWrapper)newField).getDomain());
+		assertNotEquals(field.getIndex(), ((EnumFieldWrapper)newField).getIndex());
 	}
 	
 	@Test
 	void shouldGetColumnTypeForStringField() {
-		String fieldName = RuleRankFieldHelper.getColumnFieldType(new StringField());
+		String fieldName = RuleRankFieldHelper.getColumnFieldType(new StringFieldWrapper());
 		assertEquals(FieldType.STRING_FIELD.toString(), fieldName);
 	}
 	
 	@Test
 	void shouldGetColumnTypeForCardinalField() {
-		String fieldName = RuleRankFieldHelper.getColumnFieldType(new CardinalField());
+		String fieldName = RuleRankFieldHelper.getColumnFieldType(new CardinalFieldWrapper());
 		assertEquals(FieldType.CARDINAL_FIELD.toString(), fieldName);
 	}
 	
 	@Test
 	void shouldGetColumnTypeForIntegerField() {
-		String fieldName = RuleRankFieldHelper.getColumnFieldType(new IntegerField());
+		String fieldName = RuleRankFieldHelper.getColumnFieldType(new IntegerFieldWrapper());
 		assertEquals(FieldType.INTEGER_FIELD.toString(), fieldName);
 	}
 	
 	@Test
 	void shouldGetColumnTypeForDecimalField() {
-		String fieldName = RuleRankFieldHelper.getColumnFieldType(new FloatField());
+		String fieldName = RuleRankFieldHelper.getColumnFieldType(new FloatFieldWrapper());
 		assertEquals(FieldType.DECIMAL_FIELD.toString(), fieldName);
 	}
 	
 	@Test
 	void shouldGetColumnTypeForEnumField() {
-		String fieldName = RuleRankFieldHelper.getColumnFieldType(new TableEnumField(0, createEnumDomain()));
+		String fieldName = RuleRankFieldHelper.getColumnFieldType(new EnumFieldWrapper(0, createEnumDomain()));
 		assertEquals(FieldType.ENUM_FIELD.toString(), fieldName);
 	}
 	

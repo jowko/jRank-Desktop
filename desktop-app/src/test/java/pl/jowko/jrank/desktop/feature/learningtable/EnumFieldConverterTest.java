@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.learningtable;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
@@ -23,7 +24,7 @@ class EnumFieldConverterTest {
 	
 	@Test
 	void shouldGetValidString() {
-		String convertedValue = converter.toString(new TableEnumField("1", createEnumDomain()));
+		String convertedValue = converter.toString(new EnumFieldWrapper("1", createEnumDomain()));
 		assertEquals("1", convertedValue);
 	}
 	

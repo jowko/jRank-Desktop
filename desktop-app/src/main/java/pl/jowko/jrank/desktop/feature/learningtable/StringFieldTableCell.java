@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.StringFieldWrapper;
 import pl.jowko.jrank.feature.customfx.StringTextField;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
@@ -24,7 +25,13 @@ class StringFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	
 	@Override
 	protected Field getField() {
-		return new pl.poznan.put.cs.idss.jrs.types.StringField(textField.getText());
+		String text = textField.getText().trim();
+		if(text.isEmpty() || "?".equals(text)) {
+			Field field = new StringFieldWrapper();
+			field.setUnknown();
+			return field;
+		}
+		return new StringFieldWrapper(text);
 	}
 	
 }
