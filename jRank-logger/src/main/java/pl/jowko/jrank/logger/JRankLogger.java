@@ -1,42 +1,52 @@
 package pl.jowko.jrank.logger;
 
-import com.esotericsoftware.minlog.Log;
-
 /**
  * Created by Piotr on 2018-03-17.
  * This class serves as mediator between application and logger.
  * Because of this, logger implementation can be easily changed.
+ * All logging should be performed using this class.
+ * Ignoring this may result in death penalty.
  */
 public class JRankLogger {
+	
+	private static CustomLogger logger;
+	
+	static {
+		logger = new CustomLogger();
+	}
 	
 	private JRankLogger() {}
 	
 	public static void gen(String msg) {
-		Log.info("GENERATOR", msg);
+		logger.info("GENERATOR", msg);
 	}
 	
 	public static void init(String msg) {
-		Log.info("INIT", msg);
+		logger.info("INIT", msg);
 	}
 	
 	public static void info(String msg) {
-		Log.info(msg);
+		logger.info(msg);
 	}
 	
 	public static void info(String category, String msg) {
-		Log.info(category, msg);
+		logger.info(category, msg);
 	}
 	
 	public static void warn(String msg) {
-		Log.warn(msg);
+		logger.warn(msg);
 	}
 	
 	public static void error(String msg, Throwable throwable) {
-		Log.error(msg, throwable);
+		logger.error(msg, throwable);
 	}
 	
 	public static void error(String msg) {
-		Log.error(msg);
+		logger.error(msg);
+	}
+	
+	public static void debug(String msg) {
+		logger.debug(msg);
 	}
 	
 }
