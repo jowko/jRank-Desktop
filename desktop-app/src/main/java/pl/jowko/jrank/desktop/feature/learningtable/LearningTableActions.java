@@ -77,6 +77,7 @@ public class LearningTableActions {
 	
 	/**
 	 * Creates new column from provided attribute.
+	 * It also fixes bug with removing row with is currently in edition by adding null check onEditCommit listener
 	 * @param attribute from with new column will be created
 	 */
 	void createNewColumn(Attribute attribute) {
@@ -88,7 +89,11 @@ public class LearningTableActions {
 		setCssStyleForColumn(column);
 		
 		tableHelper.setCellFactories(column, attributeIndex);
-		column.setOnEditCommit(col -> col.getOldValue().copy(col.getNewValue()));
+		column.setOnEditCommit(col -> {
+			if(isNull(col.getOldValue()))
+				return;
+			col.getOldValue().copy(col.getNewValue());
+		});
 		
 		learningTable.getColumns().add(column);
 		attributes.add(attribute);
