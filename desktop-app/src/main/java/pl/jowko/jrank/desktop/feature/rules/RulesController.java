@@ -7,6 +7,7 @@ import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.lower.LowerTabsController;
+import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
@@ -114,11 +115,14 @@ public class RulesController {
 	/**
 	 * Initializes close event for rules tab.
 	 * If rules tab are closed, statistics tab are also automatically closed.
+	 * Force close is called for rulesTab, because firing onClosed event will cancel close of rulesTab.
+	 * @see UpperTabsController
 	 */
 	private void initializeCloseEventForRulesTab() {
-		rulesTab.setOnCloseRequest(event ->
-			LowerTabsController.getInstance().removeTab(statisticsTab)
-		);
+		rulesTab.setOnClosed(event -> {
+			LowerTabsController.getInstance().closeTab(statisticsTab);
+			UpperTabsController.getInstance().forceCloseTab(rulesTab);
+		});
 	}
 	
 }

@@ -21,15 +21,15 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  */
 class TabsContextMenuCreator {
 	
-	private TabPane tabPane;
 	private LanguageService labels;
+	private UpperTabsController controller;
 	
 	/**
 	 * Create instance of this class
-	 * @param tabPane on with context menus will be added
+	 * @param controller with is used to close tabs
 	 */
-	TabsContextMenuCreator(TabPane tabPane) {
-		this.tabPane = tabPane;
+	TabsContextMenuCreator(UpperTabsController controller) {
+		this.controller = controller;
 		labels = LanguageService.getInstance();
 	}
 	
@@ -63,7 +63,7 @@ class TabsContextMenuCreator {
 		closeTab.setOnAction(event -> {
 			
 			if(shouldPerformAction(tab.isTabEdited(), Labels.TABS_CLOSE_THIS_CONFIRM)) {
-				tabPane.getTabs().remove(tab);
+				controller.closeTab(tab);
 			}
 			
 		});
@@ -81,10 +81,10 @@ class TabsContextMenuCreator {
 	private MenuItem createCloseAllTabMenuItem() {
 		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_ALL));
 		closeTab.setOnAction(event -> {
-			long editedTabsCount = getEditedTabsCount(tabPane.getTabs());
+			long editedTabsCount = getEditedTabsCount(controller.getUpperTabs().getTabs());
 			
 			if(shouldPerformAction(editedTabsCount > 0, Labels.TABS_CLOSE_ALL_CONFIRM)) {
-				tabPane.getTabs().clear();
+				controller.closeTab(new ArrayList<>(controller.getUpperTabs().getTabs()));
 			}
 			
 		});
@@ -104,7 +104,7 @@ class TabsContextMenuCreator {
 		closeTab.setOnAction(event -> {
 			List<Tab> tabsToRemove = new ArrayList<>();
 			
-			for(Tab tabToRemove : tabPane.getTabs()) {
+			for(Tab tabToRemove : controller.getUpperTabs().getTabs()) {
 				if(not(tab.equals(tabToRemove))) {
 					tabsToRemove.add(tabToRemove);
 				}
@@ -113,7 +113,7 @@ class TabsContextMenuCreator {
 			long editedTabsCount = getEditedTabsCount(tabsToRemove);
 			
 			if(shouldPerformAction(editedTabsCount > 0, Labels.TABS_CLOSE_OTHERS_CONFIRM)) {
-				tabPane.getTabs().removeAll(tabsToRemove);
+				controller.closeTab(tabsToRemove);
 			}
 			
 		});

@@ -14,6 +14,7 @@ import pl.jowko.jrank.logger.JRankLogger;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static java.util.Objects.nonNull;
 
@@ -42,7 +43,7 @@ public class UpperTabsController {
 	@FXML
 	void initialize() {
 		instance = this;
-		menuCreator = new TabsContextMenuCreator(upperTabs);
+		menuCreator = new TabsContextMenuCreator(instance);
 	}
 	
 	/**
@@ -77,6 +78,8 @@ public class UpperTabsController {
 	
 	/**
 	 * Close provided tab in correct way.
+	 * It will fire onClosed event for closed tab if is available.
+	 * If this event isn't available, tab will be closed.
 	 * @param tab to close
 	 */
 	public void closeTab(Tab tab) {
@@ -84,8 +87,38 @@ public class UpperTabsController {
 		if (null != handler) {
 			handler.handle(null);
 		} else {
-			tab.getTabPane().getTabs().remove(tab);
+			upperTabs.getTabs().remove(tab);
 		}
+	}
+	
+	/**
+	 * Force close of tab.
+	 * No close handler will be fired with this close action.
+	 * @param tab to close
+	 */
+	public void forceCloseTab(Tab tab) {
+		upperTabs.getTabs().remove(tab);
+	}
+	
+	/**
+	 * Close all provided tab from list.
+	 * It will fire onClosed event for each closed tab if is available.
+	 * If this event isn't available, tab will be closed.
+	 * @param tabs to close
+	 */
+	public void closeTab(List<Tab> tabs) {
+		for(Tab tab : tabs) {
+			EventHandler<Event> handler = tab.getOnClosed();
+			if (null != handler) {
+				handler.handle(null);
+			} else {
+				upperTabs.getTabs().remove(tab);
+			}
+		}
+	}
+	
+	public TabPane getUpperTabs() {
+		return upperTabs;
 	}
 	
 	/**
