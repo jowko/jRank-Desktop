@@ -368,7 +368,7 @@ class StubSettings {
 	}
 	
 	private void createEnglishRulesLabels(Map<String, String> language) {
-		language.put(Labels.RULES_DECISION_PART, "Decision Part ");
+		language.put(Labels.RULES_DECISION_PART, "Decision");
 		language.put(Labels.RULES_CONDITION_PART, "Condition ");
 		language.put(Labels.RULES_ID, "ID");
 		language.put(Labels.RULES_CERTAIN, "CERTAIN");

@@ -95,7 +95,6 @@ class RuleTableCreator {
 		columns = new ArrayList<>();
 		columns.add(createIDColumn());
 		
-		int decisionColumnNumber = 1;
 		int conditionColumnNumber = 1;
 		
 		for(int i=1; i<columnsCount; i++) {
@@ -106,7 +105,7 @@ class RuleTableCreator {
 				columns.add(column);
 				
 			} else if(i < thenOperatorColumnID) {
-				columns.add(createColumn(labels.get(Labels.RULES_DECISION_PART) + decisionColumnNumber++, i));
+				columns.add(createColumn(labels.get(Labels.RULES_DECISION_PART), i));
 				
 			} else if(i == thenOperatorColumnID) {
 				TableColumn<RuleRow, String> column = createColumn("<=", i);
