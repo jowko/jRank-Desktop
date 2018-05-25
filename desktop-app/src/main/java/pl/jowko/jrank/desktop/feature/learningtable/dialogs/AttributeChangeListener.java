@@ -12,7 +12,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * This class handle change event in attributes ListView.
  * When attribute is selected, attribute from form is validated and saved if it is valid.
  */
-class AttributeChangeListener implements ChangeListener<String> {
+class AttributeChangeListener implements ChangeListener<AttributeItem> {
 	
 	private AttributeDialogController controller;
 	
@@ -37,19 +37,18 @@ class AttributeChangeListener implements ChangeListener<String> {
 	 * @param newValue from ListView
 	 */
 	@Override
-	public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+	public void changed(ObservableValue<? extends AttributeItem> observable, AttributeItem oldValue, AttributeItem newValue) {
 		if(not(isFormValid(oldValue)))
 			return;
 		
 		// Save attribute
-		Attribute oldAttribute = getAttributeByName(oldValue);
-		int indexToChange = controller.getAttributes().indexOf(oldAttribute);
+		int indexToChange = controller.getAttributes().indexOf(oldValue.getAttribute());
 		Attribute newAttribute = controller.createAttributeFromForm();
 		controller.getAttributes().set(indexToChange, newAttribute);
 		
 		// Switch to selected attribute
-		controller.setEditedAttribute(getAttributeByName(newValue));
-		controller.attributesList.getItems().set(indexToChange, newAttribute.getName());
+		controller.setEditedAttribute(newValue.getAttribute());
+		controller.attributesList.getItems().set(indexToChange, new AttributeItem(newAttribute));
 		controller.initializeFieldsForEdit();
 	}
 	
@@ -61,7 +60,7 @@ class AttributeChangeListener implements ChangeListener<String> {
 	 * @param oldValue from changed method
 	 * @return true if form is valid, false otherwise
 	 */
-	private boolean isFormValid(String oldValue) {
+	private boolean isFormValid(AttributeItem oldValue) {
 		if(not(changing) && not(controller.isFormValid())) {
 			changing = true;
 			formWasNotValid = true;

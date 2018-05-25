@@ -36,7 +36,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 public class AttributeDialogController {
 	
 	@FXML
-	ListView<String> attributesList;
+	ListView<AttributeItem> attributesList;
 	@FXML
 	Label nameLabel;
 	@FXML
@@ -268,12 +268,12 @@ public class AttributeDialogController {
 	
 	/**
 	 * Initialize attributes in ListView.
-	 * It fills ListView component with attribute names values and select currently edited attribute.
+	 * It fills ListView component with attribute values and select currently edited attribute.
 	 */
 	private void initializeAttributesListView() {
-		List<String> values = attributes.stream().map(Attribute::getName).collect(Collectors.toList());
+		List<AttributeItem> values = attributes.stream().map(AttributeItem::new).collect(Collectors.toList());
 		attributesList.getItems().addAll(values);
-		attributesList.getSelectionModel().select(editedAttribute.getName());
+		attributesList.getSelectionModel().select(new AttributeItem(editedAttribute));
 		attributesList.getSelectionModel().selectedItemProperty().addListener(new AttributeChangeListener(this));
 	}
 	

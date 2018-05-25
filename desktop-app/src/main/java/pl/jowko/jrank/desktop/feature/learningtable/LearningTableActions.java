@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogController;
+import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeItem;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.utils.Cloner;
@@ -32,10 +33,10 @@ public class LearningTableActions {
 	private TableView<ObservableList<Field>> learningTable;
 	private LearningTableHelper tableHelper;
 	private List<Attribute> attributes;
-	private ComboBox<String> selectAttribute;
+	private ComboBox<AttributeItem> selectAttribute;
 	private JRankTab learningTableTab;
 	
-	LearningTableActions(TableView<ObservableList<Field>> learningTable, ComboBox<String> selectAttribute, JRankTab learningTableTab) {
+	LearningTableActions(TableView<ObservableList<Field>> learningTable, ComboBox<AttributeItem> selectAttribute, JRankTab learningTableTab) {
 		this.learningTable = learningTable;
 		this.tableHelper = new LearningTableHelper();
 		this.selectAttribute = selectAttribute;
@@ -158,22 +159,24 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * This method fills selectAttribute ComboBox with current attribute names.
+	 * This method fills selectAttribute ComboBox with current attributes.
+	 * @see AttributeItem
 	 */
 	void setItemsToAttributeComboBox() {
 		selectAttribute.setItems(observableArrayList(
 				learningTable.getColumns().stream()
-						.map(column -> ((AttributeTableColumn) column).getAttribute().getName())
+						.map(column -> new AttributeItem(((AttributeTableColumn) column).getAttribute()))
 						.collect(Collectors.toList()))
 		);
 	}
 	
 	void removeAttributeAction() {
-		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttributeName(selectAttribute.getValue());
-		if(isNull(tableColumn)) {
+		AttributeItem item = selectAttribute.getValue();
+		if(isNull(item)) {
 			JRankLogger.warn("No attribute was selected. Remove action aborted.");
 			return;
 		}
+		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttribute(item.getAttribute());
 		
 		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
 		learningTable.getColumns().remove(tableColumn);
@@ -196,7 +199,7 @@ public class LearningTableActions {
 	 * @param editedAttribute as replacement
 	 */
 	private void editAttribute(Attribute oldAttribute, Attribute editedAttribute) {
-		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttributeName(oldAttribute.getName());
+		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttribute(oldAttribute);
 		tableColumn.setGraphic(tableHelper.getColumnLabel(editedAttribute));
 		tableColumn.setAttribute(editedAttribute);
 		tableColumn.setMinWidth(50);
@@ -219,8 +222,10 @@ public class LearningTableActions {
 	private void setCssStyleForColumn(AttributeTableColumn tableColumn) {
 		Attribute attribute = tableColumn.getAttribute();
 		if(attribute.getKind() == Attribute.DECISION) {
+			tableColumn.getStyleClass().remove("description");
 			tableColumn.getStyleClass().add("decision");
 		} else if(attribute.getKind() == Attribute.DESCRIPTION) {
+			tableColumn.getStyleClass().remove("decision");
 			tableColumn.getStyleClass().add("description");
 		}
 		
@@ -234,14 +239,14 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Finds column from UI table by attribute name.
-	 * @param attributeName to find
-	 * @return column with found attribute name or null
+	 * Finds column from UI table by attribute.
+	 * @param attribute to find
+	 * @return column with found attribute or null
 	 */
-	private TableColumn getColumnByAttributeName(String attributeName) {
+	private TableColumn getColumnByAttribute(Attribute attribute) {
 		return learningTable.getColumns().stream()
 				.filter(column ->
-						((AttributeTableColumn) column).getAttribute().getName().equalsIgnoreCase(attributeName)
+						((AttributeTableColumn) column).getAttribute().equals(attribute)
 				)
 				.findAny()
 				.orElse(null);

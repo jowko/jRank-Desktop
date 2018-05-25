@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeItem;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
@@ -30,7 +31,7 @@ public class LearningTableController {
 	@FXML
 	Label selectAttributeLabel;
 	@FXML
-	ComboBox<String> selectAttribute;
+	ComboBox<AttributeItem> selectAttribute;
 	@FXML
 	Button removeAttributeButton;
 	@FXML
