@@ -283,7 +283,7 @@ public class AttributeDialogController {
 	private void initializeAttributeForm() {
 		labels = LanguageService.getInstance();
 		nameField.setPattern("[A-Za-z_][A-Za-z_0-9]*");
-		enumsField.setPattern("([A-Za-z_0-9]+[,]?)*");
+		enumsField.setPattern("[A-Za-z_0-9,]*");
 		activeCheckBox.setSelected(true);
 		paramService = new AttributeParamService();
 		typeField.getItems().addAll(FieldType.values());
