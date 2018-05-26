@@ -108,34 +108,54 @@ class RankingTab extends JRankTab {
 	
 	/**
 	 * Gets MemoryContainer using properties file.
-	 * First, it checks in properties have configured isf file location.
-	 * If isf file location is configured, it is checked if path is relative or absolute.
 	 * Then full path for isf file is calculated and file is loaded.
 	 * If properties doesn't have isf file configured, it is assumed that isf table is in same directory as ranking file.
-	 * Also, isf file name is derrived from ranking file name.
+	 * Also is assumed that isf file name is same as ranking file name.
 	 * If ranking file had name: someExperiment.ranking, it is assumed that isf file have name: someExperiment.isf.
 	 * @param properties contains experiment settings
 	 * @param rankingItem from workspace tree
 	 * @return MemoryContainer with learning data table
 	 */
 	private MemoryContainer getContainerFromProperties(JRankProperties properties, WorkspaceItem rankingItem) {
+		String dataFilePath = getPathToIsfFile(properties);
 		
-		if(nonNull(properties.getLearningDataFile()) && not(properties.getLearningDataFile().trim().isEmpty())) {
-			Path path = Paths.get(properties.getLearningDataFile());
-			if(path.isAbsolute()) {
-				JRankLogger.info("Reading learning data table from: [" + properties.getLearningDataFile() + "] for ranking tab");
-				return JRSFileMediator.loadMemoryContainer(properties.getLearningDataFile());
-			} else {
-				String isfPath = experimentDirectory + properties.getLearningDataFile();
-				JRankLogger.info("Reading learning data table from: [" + isfPath + "] for ranking tab");
-				return JRSFileMediator.loadMemoryContainer(isfPath);
-			}
+		if(nonNull(dataFilePath)) {
+			JRankLogger.info("Reading learning data table from: [" + dataFilePath + "] for ranking tab");
+			return JRSFileMediator.loadMemoryContainer(dataFilePath);
 		}
 		
 		String isfPath = experimentDirectory + rankingItem.getFileName().replace(".ranking", ".isf");
 		JRankLogger.info("Learning data table name was not configured in properties file. Assuming path: [" + isfPath + ']');
 		
 		return JRSFileMediator.loadMemoryContainer(isfPath);
+	}
+	
+	/**
+	 * Get path to isf file related with ranking.
+	 * It checks in properties have configured isf file location.
+	 * At first, test data file configuration is checked.
+	 * It it is not configured, learning data file configuration is checked.
+	 * If none of this paths are configured, null is returned.
+	 * If isf file location is configured, it is checked if path is relative or absolute.
+	 * Then full path to ranking is returned.
+	 */
+	private String getPathToIsfFile(JRankProperties properties) {
+		String dataFilePath = null;
+		if(nonNull(properties.getTestDataFile())  && not(properties.getTestDataFile().trim().isEmpty())) {
+			dataFilePath = properties.getTestDataFile();
+		} else if(nonNull(properties.getLearningDataFile()) && not(properties.getLearningDataFile().trim().isEmpty())) {
+			dataFilePath = properties.getLearningDataFile();
+		}
+		
+		if(isNull(dataFilePath))
+			return null;
+		
+		Path path = Paths.get(dataFilePath);
+		if(path.isAbsolute())
+			return dataFilePath;
+		
+		// path is relative
+		return experimentDirectory + dataFilePath;
 	}
 	
 }
