@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeItem;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
@@ -128,14 +129,26 @@ public class LearningTableController {
 	}
 	
 	private void initializeTable() {
+		tableActions.createIdColumn();
 		for(Attribute attribute : table.getAttributes()) {
 			tableActions.createNewColumn(attribute);
 		}
 		
-		for(Example example : table.getExamples()) {
-			learningTable.getItems().add(observableArrayList(example.getFields()));
+		for(int i=0; i<table.getExamples().size(); i++) {
+			Example example = table.getExamples().get(i);
+			learningTable.getItems().add(createItemRow(example, tableActions.getIdColumnValue()));
 		}
 		initializeCloseEvent();
+	}
+	
+	private ObservableList<Field> createItemRow(Example example, int index) {
+		Field[] fields = new Field[example.getFields().length + 1];
+		fields[0] = new CardinalFieldWrapper(index);
+		
+		for(int i=0; i<example.getFields().length; i++) {
+			fields[i+1] = example.getFields()[i];
+		}
+		return observableArrayList(fields);
 	}
 	
 	private void initializeCloseEvent() {

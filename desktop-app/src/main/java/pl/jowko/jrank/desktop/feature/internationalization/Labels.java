@@ -264,6 +264,7 @@ public class Labels {
 	public static final String LEARN_TABLE_ERRORS = "LEARN_TABLE_ERRORS";
 	public static final String LEARN_TABLE_SAVE_CONFIRM = "LEARN_TABLE_SAVE_CONFIRM";
 	
+	public static final String LEARN_TABLE_ID= "LEARN_TABLE_ID";
 	public static final String LEARN_TABLE_EMPTY = "LEARN_TABLE_EMPTY";
 	public static final String LEARN_TABLE_SELECT_ATTRIBUTE = "LEARN_TABLE_SELECT_ATTRIBUTE";
 	public static final String LEARN_TABLE_REMOVE_ATTRIBUTE = "LEARN_TABLE_REMOVE_ATTRIBUTE";

@@ -10,6 +10,8 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableActions.ATTRIBUTE_ID_SECRET_NAME;
+
 /**
  * Created by Piotr on 2018-05-15.
  * This class helps to assemble LearningTable from UI table.
@@ -57,6 +59,10 @@ class LearningTableAssembler {
 		
 		for(TableColumn column: columns) {
 			Attribute attribute = ((AttributeTableColumn) column).getAttribute();
+			if(ATTRIBUTE_ID_SECRET_NAME.equals(attribute.getName())) {
+				continue;
+			}
+			
 			table.getAttributes().add(attribute);
 			columnsReorderedIndexes.add(attributes.indexOf(attribute));
 		}
@@ -85,9 +91,9 @@ class LearningTableAssembler {
 	 * @return Field array with valid order of fields
 	 */
 	private Field[] getReorderedFields(ObservableList<Field> row) {
-		Field[] fields = new Field[row.size()];
+		Field[] fields = new Field[columnsReorderedIndexes.size()];
 		
-		for(int i=0; i<row.size(); i++) {
+		for(int i=0; i<columnsReorderedIndexes.size(); i++) {
 			fields[i] = row.get(columnsReorderedIndexes.get(i));
 		}
 		

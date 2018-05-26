@@ -6,8 +6,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogController;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeItem;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.utils.Cloner;
@@ -30,11 +33,18 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  */
 public class LearningTableActions {
 	
+	/**
+	 * This constant servers as flag indicating that attribute with such name is ID column with is not editable.
+	 */
+	public static final String ATTRIBUTE_ID_SECRET_NAME = "SomeVeryLongAttributeNameToServerAsFlagIndicatingThatThisIsIdColumn";
+	
 	private TableView<ObservableList<Field>> learningTable;
 	private LearningTableHelper tableHelper;
 	private List<Attribute> attributes;
 	private ComboBox<AttributeItem> selectAttribute;
 	private JRankTab learningTableTab;
+	
+	private int idColumnValue;
 	
 	LearningTableActions(TableView<ObservableList<Field>> learningTable, ComboBox<AttributeItem> selectAttribute, JRankTab learningTableTab) {
 		this.learningTable = learningTable;
@@ -42,6 +52,7 @@ public class LearningTableActions {
 		this.selectAttribute = selectAttribute;
 		this.learningTableTab = learningTableTab;
 		attributes = new ArrayList<>();
+		idColumnValue = 1;
 	}
 	
 	/**
@@ -101,14 +112,33 @@ public class LearningTableActions {
 	}
 	
 	/**
+	 * Creates ID column.
+	 * It will add special column with row number with is not editable.
+	 */
+	void createIdColumn() {
+		LanguageService labels = LanguageService.getInstance();
+		Attribute idColumn = new Attribute(ATTRIBUTE_ID_SECRET_NAME, new CardinalFieldWrapper());
+		AttributeTableColumn column = new AttributeTableColumn(idColumn, 0);
+		column.setMinWidth(50);
+		column.setEditable(false);
+		column.setText(labels.get(Labels.LEARN_TABLE_ID));
+		
+		tableHelper.setCellFactories(column, 0);
+		
+		learningTable.getColumns().add(column);
+		attributes.add(idColumn);
+	}
+	
+	/**
 	 * Adds new example to table.
 	 * This method creates row of fields with default values.
 	 */
 	void addExampleAction() {
-		if(learningTable.getColumns().size() == 0) {
+		if(learningTable.getColumns().size() == 1) {
 			JRankLogger.info("No attributes in table. Add attributes first.");
+			return;
 		}
-		ObservableList<Field> newFields = tableHelper.getEmptyExample(attributes);
+		ObservableList<Field> newFields = tableHelper.getEmptyExample(attributes, idColumnValue++);
 		learningTable.getItems().add(newFields);
 	}
 	
@@ -133,7 +163,7 @@ public class LearningTableActions {
 	 */
 	void customizeAttributes() {
 		try {
-			if(attributes.size() == 0) {
+			if(attributes.size() == 1) {
 				JRankLogger.warn("No attributes to customize. Add attributes first.");
 				return;
 			}
@@ -171,6 +201,7 @@ public class LearningTableActions {
 		selectAttribute.setItems(observableArrayList(
 				learningTable.getColumns().stream()
 						.map(column -> new AttributeItem(((AttributeTableColumn) column).getAttribute()))
+						.filter(col -> not(ATTRIBUTE_ID_SECRET_NAME.equals(col.getAttribute().getName())))
 						.collect(Collectors.toList()))
 		);
 	}
@@ -195,6 +226,10 @@ public class LearningTableActions {
 	
 	public List<Attribute> getAttributes() {
 		return attributes;
+	}
+	
+	public int getIdColumnValue() {
+		return idColumnValue++;
 	}
 	
 	/**
@@ -265,6 +300,7 @@ public class LearningTableActions {
 	private List<Attribute> getAttributesFromTable() {
 		return learningTable.getColumns().stream()
 				.map(column -> ((AttributeTableColumn) column).getAttribute())
+				.filter(att -> not(ATTRIBUTE_ID_SECRET_NAME.equals(att.getName())))
 				.collect(Collectors.toList());
 	}
 	

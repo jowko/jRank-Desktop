@@ -86,13 +86,16 @@ public class LearningTableHelper {
 	/**
 	 * This methods creates row of fields(example) for learning table.
 	 * @param attributes from with fields are created
+	 * @param idColumnValue to set next row ID
 	 * @return list of fields with default values
 	 */
-	ObservableList<Field> getEmptyExample(List<Attribute> attributes) {
+	ObservableList<Field> getEmptyExample(List<Attribute> attributes, int idColumnValue) {
 		ObservableList<Field> fields = FXCollections.observableArrayList();
 		
-		for(Attribute attribute: attributes) {
-			Field field = RuleRankFieldHelper.createNewFieldOfProvidedType(attribute.getInitialValue());
+		fields.add(new CardinalFieldWrapper(idColumnValue));
+		
+		for(int i=1; i<attributes.size(); i++) {
+			Field field = RuleRankFieldHelper.createNewFieldOfProvidedType(attributes.get(i).getInitialValue());
 			field.setUnknown();
 			fields.add(field);
 		}

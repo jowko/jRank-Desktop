@@ -367,6 +367,7 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_ERRORS, "Table contains errors:");
 		language.put(Labels.LEARN_TABLE_SAVE_CONFIRM, "Do you want to save form?");
 		
+		language.put(Labels.LEARN_TABLE_ID, "ID");
 		language.put(Labels.LEARN_TABLE_EMPTY, "Table is empty. Add some data to it.");
 		language.put(Labels.LEARN_TABLE_SELECT_ATTRIBUTE, "Select attribute:");
 		language.put(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE, "Remove selected attribute");
