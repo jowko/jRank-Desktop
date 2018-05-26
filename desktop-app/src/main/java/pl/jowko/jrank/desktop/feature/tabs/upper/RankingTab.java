@@ -19,6 +19,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
@@ -50,6 +51,9 @@ class RankingTab extends JRankTab {
 		try {
 			String rankingFileContent = JRSFileMediator.loadTextFile(workspaceItem);
 			MemoryContainer container = getMemoryContainer(workspaceItem);
+			
+			if(isNull(container))
+				throw new TabInitializationException("Learning data file was not found on provided path");
 			
 			RankingController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeRanking(rankingFileContent, container);
