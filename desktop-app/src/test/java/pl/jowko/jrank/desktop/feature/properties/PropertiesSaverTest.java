@@ -150,6 +150,50 @@ class PropertiesSaverTest extends MasterTest {
 		assertEquals(precision.toString(), properties.getProperty(PRECISION));
 	}
 	
+	@Test
+	void shouldAddExtensionsToFiles() {
+		jRankProperties = getFullProperties();
+		jRankProperties.setLearningDataFile("data");
+		jRankProperties.setTestDataFile("test");
+		jRankProperties.setPctFile("pct");
+		jRankProperties.setPctApxFile("pct");
+		jRankProperties.setPctRulesFile("pct");
+		jRankProperties.setRankingFile("test");
+		jRankProperties.setPreferenceGraphFile("test");
+		
+		Properties properties = getProperties();
+		
+		assertEquals("data.isf", properties.getProperty(LEARNING_DATA_FILE));
+		assertEquals("test.isf", properties.getProperty(TEST_DATA_FILE));
+		assertEquals("pct.isf", properties.getProperty(PCT_FILE));
+		assertEquals("pct.apx", properties.getProperty(PCT_APX_FILE));
+		assertEquals("pct.rules", properties.getProperty(PCT_RULES_FILE));
+		assertEquals("test.ranking", properties.getProperty(RANKING_FILE));
+		assertEquals("test.graph", properties.getProperty(PREFERENCE_GRAPH_FILE));
+	}
+	
+	@Test
+	void shouldNotAddExtensionsToFiles() {
+		jRankProperties = getFullProperties();
+		jRankProperties.setLearningDataFile("data.isf.");
+		jRankProperties.setTestDataFile("test.isf.");
+		jRankProperties.setPctFile("pct.isf.");
+		jRankProperties.setPctApxFile("pct.apx.");
+		jRankProperties.setPctRulesFile("pct.rules.");
+		jRankProperties.setRankingFile("test.ranking.");
+		jRankProperties.setPreferenceGraphFile("test.graph.");
+		
+		Properties properties = getProperties();
+		
+		assertEquals("data.isf.", properties.getProperty(LEARNING_DATA_FILE));
+		assertEquals("test.isf.", properties.getProperty(TEST_DATA_FILE));
+		assertEquals("pct.isf.", properties.getProperty(PCT_FILE));
+		assertEquals("pct.apx.", properties.getProperty(PCT_APX_FILE));
+		assertEquals("pct.rules.", properties.getProperty(PCT_RULES_FILE));
+		assertEquals("test.ranking.", properties.getProperty(RANKING_FILE));
+		assertEquals("test.graph.", properties.getProperty(PREFERENCE_GRAPH_FILE));
+	}
+	
 	private Properties getProperties() {
 		PropertiesSaver saver = new PropertiesSaver(jRankProperties);
 		return saver.getProperties();

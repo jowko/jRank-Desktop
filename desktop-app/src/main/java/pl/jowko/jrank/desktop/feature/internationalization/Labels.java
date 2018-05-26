@@ -131,6 +131,15 @@ public class Labels {
 	public static final String FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP = "FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP";
 	public static final String OPTIMIZE_POSSIBLE_RULES = "OPTIMIZE_POSSIBLE_RULES";
 	
+	public static final String PROP_EXT_LEARNING = "PROP_EXT_LEARNING";
+	public static final String PROP_EXT_TEST = "PROP_EXT_TEST";
+	public static final String PROP_EXT_PCT_ISF = "PROP_EXT_PCT_ISF";
+	public static final String PROP_EXT_APX = "PROP_EXT_APX";
+	public static final String PROP_EXT_RULES = "PROP_EXT_RULES";
+	public static final String PROP_EXT_GRAPH = "PROP_EXT_GRAPH";
+	public static final String PROP_EXT_RANKING = "PROP_EXT_RANKING";
+	
+	
 	// Properties parameters
 	public static final String ANY_FAMILY_OF_CRITERIA = "ANY_FAMILY_OF_CRITERIA";
 	public static final String CONSISTENT_FAMILY_OF_CRITERIA = "CONSISTENT_FAMILY_OF_CRITERIA";

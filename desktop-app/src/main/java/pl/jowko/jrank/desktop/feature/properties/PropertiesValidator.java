@@ -7,6 +7,7 @@ import pl.jowko.jrank.desktop.utils.StringUtils;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
+import static pl.jowko.jrank.desktop.utils.FileExtensionExtractor.getExtension;
 import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.DRSA;
 import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
 
@@ -20,7 +21,7 @@ class PropertiesValidator {
 	
 	private LanguageService labels;
 	private JRankProperties properties;
-	private String errorMsg;
+	private StringBuilder errorMsg;
 	
 	/**
 	 * Creates instance of this class and validates provided properties
@@ -29,7 +30,7 @@ class PropertiesValidator {
 	PropertiesValidator(JRankProperties properties) {
 		this.properties = properties;
 		labels = LanguageService.getInstance();
-		errorMsg = "";
+		errorMsg = new StringBuilder();
 		validate();
 	}
 	
@@ -38,7 +39,7 @@ class PropertiesValidator {
 	 * @return true if provided properties are valid, false otherwise
 	 */
 	boolean isValid() {
-		return errorMsg.isEmpty();
+		return errorMsg.toString().isEmpty();
 	}
 	
 	/**
@@ -46,7 +47,7 @@ class PropertiesValidator {
 	 * @return all error messages in one String
 	 */
 	String getErrorMessages() {
-		return errorMsg;
+		return errorMsg.toString();
 	}
 	
 	/**
@@ -55,28 +56,40 @@ class PropertiesValidator {
 	 */
 	private void validate() {
 		if(StringUtils.isNullOrEmpty(properties.getLearningDataFile()))
-			errorMsg += labels.get(Labels.LEARNING_DATA_FILE_EMPTY);
+			appendError(Labels.LEARNING_DATA_FILE_EMPTY);
 		
 		if(validateConsistencyMeasureThreshold())
-			errorMsg += labels.get(Labels.CONSISTENCY_MEASURE_LESS_THAN_ZERO);
+			appendError(Labels.CONSISTENCY_MEASURE_LESS_THAN_ZERO);
 		
 		if(validateFuzzyDegreesForExhaustiveSet())
-			errorMsg += labels.get(Labels.FUZZY_EXHAUSTIVE_SET);
+			appendError(Labels.FUZZY_EXHAUSTIVE_SET);
 		
 		if(validateConsistencyMeasure())
-			errorMsg += labels.get(Labels.INCORRECT_CONSISTENCY_MEASURE);
+			appendError(Labels.INCORRECT_CONSISTENCY_MEASURE);
 		
 		if(validateCertainRules())
-			errorMsg += labels.get(Labels.INCORRECT_CERTAIN_RULES);
+			appendError(Labels.INCORRECT_CERTAIN_RULES);
 		
 		if(validateExhaustiveSetOfCertainRules())
-			errorMsg += labels.get(Labels.EXHAUSTIVE_SET_CERTAIN_RULES);
+			appendError(Labels.EXHAUSTIVE_SET_CERTAIN_RULES);
 		
 		if(validateFuzzyDegreesForExhaustivePossibleRulesWithRoughMembership())
-			errorMsg += labels.get(Labels.FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP);
+			appendError(Labels.FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP);
 		
 		if(validateOptimizePossibleRules())
-			errorMsg += labels.get(Labels.OPTIMIZE_POSSIBLE_RULES);
+			appendError(Labels.OPTIMIZE_POSSIBLE_RULES);
+		
+		validateFileExtensions();
+	}
+	
+	/**
+	 * Appends error message with line end character.
+	 * @see Labels
+	 * @param labelCode from Labels class
+	 */
+	private void appendError(String labelCode) {
+		errorMsg.append(labels.get(labelCode))
+				.append('\n');
 	}
 	
 	private boolean validateConsistencyMeasureThreshold() {
@@ -135,6 +148,32 @@ class PropertiesValidator {
 				&& properties.getConsideredSetOfRules().getTextValue().equalsIgnoreCase("minimal")
 				&& properties.getTypeOfRules().getTextValue().equalsIgnoreCase("possible")
 				&& properties.getOptimizeRuleConsistencyInVCDomLEMWrt().getTextValue().equalsIgnoreCase("set");
+	}
+	
+	/**
+	 * Check if files have correct extensions.
+	 * Files should have correct extensions or no extensions.
+	 * If files have no extensions, they will be added on properties save.
+	 * @see PropertiesSaver
+	 * @see pl.jowko.jrank.desktop.utils.FileExtensionExtractor
+	 */
+	private void validateFileExtensions() {
+		validateExtension(properties.getLearningDataFile(), "isf", Labels.PROP_EXT_LEARNING);
+		validateExtension(properties.getTestDataFile(), "isf", Labels.PROP_EXT_TEST);
+		
+		validateExtension(properties.getPctFile(), "isf", Labels.PROP_EXT_PCT_ISF);
+		validateExtension(properties.getPctApxFile(), "apx", Labels.PROP_EXT_APX);
+		validateExtension(properties.getPctRulesFile(), "rules", Labels.PROP_EXT_RULES);
+		
+		validateExtension(properties.getPreferenceGraphFile(), "graph", Labels.PROP_EXT_GRAPH);
+		validateExtension(properties.getRankingFile(), "ranking", Labels.PROP_EXT_RANKING);
+	}
+	
+	private void validateExtension(String property, String extension, String labelCode) {
+		String learningExt = getExtension(property);
+		if(nonNull(learningExt) && not(extension.equals(learningExt))) {
+			appendError(labelCode);
+		}
 	}
 	
 	/**

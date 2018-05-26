@@ -222,14 +222,22 @@ class StubSettings {
 	}
 	
 	private void createEnglishPropertiesValidationMessages(Map<String, String> language) {
-		language.put(Labels.LEARNING_DATA_FILE_EMPTY, "Learning data file is empty.\n");
-		language.put(Labels.CONSISTENCY_MEASURE_LESS_THAN_ZERO, "Consistency measure threshold is smaller than zero.\n");
-		language.put(Labels.FUZZY_EXHAUSTIVE_SET, "Incorrect fuzzy satisfaction degrees calculation method for exhaustive set of decision rules.\n");
-		language.put(Labels.INCORRECT_CONSISTENCY_MEASURE, "Incorrect consistency measure threshold. Value has to be not greater than 1.0.\n");
-		language.put(Labels.INCORRECT_CERTAIN_RULES, "In VC-DRSA only certain rules may be induced.\n");
-		language.put(Labels.EXHAUSTIVE_SET_CERTAIN_RULES, "In VC-DRSA, exhaustive set of certain rules may be used only for monotonic consistency measures: epsilon, epsilon*, and epsilon', not for rough membership.\n");
-		language.put(Labels.FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP, "Fuzzy satisfaction degrees cannot be used in DRSA for exhaustive set of possible rules with rough membership measure. Assuming crisp satisfaction degrees in preference graph.\n");
-		language.put(Labels.OPTIMIZE_POSSIBLE_RULES, "In VC-DomLEM, consistency of possible rules cannot be optimized w.r.t. set, only w.r.t. upper approximation of that set. Assuming optimization of rule consistency measure w.r.t. upper approximation.\n");
+		language.put(Labels.LEARNING_DATA_FILE_EMPTY, "Learning data file is empty.");
+		language.put(Labels.CONSISTENCY_MEASURE_LESS_THAN_ZERO, "Consistency measure threshold is smaller than zero.");
+		language.put(Labels.FUZZY_EXHAUSTIVE_SET, "Incorrect fuzzy satisfaction degrees calculation method for exhaustive set of decision rules.");
+		language.put(Labels.INCORRECT_CONSISTENCY_MEASURE, "Incorrect consistency measure threshold. Value has to be not greater than 1.0.");
+		language.put(Labels.INCORRECT_CERTAIN_RULES, "In VC-DRSA only certain rules may be induced.");
+		language.put(Labels.EXHAUSTIVE_SET_CERTAIN_RULES, "In VC-DRSA, exhaustive set of certain rules may be used only for monotonic consistency measures: epsilon, epsilon*, and epsilon', not for rough membership.");
+		language.put(Labels.FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP, "Fuzzy satisfaction degrees cannot be used in DRSA for exhaustive set of possible rules with rough membership measure. Assuming crisp satisfaction degrees in preference graph.");
+		language.put(Labels.OPTIMIZE_POSSIBLE_RULES, "In VC-DomLEM, consistency of possible rules cannot be optimized w.r.t. set, only w.r.t. upper approximation of that set. Assuming optimization of rule consistency measure w.r.t. upper approximation.");
+		
+		language.put(Labels.PROP_EXT_LEARNING, "Learning data file extension is not valid. Valid extension: isf");
+		language.put(Labels.PROP_EXT_TEST, "Test data file extension is not valid. Valid extension: isf");
+		language.put(Labels.PROP_EXT_PCT_ISF,"Pct file extension is not valid. Valid extension: isf");
+		language.put(Labels.PROP_EXT_APX, "Pct apx file extension is not valid. Valid extension: apx");
+		language.put(Labels.PROP_EXT_RULES, "Pct rules file extension is not valid. Valid extension: rules");
+		language.put(Labels.PROP_EXT_GRAPH, "Preference graph file extension is not valid. Valid extension: graph");
+		language.put(Labels.PROP_EXT_RANKING, "Ranking file extension is not valid. Valid extension: ranking");
 	}
 	
 	private void createEnglishPropertiesTooltips(Map<String, String> language) {

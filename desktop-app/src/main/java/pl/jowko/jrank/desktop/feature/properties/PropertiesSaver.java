@@ -4,9 +4,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.feature.properties.Names.*;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
+import static pl.jowko.jrank.desktop.utils.FileExtensionExtractor.getExtension;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
@@ -50,13 +52,13 @@ class PropertiesSaver {
 	 * Converts all JRankProperties to Properties object.
 	 */
 	private void initializeProperties() {
-		setStringProperty(LEARNING_DATA_FILE, jRankProperties.getLearningDataFile());
-		setStringProperty(TEST_DATA_FILE, jRankProperties.getTestDataFile());
-		setStringProperty(PCT_FILE, jRankProperties.getPctFile());
-		setStringProperty(PCT_APX_FILE, jRankProperties.getPctApxFile());
-		setStringProperty(PCT_RULES_FILE, jRankProperties.getPctRulesFile());
-		setStringProperty(PREFERENCE_GRAPH_FILE, jRankProperties.getPreferenceGraphFile());
-		setStringProperty(RANKING_FILE, jRankProperties.getRankingFile());
+		setFilePathProperty(LEARNING_DATA_FILE, jRankProperties.getLearningDataFile(), "isf");
+		setFilePathProperty(TEST_DATA_FILE, jRankProperties.getTestDataFile(), "isf");
+		setFilePathProperty(PCT_FILE, jRankProperties.getPctFile(), "isf");
+		setFilePathProperty(PCT_APX_FILE, jRankProperties.getPctApxFile(), "apx");
+		setFilePathProperty(PCT_RULES_FILE, jRankProperties.getPctRulesFile(), "rules");
+		setFilePathProperty(PREFERENCE_GRAPH_FILE, jRankProperties.getPreferenceGraphFile(), "graph");
+		setFilePathProperty(RANKING_FILE, jRankProperties.getRankingFile(), "ranking");
 		
 		setStringProperty(REFERENCE_RANKING, jRankProperties.getReferenceRanking());
 		setStringProperty(PAIRS, jRankProperties.getPairs());
@@ -86,6 +88,22 @@ class PropertiesSaver {
 	
 	private void setStringProperty(String propertyName, String value) {
 		if(isNotNullOrEmpty(value)) {
+			properties.setProperty(propertyName, value);
+		}
+	}
+	
+	/**
+	 * Sets filePath property.
+	 * If user typed property with no file extension, it will be added to property value.
+	 * @see PropertiesValidator
+	 * @see pl.jowko.jrank.desktop.utils.FileExtensionExtractor
+	 */
+	private void setFilePathProperty(String propertyName, String value, String extension) {
+		if(isNotNullOrEmpty(value)) {
+			String ext = getExtension(value);
+			if(not(value.contains('.' + extension)) && (isNull(ext) || ext.isEmpty() || not(ext.equals(extension))))
+				value += '.' + extension;
+			
 			properties.setProperty(propertyName, value);
 		}
 	}

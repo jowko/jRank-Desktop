@@ -181,6 +181,120 @@ class PropertiesValidatorTest extends MasterTest {
 		assertFalse(validator.isValid());
 	}
 	
+	@Test
+	void fileExtensionsShouldBeValid() {
+		properties.setLearningDataFile("data.isf");
+		properties.setTestDataFile("test.isf");
+		properties.setPctFile("pct.isf");
+		properties.setPctApxFile("pct.apx");
+		properties.setPctRulesFile("pct.rules");
+		properties.setPreferenceGraphFile("test.graph");
+		properties.setRankingFile("test.ranking");
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertTrue(validator.isValid());
+	}
+	
+	@Test
+	void fileExtensionsShouldBeValidWhenEmptyFilePath() {
+		properties.setLearningDataFile("test.isf");
+		properties.setTestDataFile("");
+		properties.setPctFile("");
+		properties.setPctApxFile("");
+		properties.setPctRulesFile("");
+		properties.setPreferenceGraphFile("");
+		properties.setRankingFile("");
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertTrue(validator.isValid());
+	}
+	
+	@Test
+	void fileExtensionsShouldBeValidWhenNullFilePath() {
+		properties.setLearningDataFile("test.isf");
+		properties.setTestDataFile(null);
+		properties.setPctFile(null);
+		properties.setPctApxFile(null);
+		properties.setPctRulesFile(null);
+		properties.setPreferenceGraphFile(null);
+		properties.setRankingFile(null);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertTrue(validator.isValid());
+	}
+	
+	@Test
+	void fileExtensionsShouldBeValidWhenNoExtensionsWereProvided() {
+		properties.setLearningDataFile("data");
+		properties.setTestDataFile("test");
+		properties.setPctFile("pct");
+		properties.setPctApxFile("pct");
+		properties.setPctRulesFile("pct");
+		properties.setPreferenceGraphFile("test");
+		properties.setRankingFile("test");
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertTrue(validator.isValid());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"test.a", "test.isf.a", "test.isf."})
+	void learningFileExtensionShouldNotBeValid(String value) {
+		properties.setLearningDataFile(value);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertFalse(validator.isValid());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"test.a", "test.isf.a", "test.isf."})
+	void testFileExtensionShouldNotBeValid(String value) {
+		properties.setLearningDataFile("test.isf");
+		properties.setTestDataFile(value);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertFalse(validator.isValid());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"test.a", "test.isf.a", "test.isf."})
+	void pctFileExtensionShouldNotBeValid(String value) {
+		properties.setLearningDataFile("test.isf");
+		properties.setPctFile(value);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertFalse(validator.isValid());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"test.a", "test.apx.a", "test.apx."})
+	void apxFileExtensionShouldNotBeValid(String value) {
+		properties.setLearningDataFile("test.isf");
+		properties.setPctApxFile(value);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertFalse(validator.isValid());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"test.a", "test.rules.a", "test.rules."})
+	void rulesFileExtensionShouldNotBeValid(String value) {
+		properties.setLearningDataFile("test.isf");
+		properties.setPctRulesFile(value);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertFalse(validator.isValid());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"test.a", "test.graph.a", "test.graph."})
+	void graphFileExtensionShouldNotBeValid(String value) {
+		properties.setLearningDataFile("test.isf");
+		properties.setPreferenceGraphFile(value);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertFalse(validator.isValid());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"test.a", "test.ranking.a", "test.ranking."})
+	void rankingFileExtensionShouldNotBeValid(String value) {
+		properties.setLearningDataFile("test.isf");
+		properties.setRankingFile(value);
+		PropertiesValidator validator = new PropertiesValidator(properties);
+		assertFalse(validator.isValid());
+	}
+	
 	private JRankParameter createParameter(String text) {
 		return new JRankParameter("", text, 0);
 	}

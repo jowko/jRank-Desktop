@@ -5,13 +5,13 @@ package pl.jowko.jrank.desktop.feature.properties;
  */
 class TestPropertiesProvider {
 	
-	static String dataFile = "dataFile";
-	static String testDataFile = "testDataFile";
-	static String pctFile = "pctFile";
-	static String pctApxFile = "pctApxFile";
-	static String pctRulesFile = "pctRulesFile";
-	static String rankingFile = "rankingFile";
-	static String graphFile = "graphFile";
+	static String dataFile = "dataFile.isf";
+	static String testDataFile = "testDataFile.isf";
+	static String pctFile = "pctFile.isf";
+	static String pctApxFile = "pctApxFile.apx";
+	static String pctRulesFile = "pctRulesFile.rules";
+	static String rankingFile = "rankingFile.ranking";
+	static String graphFile = "graphFile.graph";
 	static String referenceRanking = "referenceRanking";
 	static String pairs = "pairs";
 	
