@@ -183,13 +183,13 @@ public class LearningTableActions {
 		}
 		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttribute(item.getAttribute());
 		
-		int attributeIndex = learningTable.getColumns().indexOf(tableColumn);
+		int attributeIndex = tableColumn.getAttributeIndex();
 		learningTable.getColumns().remove(tableColumn);
 		attributes.remove(tableColumn.getAttribute());
 		
 		ObservableList<ObservableList<Field>> list = learningTable.getItems();
 		list.forEach(row -> row.remove(attributeIndex));
-		tableHelper.recreateCellValuesFactories(learningTable.getColumns());
+		tableHelper.recreateCellValuesFactories(learningTable.getColumns(), attributeIndex);
 		setItemsToAttributeComboBox();
 	}
 	

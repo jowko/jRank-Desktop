@@ -42,10 +42,16 @@ public class LearningTableHelper {
 	 * When removing column from table, indexes are not correctly related to columns.
 	 * After column removal cellValueFactory must be recreated with new indexes.
 	 */
-	void recreateCellValuesFactories(List<TableColumn<ObservableList<Field>, ?>> columns) {
+	void recreateCellValuesFactories(List<TableColumn<ObservableList<Field>, ?>> columns, int removedIndex) {
 		for(int i=0; i<columns.size(); i++) {
 			AttributeTableColumn column = (AttributeTableColumn) columns.get(i);
-			final int finalIdx = i;
+			
+			int attributeIndex = column.getAttributeIndex();
+			if(attributeIndex > removedIndex) {
+				column.setAttributeIndex(--attributeIndex);
+			}
+			
+			final int finalIdx = attributeIndex;
 			column.setCellValueFactory(param ->
 					new ReadOnlyObjectWrapper<>(param.getValue().get(finalIdx))
 			);
