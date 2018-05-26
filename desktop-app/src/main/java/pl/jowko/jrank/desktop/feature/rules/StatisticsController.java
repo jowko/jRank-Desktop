@@ -6,6 +6,7 @@ import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.feature.customfx.SelectableLabel;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RuleStatistics;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 import pl.poznan.put.cs.idss.jrs.utilities.HumanReadableListOfNumbers;
 
 import static java.util.Objects.nonNull;
@@ -96,7 +97,7 @@ public class StatisticsController {
 		
 		ruleType.setText(getRuleType(rule.getType()));
 		usageType.setText(getUsageType(rule.getCharacteristicDecisionClassUsageTip()));
-		characteristicClass.setText(rule.getCharacteristicDecisionClass().toString());
+		characteristicClass.setText(translateCharacteristicDecisionClass(rule.getCharacteristicDecisionClass().toString()));
 		
 		RuleStatistics stats = rule.getRuleStatistics();
 		
@@ -122,6 +123,17 @@ public class StatisticsController {
 		aMeasure.setText(doubleToString(stats.getAConfirmationMeasureValue()));
 		zMeasure.setText(doubleToString(stats.getZConfirmationMeasureValue()));
 		lMeasure.setText(doubleToString(stats.getLConfirmationMeasureValue()));
+	}
+	
+	/**
+	 * Retrurns String for provided characteristic decision
+	 */
+	private String translateCharacteristicDecisionClass(String characteristicDecision) {
+		if("-1.0".equals(characteristicDecision))
+			return labels.get(Labels.STAT_CHARACTERISTIC_SC);
+		else if("0.0".equals(characteristicDecision))
+			return labels.get(Labels.STAT_CHARACTERISTIC_S);
+		return "";
 	}
 	
 	/**

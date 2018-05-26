@@ -20,7 +20,7 @@
                   <SelectableLabel fx:id="ruleType" prefWidth="60" />
                   <SelectableLabel fx:id="usageTypeLabel" prefWidth="80" text="Usage type:" />
                   <SelectableLabel fx:id="usageType" prefWidth="80" />
-                  <SelectableLabel fx:id="characteristicClassLabel" text="Characteristic class:" />
+                  <SelectableLabel fx:id="characteristicClassLabel" prefWidth="80" text="Relation:" />
                   <SelectableLabel fx:id="characteristicClass" prefWidth="60" />
                </children>
                <padding>

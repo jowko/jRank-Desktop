@@ -267,6 +267,8 @@ public class Labels {
 	public static final String RULES_DECISION_PART = "RULES_DECISION_PART";
 	public static final String RULES_CONDITION_PART = "RULES_CONDITION_PART";
 	public static final String RULES_ID = "RULES_ID";
+	public static final String RULES_DECISION_S = "RULES_DECISION_S";
+	public static final String RULES_DECISION_SC = "RULES_DECISION_SC";
 	public static final String RULES_CERTAIN = "RULES_CERTAIN";
 	public static final String RULES_POSSIBLE = "RULES_POSSIBLE";
 	public static final String RULES_APPROXIMATE = "RULES_APPROXIMATE";
@@ -280,6 +282,8 @@ public class Labels {
 	public static final String STAT_RULE_TYPE = "STAT_RULE_TYPE";
 	public static final String STAT_USAGE_TYPE = "STAT_USAGE_TYPE";
 	public static final String STAT_CHARACTERISTIC_CLASS = "STAT_CHARACTERISTIC_CLASS";
+	public static final String STAT_CHARACTERISTIC_S = "STAT_CHARACTERISTIC_S";
+	public static final String STAT_CHARACTERISTIC_SC = "STAT_CHARACTERISTIC_SC";
 	public static final String STAT_SUPPORT = "STAT_SUPPORT";
 	public static final String STAT_SUPPORT_EXAMPLES = "STAT_SUPPORT_EXAMPLES";
 	public static final String STAT_STRENGTH = "STAT_STRENGTH";

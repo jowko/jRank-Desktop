@@ -371,6 +371,8 @@ class StubSettings {
 		language.put(Labels.RULES_DECISION_PART, "Decision");
 		language.put(Labels.RULES_CONDITION_PART, "Condition ");
 		language.put(Labels.RULES_ID, "ID");
+		language.put(Labels.RULES_DECISION_S, "x S y");
+		language.put(Labels.RULES_DECISION_SC, "x Sc y");
 		language.put(Labels.RULES_CERTAIN, "CERTAIN");
 		language.put(Labels.RULES_POSSIBLE, "POSSIBLE");
 		language.put(Labels.RULES_APPROXIMATE, "APPROXIMATE");
@@ -384,7 +386,9 @@ class StubSettings {
 		language.put(Labels.STAT_UNAVAILABLE, "Statistics are not available for selected rule.");
 		language.put(Labels.STAT_RULE_TYPE, "Rule type:");
 		language.put(Labels.STAT_USAGE_TYPE, "Usage type:");
-		language.put(Labels.STAT_CHARACTERISTIC_CLASS, "Characteristic class:");
+		language.put(Labels.STAT_CHARACTERISTIC_CLASS, "Relation:");
+		language.put(Labels.STAT_CHARACTERISTIC_S, "S");
+		language.put(Labels.STAT_CHARACTERISTIC_SC, "Sc");
 		language.put(Labels.STAT_SUPPORT, "Support:");
 		language.put(Labels.STAT_SUPPORT_EXAMPLES, "Supporting examples:");
 		language.put(Labels.STAT_STRENGTH, "Strength:");

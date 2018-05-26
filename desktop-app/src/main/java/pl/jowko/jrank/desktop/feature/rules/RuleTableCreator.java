@@ -4,8 +4,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableColumn;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
-import pl.poznan.put.cs.idss.jrs.rules.Condition;
-import pl.poznan.put.cs.idss.jrs.rules.Rule;
+import pl.poznan.put.cs.idss.jrs.rules.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -173,8 +172,7 @@ class RuleTableCreator {
 		List<String> cells = new ArrayList<>(Collections.nCopies(columnsCount, ""));
 		
 		for (int j = 0; j < rule.getDecisions().length; j++) {
-			cells.set(firstDecisionPartColumnID + 2 * j,
-					rule.getDecisions()[j].toString());
+			cells.set(firstDecisionPartColumnID + 2 * j, translateDecision(rule.getDecisions()[0]));
 			if (j>0) {
 				cells.set(firstDecisionPartColumnID + 2 * j - 1, "OR");
 			}
@@ -194,6 +192,19 @@ class RuleTableCreator {
 		}
 		
 		return new RuleRow(rowId++, cells, rule);
+	}
+	
+	/**
+	 * Checks decision type and returns label for provided type.
+	 */
+	private String translateDecision(Condition decisionCondition) {
+		SingleCondition condition = (SingleCondition) decisionCondition;
+		if(condition.getRelation() instanceof RelationAtLeast) {
+			return labels.get(Labels.RULES_DECISION_S);
+		} else if(condition.getRelation() instanceof RelationAtMost) {
+			return labels.get(Labels.RULES_DECISION_SC);
+		}
+		return "";
 	}
 	
 	/**
