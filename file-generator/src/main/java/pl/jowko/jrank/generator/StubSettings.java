@@ -360,8 +360,11 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_UNKNOWN_FIELDS, "Table contains unknown fields. Unknown fields are only appropriate for decision atrributes.");
 		
 		language.put(Labels.LEARN_TABLE_ADD_EXAMPLE, "Add example");
+		language.put(Labels.LEARN_TABLE_ADD_EXAMPLE_FAIL, "No attributes in table. Add attributes first.");
 		language.put(Labels.LEARN_TABLE_REMOVE_EXAMPLES, "Remove selected examples");
+		language.put(Labels.LEARN_TABLE_REMOVE_EXAMPLES_FAIL, "No examples were selected. Select examples first.");
 		language.put(Labels.LEARN_TABLE_CUSTOMIZE_ATTRIBUTES, "Customize attributes");
+		language.put(Labels.LEARN_TABLE_CUSTOMIZE_ATTRIBUTES_FAIL, "No attributes to customize. Add attributes first.");
 		language.put(Labels.LEARN_TABLE_ADD_ATTRIBUTE, "Add attribute");
 		
 		language.put(Labels.LEARN_TABLE_REMOVE_ALL_HEADER, "Do you want to remove ALL examples from table?");
@@ -373,12 +376,14 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_EMPTY, "Table is empty. Add some data to it.");
 		language.put(Labels.LEARN_TABLE_SELECT_ATTRIBUTE, "Select attribute:");
 		language.put(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE, "Remove selected attribute");
+		language.put(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE_FAIL, "No attribute was selected. Remove action aborted.");
 		language.put(Labels.LEARN_TABLE_REMOVE_ALL_EXAMPLES, "Remove all examples");
 		language.put(Labels.LEARN_TABLE_SAVE_BUTTON, "Save");
 		language.put(Labels.LEARN_TABLE_CANCEL_BUTTON, "Cancel");
 	}
 	
 	private void createEnglishRulesLabels(Map<String, String> language) {
+		language.put(Labels.RULES_NO_DATA, "No rules to display. Check if rules file is correct.");
 		language.put(Labels.RULES_DECISION_PART, "Decision");
 		language.put(Labels.RULES_CONDITION_PART, "Condition ");
 		language.put(Labels.RULES_ID, "ID");

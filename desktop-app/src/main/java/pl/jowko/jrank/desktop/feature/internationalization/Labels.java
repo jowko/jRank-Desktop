@@ -244,6 +244,8 @@ public class Labels {
 	public static final String ATT_DIALOG_VALIDATION_FAIL = "ATT_DIALOG_VALIDATION_FAIL";
 	public static final String ATT_DIALOG_ENUMS_TOOLTIP = "ATT_DIALOG_ENUMS_TOOLTIP";
 	
+	
+	// Learning table
 	public static final String LEARN_TABLE_NO_PREFERENCE = "LEARN_TABLE_NO_PREFERENCE";
 	public static final String LEARN_TABLE_GAIN = "LEARN_TABLE_GAIN";
 	public static final String LEARN_TABLE_COST = "LEARN_TABLE_COST";
@@ -257,8 +259,11 @@ public class Labels {
 	public static final String LEARN_TABLE_UNKNOWN_FIELDS = "LEARN_TABLE_UNKNOWN_FIELDS";
 	
 	public static final String LEARN_TABLE_ADD_EXAMPLE = "LEARN_TABLE_ADD_EXAMPLE";
+	public static final String LEARN_TABLE_ADD_EXAMPLE_FAIL = "LEARN_TABLE_ADD_EXAMPLE_FAIL";
 	public static final String LEARN_TABLE_REMOVE_EXAMPLES = "LEARN_TABLE_REMOVE_EXAMPLES";
+	public static final String LEARN_TABLE_REMOVE_EXAMPLES_FAIL = "LEARN_TABLE_REMOVE_EXAMPLES_FAIL";
 	public static final String LEARN_TABLE_CUSTOMIZE_ATTRIBUTES = "LEARN_TABLE_CUSTOMIZE_ATTRIBUTES";
+	public static final String LEARN_TABLE_CUSTOMIZE_ATTRIBUTES_FAIL = "LEARN_TABLE_CUSTOMIZE_ATTRIBUTES_FAIL";
 	public static final String LEARN_TABLE_ADD_ATTRIBUTE = "LEARN_TABLE_ADD_ATTRIBUTE";
 	
 	public static final String LEARN_TABLE_REMOVE_ALL_HEADER = "LEARN_TABLE_REMOVE_ALL_HEADER";
@@ -270,12 +275,14 @@ public class Labels {
 	public static final String LEARN_TABLE_EMPTY = "LEARN_TABLE_EMPTY";
 	public static final String LEARN_TABLE_SELECT_ATTRIBUTE = "LEARN_TABLE_SELECT_ATTRIBUTE";
 	public static final String LEARN_TABLE_REMOVE_ATTRIBUTE = "LEARN_TABLE_REMOVE_ATTRIBUTE";
+	public static final String LEARN_TABLE_REMOVE_ATTRIBUTE_FAIL = "LEARN_TABLE_REMOVE_ATTRIBUTE_FAIL";
 	public static final String LEARN_TABLE_REMOVE_ALL_EXAMPLES = "LEARN_TABLE_REMOVE_ALL_EXAMPLES";
 	public static final String LEARN_TABLE_SAVE_BUTTON = "LEARN_TABLE_SAVE_BUTTON";
 	public static final String LEARN_TABLE_CANCEL_BUTTON = "LEARN_TABLE_CANCEL_BUTTON";
 	
 	
 	// Rules
+	public static final String RULES_NO_DATA = "RULES_NO_DATA";
 	public static final String RULES_DECISION_PART = "RULES_DECISION_PART";
 	public static final String RULES_CONDITION_PART = "RULES_CONDITION_PART";
 	public static final String RULES_ID = "RULES_ID";

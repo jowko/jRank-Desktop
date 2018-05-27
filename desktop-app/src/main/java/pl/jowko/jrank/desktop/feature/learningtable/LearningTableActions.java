@@ -13,6 +13,7 @@ import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeItem;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.utils.Cloner;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
@@ -43,6 +44,7 @@ public class LearningTableActions {
 	private List<Attribute> attributes;
 	private ComboBox<AttributeItem> selectAttribute;
 	private JRankTab learningTableTab;
+	private LanguageService labels;
 	
 	private int idColumnValue;
 	
@@ -51,6 +53,7 @@ public class LearningTableActions {
 		this.tableHelper = new LearningTableHelper();
 		this.selectAttribute = selectAttribute;
 		this.learningTableTab = learningTableTab;
+		labels = LanguageService.getInstance();
 		attributes = new ArrayList<>();
 		idColumnValue = 1;
 	}
@@ -135,7 +138,7 @@ public class LearningTableActions {
 	 */
 	void addExampleAction() {
 		if(learningTable.getColumns().size() == 1) {
-			JRankLogger.info("No attributes in table. Add attributes first.");
+			DialogsService.showActionFailedDialog(labels.get(Labels.LEARN_TABLE_ADD_EXAMPLE_FAIL));
 			return;
 		}
 		ObservableList<Field> newFields = tableHelper.getEmptyExample(attributes, idColumnValue++);
@@ -149,7 +152,7 @@ public class LearningTableActions {
 	void removeSelectedExamplesAction() {
 		ObservableList<ObservableList<Field>> selectedRows = learningTable.getSelectionModel().getSelectedItems();
 		if(selectedRows.isEmpty()) {
-			JRankLogger.info("No examples were selected. Select examples first.");
+			DialogsService.showActionFailedDialog(labels.get(Labels.LEARN_TABLE_REMOVE_EXAMPLES_FAIL));
 			return;
 		}
 		// we don't want to iterate on same collection on with we remove items
@@ -164,7 +167,7 @@ public class LearningTableActions {
 	void customizeAttributes() {
 		try {
 			if(attributes.size() == 1) {
-				JRankLogger.warn("No attributes to customize. Add attributes first.");
+				DialogsService.showActionFailedDialog(Labels.LEARN_TABLE_CUSTOMIZE_ATTRIBUTES_FAIL);
 				return;
 			}
 			
@@ -209,7 +212,7 @@ public class LearningTableActions {
 	void removeAttributeAction() {
 		AttributeItem item = selectAttribute.getValue();
 		if(isNull(item)) {
-			JRankLogger.warn("No attribute was selected. Remove action aborted.");
+			DialogsService.showActionFailedDialog(labels.get(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE_FAIL));
 			return;
 		}
 		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttribute(item.getAttribute());

@@ -6,9 +6,11 @@ import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.tabs.lower.LowerTabsController;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
+import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
@@ -41,18 +43,18 @@ public class RulesController {
 	 * @param rulesContainer from with rules are extracted
 	 * @param workspaceItem with corresponds to file in workspace
 	 * @param rulesTab with contains rules table
+	 * @throws TabInitializationException when no rules were provided
 	 */
-	public void initializeRules(RulesContainer rulesContainer, WorkspaceItem workspaceItem, JRankTab rulesTab) {
+	public void initializeRules(RulesContainer rulesContainer, WorkspaceItem workspaceItem, JRankTab rulesTab) throws TabInitializationException {
 		this.workspaceItem = workspaceItem;
 		this.rulesTab = rulesTab;
 		this.rules = new RulesExtractor(rulesContainer).extract();
 		labels = LanguageService.getInstance();
 		
 		if(rules.size() == 0) {
-			JRankLogger.warn("No rules to display. Check if rules file is correct.");
-			rulesTable.setVisible(false);
-			rulesTable.setMaxSize(0, 0);
-			return;
+			String msg = labels.get(Labels.RULES_NO_DATA);
+			DialogsService.showActionFailedDialog(msg);
+			throw new TabInitializationException(msg);
 		}
 		
 		initializeTable();
