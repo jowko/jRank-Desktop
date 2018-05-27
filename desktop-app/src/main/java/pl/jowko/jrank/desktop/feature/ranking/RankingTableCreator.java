@@ -146,6 +146,7 @@ class RankingTableCreator {
 	 * Create column from provided attribute.
 	 * Attribute name is used as column header.
 	 * Column have also tooltip containing information about attribute.
+	 * When creating column, index for IndexedTableColumn is incremented by 2, because we already created two columns, and index starts from 0.
 	 * @param attribute from with column is created
 	 * @param columnIndex with is used to extract correct cell from row
 	 * @return table column created from attribute

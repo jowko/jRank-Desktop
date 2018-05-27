@@ -214,18 +214,11 @@ public class LearningTableActions {
 			return;
 		}
 		
-		List<String> columns = learningTable.getColumns()
-				.stream()
-				.map(col -> ((AttributeTableColumn) col).getAttribute().getName())
-				.collect(Collectors.toList());
+		List<String> columns = CsvTableCreator.extractColumnNames(learningTable);
+		List<Integer> indexes = CsvTableCreator.extractIndexes(learningTable);
 		
-		List<Integer> indexes = learningTable.getColumns()
-				.stream()
-				.map(col -> ((AttributeTableColumn) col).getIndex())
-				.collect(Collectors.toList());
-		
-		if(columns.size() == 0) {
-			JRankLogger.warn("Could not copy rows because no attributes are selected.");
+		if(columns.size() <= 1) {
+			JRankLogger.warn("Could not copy rows because no attributes are available.");
 		}
 		// replace ID secret flag with ID label
 		int idIndex = columns.indexOf(ATTRIBUTE_ID_SECRET_NAME);

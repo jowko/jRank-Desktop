@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.clipboard.ClipBoardManager;
-import pl.jowko.jrank.desktop.feature.clipboard.CsvTable;
 import pl.jowko.jrank.desktop.feature.clipboard.CsvTableCreator;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
@@ -12,14 +11,11 @@ import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.UnknownFieldValidator;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.service.DialogsService;
-import pl.jowko.jrank.feature.customfx.IndexedTableColumn;
 import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static javafx.collections.FXCollections.observableArrayList;
+import static pl.jowko.jrank.desktop.feature.clipboard.CsvTableCreator.createTable;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -87,17 +83,7 @@ public class RankingController {
 			JRankLogger.warn("No rows selected. No rows were copied.");
 			return;
 		}
-		
-		List<String> columns = rankingTable.getColumns().stream()
-				.map(col -> ((IndexedTableColumn)col).getName())
-				.collect(Collectors.toList());
-		
-		List<Integer> indexes = rankingTable.getColumns().stream()
-				.map(col -> ((IndexedTableColumn)col).getIndex())
-				.collect(Collectors.toList());
-		
-		CsvTable table = CsvTableCreator.createTable(columns, items, indexes);
-		ClipBoardManager.putCsvTable(table);
+		ClipBoardManager.putCsvTable(createTable(rankingTable, items));
 	}
 	
 	/**

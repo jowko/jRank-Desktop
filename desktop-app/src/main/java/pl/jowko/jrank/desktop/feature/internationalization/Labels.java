@@ -295,6 +295,7 @@ public class Labels {
 	public static final String RULES_AT_LEAST = "RULES_AT_LEAST";
 	public static final String RULES_AT_MOST = "RULES_AT_MOST";
 	public static final String RULES_EQUAL = "RULES_EQUAL";
+	public static final String RULES_COPY_ROWS = "RULES_COPY_ROWS";
 	
 	// Rules statistics
 	public static final String STAT_TAB_HEADER = "STAT_TAB_HEADER";

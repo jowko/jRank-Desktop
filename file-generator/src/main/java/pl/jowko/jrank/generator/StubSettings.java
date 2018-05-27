@@ -396,6 +396,7 @@ class StubSettings {
 		language.put(Labels.RULES_AT_LEAST, "AT LEAST");
 		language.put(Labels.RULES_AT_MOST, "AT MOST");
 		language.put(Labels.RULES_EQUAL, "EQUAL");
+		language.put(Labels.RULES_COPY_ROWS, "Copy selected rows");
 	}
 	
 	private void createEnglishRulesStatisticsLabels(Map<String, String> language) {

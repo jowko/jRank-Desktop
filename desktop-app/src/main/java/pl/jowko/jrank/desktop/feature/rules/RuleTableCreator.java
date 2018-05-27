@@ -4,6 +4,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableColumn;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.feature.customfx.IndexedTableColumn;
 import pl.poznan.put.cs.idss.jrs.rules.*;
 
 import java.util.ArrayList;
@@ -96,17 +97,17 @@ class RuleTableCreator {
 		
 		int conditionColumnNumber = 1;
 		
-		for(int i=1; i<columnsCount; i++) {
-			if(i%2 == 0 && i!= thenOperatorColumnID) { // create column for separators and operators
+		for(int i=0; i<columnsCount-1; i++) {
+			if(i%2 == 1 && i!= thenOperatorColumnID-1) { // create column for separators and operators
 				TableColumn<RuleRow, String> column = createColumn("", i);
 				column.setResizable(false);
 				column.setMaxWidth(50d);
 				columns.add(column);
 				
-			} else if(i < thenOperatorColumnID) {
+			} else if(i < thenOperatorColumnID-1) {
 				columns.add(createColumn(labels.get(Labels.RULES_DECISION_PART), i));
 				
-			} else if(i == thenOperatorColumnID) {
+			} else if(i == thenOperatorColumnID-1) {
 				TableColumn<RuleRow, String> column = createColumn("<=", i);
 				column.setSortable(false);
 				column.setResizable(false);
@@ -120,13 +121,15 @@ class RuleTableCreator {
 	}
 	
 	/**
-	 * Create JavaFX read only column for rules table
+	 * Create JavaFX read only column for rules table.
+	 * When creating column, index for IndexedTableColumn is incremented by 1, because we already created one column(ID), and index starts from 0.
 	 * @param headerText with will be displayed in header
 	 * @param columnIndex from with cell values will be extracted from rows
 	 * @return column for rules table
 	 */
-	private TableColumn<RuleRow, String> createColumn(String headerText, int columnIndex) {
-		TableColumn<RuleRow, String> column = new TableColumn<>(headerText);
+	private IndexedTableColumn<RuleRow, String> createColumn(String headerText, int columnIndex) {
+		IndexedTableColumn<RuleRow, String> column = new IndexedTableColumn<>(headerText, columnIndex+1);
+		column.setText(headerText);
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getCells().get(columnIndex))
 		);
@@ -142,7 +145,8 @@ class RuleTableCreator {
 	 * @return column with integer type for ID
 	 */
 	private TableColumn<RuleRow, Integer> createIDColumn() {
-		TableColumn<RuleRow, Integer> column = new TableColumn<>(labels.get(Labels.RULES_ID));
+		IndexedTableColumn<RuleRow, Integer> column = new IndexedTableColumn<>(labels.get(Labels.RULES_ID), 0);
+		column.setText(labels.get(Labels.RULES_ID));
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getId())
 		);
@@ -190,6 +194,7 @@ class RuleTableCreator {
 				cells.set(firstConditionColumnID + 2 * j - 1, "&");
 			}
 		}
+		cells.remove(0); // remove empty cell
 		
 		return new RuleRow(rowId++, cells, rule);
 	}

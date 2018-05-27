@@ -1,10 +1,13 @@
 package pl.jowko.jrank.desktop.feature.clipboard;
 
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
+import pl.jowko.jrank.feature.customfx.IndexedTableColumn;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Piotr on 2018-05-27
@@ -56,6 +59,39 @@ public class CsvTableCreator {
 		}
 		
 		return new CsvTable(rows);
+	}
+	
+	/**
+	 * Create Csv table from provided UI JavaFX table and selected items.
+	 * Table should use IndexedTableColumn class when creating columns.
+	 * @see IndexedTableColumn
+	 */
+	public static <T> CsvTable createTable(TableView<?> table, ObservableList<ObservableList<T>> selectedItems) {
+		List<String> columns = CsvTableCreator.extractColumnNames(table);
+		List<Integer> indexes = CsvTableCreator.extractIndexes(table);
+		return CsvTableCreator.createTable(columns, selectedItems, indexes);
+	}
+	
+	/**
+	 * Extract column names from table.
+	 * Table should use IndexedTableColumn class when creating columns.
+	 * @see IndexedTableColumn
+	 */
+	public static List<String> extractColumnNames(TableView<?> table) {
+		return table.getColumns().stream()
+				.map(col -> ((IndexedTableColumn)col).getName())
+				.collect(Collectors.toList());
+	}
+	
+	/**
+	 * Extract indexes from table.
+	 * Table should use IndexedTableColumn class when creating columns.
+	 * @see IndexedTableColumn
+	 */
+	public static List<Integer> extractIndexes(TableView<?> table) {
+		return table.getColumns().stream()
+				.map(col -> ((IndexedTableColumn)col).getIndex())
+				.collect(Collectors.toList());
 	}
 	
 }

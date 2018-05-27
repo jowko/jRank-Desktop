@@ -1,8 +1,10 @@
 package pl.jowko.jrank.desktop.feature.rules;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.feature.clipboard.ClipBoardManager;
+import pl.jowko.jrank.desktop.feature.clipboard.CsvTableCreator;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
@@ -20,6 +22,8 @@ import java.util.List;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static javafx.collections.FXCollections.observableArrayList;
+import static pl.jowko.jrank.desktop.feature.clipboard.CsvTableCreator.createTable;
 
 /**
  * Created by Piotr on 2018-05-21.
@@ -69,7 +73,9 @@ public class RulesController {
 		RuleTableCreator tableCreator = new RuleTableCreator(rules);
 		rulesTable.getColumns().addAll(tableCreator.getColumns());
 		rulesTable.getItems().addAll(tableCreator.getItems());
+		rulesTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		initializeShowStatisticsEvent();
+		initializeContextMenu();
 	}
 	
 	/**
@@ -91,6 +97,50 @@ public class RulesController {
 			});
 			return row ;
 		});
+	}
+	
+	/**
+	 * Initialize ContextMenu with all actions.
+	 */
+	private void initializeContextMenu() {
+		ContextMenu menu = new ContextMenu();
+		MenuItem item = new MenuItem(labels.get(Labels.RULES_COPY_ROWS));
+		item.setOnAction(event -> copySelectedRowsAction());
+		menu.getItems().add(item);
+		rulesTable.setContextMenu(menu);
+	}
+	
+	/**
+	 * Copy selected rows action.
+	 * This action will copy to user clipboard all selected rows in csv format.
+	 * @see CsvTableCreator
+	 */
+	private void copySelectedRowsAction() {
+		ObservableList<ObservableList<String>> items = getSelectedItems();
+		if(items.size() == 0) {
+			JRankLogger.warn("No rows selected. No rows were copied.");
+			return;
+		}
+		ClipBoardManager.putCsvTable(createTable(rulesTable, items));
+	}
+	
+	/**
+	 * Gets list of selected items(RuleRow) and converts each RuleRow to list of string containing cell values.
+	 * It will return list of list, where each list represents row and each object in nested list represents cell.
+	 * @return selected RuleRow objects flattened to string list
+	 */
+	private ObservableList<ObservableList<String>> getSelectedItems() {
+		ObservableList<RuleRow> rows = rulesTable.getSelectionModel().getSelectedItems();
+		ObservableList<ObservableList<String>> items = observableArrayList();
+		
+		rows.forEach(row -> {
+			ObservableList<String> cells = observableArrayList();
+			cells.add(Integer.toString(row.getId()));
+			cells.addAll(row.getCells());
+			items.add(cells);
+		});
+		
+		return items;
 	}
 	
 	/**
