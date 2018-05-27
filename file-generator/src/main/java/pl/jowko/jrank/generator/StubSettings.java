@@ -428,6 +428,7 @@ class StubSettings {
 		language.put(Labels.RANKING_EVALUATION, "Evaluation");
 		language.put(Labels.RANKING_UNKNOWN_FIELDS, "Loaded isf table contains unknown fields in non decision attributes. " +
 				"It means that ranking file is probably not up to date with isf data table. Generate ranking again.");
+		language.put(Labels.RANKING_COPY_ROWS, "Copy selected rows");
 	}
 	
 	/**

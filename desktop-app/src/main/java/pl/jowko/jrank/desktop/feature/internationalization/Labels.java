@@ -325,6 +325,7 @@ public class Labels {
 	public static final String RANKING_POSITION = "RANKING_POSITION";
 	public static final String RANKING_EVALUATION = "RANKING_EVALUATION";
 	public static final String RANKING_UNKNOWN_FIELDS = "RANKING_UNKNOWN_FIELDS";
+	public static final String RANKING_COPY_ROWS = "RANKING_COPY_ROWS";
 	
 	private Labels() {}
 	

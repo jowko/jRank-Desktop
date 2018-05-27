@@ -1,15 +1,25 @@
 package pl.jowko.jrank.desktop.feature.ranking;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.feature.clipboard.ClipBoardManager;
+import pl.jowko.jrank.desktop.feature.clipboard.CsvTable;
+import pl.jowko.jrank.desktop.feature.clipboard.CsvTableCreator;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.UnknownFieldValidator;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.feature.customfx.IndexedTableColumn;
+import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -22,6 +32,8 @@ public class RankingController {
 	@FXML
 	TableView<RankingRow> rankingTable;
 	
+	private LanguageService labels;
+	
 	/**
 	 * Initializes ranking from provided data.
 	 * @param rankingFileContent from .ranking file
@@ -33,6 +45,9 @@ public class RankingController {
 		RankingTableCreator creator = new RankingTableCreator(rankingFileContent, table);
 		rankingTable.getColumns().addAll(creator.getColumns());
 		rankingTable.getItems().addAll(creator.getItems());
+		rankingTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		labels = LanguageService.getInstance();
+		initializeContextMenu();
 	}
 	
 	/**
@@ -43,12 +58,66 @@ public class RankingController {
 		UnknownFieldValidator validator = new UnknownFieldValidator(table);
 		
 		if(not(validator.isValid())) {
-			LanguageService labels = LanguageService.getInstance();
 			String msg = labels.get(Labels.RANKING_UNKNOWN_FIELDS);
 			DialogsService.showActionFailedDialog(msg);
 			
 			throw new TabInitializationException(msg);
 		}
+	}
+	
+	/**
+	 * Initialize ContextMenu with all actions.
+	 */
+	private void initializeContextMenu() {
+		ContextMenu menu = new ContextMenu();
+		MenuItem item = new MenuItem(labels.get(Labels.RANKING_COPY_ROWS));
+		item.setOnAction(event -> copySelectedRowsAction());
+		menu.getItems().add(item);
+		rankingTable.setContextMenu(menu);
+	}
+	
+	/**
+	 * Copy selected rows action.
+	 * This action will copy to user clipboard all selected rows in csv format.
+	 * @see CsvTableCreator
+	 */
+	private void copySelectedRowsAction() {
+		ObservableList<ObservableList<String>> items = getSelectedItems();
+		if(items.size() == 0) {
+			JRankLogger.warn("No rows selected. No rows were copied.");
+			return;
+		}
+		
+		List<String> columns = rankingTable.getColumns().stream()
+				.map(col -> ((IndexedTableColumn)col).getName())
+				.collect(Collectors.toList());
+		
+		List<Integer> indexes = rankingTable.getColumns().stream()
+				.map(col -> ((IndexedTableColumn)col).getIndex())
+				.collect(Collectors.toList());
+		
+		CsvTable table = CsvTableCreator.createTable(columns, items, indexes);
+		ClipBoardManager.putCsvTable(table);
+	}
+	
+	/**
+	 * Gets list of selected items(RankingRow) and converts each RankingRow to list of string containing cell values.
+	 * It will return list of list, where each list represents row and each object in nested list represents cell.
+	 * @return selected RankingRow objects flattened to string list
+	 */
+	private ObservableList<ObservableList<String>> getSelectedItems() {
+		ObservableList<RankingRow> rows = rankingTable.getSelectionModel().getSelectedItems();
+		ObservableList<ObservableList<String>> items = observableArrayList();
+		
+		rows.forEach(row -> {
+			ObservableList<String> cells = observableArrayList();
+			cells.add(Integer.toString(row.getPosition()));
+			cells.add(Double.toString(row.getEvaluation()));
+			cells.addAll(row.getCells());
+			items.add(cells);
+		});
+		
+		return items;
 	}
 	
 }

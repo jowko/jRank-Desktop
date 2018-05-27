@@ -6,6 +6,7 @@ import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableHelper;
 import pl.jowko.jrank.desktop.feature.tabs.RankingInitializationException;
+import pl.jowko.jrank.feature.customfx.IndexedTableColumn;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 import pl.poznan.put.cs.idss.jrs.types.FloatField;
@@ -115,8 +116,9 @@ class RankingTableCreator {
 	 * Creates position column
 	 * @return position column
 	 */
-	private TableColumn<RankingRow, Integer> createPositionColumn() {
-		TableColumn<RankingRow, Integer> column = new TableColumn<>(labels.get(RANKING_POSITION));
+	private IndexedTableColumn<RankingRow, Integer> createPositionColumn() {
+		IndexedTableColumn<RankingRow, Integer> column = new IndexedTableColumn<>(labels.get(RANKING_POSITION), 0);
+		column.setText(labels.get(RANKING_POSITION));
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getPosition())
 		);
@@ -129,8 +131,9 @@ class RankingTableCreator {
 	 * Creates evaluation column.
 	 * @return evaluation column.
 	 */
-	private TableColumn<RankingRow, Double> createEvaluationColumn() {
-		TableColumn<RankingRow, Double> column = new TableColumn<>(labels.get(RANKING_EVALUATION));
+	private IndexedTableColumn<RankingRow, Double> createEvaluationColumn() {
+		IndexedTableColumn<RankingRow, Double> column = new IndexedTableColumn<>(labels.get(RANKING_EVALUATION), 1);
+		column.setText(labels.get(RANKING_EVALUATION));
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getEvaluation())
 		);
@@ -147,8 +150,8 @@ class RankingTableCreator {
 	 * @param columnIndex with is used to extract correct cell from row
 	 * @return table column created from attribute
 	 */
-	private TableColumn<RankingRow, Object> createColumn(Attribute attribute, int columnIndex) {
-		TableColumn<RankingRow, Object> column = new TableColumn<>();
+	private IndexedTableColumn<RankingRow, Object> createColumn(Attribute attribute, int columnIndex) {
+		IndexedTableColumn<RankingRow, Object> column = new IndexedTableColumn<>(attribute.getName(), columnIndex+2);
 		setCellValueFactory(column, attribute.getInitialValue(), columnIndex);
 		column.setMinWidth(50d);
 		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
