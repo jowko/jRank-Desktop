@@ -355,7 +355,7 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_INACTIVE, "inactive, ");
 		
 		language.put(Labels.LEARN_TABLE_DECISION_VALIDATION, "Table can only have one active decision attribute. Current decision attributes: ");
-		language.put(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE, "Attribute names should be unique. Non unique attribute names:\n");
+		language.put(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE, "Attribute names should be unique. Non unique attribute names:");
 		
 		language.put(Labels.LEARN_TABLE_ADD_EXAMPLE, "Add example");
 		language.put(Labels.LEARN_TABLE_REMOVE_EXAMPLES, "Remove selected examples");

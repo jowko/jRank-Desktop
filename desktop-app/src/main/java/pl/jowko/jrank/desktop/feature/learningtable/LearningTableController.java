@@ -185,7 +185,7 @@ public class LearningTableController {
 			return true;
 		
 		if(not(validator.isValid())) {
-			DialogsService.showValidationFailedDialog(labels.get(Labels.LEARN_TABLE_ERRORS), validator.getErrorMsg() + "\n" + validator.getDecisionMsg());
+			DialogsService.showValidationFailedDialog(labels.get(Labels.LEARN_TABLE_ERRORS), validator.getErrorMessages() + "\n" + validator.getDecisionMsg());
 			return false;
 		}
 		

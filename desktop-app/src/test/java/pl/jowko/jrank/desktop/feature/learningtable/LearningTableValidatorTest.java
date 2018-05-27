@@ -64,8 +64,8 @@ class LearningTableValidatorTest {
 		LearningTableValidator validator = new LearningTableValidator(table);
 		
 		assertFalse(validator.isValid());
-		assertTrue(validator.getErrorMsg().contains("name"));
-		assertTrue(validator.getErrorMsg().contains("name2"));
+		assertTrue(validator.getErrorMessages().contains("name"));
+		assertTrue(validator.getErrorMessages().contains("name2"));
 	}
 	
 }

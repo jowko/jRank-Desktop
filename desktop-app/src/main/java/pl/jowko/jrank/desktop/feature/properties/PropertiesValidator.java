@@ -1,7 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
-import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.desktop.service.Validator;
 import pl.jowko.jrank.desktop.utils.StringUtils;
 
 import static java.util.Objects.isNull;
@@ -17,11 +17,9 @@ import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
  * Most of validations were extracted from JRank console application.
  * @see PropertiesController
  */
-class PropertiesValidator {
+class PropertiesValidator extends Validator {
 	
-	private LanguageService labels;
 	private JRankProperties properties;
-	private StringBuilder errorMsg;
 	
 	/**
 	 * Creates instance of this class and validates provided properties
@@ -29,25 +27,7 @@ class PropertiesValidator {
 	 */
 	PropertiesValidator(JRankProperties properties) {
 		this.properties = properties;
-		labels = LanguageService.getInstance();
-		errorMsg = new StringBuilder();
 		validate();
-	}
-	
-	/**
-	 * Check if validator found any validation errors.
-	 * @return true if provided properties are valid, false otherwise
-	 */
-	boolean isValid() {
-		return errorMsg.toString().isEmpty();
-	}
-	
-	/**
-	 * Gets validation messages when validation contains errors.
-	 * @return all error messages in one String
-	 */
-	String getErrorMessages() {
-		return errorMsg.toString();
 	}
 	
 	/**
@@ -82,15 +62,6 @@ class PropertiesValidator {
 		validateFileExtensions();
 	}
 	
-	/**
-	 * Appends error message with line end character.
-	 * @see Labels
-	 * @param labelCode from Labels class
-	 */
-	private void appendError(String labelCode) {
-		errorMsg.append(labels.get(labelCode))
-				.append('\n');
-	}
 	
 	private boolean validateConsistencyMeasureThreshold() {
 		return nonNull(properties.getConsistencyMeasureThreshold()) && properties.getConsistencyMeasureThreshold() < 0;

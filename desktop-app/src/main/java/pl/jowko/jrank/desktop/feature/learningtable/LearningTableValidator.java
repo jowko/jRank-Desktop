@@ -1,7 +1,7 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
-import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.desktop.service.Validator;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 
 import java.util.List;
@@ -15,27 +15,15 @@ import static java.util.stream.Collectors.groupingBy;
 /**
  * Created by Piotr on 2018-05-16.
  */
-class LearningTableValidator {
+class LearningTableValidator extends Validator {
 	
-	private LanguageService labels;
 	private LearningTable table;
-	private StringBuilder errorMsg;
 	private StringBuilder decisionMsg;
 	
 	LearningTableValidator(LearningTable table) {
 		this.table = table;
-		errorMsg = new StringBuilder();
 		decisionMsg = new StringBuilder();
-		labels = LanguageService.getInstance();
 		validateTable();
-	}
-	
-	boolean isValid() {
-		return errorMsg.toString().isEmpty();
-	}
-	
-	String getErrorMsg() {
-		return errorMsg.toString();
 	}
 	
 	boolean isDecisionAttributesValid() {
@@ -81,7 +69,7 @@ class LearningTableValidator {
 		if(notUniqueAttributesNames.isEmpty())
 			return;
 		
-		errorMsg.append(labels.get(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE));
+		appendError(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE);
 		
 		notUniqueAttributesNames.forEach(name ->
 				errorMsg.append('[')
