@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-16.
@@ -18,25 +19,20 @@ import static java.util.stream.Collectors.groupingBy;
 class LearningTableValidator extends Validator {
 	
 	private LearningTable table;
-	private StringBuilder decisionMsg;
 	
 	LearningTableValidator(LearningTable table) {
 		this.table = table;
-		decisionMsg = new StringBuilder();
 		validateTable();
-	}
-	
-	boolean isDecisionAttributesValid() {
-		return decisionMsg.toString().isEmpty();
-	}
-	
-	String getDecisionMsg() {
-		return decisionMsg.toString();
 	}
 	
 	private void validateTable() {
 		validateDecisionAttributes();
 		validateAttributeUniqueness();
+		
+		UnknownFieldValidator validator = new UnknownFieldValidator(table);
+		if(not(validator.isValid())) {
+			appendError(Labels.LEARN_TABLE_UNKNOWN_FIELDS);
+		}
 	}
 	
 	private void validateDecisionAttributes() {
@@ -45,13 +41,13 @@ class LearningTableValidator extends Validator {
 				.collect(Collectors.toList());
 		
 		if(decisionAttributes.size() > 1) {
-			decisionMsg.append(labels.get(Labels.LEARN_TABLE_DECISION_VALIDATION));
+			appendError(Labels.LEARN_TABLE_DECISION_VALIDATION);
 			for(Attribute attribute: decisionAttributes) {
-				decisionMsg.append('[')
+				errorMsg.append('[')
 						.append(attribute.getName())
 						.append("], ");
 			}
-			decisionMsg.append('\n');
+			errorMsg.append('\n');
 		}
 	}
 	

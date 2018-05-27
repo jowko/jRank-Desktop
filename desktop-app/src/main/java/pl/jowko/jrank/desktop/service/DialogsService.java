@@ -15,6 +15,12 @@ import static pl.jowko.jrank.desktop.feature.internationalization.Labels.*;
  */
 public class DialogsService {
 	
+	private static LanguageService labels;
+	
+	static {
+		labels = LanguageService.getInstance();
+	}
+	
 	private DialogsService() {}
 	
 	/**
@@ -45,12 +51,23 @@ public class DialogsService {
 	}
 	
 	/**
+	 * Show dialog with information, that application failed to perform requested action.
+	 * @param msg to display to user
+	 */
+	public static void showActionFailedDialog(String msg) {
+		Alert alert = new Alert(Alert.AlertType.WARNING);
+		alert.setTitle(labels.get(Labels.DIALOG_ACTION_FAIL));
+		alert.setHeaderText("");
+		alert.setContentText(msg);
+		alert.showAndWait();
+	}
+	
+	/**
 	 * Show warning dialog for cases where validation errors are displayed.
 	 * @param header to display in header field
 	 * @param msg to display as alert content text
 	 */
 	public static void showValidationFailedDialog(String header, String msg) {
-		LanguageService labels = LanguageService.getInstance();
 		Alert alert = new Alert(Alert.AlertType.WARNING);
 		alert.setTitle(labels.get(Labels.VALIDATION_DIALOG_TITLE));
 		alert.setHeaderText(header);

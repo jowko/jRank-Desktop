@@ -23,7 +23,7 @@ class LearningTableValidatorTest {
 		
 		LearningTableValidator validator = new LearningTableValidator(table);
 		
-		assertTrue(validator.isDecisionAttributesValid());
+		assertTrue(validator.isValid());
 	}
 	
 	@Test
@@ -35,7 +35,7 @@ class LearningTableValidatorTest {
 		
 		LearningTableValidator validator = new LearningTableValidator(table);
 		
-		assertTrue(validator.isDecisionAttributesValid());
+		assertTrue(validator.isValid());
 	}
 	
 	@Test
@@ -47,9 +47,9 @@ class LearningTableValidatorTest {
 		
 		LearningTableValidator validator = new LearningTableValidator(table);
 		
-		assertFalse(validator.isDecisionAttributesValid());
-		assertTrue(validator.getDecisionMsg().contains("decision1"));
-		assertTrue(validator.getDecisionMsg().contains("decision2"));
+		assertFalse(validator.isValid());
+		assertTrue(validator.getErrorMessages().contains("decision1"));
+		assertTrue(validator.getErrorMessages().contains("decision2"));
 	}
 	
 	@Test

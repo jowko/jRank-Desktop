@@ -83,7 +83,7 @@ public class LearningTableDataProvider {
 	 * @param isActive to indicate if decision atrribute is active
 	 * @return decision attribute
 	 */
-	static  Attribute createDecisionAttribute(String name, boolean isActive) {
+	static Attribute createDecisionAttribute(String name, boolean isActive) {
 		Attribute attribute = createAttribute(name);
 		attribute.setKind(Attribute.DECISION);
 		attribute.setActive(isActive);

@@ -30,6 +30,7 @@ public class Labels {
 	// Dialogs
 	public static final String ERROR_DIALOG_TITLE = "ERROR_DIALOG_TITLE";
 	public static final String VALIDATION_DIALOG_TITLE = "VALIDATION_DIALOG_TITLE";
+	public static final String DIALOG_ACTION_FAIL = "DIALOG_ACTION_FAIL";
 	public static final String US_ERROR_DIALOG_HEADER = "US_ERROR_DIALOG_HEADER";
 	public static final String VALIDATION_DIALOG_HEADER = "VALIDATION_DIALOG_HEADER";
 	public static final String CONFIRM_DIALOG_TITLE = "CONFIRM_DIALOG_TITLE";
@@ -253,6 +254,7 @@ public class Labels {
 	
 	public static final String LEARN_TABLE_DECISION_VALIDATION = "LEARN_TABLE_DECISION_VALIDATION";
 	public static final String LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE = "LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE";
+	public static final String LEARN_TABLE_UNKNOWN_FIELDS = "LEARN_TABLE_UNKNOWN_FIELDS";
 	
 	public static final String LEARN_TABLE_ADD_EXAMPLE = "LEARN_TABLE_ADD_EXAMPLE";
 	public static final String LEARN_TABLE_REMOVE_EXAMPLES = "LEARN_TABLE_REMOVE_EXAMPLES";
@@ -314,6 +316,7 @@ public class Labels {
 	// Ranking
 	public static final String RANKING_POSITION = "RANKING_POSITION";
 	public static final String RANKING_EVALUATION = "RANKING_EVALUATION";
+	public static final String RANKING_UNKNOWN_FIELDS = "RANKING_UNKNOWN_FIELDS";
 	
 	private Labels() {}
 	

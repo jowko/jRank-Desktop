@@ -3,9 +3,9 @@ package pl.jowko.jrank.desktop.feature.ranking;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.scene.control.TableColumn;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableHelper;
 import pl.jowko.jrank.desktop.feature.tabs.RankingInitializationException;
-import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 import pl.poznan.put.cs.idss.jrs.types.FloatField;
@@ -28,7 +28,7 @@ import static pl.jowko.jrank.desktop.feature.internationalization.Labels.RANKING
 class RankingTableCreator {
 	
 	private String rankingFileContent;
-	private MemoryContainer isfTable;
+	private LearningTable isfTable;
 	private LearningTableHelper tableHelper;
 	
 	private LanguageService labels;
@@ -47,7 +47,7 @@ class RankingTableCreator {
 	 * @param rankingFileContent containing .ranking content as String
 	 * @param isfTable containing learning data table from .isf file
 	 */
-	RankingTableCreator(String rankingFileContent, MemoryContainer isfTable) {
+	RankingTableCreator(String rankingFileContent, LearningTable isfTable) {
 		this.rankingFileContent = rankingFileContent;
 		this.isfTable = isfTable;
 		
@@ -105,9 +105,9 @@ class RankingTableCreator {
 		columns.add(createPositionColumn());
 		columns.add(createEvaluationColumn());
 		
-		Attribute[] attributes = isfTable.getAttributes();
-		for(int i=0; i<attributes.length; i++) {
-			columns.add(createColumn(attributes[i], i));
+		List<Attribute> attributes = isfTable.getAttributes();
+		for(int i=0; i<attributes.size(); i++) {
+			columns.add(createColumn(attributes.get(i), i));
 		}
 	}
 	
@@ -168,13 +168,19 @@ class RankingTableCreator {
 	 */
 	private void setCellValueFactory(TableColumn<RankingRow, Object> column, Field fieldType, int columnIndex) {
 		if(fieldType instanceof IntegerField) {
-			column.setCellValueFactory(param ->
-					new ReadOnlyObjectWrapper<>(Integer.valueOf(param.getValue().getCells().get(columnIndex)))
-			);
+			column.setCellValueFactory(param -> {
+				String value = param.getValue().getCells().get(columnIndex);
+				if(value.isEmpty() || "?".equals(value))
+					return new ReadOnlyObjectWrapper<>(value);
+				return new ReadOnlyObjectWrapper<>(Integer.valueOf(value));
+			});
 		} else if(fieldType instanceof FloatField) {
-			column.setCellValueFactory(param ->
-					new ReadOnlyObjectWrapper<>(Double.valueOf(param.getValue().getCells().get(columnIndex)))
-			);
+			column.setCellValueFactory(param -> {
+				String value = param.getValue().getCells().get(columnIndex);
+				if(value.isEmpty() || "?".equals(value))
+					return new ReadOnlyObjectWrapper<>(value);
+				return new ReadOnlyObjectWrapper<>(Double.valueOf(value));
+			});
 		} else {
 			column.setCellValueFactory(param ->
 					new ReadOnlyObjectWrapper<>(param.getValue().getCells().get(columnIndex))
@@ -221,7 +227,7 @@ class RankingTableCreator {
 		
 		for(int i=1; i<values.length - 1; i++) {
 			int exampleNumber = Integer.valueOf(values[i].replace(",", ""));
-			Field[] fields = isfTable.getExample(exampleNumber - increment).getFields();
+			Field[] fields = isfTable.getExamples().get(exampleNumber - increment).getFields();
 			addNewRow(position, evaluation, fields);
 		}
 	}

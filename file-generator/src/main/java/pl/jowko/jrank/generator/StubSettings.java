@@ -142,6 +142,7 @@ class StubSettings {
 		language.put(Labels.WORKSPACE_ERROR, "Provided workspace folder path: " + MSG + " is not correct\n");
 		language.put(Labels.ERROR_DIALOG_TITLE, "Unexpected error");
 		language.put(Labels.VALIDATION_DIALOG_TITLE, "Validation Fail");
+		language.put(Labels.DIALOG_ACTION_FAIL, "Could not perform action");
 		language.put(Labels.US_ERROR_DIALOG_HEADER, "Error when saving user options: ");
 		language.put(Labels.VALIDATION_DIALOG_HEADER, "There were validation errors: ");
 	}
@@ -356,6 +357,7 @@ class StubSettings {
 		
 		language.put(Labels.LEARN_TABLE_DECISION_VALIDATION, "Table can only have one active decision attribute. Current decision attributes: ");
 		language.put(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE, "Attribute names should be unique. Non unique attribute names:");
+		language.put(Labels.LEARN_TABLE_UNKNOWN_FIELDS, "Table contains unknown fields. Unknown fields are only appropriate for decision atrributes.");
 		
 		language.put(Labels.LEARN_TABLE_ADD_EXAMPLE, "Add example");
 		language.put(Labels.LEARN_TABLE_REMOVE_EXAMPLES, "Remove selected examples");
@@ -418,6 +420,8 @@ class StubSettings {
 	private void createEnglishRankingLabels(Map<String,String> language) {
 		language.put(Labels.RANKING_POSITION, "Position");
 		language.put(Labels.RANKING_EVALUATION, "Evaluation");
+		language.put(Labels.RANKING_UNKNOWN_FIELDS, "Loaded isf table contains unknown fields in non decision attributes. " +
+				"It means that ranking file is probably not up to date with isf data table. Generate ranking again.");
 	}
 	
 	/**
