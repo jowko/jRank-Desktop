@@ -5,6 +5,8 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeItem;
@@ -63,6 +65,7 @@ public class LearningTableController {
 		tableActions.setItemsToAttributeComboBox();
 		learningTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		initializeSorting();
+		disableRightClickSelect();
 		initializeTableEditionHandler();
 		new LearningTableTranslator(this).translateFields();
 	}
@@ -81,6 +84,23 @@ public class LearningTableController {
 		});
 		
 		learningTable.sortPolicyProperty().set(new UnknownFieldSortCallback(learningTable.getItems()));
+	}
+	
+	/**
+	 * Disable right click row select.
+	 * When user selects rows and right click on table to execute some action, row below mouse cursor is also selected.
+	 * This event will be disabled by this code to avoid accident row selects.
+	 */
+	private void disableRightClickSelect() {
+		learningTable.setRowFactory(tv -> {
+			TableRow<ObservableList<Field>> row = new TableRow<>();
+			row.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
+				if (e.getButton() == MouseButton.SECONDARY) {
+					e.consume();
+				}
+			});
+			return row ;
+		});
 	}
 	
 	public void removeAttributeAction() {
