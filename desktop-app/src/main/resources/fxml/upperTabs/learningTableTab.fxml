@@ -45,7 +45,7 @@
             </VBox>
          </content>
      </TitledPane>
-      <TableView fx:id="learningTable" editable="true" layoutX="10.0" layoutY="100.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+      <TableView fx:id="learningTable" editable="true" layoutX="10.0" layoutY="100.0" VBox.vgrow="ALWAYS">
           <columns>
           </columns>
       </TableView>
