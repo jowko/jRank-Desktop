@@ -30,6 +30,7 @@ class TableContextMenuCreator {
 		menu.getItems().add(createCustomizeAttributesItem());
 		menu.getItems().add(createAddAttributeItem());
 		menu.getItems().add(createRemoveExamplesItem());
+		menu.getItems().add(createCopyRowAction());
 		
 		table.setContextMenu(menu);
 	}
@@ -55,6 +56,12 @@ class TableContextMenuCreator {
 	private MenuItem createAddAttributeItem() {
 		MenuItem item = new MenuItem(labels.get(Labels.LEARN_TABLE_ADD_ATTRIBUTE));
 		item.setOnAction(event -> actions.addNewAttribute());
+		return item;
+	}
+	
+	private MenuItem createCopyRowAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.LEARN_TABLE_COPY_ROWS));
+		item.setOnAction(event -> actions.copySelectedRowsAction());
 		return item;
 	}
 	

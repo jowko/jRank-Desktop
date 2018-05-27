@@ -366,6 +366,7 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_CUSTOMIZE_ATTRIBUTES, "Customize attributes");
 		language.put(Labels.LEARN_TABLE_CUSTOMIZE_ATTRIBUTES_FAIL, "No attributes to customize. Add attributes first.");
 		language.put(Labels.LEARN_TABLE_ADD_ATTRIBUTE, "Add attribute");
+		language.put(Labels.LEARN_TABLE_COPY_ROWS, "Copy selected rows");
 		
 		language.put(Labels.LEARN_TABLE_REMOVE_ALL_HEADER, "Do you want to remove ALL examples from table?");
 		language.put(Labels.LEARN_TABLE_ABANDON_CHANGES, "Do you want to abandon changes in form?");

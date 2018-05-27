@@ -6,6 +6,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.feature.clipboard.ClipBoardManager;
+import pl.jowko.jrank.desktop.feature.clipboard.CsvTable;
+import pl.jowko.jrank.desktop.feature.clipboard.CsvTableCreator;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogController;
@@ -197,6 +200,42 @@ public class LearningTableActions {
 	}
 	
 	/**
+	 * Copies all selected rows(items) to user clipboard.
+	 * It will put columns headers on first row and items on next rows.
+	 * It needs to know original indexes of columns with is calculated here.
+	 * JavaFX in case of reorder, only reorders columns in table.
+	 * Item positions are not changing.
+	 * @see CsvTableCreator
+	 */
+	void copySelectedRowsAction() {
+		ObservableList<ObservableList<Field>> items = learningTable.getSelectionModel().getSelectedItems();
+		if(items.size() == 0) {
+			JRankLogger.warn("No rows selected. No rows were copied.");
+			return;
+		}
+		
+		List<String> columns = learningTable.getColumns()
+				.stream()
+				.map(col -> ((AttributeTableColumn) col).getAttribute().getName())
+				.collect(Collectors.toList());
+		
+		List<Integer> indexes = learningTable.getColumns()
+				.stream()
+				.map(col -> ((AttributeTableColumn) col).getAttributeIndex())
+				.collect(Collectors.toList());
+		
+		if(columns.size() == 0) {
+			JRankLogger.warn("Could not copy rows because no attributes are selected.");
+		}
+		// replace ID secret flag with ID label
+		int idIndex = columns.indexOf(ATTRIBUTE_ID_SECRET_NAME);
+		columns.set(idIndex, labels.get(Labels.LEARN_TABLE_ID));
+		
+		CsvTable table = CsvTableCreator.createTable(columns, items, indexes);
+		ClipBoardManager.putCsvTable(table);
+	}
+	
+	/**
 	 * This method fills selectAttribute ComboBox with current attributes.
 	 * @see AttributeItem
 	 */
@@ -231,7 +270,7 @@ public class LearningTableActions {
 		return attributes;
 	}
 	
-	public int getIdColumnValue() {
+	int getIdColumnValue() {
 		return idColumnValue++;
 	}
 	
