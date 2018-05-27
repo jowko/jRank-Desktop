@@ -40,7 +40,7 @@ class UnknownFieldSortCallback implements Callback<TableView<ObservableList<Fiel
 			}
 			
 			for(TableColumn column : param.getSortOrder()) {
-				int index = ((AttributeTableColumn)column).getAttributeIndex();
+				int index = ((AttributeTableColumn)column).getIndex();
 				Field field1 = f1.get(index);
 				Field field2 = f2.get(index);
 				int sortType;

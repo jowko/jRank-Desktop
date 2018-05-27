@@ -46,9 +46,9 @@ public class LearningTableHelper {
 		for(int i=0; i<columns.size(); i++) {
 			AttributeTableColumn column = (AttributeTableColumn) columns.get(i);
 			
-			int attributeIndex = column.getAttributeIndex();
+			int attributeIndex = column.getIndex();
 			if(attributeIndex > removedIndex) {
-				column.setAttributeIndex(--attributeIndex);
+				column.setIndex(--attributeIndex);
 			}
 			
 			final int finalIdx = attributeIndex;

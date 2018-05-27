@@ -221,7 +221,7 @@ public class LearningTableActions {
 		
 		List<Integer> indexes = learningTable.getColumns()
 				.stream()
-				.map(col -> ((AttributeTableColumn) col).getAttributeIndex())
+				.map(col -> ((AttributeTableColumn) col).getIndex())
 				.collect(Collectors.toList());
 		
 		if(columns.size() == 0) {
@@ -256,7 +256,7 @@ public class LearningTableActions {
 		}
 		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttribute(item.getAttribute());
 		
-		int attributeIndex = tableColumn.getAttributeIndex();
+		int attributeIndex = tableColumn.getIndex();
 		learningTable.getColumns().remove(tableColumn);
 		attributes.remove(tableColumn.getAttribute());
 		
