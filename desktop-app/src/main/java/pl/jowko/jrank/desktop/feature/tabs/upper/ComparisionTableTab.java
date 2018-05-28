@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
+import pl.jowko.jrank.desktop.feature.pct.PCTController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -26,12 +27,11 @@ class ComparisionTableTab extends JRankTab {
 	ComparisionTableTab(MemoryContainer container, WorkspaceItem workspaceItem, String tabName) throws TabInitializationException, IOException {
 		super(tabName);
 		try {
-			//TODO implement me
-			initializeTabAndGetController(workspaceItem);
+			PCTController controller = initializeTabAndGetController(workspaceItem);
+			controller.initializeRanking(container);
 		} catch (JRankRuntimeException e) {
 			throwInitializationException("pct isf", workspaceItem.getFileName(), e);
 		}
-		
 	}
 	
 	@Override

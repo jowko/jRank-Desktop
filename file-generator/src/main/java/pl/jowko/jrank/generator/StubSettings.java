@@ -113,6 +113,7 @@ class StubSettings {
 		createEnglishParametersLabels(language);
 		createEnglishAttributeDialogLabels(language);
 		createEnglishLearningTableLabels(language);
+		createEnglishPCTLabels(language);
 		createEnglishRulesLabels(language);
 		createEnglishRulesStatisticsLabels(language);
 		createEnglishRankingLabels(language);
@@ -381,6 +382,11 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_REMOVE_ALL_EXAMPLES, "Remove all examples");
 		language.put(Labels.LEARN_TABLE_SAVE_BUTTON, "Save");
 		language.put(Labels.LEARN_TABLE_CANCEL_BUTTON, "Cancel");
+	}
+	
+	private void createEnglishPCTLabels(Map<String,String> language) {
+		language.put(Labels.PCT_ID, "ID");
+		language.put(Labels.PCT_COPY_ROWS, "Copy selected rows");
 	}
 	
 	private void createEnglishRulesLabels(Map<String, String> language) {

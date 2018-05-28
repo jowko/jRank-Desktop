@@ -282,6 +282,10 @@ public class Labels {
 	public static final String LEARN_TABLE_CANCEL_BUTTON = "LEARN_TABLE_CANCEL_BUTTON";
 	
 	
+	// PCT isf table
+	public static final String PCT_ID = "PCT_ID";
+	public static final String PCT_COPY_ROWS = "PCT_COPY_ROWS";
+	
 	// Rules
 	public static final String RULES_NO_DATA = "RULES_NO_DATA";
 	public static final String RULES_DECISION_PART = "RULES_DECISION_PART";
