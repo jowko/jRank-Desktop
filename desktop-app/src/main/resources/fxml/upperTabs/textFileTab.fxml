@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
 
 <BorderPane minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.textfile.TextFileController">
    <center>
-      <TextArea fx:id="textFileView" editable="false" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
-      </TextArea>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <FlowPane alignment="TOP_RIGHT" hgap="40.0">
+               <children>
+                  <Button fx:id="saveButton" minHeight="30.0" minWidth="80.0"  onAction="#saveAction" mnemonicParsing="false" text="Save" />
+                  <Button fx:id="cancelButton" minHeight="30.0" minWidth="80.0" onAction="#cancelAction" mnemonicParsing="false" text="Cancel" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
+               </VBox.margin>
+            </FlowPane>
+            <TextArea fx:id="textFileView" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
    </center>
 </BorderPane>

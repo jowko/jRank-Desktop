@@ -29,7 +29,7 @@ class TextFileTab extends JRankTab {
 		super(tabName);
 		try {
 			TextFileController controller = initializeTabAndGetController(workspaceItem);
-			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
+			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem), workspaceItem, this);
 		} catch (JRankRuntimeException e) {
 			throwInitializationException("text", workspaceItem.getFileName(), e);
 		}

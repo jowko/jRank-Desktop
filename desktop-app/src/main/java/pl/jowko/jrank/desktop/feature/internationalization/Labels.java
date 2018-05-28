@@ -332,6 +332,11 @@ public class Labels {
 	public static final String RANKING_UNKNOWN_FIELDS = "RANKING_UNKNOWN_FIELDS";
 	public static final String RANKING_COPY_ROWS = "RANKING_COPY_ROWS";
 	
+	
+	// Text file tab
+	public static final String TXT_TAB_SAVE_BUTTON = "TXT_TAB_SAVE_BUTTON";
+	public static final String TXT_TAB_CANCEL_BUTTON = "TXT_TAB_CANCEL_BUTTON";
+	
 	private Labels() {}
 	
 }

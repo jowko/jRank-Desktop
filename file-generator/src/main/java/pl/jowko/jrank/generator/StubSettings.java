@@ -117,6 +117,7 @@ class StubSettings {
 		createEnglishRulesLabels(language);
 		createEnglishRulesStatisticsLabels(language);
 		createEnglishRankingLabels(language);
+		createEnglishTextTabLabels(language);
 		
 		return language;
 	}
@@ -436,6 +437,12 @@ class StubSettings {
 		language.put(Labels.RANKING_UNKNOWN_FIELDS, "Loaded isf table contains unknown fields in non decision attributes. " +
 				"It means that ranking file is probably not up to date with isf data table. Generate ranking again.");
 		language.put(Labels.RANKING_COPY_ROWS, "Copy selected rows");
+	}
+	
+	
+	private void createEnglishTextTabLabels(Map<String,String> language) {
+		language.put(Labels.TXT_TAB_SAVE_BUTTON, "Save");
+		language.put(Labels.TXT_TAB_CANCEL_BUTTON, "Cancel");
 	}
 	
 	/**
