@@ -29,7 +29,7 @@ See installation section.
 Before installation of this application, ensure that:
 - Maven is installed.
 - On Windows maven\bin catalog should be in PATH variable.
-- Java JDK 9 or higher is installed.
+- Java JDK 10 is installed.
 
 ### Installation steps:
 1. Run install.bat script. On linux you have to create own script.
