@@ -39,7 +39,9 @@ class PropertiesTranslatorHelper extends AbstractTranslator {
 	private void translateDataFields() {
 		controller.dataPanelLabel.setText(get(Labels.PROP_DATA_PANEL));
 		controller.referenceRankingLabel.setText(get(Labels.REFERENCE_RANKING));
+		controller.editRankingButton.setText(get(Labels.EDIT_RANKING_BUTTON));
 		controller.pairsLabel.setText(get(Labels.PAIRS));
+		controller.editPairsButton.setText(get(Labels.EDIT_PAIRS_BUTTON));
 	}
 	
 	private void translateParametersFields() {

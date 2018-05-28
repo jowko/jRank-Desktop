@@ -111,6 +111,7 @@ class StubSettings {
 		createEnglishPropertiesValidationMessages(language);
 		createEnglishPropertiesTooltips(language);
 		createEnglishParametersLabels(language);
+		createEnlgishPropertiesDialogsLabels(language);
 		createEnglishAttributeDialogLabels(language);
 		createEnglishLearningTableLabels(language);
 		createEnglishPCTLabels(language);
@@ -181,7 +182,9 @@ class StubSettings {
 		
 		language.put(Labels.PROP_DATA_PANEL, "Learning information");
 		language.put(Labels.REFERENCE_RANKING, "Reference Ranking:");
+		language.put(Labels.EDIT_RANKING_BUTTON, "Edit ranking");
 		language.put(Labels.PAIRS, "Pairs:");
+		language.put(Labels.EDIT_PAIRS_BUTTON, "Edit pairs");
 		
 		language.put(Labels.PROP_PARAMETERS_PANEL, "Parameters");
 		language.put(Labels.TYPE_OF_FAMILY_CRITERIA, "Type of family criteria:");
@@ -318,6 +321,11 @@ class StubSettings {
 		language.put(Labels.CONSISTENCY_SET, "Set");
 		language.put(Labels.BOOLEAN_YES, "Yes");
 		language.put(Labels.BOOLEAN_NO, "No");
+	}
+	
+	private void createEnlgishPropertiesDialogsLabels(Map<String, String> language) {
+		language.put(Labels.PROP_RANKING_TITLE, "Ranking edition");
+		language.put(Labels.PROP_PAIRS_TITLE, "Pairs edition");
 	}
 	
 	private void createEnglishAttributeDialogLabels(Map<String, String> language) {

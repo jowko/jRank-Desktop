@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -43,19 +44,23 @@
       <GridPane>
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="35.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="60.0" />
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="35.0" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints prefHeight="80.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label fx:id="referenceRankingLabel" text="Reference ranking:" />
-            <TextField fx:id="referenceRanking" GridPane.columnIndex="1" />
-            <Label fx:id="pairsLabel" text="Pairs:" GridPane.columnIndex="3" />
-            <TextField fx:id="pairs" GridPane.columnIndex="4" />
+            <TextArea fx:id="referenceRanking" wrapText="true" GridPane.columnIndex="1" />
+            <Button fx:id="editRankingButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#editRankingAction" text="Edit ranking" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Label fx:id="pairsLabel" text="Pairs:" GridPane.columnIndex="4" />
+            <TextArea fx:id="pairs" wrapText="true" GridPane.columnIndex="5" />
+            <Button fx:id="editPairsButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#editPairsAction" text="Edit pairs" GridPane.columnIndex="6" GridPane.halignment="CENTER" />
          </children>
          <opaqueInsets>
             <Insets />

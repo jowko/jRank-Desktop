@@ -81,7 +81,9 @@ public class Labels {
 	
 	public static final String PROP_DATA_PANEL = "PROP_DATA_PANEL";
 	public static final String REFERENCE_RANKING = "REFERENCE_RANKING";
+	public static final String EDIT_RANKING_BUTTON = "EDIT_RANKING_BUTTON";
 	public static final String PAIRS = "PAIRS";
+	public static final String EDIT_PAIRS_BUTTON = "EDIT_PAIRS_BUTTON";
 	
 	public static final String PROP_PARAMETERS_PANEL = "PROP_PARAMETERS_PANEL";
 	public static final String TYPE_OF_FAMILY_CRITERIA = "TYPE_OF_FAMILY_CRITERIA";
@@ -215,6 +217,16 @@ public class Labels {
 	public static final String PARAMETERS_TOOLTIP = "PARAMETERS_TOOLTIP";
 	public static final String WRITE_INFO_TOOLTIP = "WRITE_INFO_TOOLTIP";
 	public static final String FILE_PANE_TOOLTIP = "FILE_PANE_TOOLTIP";
+	
+	
+	// Properties ranking dialog
+	public static final String PROP_RANKING_TITLE = "PROP_RANKING_TITLE";
+	
+	
+	
+	// Properties pairs dialog
+	public static final String PROP_PAIRS_TITLE = "PROP_PAIRS_TITLE";
+	
 	
 	
 	// Learning table attribute dialog

@@ -2,7 +2,7 @@ package pl.jowko.jrank.desktop.feature.properties;
 
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 
 /**
@@ -80,7 +80,7 @@ class PropertiesChangeListener {
 		comboBoxListener = (observable, oldValue, newValue) -> propertiesChanged();
 	}
 	
-	private void setUpTextFieldListener(TextField field) {
+	private void setUpTextFieldListener(TextInputControl field) {
 		field.textProperty().addListener(textFieldListener);
 	}
 	

@@ -24,6 +24,8 @@ module jRank.desktop {
 	opens pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 	opens pl.jowko.jrank.desktop.feature.pct;
 	opens pl.jowko.jrank.desktop.feature.properties;
+	opens pl.jowko.jrank.desktop.feature.properties.pairs;
+	opens pl.jowko.jrank.desktop.feature.properties.ranking;
 	opens pl.jowko.jrank.desktop.feature.ranking;
 	opens pl.jowko.jrank.desktop.feature.rules;
 	opens pl.jowko.jrank.desktop.feature.settings;

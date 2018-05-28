@@ -1,9 +1,14 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import pl.jowko.jrank.desktop.Main;
+import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.jrank.desktop.feature.properties.pairs.PropertiesPairsController;
+import pl.jowko.jrank.desktop.feature.properties.ranking.PropertiesRankingController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -40,9 +45,11 @@ public class PropertiesController {
 	
 	@FXML Label dataPanelLabel;
 	@FXML Label referenceRankingLabel;
-	@FXML TextField referenceRanking;
+	@FXML TextArea referenceRanking;
+	@FXML Button editRankingButton;
 	@FXML Label pairsLabel;
-	@FXML TextField pairs;
+	@FXML TextArea pairs;
+	@FXML Button editPairsButton;
 	
 	@FXML TitledPane parametersPane;
 	@FXML Label typeOfFamilyCriteriaLabel;
@@ -184,6 +191,20 @@ public class PropertiesController {
 		} catch (IOException e) {
 			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
 		}
+	}
+	
+	public void editRankingAction() throws IOException {
+		ResourceLoader loader = new ResourceLoader("/fxml/upperTabs/properties/rankingDialog.fxml");
+		Parent root = loader.load();
+		PropertiesRankingController controller = loader.getController();
+		controller.createWindow(root, Main.getScene(), labels.get(Labels.PROP_RANKING_TITLE));
+	}
+	
+	public void editPairsAction() throws IOException {
+		ResourceLoader loader = new ResourceLoader("/fxml/upperTabs/properties/pairsDialog.fxml");
+		Parent root = loader.load();
+		PropertiesPairsController controller = loader.getController();
+		controller.createWindow(root, Main.getScene(), labels.get(Labels.PROP_PAIRS_TITLE));
 	}
 	
 	private void closeTab() {
