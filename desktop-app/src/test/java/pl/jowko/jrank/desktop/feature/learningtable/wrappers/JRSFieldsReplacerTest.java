@@ -3,7 +3,6 @@ package pl.jowko.jrank.desktop.feature.learningtable.wrappers;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider;
-import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

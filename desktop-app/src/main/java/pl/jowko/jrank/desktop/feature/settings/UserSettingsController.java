@@ -1,16 +1,11 @@
 package pl.jowko.jrank.desktop.feature.settings;
 
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.feature.customfx.AbstractDialogForm;
 import pl.jowko.jrank.logger.JRankLogger;
 
 import java.io.IOException;
@@ -28,9 +23,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * @see UserSettings
  * @see UserSettingsValidator
  */
-public class UserSettingsController  {
-	
-	private Stage stage;
+public class UserSettingsController extends AbstractDialogForm {
 	
 	@FXML
 	Button saveButton;
@@ -70,21 +63,6 @@ public class UserSettingsController  {
 		tooltipsEnabled.setSelected(newUserSettings.isTooltipsEnabled());
 		advancedPropertiesEnabled.setSelected(newUserSettings.isAdvancedPropertiesEnabled());
 		settingsValidator = new UserSettingsValidator();
-	}
-	
-	/**
-	 * Creates dialog for user settings form.
-	 * User settings content from fxml file should be passed to this method.
-	 * @param root with content of dialog
-	 */
-	public void createWindow(Parent root) {
-		stage = new Stage(StageStyle.DECORATED);
-		stage.setScene(new Scene(root));
-		stage.setTitle(labels.get(Labels.US_TITLE));
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setResizable(false);
-		stage.initOwner(Main.getScene().getWindow());
-		stage.showAndWait();
 	}
 	
 	/**
@@ -177,7 +155,7 @@ public class UserSettingsController  {
 	 * Get correct language code using chosen value from language ComboBox.
 	 * If languages contains: "ENG" : "English",
 	 * this method should extract value "ENG" using "English" option from ComboBox.
-	 * @return
+	 * @return String with proper lang code
 	 */
 	private String getLangCode() {
 		String language = languagesChoice.getValue();

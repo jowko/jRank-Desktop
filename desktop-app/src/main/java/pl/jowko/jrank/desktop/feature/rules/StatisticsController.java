@@ -6,7 +6,6 @@ import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.feature.customfx.SelectableLabel;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RuleStatistics;
-import pl.poznan.put.cs.idss.jrs.types.Field;
 import pl.poznan.put.cs.idss.jrs.utilities.HumanReadableListOfNumbers;
 
 import static java.util.Objects.nonNull;

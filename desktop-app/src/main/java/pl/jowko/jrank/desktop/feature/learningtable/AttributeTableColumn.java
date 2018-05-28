@@ -1,7 +1,6 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
 import pl.jowko.jrank.feature.customfx.IndexedTableColumn;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;

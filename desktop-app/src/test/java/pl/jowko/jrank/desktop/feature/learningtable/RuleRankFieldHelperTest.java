@@ -3,7 +3,7 @@ package pl.jowko.jrank.desktop.feature.learningtable;
 import org.junit.jupiter.api.Test;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.FieldType;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.createEnumDomain;

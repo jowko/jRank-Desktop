@@ -1,10 +1,10 @@
 package pl.jowko.jrank.desktop.feature.properties.pairs;
 
-import pl.jowko.jrank.feature.customfx.AbstractDialogPane;
+import pl.jowko.jrank.feature.customfx.AbstractDialogForm;
 
 /**
  * Created by Piotr on 2018-05-28
  */
-public class PropertiesPairsController extends AbstractDialogPane {
+public class PropertiesPairsController extends AbstractDialogForm {
 
 }

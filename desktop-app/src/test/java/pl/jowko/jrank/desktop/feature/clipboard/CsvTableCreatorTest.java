@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static javafx.collections.FXCollections.observableArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by Piotr on 2018-05-27

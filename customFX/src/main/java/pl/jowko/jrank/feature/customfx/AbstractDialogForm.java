@@ -8,9 +8,9 @@ import javafx.stage.StageStyle;
 
 /**
  * Created by Piotr on 2018-05-28
- * This class provides functionality common for all Dialog pane windows.
+ * This class provides functionality common for all Dialog form windows.
  */
-public abstract class AbstractDialogPane {
+public abstract class AbstractDialogForm {
 	
 	protected Stage stage;
 	

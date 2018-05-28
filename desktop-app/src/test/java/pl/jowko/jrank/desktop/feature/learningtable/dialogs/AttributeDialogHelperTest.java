@@ -3,9 +3,9 @@ package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

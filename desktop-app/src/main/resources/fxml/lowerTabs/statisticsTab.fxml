@@ -2,14 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-
-<?import pl.jowko.jrank.feature.customfx.SelectableLabel?>
+<?import javafx.scene.layout.*?>
+<?import pl.jowko.jrank.feature.customfx.*?>
 <VBox minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.rules.StatisticsController">
    <children>
       <BorderPane maxHeight="30.0" styleClass="border-yellow" VBox.vgrow="ALWAYS">

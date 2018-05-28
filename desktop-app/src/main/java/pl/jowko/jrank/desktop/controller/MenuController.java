@@ -58,7 +58,7 @@ public class MenuController {
 		ResourceLoader loader = new ResourceLoader("/fxml/userSettings.fxml");
 		Parent root = loader.load();
 		UserSettingsController controller = loader.getController();
-		controller.createWindow(root);
+		controller.createWindow(root, Main.getScene(), labels.get(Labels.US_TITLE));
 	}
 	
 	public void onHelpAction() {

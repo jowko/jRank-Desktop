@@ -10,7 +10,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.*;
-import static pl.jowko.jrank.desktop.feature.learningtable.LearningTableDataProvider.createFilledLearningTable;
 
 /**
  * Created by Piotr on 2018-05-27

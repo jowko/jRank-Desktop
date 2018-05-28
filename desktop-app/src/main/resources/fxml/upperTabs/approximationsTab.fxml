@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
-
 <BorderPane minHeight="250.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.approximations.ApproximationsController">
 	<center>
 		<TextArea fx:id="approximationsFileView" editable="false" BorderPane.alignment="CENTER">

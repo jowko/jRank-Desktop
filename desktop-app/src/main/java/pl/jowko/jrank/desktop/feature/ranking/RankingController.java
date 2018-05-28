@@ -2,7 +2,10 @@ package pl.jowko.jrank.desktop.feature.ranking;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableView;
 import pl.jowko.jrank.desktop.feature.clipboard.ClipBoardManager;
 import pl.jowko.jrank.desktop.feature.clipboard.CsvTableCreator;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;

@@ -2,11 +2,7 @@ package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
@@ -15,13 +11,13 @@ import pl.jowko.jrank.desktop.feature.learningtable.LearningTableActions;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.jowko.jrank.feature.customfx.AbstractDialogForm;
 import pl.jowko.jrank.feature.customfx.CustomTextArea;
 import pl.jowko.jrank.feature.customfx.StringTextField;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +31,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * This class serve as controller for attributeActionDialog.fxml file.
  * It manages editing and adding attribute form.
  */
-public class AttributeDialogController {
+public class AttributeDialogController extends AbstractDialogForm {
 	
 	@FXML
 	ListView<AttributeItem> attributesList;
@@ -78,7 +74,6 @@ public class AttributeDialogController {
 	 * Currently edited attribute in form.
 	 */
 	private Attribute editedAttribute;
-	private Stage stage;
 	private boolean isAddAction;
 	
 	/**
@@ -96,7 +91,7 @@ public class AttributeDialogController {
 		initializeFieldsForEdit();
 		initializeAttributesListView();
 		new AttributeDialogTranslator(this).translateFields();
-		initializeDialog(parent, labels.get(Labels.ATT_DIALOG_CUSTOMIZE_TITLE));
+		createWindow(parent, Main.getScene(), labels.get(Labels.ATT_DIALOG_CUSTOMIZE_TITLE));
 	}
 	
 	/**
@@ -110,7 +105,7 @@ public class AttributeDialogController {
 		attributesList.setVisible(false);
 		attributesList.setMaxSize(0, 0);
 		initializeAttributeForm();
-		initializeDialog(parent, labels.get(Labels.ATT_DIALOG_EDIT_TITLE));
+		createWindow(parent, Main.getScene(), labels.get(Labels.ATT_DIALOG_EDIT_TITLE));
 	}
 	
 	/**
@@ -251,21 +246,6 @@ public class AttributeDialogController {
 			enumsField.setText(builder.toString());
 			enumsField.setDisable(false);
 		}
-	}
-	
-	/**
-	 * Initialize Stage and creates modal dialog with content from parent variable.
-	 * @param parent contains content of this dialog. Loaded from fxml file.
-	 * @param title for dialog
-	 */
-	private void initializeDialog(Parent parent, String title) {
-		stage = new Stage(StageStyle.DECORATED);
-		stage.setScene(new Scene(parent));
-		stage.setTitle(title);
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setResizable(false);
-		stage.initOwner(Main.getScene().getWindow());
-		stage.showAndWait();
 	}
 	
 	/**

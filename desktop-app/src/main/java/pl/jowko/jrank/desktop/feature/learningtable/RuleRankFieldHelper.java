@@ -1,9 +1,8 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogHelper;
-import pl.jowko.jrank.desktop.feature.learningtable.dialogs.FieldType;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
-import pl.poznan.put.cs.idss.jrs.types.*;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-14.
