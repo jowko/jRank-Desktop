@@ -8,6 +8,10 @@ import static pl.jowko.jrank.feature.customfx.StringTextField.ALPHANUMERIC_FIELD
 
 /**
  * Created by Piotr on 2018-05-13.
+ * This class provides special field on edit event for String field type.
+ * This field accepts only alphanumeric characters.
+ * It also allows to handle unknown field type.
+ * @see StringTextField
  */
 class StringFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	

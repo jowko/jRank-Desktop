@@ -10,6 +10,10 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-19.
+ * This class creates ContextMenu for Learning table.
+ * Actions are performed by LearningTableActions class
+ * @see LearningTableActions
+ * @see LearningTableController
  */
 class TableContextMenuCreator {
 	
@@ -17,12 +21,26 @@ class TableContextMenuCreator {
 	private LearningTableActions actions;
 	private LanguageService labels;
 	
+	/**
+	 * Creates instance of this class
+	 * @param table on with ContextMenu will be added
+	 * @param tableActions with will be used to execute actions
+	 */
 	TableContextMenuCreator(TableView<ObservableList<Field>> table, LearningTableActions tableActions) {
 		this.table = table;
 		this.actions = tableActions;
 		labels = LanguageService.getInstance();
 	}
 	
+	/**
+	 * Create ContextMenu for learning table.
+	 * For now, following actions are implemented:
+	 * - Create example - adds new empty row to table
+	 * - Customize attributes - opens edit attribute dialog for columns in table
+	 * - Add attribute - opens add attribute dialog to add new column to table
+	 * - Remove selected examples - removes selected rows from table
+	 * - Copy selected rows - Copies selected rows to user clipboard in CSV format
+	 */
 	void create() {
 		ContextMenu menu = new ContextMenu();
 		

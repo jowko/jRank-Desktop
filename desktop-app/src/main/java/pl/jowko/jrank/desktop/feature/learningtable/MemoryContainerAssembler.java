@@ -7,9 +7,24 @@ import pl.poznan.put.cs.idss.jrs.types.Example;
 
 /**
  * Created by Piotr on 2018-05-15.
+ * This class helps to convert LearningTable to MemoryContainer.
+ * Provided LearningTable should contain only jRS field types.
+ * No wrapper fields are allowed.
+ * @see pl.jowko.jrank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer
+ * @see LearningTable
+ * @see MemoryContainer
  */
 class MemoryContainerAssembler {
 	
+	/**
+	 * Creates MemoryContainer object from LearningTable object.
+	 * Learning table should contain only jRS field types.
+	 * No wrapper fields are allowed.
+	 * @see pl.jowko.jrank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer
+	 * @param table with raw jRS fields
+	 * @return MemoryContainer created from provided table
+	 * @throws ContainerFailureException when creating of container will fail
+	 */
 	static MemoryContainer assembleContainerFromTable(LearningTable table) throws ContainerFailureException {
 		MemoryContainer container = new MemoryContainer();
 		

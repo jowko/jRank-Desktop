@@ -23,11 +23,13 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Example;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
+import static java.util.Objects.isNull;
 import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-08.
+ * Controller for editable learning data table.
  */
 public class LearningTableController {
 	
@@ -53,6 +55,15 @@ public class LearningTableController {
 	private LearningTableActions tableActions;
 	private LanguageService labels;
 	
+	/**
+	 * Initialize table and all needed data.
+	 * This class creates LearningTable from provided MemoryContainer.
+	 * It will wrap jRS raw fields with custom wrappers.
+	 * It also initializes all needed events and ContextMenu.
+	 * @param container from with data for table are extracted
+	 * @param tableTab in with learning table is set
+	 * @param workspaceItem from workspace tree representing initialized file
+	 */
 	public void initializeTable(MemoryContainer container, JRankTab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
 		JRSFieldsReplacer.replaceJRSEnumsWithTableEnumFields(table);
@@ -103,16 +114,41 @@ public class LearningTableController {
 		});
 	}
 	
+	/**
+	 * This action will remove selected attribute.
+	 * If no attribute was selected, it will inform user about this in dialog.
+	 * @see LearningTableActions
+	 */
 	public void removeAttributeAction() {
-		tableActions.removeAttributeAction();
+		AttributeItem item = selectAttribute.getValue();
+		if(isNull(item)) {
+			DialogsService.showActionFailedDialog(labels.get(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE_FAIL));
+			return;
+		}
+		
+		tableActions.removeAttributeAction(item);
 	}
 	
+	/**
+	 * This action will remove all examples(row) from learning table.
+	 * It will ask for confirmation.
+	 */
 	public void removeAllExamplesAction() {
 		String header = labels.get(Labels.LEARN_TABLE_REMOVE_ALL_HEADER);
 		if(DialogsService.showConfirmationDialog(header))
 			learningTable.getItems().clear();
 	}
 	
+	/**
+	 * Save edited learning table.
+	 * This method will extract data from UI table and put them into new LearningTable object.
+	 * Them it will validate, if table is valid.
+	 * After this, it will replace wrappers with raw jRS fields.
+	 * Then it converts LearningTable object to MemoryContainer and save it to file.
+	 * @see LearningTableAssembler
+	 * @see JRSFieldsReplacer
+	 * @see JRSFileMediator
+	 */
 	public void saveAction() {
 		try {
 			LearningTable tableToSave = matchDataFromUIToLearningTable();
@@ -129,6 +165,10 @@ public class LearningTableController {
 		}
 	}
 	
+	/**
+	 * Closes tab containing learning data table.
+	 * If edition occurred, application ask for confirmation.
+	 */
 	public void cancelAction() {
 		if(isUserWishToKeepChanges()) {
 			return;
@@ -136,6 +176,11 @@ public class LearningTableController {
 		closeTab();
 	}
 	
+	/**
+	 * This will initialize edit event for table.
+	 * If any action related with table edition will occur, this code will set learning tab to edit mode.
+	 * This solution has one flaw - if user perform change and reverse it, table will be still in edit mode.
+	 */
 	private void initializeTableEditionHandler() {
 		learningTable.getItems().addListener((ListChangeListener<? super ObservableList<Field>>) listener ->
 				learningTableTab.setTabEdited(true)
@@ -148,6 +193,9 @@ public class LearningTableController {
 		);
 	}
 	
+	/**
+	 * Initializes rows and columns for learning table.
+	 */
 	private void initializeTable() {
 		tableActions.createIdColumn();
 		for(Attribute attribute : table.getAttributes()) {
@@ -156,14 +204,19 @@ public class LearningTableController {
 		
 		for(int i=0; i<table.getExamples().size(); i++) {
 			Example example = table.getExamples().get(i);
-			learningTable.getItems().add(createItemRow(example, tableActions.getIdColumnValue()));
+			learningTable.getItems().add(createItemRow(example));
 		}
 		initializeCloseEvent();
 	}
 	
-	private ObservableList<Field> createItemRow(Example example, int index) {
+	/**
+	 * Create row of data for provided example.
+	 * It will create ID cell and cell for each field in example.
+	 * @return list of fields with ID cell and cells created from example fields
+	 */
+	private ObservableList<Field> createItemRow(Example example) {
 		Field[] fields = new Field[example.getFields().length + 1];
-		fields[0] = new CardinalFieldWrapper(index);
+		fields[0] = new CardinalFieldWrapper(tableActions.getIdColumnValue());
 		
 		for(int i=0; i<example.getFields().length; i++) {
 			fields[i+1] = example.getFields()[i];
@@ -171,6 +224,9 @@ public class LearningTableController {
 		return observableArrayList(fields);
 	}
 	
+	/**
+	 * Initialize event listener, with will ask for confirmation when tab was edited and user wants to close it.
+	 */
 	private void initializeCloseEvent() {
 		learningTableTab.setOnCloseRequest(event -> {
 			if(isUserWishToKeepChanges()) {
@@ -179,18 +235,23 @@ public class LearningTableController {
 		});
 	}
 	
+	/**
+	 * Check, if user wants to keep changes.
+	 * If table was edited, it will show confirmation dialog.
+	 */
 	private boolean isUserWishToKeepChanges() {
-		if(learningTable.getColumns().isEmpty()) {
-			return not(showConfirmationDialog());
-		}
-		return learningTableTab.isTabEdited() && not(showConfirmationDialog());
+		return learningTableTab.isTabEdited() && not(showAbandonChangesConfirmationDialog());
 	}
 	
+	/**
+	 * Extract data from UI table and put them in LearningTable
+	 * @see LearningTableAssembler
+	 */
 	private LearningTable matchDataFromUIToLearningTable() {
 		return new LearningTableAssembler(learningTable, table, tableActions.getAttributes()).getLearningTableFromUITable();
 	}
 	
-	private boolean showConfirmationDialog() {
+	private boolean showAbandonChangesConfirmationDialog() {
 		String header = labels.get(Labels.LEARN_TABLE_ABANDON_CHANGES);
 		return DialogsService.showConfirmationDialog(header, "");
 	}
@@ -199,6 +260,11 @@ public class LearningTableController {
 		UpperTabsController.getInstance().closeTab(learningTableTab);
 	}
 	
+	/**
+	 * Validate table and check if data is valid.
+	 * If table is not valid, it will show error messages and ask for confirmation to save.
+	 * @see LearningTableValidator
+	 */
 	private boolean isTableValid(LearningTable tableToSave) {
 		LearningTableValidator validator = new LearningTableValidator(tableToSave);
 		if(validator.isValid())

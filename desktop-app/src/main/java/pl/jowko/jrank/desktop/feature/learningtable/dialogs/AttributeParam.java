@@ -2,6 +2,8 @@ package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 
 /**
  * Created by Piotr on 2018-05-13.
+ * This class contains jRS value and label for ComboBox fields.
+ * @see AttributeParamService
  */
 class AttributeParam {
 	

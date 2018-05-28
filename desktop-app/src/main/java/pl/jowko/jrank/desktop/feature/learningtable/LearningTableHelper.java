@@ -187,6 +187,10 @@ public class LearningTableHelper {
 		return "";
 	}
 	
+	/**
+	 * Creates tooltip for provided attribute.
+	 * Tooltip contains information about preference, kind, activeness and field type
+	 */
 	private Tooltip createColumnTooltip(Attribute attribute) {
 		StringBuilder builder = new StringBuilder();
 		int preference = attribute.getPreferenceType();

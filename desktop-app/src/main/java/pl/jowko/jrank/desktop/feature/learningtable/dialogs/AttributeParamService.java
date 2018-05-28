@@ -12,6 +12,8 @@ import static pl.jowko.jrank.desktop.feature.internationalization.Labels.*;
 
 /**
  * Created by Piotr on 2018-05-13.
+ * This class provides values for ComboBoxes in attribute form.
+ * It also helps to translate jRS values to appropriate format on attribute form.
  */
 class AttributeParamService {
 	
@@ -37,6 +39,9 @@ class AttributeParamService {
 		return kinds.get(0);
 	}
 	
+	/**
+	 * Find kind param by specified jRS int value.
+	 */
 	AttributeParam getKindByValue(int value) {
 		Optional<AttributeParam> param =  kinds.stream()
 				.filter(kind -> kind.getValue() == value)
@@ -49,6 +54,9 @@ class AttributeParamService {
 		return kinds.get(0);
 	}
 	
+	/**
+	 * Find preference param by specified jRS int value.
+	 */
 	AttributeParam getPreferenceByValue(int value) {
 		Optional<AttributeParam> param =  preferences.stream()
 				.filter(preference -> preference.getValue() == value)

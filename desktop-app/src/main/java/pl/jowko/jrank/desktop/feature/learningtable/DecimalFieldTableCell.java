@@ -7,6 +7,10 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-11.
+ * This class provides special field on edit event for Decimal field type.
+ * This field accepts positive and negative double numbers both, in standard and scientific notation.
+ * It also allows to handle unknown field type.
+ * @see DecimalField
  */
 class DecimalFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	

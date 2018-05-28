@@ -241,12 +241,7 @@ public class LearningTableActions {
 		);
 	}
 	
-	void removeAttributeAction() {
-		AttributeItem item = selectAttribute.getValue();
-		if(isNull(item)) {
-			DialogsService.showActionFailedDialog(labels.get(Labels.LEARN_TABLE_REMOVE_ATTRIBUTE_FAIL));
-			return;
-		}
+	void removeAttributeAction(AttributeItem item) {
 		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttribute(item.getAttribute());
 		
 		int attributeIndex = tableColumn.getIndex();

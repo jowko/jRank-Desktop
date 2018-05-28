@@ -15,16 +15,29 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-16.
+ * This class validates provided Learning Table
+ * @see Validator
+ * @see LearningTableController
  */
 class LearningTableValidator extends Validator {
 	
 	private LearningTable table;
 	
+	/**
+	 * Create instance of this class and validate provided table.
+	 * @param table to validate
+	 */
 	LearningTableValidator(LearningTable table) {
 		this.table = table;
 		validateTable();
 	}
 	
+	/**
+	 * Validate provided table. This will check, if:
+	 * - there is only one decision attribute
+	 * - attribute names are unique
+	 * - non decision fields doesn't contain unknown fields
+	 */
 	private void validateTable() {
 		validateDecisionAttributes();
 		validateAttributeUniqueness();
@@ -35,6 +48,10 @@ class LearningTableValidator extends Validator {
 		}
 	}
 	
+	/**
+	 * This method will check, if there is only one active decision attribute.
+	 * If validation fails, it will print all active decision attribute in error message
+	 */
 	private void validateDecisionAttributes() {
 		List<Attribute> decisionAttributes = table.getAttributes().stream()
 				.filter(attribute -> attribute.getActive() && attribute.getKind() == Attribute.DECISION)
@@ -51,6 +68,10 @@ class LearningTableValidator extends Validator {
 		}
 	}
 	
+	/**
+	 * This method will check, if attribute names are unique.
+	 * If validation fails, it will print error message containing names of this attributes.
+	 */
 	private void validateAttributeUniqueness() {
 		List<String> notUniqueAttributesNames = table.getAttributes().stream()
 				.map(Attribute::getName)
@@ -72,6 +93,7 @@ class LearningTableValidator extends Validator {
 						.append(name)
 						.append("] ")
 		);
+		errorMsg.append('\n');
 	}
 	
 }

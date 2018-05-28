@@ -7,6 +7,10 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-09.
+ * This class provides special field on edit event for Integer field type.
+ * This field only accepts integer numbers.
+ * It also allows to handle unknown field type.
+ * @see IntegerField
  */
 class IntegerFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	

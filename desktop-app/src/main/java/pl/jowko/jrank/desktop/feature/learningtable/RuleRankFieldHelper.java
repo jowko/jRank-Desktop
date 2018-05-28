@@ -6,11 +6,15 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-14.
+ * This class contains helper methods related with jRS fields.
  */
 class RuleRankFieldHelper {
 	
 	private RuleRankFieldHelper() {}
 	
+	/**
+	 * Creates new instance of provided field with same type.
+	 */
 	static Field createNewFieldOfProvidedType(Field field) {
 		if(field instanceof StringFieldWrapper)
 			return new StringFieldWrapper();
@@ -26,6 +30,9 @@ class RuleRankFieldHelper {
 		return null;
 	}
 	
+	/**
+	 * Gets String name of field type provided in param.
+	 */
 	static String getColumnFieldType(Field initialValue) {
 		if(initialValue instanceof StringFieldWrapper)
 			return FieldType.STRING_FIELD.toString();

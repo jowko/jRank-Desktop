@@ -7,6 +7,10 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
  * Created by Piotr on 2018-05-16.
+ * This class provides special field on edit event for Cardinal field type.
+ * This field only accepts positive integer numbers.
+ * It also allows to handle unknown field type.
+ * @see IntegerField
  */
 class CardinalFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 	

@@ -16,6 +16,8 @@ import static java.util.Objects.isNull;
 
 /**
  * Created by Piotr on 2018-05-08.
+ * This class stores data extracted from MemoryContainer.
+ * @see MemoryContainer
  */
 public class LearningTable implements Serializable {
 	
@@ -27,6 +29,9 @@ public class LearningTable implements Serializable {
 	private MemoryContainerDescription memoryContainerDescription;
 	private String id;
 	
+	/**
+	 * Extract data from provided MemoryContainer and create instance of LearningTable
+	 */
 	public LearningTable(MemoryContainer container) {
 		attributes = new ArrayList<>();
 		examples = new ArrayList<>();
@@ -42,6 +47,9 @@ public class LearningTable implements Serializable {
 		examples.addAll(container.getExamples());
 	}
 	
+	/**
+	 * Create LearningTable without attributes and examples
+	 */
 	public LearningTable(FileInfo fileInfo, MemoryContainerDescription description, String id) {
 		attributes = new ArrayList<>();
 		examples = new ArrayList<>();

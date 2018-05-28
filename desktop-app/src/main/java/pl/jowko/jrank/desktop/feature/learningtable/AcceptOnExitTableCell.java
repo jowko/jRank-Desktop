@@ -9,6 +9,8 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * Created by Piotr on 2018-05-18.
  * This class fixes bug related with not committing value after loosing focus in field in JavaFX.
  * See: https://stackoverflow.com/a/33475309/8906826
+ * Its extend standard JavaFX table column and CustomFieldTableCell to provide custom fields functionality.
+ * @see CustomFieldTableCell
  */
 abstract class AcceptOnExitTableCell <T> extends CustomFieldTableCell<T> {
 	

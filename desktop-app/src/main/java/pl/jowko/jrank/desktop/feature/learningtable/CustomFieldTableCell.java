@@ -13,6 +13,10 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-11.
+ * This class extends standard JavaFX TableColumn.
+ * This class provides support for custom TextField in edited table cell.
+ * Most of this code was copied from TableCell and related classes, because it doesn't support extending very well.
+ * @see CustomTextField
  */
 abstract class CustomFieldTableCell<T> extends TableCell<T, Field> {
 	
