@@ -147,10 +147,8 @@ public class FilesFinder {
 			return FileType.RULES;
 		if(path.endsWith(".apx"))
 			return FileType.APPROXIMATION;
-		if(path.endsWith("_partialPCT.isf"))
-			return FileType.COMPARISION_TABLE;
 		if(path.endsWith(".isf"))
-			return FileType.LEARNING_TABLE;
+			return FileType.ISF_TABLE;
 		if(path.endsWith(".txt"))
 			return FileType.TEXT;
 		

@@ -5,8 +5,7 @@ package pl.jowko.jrank.desktop.feature.workspace;
  * This enum helps to recognize file type of workspace item from workspace tree
  *
  * Values represent:
- * COMPARISION_TABLE - partial comparision table - partialPCT.isf files
- * LEARNING_TABLE - learning or test data table - .isf files
+ * ISF_TABLE - learning or test data table - .isf files
  * APPROXIMATION - .apx files
  * DIRECTORY - catalog
  * GRAPH - graph file - .graph files
@@ -22,8 +21,7 @@ package pl.jowko.jrank.desktop.feature.workspace;
  */
 public enum FileType {
 	
-	COMPARISION_TABLE,
-	LEARNING_TABLE,
+	ISF_TABLE,
 	APPROXIMATION,
 	DIRECTORY,
 	GRAPH,

@@ -5,7 +5,6 @@ import pl.jowko.jrank.desktop.feature.learningtable.LearningTableController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
-import pl.jowko.jrank.desktop.service.JRSFileMediator;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 
 import java.io.IOException;
@@ -21,16 +20,17 @@ class LearningTableTab extends JRankTab {
 	/**
 	 * Creates learning data table tab for .isf files.
 	 * It will load fxml file and initialize tab with .isf file content.
+	 *
+	 * @param container with isf table
 	 * @param workspaceItem from workspace tree
 	 * @param tabName to display on tab header(tab text)
 	 * @throws TabInitializationException when error occur on tab initialization
 	 * @throws IOException when somethings goes wrong with file reading
 	 */
-	LearningTableTab(WorkspaceItem workspaceItem, String tabName) throws TabInitializationException, IOException {
+	LearningTableTab(MemoryContainer container, WorkspaceItem workspaceItem, String tabName) throws TabInitializationException, IOException {
 		super(tabName);
 		try {
 			LearningTableController controller = initializeTabAndGetController(workspaceItem);
-			MemoryContainer container = JRSFileMediator.loadMemoryContainer(workspaceItem.getFilePath());
 			controller.initializeTable(container, this, workspaceItem);
 		} catch (JRankRuntimeException e) {
 			throwInitializationException("isf", workspaceItem.getFileName(), e);

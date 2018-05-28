@@ -7,15 +7,20 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import pl.jowko.jrank.desktop.exception.JRankException;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.FileType;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
+import pl.jowko.jrank.desktop.service.JRSFileMediator;
 import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
+import pl.poznan.put.cs.idss.jrs.pct.PCTDetector;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 /**
@@ -167,10 +172,8 @@ public class UpperTabsController {
 				throw new WrongFileTypeException("Cannot open experiment directory: [" + workspaceItem.getFileName() + "] as file");
 			case JRANK_SETTINGS:
 				return new PropertiesTab(workspaceItem, tabText);
-			case LEARNING_TABLE:
-				return new LearningTableTab(workspaceItem, tabText);
-			case COMPARISION_TABLE:
-				return new ComparisionTableTab(workspaceItem, tabText);
+			case ISF_TABLE:
+				return handleIsfTable(workspaceItem, tabText);
 			case APPROXIMATION:
 				return new ApproximationsTab(workspaceItem, tabText);
 			case RULES:
@@ -185,6 +188,30 @@ public class UpperTabsController {
 				return new UnknownFileTab(workspaceItem, tabText);
 		}
 		return null;
+	}
+	
+	/**
+	 * This methods handle isf table case.
+	 * When isf file is loaded, it can represent editable isf for learning or test data.
+	 * But it can also represent non editable Partial Comparision Table(PCT) in isf format.
+	 * This method loads isf table, checks it type and returns JRankTab for provided type.
+	 * @param workspaceItem from workspace tree
+	 * @param tabText to display on tab header
+	 * @return JRankTab for isf file
+	 * @throws IOException when something goes wrong with reading files
+	 * @throws TabInitializationException when something goes wrong with initialization of tabs
+	 */
+	private JRankTab handleIsfTable(WorkspaceItem workspaceItem, String tabText) throws IOException, TabInitializationException {
+		MemoryContainer container = JRSFileMediator.loadMemoryContainer(workspaceItem.getFilePath());
+		
+		if(isNull(container))
+			throw new TabInitializationException("Loaded memory container is empty.");
+		
+		boolean isPCT = PCTDetector.isPCT(container);
+		if(isPCT) {
+			return new ComparisionTableTab(container, workspaceItem, tabText);
+		}
+		return new LearningTableTab(container, workspaceItem, tabText);
 	}
 	
 }
