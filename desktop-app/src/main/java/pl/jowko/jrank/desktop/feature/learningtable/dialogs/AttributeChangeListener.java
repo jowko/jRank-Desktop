@@ -78,11 +78,4 @@ class AttributeChangeListener implements ChangeListener<AttributeItem> {
 		return true;
 	}
 	
-	private Attribute getAttributeByName(String name) {
-		return controller.getAttributes().stream()
-				.filter(attribute -> attribute.getName().equals(name))
-				.findFirst()
-				.orElse(null);
-	}
-	
 }
