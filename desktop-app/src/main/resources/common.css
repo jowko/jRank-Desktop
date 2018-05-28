@@ -39,3 +39,7 @@
 	-fx-font-size: 15;
 	-fx-text-fill: red;
 }
+
+.tooltip {
+	-fx-font-size: 13;
+}
