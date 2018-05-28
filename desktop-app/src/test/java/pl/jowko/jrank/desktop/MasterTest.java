@@ -15,7 +15,7 @@ public abstract class MasterTest {
 	 */
 	@BeforeAll
 	static void setUp() {
-		String parentPath = Thread.currentThread().getContextClassLoader().getResource("data/").getPath();
+		String parentPath = Thread.currentThread().getContextClassLoader().getResource("data/").getPath().replace("%20", " ");;
 		ConfigPaths.getInstance().setNewDirectory(parentPath);
 	}
 	
