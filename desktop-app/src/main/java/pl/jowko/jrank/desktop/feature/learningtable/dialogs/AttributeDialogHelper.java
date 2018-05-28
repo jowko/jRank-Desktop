@@ -2,9 +2,7 @@ package pl.jowko.jrank.desktop.feature.learningtable.dialogs;
 
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
 import pl.jowko.jrank.logger.JRankLogger;
-import pl.poznan.put.cs.idss.jrs.types.CardinalField;
-import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
-import pl.poznan.put.cs.idss.jrs.types.Field;
+import pl.poznan.put.cs.idss.jrs.types.*;
 
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
@@ -46,16 +44,18 @@ public class AttributeDialogHelper {
 	 * @return enum corresponding to field type of attribute
 	 */
 	public static FieldType getFieldTypeFromField(Field field) {
-		if(field instanceof StringFieldWrapper)
+		if(field instanceof StringField)
 			return FieldType.STRING_FIELD;
 		if(field instanceof CardinalField)
 			return FieldType.CARDINAL_FIELD;
-		if(field instanceof IntegerFieldWrapper)
+		if(field instanceof IntegerField)
 			return FieldType.INTEGER_FIELD;
-		if(field instanceof FloatFieldWrapper)
+		if(field instanceof FloatField)
 			return FieldType.DECIMAL_FIELD;
-		if(field instanceof EnumFieldWrapper)
+		if(field instanceof EnumField)
 			return FieldType.ENUM_FIELD;
+		if(field instanceof PairField)
+			return FieldType.PAIR_FIELD;
 		
 		return FieldType.STRING_FIELD;
 	}

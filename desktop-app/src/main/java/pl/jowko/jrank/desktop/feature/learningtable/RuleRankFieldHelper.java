@@ -1,8 +1,9 @@
 package pl.jowko.jrank.desktop.feature.learningtable;
 
+import pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogHelper;
 import pl.jowko.jrank.desktop.feature.learningtable.dialogs.FieldType;
 import pl.jowko.jrank.desktop.feature.learningtable.wrappers.*;
-import pl.poznan.put.cs.idss.jrs.types.Field;
+import pl.poznan.put.cs.idss.jrs.types.*;
 
 /**
  * Created by Piotr on 2018-05-14.
@@ -34,18 +35,7 @@ class RuleRankFieldHelper {
 	 * Gets String name of field type provided in param.
 	 */
 	static String getColumnFieldType(Field initialValue) {
-		if(initialValue instanceof StringFieldWrapper)
-			return FieldType.STRING_FIELD.toString();
-		if(initialValue instanceof CardinalFieldWrapper)
-			return FieldType.CARDINAL_FIELD.toString();
-		if(initialValue instanceof IntegerFieldWrapper)
-			return FieldType.INTEGER_FIELD.toString();
-		if(initialValue instanceof FloatFieldWrapper)
-			return FieldType.DECIMAL_FIELD.toString();
-		if(initialValue instanceof EnumFieldWrapper)
-			return FieldType.ENUM_FIELD.toString();
-		
-		return "";
+		return AttributeDialogHelper.getFieldTypeFromField(initialValue).toString();
 	}
 	
 }

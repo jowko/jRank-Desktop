@@ -20,6 +20,8 @@ import pl.jowko.jrank.feature.customfx.StringTextField;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -286,12 +288,27 @@ public class AttributeDialogController {
 		enumsField.setPattern("[A-Za-z_0-9,]*");
 		activeCheckBox.setSelected(true);
 		paramService = new AttributeParamService();
-		typeField.getItems().addAll(FieldType.values());
+		initializeTypeField();
 		addFieldTypeListener();
 		kindField.setItems(observableArrayList(paramService.getKinds()));
 		kindField.getSelectionModel().selectFirst();
 		preferenceField.setItems(observableArrayList(paramService.getPreferences()));
 		initializeTooltips();
+	}
+	
+	/**
+	 * Initialize field type field.
+	 * It will extract all values from FieldType enum except Pair field, with is not editable field type.
+	 * @see FieldType
+	 */
+	private void initializeTypeField() {
+		List<FieldType> values = new ArrayList<>();
+		values.add(FieldType.INTEGER_FIELD);
+		values.add(FieldType.CARDINAL_FIELD);
+		values.add(FieldType.DECIMAL_FIELD);
+		values.add(FieldType.STRING_FIELD);
+		values.add(FieldType.ENUM_FIELD);
+		typeField.getItems().addAll(values);
 	}
 	
 	/**

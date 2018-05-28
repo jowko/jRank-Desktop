@@ -11,7 +11,8 @@ public enum FieldType {
 	CARDINAL_FIELD("Cardinal"),
 	DECIMAL_FIELD("Decimal"),
 	STRING_FIELD("String"),
-	ENUM_FIELD("Enum");
+	ENUM_FIELD("Enum"),
+	PAIR_FIELD("Pair");
 	
 	private String name;
 	
