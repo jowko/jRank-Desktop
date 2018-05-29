@@ -30,6 +30,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-04-29.
+ * Controller for properties form tab.
  */
 public class PropertiesController {
 	
@@ -118,6 +119,12 @@ public class PropertiesController {
 	JRankProperties properties;
 	JRankProperties editableProperties;
 	
+	/**
+	 * Initialize properties form with provided data.
+	 * @param properties loaded from .properties file
+	 * @param workspaceItem from workspace tree with represents properties file
+	 * @param propertiesTab on with properties form is located
+	 */
 	public void initializeProperties(JRankProperties properties, WorkspaceItem workspaceItem, JRankTab propertiesTab) {
 		this.properties = properties;
 		this.workspaceItem = workspaceItem;
@@ -133,6 +140,11 @@ public class PropertiesController {
 		new PropertiesChangeListener(this, propertiesTab).setUpListeners();
 	}
 	
+	/**
+	 * Save properties form to .properties file.
+	 * It will validate, if form is correct.
+	 * Then it will save file to it original location.
+	 */
 	public void saveAction() {
 		if(not(isFormValidForSave()))
 			return;
@@ -148,18 +160,30 @@ public class PropertiesController {
 		}
 	}
 	
+	/**
+	 * Close properties tab.
+	 * If user made some changes in form, he will be asked if he want to keep changes.
+	 */
 	public void cancelAction() {
 		if(isUserWishToKeepChanges())
 			return;
 		closeTab();
 	}
 	
+	/**
+	 * Clears all form(sets empty or null values in form fields)
+	 * If user made some changes in form, he will be asked if he want to keep changes.
+	 */
 	public void clearFormAction() {
 		if(isUserWishToKeepChanges())
 			return;
 		controllerHelper.clearForm();
 	}
 	
+	/**
+	 * Restore original values in properties form.
+	 * It will ask user to confirm this action.
+	 */
 	public void restoreOriginalValuesAction() {
 		if(isUserWishToKeepChanges())
 			return;
@@ -169,6 +193,9 @@ public class PropertiesController {
 		controllerHelper.fillFieldsValues();
 	}
 	
+	/**
+	 * Validates form and show message if form is valid.
+	 */
 	public void validateFormAction() {
 		if(isFormValid()) {
 			String title = labels.get(Labels.PROP_VALIDATE_DIALOG_TITLE);
@@ -177,6 +204,15 @@ public class PropertiesController {
 		}
 	}
 	
+	/**
+	 * This methods validates properties form with default values.
+	 * When running ruleRank application, all experiment settings are needed.
+	 * So if user will leave some fields empty, they will be replaced with default values.
+	 * Default values are taken from default.properties in main workspace directory.
+	 * This method will load default properties and merge them with values from form.
+	 * Then it will perform validation on result.
+	 * @see RunnerPropertiesProvider
+	 */
 	public void validateFormDefaultsAction() {
 		try {
 			editableProperties = controllerHelper.getPropertiesFromForm();
@@ -278,6 +314,10 @@ public class PropertiesController {
 		UpperTabsController.getInstance().closeTab(propertiesTab);
 	}
 	
+	/**
+	 * Initialize close event.
+	 * When user edited data and closes form, he will be asked to confirm this action.
+	 */
 	private void initializeCloseEvent() {
 		propertiesTab.setOnCloseRequest(event -> {
 			if(isUserWishToKeepChanges()) {
@@ -286,6 +326,11 @@ public class PropertiesController {
 		});
 	}
 	
+	/**
+	 * Checks, if form has valid values.
+	 * If form containing errors, they will be displayed to user.
+	 * @return true if form is valid, false otherwise
+	 */
 	private boolean isFormValid() {
 		editableProperties = controllerHelper.getPropertiesFromForm();
 		PropertiesValidator validator = new PropertiesValidator(editableProperties);
@@ -297,6 +342,12 @@ public class PropertiesController {
 		return validator.isValid();
 	}
 	
+	/**
+	 * Checks, if form has valid values.
+	 * It it contains errors, this errors are shown to user.
+	 * Application also ask, if user still want to save form.
+	 * @return true if form is valid or user wish to save form with invalid values.
+	 */
 	private boolean isFormValidForSave() {
 		editableProperties = controllerHelper.getPropertiesFromForm();
 		PropertiesValidator validator = new PropertiesValidator(editableProperties);
