@@ -1,5 +1,8 @@
 package pl.jowko.jrank.desktop.feature.workspace;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 /**
  * Created by Piotr on 2018-04-21.
  * This class represents one position in workspace tree.
@@ -33,6 +36,10 @@ public class WorkspaceItem {
 	
 	public FileType getFileType() {
 		return fileType;
+	}
+	
+	public String getExperimentPath() {
+		return Paths.get(filePath).getParent().toString() + "\\";
 	}
 	
 	@Override

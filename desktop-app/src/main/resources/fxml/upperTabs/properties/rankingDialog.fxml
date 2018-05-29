@@ -2,4 +2,4 @@
 
 
 <?import javafx.scene.control.DialogPane?>
-<DialogPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.ranking.PropertiesRankingController"/>
+<DialogPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.information.PropertiesRankingController"/>
