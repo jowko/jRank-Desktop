@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DialogPane?>
-<DialogPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.information.PropertiesPairsController"/>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<DialogPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.information.PropertiesPairsController">
+   <content>
+      <VBox spacing="5.0">
+         <children>
+            <FlowPane hgap="20.0" vgap="5.0" VBox.vgrow="SOMETIMES">
+               <children>
+                  <Label fx:id="displayedLabelsLabel" text="Displayed label:" />
+                  <ComboBox fx:id="displayedLabels" minWidth="100.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </FlowPane>
+            <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ListView fx:id="firstListView" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER" spacing="20.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="addSButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#addSAction" text="Add S" />
+                        <Button fx:id="addScButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#addScAction" text="Add Sc" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <ListView fx:id="secondListView" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <VBox>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <ListView fx:id="pairsListView" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="removeSelectedButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#removeSelectedAction" text="Remove selected" />
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <FlowPane hgap="40.0" maxHeight="50.0" vgap="10.0" VBox.vgrow="SOMETIMES">
+               <children>
+                  <Button fx:id="saveButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                  <Button fx:id="cancelButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#cancelAction" text="Cancel" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </FlowPane>
+         </children>
+      </VBox>
+   </content>
+</DialogPane>

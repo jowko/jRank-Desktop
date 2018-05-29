@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.properties;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -9,6 +11,7 @@ import pl.jowko.jrank.desktop.exception.ConfigurationException;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.properties.information.AbstractInformationController;
+import pl.jowko.jrank.desktop.feature.properties.information.TextParseFailException;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -24,6 +27,7 @@ import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
@@ -241,7 +245,12 @@ public class PropertiesController {
 	 * @throws IOException when something goes wrong with loading files
 	 */
 	public void editRankingAction() throws IOException {
-		initializeInformationForm("/fxml/upperTabs/properties/rankingDialog.fxml", Labels.PROP_RANKING_TITLE);
+		String text = referenceRanking.getText();
+		if(isNull(text))
+			text = "";
+		StringProperty result = new SimpleStringProperty(text);
+		result.addListener((oo, old, newValue) -> referenceRanking.setText(newValue));
+		initializeInformationForm("/fxml/upperTabs/properties/rankingDialog.fxml", Labels.PROP_RANKING_TITLE, result);
 	}
 	
 	/**
@@ -250,16 +259,22 @@ public class PropertiesController {
 	 * @throws IOException when something goes wrong with loading files
 	 */
 	public void editPairsAction() throws IOException {
-		initializeInformationForm("/fxml/upperTabs/properties/pairsDialog.fxml", Labels.PROP_PAIRS_TITLE);
+		String text = pairs.getText();
+		if(isNull(text))
+			text = "";
+		StringProperty result = new SimpleStringProperty(text);
+		result.addListener((oo, old, newValue) -> pairs.setText(newValue));
+		initializeInformationForm("/fxml/upperTabs/properties/pairsDialog.fxml", Labels.PROP_PAIRS_TITLE, result);
 	}
 	
 	/**
 	 * Initializes information form on with pairs or ranking is edited.
+	 * If field contains invalid content, dialog will not show and user see errors message.
 	 * @param fxmlPath to pairs or ranking dialog path
 	 * @param titleLabel to display on modal window
 	 * @throws IOException when something goes wrong with reading files
 	 */
-	private void initializeInformationForm(String fxmlPath, String titleLabel) throws IOException {
+	private void initializeInformationForm(String fxmlPath, String titleLabel, StringProperty result) throws IOException {
 		MemoryContainer container = getContainerAndValidate();
 		if(isNull(container)) {
 			return;
@@ -268,8 +283,15 @@ public class PropertiesController {
 		ResourceLoader loader = new ResourceLoader(fxmlPath);
 		Parent root = loader.load();
 		AbstractInformationController controller = loader.getController();
+		
+		try {
+			controller.initializeForm(container, result);
+		} catch (TextParseFailException e) {
+			DialogsService.showActionFailedDialog(e.getMessage());
+			return;
+		}
+		
 		controller.createWindow(root, Main.getScene(), labels.get(titleLabel));
-		controller.initializeForm(container);
 	}
 	
 	/**

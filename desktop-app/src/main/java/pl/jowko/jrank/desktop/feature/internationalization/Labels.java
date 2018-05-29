@@ -219,14 +219,20 @@ public class Labels {
 	public static final String FILE_PANE_TOOLTIP = "FILE_PANE_TOOLTIP";
 	
 	
-	// Properties ranking dialog
+	// Properties dialog labels
 	public static final String PROP_RANKING_TITLE = "PROP_RANKING_TITLE";
-	
-	
-	
-	// Properties pairs dialog
 	public static final String PROP_PAIRS_TITLE = "PROP_PAIRS_TITLE";
+	public static final String PROP_INFO_ID = "PROP_INFO_ID";
+	public static final String PROP_INFO_S = "PROP_INFO_S";
+	public static final String PROP_INFO_SC = "PROP_INFO_SC";
+	public static final String PROP_INFO_PAIRS_PARSE_EXCEPTION = "PROP_INFO_PAIRS_PARSE_EXCEPTION";
 	
+	public static final String PROP_INFO_LABEL_LABEL = "PROP_INFO_LABEL_LABEL";
+	public static final String PROP_INFO_ADD_S_BUTTON = "PROP_INFO_ADD_S_BUTTON";
+	public static final String PROP_INFO_ADD_SC_BUTTON = "PROP_INFO_ADD_SC_BUTTON";
+	public static final String PROP_INFO_REMOVE_BUTTON = "PROP_INFO_REMOVE_BUTTON";
+	public static final String PROP_INFO_SAVE_BUTTON = "PROP_INFO_SAVE_BUTTON";
+	public static final String PROP_INFO_CANCEL_BUTTON = "PROP_INFO_CANCEL_BUTTON";
 	
 	
 	// Learning table attribute dialog

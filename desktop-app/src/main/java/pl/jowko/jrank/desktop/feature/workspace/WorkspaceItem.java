@@ -1,6 +1,5 @@
 package pl.jowko.jrank.desktop.feature.workspace;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -38,6 +37,10 @@ public class WorkspaceItem {
 		return fileType;
 	}
 	
+	/**
+	 * Gets experiment directory path extracted from file path.
+	 * @return experiment directory path
+	 */
 	public String getExperimentPath() {
 		return Paths.get(filePath).getParent().toString() + "\\";
 	}

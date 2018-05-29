@@ -27,7 +27,36 @@ public abstract class AbstractDialogForm {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.setResizable(false);
 		stage.initOwner(scene.getWindow());
+		initializeCloseEvent();
 		stage.showAndWait();
+	}
+	
+	/**
+	 * Closes current dialog without asking
+	 */
+	protected void closeDialog() {
+		stage.close();
+	}
+	
+	/**
+	 * Checks, if user want to keep changes on close.
+	 * This should be Overridden by upper class.
+	 * @return false because by default this feature is disabled
+	 */
+	protected boolean isUserWishToKeepChanges() {
+		return false;
+	}
+	
+	/**
+	 * Initializes event onCloseRequest.
+	 * When user tries to close window, it will be asked, if he want to keep changes.
+	 * isUserWishToKeepChanges must be overridden by upper class to enable this feature.
+	 */
+	private void initializeCloseEvent() {
+		stage.setOnCloseRequest(event -> {
+			if(isUserWishToKeepChanges())
+				event.consume();
+		});
 	}
 	
 }

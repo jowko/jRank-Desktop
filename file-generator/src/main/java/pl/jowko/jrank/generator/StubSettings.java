@@ -111,7 +111,7 @@ class StubSettings {
 		createEnglishPropertiesValidationMessages(language);
 		createEnglishPropertiesTooltips(language);
 		createEnglishParametersLabels(language);
-		createEnlgishPropertiesDialogsLabels(language);
+		createEnglishPropertiesDialogsLabels(language);
 		createEnglishAttributeDialogLabels(language);
 		createEnglishLearningTableLabels(language);
 		createEnglishPCTLabels(language);
@@ -323,9 +323,20 @@ class StubSettings {
 		language.put(Labels.BOOLEAN_NO, "No");
 	}
 	
-	private void createEnlgishPropertiesDialogsLabels(Map<String, String> language) {
+	private void createEnglishPropertiesDialogsLabels(Map<String, String> language) {
 		language.put(Labels.PROP_RANKING_TITLE, "Ranking edition");
 		language.put(Labels.PROP_PAIRS_TITLE, "Pairs edition");
+		language.put(Labels.PROP_INFO_ID, "ID");
+		language.put(Labels.PROP_INFO_S, "S");
+		language.put(Labels.PROP_INFO_SC, "Sc");
+		language.put(Labels.PROP_INFO_PAIRS_PARSE_EXCEPTION, "Could not load pairs from text. Check if they have correct format. Example: {1,2} S, {3,5} Sc");
+		
+		language.put(Labels.PROP_INFO_LABEL_LABEL, "Displayed label:");
+		language.put(Labels.PROP_INFO_ADD_S_BUTTON, "Add S");
+		language.put(Labels.PROP_INFO_ADD_SC_BUTTON, "Add Sc");
+		language.put(Labels.PROP_INFO_REMOVE_BUTTON, "Remove selected");
+		language.put(Labels.PROP_INFO_SAVE_BUTTON, "Save");
+		language.put(Labels.PROP_INFO_CANCEL_BUTTON, "Cancel");
 	}
 	
 	private void createEnglishAttributeDialogLabels(Map<String, String> language) {
