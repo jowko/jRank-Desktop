@@ -70,6 +70,7 @@ class StubSettings {
 				.setWorkspacePath("\\workspace")
 				.setTooltipsEnabled(true)
 				.setAdvancedPropertiesEnabled(false)
+				.setManualInfoEditionEnabled(false)
 				.createUserSettings();
 	}
 	
@@ -140,6 +141,8 @@ class StubSettings {
 		language.put(Labels.TOOLTIPS_ENABLED, "Tooltips enabled");
 		language.put(Labels.ADVANCED_PROPERTIES_ENABLED, "Advanced properties enabled");
 		language.put(Labels.ADVANCED_PROPERTIES_ENABLED_TOOLTIP, "When advanced properties are enabled, all fields on properties form are visible by default. If this option is not enabled, most fields are hidden and you need to expand panels to edit them.");
+		language.put(Labels.MANUAL_EDITION_ENABLED, "Manual ranking/pairs edition");
+		language.put(Labels.MANUAL_EDITION_ENABLED_TOOLTIP, "Enables manual edition of properties form text fields containing ranking and pairs data");
 		language.put(Labels.US_INFO, "Settings will be allied after application restart.");
 		language.put(Labels.LANGUAGE_ERROR, "Language code is not valid. Choose another language.\n");
 		language.put(Labels.WORKSPACE_ERROR, "Provided workspace folder path: " + MSG + " is not correct\n");

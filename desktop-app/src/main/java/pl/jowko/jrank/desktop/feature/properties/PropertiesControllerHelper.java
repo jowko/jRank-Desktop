@@ -34,6 +34,10 @@ class PropertiesControllerHelper {
 		controller.consistencyMeasureThreshold.setPattern(DecimalField.POSITIVE_DECIMAL_PATTERN);
 		controller.precision.setCharLimit(6);
 		controller.consistencyMeasureThreshold.setCharLimit(50);
+		
+		boolean isManualEditEnabled = UserSettingsService.getInstance().getUserSettings().isManualInfoEditionEnabled();
+		controller.referenceRanking.setEditable(isManualEditEnabled);
+		controller.pairs.setEditable(isManualEditEnabled);
 	}
 	
 	/**

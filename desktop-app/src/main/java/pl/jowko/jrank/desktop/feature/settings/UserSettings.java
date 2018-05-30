@@ -39,6 +39,7 @@ public class UserSettings implements Serializable {
 	private String workspacePath;
 	private boolean tooltipsEnabled;
 	private boolean advancedPropertiesEnabled;
+	private boolean manualInfoEditionEnabled;
 	
 	public void setLanguage(String language) {
 		this.language = language;
@@ -70,6 +71,14 @@ public class UserSettings implements Serializable {
 	
 	public void setAdvancedPropertiesEnabled(boolean advancedPropertiesEnabled) {
 		this.advancedPropertiesEnabled = advancedPropertiesEnabled;
+	}
+	
+	public boolean isManualInfoEditionEnabled() {
+		return manualInfoEditionEnabled;
+	}
+	
+	public void setManualInfoEditionEnabled(boolean manualInfoEditionEnabled) {
+		this.manualInfoEditionEnabled = manualInfoEditionEnabled;
 	}
 	
 }

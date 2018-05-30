@@ -11,6 +11,7 @@ public class UserSettingsBuilder {
 	private String workspacePath;
 	private boolean tooltipsEnabled;
 	private boolean advancedPropertiesEnabled;
+	private boolean manualInfoEditionEnabled;
 	
 	public UserSettingsBuilder setLanguage(String language) {
 		this.language = language;
@@ -32,6 +33,11 @@ public class UserSettingsBuilder {
 		return this;
 	}
 	
+	public UserSettingsBuilder setManualInfoEditionEnabled(boolean manualInfoEditionEnabled) {
+		this.manualInfoEditionEnabled = manualInfoEditionEnabled;
+		return this;
+	}
+	
 	/**
 	 * Creates UserSettings from data set in builder.
 	 * All options are optional.
@@ -45,6 +51,7 @@ public class UserSettingsBuilder {
 		settings.setWorkspacePath(workspacePath);
 		settings.setTooltipsEnabled(tooltipsEnabled);
 		settings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled);
+		settings.setManualInfoEditionEnabled(manualInfoEditionEnabled);
 		return settings;
 	}
 	

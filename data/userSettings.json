@@ -2,5 +2,6 @@
   "language" : "ENG",
   "workspacePath" : "\\workspace",
   "tooltipsEnabled" : true,
-  "advancedPropertiesEnabled" : false
+  "advancedPropertiesEnabled" : false,
+  "manualInfoEditionEnabled" : false
 }

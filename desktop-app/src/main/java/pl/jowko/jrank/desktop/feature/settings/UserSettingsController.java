@@ -42,6 +42,8 @@ public class UserSettingsController extends AbstractDialogForm {
 	@FXML
 	CheckBox advancedPropertiesEnabled;
 	@FXML
+	CheckBox manualEditionEnabled;
+	@FXML
 	Label infoText;
 	
 	private static UserSettings newUserSettings;
@@ -62,6 +64,7 @@ public class UserSettingsController extends AbstractDialogForm {
 		workspaceField.setText(newUserSettings.getWorkspacePath());
 		tooltipsEnabled.setSelected(newUserSettings.isTooltipsEnabled());
 		advancedPropertiesEnabled.setSelected(newUserSettings.isAdvancedPropertiesEnabled());
+		manualEditionEnabled.setSelected(newUserSettings.isManualInfoEditionEnabled());
 		settingsValidator = new UserSettingsValidator();
 	}
 	
@@ -109,6 +112,7 @@ public class UserSettingsController extends AbstractDialogForm {
 					.setWorkspacePath(settings.getWorkspacePath())
 					.setTooltipsEnabled(settings.isTooltipsEnabled())
 					.setAdvancedPropertiesEnabled(settings.isAdvancedPropertiesEnabled())
+					.setManualInfoEditionEnabled(settings.isManualInfoEditionEnabled())
 					.createUserSettings();
 		}
 	}
@@ -121,6 +125,7 @@ public class UserSettingsController extends AbstractDialogForm {
 		newUserSettings.setLanguage(getLangCode());
 		newUserSettings.setTooltipsEnabled(tooltipsEnabled.isSelected());
 		newUserSettings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled.isSelected());
+		newUserSettings.setManualInfoEditionEnabled(manualEditionEnabled.isSelected());
 	}
 	
 	/**

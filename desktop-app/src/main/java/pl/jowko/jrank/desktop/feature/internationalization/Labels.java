@@ -44,6 +44,8 @@ public class Labels {
 	public static final String TOOLTIPS_ENABLED = "TOOLTIPS_ENABLED";
 	public static final String ADVANCED_PROPERTIES_ENABLED = "ADVANCED_PROPERTIES_ENABLED";
 	public static final String ADVANCED_PROPERTIES_ENABLED_TOOLTIP = "ADVANCED_PROPERTIES_ENABLED_TOOLTIP";
+	public static final String MANUAL_EDITION_ENABLED = "MANUAL_EDITION_ENABLED";
+	public static final String MANUAL_EDITION_ENABLED_TOOLTIP = "MANUAL_EDITION_ENABLED_TOOLTIP";
 	public static final String US_INFO = "US_INFO";
 	public static final String LANGUAGE_ERROR = "LANGUAGE_ERROR";
 	public static final String WORKSPACE_ERROR = "WORKSPACE_ERROR";
