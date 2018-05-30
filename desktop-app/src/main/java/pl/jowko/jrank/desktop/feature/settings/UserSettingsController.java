@@ -44,6 +44,8 @@ public class UserSettingsController extends AbstractDialogForm {
 	@FXML
 	CheckBox manualEditionEnabled;
 	@FXML
+	CheckBox startMaximized;
+	@FXML
 	Label infoText;
 	
 	private static UserSettings newUserSettings;
@@ -65,6 +67,7 @@ public class UserSettingsController extends AbstractDialogForm {
 		tooltipsEnabled.setSelected(newUserSettings.isTooltipsEnabled());
 		advancedPropertiesEnabled.setSelected(newUserSettings.isAdvancedPropertiesEnabled());
 		manualEditionEnabled.setSelected(newUserSettings.isManualInfoEditionEnabled());
+		startMaximized.setSelected(newUserSettings.isStartMaximized());
 		settingsValidator = new UserSettingsValidator();
 	}
 	
@@ -113,6 +116,7 @@ public class UserSettingsController extends AbstractDialogForm {
 					.setTooltipsEnabled(settings.isTooltipsEnabled())
 					.setAdvancedPropertiesEnabled(settings.isAdvancedPropertiesEnabled())
 					.setManualInfoEditionEnabled(settings.isManualInfoEditionEnabled())
+					.setStartMaximized(settings.isStartMaximized())
 					.createUserSettings();
 		}
 	}
@@ -126,6 +130,7 @@ public class UserSettingsController extends AbstractDialogForm {
 		newUserSettings.setTooltipsEnabled(tooltipsEnabled.isSelected());
 		newUserSettings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled.isSelected());
 		newUserSettings.setManualInfoEditionEnabled(manualEditionEnabled.isSelected());
+		newUserSettings.setStartMaximized(startMaximized.isSelected());
 	}
 	
 	/**

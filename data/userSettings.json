@@ -3,5 +3,6 @@
   "workspacePath" : "\\workspace",
   "tooltipsEnabled" : true,
   "advancedPropertiesEnabled" : false,
-  "manualInfoEditionEnabled" : false
+  "manualInfoEditionEnabled" : false,
+  "startMaximized" : false
 }

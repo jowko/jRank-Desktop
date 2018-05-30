@@ -12,6 +12,7 @@ public class UserSettingsBuilder {
 	private boolean tooltipsEnabled;
 	private boolean advancedPropertiesEnabled;
 	private boolean manualInfoEditionEnabled;
+	private boolean startMaximized;
 	
 	public UserSettingsBuilder setLanguage(String language) {
 		this.language = language;
@@ -38,6 +39,11 @@ public class UserSettingsBuilder {
 		return this;
 	}
 	
+	public UserSettingsBuilder setStartMaximized(boolean startMaximized) {
+		this.startMaximized = startMaximized;
+		return this;
+	}
+	
 	/**
 	 * Creates UserSettings from data set in builder.
 	 * All options are optional.
@@ -52,6 +58,7 @@ public class UserSettingsBuilder {
 		settings.setTooltipsEnabled(tooltipsEnabled);
 		settings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled);
 		settings.setManualInfoEditionEnabled(manualInfoEditionEnabled);
+		settings.setStartMaximized(startMaximized);
 		return settings;
 	}
 	

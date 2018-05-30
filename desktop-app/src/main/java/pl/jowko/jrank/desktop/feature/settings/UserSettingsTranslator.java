@@ -27,6 +27,7 @@ class UserSettingsTranslator extends AbstractTranslator {
 		controller.advancedPropertiesEnabled.setTooltip(new Tooltip(get(Labels.ADVANCED_PROPERTIES_ENABLED_TOOLTIP)));
 		controller.manualEditionEnabled.setText(get(Labels.MANUAL_EDITION_ENABLED));
 		controller.manualEditionEnabled.setTooltip(new Tooltip(get(Labels.MANUAL_EDITION_ENABLED_TOOLTIP)));
+		controller.startMaximized.setText(get(Labels.START_MAXIMIZED));
 		controller.infoText.setText(get(Labels.US_INFO));
 	}
 	

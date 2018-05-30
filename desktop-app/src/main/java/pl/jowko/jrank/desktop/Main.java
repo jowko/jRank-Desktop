@@ -11,6 +11,7 @@ import pl.jowko.jrank.desktop.exception.ConfigurationException;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.settings.ConfigurationInitializer;
+import pl.jowko.jrank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.jrank.desktop.feature.tabs.TabEditionChecker;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.logger.JRankLogger;
@@ -59,8 +60,10 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setMinWidth(MIN_WIDTH);
 		primaryStage.setMinHeight(MIN_HEIGHT);
-		//primaryStage.setMaximized(true);
 		setOnCloseEvent(primaryStage);
+		
+		boolean isMaximized = UserSettingsService.getInstance().getUserSettings().isStartMaximized();
+		primaryStage.setMaximized(isMaximized);
 		
 		primaryStage.show();
 		JRankLogger.init("Application started");

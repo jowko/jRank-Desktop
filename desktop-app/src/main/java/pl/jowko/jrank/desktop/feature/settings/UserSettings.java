@@ -40,6 +40,7 @@ public class UserSettings implements Serializable {
 	private boolean tooltipsEnabled;
 	private boolean advancedPropertiesEnabled;
 	private boolean manualInfoEditionEnabled;
+	private boolean startMaximized;
 	
 	public void setLanguage(String language) {
 		this.language = language;
@@ -79,6 +80,14 @@ public class UserSettings implements Serializable {
 	
 	public void setManualInfoEditionEnabled(boolean manualInfoEditionEnabled) {
 		this.manualInfoEditionEnabled = manualInfoEditionEnabled;
+	}
+	
+	public boolean isStartMaximized() {
+		return startMaximized;
+	}
+	
+	public void setStartMaximized(boolean startMaximized) {
+		this.startMaximized = startMaximized;
 	}
 	
 }
