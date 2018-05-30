@@ -337,6 +337,16 @@ class StubSettings {
 		language.put(Labels.PROP_INFO_REMOVE_BUTTON, "Remove selected");
 		language.put(Labels.PROP_INFO_SAVE_BUTTON, "Save");
 		language.put(Labels.PROP_INFO_CANCEL_BUTTON, "Cancel");
+		
+		language.put(Labels.PROP_INFO_RANKING, "Ranking");
+		language.put(Labels.PROP_INFO_RANK, "Rank ");
+		language.put(Labels.PROP_INFO_REMOVE, "Remove selected");
+		language.put(Labels.PROP_INFO_ADD_BEGIN, "Add Rank at the begin");
+		language.put(Labels.PROP_INFO_ADD_END, "Add Rank at the end");
+		language.put(Labels.PROP_INFO_RANKING_PARSE_EXCEPTION, "Could not load ranking from text. Check if ranking has correct format. Example: 1, 2 4, 5");
+		language.put(Labels.PROP_INFO_DISPLAY_LABEL, "Displayed label:");
+		language.put(Labels.PROP_INFO_R_SAVE_BUTTON, "Save");
+		language.put(Labels.PROP_INFO_R_CANCEL_BUTTON, "Cancel");
 	}
 	
 	private void createEnglishAttributeDialogLabels(Map<String, String> language) {
