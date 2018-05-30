@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.Main;
 import pl.jowko.jrank.desktop.ResourceLoader;
 import pl.jowko.jrank.desktop.exception.ConfigurationException;
+import pl.jowko.jrank.desktop.exception.ErrorMessageParser;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.properties.information.AbstractInformationController;
@@ -27,7 +28,6 @@ import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Optional;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
@@ -288,6 +288,8 @@ public class PropertiesController {
 			controller.initializeForm(container, result);
 		} catch (TextParseFailException e) {
 			DialogsService.showActionFailedDialog(e.getMessage());
+			String errorLog = "Error when parsing text from properties field: " + ErrorMessageParser.parseException(e.getCause());
+			JRankLogger.error(errorLog);
 			return;
 		}
 		

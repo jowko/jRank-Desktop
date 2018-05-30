@@ -318,7 +318,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 				addReadRankToTree(rank.split(" "));
 			}
 		} catch (RuntimeException e) {
-			throw new TextParseFailException(labels.get(Labels.PROP_INFO_RANKING_PARSE_EXCEPTION));
+			throw new TextParseFailException(labels.get(Labels.PROP_INFO_RANKING_PARSE_EXCEPTION), e);
 		}
 	}
 	

@@ -121,12 +121,13 @@ public class PropertiesPairsController extends AbstractInformationController {
 	/**
 	 * Parses previous settings for pairs with are extracted from properties form text.
 	 * If any error occur, it will throw exception with message about error.
+	 * @throws TextParseFailException when anything goes wrong with pairs text parsing
 	 */
 	private void readPreviousPairs() {
 		try {
 			readPreviousPairsFromText();
 		} catch (RuntimeException e) {
-			throw new TextParseFailException(labels.get(Labels.PROP_INFO_PAIRS_PARSE_EXCEPTION));
+			throw new TextParseFailException(labels.get(Labels.PROP_INFO_PAIRS_PARSE_EXCEPTION), e);
 		}
 	}
 	

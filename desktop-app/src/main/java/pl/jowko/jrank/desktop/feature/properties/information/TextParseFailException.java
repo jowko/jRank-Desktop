@@ -10,8 +10,8 @@ public class TextParseFailException extends JRankRuntimeException {
 	
 	private static final long serialVersionUID = -7022764434411593148L;
 	
-	TextParseFailException(String msg) {
-		super(msg);
+	TextParseFailException(String msg, Throwable e) {
+		super(msg, e);
 	}
 	
 }

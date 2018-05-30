@@ -3,6 +3,7 @@ package pl.jowko.jrank.desktop.feature.tabs;
 import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import pl.jowko.jrank.desktop.ResourceLoader;
+import pl.jowko.jrank.desktop.exception.ErrorMessageParser;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 
 import java.io.IOException;
@@ -76,17 +77,7 @@ public abstract class JRankTab extends Tab {
 					.append("]. ");
 		}
 		
-		builder.append("Cause: ")
-				.append(exception.getMessage());
-		
-		Throwable cause = exception;
-		do {
-			cause = cause.getCause();
-			if(nonNull(cause)) {
-				builder.append("\nCaused by: ")
-						.append(cause.getMessage());
-			}
-		} while (nonNull(cause));
+		builder.append(ErrorMessageParser.parseException(exception));
 		
 		throw new TabInitializationException(builder.toString());
 	}
