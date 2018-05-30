@@ -90,12 +90,17 @@ public class PropertiesRankingController extends AbstractInformationController {
 	/**
 	 * Checks, if any changes were made to ranking.
 	 * If changes were detected, application will ask if user want to keep changes.
+	 * It ignores all whitespaces, because it doesn't matter how many whitespaces were typed.
+	 * Due to whitespaces removal, it can not detect changes in some extreme cases.
+	 * Example:
+	 * 1, 2 4 in this method is same as -> 1, 24
 	 * @return true if user wants to keep changes
 	 */
 	@Override
 	protected boolean isUserWishToKeepChanges() {
-		String newValue = convertRankingToString();
-		if(result.get().equals(newValue))
+		String newValue = convertRankingToString().replace(" ", "");
+		String oldValue = result.get().replace(" ", "");
+		if(oldValue.equals(newValue))
 			return false;
 		
 		return not(showConfirmActionDialog());

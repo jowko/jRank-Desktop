@@ -108,11 +108,14 @@ public class PropertiesPairsController extends AbstractInformationController {
 	 * Checks if user wish to keep changes.
 	 * If no changes occurred, It is assumed that user doesn't want to keep changes.
 	 * If changes are detected, Confirmation dialog will be shown.
+	 * It ignores all whitespaces, because it doesn't matter how many whitespaces were typed.
 	 * @return true if user wish to keep changes, false otherwise
 	 */
 	protected boolean isUserWishToKeepChanges() {
-		String newValue = convertPairsToText();
-		if(result.get().equals(newValue))
+		String newValue = convertPairsToText().replace(" ", "");
+		String oldValue = result.get().replace(" ", "");
+		
+		if(oldValue.equals(newValue))
 			return false;
 		
 		return not(showConfirmActionDialog());
