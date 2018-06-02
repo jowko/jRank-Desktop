@@ -20,6 +20,7 @@
 	
 	<modules>
 		<module>customFX</module>
+		<module>fxgraph</module>
 		<module>jRank-logger</module>
 		<module>desktop-app</module>
 		<module>file-generator</module>

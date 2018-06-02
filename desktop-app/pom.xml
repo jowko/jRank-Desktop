@@ -25,6 +25,11 @@
 			<artifactId>customFX</artifactId>
 			<version>0.4-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>pl.jowko.jrank</groupId>
+			<artifactId>fxgraph</artifactId>
+			<version>0.4-SNAPSHOT</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
