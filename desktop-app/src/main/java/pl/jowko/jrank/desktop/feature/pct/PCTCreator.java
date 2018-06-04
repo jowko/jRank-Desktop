@@ -6,11 +6,9 @@ import javafx.scene.control.TableColumn;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableHelper;
+import pl.jowko.jrank.desktop.feature.learningtable.wrappers.PairFieldWrapper;
 import pl.jowko.jrank.feature.customfx.IndexedTableColumn;
-import pl.poznan.put.cs.idss.jrs.types.Attribute;
-import pl.poznan.put.cs.idss.jrs.types.CardinalField;
-import pl.poznan.put.cs.idss.jrs.types.Example;
-import pl.poznan.put.cs.idss.jrs.types.Field;
+import pl.poznan.put.cs.idss.jrs.types.*;
 
 import java.util.List;
 
@@ -140,7 +138,13 @@ class PCTCreator {
 		ObservableList<Field> fields = observableArrayList();
 		// create id field
 		fields.add(new CardinalField(rowIndex));
-		fields.addAll(example.getFields());
+		
+		for(Field field : example.getFields()) {
+			if(field instanceof PairField)
+				fields.add(new PairFieldWrapper((PairField) field));
+			else
+				fields.add(field);
+		}
 		
 		return fields;
 	}
