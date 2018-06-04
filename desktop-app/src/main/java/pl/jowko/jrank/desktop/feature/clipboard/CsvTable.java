@@ -26,7 +26,7 @@ public class CsvTable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		char separator = '|';
+		char separator = ';';
 		
 		for(CsvRow row : rows) {
 			List<String> cells = row.getCells();

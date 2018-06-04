@@ -39,7 +39,7 @@ class CsvTableCreatorTest {
 	}
 	
 	private String getExpectedString() {
-		return "test|test2\nb|a\nd|c\n";
+		return "test;test2\nb;a\nd;c\n";
 	}
 	
 	
