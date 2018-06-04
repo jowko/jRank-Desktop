@@ -5,9 +5,9 @@ import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.service.DialogsService;
 
-import java.util.ArrayList;
-
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -113,7 +113,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 	 * @return TreeItem of rank position type
 	 */
 	TreeItem<RankingItem> createRankingNode() {
-		var rankingItem = new TreeItem<>(new RankingItem(labels.get(Labels.PROP_INFO_RANK) + rankingPosition++));
+		TreeItem<RankingItem> rankingItem = new TreeItem<>(new RankingItem(labels.get(Labels.PROP_INFO_RANK) + rankingPosition++));
 		rankingItem.setExpanded(true);
 		return rankingItem;
 	}
@@ -128,12 +128,45 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
+	 * Removes TreeItem with contain provided ranking item.
+	 * @param rankingItem to remove from TreeView
+	 */
+	void removeItemAction(RankingItem rankingItem) {
+		for(TreeItem<RankingItem> treeItem : rankingTree.getRoot().getChildren()) {
+			var item = findTreeItem(treeItem, rankingItem);
+			if(nonNull(item)) {
+				removeItemAction(item);
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Find searchedItem in treeItem children.
+	 * @param treeItem in with search will be performed
+	 * @param searchedItem with will be searched in treeItem children
+	 * @return found treeItem or null
+	 */
+	private TreeItem<RankingItem> findTreeItem(TreeItem<RankingItem> treeItem, RankingItem searchedItem) {
+		for(TreeItem<RankingItem> item : treeItem.getChildren()) {
+			if(item.getValue().equals(searchedItem))
+				return item;
+		}
+		return null;
+	}
+	
+	private boolean showConfirmActionDialog() {
+		String header = labels.get(Labels.PROP_ABANDON_CHANGES);
+		return DialogsService.showConfirmationDialog(header);
+	}
+	
+	/**
 	 * Removes provided tree item.
 	 * It will remove it and also remove its all children(if it is rank node).
 	 * If removed item was last in rank container, its parent(rank node) also be removed.
 	 * @param selected node with will be removed
 	 */
-	void removeItemAction(TreeItem<RankingItem> selected) {
+	private void removeItemAction(TreeItem<RankingItem> selected) {
 		if(isNull(selected))
 			return;
 		
@@ -141,22 +174,13 @@ public class PropertiesRankingController extends AbstractInformationController {
 		if(selected.getValue().isRootNode())
 			return;
 		// if it is rank node, it contains children with also need to be removed and restored in ListView
-		var children = new ArrayList<>(selected.getChildren());
+		var children = observableArrayList(selected.getChildren());
 		children.forEach(child ->
 				removeTreeElement(selected, child)
 		);
 		removeTreeElement(parent, selected);
 		
-		// if its parent doesn't contain any children, it also be removed.
-		if(parent.getChildren().size() == 0 && not(parent.getValue().isRootNode())) {
-			removeTreeElement(parent.getParent(), parent);
-		}
 		recalculateRankingPosition();
-	}
-	
-	private boolean showConfirmActionDialog() {
-		String header = labels.get(Labels.PROP_ABANDON_CHANGES);
-		return DialogsService.showConfirmationDialog(header);
 	}
 	
 	/**
@@ -172,7 +196,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 		
 		var rootItem = new RankingItem(labels.get(Labels.PROP_INFO_RANKING));
 		rootItem.setRootNode(true);
-		var root = new TreeItem<>(rootItem);
+		TreeItem<RankingItem> root = new TreeItem<>(rootItem);
 		root.setExpanded(true);
 		
 		rankingTree.setRoot(root);

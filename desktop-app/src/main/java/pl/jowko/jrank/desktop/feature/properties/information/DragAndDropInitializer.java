@@ -17,6 +17,7 @@ class DragAndDropInitializer {
 	
 	private PropertiesRankingController controller;
 	private DataFormat fieldFormat;
+	private DataFormat rankingItemFormat;
 	
 	/**
 	 * Create instance of this class.
@@ -35,11 +36,16 @@ class DragAndDropInitializer {
 	 * Each created field must have unique ID and this field is not removed after closing this dialog.
 	 * So check is performed to find out, if such format already exists.
 	 * Such situation happens, when user opens dialog more than one in application run time.
+	 * rankingItemFormat is used in case of drag and drop between ranking tree items
 	 */
 	private void initDataFormat() {
 		fieldFormat = DataFormat.lookupMimeType("FIELD_ID");
 		if(isNull(fieldFormat))
 			fieldFormat = new DataFormat("FIELD_ID");
+		
+		rankingItemFormat = DataFormat.lookupMimeType("RANKING_ITEM");
+		if(isNull(rankingItemFormat))
+			rankingItemFormat = new DataFormat("RANKING_ITEM");
 	}
 	
 	/**
@@ -95,8 +101,8 @@ class DragAndDropInitializer {
 					Dragboard db = treeCell.startDragAndDrop(TransferMode.COPY);
 					ClipboardContent content = new ClipboardContent();
 					content.put(fieldFormat, item.getItem());
+					content.put(rankingItemFormat, item);
 					db.setContent(content);
-					controller.removeItemAction(treeCell.getTreeItem());
 				}
 				event.consume();
 			});
@@ -135,6 +141,13 @@ class DragAndDropInitializer {
 	private void handleOnDragDropped(DragEvent event, TreeCell<RankingItem> treeCell) {
 		Dragboard db = event.getDragboard();
 		boolean success = false;
+		
+		// remove item from RankingTree in case of drag from tree
+		if(db.hasContent(rankingItemFormat)) {
+			var item = (RankingItem) db.getContent(rankingItemFormat);
+			controller.removeItemAction(item);
+		}
+		
 		if (db.hasContent(fieldFormat)) {
 			FieldItem item = (FieldItem) db.getContent(fieldFormat);
 			controller.dataView.getItems().remove(item);
@@ -156,6 +169,8 @@ class DragAndDropInitializer {
 			
 			success = true;
 		}
+		
+		db.clear();
 		event.setDropCompleted(success);
 		event.consume();
 	}

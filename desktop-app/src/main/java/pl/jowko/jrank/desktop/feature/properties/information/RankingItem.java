@@ -1,5 +1,8 @@
 package pl.jowko.jrank.desktop.feature.properties.information;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  * Created by Piotr on 2018-05-30
  * This class is used in ranking dialog for TreeView.
@@ -9,7 +12,9 @@ package pl.jowko.jrank.desktop.feature.properties.information;
  * Ranking - it is initialized with label, serves as container for fields on positions
  * Field - it contains FieldItem with represents row from MemoryTable.
  */
-class RankingItem {
+class RankingItem implements Serializable {
+	
+	private static final long serialVersionUID = 948864605809415765L;
 	
 	private FieldItem item;
 	private String label;
@@ -65,6 +70,22 @@ class RankingItem {
 			return label;
 		else
 			return item.toString();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		RankingItem item1 = (RankingItem) o;
+		return isRankingNode == item1.isRankingNode &&
+				isRootNode == item1.isRootNode &&
+				Objects.equals(item, item1.item) &&
+				Objects.equals(label, item1.label);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(item, label, isRankingNode, isRootNode);
 	}
 	
 }
