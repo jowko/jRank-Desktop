@@ -40,12 +40,12 @@ public class RankingController {
 	 */
 	public void initializeRanking(String rankingFileContent, MemoryContainer isfTable) throws TabInitializationException {
 		LearningTable table = new LearningTable(isfTable);
+		labels = LanguageService.getInstance();
 		checkIfTableHasUnknownFields(table);
 		RankingTableCreator creator = new RankingTableCreator(rankingFileContent, table);
 		rankingTable.getColumns().addAll(creator.getColumns());
 		rankingTable.getItems().addAll(creator.getItems());
 		rankingTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		labels = LanguageService.getInstance();
 		initializeContextMenu();
 	}
 	
