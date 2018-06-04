@@ -92,7 +92,7 @@ class StubSettings {
 	private Map<String, String> createEnglishLabels() {
 		Map<String, String> language = new HashMap<>();
 		
-		language.put(Labels.APP_TITLE, "JRank Ultimate Desktop Edition");
+		language.put(Labels.APP_TITLE, "RuleRank Ultimate Desktop Edition");
 		language.put(Labels.US_SETTINGS_ERROR, "User settings are not correctly configured: ");
 		
 		// General buttons
@@ -156,12 +156,12 @@ class StubSettings {
 	}
 	
 	private void createEnglishAboutLabels(Map<String, String> language) {
-		language.put(Labels.ABOUT_TITLE, "About JRank Ultimate Desktop Edition");
+		language.put(Labels.ABOUT_TITLE, "About RuleRank Ultimate Desktop Edition");
 		language.put(Labels.ABOUT_APP_INFO, "Application information:");
 		language.put(Labels.ABOUT_AUTHOR, "Author:");
 		language.put(Labels.ABOUT_VERSION, "Version:");
 		language.put(Labels.ABOUT_RELEASE_DATE, "Release Date:");
-		language.put(Labels.ABOUT_BOTTOM_INFO, "JRank Ultimate Desktop Edition was developed as part of master thesis.");
+		language.put(Labels.ABOUT_BOTTOM_INFO, "RuleRank Ultimate Desktop Edition was developed as part of master thesis.");
 	}
 	
 	private void createEnglishTabsLabels(Map<String, String> language) {
@@ -287,7 +287,7 @@ class StubSettings {
 		language.put(Labels.RESTORE_VALUES_BUTTON_TOOLTIP, "Restore original values from file");
 		language.put(Labels.VALIDATE_FORM_DEFAULTS_TOOLTIP, "Replace empty options with defaults and validate result");
 		
-		language.put(Labels.PARAMETERS_TOOLTIP, "This panel contains all parameters related with used algorithms in jRank");
+		language.put(Labels.PARAMETERS_TOOLTIP, "This panel contains all parameters related with used algorithms in ruleRank");
 		language.put(Labels.WRITE_INFO_TOOLTIP, "This panel contains all options related with saving results to files");
 		language.put(Labels.FILE_PANE_TOOLTIP, "This panel contains file names to with results will be saved. All options can be derived from 'Learning data file' field.");
 	}

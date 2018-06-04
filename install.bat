@@ -1,4 +1,4 @@
-REM Script for creating jrank installation
+REM Script for creating RuleRank installation
 
 @echo off
 
@@ -11,34 +11,34 @@ call mvn clean install
 echo Generating labels and config files
 call java -jar file-generator\target\file-generator-0.4-SNAPSHOT-jar-with-dependencies.jar
 
-echo Removing old JRank files
-if exist JRank\ del /s /f /q JRank\*.*
+echo Removing old RuleRank files
+if exist RuleRank\ del /s /f /q RuleRank\*.*
 
-echo Creating JRank folder
-md JRank
+echo Creating RuleRank folder
+md RuleRank
 
 echo Creating default workspace folder
-md JRank\workspace
+md RuleRank\workspace
 
 echo Copying and renaming main jar file
-COPY desktop-app\target\desktop-app-0.4-SNAPSHOT-jar-with-dependencies.jar "JRank\JRank-0.4-SNAPSHOT.jar"
+COPY desktop-app\target\desktop-app-0.4-SNAPSHOT-jar-with-dependencies.jar "RuleRank\RuleRank-0.4-SNAPSHOT.jar"
 
 echo Copying data directory
-ROBOCOPY data "JRank\data"
+ROBOCOPY data "RuleRank\data"
 
 echo Copying example experiments
 
 echo Copying Airlines
-ROBOCOPY workspace\Airlines JRank\workspace\Airlines
+ROBOCOPY workspace\Airlines RuleRank\workspace\Airlines
 
 echo Copying Houses7
-ROBOCOPY workspace\Houses7 JRank\workspace\Houses7
+ROBOCOPY workspace\Houses7 RuleRank\workspace\Houses7
 
 echo Copying Houses11
-ROBOCOPY workspace\Houses11 JRank\workspace\Houses11
+ROBOCOPY workspace\Houses11 RuleRank\workspace\Houses11
 
 echo Copying default.properties file
-ROBOCOPY workspace\ JRank\workspace\
+ROBOCOPY workspace\ RuleRank\workspace\
 
 echo creating run.bat file
-@echo java -jar JRank-0.4-SNAPSHOT.jar -Xms128m > JRank\run.bat
+@echo java -jar RuleRank-0.4-SNAPSHOT.jar -Xms128m > RuleRank\run.bat
