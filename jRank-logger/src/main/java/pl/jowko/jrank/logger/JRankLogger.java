@@ -49,4 +49,13 @@ public class JRankLogger {
 		logger.debug(msg);
 	}
 	
+	/**
+	 * None level serves to log message without log level text.
+	 * It is used to log output from ruleRank with have logging level in messages.
+	 * @param msg to log
+	 */
+	public static void none(String msg) {
+		logger.none(msg);
+	}
+	
 }

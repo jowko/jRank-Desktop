@@ -46,6 +46,10 @@ class CustomLogger {
 		log(Level.DEBUG, null, msg, null);
 	}
 	
+	void none(String msg) {
+		log(Level.NONE, null, msg, null);
+	}
+	
 	void log(Level level, String category, String message, Throwable throwable) {
 		StringBuilder builder = new StringBuilder(256);
 		
@@ -78,7 +82,6 @@ class CustomLogger {
 				builder.append(" DEBUG: ");
 				break;
 			case INFO:
-			default:
 				builder.append(" INFO: ");
 				break;
 		}
