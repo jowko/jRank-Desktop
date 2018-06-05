@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.runner;
 
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableValidator;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
@@ -35,6 +37,7 @@ class ExperimentRunnerValidator {
 	private LearningTable learningTable;
 	private LearningTable testTable;
 	private String experimentPath;
+	private LanguageService labels;
 	
 	/**
 	 * Creates instance of this class.
@@ -47,6 +50,7 @@ class ExperimentRunnerValidator {
 		
 		validator = new PropertiesValidator(properties);
 		emptyFieldsValidator = new PropertiesMandatoryFieldsValidator(properties);
+		labels = LanguageService.getInstance();
 	}
 	
 	/**
@@ -61,17 +65,17 @@ class ExperimentRunnerValidator {
 		if(not(emptyFieldsValidator.isValid()))
 			throw new RunnerException(emptyFieldsValidator.getErrorMessages());
 		
-		learningTable = readAndValidateMemoryContainer(properties.getLearningDataFile(), "Learning data file");
+		learningTable = readAndValidateMemoryContainer(properties.getLearningDataFile(), labels.get(Labels.RUN_LEARNING_FILE));
 		
 		if(StringUtils.isNotNullOrEmpty(properties.getTestDataFile()))
-			testTable = readAndValidateMemoryContainer(properties.getTestDataFile(), "Test data file");
+			testTable = readAndValidateMemoryContainer(properties.getTestDataFile(), labels.get(Labels.RUN_TEST_FILE));
 		else
 			testTable = learningTable;
 		
 		validateAndChooseLearningInformation();
 		
 		if(isFilesWillBeOverridden())
-			return DialogsService.showConfirmationDialog("", "After experiment execution, files from previous experiment will be overridden. Do you want to override this files?(you can change files names for new experiment in properties form)");
+			return DialogsService.showConfirmationDialog("", labels.get(Labels.RUN_OVERRIDE_FILES));
 		
 		return true;
 	}
@@ -106,7 +110,7 @@ class ExperimentRunnerValidator {
 		}
 		
 		if(isNull(container))
-			throw new RunnerException(containerName + " is empty or is not found");
+			throw new RunnerException(containerName + labels.get(Labels.RUN_FILE_IS_EMPTY));
 		
 		LearningTable learningTable = new LearningTable(container);
 		LearningTableValidator validator = new LearningTableValidator(learningTable);
@@ -114,7 +118,7 @@ class ExperimentRunnerValidator {
 		if(validator.isValid())
 			return learningTable;
 		
-		throw new RunnerException("Isf table contains errors: \n" + validator.getErrorMessages());
+		throw new RunnerException(labels.get(Labels.RUN_ISF_ERRORS) + '\n' + validator.getErrorMessages());
 	}
 	
 	private MemoryContainer readMemoryContainer(String filePath) {

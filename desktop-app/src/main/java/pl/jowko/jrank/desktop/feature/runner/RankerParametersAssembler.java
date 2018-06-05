@@ -1,6 +1,8 @@
 package pl.jowko.jrank.desktop.feature.runner;
 
 import pl.jowko.jrank.desktop.exception.ErrorMessageParser;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.MemoryContainerAssembler;
 import pl.jowko.jrank.desktop.feature.properties.JRankParameter;
@@ -103,7 +105,8 @@ class RankerParametersAssembler {
 	}
 	
 	private void throwErrorOnTextParsing(RuntimeException e) {
-		String msg = "Error when parsing text from properties field: " + ErrorMessageParser.parseException(e);
+		LanguageService labels = LanguageService.getInstance();
+		String msg = labels.get(Labels.RUN_TEXT_PARSE_ERROR) + ErrorMessageParser.parseException(e);
 		throw new RunnerException(msg);
 	}
 	

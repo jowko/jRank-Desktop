@@ -3,6 +3,8 @@ package pl.jowko.jrank.desktop.feature.runner;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 
 import java.util.Optional;
 
@@ -43,12 +45,13 @@ class ExperimentRunnerDialog {
 	 */
 	void showDialog() {
 		Dialog<Integer> dialog = new Dialog<>();
-		dialog.setTitle("Choose information source");
-		dialog.setContentText("More than one information source is configured. What source should be used in experiment?");
+		LanguageService labels = LanguageService.getInstance();
+		dialog.setTitle(labels.get(Labels.RUN_SOURCE_TITLE));
+		dialog.setContentText(labels.get(Labels.RUN_SOURCE_CONTENT));
 		
-		ButtonType rankingButton = new ButtonType("Ranking", ButtonBar.ButtonData.OK_DONE);
-		ButtonType pairsButton = new ButtonType("Pairs", ButtonBar.ButtonData.OK_DONE);
-		ButtonType attributeButton = new ButtonType("Decision Attribute", ButtonBar.ButtonData.OK_DONE);
+		ButtonType rankingButton = new ButtonType(labels.get(Labels.RUN_SOURCE_RANKING), ButtonBar.ButtonData.OK_DONE);
+		ButtonType pairsButton = new ButtonType(labels.get(Labels.RUN_SOURCE_PAIRS), ButtonBar.ButtonData.OK_DONE);
+		ButtonType attributeButton = new ButtonType(labels.get(Labels.RUN_SOURCE_DECISION_ATTRIBUTE), ButtonBar.ButtonData.OK_DONE);
 		
 		if(isRankingAvailable)
 			dialog.getDialogPane().getButtonTypes().add(rankingButton);

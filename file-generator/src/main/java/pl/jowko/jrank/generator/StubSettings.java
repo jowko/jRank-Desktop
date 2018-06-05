@@ -115,6 +115,7 @@ class StubSettings {
 		createEnglishPropertiesTooltips(language);
 		createEnglishParametersLabels(language);
 		createEnglishPropertiesDialogsLabels(language);
+		createEnglishExperimentRunnerLabels(language);
 		createEnglishAttributeDialogLabels(language);
 		createEnglishLearningTableLabels(language);
 		createEnglishPCTLabels(language);
@@ -371,6 +372,21 @@ class StubSettings {
 		language.put(Labels.PROP_INFO_DISPLAY_LABEL, "Displayed label:");
 		language.put(Labels.PROP_INFO_R_SAVE_BUTTON, "Save");
 		language.put(Labels.PROP_INFO_R_CANCEL_BUTTON, "Cancel");
+	}
+	
+	private void createEnglishExperimentRunnerLabels(Map<String,String> language) {
+		language.put(Labels.RUN_PROP_READ_ERROR, "Error while reading default.properties file: ");
+		language.put(Labels.RUN_SOURCE_TITLE, "Choose information source");
+		language.put(Labels.RUN_SOURCE_CONTENT, "More than one information source is configured. What source should be used in experiment?");
+		language.put(Labels.RUN_SOURCE_RANKING, "Ranking");
+		language.put(Labels.RUN_SOURCE_PAIRS, "Pairs");
+		language.put(Labels.RUN_SOURCE_DECISION_ATTRIBUTE, "Decision Attribute");
+		language.put(Labels.RUN_LEARNING_FILE, "Learning data file");
+		language.put(Labels.RUN_TEST_FILE, "Test data file");
+		language.put(Labels.RUN_OVERRIDE_FILES, "After experiment execution, files from previous experiment will be overridden. Do you want to override this files?(You can change files names for new experiment in properties form)");
+		language.put(Labels.RUN_FILE_IS_EMPTY, " is empty or is not found");
+		language.put(Labels.RUN_ISF_ERRORS, "Isf table contains errors: ");
+		language.put(Labels.RUN_TEXT_PARSE_ERROR, "Error when parsing text from properties field: ");
 	}
 	
 	private void createEnglishAttributeDialogLabels(Map<String, String> language) {

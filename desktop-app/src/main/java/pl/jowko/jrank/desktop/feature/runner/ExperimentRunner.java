@@ -1,5 +1,7 @@
 package pl.jowko.jrank.desktop.feature.runner;
 
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.properties.DefaultPropertiesProvider;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
@@ -37,12 +39,13 @@ public class ExperimentRunner {
 	 */
 	public ExperimentRunner(JRankProperties properties, WorkspaceItem propertiesItem) {
 		RunnerPropertiesProvider propertiesProvider;
+		LanguageService labels = LanguageService.getInstance();
 		
 		try {
 			JRankProperties defaults = new DefaultPropertiesProvider().getDefaultProperties();
 			propertiesProvider = new RunnerPropertiesProvider(properties, defaults);
 		} catch (IOException e) {
-			throw new RunnerException("Error while reading default.properties file: " + e.getMessage());
+			throw new RunnerException(labels.get(Labels.RUN_PROP_READ_ERROR) + e.getMessage());
 		}
 		
 		experimentPath = propertiesItem.getExperimentPath();

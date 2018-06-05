@@ -263,6 +263,21 @@ public class Labels {
 	public static final String PROP_INFO_R_CANCEL_BUTTON = "PROP_INFO_R_CANCEL_BUTTON";
 	
 	
+	// Experiment running
+	public static final String RUN_PROP_READ_ERROR = "RUN_PROP_READ_ERROR";
+	public static final String RUN_SOURCE_TITLE = "RUN_SOURCE_TITLE";
+	public static final String RUN_SOURCE_CONTENT = "RUN_SOURCE_CONTENT";
+	public static final String RUN_SOURCE_RANKING = "RUN_SOURCE_RANKING";
+	public static final String RUN_SOURCE_PAIRS = "RUN_SOURCE_PAIRS";
+	public static final String RUN_SOURCE_DECISION_ATTRIBUTE = "RUN_SOURCE_DECISION_ATTRIBUTE";
+	public static final String RUN_LEARNING_FILE = "RUN_LEARNING_FILE";
+	public static final String RUN_TEST_FILE = "RUN_TEST_FILE";
+	public static final String RUN_OVERRIDE_FILES = "RUN_OVERRIDE_FILES";
+	public static final String RUN_FILE_IS_EMPTY = "RUN_FILE_IS_EMPTY";
+	public static final String RUN_ISF_ERRORS = "RUN_ISF_ERRORS";
+	public static final String RUN_TEXT_PARSE_ERROR = "RUN_TEXT_PARSE_ERROR";
+	
+	
 	// Learning table attribute dialog
 	public static final String ATT_DIALOG_NAME = "ATT_DIALOG_NAME";
 	public static final String ATT_DIALOG_ACTIVE = "ATT_DIALOG_ACTIVE";
