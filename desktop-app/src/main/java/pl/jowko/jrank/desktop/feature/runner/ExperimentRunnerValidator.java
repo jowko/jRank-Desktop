@@ -3,6 +3,7 @@ package pl.jowko.jrank.desktop.feature.runner;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableValidator;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
+import pl.jowko.jrank.desktop.feature.properties.PropertiesMandatoryFieldsValidator;
 import pl.jowko.jrank.desktop.feature.properties.PropertiesValidator;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.service.DialogsService;
@@ -29,6 +30,7 @@ import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 class ExperimentRunnerValidator {
 	
 	private PropertiesValidator validator;
+	private PropertiesMandatoryFieldsValidator emptyFieldsValidator;
 	private JRankProperties properties;
 	private LearningTable learningTable;
 	private LearningTable testTable;
@@ -44,6 +46,7 @@ class ExperimentRunnerValidator {
 		experimentPath = propertiesItem.getExperimentPath();
 		
 		validator = new PropertiesValidator(properties);
+		emptyFieldsValidator = new PropertiesMandatoryFieldsValidator(properties);
 	}
 	
 	/**
@@ -54,6 +57,9 @@ class ExperimentRunnerValidator {
 	boolean isValid() {
 		if(not(validator.isValid()))
 			throw new RunnerException(validator.getErrorMessages());
+		
+		if(not(emptyFieldsValidator.isValid()))
+			throw new RunnerException(emptyFieldsValidator.getErrorMessages());
 		
 		learningTable = readAndValidateMemoryContainer(properties.getLearningDataFile());
 		

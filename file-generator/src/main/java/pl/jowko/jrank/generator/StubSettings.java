@@ -111,6 +111,7 @@ class StubSettings {
 		createEnglishPropertiesLabels(language);
 		createEnglishPropertiesMessages(language);
 		createEnglishPropertiesValidationMessages(language);
+		createEnglishPropertiesEmptyValidationMessages(language);
 		createEnglishPropertiesTooltips(language);
 		createEnglishParametersLabels(language);
 		createEnglishPropertiesDialogsLabels(language);
@@ -249,6 +250,24 @@ class StubSettings {
 		language.put(Labels.PROP_EXT_RULES, "Pct rules file extension is not valid. Valid extension: rules");
 		language.put(Labels.PROP_EXT_GRAPH, "Preference graph file extension is not valid. Valid extension: graph");
 		language.put(Labels.PROP_EXT_RANKING, "Ranking file extension is not valid. Valid extension: ranking");
+	}
+	
+	private void createEnglishPropertiesEmptyValidationMessages(Map<String, String> language) {
+		language.put(Labels.PROP_EMPTY_PAIRS_RANKING, "Pairs or ranking should be configured.");
+		language.put(Labels.PROP_EMPTY_CONSISTENCY_THRESHOLD, "Consistency measure threshold should be configured");
+		language.put(Labels.PROP_EMPTY_CONSISTENCY, "Consistency measure should be configured");
+		language.put(Labels.PROP_EMPTY_PRECISION, "Precision should be configured");
+		language.put(Labels.PROP_EMPTY_TYPE_CRITERIA, "Type of family criteria should be configured");
+		language.put(Labels.PROP_EMPTY_TYPE_RULES, "Type of rules should be configured");
+		language.put(Labels.PROP_EMPTY_CONSIDERED_RULES, "Considered set of rules should be configured");
+		language.put(Labels.PROP_EMPTY_SAT_DEGREES, "Satisfaction degrees in preference graph should be configured");
+		language.put(Labels.PROP_EMPTY_FUZZY_METHOD, "Fuzzy satisfaction degree calculation method should be configured");
+		language.put(Labels.PROP_EMPTY_RANKING_PROCEDURE, "Ranking procedure should be configured");
+		language.put(Labels.PROP_EMPTY_DOMINANCE, "Dominance should be configured");
+		language.put(Labels.PROP_EMPTY_DOMINANCE_PAIRS, "Dominance for pairs of ordinal values should be configured");
+		language.put(Labels.PROP_EMPTY_NEGATIVE_EXAMPLES, "Negative examples treatment for VCDRSA should be configured");
+		language.put(Labels.PROP_EMPTY_RULE_CONDITIONS, "Rule conditions selection method in VCDomLEM should be configured");
+		language.put(Labels.PROP_EMPTY_OPTIMIZE_RULES, "Optimize rule consistency in VCDomLEMrt should be configured");
 	}
 	
 	private void createEnglishPropertiesTooltips(Map<String, String> language) {

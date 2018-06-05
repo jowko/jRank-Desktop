@@ -145,6 +145,21 @@ public class Labels {
 	public static final String PROP_EXT_GRAPH = "PROP_EXT_GRAPH";
 	public static final String PROP_EXT_RANKING = "PROP_EXT_RANKING";
 	
+	public static final String PROP_EMPTY_PAIRS_RANKING = "PROP_EMPTY_PAIRS_RANKING";
+	public static final String PROP_EMPTY_CONSISTENCY_THRESHOLD = "PROP_EMPTY_CONSISTENCY_THRESHOLD";
+	public static final String PROP_EMPTY_CONSISTENCY = "PROP_EMPTY_CONSISTENCY";
+	public static final String PROP_EMPTY_PRECISION = "PROP_EMPTY_PRECISION";
+	public static final String PROP_EMPTY_TYPE_CRITERIA = "PROP_EMPTY_TYPE_CRITERIA";
+	public static final String PROP_EMPTY_TYPE_RULES = "PROP_EMPTY_TYPE_RULES";
+	public static final String PROP_EMPTY_CONSIDERED_RULES = "PROP_EMPTY_CONSIDERED_RULES";
+	public static final String PROP_EMPTY_SAT_DEGREES = "PROP_EMPTY_SAT_DEGREES";
+	public static final String PROP_EMPTY_FUZZY_METHOD = "PROP_EMPTY_FUZZY_METHOD";
+	public static final String PROP_EMPTY_RANKING_PROCEDURE = "PROP_EMPTY_RANKING_PROCEDURE";
+	public static final String PROP_EMPTY_DOMINANCE = "PROP_EMPTY_DOMINANCE";
+	public static final String PROP_EMPTY_DOMINANCE_PAIRS = "PROP_EMPTY_DOMINANCE_PAIRS";
+	public static final String PROP_EMPTY_NEGATIVE_EXAMPLES = "PROP_EMPTY_NEGATIVE_EXAMPLES";
+	public static final String PROP_EMPTY_RULE_CONDITIONS = "PROP_EMPTY_RULE_CONDITIONS";
+	public static final String PROP_EMPTY_OPTIMIZE_RULES = "PROP_EMPTY_OPTIMIZE_RULES";
 	
 	// Properties parameters
 	public static final String ANY_FAMILY_OF_CRITERIA = "ANY_FAMILY_OF_CRITERIA";

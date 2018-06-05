@@ -245,14 +245,21 @@ public class PropertiesController {
 			JRankProperties propertiesWithDefaults = runnerPropertiesProvider.getPropertiesWithDefaults();
 			
 			PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults);
-			
 			if(not(validator.isValid())) {
 				DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
-			} else {
-				String title = labels.get(Labels.PROP_VD_DIALOG_TITLE);
-				String content = labels.get(Labels.PROP_VD_DIALOG_CONTENT);
-				DialogsService.showInfoDialog(title, content);
+				return;
 			}
+			
+			PropertiesMandatoryFieldsValidator emptyFieldsValidator = new PropertiesMandatoryFieldsValidator(propertiesWithDefaults);
+			if(not(emptyFieldsValidator.isValid())) {
+				DialogsService.showValidationFailedDialog("", emptyFieldsValidator.getErrorMessages());
+				return;
+			}
+			
+			String title = labels.get(Labels.PROP_VD_DIALOG_TITLE);
+			String content = labels.get(Labels.PROP_VD_DIALOG_CONTENT);
+			DialogsService.showInfoDialog(title, content);
+			
 		} catch (IOException e) {
 			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
 		}
