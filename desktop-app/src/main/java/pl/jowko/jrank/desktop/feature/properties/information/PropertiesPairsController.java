@@ -5,11 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.service.DialogsService;
-import pl.jowko.jrank.desktop.utils.StringUtils;
 import pl.jowko.jrank.logger.JRankLogger;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.List;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
@@ -143,20 +141,20 @@ public class PropertiesPairsController extends AbstractInformationController {
 	 * {1,2} S, {5,2} Sc
 	 */
 	private void readPreviousPairsFromText() {
-		String text = result.get();
-		if(StringUtils.isNullOrEmpty(text))
+		List<PairOfIndicesWrapper> pairs = InformationExtractor.extractPairs(result.get());
+		if(isNull(pairs))
 			return;
 		
-		String[] values = text.split("[,{}]");
-		String[] pairs = Arrays.stream(values)
-				.filter(value -> not(value.isEmpty() || value.trim().isEmpty()))
-				.collect(Collectors.toList())
-				.toArray(new String[]{});
-		
-		for(int i=0; i<pairs.length; i+=3) {
-			FieldItem leftItem = fieldItems.get(Integer.valueOf(pairs[i])-1);
-			FieldItem rightItem = fieldItems.get(Integer.valueOf(pairs[i+1])-1);
-			String relation = pairs[i+2].trim();
+		for(PairOfIndicesWrapper wrapper : pairs) {
+			FieldItem leftItem = fieldItems.get(wrapper.getPair().getIndex1());
+			FieldItem rightItem = fieldItems.get(wrapper.getPair().getIndex2());
+			
+			String relation;
+			if(wrapper.getRelation() >= 0.0)
+				relation = "S";
+			else
+				relation = "Sc";
+			
 			pairsListView.getItems().add(new PairsItem(leftItem.getFields(), rightItem.getFields(), relation, 0));
 		}
 	}

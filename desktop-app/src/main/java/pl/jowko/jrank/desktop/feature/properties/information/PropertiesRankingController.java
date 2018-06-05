@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.service.DialogsService;
+import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -342,9 +343,12 @@ public class PropertiesRankingController extends AbstractInformationController {
 	 */
 	private void readPreviousRanking() {
 		try {
-			String[] ranks = result.get().split(",");
-			for(String rank : ranks) {
-				addReadRankToTree(rank.split(" "));
+			SimpleRanking ranking = InformationExtractor.extractRanking(result.get());
+			if(isNull(ranking))
+				return;
+			
+			for(int i=0; i<ranking.getQuantityOfPlaces(); i++) {
+				addReadRankToTree(ranking.getNumbersOfObjectsAtPlace(i));
 			}
 		} catch (RuntimeException e) {
 			throw new TextParseFailException(labels.get(Labels.PROP_INFO_RANKING_PARSE_EXCEPTION), e);
@@ -356,16 +360,11 @@ public class PropertiesRankingController extends AbstractInformationController {
 	 * Positions array represents single set of row number from MemoryContainer with are separated by comma.
 	 * @param positions representing row ids for single Rank
 	 */
-	private void addReadRankToTree(String[] positions) {
-		if(positions.length == 0 || (positions.length == 1 && positions[0].isEmpty()))
-			return;
-		
+	private void addReadRankToTree(int[] positions) {
 		var treeItem = createRankingNode();
 		
-		for(String position : positions) {
-			if(position.isEmpty())
-				continue;
-			var fieldItem = fieldItems.get(Integer.valueOf(position)-1);
+		for(int position : positions) {
+			var fieldItem = fieldItems.get(position);
 			treeItem.getChildren().add(createFieldNode(fieldItem));
 			dataView.getItems().remove(fieldItem);
 		}
