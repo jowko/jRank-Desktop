@@ -17,7 +17,7 @@ import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
  * Most of validations were extracted from JRank console application.
  * @see PropertiesController
  */
-class PropertiesValidator extends Validator {
+public class PropertiesValidator extends Validator {
 	
 	private JRankProperties properties;
 	
@@ -25,7 +25,7 @@ class PropertiesValidator extends Validator {
 	 * Creates instance of this class and validates provided properties
 	 * @param properties to validate
 	 */
-	PropertiesValidator(JRankProperties properties) {
+	public PropertiesValidator(JRankProperties properties) {
 		this.properties = properties;
 		validate();
 	}

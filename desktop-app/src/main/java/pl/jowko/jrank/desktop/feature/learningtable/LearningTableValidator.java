@@ -19,7 +19,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * @see Validator
  * @see LearningTableController
  */
-class LearningTableValidator extends Validator {
+public class LearningTableValidator extends Validator {
 	
 	private LearningTable table;
 	
@@ -27,7 +27,7 @@ class LearningTableValidator extends Validator {
 	 * Create instance of this class and validate provided table.
 	 * @param table to validate
 	 */
-	LearningTableValidator(LearningTable table) {
+	public LearningTableValidator(LearningTable table) {
 		this.table = table;
 		validateTable();
 	}

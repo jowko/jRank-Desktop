@@ -13,6 +13,8 @@ import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.properties.information.AbstractInformationController;
 import pl.jowko.jrank.desktop.feature.properties.information.TextParseFailException;
+import pl.jowko.jrank.desktop.feature.runner.ExperimentRunner;
+import pl.jowko.jrank.desktop.feature.runner.RunnerException;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -37,6 +39,8 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * Controller for properties form tab.
  */
 public class PropertiesController {
+	
+	@FXML Button runExperimentButton;
 	
 	@FXML TitledPane filesPane;
 	@FXML Label pctFileLabel;
@@ -142,6 +146,21 @@ public class PropertiesController {
 		new PropertiesTooltipsHelper(this).initializeTooltips();
 		new PropertiesTranslatorHelper(this).translateFields();
 		new PropertiesChangeListener(this, propertiesTab).setUpListeners();
+	}
+	
+	/**
+	 * This action performs experiment using settings from current and default properties.
+	 * It also uses configured isf tables.
+	 * @see ExperimentRunner
+	 */
+	public void runExperimentAction() {
+		JRankProperties currentProperties = controllerHelper.getPropertiesFromForm();
+		try {
+			ExperimentRunner runner = new ExperimentRunner(currentProperties, workspaceItem);
+			runner.run();
+		} catch (RunnerException e) {
+			DialogsService.showErrorDialog("", e.getMessage());
+		}
 	}
 	
 	/**

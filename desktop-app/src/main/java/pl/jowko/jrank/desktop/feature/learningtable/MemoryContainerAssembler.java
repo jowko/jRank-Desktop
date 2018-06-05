@@ -14,7 +14,9 @@ import pl.poznan.put.cs.idss.jrs.types.Example;
  * @see LearningTable
  * @see MemoryContainer
  */
-class MemoryContainerAssembler {
+public class MemoryContainerAssembler {
+	
+	private MemoryContainerAssembler() {}
 	
 	/**
 	 * Creates MemoryContainer object from LearningTable object.
@@ -25,7 +27,7 @@ class MemoryContainerAssembler {
 	 * @return MemoryContainer created from provided table
 	 * @throws ContainerFailureException when creating of container will fail
 	 */
-	static MemoryContainer assembleContainerFromTable(LearningTable table) throws ContainerFailureException {
+	public static MemoryContainer assembleContainerFromTable(LearningTable table) throws ContainerFailureException {
 		MemoryContainer container = new MemoryContainer();
 		
 		container.setAttributes(table.getAttributes().toArray(new Attribute[]{}));

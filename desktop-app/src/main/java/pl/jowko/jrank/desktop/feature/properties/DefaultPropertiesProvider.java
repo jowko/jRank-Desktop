@@ -12,14 +12,14 @@ import java.util.Properties;
  * It is assumed, that default properties are in main workspace directory(workspace path).
  * @see JRankProperties
  */
-class DefaultPropertiesProvider {
+public class DefaultPropertiesProvider {
 	
 	/**
 	 * Reads default.properties file from main workspace directory(workspacePath).
 	 * @return JRankProperties object with all properties
 	 * @throws IOException when something goes wrong with file reading
 	 */
-	JRankProperties getDefaultProperties() throws IOException {
+	public JRankProperties getDefaultProperties() throws IOException {
 		String propertiesPath = WorkspaceService.getInstance().getWorkspacePath() + "\\default.properties";
 		
 		Properties properties = new Properties();
