@@ -67,14 +67,14 @@ public class PropertiesPairsController extends AbstractInformationController {
 	 * Adds selected pair from first and second ListView to pairs ListView with relation S.
 	 */
 	public void addSAction() {
-		addPairItem(labels.get(Labels.PROP_INFO_S));
+		addPairItem(labels.get(Labels.PROP_INFO_S), false);
 	}
 	
 	/**
 	 * Adds selected pair from first and second ListView to pairs ListView with relation Sc.
 	 */
 	public void addScAction() {
-		addPairItem(labels.get(Labels.PROP_INFO_SC));
+		addPairItem(labels.get(Labels.PROP_INFO_SC), true);
 	}
 	
 	/**
@@ -166,9 +166,14 @@ public class PropertiesPairsController extends AbstractInformationController {
 	 * If such pair already exists, nothing will be added.
 	 * @param relation S or Sc, for added pair
 	 */
-	private void addPairItem(String relation) {
+	private void addPairItem(String relation, boolean isSc) {
 		FieldItem leftItem = firstListView.getSelectionModel().getSelectedItem();
 		FieldItem rightItem = secondListView.getSelectionModel().getSelectedItem();
+		
+		if(isSc && leftItem.equals(rightItem)) {
+			JRankLogger.warn("Object cannot outrank itself. Aborting action.");
+			return;
+		}
 		
 		if(isNull(leftItem) || isNull(rightItem)) {
 			JRankLogger.warn("Select items from both sides first.");
