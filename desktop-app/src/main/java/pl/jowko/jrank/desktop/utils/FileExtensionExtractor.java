@@ -21,13 +21,14 @@ public class FileExtensionExtractor {
 	/**
 	 * This method splits provided file path to base and extension.
 	 * If filePath doesn't contains extension, null will be returned.
+	 * @param filePath to split
+	 * @return file extension
 	 */
 	public static String getExtension(String filePath) {
 		if(isNull(filePath) || filePath.trim().isEmpty())
 			return null;
 		
 		String[] array = fileExtensionPattern.split(filePath, 2);
-		
 		
 		if(array[0].endsWith("."))
 			return ".";
@@ -37,6 +38,21 @@ public class FileExtensionExtractor {
 		}
 		
 		return array[1];
+	}
+	
+	/**
+	 * This method splits provided file name to base and extension.
+	 * Base file name will be returned.
+	 * @param fileName to split
+	 * @return base file name
+	 */
+	public static String getFileName(String fileName) {
+		if(isNull(fileName) || fileName.trim().isEmpty())
+			return null;
+		
+		String[] array = fileExtensionPattern.split(fileName, 2);
+		
+		return array[0];
 	}
 	
 }
