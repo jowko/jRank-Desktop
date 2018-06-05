@@ -158,7 +158,7 @@ public class LearningTableController {
 			
 			JRSFieldsReplacer.replaceWrappersWithJRSEnums(tableToSave);
 			MemoryContainer container = MemoryContainerAssembler.assembleContainerFromTable(tableToSave);
-			JRSFileMediator.saveMemoryContainer(workspaceItem, container);
+			JRSFileMediator.saveMemoryContainer(workspaceItem.getFilePath(), workspaceItem.getFileName(), container);
 			closeTab();
 		} catch (Exception e) {
 			JRankLogger.error("Error when saving data table: " + e.getMessage());

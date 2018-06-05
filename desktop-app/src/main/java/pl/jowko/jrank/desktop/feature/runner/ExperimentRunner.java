@@ -14,7 +14,6 @@ import pl.poznan.put.cs.idss.jrs.ranking.RankerResults;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNullOrEmpty;
 
@@ -27,6 +26,7 @@ public class ExperimentRunner {
 	
 	private JRankProperties properties;
 	private ExperimentRunnerValidator validator;
+	private String experimentPath;
 	
 	/**
 	 * Creates instance of this class.
@@ -44,6 +44,7 @@ public class ExperimentRunner {
 			throw new RunnerException("Error while reading default.properties file: " + e.getMessage());
 		}
 		
+		experimentPath = propertiesItem.getExperimentPath();
 		this.properties = propertiesProvider.getPropertiesWithDefaults();
 		validator = new ExperimentRunnerValidator(this.properties, propertiesItem);
 	}
@@ -69,7 +70,8 @@ public class ExperimentRunner {
 		for(String msg : ranker.getMessages()) {
 			JRankLogger.none(msg);
 		}
-		saveResults(results);
+		
+		new ResultsSaver(results, properties, experimentPath).save();
 	}
 	
 	/**
@@ -96,12 +98,6 @@ public class ExperimentRunner {
 		
 		if(isNullOrEmpty(properties.getPreferenceGraphFile()))
 			properties.setPreferenceGraphFile(baseName + ".graph");
-	}
-	
-	private void saveResults(RankerResults results) {
-		if(isNull(results))
-			return;
-		//TODO implement me
 	}
 	
 }

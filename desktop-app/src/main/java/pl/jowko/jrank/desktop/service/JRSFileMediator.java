@@ -58,12 +58,13 @@ public class JRSFileMediator {
 	
 	/**
 	 * Saves MemoryContainer using ISFWriter from jRS library
-	 * @param item from workspace tree, file path is read from this object
+	 * @param filePath with file name where container will be saved
+	 * @param fileName used in logging
 	 * @param container with data to save into isf file
 	 */
-	public static void saveMemoryContainer(WorkspaceItem item, MemoryContainer container) {
-		ISFWriter.saveMemoryContainerIntoISF(item.getFilePath(), container);
-		JRankLogger.info(item.getFileName() + " saved successfully in: " + item.getFilePath());
+	public static void saveMemoryContainer(String filePath, String fileName, MemoryContainer container) {
+		ISFWriter.saveMemoryContainerIntoISF(filePath, container);
+		JRankLogger.info(fileName + " saved successfully in: " + filePath);
 	}
 	
 	/**
