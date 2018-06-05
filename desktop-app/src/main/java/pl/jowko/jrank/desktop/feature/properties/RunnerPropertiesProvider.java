@@ -118,19 +118,19 @@ public class RunnerPropertiesProvider {
 	}
 	
 	private void setDefaultBooleanProperties() {
-		if(isNull(properties.getAllowEmptyRulesInVCDomLEM()))
+		if(shouldSetDefault(properties.getAllowEmptyRulesInVCDomLEM()))
 			properties.setAllowEmptyRulesInVCDomLEM(defaults.getAllowEmptyRulesInVCDomLEM());
 		
-		if(isNull(properties.getUseEdgeRegionsInVCDomLEM()))
+		if(shouldSetDefault(properties.getUseEdgeRegionsInVCDomLEM()))
 			properties.setUseEdgeRegionsInVCDomLEM(defaults.getUseEdgeRegionsInVCDomLEM());
 		
-		if(isNull(properties.getWriteDominationInformation()))
+		if(shouldSetDefault(properties.getWriteDominationInformation()))
 			properties.setWriteDominationInformation(defaults.getWriteDominationInformation());
 		
-		if(isNull(properties.getWriteRulesStatistics()))
+		if(shouldSetDefault(properties.getWriteRulesStatistics()))
 			properties.setWriteRulesStatistics(defaults.getWriteRulesStatistics());
 		
-		if(isNull(properties.getWriteLearningPositiveExamples()))
+		if(shouldSetDefault(properties.getWriteLearningPositiveExamples()))
 			properties.setWriteLearningPositiveExamples(defaults.getWriteLearningPositiveExamples());
 	}
 	
