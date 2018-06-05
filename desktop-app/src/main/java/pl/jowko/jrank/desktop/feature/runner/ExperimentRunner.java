@@ -7,6 +7,7 @@ import pl.jowko.jrank.desktop.feature.properties.RunnerPropertiesProvider;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.utils.FileExtensionExtractor;
 import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.Settings;
 import pl.poznan.put.cs.idss.jrs.ranking.Ranker;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerParameters;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerResults;
@@ -60,6 +61,7 @@ public class ExperimentRunner {
 		LearningTable learningTable = validator.getLearningTable();
 		LearningTable testTable = validator.getTestTable();
 		initializeFileNames();
+		Settings.getInstance().precision = properties.getPrecision();
 		
 		RankerParameters parameters =  new RankerParametersAssembler(properties, learningTable, testTable).getParameters();
 		JRankLogger.info("Performing experiment with parameters:\n" + properties);
