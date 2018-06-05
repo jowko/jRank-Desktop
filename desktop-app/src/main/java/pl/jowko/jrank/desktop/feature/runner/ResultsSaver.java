@@ -7,6 +7,7 @@ import pl.jowko.jrank.logger.JRankLogger;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerResults;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -66,14 +67,32 @@ class ResultsSaver {
 	}
 	
 	private void saveRulesFile() {
+		String rulesPath = getAbsolutePath(properties.getPctRulesFile());
+		
+		if(isNull(results.rulesContainer)) {
+			handleNoRulesCase(rulesPath);
+			return;
+		}
+		
 		try {
-			String rulesPath = getAbsolutePath(properties.getPctRulesFile());
 			boolean writeRulesStatistics = getBoolean(properties.getWriteRulesStatistics());
 			boolean writeLearningExamples = getBoolean(properties.getWriteLearningPositiveExamples());
 			results.rulesContainer.writeRules(rulesPath, writeRulesStatistics, writeLearningExamples);
 			logFileSaved(properties.getPctRulesFile(), rulesPath);
 		} catch (IOException e) {
 			JRankLogger.error("Error when saving pct rules file: " + e);
+		}
+	}
+	
+	private void handleNoRulesCase(String rulesPath) {
+		try {
+			JRankLogger.info("No rules generated. Rules file not created.");
+			Path path = Paths.get(rulesPath);
+			if(Files.exists(path)) {
+				Files.delete(path);
+			}
+		} catch (IOException e) {
+			JRankLogger.error("Error when deleting old rules file: " + e.getMessage());
 		}
 	}
 	
