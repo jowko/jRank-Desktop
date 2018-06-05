@@ -30,6 +30,9 @@ public class InformationExtractor {
 	 * @see SimpleRanking
 	 */
 	public static SimpleRanking extractRanking(String text) {
+		if(StringUtils.isNullOrEmpty(text))
+			return null;
+		
 		ArrayList<SimpleRankingPosition> rankingPositions = new ArrayList<>();
 		
 		String[] ranks = text.split(",");
