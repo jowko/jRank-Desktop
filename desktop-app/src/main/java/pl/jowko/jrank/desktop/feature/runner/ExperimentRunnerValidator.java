@@ -61,10 +61,10 @@ class ExperimentRunnerValidator {
 		if(not(emptyFieldsValidator.isValid()))
 			throw new RunnerException(emptyFieldsValidator.getErrorMessages());
 		
-		learningTable = readAndValidateMemoryContainer(properties.getLearningDataFile());
+		learningTable = readAndValidateMemoryContainer(properties.getLearningDataFile(), "Learning data file");
 		
 		if(StringUtils.isNotNullOrEmpty(properties.getTestDataFile()))
-			testTable = readAndValidateMemoryContainer(properties.getTestDataFile());
+			testTable = readAndValidateMemoryContainer(properties.getTestDataFile(), "Test data file");
 		else
 			testTable = learningTable;
 		
@@ -97,7 +97,7 @@ class ExperimentRunnerValidator {
 	 * @param filePath to isf file
 	 * @return LearningTable containing isf data table
 	 */
-	private LearningTable readAndValidateMemoryContainer(String filePath) {
+	private LearningTable readAndValidateMemoryContainer(String filePath, String containerName) {
 		MemoryContainer container;
 		try {
 			container = readMemoryContainer(filePath);
@@ -106,7 +106,7 @@ class ExperimentRunnerValidator {
 		}
 		
 		if(isNull(container))
-			throw new RunnerException("Learning data file is empty or is not found");
+			throw new RunnerException(containerName + " is empty or is not found");
 		
 		LearningTable learningTable = new LearningTable(container);
 		LearningTableValidator validator = new LearningTableValidator(learningTable);

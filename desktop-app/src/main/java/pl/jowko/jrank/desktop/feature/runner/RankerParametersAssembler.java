@@ -1,9 +1,11 @@
 package pl.jowko.jrank.desktop.feature.runner;
 
+import pl.jowko.jrank.desktop.exception.ErrorMessageParser;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.MemoryContainerAssembler;
 import pl.jowko.jrank.desktop.feature.properties.JRankParameter;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
+import pl.jowko.jrank.desktop.feature.properties.information.InformationExtractor;
 import pl.jowko.jrank.desktop.feature.properties.information.PairOfIndicesWrapper;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -13,8 +15,6 @@ import pl.poznan.put.cs.idss.jrs.ranking.RankerParameters;
 import java.util.List;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.jrank.desktop.feature.properties.information.InformationExtractor.extractPairs;
-import static pl.jowko.jrank.desktop.feature.properties.information.InformationExtractor.extractRanking;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
@@ -61,20 +61,50 @@ class RankerParametersAssembler {
 		parameters.testInformationTable = getContainer(testTable);
 		
 		if(isNotNullOrEmpty(properties.getReferenceRanking())) {
-			parameters.referenceRanking = extractRanking(properties.getReferenceRanking());
-			
+			extractRanking();
 		} else if(isNotNullOrEmpty(properties.getPairs())) {
-			List<PairOfIndicesWrapper> list = extractPairs(properties.getPairs());
-			if(isNull(list))
-				return;
-			
-			parameters.pairs = new PairOfIndices[list.size()];
-			parameters.preferences = new Double[list.size()];
-			for(int i=0; i<list.size(); i++) {
-				parameters.pairs[i] = list.get(i).getPair();
-				parameters.preferences[i] = list.get(i).getRelation();
-			}
+			extractPairs();
 		}
+	}
+	
+	/**
+	 * Extract ranking from text format to jRS format.
+	 * @see InformationExtractor
+	 */
+	private void extractRanking() {
+		try {
+			parameters.referenceRanking = InformationExtractor.extractRanking(properties.getReferenceRanking());
+		} catch (RuntimeException e) {
+			throwErrorOnTextParsing(e);
+		}
+	}
+	
+	/**
+	 * Extract pairs from text format to jRS format.
+	 * @see InformationExtractor
+	 */
+	private void extractPairs() {
+		List<PairOfIndicesWrapper> list = null;
+		try{
+			list = InformationExtractor.extractPairs(properties.getPairs());
+		} catch (RuntimeException e) {
+			throwErrorOnTextParsing(e);
+		}
+		
+		if(isNull(list))
+			return;
+		
+		parameters.pairs = new PairOfIndices[list.size()];
+		parameters.preferences = new Double[list.size()];
+		for(int i=0; i<list.size(); i++) {
+			parameters.pairs[i] = list.get(i).getPair();
+			parameters.preferences[i] = list.get(i).getRelation();
+		}
+	}
+	
+	private void throwErrorOnTextParsing(RuntimeException e) {
+		String msg = "Error when parsing text from properties field: " + ErrorMessageParser.parseException(e);
+		throw new RunnerException(msg);
 	}
 	
 	/**
