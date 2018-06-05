@@ -273,36 +273,37 @@ public class JRankProperties implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "JRankProperties{" + '\n' +
-				"learningDataFile='" + learningDataFile + '\'' + '\n' +
-				", testDataFile='" + testDataFile + '\'' + '\n' +
-				", pctFile='" + pctFile + '\'' + '\n' +
-				", pctApxFile='" + pctApxFile + '\'' + '\n' +
-				", pctRulesFile='" + pctRulesFile + '\'' + '\n' +
-				", preferenceGraphFile='" + preferenceGraphFile + '\'' + '\n' +
-				", rankingFile='" + rankingFile + '\'' + '\n' +
-				", referenceRanking='" + referenceRanking + '\'' + '\n' +
-				", pairs='" + pairs + '\'' + '\n' +
-				", typeOfFamilyOfCriteria=" + typeOfFamilyOfCriteria + '\n' +
-				", consistencyMeasure=" + consistencyMeasure + '\n' +
-				", consistencyMeasureThreshold=" + consistencyMeasureThreshold + '\n' +
-				", typeOfRules=" + typeOfRules + '\n' +
-				", consideredSetOfRules=" + consideredSetOfRules + '\n' +
-				", satisfactionDegreesInPreferenceGraph=" + satisfactionDegreesInPreferenceGraph + '\n' +
-				", fuzzySatisfactionDegreeCalculationMethod=" + fuzzySatisfactionDegreeCalculationMethod + '\n' +
-				", rankingProcedure=" + rankingProcedure + '\n' +
-				", dominance=" + dominance + '\n' +
-				", dominanceForPairsOfOrdinalValues=" + dominanceForPairsOfOrdinalValues + '\n' +
-				", negativeExamplesTreatmentForVCDRSA=" + negativeExamplesTreatmentForVCDRSA + '\n' +
-				", ruleConditionsSelectionMethodInVCDomLEM=" + ruleConditionsSelectionMethodInVCDomLEM + '\n' +
-				", allowEmptyRulesInVCDomLEM=" + allowEmptyRulesInVCDomLEM + '\n' +
-				", useEdgeRegionsInVCDomLEM=" + useEdgeRegionsInVCDomLEM + '\n' +
-				", optimizeRuleConsistencyInVCDomLEMWrt=" + optimizeRuleConsistencyInVCDomLEMWrt + '\n' +
-				", writeDominationInformation=" + writeDominationInformation + '\n' +
-				", writeRulesStatistics=" + writeRulesStatistics + '\n' +
-				", writeLearningPositiveExamples=" + writeLearningPositiveExamples + '\n' +
-				", precision=" + precision + '\n' +
-				'}';
+		final StringBuilder sb = new StringBuilder("JRankProperties{\n");
+		sb.append("learningDataFile='").append(learningDataFile).append("\'\n");
+		sb.append(", testDataFile='").append(testDataFile).append("\'\n");
+		sb.append(", pctFile='").append(pctFile).append("\'\n");
+		sb.append(", pctApxFile='").append(pctApxFile).append("\'\n");
+		sb.append(", pctRulesFile='").append(pctRulesFile).append("\'\n");
+		sb.append(", preferenceGraphFile='").append(preferenceGraphFile).append("\'\n");
+		sb.append(", rankingFile='").append(rankingFile).append("\'\n");
+		sb.append(", referenceRanking='").append(referenceRanking).append("\'\n");
+		sb.append(", pairs='").append(pairs).append("\'\n");
+		sb.append(", typeOfFamilyOfCriteria=").append(typeOfFamilyOfCriteria).append('\n');
+		sb.append(", consistencyMeasure=").append(consistencyMeasure).append('\n');
+		sb.append(", consistencyMeasureThreshold=").append(consistencyMeasureThreshold).append('\n');
+		sb.append(", typeOfRules=").append(typeOfRules).append('\n');
+		sb.append(", consideredSetOfRules=").append(consideredSetOfRules).append('\n');
+		sb.append(", satisfactionDegreesInPreferenceGraph=").append(satisfactionDegreesInPreferenceGraph).append('\n');
+		sb.append(", fuzzySatisfactionDegreeCalculationMethod=").append(fuzzySatisfactionDegreeCalculationMethod).append('\n');
+		sb.append(", rankingProcedure=").append(rankingProcedure).append('\n');
+		sb.append(", dominance=").append(dominance).append('\n');
+		sb.append(", dominanceForPairsOfOrdinalValues=").append(dominanceForPairsOfOrdinalValues).append('\n');
+		sb.append(", negativeExamplesTreatmentForVCDRSA=").append(negativeExamplesTreatmentForVCDRSA).append('\n');
+		sb.append(", ruleConditionsSelectionMethodInVCDomLEM=").append(ruleConditionsSelectionMethodInVCDomLEM).append('\n');
+		sb.append(", allowEmptyRulesInVCDomLEM=").append(allowEmptyRulesInVCDomLEM).append('\n');
+		sb.append(", useEdgeRegionsInVCDomLEM=").append(useEdgeRegionsInVCDomLEM).append('\n');
+		sb.append(", optimizeRuleConsistencyInVCDomLEMWrt=").append(optimizeRuleConsistencyInVCDomLEMWrt).append('\n');
+		sb.append(", writeDominationInformation=").append(writeDominationInformation).append('\n');
+		sb.append(", writeRulesStatistics=").append(writeRulesStatistics).append('\n');
+		sb.append(", writeLearningPositiveExamples=").append(writeLearningPositiveExamples).append('\n');
+		sb.append(", precision=").append(precision).append('\n');
+		sb.append('}');
+		return sb.toString();
 	}
 	
 	@Override
