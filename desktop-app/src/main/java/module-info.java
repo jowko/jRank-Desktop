@@ -14,11 +14,13 @@ module jRank.desktop {
 	
  	requires jRankLogger;
 	requires customFX;
+	requires fxgraph;
 	
 	requires com.fasterxml.jackson.databind;
 	requires jrs;
 	
 	opens pl.jowko.jrank.desktop.controller;
+	opens pl.jowko.jrank.desktop.feature.graph;
 	opens pl.jowko.jrank.desktop.feature.approximations;
 	opens pl.jowko.jrank.desktop.feature.learningtable;
 	opens pl.jowko.jrank.desktop.feature.learningtable.dialogs;

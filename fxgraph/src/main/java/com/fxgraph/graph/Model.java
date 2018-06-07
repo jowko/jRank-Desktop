@@ -8,6 +8,7 @@ import java.util.Map;
 import com.fxgraph.cells.CircleCell;
 import com.fxgraph.cells.TriangleCell;
 import com.fxgraph.cells.RectangleCell;
+import javafx.scene.paint.Color;
 
 /**
  * This code was copied from StackOverflow:
@@ -102,7 +103,7 @@ public class Model {
 		}
 	}
 	
-	private void addCell( Cell cell) {
+	public void addCell( Cell cell) {
 		
 		addedCells.add(cell);
 		
@@ -110,15 +111,18 @@ public class Model {
 		
 	}
 	
-	public void addEdge( String sourceId, String targetId) {
+	public void addEdge(String sourceId, String targetId) {
+		addEdge(sourceId, targetId, Color.GRAY);
+	}
+	
+	public void addEdge(String sourceId, String targetId, Color color) {
 		
-		Cell sourceCell = cellMap.get( sourceId);
-		Cell targetCell = cellMap.get( targetId);
+		Cell sourceCell = cellMap.get(sourceId);
+		Cell targetCell = cellMap.get(targetId);
 		
-		Edge edge = new Edge( sourceCell, targetCell);
+		Edge edge = new Edge(sourceCell, targetCell, color);
 		
-		addedEdges.add( edge);
-		
+		addedEdges.add(edge);
 	}
 	
 	/**

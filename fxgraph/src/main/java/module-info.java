@@ -11,4 +11,8 @@ module fxgraph {
 	requires javafx.controls;
 	
 	opens com.fxgraph;
+	
+	exports com.fxgraph.cells;
+	exports com.fxgraph.graph;
+	exports com.fxgraph.layout;
 }

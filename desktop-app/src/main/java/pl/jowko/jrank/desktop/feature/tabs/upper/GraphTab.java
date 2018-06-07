@@ -1,9 +1,11 @@
 package pl.jowko.jrank.desktop.feature.tabs.upper;
 
 import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
+import pl.jowko.jrank.desktop.feature.graph.GraphController;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 import pl.jowko.jrank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
+import pl.jowko.jrank.desktop.service.JRSFileMediator;
 
 import java.io.IOException;
 
@@ -24,8 +26,9 @@ class GraphTab extends JRankTab {
 	GraphTab(WorkspaceItem workspaceItem, String tabName) throws TabInitializationException, IOException {
 		super(tabName);
 		try {
-			//TODO implement me
-			initializeTabAndGetController(workspaceItem);
+			GraphController controller = initializeTabAndGetController(workspaceItem);
+			String graphContent = JRSFileMediator.loadTextFile(workspaceItem);
+			controller.initializeGraph(graphContent, workspaceItem, this);
 		} catch (JRankRuntimeException e) {
 			throwInitializationException("graph", workspaceItem.getFileName(), e);
 		}
