@@ -4,7 +4,6 @@ import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.service.Validator;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.jrank.desktop.utils.StringUtils.isNullOrEmpty;
 
 /**
  * Created by Piotr on 2018-06-05
@@ -27,9 +26,6 @@ public class PropertiesMandatoryFieldsValidator extends Validator {
 	}
 	
 	private void validate() {
-		if(isNullOrEmpty(properties.getReferenceRanking()) && isNullOrEmpty(properties.getPairs())) {
-			appendError(Labels.PROP_EMPTY_PAIRS_RANKING);
-		}
 		validateParameters();
 		
 		if(isNull(properties.getConsistencyMeasureThreshold()))

@@ -1,9 +1,11 @@
 package pl.jowko.jrank.desktop.feature.runner;
 
+import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableValidator;
+import pl.jowko.jrank.desktop.feature.learningtable.MemoryContainerAssembler;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
 import pl.jowko.jrank.desktop.feature.properties.PropertiesMandatoryFieldsValidator;
 import pl.jowko.jrank.desktop.feature.properties.PropertiesValidator;
@@ -12,7 +14,9 @@ import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.desktop.service.JRSFileMediator;
 import pl.jowko.jrank.desktop.utils.StringUtils;
 import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
+import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 
 import java.nio.file.Files;
@@ -23,6 +27,7 @@ import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.jrank.desktop.utils.FileExtensionExtractor.getFileName;
 import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
+import static pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainerDecisionsManager.getFirstDecisionAttributeIndex;
 
 /**
  * Created by Piotr on 2018-06-04
@@ -144,18 +149,42 @@ class ExperimentRunnerValidator {
 		if((isRanking ^ isPairs ^ isDecisionAtt) ^ (isRanking && isPairs && isDecisionAtt))
 			return;
 		
+		if(not(isRanking) && not(isPairs) && not(isDecisionAtt)) {
+			throw new RunnerException(labels.get(Labels.PROP_EMPTY_PAIRS_RANKING));
+		}
+		
 		ExperimentRunnerDialog dialog = new ExperimentRunnerDialog(isRanking, isPairs, isDecisionAtt);
 		dialog.showDialog();
 		
 		if(dialog.isRankingSelected()) {
 			properties.setPairs("");
-			//TODO decision attributes?
 		} else if(dialog.isPairsSelected()) {
 			properties.setReferenceRanking("");
-			//TODO decision attributes?
 		} else if(dialog.isAttributeSelected()) {
-			properties.setReferenceRanking("");
 			properties.setPairs("");
+			calculateAndSetReferenceRanking();
+		}
+	}
+	
+	/**
+	 * This method was copied from jRank console application.
+	 * It will calculate ranking using decision attribute.
+	 */
+	private void calculateAndSetReferenceRanking() {
+		MemoryContainer container;
+		try {
+			container = MemoryContainerAssembler.assembleContainerFromTable(learningTable);
+		} catch (ContainerFailureException e) {
+			throw new JRankRuntimeException(e.getMessage());
+		}
+		
+		//try to get preference information from decision attribute values
+		int decisionAttributeIndex = getFirstDecisionAttributeIndex(container);
+		
+		//there is a decision criterion in the learning information table
+		if (decisionAttributeIndex >= 0 && container.getAttribute(decisionAttributeIndex).getPreferenceType() != Attribute.NONE) {
+			SimpleRanking ranking = new SimpleRanking(container);
+			properties.setReferenceRanking(ranking.toSingleLineString());
 		}
 	}
 	

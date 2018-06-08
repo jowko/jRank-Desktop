@@ -254,7 +254,7 @@ class StubSettings {
 	}
 	
 	private void createEnglishPropertiesEmptyValidationMessages(Map<String, String> language) {
-		language.put(Labels.PROP_EMPTY_PAIRS_RANKING, "Pairs or ranking should be configured.");
+		language.put(Labels.PROP_EMPTY_PAIRS_RANKING, "Experiment should have ranking, pairs or decision attribute configured.");
 		language.put(Labels.PROP_EMPTY_CONSISTENCY_THRESHOLD, "Consistency measure threshold should be configured");
 		language.put(Labels.PROP_EMPTY_CONSISTENCY, "Consistency measure should be configured");
 		language.put(Labels.PROP_EMPTY_PRECISION, "Precision should be configured");
