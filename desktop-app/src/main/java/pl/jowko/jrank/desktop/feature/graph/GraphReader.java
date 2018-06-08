@@ -5,11 +5,21 @@ import com.fxgraph.graph.Graph;
 import com.fxgraph.graph.Model;
 import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
+import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
+import pl.jowko.jrank.desktop.feature.workspace.IsfFinder;
+import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
+import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
+import pl.poznan.put.cs.idss.jrs.types.Attribute;
+import pl.poznan.put.cs.idss.jrs.types.Field;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -19,6 +29,7 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 class GraphReader {
 	
 	private String content;
+	private MemoryContainer container;
 	private Graph graph;
 	private Pattern splitPattern;
 	private Pattern quotesPattern;
@@ -26,12 +37,14 @@ class GraphReader {
 	/**
 	 * Creates instance of this class and creates graph from provided text content.
 	 * @param content from .graph file
+	 * @param workspaceItem with is used to load MemoryContainer
 	 */
-	GraphReader(String content) {
+	GraphReader(String content, WorkspaceItem workspaceItem) {
 		this.content = content;
 		graph = new Graph();
 		splitPattern = Pattern.compile(" ");
 		quotesPattern = Pattern.compile("\"(.*?)\"");
+		loadMemoryContainer(workspaceItem);
 		extractGraph();
 	}
 	
@@ -41,6 +54,16 @@ class GraphReader {
 	 */
 	Graph getGraph() {
 		return graph;
+	}
+	
+	private void loadMemoryContainer(WorkspaceItem workspaceItem) {
+		try {
+			container = new IsfFinder(workspaceItem, true).getMemoryContainer();
+			if(isNull(container))
+				throw new JRankRuntimeException("Isf data file was not found on provided path");
+		} catch (IOException e) {
+			throw new JRankRuntimeException("Error when reading isf file for graph: " + e.getMessage());
+		}
 	}
 	
 	/**
@@ -58,6 +81,8 @@ class GraphReader {
 	private void extractGraph() {
 		Scanner scanner = new Scanner(content);
 		Model model = graph.getModel();
+		List<Integer> descIndices = getDescriptionFieldsIds();
+		
 		while(scanner.hasNextLine()) {
 			String line = scanner.nextLine();
 			if(not(Character.isDigit(line.charAt(0))))
@@ -73,7 +98,7 @@ class GraphReader {
 				String label = findValueInQuotes(values[1]);
 				
 				CircleCell cell = new CircleCell(values[0], label, Color.LIGHTGREY);
-				Tooltip.install(cell, new Tooltip("circle")); //TODO
+				Tooltip.install(cell, createTooltip(values[0], descIndices));
 				model.addCell(cell);
 			}
 		}
@@ -90,8 +115,9 @@ class GraphReader {
 	 */
 	private String findValueInQuotes(String text) {
 		Matcher matcher = quotesPattern.matcher(text);
-		matcher.find();
-		return matcher.group(1);
+		if(matcher.find())
+			return matcher.group(1);
+		throw new JRankRuntimeException("Graph file doesn't contain label or color values in double quotes");
 	}
 	
 	private Color getColor(String value) {
@@ -100,6 +126,48 @@ class GraphReader {
 		if("red".equalsIgnoreCase(value))
 			return Color.RED;
 		return Color.GRAY;
+	}
+	
+	/**
+	 * This methods finds all description fields indexes in container.
+	 * They are later used to create tooltips for nodes
+	 * @return list of indices of description fields/attributes
+	 */
+	private List<Integer> getDescriptionFieldsIds() {
+		List<Integer> indices = new ArrayList<>();
+		
+		int i=0;
+		for(Attribute attribute : container.getAttributes()) {
+			if(attribute.getKind() == Attribute.DESCRIPTION) {
+				indices.add(i);
+			}
+			i++;
+		}
+		
+		return indices;
+	}
+	
+	/**
+	 * Creates tooltip for node.
+	 * @param cellId is used to find corresponding to node example in container.
+	 * @param descIndices is used to extract description fields
+	 * @return tooltip or null
+	 */
+	private Tooltip createTooltip(String cellId, List<Integer> descIndices) {
+		if(descIndices.isEmpty())
+			return null;
+		
+		int id = Integer.valueOf(cellId)-1;
+		StringBuilder text = new StringBuilder();
+		Field[] fields = container.getExample(id).getFields();
+		
+		for(int index : descIndices) {
+			text.append(fields[index].toString()).append(", ");
+		}
+		// removes comma with space for last element
+		text.delete(text.length() - 2, text.length());
+		
+		return new Tooltip(text.toString());
 	}
 	
 }

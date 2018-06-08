@@ -19,7 +19,6 @@ public class GraphController {
 	private BorderPane borderPane;
 	
 	private Graph graph;
-	private WorkspaceItem workspaceItem;
 	private JRankTab graphTab;
 	
 	/**
@@ -30,10 +29,9 @@ public class GraphController {
 	 * @param graphTab representing tab for graph
 	 */
 	public void initializeGraph(String graphFileContent, WorkspaceItem workspaceItem, JRankTab graphTab) {
-		this.workspaceItem = workspaceItem;
 		this.graphTab = graphTab;
 		
-		graph = new GraphReader(graphFileContent).getGraph();
+		graph = new GraphReader(graphFileContent, workspaceItem).getGraph();
 		
 		borderPane.setCenter(graph.getScrollPane());
 		
