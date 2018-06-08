@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.Node;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 /**
  * This code was copied from StackOverflow:
  * https://stackoverflow.com/a/30696075/8906826
  */
-public class Cell extends Pane {
+public class Cell extends StackPane {
 	
 	String cellId;
 	

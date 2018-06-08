@@ -5,6 +5,7 @@ import com.fxgraph.graph.Graph;
 import com.fxgraph.graph.Model;
 import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import pl.jowko.jrank.desktop.exception.JRankRuntimeException;
 import pl.jowko.jrank.desktop.feature.workspace.IsfFinder;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
@@ -167,7 +168,10 @@ class GraphReader {
 		// removes comma with space for last element
 		text.delete(text.length() - 2, text.length());
 		
-		return new Tooltip(text.toString());
+		Tooltip tooltip = new Tooltip(text.toString());
+		tooltip.setFont(Font.font("Verdana", 18));
+		
+		return tooltip;
 	}
 	
 }
