@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
+
 /**
  * Created by Piotr on 2018-04-21.
  * This is helper class, with finds workspace items in workspace main directory.
@@ -26,24 +28,22 @@ public class FilesFinder {
 	}
 	
 	/**
-	 * Find all directories in workspace directory(workspace path).
-	 * This methods also return workspace directory in results list.
+	 * Find all files in provided directory.
 	 * @see WorkspaceService
-	 * @return list of directories from workspace directory, also contains main workspace directory
+	 * @return list of files in provided directory
 	 */
-	List<WorkspaceItem> findAllDirectories() {
+	List<WorkspaceItem> findFilesInDirectory(String directoryPath) {
 		List<WorkspaceItem> paths = null;
-		String workspacePath = workspaceService.getWorkspacePath();
 		
-		try (Stream<Path> workspacePaths = Files.walk(Paths.get(workspacePath))) {
+		try (Stream<Path> workspacePaths = Files.walk(Paths.get(directoryPath), 1)) {
 			
 			paths = workspacePaths
-					.filter(Files::isDirectory)
-					.map(path -> mapPathToWorkspaceDirectory(path, workspacePath))
+					.filter(path -> not(directoryPath.equals(path.toString())))
+					.map(this::mapPathToWorkspaceFile)
 					.collect(Collectors.toList());
 			
 		} catch (IOException e) {
-			JRankLogger.error("Error when reading workspace directory tree: ", e);
+			JRankLogger.error("Error when reading workspace tree: ", e);
 		}
 		
 		return paths;
@@ -73,56 +73,14 @@ public class FilesFinder {
 	}
 	
 	/**
-	 * Find default properties file.
-	 * It is assumed, that this file have name: "default.properties" and is placed directly in workspace main directory(workspace path).
-	 * @see WorkspaceService
-	 * @return WorkspaceItem for default.properties file
-	 */
-	WorkspaceItem findDefaultProperties() {
-		String workspacePath = workspaceService.getWorkspacePath();
-		
-		try {
-			Path path = Paths.get(workspacePath + "\\default.properties");
-			return mapPathToWorkspaceFile(path);
-		} catch (Exception e) {
-			JRankLogger.error("Error when reading default.properties file: ", e);
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Converts provided path to workspace directory item.
-	 * This items represents catalog items in workspace tree.
-	 * It also checks, if provided path represents main workspace directory.
-	 * If it is, root workspace item is returned instead of directory
-	 * @see FileType
-	 * @param path to directory
-	 * @param workspacePath of main workspace directory
-	 * @return WorkspaceItem for provided directory
-	 */
-	private WorkspaceItem mapPathToWorkspaceDirectory(Path path, String workspacePath) {
-		FileType type;
-		String absolutePath = path.toAbsolutePath().toString();
-		
-		if(workspacePath.equals(absolutePath)) {
-			type = FileType.ROOT;
-		} else {
-			type = FileType.DIRECTORY;
-		}
-		
-		return new WorkspaceItem(path.getFileName().toString(), absolutePath, type);
-	}
-	
-	/**
-	 * Convert provided path to workspace file directory.
+	 * Convert provided path to workspace item
 	 * It returns workspace item with correct FileType.
 	 * @see FileType
 	 * @param path of file to convert
 	 * @return WorkspaceItem for provided file path
 	 */
-	private WorkspaceItem mapPathToWorkspaceFile(Path path) {
-		FileType type = resolveFileType(path.toString());
+	WorkspaceItem mapPathToWorkspaceFile(Path path) {
+		FileType type = resolveFileType(path);
 		String absolutePath = path.toAbsolutePath().toString();
 		
 		return new WorkspaceItem(path.getFileName().toString(), absolutePath, type);
@@ -133,10 +91,11 @@ public class FilesFinder {
 	 * This enum is used to differentiate different workspace item types later.
 	 * @see FileType
 	 * @see pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController
-	 * @param path from with file type info will be extracted
+	 * @param filePath from with file type info will be extracted
 	 * @return FileType enum for provided file type
 	 */
-	private FileType resolveFileType(String path) {
+	private FileType resolveFileType(Path filePath) {
+		String path = filePath.toString();
 		if(path.endsWith(".properties"))
 			return FileType.JRANK_SETTINGS;
 		if(path.endsWith(".graph"))
@@ -151,6 +110,15 @@ public class FilesFinder {
 			return FileType.ISF_TABLE;
 		if(path.endsWith(".txt"))
 			return FileType.TEXT;
+		
+		String absolutePath = filePath.toAbsolutePath().toString();
+		String workspacePath = workspaceService.getWorkspacePath();
+		
+		if(workspacePath.equals(absolutePath)) {
+			return FileType.ROOT;
+		} else if(Files.isDirectory(filePath)) {
+			return FileType.DIRECTORY;
+		}
 		
 		return FileType.UNKNOWN;
 	}

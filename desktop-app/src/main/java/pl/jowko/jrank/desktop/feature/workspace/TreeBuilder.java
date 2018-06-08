@@ -4,8 +4,11 @@ import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-04-21.
@@ -49,65 +52,79 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * Builds workspace tree.
-	 * At first, it finds all directories in root workspace directory.
-	 * Then, for each directory, it finds all files with are contained with it.
-	 * TODO: This methods doesn't support nested directories.
-	 * TODO: If nested directories exists, they all be displayed on first level of workspace tree
-	 * TODO: Also, if directory A contains directories B and C, all files from A, B, C directories will be displayed in A experiment item as there were in single directory
-	 * TODO: This issue needs to be fixed by replacing current solution with something else
-	 * @see FilesFinder
+	 * Initializes workspace tree.
+	 * It will load files from first and second level from main workspace catalog.
 	 */
 	private void initializeWorkspaceTree() {
-		List<WorkspaceItem> directories = filesFinder.findAllDirectories();
+		String workspacePath = WorkspaceService.getInstance().getWorkspacePath();
+		List<WorkspaceItem> childrenItems = filesFinder.findFilesInDirectory(workspacePath);
 		
-		WorkspaceItem root = findRootInDirectories(directories);
-		TreeItem<WorkspaceItem> rootItem = new TreeItem<> (root);
-		rootItem.setExpanded(true);
-		directories.remove(root);
+		WorkspaceItem root = filesFinder.mapPathToWorkspaceFile(Paths.get(workspacePath));
+		TreeItem<WorkspaceItem> rootTreeItem = new TreeItem<> (root);
+		rootTreeItem.setExpanded(true);
 		
-		directories.forEach(directory ->
-			rootItem.getChildren().add(createItemForDirectory(directory))
-		);
+		fillRootTree(rootTreeItem, childrenItems);
 		
-		rootItem.getChildren().add(new TreeItem<>(filesFinder.findDefaultProperties()));
-		
-		workspaceTree.setRoot(rootItem);
+		workspaceTree.setRoot(rootTreeItem);
 	}
 	
 	/**
-	 * This methods find root element(workspace main directory).
-	 * This method is used to filter out this directory from later processing.
-	 * @param directories from workspace main directory
-	 * @return directories without workspace main directory
+	 * Fills main workspace item(root tree item) with file items.
+	 * It will convert provided WorkspaceItem list to TreeItem list and add them all as child for root.
+	 * @param rootTreeItem with represents root in TreeView
+	 * @param childrenItems with represents first level children
 	 */
-	private WorkspaceItem findRootInDirectories(List<WorkspaceItem> directories) {
-		return directories.stream()
-				.filter(item -> FileType.ROOT.equals(item.getFileType()))
-				.findAny()
-				.orElse(new WorkspaceItem("ERROR", "", FileType.ROOT));
+	private void fillRootTree(TreeItem<WorkspaceItem> rootTreeItem, List<WorkspaceItem> childrenItems) {
+		childrenItems.forEach(rootItem -> {
+			TreeItem<WorkspaceItem> item = new TreeItem<>(rootItem);
+			if(FileType.DIRECTORY.equals(rootItem.getFileType())) {
+				item.getChildren().addAll(getItemsForDirectory(rootItem));
+				initializeExpandEventHandler(item);
+			}
+			
+			rootTreeItem.getChildren().add(item);
+		});
 	}
 	
 	/**
-	 * This method creates TreeItem for directory item.
-	 * It finds all files in provided directory and adds them as children to provided directory.
-	 * @see FilesFinder
-	 * @param directory from with TreeItem will be created
-	 * @return TreeItem created for provided directory, it has children with represents files from provided directory
+	 * Initializes expand event handler.
+	 * It will all items for children of expanded node and create TreeItems for them.
+	 * This enables to expand children of provided node.
+	 *
+	 * @param treeItem to with event will be added
 	 */
-	private TreeItem<WorkspaceItem> createItemForDirectory(WorkspaceItem directory) {
-		TreeItem<WorkspaceItem> directoryItem = new TreeItem<>(directory);
-		List<TreeItem<WorkspaceItem>> filesItems = new ArrayList<>();
-		List<WorkspaceItem> files = filesFinder.findAllFiles(directory.getFilePath());
+	private void initializeExpandEventHandler(TreeItem<WorkspaceItem> treeItem) {
+		treeItem.addEventHandler(TreeItem.branchExpandedEvent(), event -> {
+			treeItem.getChildren().forEach(child -> {
+				if(FileType.DIRECTORY.equals(child.getValue().getFileType())) {
+					if(not(child.getChildren().isEmpty()))
+						return;
+					
+					child.getChildren().clear();
+					child.getChildren().addAll(getItemsForDirectory(child.getValue()));
+				}
+			});
+			workspaceTree.refresh();
+		});
+	}
+	
+	/**
+	 * This method finds files and directories with are directly in directoryItem.
+	 * All found files and directories will be added to tree item list.
+	 * @param directoryItem for with files will be found
+	 * @return list of TreeItems representing files and directories in provided directory
+	 */
+	private List<TreeItem<WorkspaceItem>> getItemsForDirectory(WorkspaceItem directoryItem) {
+		List<WorkspaceItem> items = filesFinder.findFilesInDirectory(directoryItem.getFilePath());
+		List<TreeItem<WorkspaceItem>> treeItems = new ArrayList<>();
 		
-		files.forEach(item -> {
-			TreeItem<WorkspaceItem> fileItem = new TreeItem<>(item);
-			filesItems.add(fileItem);
+		items.forEach(item -> {
+			TreeItem<WorkspaceItem> treeItem = new TreeItem<>(item);
+			initializeExpandEventHandler(treeItem);
+			treeItems.add(treeItem);
 		});
 		
-		directoryItem.getChildren().addAll(filesItems);
-		
-		return directoryItem;
+		return treeItems;
 	}
 	
 }
