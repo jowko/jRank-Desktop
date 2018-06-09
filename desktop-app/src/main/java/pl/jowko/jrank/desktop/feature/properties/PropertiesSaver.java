@@ -18,7 +18,7 @@ import static pl.jowko.jrank.desktop.utils.StringUtils.isNotNullOrEmpty;
  * @see Properties
  * @see JRankProperties
  */
-class PropertiesSaver {
+public class PropertiesSaver {
 	
 	private JRankParameter emptyParameter;
 	private JRankProperties jRankProperties;
@@ -28,7 +28,7 @@ class PropertiesSaver {
 	 * Creates instance of this class and converts JRankProperties to properties.
 	 * @param jRankProperties with will be saved.
 	 */
-	PropertiesSaver(JRankProperties jRankProperties) {
+	public PropertiesSaver(JRankProperties jRankProperties) {
 		emptyParameter = JRankParametersService.getInstance().getEmptyParameter();
 		this.jRankProperties = jRankProperties;
 		properties = new Properties();
@@ -40,7 +40,7 @@ class PropertiesSaver {
 	 * @param filePath where file will be saved
 	 * @throws IOException when something goes wrong with saving file
 	 */
-	void save(String filePath) throws IOException {
+	public void save(String filePath) throws IOException {
 		properties.store(new FileOutputStream(filePath), null);
 	}
 	

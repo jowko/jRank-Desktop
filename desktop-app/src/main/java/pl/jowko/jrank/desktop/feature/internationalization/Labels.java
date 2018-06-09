@@ -26,6 +26,9 @@ public class Labels {
 	
 	// Toolbar
 	public static final String TOOL_REFRESH_BUTTON = "TOOL_REFRESH_BUTTON";
+	public static final String TOOL_CREATE_BUTTON = "TOOL_CREATE_BUTTON";
+	public static final String TOOL_CREATE_DIALOG_TITLE = "TOOL_CREATE_DIALOG_TITLE";
+	public static final String TOOL_CREATE_OVERRIDE_CONFIRM = "TOOL_CREATE_OVERRIDE_CONFIRM";
 	
 	// General buttons
 	public static final String BUTTON_SAVE = "BUTTON_SAVE";

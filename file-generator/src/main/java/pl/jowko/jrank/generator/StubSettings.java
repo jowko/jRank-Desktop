@@ -140,6 +140,9 @@ class StubSettings {
 	
 	private void createEnglishToolbarLabels(Map<String, String> language) {
 		language.put(Labels.TOOL_REFRESH_BUTTON, "Refresh workspace");
+		language.put(Labels.TOOL_CREATE_BUTTON, "Create new experiment");
+		language.put(Labels.TOOL_CREATE_DIALOG_TITLE, "Create new experiment");
+		language.put(Labels.TOOL_CREATE_OVERRIDE_CONFIRM, "This folder is already in use. Do you want to override files?");
 	}
 	
 	private void createEnglishUserSettingsLabels(Map<String, String> language) {
