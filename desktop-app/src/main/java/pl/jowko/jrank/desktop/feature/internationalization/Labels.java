@@ -23,6 +23,10 @@ public class Labels {
 	public static final String MENU_ITEM_HELP = "MENU_ITEM_HELP";
 	public static final String MENU_ABOUT = "MENU_ABOUT";
 	
+	
+	// Toolbar
+	public static final String TOOL_REFRESH_BUTTON = "TOOL_REFRESH_BUTTON";
+	
 	// General buttons
 	public static final String BUTTON_SAVE = "BUTTON_SAVE";
 	public static final String BUTTON_CANCEL = "BUTTON_CANCEL";

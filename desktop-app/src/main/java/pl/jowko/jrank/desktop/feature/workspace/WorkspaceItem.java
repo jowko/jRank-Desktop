@@ -1,6 +1,7 @@
 package pl.jowko.jrank.desktop.feature.workspace;
 
 import java.nio.file.Paths;
+import java.util.Objects;
 
 /**
  * Created by Piotr on 2018-04-21.
@@ -52,6 +53,21 @@ public class WorkspaceItem {
 				", filePath='" + filePath + '\'' +
 				", fileType=" + fileType +
 				'}';
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		WorkspaceItem that = (WorkspaceItem) o;
+		return Objects.equals(fileName, that.fileName) &&
+				Objects.equals(filePath, that.filePath) &&
+				fileType == that.fileType;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(fileName, filePath, fileType);
 	}
 	
 }

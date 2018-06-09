@@ -105,6 +105,7 @@ class StubSettings {
 		language.put(Labels.CONFIRM_DIALOG_NO, "No");
 		
 		createEnglishMenuLabels(language);
+		createEnglishToolbarLabels(language);
 		createEnglishUserSettingsLabels(language);
 		createEnglishAboutLabels(language);
 		createEnglishTabsLabels(language);
@@ -135,6 +136,10 @@ class StubSettings {
 		language.put(Labels.MENU_HELP, "Help");
 		language.put(Labels.MENU_ITEM_HELP, "Help");
 		language.put(Labels.MENU_ABOUT, "About");
+	}
+	
+	private void createEnglishToolbarLabels(Map<String, String> language) {
+		language.put(Labels.TOOL_REFRESH_BUTTON, "Refresh workspace");
 	}
 	
 	private void createEnglishUserSettingsLabels(Map<String, String> language) {

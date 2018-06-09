@@ -38,6 +38,48 @@ class TreeBuilder {
 	}
 	
 	/**
+	 * This method refresh WorkspaceTree.
+	 * It will recreate tree again.
+	 * It uses recursive method to do it.
+	 * It will retain information about expanded nodes.
+	 */
+	void refreshTree() {
+		TreeItem<WorkspaceItem> rootTreeItem = createRootNode();
+		refresh(workspaceTree.getRoot(), rootTreeItem);
+		
+		workspaceTree.setRoot(rootTreeItem);
+		workspaceTree.refresh();
+	}
+	
+	/**
+	 * This method rebuilds workspace tree.
+	 * It loads items to tree and checks, if they were previously expanded.
+	 * Then it calls itself recursively.
+	 * If number of elements in tree will change, information about expanded nodes can be lost.
+	 * It was done in such way for simplicity and such solution is less error prone.
+	 * @param originalRoot from workspace tree
+	 * @param newRoot with will replace root in workspace tree
+	 */
+	private void refresh(TreeItem<WorkspaceItem> originalRoot, TreeItem<WorkspaceItem> newRoot) {
+		if(originalRoot.getChildren().size() != newRoot.getChildren().size())
+			return;
+		
+		int i=0;
+		for(TreeItem<WorkspaceItem> item : originalRoot.getChildren()) {
+			
+			if(item.isExpanded()) {
+				var newItem = newRoot.getChildren().get(i);
+				newItem.getChildren().clear();
+				newItem.getChildren().addAll(getItemsForDirectory(newItem.getValue()));
+				newItem.setExpanded(true);
+				refresh(item, newItem);
+			}
+			
+			i++;
+		}
+	}
+	
+	/**
 	 * Initializes on click event on workspace tree item.
 	 * When user double clicks on tree item, related file should be opened in tab.
 	 * @see ClickEventHandler
@@ -56,6 +98,14 @@ class TreeBuilder {
 	 * It will load files from first and second level from main workspace catalog.
 	 */
 	private void initializeWorkspaceTree() {
+		workspaceTree.setRoot(createRootNode());
+	}
+	
+	/**
+	 * Creates root node with first and second level items loaded into workspace
+	 * @return root workspace
+	 */
+	private TreeItem<WorkspaceItem> createRootNode() {
 		String workspacePath = WorkspaceService.getInstance().getWorkspacePath();
 		List<WorkspaceItem> childrenItems = filesFinder.findFilesInDirectory(workspacePath);
 		
@@ -65,7 +115,7 @@ class TreeBuilder {
 		
 		fillRootTree(rootTreeItem, childrenItems);
 		
-		workspaceTree.setRoot(rootTreeItem);
+		return rootTreeItem;
 	}
 	
 	/**

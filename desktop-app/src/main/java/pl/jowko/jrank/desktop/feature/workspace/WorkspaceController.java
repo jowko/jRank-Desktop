@@ -17,6 +17,8 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  */
 public class WorkspaceController {
 	
+	private static WorkspaceController instance;
+	
 	@FXML
 	private TreeView<WorkspaceItem> workspaceTree;
 	
@@ -24,6 +26,14 @@ public class WorkspaceController {
 	private LanguageService labels;
 	private TreeBuilder treeBuilder;
 	private boolean isConfigValid = true;
+	
+	public static WorkspaceController getInstance() {
+		return instance;
+	}
+	
+	public void refresh() {
+		treeBuilder.refreshTree();
+	}
 	
 	/**
 	 * Initialize workspace tree.
@@ -35,6 +45,7 @@ public class WorkspaceController {
 	 */
 	@FXML
 	private void initialize() {
+		instance = this;
 		settingsValidator = new UserSettingsValidator();
 		labels = LanguageService.getInstance();
 		
@@ -58,7 +69,6 @@ public class WorkspaceController {
 			String errorDialogHeader = labels.get(Labels.US_SETTINGS_ERROR);
 			DialogsService.showErrorDialog(errorDialogHeader, validationErrors);
 			isConfigValid = false;
-			//TODO set some info on workspace panel
 		}
 	}
 	
