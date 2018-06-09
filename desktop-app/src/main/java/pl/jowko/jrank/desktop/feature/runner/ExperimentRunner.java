@@ -6,6 +6,7 @@ import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.properties.DefaultPropertiesProvider;
 import pl.jowko.jrank.desktop.feature.properties.JRankProperties;
 import pl.jowko.jrank.desktop.feature.properties.RunnerPropertiesProvider;
+import pl.jowko.jrank.desktop.feature.workspace.WorkspaceController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.jrank.desktop.utils.FileExtensionExtractor;
 import pl.jowko.jrank.logger.JRankLogger;
@@ -77,6 +78,7 @@ public class ExperimentRunner {
 		}
 		
 		new ResultsSaver(results, properties, experimentPath).save();
+		WorkspaceController.getInstance().refresh();
 	}
 	
 	/**
