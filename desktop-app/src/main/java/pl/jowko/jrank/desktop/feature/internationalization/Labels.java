@@ -30,6 +30,13 @@ public class Labels {
 	public static final String TOOL_CREATE_DIALOG_TITLE = "TOOL_CREATE_DIALOG_TITLE";
 	public static final String TOOL_CREATE_OVERRIDE_CONFIRM = "TOOL_CREATE_OVERRIDE_CONFIRM";
 	
+	
+	// Workspace
+	public static final String WORK_MENU_DELETE = "WORK_MENU_DELETE";
+	public static final String WORK_MENU_DEL_CONFIRM_DIR = "WORK_MENU_DEL_CONFIRM_DIR";
+	public static final String WORK_MENU_DEL_CONFIRM_FILE = "WORK_MENU_DEL_CONFIRM_FILE";
+	
+	
 	// General buttons
 	public static final String BUTTON_SAVE = "BUTTON_SAVE";
 	public static final String BUTTON_CANCEL = "BUTTON_CANCEL";

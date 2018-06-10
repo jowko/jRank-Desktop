@@ -106,6 +106,7 @@ class StubSettings {
 		
 		createEnglishMenuLabels(language);
 		createEnglishToolbarLabels(language);
+		createEnglishWorkspaceLabels(language);
 		createEnglishUserSettingsLabels(language);
 		createEnglishAboutLabels(language);
 		createEnglishTabsLabels(language);
@@ -143,6 +144,12 @@ class StubSettings {
 		language.put(Labels.TOOL_CREATE_BUTTON, "Create new experiment");
 		language.put(Labels.TOOL_CREATE_DIALOG_TITLE, "Create new experiment");
 		language.put(Labels.TOOL_CREATE_OVERRIDE_CONFIRM, "This folder is already in use. Do you want to override files?");
+	}
+	
+	private void createEnglishWorkspaceLabels(Map<String, String> language) {
+		language.put(Labels.WORK_MENU_DELETE, "Delete item");
+		language.put(Labels.WORK_MENU_DEL_CONFIRM_DIR, "Are you sure to remove directory: [" + MSG + "] with all its content?");
+		language.put(Labels.WORK_MENU_DEL_CONFIRM_FILE, "Are you sure to remove file: [" + MSG + "]?");
 	}
 	
 	private void createEnglishUserSettingsLabels(Map<String, String> language) {

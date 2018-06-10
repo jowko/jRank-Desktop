@@ -18,6 +18,7 @@ module jRank.desktop {
 	
 	requires com.fasterxml.jackson.databind;
 	requires jrs;
+	requires org.apache.commons.io;
 	
 	opens pl.jowko.jrank.desktop.controller;
 	opens pl.jowko.jrank.desktop.feature.graph;

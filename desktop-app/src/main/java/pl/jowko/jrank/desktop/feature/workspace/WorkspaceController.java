@@ -56,6 +56,7 @@ public class WorkspaceController {
 		
 		treeBuilder = new TreeBuilder(workspaceTree);
 		treeBuilder.buildTree();
+		new ContextMenuCreator().createContextMenu(workspaceTree);
 	}
 	
 	/**
