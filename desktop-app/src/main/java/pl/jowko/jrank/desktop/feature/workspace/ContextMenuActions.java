@@ -163,6 +163,42 @@ class ContextMenuActions {
 	}
 	
 	/**
+	 * Renames selected item.
+	 * User will be asked to provide file name by entering value in dialog field.
+	 */
+	void renameItemAction() {
+		var selected = getSelectedValue();
+		if(isNull(selected) || FileType.ROOT.equals(selected.getFileType()))
+			return;
+		
+		String newFileName = promptForFileName(labels.get(Labels.WORK_MENU_RENAME_PROMPT), selected.getFileName());
+		boolean isDirectory = FileType.DIRECTORY.equals(selected.getFileType());
+		
+		String filePath;
+		if(isDirectory)
+			filePath = Paths.get(selected.getExperimentPath()).getParent().toString() + "\\" + newFileName;
+		else
+			filePath = selected.getExperimentPath() + newFileName;
+		
+		if(selected.getFilePath().equals(filePath))
+			return;
+		
+		try {
+			File source = new File(selected.getFilePath());
+			File target = new File(filePath);
+			
+			if(isDirectory)
+				FileUtils.moveDirectory(source, target);
+			else
+				FileUtils.moveFile(source, target);
+			
+		} catch (IOException e) {
+			JRankLogger.error("Error when renaming file: ", e);
+		}
+		refresh();
+	}
+	
+	/**
 	 * Initializes DataFormat used in user ClipBoard.
 	 * It have to be initialized only once during runtime of application.
 	 */

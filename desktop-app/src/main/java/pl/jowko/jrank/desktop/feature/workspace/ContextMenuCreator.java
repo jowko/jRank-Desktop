@@ -29,6 +29,7 @@ class ContextMenuCreator {
 	 *  - Copy   - It copies selected item to user ClipBoard
 	 *  - Paste  - It pastes item from clipboard to selected directory
 	 *  - Cut    - It cuts selected item to user ClipBoard
+	 *  - Rename - It renames item with new name provided by user
 	 *  - Add properties - It adds new properties file to selected directory
 	 *  - Add isf        - It adds new isf file to selected directory
 	 * @param treeView on with actions will be performed
@@ -42,6 +43,7 @@ class ContextMenuCreator {
 		menu.getItems().add(createCopyAction());
 		menu.getItems().add(createPasteAction());
 		menu.getItems().add(createCutAction());
+		menu.getItems().add(createRenameAction());
 		menu.getItems().add(createAddPropertiesAction());
 		menu.getItems().add(createAddIsfFileAction());
 		
@@ -92,6 +94,14 @@ class ContextMenuCreator {
 		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_ADD_ISF));
 		item.setOnAction(event ->
 				actions.addIsfFileAction()
+		);
+		return item;
+	}
+	
+	private MenuItem createRenameAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_RENAME));
+		item.setOnAction(event ->
+				actions.renameItemAction()
 		);
 		return item;
 	}

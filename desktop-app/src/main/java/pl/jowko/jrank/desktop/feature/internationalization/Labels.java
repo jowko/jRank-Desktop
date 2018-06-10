@@ -44,6 +44,9 @@ public class Labels {
 	public static final String WORK_MENU_ADD_ISF_PROMPT = "WORK_MENU_ADD_ISF_PROMPT";
 	public static final String WORK_MENU_TEXT_DIALOG_TITLE = "WORK_MENU_TEXT_DIALOG_TITLE";
 	public static final String WORK_MENU_TEXT_DIALOG_TEXT = "WORK_MENU_TEXT_DIALOG_TEXT";
+	public static final String WORK_MENU_RENAME = "WORK_MENU_RENAME";
+	public static final String WORK_MENU_RENAME_PROMPT = "WORK_MENU_RENAME_PROMPT";
+	
 	
 	// General buttons
 	public static final String BUTTON_SAVE = "BUTTON_SAVE";

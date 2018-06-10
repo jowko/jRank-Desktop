@@ -159,6 +159,8 @@ class StubSettings {
 		language.put(Labels.WORK_MENU_ADD_ISF_PROMPT, "Enter file name for isf file: ");
 		language.put(Labels.WORK_MENU_TEXT_DIALOG_TITLE, "New file name");
 		language.put(Labels.WORK_MENU_TEXT_DIALOG_TEXT, "File name: ");
+		language.put(Labels.WORK_MENU_RENAME, "Rename item");
+		language.put(Labels.WORK_MENU_RENAME_PROMPT, "Enter new file name: ");
 	}
 	
 	private void createEnglishUserSettingsLabels(Map<String, String> language) {

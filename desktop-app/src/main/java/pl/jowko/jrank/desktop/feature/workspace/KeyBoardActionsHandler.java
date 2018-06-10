@@ -15,6 +15,7 @@ class KeyBoardActionsHandler {
 	private final KeyCombination copyCombination = new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN);
 	private final KeyCombination pasteCombination = new KeyCodeCombination(KeyCode.V, KeyCombination.CONTROL_DOWN);
 	private final KeyCombination cutCombination = new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN);
+	private final KeyCombination renameCombination = new KeyCodeCombination(KeyCode.R, KeyCombination.CONTROL_DOWN);
 	
 	private ContextMenuActions actions;
 	
@@ -29,6 +30,7 @@ class KeyBoardActionsHandler {
 	 * - Copy   - copies item from workspace tree
 	 * - Paste  - paste item into workspace tree
 	 * - Cut    - cuts item from workspace tree
+	 * - Rename - renames item from workspace tree
 	 * @param treeView on with handler will be configured
 	 */
 	void initKeyBoardActions(TreeView<WorkspaceItem> treeView) {
@@ -47,6 +49,10 @@ class KeyBoardActionsHandler {
 			}
 			if(cutCombination.match(event)) {
 				actions.cutItemAction();
+				return;
+			}
+			if(renameCombination.match(event)) {
+				actions.renameItemAction();
 				return;
 			}
 		});
