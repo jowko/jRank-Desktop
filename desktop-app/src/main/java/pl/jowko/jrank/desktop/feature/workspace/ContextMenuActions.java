@@ -1,7 +1,9 @@
 package pl.jowko.jrank.desktop.feature.workspace;
 
 import javafx.scene.control.TreeView;
+import javafx.scene.input.Clipboard;
 import org.apache.commons.io.FileUtils;
+import pl.jowko.jrank.desktop.feature.clipboard.ClipBoardManager;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.service.DialogsService;
@@ -11,7 +13,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
+import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
 
 /**
@@ -27,12 +31,15 @@ class ContextMenuActions {
 	
 	/**
 	 * Creates instance of this class.
-	 * @param treeView on with actions will be perfomed
+	 * Also initializes keyboard shortcuts for all workspace tree actions
+	 * @param treeView on with actions will be performed
+	 * @see KeyBoardActionsHandler
 	 */
 	ContextMenuActions(TreeView<WorkspaceItem> treeView) {
 		this.treeView = treeView;
 		
 		labels = LanguageService.getInstance();
+		new KeyBoardActionsHandler(this).initKeyBoardActions(treeView);
 	}
 	
 	/**
@@ -42,7 +49,10 @@ class ContextMenuActions {
 	 * When deleting directory, all items in it will be removed.
 	 */
 	void deleteItemAction() {
-		var selected = treeView.getSelectionModel().getSelectedItem().getValue();
+		var selected = getSelectedValue();
+		if(isNull(selected))
+			return;
+		
 		String filePath = selected.getFilePath();
 		
 		if(FileType.ROOT.equals(selected.getFileType()))
@@ -52,6 +62,55 @@ class ContextMenuActions {
 		if(confirmDeleteAction(selected.getFileName(), isDirectory)) {
 			deleteSelectedItem(filePath, isDirectory);
 		}
+	}
+	
+	/**
+	 * Copies item to user clipboard.
+	 * If item is root or directory, nothing happens.
+	 */
+	void copyItemAction() {
+		var selected = getSelectedValue();
+		if(isNull(selected))
+			return;
+		
+		if(FileType.ROOT.equals(selected.getFileType()) || FileType.DIRECTORY.equals(selected.getFileType()))
+			return;
+		
+		ClipBoardManager.putFile(new File(selected.getFilePath()));
+	}
+	
+	/**
+	 * Pastes all files from user clipboard to selected experiment directory.
+	 */
+	void pasteItemAction() {
+		var selected = getSelectedValue();
+		if(isNull(selected))
+			return;
+		
+		String directory = selected.getExperimentPath();
+		Clipboard clipboard = Clipboard.getSystemClipboard();
+		List<File> files = clipboard.getFiles();
+		
+		try {
+			for(File file : files) {
+				File newFile = new File(directory + file.getName());
+				if(newFile.getAbsolutePath().equals(file.getAbsolutePath()))
+					continue;
+				FileUtils.copyFile(file, newFile, true);
+			}
+		} catch (IOException e) {
+			JRankLogger.error("Error when pasting files: ", e);
+		}
+		
+		WorkspaceController.getInstance().refresh();
+	}
+	
+	private WorkspaceItem getSelectedValue() {
+		var selected = treeView.getSelectionModel().getSelectedItem();
+		if(isNull(selected))
+			return null;
+		
+		return selected.getValue();
 	}
 	
 	/**

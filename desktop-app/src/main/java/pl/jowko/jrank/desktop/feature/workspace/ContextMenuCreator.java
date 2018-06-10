@@ -26,6 +26,8 @@ class ContextMenuCreator {
 	 * This method creates class to handle actions and creates context menu.
 	 * Current implemented actions:
 	 *  - Delete - It deletes selected item and its children. It ask for confirmation first.
+	 *  - Copy   - It copies selected item to user ClipBoard
+	 *  - Paste  - It pastes item from clipboard to selected experiment directory
 	 * @param treeView on with actions will be performed
 	 * @see ContextMenuActions
 	 */
@@ -34,17 +36,33 @@ class ContextMenuCreator {
 		ContextMenu menu = new ContextMenu();
 		
 		menu.getItems().add(createDeleteAction());
+		menu.getItems().add(createCopyAction());
+		menu.getItems().add(createPasteAction());
 		
 		treeView.setContextMenu(menu);
 	}
 	
 	private MenuItem createDeleteAction() {
 		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_DELETE));
-		
 		item.setOnAction(event ->
 			actions.deleteItemAction()
 		);
-		
+		return item;
+	}
+	
+	private MenuItem createCopyAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_COPY));
+		item.setOnAction(event ->
+				actions.copyItemAction()
+		);
+		return item;
+	}
+	
+	private MenuItem createPasteAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_PASTE));
+		item.setOnAction(event ->
+				actions.pasteItemAction()
+		);
 		return item;
 	}
 	

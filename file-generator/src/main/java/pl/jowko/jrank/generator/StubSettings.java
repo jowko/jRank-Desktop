@@ -150,6 +150,8 @@ class StubSettings {
 		language.put(Labels.WORK_MENU_DELETE, "Delete item");
 		language.put(Labels.WORK_MENU_DEL_CONFIRM_DIR, "Are you sure to remove directory: [" + MSG + "] with all its content?");
 		language.put(Labels.WORK_MENU_DEL_CONFIRM_FILE, "Are you sure to remove file: [" + MSG + "]?");
+		language.put(Labels.WORK_MENU_COPY, "Copy item");
+		language.put(Labels.WORK_MENU_PASTE, "Paste item");
 	}
 	
 	private void createEnglishUserSettingsLabels(Map<String, String> language) {

@@ -35,6 +35,8 @@ public class Labels {
 	public static final String WORK_MENU_DELETE = "WORK_MENU_DELETE";
 	public static final String WORK_MENU_DEL_CONFIRM_DIR = "WORK_MENU_DEL_CONFIRM_DIR";
 	public static final String WORK_MENU_DEL_CONFIRM_FILE = "WORK_MENU_DEL_CONFIRM_FILE";
+	public static final String WORK_MENU_COPY = "WORK_MENU_COPY";
+	public static final String WORK_MENU_PASTE = "WORK_MENU_PASTE";
 	
 	
 	// General buttons

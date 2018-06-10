@@ -43,6 +43,8 @@ public class WorkspaceItem {
 	 * @return experiment directory path
 	 */
 	public String getExperimentPath() {
+		if(FileType.DIRECTORY.equals(fileType) || FileType.ROOT.equals(fileType))
+			return filePath + "\\";
 		return Paths.get(filePath).getParent().toString() + "\\";
 	}
 	

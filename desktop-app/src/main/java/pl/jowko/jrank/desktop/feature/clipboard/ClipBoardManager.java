@@ -3,6 +3,9 @@ package pl.jowko.jrank.desktop.feature.clipboard;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 
+import java.io.File;
+import java.util.Collections;
+
 /**
  * Created by Piotr on 2018-05-27
  * This class copies objects to user clipboard.
@@ -23,6 +26,16 @@ public class ClipBoardManager {
 	public static void putString(String text) {
 		ClipboardContent content = new ClipboardContent();
 		content.putString(text);
+		clipboard.setContent(content);
+	}
+	
+	/**
+	 * Copy provided file to user clipboard
+	 * @param file to copy
+	 */
+	public static void putFile(File file) {
+		ClipboardContent content = new ClipboardContent();
+		content.putFiles(Collections.singletonList(file));
 		clipboard.setContent(content);
 	}
 	
