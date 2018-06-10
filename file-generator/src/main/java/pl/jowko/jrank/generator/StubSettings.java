@@ -153,6 +153,12 @@ class StubSettings {
 		language.put(Labels.WORK_MENU_COPY, "Copy item");
 		language.put(Labels.WORK_MENU_PASTE, "Paste item");
 		language.put(Labels.WORK_MENU_CUT, "Cut item");
+		language.put(Labels.WORK_MENU_ADD_PROPERTIES, "Add properties item");
+		language.put(Labels.WORK_MENU_ADD_PROPERTIES_PROMPT, "Enter file name for properties file: ");
+		language.put(Labels.WORK_MENU_ADD_ISF, "Add isf item");
+		language.put(Labels.WORK_MENU_ADD_ISF_PROMPT, "Enter file name for isf file: ");
+		language.put(Labels.WORK_MENU_TEXT_DIALOG_TITLE, "New file name");
+		language.put(Labels.WORK_MENU_TEXT_DIALOG_TEXT, "File name: ");
 	}
 	
 	private void createEnglishUserSettingsLabels(Map<String, String> language) {

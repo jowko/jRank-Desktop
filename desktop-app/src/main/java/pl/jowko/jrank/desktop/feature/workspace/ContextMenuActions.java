@@ -1,5 +1,6 @@
 package pl.jowko.jrank.desktop.feature.workspace;
 
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
@@ -9,11 +10,13 @@ import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.service.DialogsService;
 import pl.jowko.jrank.logger.JRankLogger;
+import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
@@ -118,7 +121,45 @@ class ContextMenuActions {
 		}
 		
 		ClipBoardManager.clear();
-		WorkspaceController.getInstance().refresh();
+		refresh();
+	}
+	
+	/**
+	 * Adds .properties file to directory of selected item.
+	 * User will be asked to provide file name.
+	 * If user didn't provided valid file extension, it will be automatically added.
+	 */
+	void addPropertiesFileAction() {
+		var selected = getSelectedValue();
+		if(isNull(selected))
+			return;
+		
+		String fileName = promptForFileName(labels.get(Labels.WORK_MENU_ADD_PROPERTIES_PROMPT), "");
+		try {
+			ExperimentFilesCreator.createPropertiesFile(selected.getExperimentPath() + fileName);
+		} catch (IOException e) {
+			JRankLogger.error("Error when creating new properties file: ", e);
+		}
+		refresh();
+	}
+	
+	/**
+	 * Adds .isf file to directory of selected item.
+	 * User will be asked to provide file name.
+	 * If user didn't provided valid file extension, it will be automatically added.
+	 */
+	void addIsfFileAction() {
+		var selected = getSelectedValue();
+		if(isNull(selected))
+			return;
+		
+		String fileName = promptForFileName(labels.get(Labels.WORK_MENU_ADD_ISF_PROMPT), "");
+		try {
+			ExperimentFilesCreator.createMemoryContainerForWorkspace(selected.getExperimentPath(), fileName);
+		} catch (ContainerFailureException e) {
+			JRankLogger.error("Error when creating new isf file: ", e);
+		}
+		refresh();
 	}
 	
 	/**
@@ -138,6 +179,10 @@ class ContextMenuActions {
 			return null;
 		
 		return selected.getValue();
+	}
+	
+	private void refresh() {
+		WorkspaceController.getInstance().refresh();
 	}
 	
 	/**
@@ -188,10 +233,27 @@ class ContextMenuActions {
 			else
 				Files.delete(Paths.get(filePath));
 			
-			WorkspaceController.getInstance().refresh();
+			refresh();
 		} catch (IOException e) {
 			JRankLogger.error("Error when deleting item from workspace: ", e);
 		}
+	}
+	
+	/**
+	 * Creates and shows dialog with one TextField.
+	 * User is asked to write some value there and it will be returned from this method.
+	 * @param msg to display to user
+	 * @param defaultValue to initialize TextField value
+	 * @return text entered by user
+	 */
+	private String promptForFileName(String msg, String defaultValue) {
+		TextInputDialog dialog = new TextInputDialog(defaultValue);
+		dialog.setTitle(labels.get(Labels.WORK_MENU_TEXT_DIALOG_TITLE));
+		dialog.setHeaderText(msg);
+		dialog.setContentText(labels.get(Labels.WORK_MENU_TEXT_DIALOG_TEXT));
+		
+		Optional<String> result = dialog.showAndWait();
+		return result.orElse(null);
 	}
 	
 }

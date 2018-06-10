@@ -27,8 +27,10 @@ class ContextMenuCreator {
 	 * Current implemented actions:
 	 *  - Delete - It deletes selected item and its children. It ask for confirmation first.
 	 *  - Copy   - It copies selected item to user ClipBoard
-	 *  - Paste  - It pastes item from clipboard to selected experiment directory
+	 *  - Paste  - It pastes item from clipboard to selected directory
 	 *  - Cut    - It cuts selected item to user ClipBoard
+	 *  - Add properties - It adds new properties file to selected directory
+	 *  - Add isf        - It adds new isf file to selected directory
 	 * @param treeView on with actions will be performed
 	 * @see ContextMenuActions
 	 */
@@ -40,6 +42,8 @@ class ContextMenuCreator {
 		menu.getItems().add(createCopyAction());
 		menu.getItems().add(createPasteAction());
 		menu.getItems().add(createCutAction());
+		menu.getItems().add(createAddPropertiesAction());
+		menu.getItems().add(createAddIsfFileAction());
 		
 		treeView.setContextMenu(menu);
 	}
@@ -72,6 +76,22 @@ class ContextMenuCreator {
 		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_CUT));
 		item.setOnAction(event ->
 				actions.cutItemAction()
+		);
+		return item;
+	}
+	
+	private MenuItem createAddPropertiesAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_ADD_PROPERTIES));
+		item.setOnAction(event ->
+				actions.addPropertiesFileAction()
+		);
+		return item;
+	}
+	
+	private MenuItem createAddIsfFileAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_ADD_ISF));
+		item.setOnAction(event ->
+				actions.addIsfFileAction()
 		);
 		return item;
 	}

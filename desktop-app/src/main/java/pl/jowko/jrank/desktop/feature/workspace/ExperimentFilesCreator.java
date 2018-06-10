@@ -10,6 +10,8 @@ import pl.poznan.put.cs.idss.jrs.types.IntegerField;
 
 import java.io.IOException;
 
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
+
 /**
  * Created by Piotr on 2018-06-09
  * This class helps to create new properties and isf files.
@@ -27,6 +29,31 @@ public class ExperimentFilesCreator {
 		JRankProperties properties = new JRankProperties();
 		properties.setLearningDataFile(isfTableName);
 		new PropertiesSaver(properties).save(dirPath + "experiment.properties");
+	}
+	
+	/**
+	 * Creates empty properties file on provided path.
+	 * @param filePath on with properties will be created.
+	 * @throws IOException when something goes wrong with file saving
+	 */
+	static void createPropertiesFile(String filePath) throws IOException {
+		if(not(filePath.endsWith(".properties")))
+			filePath += ".properties";
+		
+		new PropertiesSaver(new JRankProperties()).save(filePath);
+	}
+	
+	/**
+	 * Creates new example MemoryContainer(isf file).
+	 * @param dirPath to save MemoryContainer
+	 * @param fileName for isf file
+	 * @throws ContainerFailureException because setAttributes throws it
+	 */
+	static void createMemoryContainerForWorkspace(String dirPath, String fileName) throws ContainerFailureException {
+		if(fileName.endsWith(".isf"))
+			fileName = fileName.substring(0, fileName.length() - 4);
+		
+		createMemoryContainer(dirPath, fileName);
 	}
 	
 	/**
