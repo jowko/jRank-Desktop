@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.clipboard;
 
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DataFormat;
 
 import java.io.File;
 import java.util.Collections;
@@ -30,13 +31,21 @@ public class ClipBoardManager {
 	}
 	
 	/**
-	 * Copy provided file to user clipboard
-	 * @param file to copy
+	 * Puts provided object using DataFormat key.
+	 * @param key on with objects resides
+	 * @param value to put to Clipboard
 	 */
-	public static void putFile(File file) {
+	public static void putObject(DataFormat key, Object value) {
 		ClipboardContent content = new ClipboardContent();
-		content.putFiles(Collections.singletonList(file));
+		content.put(key, value);
 		clipboard.setContent(content);
+	}
+	
+	/**
+	 * Clears all data from user clipboard.
+	 */
+	public static void clear() {
+		clipboard.clear();
 	}
 	
 	/**

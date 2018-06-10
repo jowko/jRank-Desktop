@@ -2,6 +2,7 @@ package pl.jowko.jrank.desktop.feature.workspace;
 
 import javafx.scene.control.TreeView;
 import javafx.scene.input.Clipboard;
+import javafx.scene.input.DataFormat;
 import org.apache.commons.io.FileUtils;
 import pl.jowko.jrank.desktop.feature.clipboard.ClipBoardManager;
 import pl.jowko.jrank.desktop.feature.internationalization.Labels;
@@ -13,10 +14,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.jrank.desktop.feature.settings.JRankConst.MSG;
+import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-06-10
@@ -29,6 +30,8 @@ class ContextMenuActions {
 	private TreeView<WorkspaceItem> treeView;
 	private LanguageService labels;
 	
+	private DataFormat pasteFormat;
+	
 	/**
 	 * Creates instance of this class.
 	 * Also initializes keyboard shortcuts for all workspace tree actions
@@ -40,6 +43,8 @@ class ContextMenuActions {
 		
 		labels = LanguageService.getInstance();
 		new KeyBoardActionsHandler(this).initKeyBoardActions(treeView);
+		
+		initializeDataFormats();
 	}
 	
 	/**
@@ -69,18 +74,20 @@ class ContextMenuActions {
 	 * If item is root or directory, nothing happens.
 	 */
 	void copyItemAction() {
-		var selected = getSelectedValue();
-		if(isNull(selected))
-			return;
-		
-		if(FileType.ROOT.equals(selected.getFileType()) || FileType.DIRECTORY.equals(selected.getFileType()))
-			return;
-		
-		ClipBoardManager.putFile(new File(selected.getFilePath()));
+		addSelectedItemToClipBoard(false);
 	}
 	
 	/**
-	 * Pastes all files from user clipboard to selected experiment directory.
+	 * Cuts selected item and puts it in user clipboard.
+	 * Is user make paste action, this item will be removed.
+	 */
+	void cutItemAction() {
+		addSelectedItemToClipBoard(true);
+	}
+	
+	/**
+	 * Paste file from user clipboard to selected experiment directory.
+	 * If user performed cut action, file will be renamed instead of copied.
 	 */
 	void pasteItemAction() {
 		var selected = getSelectedValue();
@@ -89,20 +96,40 @@ class ContextMenuActions {
 		
 		String directory = selected.getExperimentPath();
 		Clipboard clipboard = Clipboard.getSystemClipboard();
-		List<File> files = clipboard.getFiles();
+		
+		if(not(clipboard.hasContent(pasteFormat)))
+			return;
+		
+		FileDataFormat data = (FileDataFormat) clipboard.getContent(pasteFormat);
+		File file = data.getFile();
 		
 		try {
-			for(File file : files) {
-				File newFile = new File(directory + file.getName());
-				if(newFile.getAbsolutePath().equals(file.getAbsolutePath()))
-					continue;
+			File newFile = new File(directory + file.getName());
+			if(newFile.getAbsolutePath().equals(file.getAbsolutePath()))
+				return;
+			
+			if(data.isCut())
+				FileUtils.moveFile(file, newFile);
+			else
 				FileUtils.copyFile(file, newFile, true);
-			}
+			
 		} catch (IOException e) {
 			JRankLogger.error("Error when pasting files: ", e);
 		}
 		
+		ClipBoardManager.clear();
 		WorkspaceController.getInstance().refresh();
+	}
+	
+	/**
+	 * Initializes DataFormat used in user ClipBoard.
+	 * It have to be initialized only once during runtime of application.
+	 */
+	private void initializeDataFormats() {
+		pasteFormat = DataFormat.lookupMimeType("PASTE_FORMAT");
+		if(isNull(pasteFormat))
+			pasteFormat = new DataFormat("PASTE_FORMAT");
+		
 	}
 	
 	private WorkspaceItem getSelectedValue() {
@@ -111,6 +138,23 @@ class ContextMenuActions {
 			return null;
 		
 		return selected.getValue();
+	}
+	
+	/**
+	 * Adds selected item to user ClipBoard.
+	 * If selected item is root or directory, nothing happens.
+	 * @param isCutAction determines, if cut action was performed
+	 */
+	private void addSelectedItemToClipBoard(boolean isCutAction) {
+		var selected = getSelectedValue();
+		if(isNull(selected))
+			return;
+		
+		if(FileType.ROOT.equals(selected.getFileType()) || FileType.DIRECTORY.equals(selected.getFileType()))
+			return;
+		
+		FileDataFormat data = new FileDataFormat(new File(selected.getFilePath()), isCutAction);
+		ClipBoardManager.putObject(pasteFormat, data);
 	}
 	
 	/**

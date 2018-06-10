@@ -28,6 +28,7 @@ class ContextMenuCreator {
 	 *  - Delete - It deletes selected item and its children. It ask for confirmation first.
 	 *  - Copy   - It copies selected item to user ClipBoard
 	 *  - Paste  - It pastes item from clipboard to selected experiment directory
+	 *  - Cut    - It cuts selected item to user ClipBoard
 	 * @param treeView on with actions will be performed
 	 * @see ContextMenuActions
 	 */
@@ -38,6 +39,7 @@ class ContextMenuCreator {
 		menu.getItems().add(createDeleteAction());
 		menu.getItems().add(createCopyAction());
 		menu.getItems().add(createPasteAction());
+		menu.getItems().add(createCutAction());
 		
 		treeView.setContextMenu(menu);
 	}
@@ -62,6 +64,14 @@ class ContextMenuCreator {
 		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_PASTE));
 		item.setOnAction(event ->
 				actions.pasteItemAction()
+		);
+		return item;
+	}
+	
+	private MenuItem createCutAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_CUT));
+		item.setOnAction(event ->
+				actions.cutItemAction()
 		);
 		return item;
 	}
