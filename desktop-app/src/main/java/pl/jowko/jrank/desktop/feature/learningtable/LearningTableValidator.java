@@ -41,6 +41,7 @@ public class LearningTableValidator extends Validator {
 	private void validateTable() {
 		validateDecisionAttributes();
 		validateAttributeUniqueness();
+		validateConditionAttributes();
 		
 		UnknownFieldValidator validator = new UnknownFieldValidator(table);
 		if(not(validator.isValid())) {
@@ -94,6 +95,17 @@ public class LearningTableValidator extends Validator {
 						.append("] ")
 		);
 		errorMsg.append('\n');
+	}
+	
+	private void validateConditionAttributes() {
+		for(Attribute attribute : table.getAttributes()) {
+			// checks if table contains active condition attributes with gain or cost criterion
+			if(attribute.getKind() == Attribute.NONE && attribute.getActive() && attribute.getPreferenceType() != Attribute.NONE) {
+				return;
+			}
+		}
+		
+		appendError(Labels.LEARN_TABLE_NO_CONDITION_FIELDS);
 	}
 	
 }

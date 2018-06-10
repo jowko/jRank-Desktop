@@ -454,7 +454,8 @@ class StubSettings {
 		
 		language.put(Labels.LEARN_TABLE_DECISION_VALIDATION, "Table can only have one active decision attribute. Current decision attributes: ");
 		language.put(Labels.LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE, "Attribute names should be unique. Non unique attribute names:");
-		language.put(Labels.LEARN_TABLE_UNKNOWN_FIELDS, "Table contains unknown fields. Unknown fields are only appropriate for decision atrributes.");
+		language.put(Labels.LEARN_TABLE_UNKNOWN_FIELDS, "Table contains unknown fields. Unknown fields are only appropriate for decision attributes.");
+		language.put(Labels.LEARN_TABLE_NO_CONDITION_FIELDS, "Table should have at least one active condition attribute with gain or cost criterion.");
 		
 		language.put(Labels.LEARN_TABLE_ADD_EXAMPLE, "Add example");
 		language.put(Labels.LEARN_TABLE_ADD_EXAMPLE_FAIL, "No attributes in table. Add attributes first.");

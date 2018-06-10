@@ -19,6 +19,7 @@ class LearningTableValidatorTest {
 	void decisionAttributeShouldBeValid() {
 		List<Attribute> attributes = new ArrayList<>();
 		attributes.add(createDecisionAttribute("decision1", true));
+		attributes.add(createAttribute("test"));
 		LearningTable table = createLearningTable(attributes);
 		
 		LearningTableValidator validator = new LearningTableValidator(table);
@@ -31,6 +32,7 @@ class LearningTableValidatorTest {
 		List<Attribute> attributes = new ArrayList<>();
 		attributes.add(createDecisionAttribute("decision1", true));
 		attributes.add(createDecisionAttribute("decision2", false));
+		attributes.add(createAttribute("test"));
 		LearningTable table = createLearningTable(attributes);
 		
 		LearningTableValidator validator = new LearningTableValidator(table);
@@ -43,6 +45,7 @@ class LearningTableValidatorTest {
 		List<Attribute> attributes = new ArrayList<>();
 		attributes.add(createDecisionAttribute("decision1", true));
 		attributes.add(createDecisionAttribute("decision2", true));
+		attributes.add(createAttribute("test"));
 		LearningTable table = createLearningTable(attributes);
 		
 		LearningTableValidator validator = new LearningTableValidator(table);
@@ -66,6 +69,24 @@ class LearningTableValidatorTest {
 		assertFalse(validator.isValid());
 		assertTrue(validator.getErrorMessages().contains("name"));
 		assertTrue(validator.getErrorMessages().contains("name2"));
+	}
+	
+	@Test
+	void shouldDetectLackOfConditionAttribute() {
+		List<Attribute> attributes = new ArrayList<>();
+		
+		Attribute attribute = createAttribute("test");
+		attribute.setKind(Attribute.DESCRIPTION);
+		attributes.add(attribute);
+		
+		Attribute attribute2 = createAttribute("test2");
+		attribute2.setPreferenceType(Attribute.NONE);
+		attributes.add(attribute2);
+		
+		LearningTable table = createLearningTable(attributes);
+		
+		LearningTableValidator validator = new LearningTableValidator(table);
+		assertFalse(validator.isValid());
 	}
 	
 }

@@ -106,7 +106,10 @@ public class LearningTableDataProvider {
 	 * @return
 	 */
 	static Attribute createAttribute(String name, Field field) {
-		return new Attribute(name, field);
+		Attribute attribute = new Attribute(name, field);
+		attribute.setKind(Attribute.NONE);
+		attribute.setPreferenceType(Attribute.GAIN);
+		return attribute;
 	}
 	
 	/**
