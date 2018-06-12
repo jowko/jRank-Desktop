@@ -6,7 +6,7 @@
 
     <groupId>pl.jowko.jrank</groupId>
     <artifactId>fxgraph</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     
     <properties>
         <java.version>10</java.version>

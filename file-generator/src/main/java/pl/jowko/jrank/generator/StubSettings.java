@@ -81,7 +81,7 @@ class StubSettings {
 	 */
 	private void createStubAppInfo() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		appInfo = new JRankInfo("0.4-SNAPSHOT", format.format(new Date()));
+		appInfo = new JRankInfo("1.0-SNAPSHOT", format.format(new Date()));
 	}
 	
 	/**
