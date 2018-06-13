@@ -3,6 +3,7 @@ package pl.jowko.jrank.desktop.feature.pct;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
 import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.jrank.desktop.feature.learningtable.LearningTableHelper;
@@ -109,11 +110,39 @@ class PCTCreator {
 		column.setMinWidth(50d);
 		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
 		column.setGraphic(tableHelper.getColumnLabel(attribute));
-		column.setCellValueFactory(param ->
-				new ReadOnlyObjectWrapper<>(param.getValue().get(columnIndex))
-		);
+		
+		setCellValueFactory(attribute, columnIndex, column);
 		
 		return column;
+	}
+	
+	/**
+	 * Sets cell value factory for column cell.
+	 * This code is responsible for way in with data is displayed in table.
+	 * It will display S or Sc label for grade column.
+	 * In other cases it will display value from field.
+	 * @param attribute from with column is created
+	 * @param columnIndex with indicates cell position in example
+	 * @param column with is currently created for provided attribute
+	 */
+	private void setCellValueFactory(Attribute attribute, int columnIndex, IndexedTableColumn<ObservableList<Field>, Field> column) {
+		if(attribute.getInitialValue() instanceof FloatField && "Comprehensive_preference_grade".equalsIgnoreCase(attribute.getName())) {
+			column.setCellValueFactory(param -> {
+				FloatField field = (FloatField) param.getValue().get(columnIndex);
+				String value;
+				if(field.get() >= 0.0) {
+					value = labels.get(Labels.PCT_S);
+				} else {
+					value = labels.get(Labels.PCT_SC);
+				}
+				
+				return new ReadOnlyObjectWrapper<>(new StringField(value));
+			});
+		} else {
+			column.setCellValueFactory(param ->
+					new ReadOnlyObjectWrapper<>(param.getValue().get(columnIndex))
+			);
+		}
 	}
 	
 	/**

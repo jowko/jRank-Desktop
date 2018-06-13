@@ -372,6 +372,8 @@ public class Labels {
 	// PCT isf table
 	public static final String PCT_ID = "PCT_ID";
 	public static final String PCT_COPY_ROWS = "PCT_COPY_ROWS";
+	public static final String PCT_S = "PCT_S";
+	public static final String PCT_SC = "PCT_SC";
 	
 	// Rules
 	public static final String RULES_NO_DATA = "RULES_NO_DATA";

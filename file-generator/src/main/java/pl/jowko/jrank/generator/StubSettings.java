@@ -484,6 +484,8 @@ class StubSettings {
 	private void createEnglishPCTLabels(Map<String,String> language) {
 		language.put(Labels.PCT_ID, "ID");
 		language.put(Labels.PCT_COPY_ROWS, "Copy selected rows");
+		language.put(Labels.PCT_S, "S");
+		language.put(Labels.PCT_SC, "Sc");
 	}
 	
 	private void createEnglishRulesLabels(Map<String, String> language) {
