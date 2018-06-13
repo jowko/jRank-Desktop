@@ -79,8 +79,9 @@ class ExperimentRunnerValidator {
 		
 		validateAndChooseLearningInformation();
 		
-		if(isFilesWillBeOverridden())
-			return DialogsService.showConfirmationDialog("", labels.get(Labels.RUN_OVERRIDE_FILES));
+		String fileNames = getOverriddenFileNames();
+		if(fileNames.length() > 0)
+			return DialogsService.showConfirmationDialog("", labels.get(Labels.RUN_OVERRIDE_FILES) + '\n' + fileNames);
 		
 		return true;
 	}
@@ -196,44 +197,53 @@ class ExperimentRunnerValidator {
 		return false;
 	}
 	
-	private boolean isFilesWillBeOverridden() {
-		try {
-			isFileExists(properties.getPctFile(), true, ".isf");
-			isFileExists(properties.getPctApxFile(), true, ".apx");
-			isFileExists(properties.getPctRulesFile(), true, ".rules");
-			isFileExists(properties.getRankingFile(), false, ".ranking");
-			isFileExists(properties.getPreferenceGraphFile(), false, ".graph");
-		} catch (RunnerException e) {
-			return true;
-		}
+	/**
+	 * Gets overridden file names. If any file from properties could be overridden, its name will be returned.
+	 * @return overridden file names
+	 */
+	private String getOverriddenFileNames() {
+		StringBuilder builder = new StringBuilder();
 		
-		return false;
+		builder.append(getFileNameIfExists(properties.getPctFile(), true, ".isf"));
+		builder.append(getFileNameIfExists(properties.getPctApxFile(), true, ".apx"));
+		builder.append(getFileNameIfExists(properties.getPctRulesFile(), true, ".rules"));
+		builder.append(getFileNameIfExists(properties.getRankingFile(), false, ".ranking"));
+		builder.append(getFileNameIfExists(properties.getPreferenceGraphFile(), false, ".graph"));
+		
+		if(builder.length() > 0)
+			return builder.substring(0, builder.length()-2); // skip last space and comma
+		
+		return "";
 	}
 	
 	/**
 	 * Checks if file with provided path exists.
-	 * If file exists, exception will be throw to indicate that files will be overridden.
-	 * @param filePath of file to check
+	 * If file exists, its file name will be returned.
+	 * @param fileName of file to check
 	 * @param isPctFile indicates if this file is one of pct files
 	 * @param extension to indicate file extension
 	 */
-	private void isFileExists(String filePath, boolean isPctFile, String extension) {
-		if(isNotNullOrEmpty(filePath)) {
-			filePath = getAbsolutePath(Paths.get(filePath));
+	private String getFileNameIfExists(String fileName, boolean isPctFile, String extension) {
+		String filePath;
+		if(isNotNullOrEmpty(fileName)) {
+			filePath = getAbsolutePath(Paths.get(fileName));
 		} else {
 			Path path = Paths.get(properties.getLearningDataFile()).getFileName();
-			String fileName = getFileName(path.toString());
+			filePath = getFileName(path.toString());
 			
 			if(isPctFile)
-				fileName += "_partialPCT" + extension;
+				filePath += "_partialPCT" + extension;
 			else
-				fileName += extension;
+				filePath += extension;
 			
-			filePath = experimentPath + fileName;
+			filePath = experimentPath + filePath;
 		}
 		
-		if(Files.exists(Paths.get(filePath)))
-			throw new RunnerException();
+		Path path = Paths.get(filePath);
+		if(Files.exists(path))
+			return " [" + path.getFileName() + "], ";
+		else
+			return "";
 	}
 	
 	private String getAbsolutePath(Path path) {

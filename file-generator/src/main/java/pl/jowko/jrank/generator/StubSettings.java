@@ -409,7 +409,7 @@ class StubSettings {
 		language.put(Labels.RUN_SOURCE_DECISION_ATTRIBUTE, "Decision Attribute");
 		language.put(Labels.RUN_LEARNING_FILE, "Learning data file");
 		language.put(Labels.RUN_TEST_FILE, "Test data file");
-		language.put(Labels.RUN_OVERRIDE_FILES, "After experiment execution, files from previous experiment will be overridden. Do you want to override this files? (You can change file names for the experiment in properties form)");
+		language.put(Labels.RUN_OVERRIDE_FILES, "After experiment execution, files from previous experiment will be overridden. Do you want to override this files? (You can change file names for the experiment in properties form). Overridden file names:");
 		language.put(Labels.RUN_FILE_IS_EMPTY, " is empty or is not found");
 		language.put(Labels.RUN_ISF_ERRORS, "Isf table contains errors: ");
 		language.put(Labels.RUN_TEXT_PARSE_ERROR, "Error when parsing text from properties field: ");
