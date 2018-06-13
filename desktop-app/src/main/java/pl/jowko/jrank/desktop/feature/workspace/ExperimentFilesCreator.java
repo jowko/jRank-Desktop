@@ -69,7 +69,7 @@ public class ExperimentFilesCreator {
 		Attribute[] attributes = new Attribute[1];
 		IntegerField field = new IntegerField();
 		field.setUnknown();
-		attributes[0] = new Attribute("Example", field);
+		attributes[0] = new Attribute("Attribute_1", field);
 		
 		container.setAttributes(attributes);
 		container.addExample();

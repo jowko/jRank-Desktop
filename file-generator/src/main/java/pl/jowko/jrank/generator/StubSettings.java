@@ -142,24 +142,24 @@ class StubSettings {
 	private void createEnglishToolbarLabels(Map<String, String> language) {
 		language.put(Labels.TOOL_REFRESH_BUTTON, "Refresh workspace");
 		language.put(Labels.TOOL_CREATE_BUTTON, "Create new experiment");
-		language.put(Labels.TOOL_CREATE_DIALOG_TITLE, "Create new experiment");
+		language.put(Labels.TOOL_CREATE_DIALOG_TITLE, "Choose or create directory for new experiment");
 		language.put(Labels.TOOL_CREATE_OVERRIDE_CONFIRM, "This folder is already in use. Do you want to override files?");
 	}
 	
 	private void createEnglishWorkspaceLabels(Map<String, String> language) {
-		language.put(Labels.WORK_MENU_DELETE, "Delete item");
+		language.put(Labels.WORK_MENU_DELETE, "Delete file");
 		language.put(Labels.WORK_MENU_DEL_CONFIRM_DIR, "Are you sure to remove directory: [" + MSG + "] with all its content?");
 		language.put(Labels.WORK_MENU_DEL_CONFIRM_FILE, "Are you sure to remove file: [" + MSG + "]?");
-		language.put(Labels.WORK_MENU_COPY, "Copy item");
-		language.put(Labels.WORK_MENU_PASTE, "Paste item");
-		language.put(Labels.WORK_MENU_CUT, "Cut item");
-		language.put(Labels.WORK_MENU_ADD_PROPERTIES, "Add properties item");
+		language.put(Labels.WORK_MENU_COPY, "Copy file");
+		language.put(Labels.WORK_MENU_PASTE, "Paste file");
+		language.put(Labels.WORK_MENU_CUT, "Cut file");
+		language.put(Labels.WORK_MENU_ADD_PROPERTIES, "Add properties file");
 		language.put(Labels.WORK_MENU_ADD_PROPERTIES_PROMPT, "Enter file name for properties file: ");
-		language.put(Labels.WORK_MENU_ADD_ISF, "Add isf item");
+		language.put(Labels.WORK_MENU_ADD_ISF, "Add isf file");
 		language.put(Labels.WORK_MENU_ADD_ISF_PROMPT, "Enter file name for isf file: ");
 		language.put(Labels.WORK_MENU_TEXT_DIALOG_TITLE, "New file name");
 		language.put(Labels.WORK_MENU_TEXT_DIALOG_TEXT, "File name: ");
-		language.put(Labels.WORK_MENU_RENAME, "Rename item");
+		language.put(Labels.WORK_MENU_RENAME, "Rename file");
 		language.put(Labels.WORK_MENU_RENAME_PROMPT, "Enter new file name: ");
 	}
 	
@@ -409,7 +409,7 @@ class StubSettings {
 		language.put(Labels.RUN_SOURCE_DECISION_ATTRIBUTE, "Decision Attribute");
 		language.put(Labels.RUN_LEARNING_FILE, "Learning data file");
 		language.put(Labels.RUN_TEST_FILE, "Test data file");
-		language.put(Labels.RUN_OVERRIDE_FILES, "After experiment execution, files from previous experiment will be overridden. Do you want to override this files?(You can change files names for new experiment in properties form)");
+		language.put(Labels.RUN_OVERRIDE_FILES, "After experiment execution, files from previous experiment will be overridden. Do you want to override this files? (You can change file names for the experiment in properties form)");
 		language.put(Labels.RUN_FILE_IS_EMPTY, " is empty or is not found");
 		language.put(Labels.RUN_ISF_ERRORS, "Isf table contains errors: ");
 		language.put(Labels.RUN_TEXT_PARSE_ERROR, "Error when parsing text from properties field: ");
