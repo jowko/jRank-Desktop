@@ -25,7 +25,7 @@ public class Graph {
 	 */
 	CellLayer cellLayer;
 	
-	public Graph() {
+	public Graph(MouseClickAction mouseClickAction) {
 		
 		this.model = new Model();
 		
@@ -34,7 +34,7 @@ public class Graph {
 		
 		canvas.getChildren().add(cellLayer);
 		
-		mouseGestures = new MouseGestures(this);
+		mouseGestures = new MouseGestures(this, mouseClickAction);
 		
 		scrollPane = new ZoomableScrollPane(canvas);
 		
@@ -71,6 +71,7 @@ public class Graph {
 		// enable dragging of cells
 		for (Cell cell : model.getAddedCells()) {
 			mouseGestures.makeDraggable(cell);
+			mouseGestures.makeClickable(cell);
 		}
 		
 		// every cell must have a parent, if it doesn't, then the graphParent is

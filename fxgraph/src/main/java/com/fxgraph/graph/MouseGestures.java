@@ -10,21 +10,30 @@ import javafx.scene.input.MouseEvent;
  */
 public class MouseGestures {
 	
-	final DragContext dragContext = new DragContext();
+	private final DragContext dragContext = new DragContext();
 	
-	Graph graph;
+	private Graph graph;
 	
-	public MouseGestures( Graph graph) {
+	private MouseClickAction mouseClickAction;
+	
+	public MouseGestures(Graph graph, MouseClickAction mouseClickAction) {
 		this.graph = graph;
+		this.mouseClickAction = mouseClickAction;
 	}
 	
-	public void makeDraggable( final Node node) {
+	public void makeDraggable(final Node node) {
 		
 		
 		node.setOnMousePressed(onMousePressedEventHandler);
 		node.setOnMouseDragged(onMouseDraggedEventHandler);
 		node.setOnMouseReleased(onMouseReleasedEventHandler);
 		
+	}
+	
+	public void makeClickable(Cell cell) {
+		cell.setOnMouseClicked(event ->
+				mouseClickAction.performAction(cell)
+		);
 	}
 	
 	EventHandler<MouseEvent> onMousePressedEventHandler = new EventHandler<>() {

@@ -42,7 +42,8 @@ class GraphReader {
 	 */
 	GraphReader(String content, WorkspaceItem workspaceItem) {
 		this.content = content;
-		graph = new Graph();
+		GraphSelectAction selectAction = new GraphSelectAction();
+		graph = new Graph(selectAction);
 		splitPattern = Pattern.compile(" ");
 		quotesPattern = Pattern.compile("\"(.*?)\"");
 		loadMemoryContainer(workspaceItem);

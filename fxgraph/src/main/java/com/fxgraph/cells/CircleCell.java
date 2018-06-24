@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
  */
 public class CircleCell extends Cell {
 	
+	private Circle circle;
 	
 	public CircleCell(String cellId) {
 		this(cellId, null, Color.RED);
@@ -19,7 +20,7 @@ public class CircleCell extends Cell {
 	public CircleCell(String cellId, String label, Color color) {
 		super(cellId);
 		
-		Circle circle = new Circle(25, 25, 25);
+		circle = new Circle(25, 25, 25);
 		circle.setStroke(color);
 		circle.setFill(color);
 		
@@ -27,6 +28,10 @@ public class CircleCell extends Cell {
 		text.setFont(Font.font("Verdana", 20));
 		
 		getChildren().addAll(circle, text);
+	}
+	
+	public Circle getCircle() {
+		return circle;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.fxgraph;
 
+import com.fxgraph.graph.MouseClickAction;
 import com.fxgraph.layout.Layout;
 import com.fxgraph.layout.RandomLayout;
 import javafx.application.Application;
@@ -19,13 +20,14 @@ import com.fxgraph.graph.Model;
  */
 public class Main extends Application {
 	
-	Graph graph = new Graph();
+	private Graph graph;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		BorderPane root = new BorderPane();
 		
-		graph = new Graph();
+		MouseClickAction action = cell -> {};
+		graph = new Graph(action);
 		
 		root.setCenter(graph.getScrollPane());
 		
