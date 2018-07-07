@@ -6,6 +6,8 @@ import com.fxgraph.layout.Layout;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
+import pl.jowko.jrank.desktop.feature.tabs.lower.LowerTabsController;
+import pl.jowko.jrank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.jrank.desktop.feature.workspace.WorkspaceItem;
 
 /**
@@ -18,7 +20,6 @@ public class GraphController {
 	@FXML
 	private BorderPane borderPane;
 	
-	private Graph graph;
 	private JRankTab graphTab;
 	
 	/**
@@ -30,13 +31,27 @@ public class GraphController {
 	 */
 	public void initializeGraph(String graphFileContent, WorkspaceItem workspaceItem, JRankTab graphTab) {
 		this.graphTab = graphTab;
+		GraphSelectAction selectAction = new GraphSelectAction(this);
 		
-		graph = new GraphReader(graphFileContent, workspaceItem).getGraph();
+		Graph graph = new GraphReader(graphFileContent, workspaceItem, selectAction).getGraph();
 		
 		borderPane.setCenter(graph.getScrollPane());
 		
 		Layout layout = new CircularLayout(graph);
 		layout.execute();
+	}
+	
+	/**
+	 * Initializes close event for graph tab.
+	 * If graph tab is closed, arcs tab is also automatically closed.
+	 * Force close is called for graphTab, because firing onClosed event will cancel close of graphTab.
+	 * @see UpperTabsController
+	 */
+	void initializeCloseEventForGraphTab(JRankTab arcsTab) {
+		graphTab.setOnClosed(event -> {
+			LowerTabsController.getInstance().closeTab(arcsTab);
+			UpperTabsController.getInstance().forceCloseTab(graphTab);
+		});
 	}
 	
 }

@@ -56,7 +56,16 @@ public class LowerTabsController {
 	 * When tab will be selected, it will be focused.
 	 */
 	public void focusOnLogTab() {
-		lowerTabs.getSelectionModel().select(logsTab);
+		focusOnTab(logsTab);
+	}
+	
+	/**
+	 * This method selects provided tab.
+	 * Focus will be set on provided tab in lower tabs.
+	 * @param tab on with focus will be set
+	 */
+	public void focusOnTab(Tab tab) {
+		lowerTabs.getSelectionModel().select(tab);
 	}
 	
 	/**

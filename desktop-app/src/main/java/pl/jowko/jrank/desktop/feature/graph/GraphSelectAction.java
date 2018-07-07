@@ -5,7 +5,12 @@ import com.fxgraph.graph.Cell;
 import com.fxgraph.graph.MouseClickAction;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import pl.jowko.jrank.desktop.feature.tabs.lower.LowerTabsController;
+import pl.jowko.jrank.logger.JRankLogger;
 
+import java.io.IOException;
+
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
 
@@ -13,17 +18,30 @@ import static pl.jowko.jrank.desktop.utils.BooleanUtils.not;
  * Created by Piotr on 2018-06-24
  * This class perform select action on graph node when node is clicked.
  */
-public class GraphSelectAction implements MouseClickAction {
+class GraphSelectAction implements MouseClickAction {
 	
 	private CircleCell lastSelected;
+	private ArcsTab arcsTab;
+	private GraphController graphController;
 	
+	GraphSelectAction(GraphController graphController) {
+		this.graphController = graphController;
+	}
+	
+	/**
+	 * Performs select action on graph node.
+	 * It will add select circle to selected node and remove selection from previous node.
+	 * Also it will initialize/update arcs tab with displays additional information related with node.
+	 * @param node with is clicked
+	 */
 	@Override
-	public void performAction(Cell cell) {
-		if(not(cell instanceof CircleCell))
+	public void performAction(Cell node) {
+		if(not(node instanceof CircleCell))
 			return;
 		
 		removeSelectionFromPreviousNode();
-		selectNode(cell);
+		selectNode(node);
+		showArcsTab(node);
 	}
 	
 	private void removeSelectionFromPreviousNode() {
@@ -33,9 +51,31 @@ public class GraphSelectAction implements MouseClickAction {
 		}
 	}
 	
-	private void selectNode(Cell cell) {
-		lastSelected = (CircleCell) cell;
+	private void selectNode(Cell node) {
+		lastSelected = (CircleCell) node;
 		lastSelected.getCircle().setStroke(Color.BLUE);
+	}
+	
+	/**
+	 * Show arcs tab and fill it with information from graph node.
+	 * It will create tab if it not exists and initialize all needed events.
+	 * If tab already exists, it will update tab with new data.
+	 * @param node with will be used in arcs tab
+	 */
+	private void showArcsTab(Cell node) {
+		if(isNull(arcsTab)) {
+			try {
+				arcsTab = new ArcsTab(node);
+				LowerTabsController.getInstance().addTab(arcsTab);
+				arcsTab.setOnCloseRequest(event -> arcsTab = null);
+				graphController.initializeCloseEventForGraphTab(arcsTab);
+			} catch (IOException e) {
+				JRankLogger.error("Error when opening rule statistics: " + e);
+			}
+		} else { // tab already exists
+			arcsTab.getController().initializeArcs(node);
+		}
+		LowerTabsController.getInstance().focusOnTab(arcsTab);
 	}
 	
 }
