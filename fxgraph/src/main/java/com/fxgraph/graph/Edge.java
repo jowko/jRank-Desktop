@@ -13,7 +13,7 @@ public class Edge extends Group {
 	protected Cell source;
 	protected Cell target;
 	
-	Line line;
+	protected Line line;
 	
 	public Edge(Cell source, Cell target) {
 		this(source, target, Color.GRAY);
@@ -46,6 +46,10 @@ public class Edge extends Group {
 	
 	public Cell getTarget() {
 		return target;
+	}
+	
+	public Line getLine() {
+		return line;
 	}
 	
 }

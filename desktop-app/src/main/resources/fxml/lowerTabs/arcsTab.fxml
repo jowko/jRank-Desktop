@@ -33,12 +33,12 @@
                   <Label fx:id="outArcsLabel" text="Outgoing arcs:" />
                   <Label fx:id="outSLabel" text="Outgoing relation S:" GridPane.rowIndex="1" />
                   <Label fx:id="outS" GridPane.rowIndex="2" />
-                  <Label fx:id="outScLabel" text="Non outgoing relation Sc:" GridPane.rowIndex="3" />
+                  <Label fx:id="outScLabel" text="Outgoing relation Sc:" GridPane.rowIndex="3" />
                   <Label fx:id="outSc" GridPane.rowIndex="4" />
                   <Label fx:id="inArcsLabel" text="Ingoing arcs:" GridPane.rowIndex="6" />
                   <Label fx:id="inSLabel" text="Ingoing relation S:" GridPane.rowIndex="7" />
                   <Label fx:id="inS" GridPane.rowIndex="8" />
-                  <Label fx:id="inScLabel" text="Non ingoing relation Sc:" GridPane.rowIndex="9" />
+                  <Label fx:id="inScLabel" text="Ingoing relation Sc:" GridPane.rowIndex="9" />
                   <Label fx:id="inSc" GridPane.rowIndex="10" />
                </children>
             </GridPane>

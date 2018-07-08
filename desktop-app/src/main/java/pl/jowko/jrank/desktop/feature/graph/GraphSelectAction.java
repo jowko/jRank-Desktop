@@ -63,9 +63,11 @@ class GraphSelectAction implements MouseClickAction {
 	 * @param node with will be used in arcs tab
 	 */
 	private void showArcsTab(Cell node) {
+		NodeArcs arcs = new NodeArcsAssembler(node, graphController.getGraph()).assemble();
+		
 		if(isNull(arcsTab)) {
 			try {
-				arcsTab = new ArcsTab(node);
+				arcsTab = new ArcsTab(arcs);
 				LowerTabsController.getInstance().addTab(arcsTab);
 				arcsTab.setOnCloseRequest(event -> arcsTab = null);
 				graphController.initializeCloseEventForGraphTab(arcsTab);
@@ -73,7 +75,7 @@ class GraphSelectAction implements MouseClickAction {
 				JRankLogger.error("Error when opening rule statistics: " + e);
 			}
 		} else { // tab already exists
-			arcsTab.getController().initializeArcs(node);
+			arcsTab.getController().initializeArcs(arcs);
 		}
 		LowerTabsController.getInstance().focusOnTab(arcsTab);
 	}

@@ -1,6 +1,5 @@
 package pl.jowko.jrank.desktop.feature.graph;
 
-import com.fxgraph.graph.Cell;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 
 import java.io.IOException;
@@ -18,13 +17,13 @@ class ArcsTab extends JRankTab {
 	 * Creates arcs tab with text representing node id.
 	 * It also initializes controller for arcs tab.
 	 *
-	 * @param node with represents graph node
+	 * @param arcs with contains arcs for selected graph node
 	 * @throws IOException when something goes wrong with loading fxml file
 	 */
-	ArcsTab(Cell node) throws IOException {
-		super(node.getCellId());
+	ArcsTab(NodeArcs arcs) throws IOException {
+		super(arcs.getNodeId());
 		controller = initializeTabAndGetController(null);
-		controller.initializeArcs(node, this);
+		controller.initializeArcs(arcs, this);
 	}
 	
 	@Override

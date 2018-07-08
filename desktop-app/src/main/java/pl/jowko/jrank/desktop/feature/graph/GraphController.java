@@ -21,6 +21,7 @@ public class GraphController {
 	private BorderPane borderPane;
 	
 	private JRankTab graphTab;
+	private Graph graph;
 	
 	/**
 	 * Initialize graph tab.
@@ -33,12 +34,16 @@ public class GraphController {
 		this.graphTab = graphTab;
 		GraphSelectAction selectAction = new GraphSelectAction(this);
 		
-		Graph graph = new GraphReader(graphFileContent, workspaceItem, selectAction).getGraph();
+		graph = new GraphReader(graphFileContent, workspaceItem, selectAction).getGraph();
 		
 		borderPane.setCenter(graph.getScrollPane());
 		
 		Layout layout = new CircularLayout(graph);
 		layout.execute();
+	}
+	
+	Graph getGraph() {
+		return graph;
 	}
 	
 	/**
