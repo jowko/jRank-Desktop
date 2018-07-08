@@ -2,6 +2,8 @@ package pl.jowko.jrank.desktop.feature.graph;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.jrank.desktop.feature.tabs.JRankTab;
 
 /**
@@ -25,10 +27,13 @@ public class ArcsController {
 	private JRankTab arcsTab;
 	private NodeArcs arcs;
 	
+	private LanguageService labels;
+	
 	void initializeArcs(NodeArcs arcs, JRankTab arcsTab) {
 		this.arcsTab = arcsTab;
 		this.arcs = arcs;
 		
+		labels = LanguageService.getInstance();
 		translateLabels();
 		initialize();
 	}
@@ -39,7 +44,7 @@ public class ArcsController {
 	}
 	
 	private void initialize() {
-		arcsTab.setText("Node " + arcs.getNodeId());
+		arcsTab.setText(labels.get(Labels.ARCS_TAB_TITLE) + arcs.getNodeId());
 		outS.setText(arcs.getOutS());
 		outSc.setText(arcs.getOutSc());
 		inS.setText(arcs.getInS());
@@ -47,7 +52,12 @@ public class ArcsController {
 	}
 	
 	private void translateLabels() {
-	
+		outArcsLabel.setText(labels.get(Labels.ARCS_OUTGOING));
+		outSLabel.setText(labels.get(Labels.ARCS_OUTGOING_S));
+		outScLabel.setText(labels.get(Labels.ARCS_OUTGOING_SC));
+		inArcsLabel.setText(labels.get(Labels.ARCS_INGOING));
+		inSLabel.setText(labels.get(Labels.ARCS_INGOING_S));
+		inScLabel.setText(labels.get(Labels.ARCS_INGOING_SC));
 	}
 	
 }

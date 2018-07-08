@@ -125,6 +125,7 @@ class StubSettings {
 		createEnglishRulesStatisticsLabels(language);
 		createEnglishRankingLabels(language);
 		createEnglishTextTabLabels(language);
+		createEnglishGraphTabLabels(language);
 		
 		return language;
 	}
@@ -541,6 +542,17 @@ class StubSettings {
 	private void createEnglishTextTabLabels(Map<String,String> language) {
 		language.put(Labels.TXT_TAB_SAVE_BUTTON, "Save");
 		language.put(Labels.TXT_TAB_CANCEL_BUTTON, "Cancel");
+	}
+	
+	private void createEnglishGraphTabLabels(Map<String, String> language) {
+		language.put(Labels.ARCS_OUTGOING, "Outgoing arcs:");
+		language.put(Labels.ARCS_OUTGOING_S, "Outgoing relation S:");
+		language.put(Labels.ARCS_OUTGOING_SC, "Outgoing relation Sc:");
+		language.put(Labels.ARCS_INGOING, "Ingoing arcs:");
+		language.put(Labels.ARCS_INGOING_S, "Ingoing relation S:");
+		language.put(Labels.ARCS_INGOING_SC, "Ingoing relation Sc:");
+		language.put(Labels.ARCS_NONE, "None");
+		language.put(Labels.ARCS_TAB_TITLE, "Node ");
 	}
 	
 	/**

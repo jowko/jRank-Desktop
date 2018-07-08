@@ -4,6 +4,8 @@ import com.fxgraph.graph.Cell;
 import com.fxgraph.graph.Edge;
 import com.fxgraph.graph.Graph;
 import javafx.scene.paint.Color;
+import pl.jowko.jrank.desktop.feature.internationalization.Labels;
+import pl.jowko.jrank.desktop.feature.internationalization.LanguageService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +20,7 @@ class NodeArcsAssembler {
 	
 	private Cell node;
 	private Graph graph;
+	private LanguageService labels;
 	
 	private static Color S_RELATION_COLOR = Color.GREEN;
 	private static Color SC_RELATION_COLOR = Color.RED;
@@ -30,6 +33,7 @@ class NodeArcsAssembler {
 	NodeArcsAssembler(Cell node, Graph graph) {
 		this.node = node;
 		this.graph = graph;
+		labels = LanguageService.getInstance();
 	}
 	
 	/**
@@ -79,7 +83,7 @@ class NodeArcsAssembler {
 		if(builder.length() > 1)
 			return builder.substring(0, builder.length() - 2);
 		
-		return builder.toString();
+		return labels.get(Labels.ARCS_NONE);
 	}
 	
 }
