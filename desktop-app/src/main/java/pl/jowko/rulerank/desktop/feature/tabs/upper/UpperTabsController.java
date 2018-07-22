@@ -170,7 +170,7 @@ public class UpperTabsController {
 				throw new WrongFileTypeException("Cannot open root node as file.");
 			case DIRECTORY:
 				throw new WrongFileTypeException("Cannot open experiment directory: [" + workspaceItem.getFileName() + "] as file");
-			case JRANK_SETTINGS:
+			case PROPERTIES:
 				return new PropertiesTab(workspaceItem, tabText);
 			case ISF_TABLE:
 				return handleIsfTable(workspaceItem, tabText);

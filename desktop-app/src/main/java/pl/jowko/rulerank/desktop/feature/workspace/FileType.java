@@ -9,7 +9,7 @@ package pl.jowko.rulerank.desktop.feature.workspace;
  * APPROXIMATION - .apx files
  * DIRECTORY - catalog
  * GRAPH - graph file - .graph files
- * JRANK_SETTINGS - properties file with settings for ruleRank experiment - .properties files
+ * PROPERTIES - properties file with settings for ruleRank experiment - .properties files
  * RANKING - file containing ranking of examples - .ranking files
  * ROOT - main catalog in with all experiments are located. See workspacePath setting in UserSettings
  * RULES - file containing rules induced in experiment - .rules files
@@ -25,7 +25,7 @@ public enum FileType {
 	APPROXIMATION,
 	DIRECTORY,
 	GRAPH,
-	JRANK_SETTINGS,
+	PROPERTIES,
 	RANKING,
 	ROOT,
 	RULES,

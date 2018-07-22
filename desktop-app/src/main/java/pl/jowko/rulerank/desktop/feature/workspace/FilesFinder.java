@@ -97,7 +97,7 @@ public class FilesFinder {
 	private FileType resolveFileType(Path filePath) {
 		String path = filePath.toString();
 		if(path.endsWith(".properties"))
-			return FileType.JRANK_SETTINGS;
+			return FileType.PROPERTIES;
 		if(path.endsWith(".graph"))
 			return FileType.GRAPH;
 		if(path.endsWith(".ranking"))

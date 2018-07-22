@@ -66,7 +66,7 @@ public class IsfFinder {
 	 * @return properties item containing properties path
 	 */
 	private WorkspaceItem getExperimentProperties(List<WorkspaceItem> items) {
-		List<WorkspaceItem> properties = items.stream().filter(item -> FileType.JRANK_SETTINGS.equals(item.getFileType()))
+		List<WorkspaceItem> properties = items.stream().filter(item -> FileType.PROPERTIES.equals(item.getFileType()))
 				.collect(Collectors.toList());
 		
 		if(properties.size() > 1)
