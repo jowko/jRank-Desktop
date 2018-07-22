@@ -24,7 +24,7 @@ public abstract class AbstractDialogForm {
 		stage = new Stage(StageStyle.DECORATED);
 		stage.setScene(new Scene(root));
 		stage.setTitle(title);
-		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.initModality(Modality.NONE);
 		stage.setResizable(false);
 		stage.initOwner(scene.getWindow());
 		initializeCloseEvent();
