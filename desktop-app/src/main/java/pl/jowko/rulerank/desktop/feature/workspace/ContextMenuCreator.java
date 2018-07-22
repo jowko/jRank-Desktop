@@ -46,6 +46,7 @@ class ContextMenuCreator {
 		menu.getItems().add(createRenameAction());
 		menu.getItems().add(createAddPropertiesAction());
 		menu.getItems().add(createAddIsfFileAction());
+		menu.getItems().add(createAddTxtFileAction());
 		
 		treeView.setContextMenu(menu);
 	}
@@ -94,6 +95,14 @@ class ContextMenuCreator {
 		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_ADD_ISF));
 		item.setOnAction(event ->
 				actions.addIsfFileAction()
+		);
+		return item;
+	}
+	
+	private MenuItem createAddTxtFileAction() {
+		MenuItem item = new MenuItem(labels.get(Labels.WORK_MENU_ADD_TXT));
+		item.setOnAction(event ->
+				actions.addTextFileAction()
 		);
 		return item;
 	}

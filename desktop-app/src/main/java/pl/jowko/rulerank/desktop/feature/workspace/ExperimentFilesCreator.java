@@ -3,12 +3,16 @@ package pl.jowko.rulerank.desktop.feature.workspace;
 import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.PropertiesSaver;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.IntegerField;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
@@ -17,6 +21,8 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
  * This class helps to create new properties and isf files.
  */
 public class ExperimentFilesCreator {
+	
+	private ExperimentFilesCreator() {}
 	
 	/**
 	 * Creates new .properties file.
@@ -40,6 +46,12 @@ public class ExperimentFilesCreator {
 		if(not(filePath.endsWith(".properties")))
 			filePath += ".properties";
 		
+		Path path = Paths.get(filePath);
+		if(Files.exists(path)) {
+			RuleRankLogger.warn("File on path: [" + path + "] already exists. Aborting save properties file action");
+			return;
+		}
+		
 		new PropertiesSaver(new RuleRankProperties()).save(filePath);
 	}
 	
@@ -53,7 +65,32 @@ public class ExperimentFilesCreator {
 		if(fileName.endsWith(".isf"))
 			fileName = fileName.substring(0, fileName.length() - 4);
 		
+		Path path = Paths.get(dirPath + fileName + ".isf");
+		if(Files.exists(path)) {
+			RuleRankLogger.warn("File on path: [" + path + "] already exists. Aborting save isf file action");
+			return;
+		}
+		
 		createMemoryContainer(dirPath, fileName);
+	}
+	
+	/**
+	 * Creates new empty text file with .txt extension
+	 * @param dirPath to save text file
+	 * @param fileName for text file name
+	 * @throws IOException because setAttributes throws it
+	 */
+	static void createTextFileForWorkspace(String dirPath, String fileName) throws IOException {
+		if(!fileName.endsWith(".txt"))
+			fileName += ".txt";
+		
+		Path path = Paths.get(dirPath + fileName);
+		if(Files.exists(path)) {
+			RuleRankLogger.warn("File on path: [" + path + "] already exists. Aborting save text file action");
+			return;
+		}
+		
+		Files.write(path, new byte[0]);
 	}
 	
 	/**

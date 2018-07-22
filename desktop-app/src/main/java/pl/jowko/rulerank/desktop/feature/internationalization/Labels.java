@@ -42,6 +42,8 @@ public class Labels {
 	public static final String WORK_MENU_ADD_PROPERTIES_PROMPT = "WORK_MENU_ADD_PROPERTIES_PROMPT";
 	public static final String WORK_MENU_ADD_ISF = "WORK_MENU_ADD_ISF";
 	public static final String WORK_MENU_ADD_ISF_PROMPT = "WORK_MENU_ADD_ISF_PROMPT";
+	public static final String WORK_MENU_ADD_TXT = "WORK_MENU_ADD_TXT";
+	public static final String WORK_MENU_ADD_TXT_PROMPT = "WORK_MENU_ADD_TXT_PROMPT";
 	public static final String WORK_MENU_TEXT_DIALOG_TITLE = "WORK_MENU_TEXT_DIALOG_TITLE";
 	public static final String WORK_MENU_TEXT_DIALOG_TEXT = "WORK_MENU_TEXT_DIALOG_TEXT";
 	public static final String WORK_MENU_RENAME = "WORK_MENU_RENAME";

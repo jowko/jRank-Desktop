@@ -9,6 +9,7 @@ import pl.jowko.rulerank.desktop.feature.clipboard.ClipBoardManager;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.service.DialogsService;
+import pl.jowko.rulerank.desktop.utils.StringUtils;
 import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 
@@ -135,6 +136,10 @@ class ContextMenuActions {
 			return;
 		
 		String fileName = promptForFileName(labels.get(Labels.WORK_MENU_ADD_PROPERTIES_PROMPT), "");
+		if(StringUtils.isNullOrEmpty(fileName)) {
+			return;
+		}
+		
 		try {
 			ExperimentFilesCreator.createPropertiesFile(selected.getExperimentPath() + fileName);
 		} catch (IOException e) {
@@ -154,11 +159,39 @@ class ContextMenuActions {
 			return;
 		
 		String fileName = promptForFileName(labels.get(Labels.WORK_MENU_ADD_ISF_PROMPT), "");
+		if(StringUtils.isNullOrEmpty(fileName)) {
+			return;
+		}
+		
 		try {
 			ExperimentFilesCreator.createMemoryContainerForWorkspace(selected.getExperimentPath(), fileName);
 		} catch (ContainerFailureException e) {
 			RuleRankLogger.error("Error when creating new isf file: ", e);
 		}
+		refresh();
+	}
+	
+	/**
+	 * Adds .txt file do directory of selected item.
+	 * User will be asked to provide file name.
+	 * If user didn't provided valid file extension, it will be automatically added.
+	 */
+	void addTextFileAction() {
+		var selected = getSelectedValue();
+		if(isNull(selected))
+			return;
+		
+		String fileName = promptForFileName(labels.get(Labels.WORK_MENU_ADD_TXT_PROMPT), "");
+		if(StringUtils.isNullOrEmpty(fileName)) {
+			return;
+		}
+		
+		try {
+			ExperimentFilesCreator.createTextFileForWorkspace(selected.getExperimentPath(), fileName);
+		} catch (IOException e) {
+			RuleRankLogger.error("Error when creating new text file: ", e);
+		}
+		
 		refresh();
 	}
 	
@@ -172,6 +205,9 @@ class ContextMenuActions {
 			return;
 		
 		String newFileName = promptForFileName(labels.get(Labels.WORK_MENU_RENAME_PROMPT), selected.getFileName());
+		if(StringUtils.isNullOrEmpty(newFileName)) {
+			return;
+		}
 		boolean isDirectory = FileType.DIRECTORY.equals(selected.getFileType());
 		
 		String filePath;
