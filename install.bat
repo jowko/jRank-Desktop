@@ -29,5 +29,8 @@ ROBOCOPY data "RuleRank\data"
 echo Copying example experiments
 ROBOCOPY workspace RuleRank\workspace /E
 
+echo Copying readme file
+COPY README.txt RuleRank
+
 echo creating run.bat file
 @echo java -jar RuleRank-1.0-SNAPSHOT.jar -Xms128m > RuleRank\run.bat
