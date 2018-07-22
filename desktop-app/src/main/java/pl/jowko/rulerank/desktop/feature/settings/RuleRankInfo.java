@@ -9,21 +9,21 @@ import java.io.Serializable;
  *
  * @see pl.jowko.rulerank.desktop.controller.AboutController
  */
-public class JRankInfo implements Serializable {
+public class RuleRankInfo implements Serializable {
 	
 	private static final long serialVersionUID = 4766498563514732412L;
 	
 	private String version;
 	private String releaseDate;
 	
-	public JRankInfo() {}
+	public RuleRankInfo() {}
 	
 	/**
 	 * Create object containing data used in about dialog in help menu.
 	 * @param version of application
 	 * @param releaseDate of current version
 	 */
-	public JRankInfo(String version, String releaseDate) {
+	public RuleRankInfo(String version, String releaseDate) {
 		this.version = version;
 		this.releaseDate = releaseDate;
 	}

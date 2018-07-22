@@ -6,7 +6,7 @@ import com.fxgraph.graph.Model;
 import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.workspace.IsfFinder;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -62,9 +62,9 @@ class GraphReader {
 		try {
 			container = new IsfFinder(workspaceItem, true).getMemoryContainer();
 			if(isNull(container))
-				throw new JRankRuntimeException("Isf data file was not found on provided path");
+				throw new RuleRankRuntimeException("Isf data file was not found on provided path");
 		} catch (IOException e) {
-			throw new JRankRuntimeException("Error when reading isf file for graph: " + e.getMessage());
+			throw new RuleRankRuntimeException("Error when reading isf file for graph: " + e.getMessage());
 		}
 	}
 	
@@ -119,7 +119,7 @@ class GraphReader {
 		Matcher matcher = quotesPattern.matcher(text);
 		if(matcher.find())
 			return matcher.group(1);
-		throw new JRankRuntimeException("Graph file doesn't contain label or color values in double quotes");
+		throw new RuleRankRuntimeException("Graph file doesn't contain label or color values in double quotes");
 	}
 	
 	private Color getColor(String value) {

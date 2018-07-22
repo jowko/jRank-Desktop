@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.WORKSPACE_ERROR;
-import static pl.jowko.rulerank.desktop.feature.settings.JRankConst.MSG;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**

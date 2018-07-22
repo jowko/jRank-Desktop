@@ -15,7 +15,7 @@ import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.CardinalFieldWra
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.FloatFieldWrapper;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.IntegerFieldWrapper;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.InvalidValueException;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.EnumDomain;
@@ -131,7 +131,7 @@ public class LearningTableHelper {
 				int previousIndex = domain.getIndex(previousValue);
 				row.set(attributeIndex, new EnumFieldWrapper(domain.getName(previousIndex), domain));
 			} catch (InvalidValueException e) {
-				JRankLogger.warn("Value: " + previousValue + " is not available now for field [" + column.getAttribute().getName() + "]. Setting field as unknown");
+				RuleRankLogger.warn("Value: " + previousValue + " is not available now for field [" + column.getAttribute().getName() + "]. Setting field as unknown");
 				domain.addElement(UNKNOWN_FIELD_FLAG);
 				row.set(attributeIndex, new EnumFieldWrapper(UNKNOWN_FIELD_FLAG, domain));
 			}

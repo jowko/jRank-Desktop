@@ -5,7 +5,7 @@ import com.fxgraph.layout.CircularLayout;
 import com.fxgraph.layout.Layout;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.lower.LowerTabsController;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
@@ -20,7 +20,7 @@ public class GraphController {
 	@FXML
 	private BorderPane borderPane;
 	
-	private JRankTab graphTab;
+	private RuleRankTab graphTab;
 	private Graph graph;
 	
 	/**
@@ -30,7 +30,7 @@ public class GraphController {
 	 * @param workspaceItem representing .graph file
 	 * @param graphTab representing tab for graph
 	 */
-	public void initializeGraph(String graphFileContent, WorkspaceItem workspaceItem, JRankTab graphTab) {
+	public void initializeGraph(String graphFileContent, WorkspaceItem workspaceItem, RuleRankTab graphTab) {
 		this.graphTab = graphTab;
 		GraphSelectAction selectAction = new GraphSelectAction(this);
 		
@@ -52,7 +52,7 @@ public class GraphController {
 	 * Force close is called for graphTab, because firing onClosed event will cancel close of graphTab.
 	 * @see UpperTabsController
 	 */
-	void initializeCloseEventForGraphTab(JRankTab arcsTab) {
+	void initializeCloseEventForGraphTab(RuleRankTab arcsTab) {
 		graphTab.setOnClosed(event -> {
 			LowerTabsController.getInstance().closeTab(arcsTab);
 			UpperTabsController.getInstance().forceCloseTab(graphTab);

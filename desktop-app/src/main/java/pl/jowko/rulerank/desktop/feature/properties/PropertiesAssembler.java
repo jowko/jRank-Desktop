@@ -1,6 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.properties;
 
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.util.List;
 import java.util.Properties;
@@ -13,16 +13,16 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-04-29.
- * Transform Properties object to JRankProperties object.
+ * Transform Properties object to RuleRankProperties object.
  * @see Properties
- * @see JRankProperties
+ * @see RuleRankProperties
  */
 public class PropertiesAssembler {
 	
 	private static Pattern commentsPattern = Pattern.compile("[ \t]*#.*");
 	
 	private Properties properties;
-	private JRankParametersService paramService;
+	private RuleRankParametersService paramService;
 	
 	/**
 	 * Creates instance of this class
@@ -30,18 +30,18 @@ public class PropertiesAssembler {
 	 */
 	public PropertiesAssembler(Properties properties) {
 		this.properties = properties;
-		this.paramService = JRankParametersService.getInstance();
+		this.paramService = RuleRankParametersService.getInstance();
 	}
 	
 	/**
-	 * Convert provided properties to JRankProperties object.
+	 * Convert provided properties to RuleRankProperties object.
 	 * After getting property from properties, they are removed from properties objects.
 	 * If any properties will remain after mapping, this means that some properties are not recognized by application.
 	 * In such case all remaining properties keys will be logged.
-	 * @return JRankProperties containing options from properties file
+	 * @return RuleRankProperties containing options from properties file
 	 */
-	public JRankProperties toJrankProperties() {
-		JRankProperties prop = new JRankProperties();
+	public RuleRankProperties toJrankProperties() {
+		RuleRankProperties prop = new RuleRankProperties();
 		
 		prop.setLearningDataFile(getStringFromProperty(LEARNING_DATA_FILE));
 		prop.setTestDataFile(getStringFromProperty(TEST_DATA_FILE));
@@ -137,27 +137,27 @@ public class PropertiesAssembler {
 	}
 	
 	private void logNumberError(String parameterName, String parameterValue) {
-		JRankLogger.error("Error when reading parameter: [" + parameterName + "]. Value: [" + parameterValue + "] is not a valid number.");
+		RuleRankLogger.error("Error when reading parameter: [" + parameterName + "]. Value: [" + parameterValue + "] is not a valid number.");
 	}
 	
 	/**
-	 * Gets JRankParameter for provided property name.
-	 * After extracting property text value, search is perform in parameters list to extract correct JRankParameter
-	 * @see JRankParameter
-	 * @see JRankParametersService
+	 * Gets RuleRankParameter for provided property name.
+	 * After extracting property text value, search is perform in parameters list to extract correct RuleRankParameter
+	 * @see RuleRankParameter
+	 * @see RuleRankParametersService
 	 * @param parameters list with available options for provided property name
 	 * @param parameterName with will be extracted
 	 * @return JRankProperty for provided value or empty property indicating no option selected
 	 */
-	private JRankParameter getParameter(List<JRankParameter> parameters, String parameterName) {
+	private RuleRankParameter getParameter(List<RuleRankParameter> parameters, String parameterName) {
 		String parameterValue = getStringFromProperty(parameterName);
 		
 		if(isNull(parameterValue))
 			return paramService.getEmptyParameter();
 		
-		JRankParameter parameter = paramService.findByTextValue(parameters, parameterValue);
+		RuleRankParameter parameter = paramService.findByTextValue(parameters, parameterValue);
 		if(isNull(parameter)) {
-			JRankLogger.warn("Value: [" + parameterValue + "] for property: [" + parameterName + "] is not recognized.");
+			RuleRankLogger.warn("Value: [" + parameterValue + "] for property: [" + parameterName + "] is not recognized.");
 		}
 		
 		return parameter;
@@ -177,7 +177,7 @@ public class PropertiesAssembler {
 	 */
 	private void validatePropertiesAndShowWarnings() {
 		if(not(properties.keySet().isEmpty())) {
-			JRankLogger.warn("Some properties were not recognized: " + properties + ". Check spelling of properties names.");
+			RuleRankLogger.warn("Some properties were not recognized: " + properties + ". Check spelling of properties names.");
 		}
 	}
 	

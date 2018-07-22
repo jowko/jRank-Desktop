@@ -5,8 +5,8 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.rulerank.desktop.feature.learningtable.MemoryContainerAssembler;
-import pl.jowko.rulerank.desktop.feature.properties.JRankParameter;
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankParameter;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.information.InformationExtractor;
 import pl.jowko.rulerank.desktop.feature.properties.information.PairOfIndicesWrapper;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
@@ -28,7 +28,7 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
  */
 class RankerParametersAssembler {
 	
-	private JRankProperties properties;
+	private RuleRankProperties properties;
 	private RankerParameters parameters;
 	
 	/**
@@ -37,7 +37,7 @@ class RankerParametersAssembler {
 	 * @param learningTable containing learning data from isf table
 	 * @param testTable containing test data from isf table
 	 */
-	RankerParametersAssembler(JRankProperties properties, LearningTable learningTable, LearningTable testTable) {
+	RankerParametersAssembler(RuleRankProperties properties, LearningTable learningTable, LearningTable testTable) {
 		this.properties = properties;
 		parameters = new RankerParameters();
 		assemble(learningTable, testTable);
@@ -145,7 +145,7 @@ class RankerParametersAssembler {
 		return dataContainer;
 	}
 	
-	private boolean getBooleanValue(JRankParameter parameter) {
+	private boolean getBooleanValue(RuleRankParameter parameter) {
 		return parameter.getTextValue().equalsIgnoreCase("true");
 	}
 	

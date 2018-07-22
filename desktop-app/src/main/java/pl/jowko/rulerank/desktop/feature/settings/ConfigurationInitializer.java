@@ -2,8 +2,8 @@ package pl.jowko.rulerank.desktop.feature.settings;
 
 import pl.jowko.rulerank.desktop.exception.ConfigurationException;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.service.JRankInfoService;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.desktop.service.RuleRankInfoService;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 /**
  * Created by Piotr on 2018-03-17.
@@ -25,7 +25,7 @@ public class ConfigurationInitializer {
 	 * @see ConfigurationException
 	 */
 	public void initialize() {
-		JRankLogger.init("Reading configuration files");
+		RuleRankLogger.init("Reading configuration files");
 		
 		initializeInfoService();
 		initializeLanguages();
@@ -35,7 +35,7 @@ public class ConfigurationInitializer {
 			throw new ConfigurationException("Application not started because of errors");
 		}
 		
-		JRankLogger.init("Configuration files read successfully.");
+		RuleRankLogger.init("Configuration files read successfully.");
 	}
 	
 	/**
@@ -44,10 +44,10 @@ public class ConfigurationInitializer {
 	 */
 	private void initializeInfoService() {
 		try {
-			JRankInfoService.getInstance();
+			RuleRankInfoService.getInstance();
 		} catch (ConfigurationException e) {
 			isError = true;
-			JRankLogger.error("Could not load jRankInfo.json file: " + e.getMessage());
+			RuleRankLogger.error("Could not load jRankInfo.json file: " + e.getMessage());
 		}
 	}
 	
@@ -60,7 +60,7 @@ public class ConfigurationInitializer {
 			LanguageService.getInstance();
 		} catch (ConfigurationException e) {
 			isError = true;
-			JRankLogger.error("Could not load internationalization configuration files: " + e.getMessage());
+			RuleRankLogger.error("Could not load internationalization configuration files: " + e.getMessage());
 		}
 	}
 	
@@ -73,7 +73,7 @@ public class ConfigurationInitializer {
 			UserSettingsService.getInstance();
 		} catch (ConfigurationException e) {
 			isError = true;
-			JRankLogger.error("Could not load userSettings.json file: " + e.getMessage());
+			RuleRankLogger.error("Could not load userSettings.json file: " + e.getMessage());
 		}
 	}
 	

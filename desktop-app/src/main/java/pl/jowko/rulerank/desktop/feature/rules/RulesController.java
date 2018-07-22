@@ -7,13 +7,13 @@ import pl.jowko.rulerank.desktop.feature.clipboard.ClipBoardManager;
 import pl.jowko.rulerank.desktop.feature.clipboard.CsvTableCreator;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.tabs.lower.LowerTabsController;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.DialogsService;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
 
@@ -37,7 +37,7 @@ public class RulesController {
 	
 	private List<Rule> rules;
 	private WorkspaceItem workspaceItem;
-	private JRankTab rulesTab;
+	private RuleRankTab rulesTab;
 	private StatisticsTab statisticsTab;
 	
 	private LanguageService labels;
@@ -49,7 +49,7 @@ public class RulesController {
 	 * @param rulesTab with contains rules table
 	 * @throws TabInitializationException when no rules were provided
 	 */
-	public void initializeRules(RulesContainer rulesContainer, WorkspaceItem workspaceItem, JRankTab rulesTab) throws TabInitializationException {
+	public void initializeRules(RulesContainer rulesContainer, WorkspaceItem workspaceItem, RuleRankTab rulesTab) throws TabInitializationException {
 		this.workspaceItem = workspaceItem;
 		this.rulesTab = rulesTab;
 		this.rules = new RulesExtractor(rulesContainer).extract();
@@ -118,7 +118,7 @@ public class RulesController {
 	private void copySelectedRowsAction() {
 		ObservableList<ObservableList<String>> items = getSelectedItems();
 		if(items.size() == 0) {
-			JRankLogger.warn("No rows selected. No rows were copied.");
+			RuleRankLogger.warn("No rows selected. No rows were copied.");
 			return;
 		}
 		ClipBoardManager.putCsvTable(createTable(rulesTable, items));
@@ -157,7 +157,7 @@ public class RulesController {
 				LowerTabsController.getInstance().addTab(statisticsTab);
 				statisticsTab.setOnCloseRequest(event -> statisticsTab = null);
 			} catch (IOException e) {
-				JRankLogger.error("Error when opening rule statistics: " + e);
+				RuleRankLogger.error("Error when opening rule statistics: " + e);
 			}
 		} else {
 			statisticsTab.getController().showRule(rule);

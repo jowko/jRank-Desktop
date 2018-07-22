@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -34,7 +34,7 @@ public class LogsController {
 		System.setErr(ps);
 		initializeContextMenu();
 		initializeFocusLogTabEvent();
-		JRankLogger.init("Initialized logs tab");
+		RuleRankLogger.init("Initialized logs tab");
 	}
 	
 	/**

@@ -5,7 +5,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
  * Created by Piotr on 2018-04-09.
@@ -45,7 +45,7 @@ public class LowerTabsController {
 	 * This tab will be closable and selected after addition.
 	 * @param tab to add
 	 */
-	public void addTab(JRankTab tab) {
+	public void addTab(RuleRankTab tab) {
 		tab.setClosable(true);
 		lowerTabs.getTabs().add(tab);
 		lowerTabs.getSelectionModel().select(tab);
@@ -72,7 +72,7 @@ public class LowerTabsController {
 	 * Remove provided tab from lower tabs.
 	 * Tab will be closed automatically and removed from lower tabs.
 	 */
-	public void closeTab(JRankTab tab) {
+	public void closeTab(RuleRankTab tab) {
 		lowerTabs.getTabs().remove(tab);
 	}
 	

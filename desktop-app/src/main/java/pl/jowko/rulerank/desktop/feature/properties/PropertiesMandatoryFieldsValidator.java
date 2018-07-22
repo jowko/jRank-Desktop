@@ -12,16 +12,16 @@ import static java.util.Objects.isNull;
  */
 public class PropertiesMandatoryFieldsValidator extends Validator {
 	
-	private JRankProperties properties;
-	private JRankParameter emptyParameter;
+	private RuleRankProperties properties;
+	private RuleRankParameter emptyParameter;
 	
 	/**
 	 * Creates instance of this class and validates properties.
 	 * @param properties to validate
 	 */
-	public PropertiesMandatoryFieldsValidator(JRankProperties properties) {
+	public PropertiesMandatoryFieldsValidator(RuleRankProperties properties) {
 		this.properties = properties;
-		emptyParameter = JRankParametersService.getInstance().getEmptyParameter();
+		emptyParameter = RuleRankParametersService.getInstance().getEmptyParameter();
 		validate();
 	}
 	
@@ -50,7 +50,7 @@ public class PropertiesMandatoryFieldsValidator extends Validator {
 		validateParameter(properties.getOptimizeRuleConsistencyInVCDomLEMWrt(), Labels.PROP_EMPTY_OPTIMIZE_RULES);
 	}
 	
-	private void validateParameter(JRankParameter parameter, String labelCode) {
+	private void validateParameter(RuleRankParameter parameter, String labelCode) {
 		if(isNull(parameter) || emptyParameter.equals(parameter))
 			appendError(labelCode);
 	}

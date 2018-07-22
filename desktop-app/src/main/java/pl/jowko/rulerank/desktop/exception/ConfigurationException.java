@@ -8,7 +8,7 @@ import pl.jowko.rulerank.desktop.feature.settings.ConfigurationInitializer;
  * It indicates, that application configuration(from config files) is not correct.
  * @see ConfigurationInitializer
  */
-public class ConfigurationException extends JRankRuntimeException {
+public class ConfigurationException extends RuleRankRuntimeException {
 	
 	private static final long serialVersionUID = -3345535156921076324L;
 	

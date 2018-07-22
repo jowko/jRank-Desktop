@@ -1,8 +1,8 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.learningtable.LearningTableController;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * Table is fully editable and customizable.
  * @see LearningTableController
  */
-class LearningTableTab extends JRankTab {
+class LearningTableTab extends RuleRankTab {
 	
 	/**
 	 * Creates learning data table tab for .isf files.
@@ -32,7 +32,7 @@ class LearningTableTab extends JRankTab {
 		try {
 			LearningTableController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeTable(container, this, workspaceItem);
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("isf", workspaceItem.getFileName(), e);
 		}
 	}

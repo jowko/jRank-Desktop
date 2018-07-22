@@ -30,45 +30,45 @@ class TestPropertiesProvider {
 	
 	static Integer precision = -1;
 	
-	static JRankProperties getFullProperties() {
-		JRankProperties jRankProperties = new JRankProperties();
+	static RuleRankProperties getFullProperties() {
+		RuleRankProperties ruleRankProperties = new RuleRankProperties();
 		
-		jRankProperties.setLearningDataFile(dataFile);
-		jRankProperties.setTestDataFile(testDataFile);
-		jRankProperties.setPctFile(pctFile);
-		jRankProperties.setPctApxFile(pctApxFile);
-		jRankProperties.setPctRulesFile(pctRulesFile);
-		jRankProperties.setRankingFile(rankingFile);
-		jRankProperties.setPreferenceGraphFile(graphFile);
-		jRankProperties.setReferenceRanking(referenceRanking);
-		jRankProperties.setPairs(pairs);
+		ruleRankProperties.setLearningDataFile(dataFile);
+		ruleRankProperties.setTestDataFile(testDataFile);
+		ruleRankProperties.setPctFile(pctFile);
+		ruleRankProperties.setPctApxFile(pctApxFile);
+		ruleRankProperties.setPctRulesFile(pctRulesFile);
+		ruleRankProperties.setRankingFile(rankingFile);
+		ruleRankProperties.setPreferenceGraphFile(graphFile);
+		ruleRankProperties.setReferenceRanking(referenceRanking);
+		ruleRankProperties.setPairs(pairs);
 		
-		jRankProperties.setTypeOfFamilyOfCriteria(createParameter(typeOfFamilyOfCriteria));
-		jRankProperties.setConsistencyMeasure(createParameter(consistencyMeasure));
-		jRankProperties.setConsistencyMeasureThreshold(consistencyMeasureThreshold);
-		jRankProperties.setConsideredSetOfRules(createParameter(consideredSetOfRules));
-		jRankProperties.setSatisfactionDegreesInPreferenceGraph(createParameter(satisfactionDegreesInPreferenceGraph));
-		jRankProperties.setFuzzySatisfactionDegreeCalculationMethod(createParameter(fuzzySatisfactionDegreeCalculationMethod));
-		jRankProperties.setRankingProcedure(createParameter(rankingProcedure));
-		jRankProperties.setDominance(createParameter(dominance));
-		jRankProperties.setDominanceForPairsOfOrdinalValues(createParameter(dominanceForPairsOfOrdinalValues));
-		jRankProperties.setNegativeExamplesTreatmentForVCDRSA(createParameter(negativeExamplesTreatmentForVCDRSA));
-		jRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(createParameter(ruleConditionsSelectionMethodInVCDomLEM));
-		jRankProperties.setAllowEmptyRulesInVCDomLEM(createParameter("true"));
-		jRankProperties.setUseEdgeRegionsInVCDomLEM(createParameter("false"));
-		jRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(createParameter(optimizeRuleConsistencyInVCDomLEMWrt));
+		ruleRankProperties.setTypeOfFamilyOfCriteria(createParameter(typeOfFamilyOfCriteria));
+		ruleRankProperties.setConsistencyMeasure(createParameter(consistencyMeasure));
+		ruleRankProperties.setConsistencyMeasureThreshold(consistencyMeasureThreshold);
+		ruleRankProperties.setConsideredSetOfRules(createParameter(consideredSetOfRules));
+		ruleRankProperties.setSatisfactionDegreesInPreferenceGraph(createParameter(satisfactionDegreesInPreferenceGraph));
+		ruleRankProperties.setFuzzySatisfactionDegreeCalculationMethod(createParameter(fuzzySatisfactionDegreeCalculationMethod));
+		ruleRankProperties.setRankingProcedure(createParameter(rankingProcedure));
+		ruleRankProperties.setDominance(createParameter(dominance));
+		ruleRankProperties.setDominanceForPairsOfOrdinalValues(createParameter(dominanceForPairsOfOrdinalValues));
+		ruleRankProperties.setNegativeExamplesTreatmentForVCDRSA(createParameter(negativeExamplesTreatmentForVCDRSA));
+		ruleRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(createParameter(ruleConditionsSelectionMethodInVCDomLEM));
+		ruleRankProperties.setAllowEmptyRulesInVCDomLEM(createParameter("true"));
+		ruleRankProperties.setUseEdgeRegionsInVCDomLEM(createParameter("false"));
+		ruleRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(createParameter(optimizeRuleConsistencyInVCDomLEMWrt));
 		
-		jRankProperties.setWriteDominationInformation(createParameter("true"));
-		jRankProperties.setWriteRulesStatistics(createParameter("true"));
-		jRankProperties.setWriteLearningPositiveExamples(createParameter("false"));
+		ruleRankProperties.setWriteDominationInformation(createParameter("true"));
+		ruleRankProperties.setWriteRulesStatistics(createParameter("true"));
+		ruleRankProperties.setWriteLearningPositiveExamples(createParameter("false"));
 		
-		jRankProperties.setPrecision(precision);
+		ruleRankProperties.setPrecision(precision);
 		
-		return jRankProperties;
+		return ruleRankProperties;
 	}
 	
-	static JRankParameter createParameter(String textValue) {
-		return new JRankParameter("label", textValue, 0);
+	static RuleRankParameter createParameter(String textValue) {
+		return new RuleRankParameter("label", textValue, 0);
 	}
 	
 }

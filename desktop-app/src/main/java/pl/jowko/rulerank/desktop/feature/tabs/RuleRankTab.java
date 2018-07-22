@@ -14,7 +14,7 @@ import static java.util.Objects.nonNull;
  * Created by Piotr on 2018-04-29.
  * This class contains functionality common for tabs in this application.
  */
-public abstract class JRankTab extends Tab {
+public abstract class RuleRankTab extends Tab {
 	
 	protected WorkspaceItem workspaceItem;
 	
@@ -26,7 +26,7 @@ public abstract class JRankTab extends Tab {
 	 * Also setting tab text.
 	 * @param tabName to display on table header and with will be final
 	 */
-	protected JRankTab(String tabName) {
+	protected RuleRankTab(String tabName) {
 		this.tabName = tabName;
 		setText(tabName);
 	}

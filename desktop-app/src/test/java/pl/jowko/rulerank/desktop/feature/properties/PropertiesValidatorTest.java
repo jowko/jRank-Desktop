@@ -15,11 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 class PropertiesValidatorTest extends MasterTest {
 	
-	private JRankProperties properties;
+	private RuleRankProperties properties;
 	
 	@BeforeEach
 	void setUpEach() {
-		properties = new JRankProperties();
+		properties = new RuleRankProperties();
 		properties.setLearningDataFile("dataFile");
 	}
 	
@@ -31,7 +31,7 @@ class PropertiesValidatorTest extends MasterTest {
 	
 	@Test
 	void shouldNotBeValidBecauseOfNullLearningDataFile() {
-		PropertiesValidator validator = new PropertiesValidator(new JRankProperties());
+		PropertiesValidator validator = new PropertiesValidator(new RuleRankProperties());
 		assertFalse(validator.isValid());
 	}
 	
@@ -295,8 +295,8 @@ class PropertiesValidatorTest extends MasterTest {
 		assertFalse(validator.isValid());
 	}
 	
-	private JRankParameter createParameter(String text) {
-		return new JRankParameter("", text, 0);
+	private RuleRankParameter createParameter(String text) {
+		return new RuleRankParameter("", text, 0);
 	}
 	
 }

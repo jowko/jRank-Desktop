@@ -2,7 +2,7 @@ package pl.jowko.rulerank.desktop.feature.rules;
 
 import javafx.scene.Parent;
 import pl.jowko.rulerank.desktop.ResourceLoader;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.io.IOException;
  * This class represents tab for statistics screen.
  * It loads fxml file and passes rule to controller.
  */
-class StatisticsTab extends JRankTab {
+class StatisticsTab extends RuleRankTab {
 	
 	private StatisticsController controller;
 	

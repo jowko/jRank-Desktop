@@ -7,7 +7,7 @@ package pl.jowko.rulerank.logger;
  * All logging should be performed using this class.
  * Ignoring this may result in death penalty.
  */
-public class JRankLogger {
+public class RuleRankLogger {
 	
 	private static CustomLogger logger;
 	
@@ -15,7 +15,7 @@ public class JRankLogger {
 		logger = new CustomLogger();
 	}
 	
-	private JRankLogger() {}
+	private RuleRankLogger() {}
 	
 	public static void gen(String msg) {
 		logger.info("GENERATOR", msg);

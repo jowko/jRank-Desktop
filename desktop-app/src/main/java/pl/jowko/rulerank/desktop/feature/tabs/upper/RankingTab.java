@@ -1,8 +1,8 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.ranking.RankingController;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.workspace.IsfFinder;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
@@ -23,7 +23,7 @@ import static java.util.Objects.isNull;
  * @see RankingController
  * @see IsfFinder
  */
-class RankingTab extends JRankTab {
+class RankingTab extends RuleRankTab {
 	
 	
 	
@@ -48,7 +48,7 @@ class RankingTab extends JRankTab {
 			RankingController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeRanking(rankingFileContent, container);
 			
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("ranking", workspaceItem.getFileName(), e);
 		}
 	}

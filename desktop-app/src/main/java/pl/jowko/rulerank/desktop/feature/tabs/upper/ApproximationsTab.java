@@ -1,8 +1,8 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.approximations.ApproximationsController;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * For now, this file is displayed as text file.
  * @see ApproximationsController
  */
-class ApproximationsTab extends JRankTab {
+class ApproximationsTab extends RuleRankTab {
 	
 	/**
 	 * Creates approximations tab for .apx files.
@@ -30,7 +30,7 @@ class ApproximationsTab extends JRankTab {
 		try {
 			ApproximationsController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("approximations", workspaceItem.getFileName(), e);
 		}
 	}

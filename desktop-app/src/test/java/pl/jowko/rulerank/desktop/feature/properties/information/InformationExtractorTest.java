@@ -1,7 +1,7 @@
 package pl.jowko.rulerank.desktop.feature.properties.information;
 
 import org.junit.jupiter.api.Test;
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.poznan.put.cs.idss.jrs.ranking.PairOfIndices;
 import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
 
@@ -53,7 +53,7 @@ class InformationExtractorTest {
 	@Test
 	void shouldNotExtractPairsWhenWrongRelation() {
 		String text = "{1,2} S, {3,4} scd";
-		assertThrows(JRankRuntimeException.class, () -> extractPairs(text));
+		assertThrows(RuleRankRuntimeException.class, () -> extractPairs(text));
 	}
 	
 }

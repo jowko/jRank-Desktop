@@ -15,7 +15,7 @@ import pl.jowko.rulerank.desktop.feature.properties.information.AbstractInformat
 import pl.jowko.rulerank.desktop.feature.properties.information.TextParseFailException;
 import pl.jowko.rulerank.desktop.feature.runner.ExperimentRunner;
 import pl.jowko.rulerank.desktop.feature.runner.RunnerException;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.DialogsService;
@@ -24,7 +24,7 @@ import pl.jowko.rulerank.desktop.utils.Cloner;
 import pl.jowko.rulerank.desktop.utils.StringUtils;
 import pl.jowko.rulerank.feature.customfx.DecimalField;
 import pl.jowko.rulerank.feature.customfx.IntegerField;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 
 import java.io.IOException;
@@ -68,50 +68,50 @@ public class PropertiesController {
 	
 	@FXML TitledPane parametersPane;
 	@FXML Label typeOfFamilyCriteriaLabel;
-	@FXML ComboBox<JRankParameter> typeOfFamilyCriteria;
+	@FXML ComboBox<RuleRankParameter> typeOfFamilyCriteria;
 	@FXML Label typeOfRulesLabel;
-	@FXML ComboBox<JRankParameter> typeOfRules;
+	@FXML ComboBox<RuleRankParameter> typeOfRules;
 	@FXML Label consideredSetOfRulesLabel;
-	@FXML ComboBox<JRankParameter> consideredSetOfRules;
+	@FXML ComboBox<RuleRankParameter> consideredSetOfRules;
 	
 	@FXML Label consistencyMeasureLabel;
-	@FXML ComboBox<JRankParameter> consistencyMeasure;
+	@FXML ComboBox<RuleRankParameter> consistencyMeasure;
 	@FXML Label consistencyMeasureThresholdLabel;
 	@FXML DecimalField consistencyMeasureThreshold;
 	@FXML Label precisionLabel;
 	@FXML IntegerField precision;
 	
 	@FXML Label rankingProcedureLabel;
-	@FXML ComboBox<JRankParameter> rankingProcedure;
+	@FXML ComboBox<RuleRankParameter> rankingProcedure;
 	@FXML Label dominanceLabel;
-	@FXML ComboBox<JRankParameter> dominance;
+	@FXML ComboBox<RuleRankParameter> dominance;
 	@FXML Label dominanceForPairsLabel;
-	@FXML ComboBox<JRankParameter> dominanceForPairs;
+	@FXML ComboBox<RuleRankParameter> dominanceForPairs;
 	
 	@FXML Label satisfactionDegreesInGraphLabel;
-	@FXML ComboBox<JRankParameter> satisfactionDegreesInGraph;
+	@FXML ComboBox<RuleRankParameter> satisfactionDegreesInGraph;
 	@FXML Label fuzzyCalculationMethodLabel;
-	@FXML ComboBox<JRankParameter> fuzzyCalculationMethod;
+	@FXML ComboBox<RuleRankParameter> fuzzyCalculationMethod;
 	
 	@FXML Label negativeExamplesTreatmentLabel;
-	@FXML ComboBox<JRankParameter> negativeExamplesTreatment;
+	@FXML ComboBox<RuleRankParameter> negativeExamplesTreatment;
 	@FXML Label optimizeRuleConsistencyLabel;
-	@FXML ComboBox<JRankParameter> optimizeRuleConsistency;
+	@FXML ComboBox<RuleRankParameter> optimizeRuleConsistency;
 	@FXML Label ruleConditionsSelectionMethodLabel;
-	@FXML ComboBox<JRankParameter> ruleConditionsSelectionMethod;
+	@FXML ComboBox<RuleRankParameter> ruleConditionsSelectionMethod;
 	
 	@FXML Label allowEmptyRulesLabel;
-	@FXML ComboBox<JRankParameter> allowEmptyRules;
+	@FXML ComboBox<RuleRankParameter> allowEmptyRules;
 	@FXML Label useEdgeRegionsLabel;
-	@FXML ComboBox<JRankParameter> useEdgeRegions;
+	@FXML ComboBox<RuleRankParameter> useEdgeRegions;
 	
 	@FXML TitledPane additionalInfoPane;
 	@FXML Label writeDominationInformationLabel;
-	@FXML ComboBox<JRankParameter> writeDominationInformation;
+	@FXML ComboBox<RuleRankParameter> writeDominationInformation;
 	@FXML Label writeRulesStatisticsLabel;
-	@FXML ComboBox<JRankParameter> writeRulesStatistics;
+	@FXML ComboBox<RuleRankParameter> writeRulesStatistics;
 	@FXML Label writeLearningPositiveExamplesLabel;
-	@FXML ComboBox<JRankParameter> writeLearningPositiveExamples;
+	@FXML ComboBox<RuleRankParameter> writeLearningPositiveExamples;
 	
 	@FXML Button saveButton;
 	@FXML Button cancelButton;
@@ -123,9 +123,9 @@ public class PropertiesController {
 	private LanguageService labels;
 	private PropertiesControllerHelper controllerHelper;
 	private WorkspaceItem workspaceItem;
-	private JRankTab propertiesTab;
-	JRankProperties properties;
-	JRankProperties editableProperties;
+	private RuleRankTab propertiesTab;
+	RuleRankProperties properties;
+	RuleRankProperties editableProperties;
 	
 	/**
 	 * Initialize properties form with provided data.
@@ -133,13 +133,13 @@ public class PropertiesController {
 	 * @param workspaceItem from workspace tree with represents properties file
 	 * @param propertiesTab on with properties form is located
 	 */
-	public void initializeProperties(JRankProperties properties, WorkspaceItem workspaceItem, JRankTab propertiesTab) {
+	public void initializeProperties(RuleRankProperties properties, WorkspaceItem workspaceItem, RuleRankTab propertiesTab) {
 		this.properties = properties;
 		this.workspaceItem = workspaceItem;
 		this.propertiesTab = propertiesTab;
 		
 		labels = LanguageService.getInstance();
-		editableProperties = (JRankProperties) Cloner.deepClone(properties);
+		editableProperties = (RuleRankProperties) Cloner.deepClone(properties);
 		controllerHelper = new PropertiesControllerHelper(this);
 		
 		initializeCloseEvent();
@@ -154,7 +154,7 @@ public class PropertiesController {
 	 * @see ExperimentRunner
 	 */
 	public void runExperimentAction() {
-		JRankProperties currentProperties = controllerHelper.getPropertiesFromForm();
+		RuleRankProperties currentProperties = controllerHelper.getPropertiesFromForm();
 		try {
 			ExperimentRunner runner = new ExperimentRunner(currentProperties, workspaceItem);
 			runner.run();
@@ -174,11 +174,11 @@ public class PropertiesController {
 		
 		try {
 			new PropertiesSaver(editableProperties).save(workspaceItem.getFilePath());
-			JRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
+			RuleRankLogger.info("Properties: " + workspaceItem.getFileName() + " saved successfully in: " + workspaceItem.getFilePath());
 			closeTab();
 		} catch (IOException e) {
 			String msg = labels.get(Labels.PROP_ERROR_SAVE);
-			JRankLogger.error( msg + workspaceItem.getFileName() + " - " + e.getMessage());
+			RuleRankLogger.error( msg + workspaceItem.getFileName() + " - " + e.getMessage());
 			DialogsService.showErrorDialog(msg, e.getMessage());
 		}
 	}
@@ -211,7 +211,7 @@ public class PropertiesController {
 		if(isUserWishToKeepChanges())
 			return;
 		
-		editableProperties = (JRankProperties) Cloner.deepClone(properties);
+		editableProperties = (RuleRankProperties) Cloner.deepClone(properties);
 		controllerHelper.setEditableProperties(editableProperties);
 		controllerHelper.fillFieldsValues();
 	}
@@ -239,10 +239,10 @@ public class PropertiesController {
 	public void validateFormDefaultsAction() {
 		try {
 			editableProperties = controllerHelper.getPropertiesFromForm();
-			JRankProperties defaultProperties = new DefaultPropertiesProvider().getDefaultProperties();
+			RuleRankProperties defaultProperties = new DefaultPropertiesProvider().getDefaultProperties();
 			
 			RunnerPropertiesProvider runnerPropertiesProvider = new RunnerPropertiesProvider(editableProperties, defaultProperties);
-			JRankProperties propertiesWithDefaults = runnerPropertiesProvider.getPropertiesWithDefaults();
+			RuleRankProperties propertiesWithDefaults = runnerPropertiesProvider.getPropertiesWithDefaults();
 			
 			PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults);
 			if(not(validator.isValid())) {
@@ -261,7 +261,7 @@ public class PropertiesController {
 			DialogsService.showInfoDialog(title, content);
 			
 		} catch (IOException e) {
-			JRankLogger.error("Error when reading default.properties: " + e.getMessage());
+			RuleRankLogger.error("Error when reading default.properties: " + e.getMessage());
 		}
 	}
 	
@@ -315,7 +315,7 @@ public class PropertiesController {
 		} catch (TextParseFailException e) {
 			DialogsService.showActionFailedDialog(e.getMessage());
 			String errorLog = "Error when parsing text from properties field: " + ErrorMessageParser.parseException(e.getCause());
-			JRankLogger.error(errorLog);
+			RuleRankLogger.error(errorLog);
 			return;
 		}
 		

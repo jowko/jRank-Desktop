@@ -1,9 +1,9 @@
 package pl.jowko.rulerank.desktop.feature.runner;
 
-import pl.jowko.rulerank.desktop.feature.properties.JRankParameter;
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankParameter;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerResults;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ import static java.util.Objects.isNull;
 class ResultsSaver {
 	
 	private RankerResults results;
-	private JRankProperties properties;
+	private RuleRankProperties properties;
 	private String experimentPath;
 	
 	/**
@@ -28,7 +28,7 @@ class ResultsSaver {
 	 * @param properties from properties form with were used in experiment
 	 * @param experimentPath to save all files
 	 */
-	ResultsSaver(RankerResults results, JRankProperties properties, String experimentPath) {
+	ResultsSaver(RankerResults results, RuleRankProperties properties, String experimentPath) {
 		this.results = results;
 		this.properties = properties;
 		this.experimentPath = experimentPath;
@@ -36,7 +36,7 @@ class ResultsSaver {
 	
 	/**
 	 * Saves all experiment files from RankerResults object.
-	 * Files path and other options are extracted from JRankProperties.
+	 * Files path and other options are extracted from RuleRankProperties.
 	 * All files will be saved in experimentPath.
 	 */
 	void save() {
@@ -62,7 +62,7 @@ class ResultsSaver {
 			results.unionContainer.writeApproximations(pctApxPath, properties.getConsistencyMeasureThreshold(), writeDominationInformation, null);
 			logFileSaved(properties.getPctApxFile(), pctApxPath);
 		} catch (IOException e) {
-			JRankLogger.error("Error when saving pct apx file: " + e);
+			RuleRankLogger.error("Error when saving pct apx file: " + e);
 		}
 	}
 	
@@ -80,19 +80,19 @@ class ResultsSaver {
 			results.rulesContainer.writeRules(rulesPath, writeRulesStatistics, writeLearningExamples);
 			logFileSaved(properties.getPctRulesFile(), rulesPath);
 		} catch (IOException e) {
-			JRankLogger.error("Error when saving pct rules file: " + e);
+			RuleRankLogger.error("Error when saving pct rules file: " + e);
 		}
 	}
 	
 	private void handleNoRulesCase(String rulesPath) {
 		try {
-			JRankLogger.info("No rules generated. Rules file not created.");
+			RuleRankLogger.info("No rules generated. Rules file not created.");
 			Path path = Paths.get(rulesPath);
 			if(Files.exists(path)) {
 				Files.delete(path);
 			}
 		} catch (IOException e) {
-			JRankLogger.error("Error when deleting old rules file: " + e.getMessage());
+			RuleRankLogger.error("Error when deleting old rules file: " + e.getMessage());
 		}
 	}
 	
@@ -102,7 +102,7 @@ class ResultsSaver {
 			results.ranking.writeRanking(rankingPath);
 			logFileSaved(properties.getRankingFile(), rankingPath);
 		} catch (IOException e) {
-			JRankLogger.error("Error when saving ranking file: " + e);
+			RuleRankLogger.error("Error when saving ranking file: " + e);
 		}
 	}
 	
@@ -112,7 +112,7 @@ class ResultsSaver {
 			results.preferenceGraph.writeDOTPreferenceGraph(graphPath);
 			logFileSaved(properties.getPreferenceGraphFile(), graphPath);
 		} catch (IOException e) {
-			JRankLogger.error("Error when saving graph file: " + e);
+			RuleRankLogger.error("Error when saving graph file: " + e);
 		}
 	}
 	
@@ -126,10 +126,10 @@ class ResultsSaver {
 	}
 	
 	private void logFileSaved(String fileName, String absoluteFilePath) {
-		JRankLogger.info(fileName + " saved successfully in: " + absoluteFilePath);
+		RuleRankLogger.info(fileName + " saved successfully in: " + absoluteFilePath);
 	}
 	
-	private boolean getBoolean(JRankParameter parameter) {
+	private boolean getBoolean(RuleRankParameter parameter) {
 		return parameter.getTextValue().equalsIgnoreCase("true");
 	}
 	

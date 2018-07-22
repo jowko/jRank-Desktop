@@ -1,19 +1,19 @@
 package pl.jowko.rulerank.desktop.feature.runner;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.rulerank.desktop.feature.learningtable.LearningTableValidator;
 import pl.jowko.rulerank.desktop.feature.learningtable.MemoryContainerAssembler;
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.PropertiesMandatoryFieldsValidator;
 import pl.jowko.rulerank.desktop.feature.properties.PropertiesValidator;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import pl.jowko.rulerank.desktop.utils.StringUtils;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
@@ -38,7 +38,7 @@ class ExperimentRunnerValidator {
 	
 	private PropertiesValidator validator;
 	private PropertiesMandatoryFieldsValidator emptyFieldsValidator;
-	private JRankProperties properties;
+	private RuleRankProperties properties;
 	private LearningTable learningTable;
 	private LearningTable testTable;
 	private String experimentPath;
@@ -49,7 +49,7 @@ class ExperimentRunnerValidator {
 	 * @param properties to validate
 	 * @param propertiesItem representing properties file in workspace tree
 	 */
-	ExperimentRunnerValidator(JRankProperties properties, WorkspaceItem propertiesItem) {
+	ExperimentRunnerValidator(RuleRankProperties properties, WorkspaceItem propertiesItem) {
 		this.properties = properties;
 		experimentPath = propertiesItem.getExperimentPath();
 		
@@ -130,7 +130,7 @@ class ExperimentRunnerValidator {
 	private MemoryContainer readMemoryContainer(String filePath) {
 		Path path = Paths.get(filePath);
 		String containerPath = getAbsolutePath(path);
-		JRankLogger.info("Reading learning table from: " + containerPath);
+		RuleRankLogger.info("Reading learning table from: " + containerPath);
 		
 		return JRSFileMediator.loadMemoryContainer(containerPath);
 	}
@@ -176,7 +176,7 @@ class ExperimentRunnerValidator {
 		try {
 			container = MemoryContainerAssembler.assembleContainerFromTable(learningTable);
 		} catch (ContainerFailureException e) {
-			throw new JRankRuntimeException(e.getMessage());
+			throw new RuleRankRuntimeException(e.getMessage());
 		}
 		
 		//try to get preference information from decision attribute values

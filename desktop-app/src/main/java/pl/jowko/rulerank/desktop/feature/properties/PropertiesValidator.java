@@ -19,13 +19,13 @@ import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
  */
 public class PropertiesValidator extends Validator {
 	
-	private JRankProperties properties;
+	private RuleRankProperties properties;
 	
 	/**
 	 * Creates instance of this class and validates provided properties
 	 * @param properties to validate
 	 */
-	public PropertiesValidator(JRankProperties properties) {
+	public PropertiesValidator(RuleRankProperties properties) {
 		this.properties = properties;
 		validate();
 	}

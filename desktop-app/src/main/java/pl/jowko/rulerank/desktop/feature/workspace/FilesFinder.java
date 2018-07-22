@@ -1,6 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.workspace;
 
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -43,7 +43,7 @@ public class FilesFinder {
 					.collect(Collectors.toList());
 			
 		} catch (IOException e) {
-			JRankLogger.error("Error when reading workspace tree: ", e);
+			RuleRankLogger.error("Error when reading workspace tree: ", e);
 		}
 		
 		return paths;
@@ -66,7 +66,7 @@ public class FilesFinder {
 					.collect(Collectors.toList());
 			
 		} catch (IOException e) {
-			JRankLogger.error("Error when reading directory tree: " + directoryPath + " ", e);
+			RuleRankLogger.error("Error when reading directory tree: " + directoryPath + " ", e);
 		}
 		
 		return files;

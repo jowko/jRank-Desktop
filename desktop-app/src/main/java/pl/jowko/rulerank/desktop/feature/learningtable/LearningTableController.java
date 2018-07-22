@@ -12,12 +12,12 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.learningtable.dialogs.AttributeItem;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Example;
@@ -50,7 +50,7 @@ public class LearningTableController {
 	TableView<ObservableList<Field>> learningTable;
 	
 	private LearningTable table;
-	private JRankTab learningTableTab;
+	private RuleRankTab learningTableTab;
 	private WorkspaceItem workspaceItem;
 	private LearningTableActions tableActions;
 	private LanguageService labels;
@@ -64,7 +64,7 @@ public class LearningTableController {
 	 * @param tableTab in with learning table is set
 	 * @param workspaceItem from workspace tree representing initialized file
 	 */
-	public void initializeTable(MemoryContainer container, JRankTab tableTab, WorkspaceItem workspaceItem) {
+	public void initializeTable(MemoryContainer container, RuleRankTab tableTab, WorkspaceItem workspaceItem) {
 		table = new LearningTable(container);
 		JRSFieldsReplacer.replaceJRSEnumsWithTableEnumFields(table);
 		learningTableTab = tableTab;
@@ -161,7 +161,7 @@ public class LearningTableController {
 			JRSFileMediator.saveMemoryContainer(workspaceItem.getFilePath(), workspaceItem.getFileName(), container);
 			closeTab();
 		} catch (Exception e) {
-			JRankLogger.error("Error when saving data table: " + e.getMessage());
+			RuleRankLogger.error("Error when saving data table: " + e.getMessage());
 		}
 	}
 	

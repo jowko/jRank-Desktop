@@ -8,7 +8,7 @@ import java.util.Objects;
  * Container for all jRank options from .properties file.
  * @see PropertiesAssembler
  */
-public class JRankProperties implements Serializable {
+public class RuleRankProperties implements Serializable {
 	
 	private static final long serialVersionUID = -1902681242571506452L;
 	
@@ -25,25 +25,25 @@ public class JRankProperties implements Serializable {
 	private String referenceRanking;
 	private String pairs;
 	
-	private JRankParameter typeOfFamilyOfCriteria;
-	private JRankParameter consistencyMeasure;
+	private RuleRankParameter typeOfFamilyOfCriteria;
+	private RuleRankParameter consistencyMeasure;
 	private Double consistencyMeasureThreshold;
-	private JRankParameter typeOfRules;
-	private JRankParameter consideredSetOfRules;
-	private JRankParameter satisfactionDegreesInPreferenceGraph;
-	private JRankParameter fuzzySatisfactionDegreeCalculationMethod;
-	private JRankParameter rankingProcedure;
-	private JRankParameter dominance;
-	private JRankParameter dominanceForPairsOfOrdinalValues;
-	private JRankParameter negativeExamplesTreatmentForVCDRSA;
-	private JRankParameter ruleConditionsSelectionMethodInVCDomLEM;
-	private JRankParameter allowEmptyRulesInVCDomLEM;
-	private JRankParameter useEdgeRegionsInVCDomLEM;
-	private JRankParameter optimizeRuleConsistencyInVCDomLEMWrt;
+	private RuleRankParameter typeOfRules;
+	private RuleRankParameter consideredSetOfRules;
+	private RuleRankParameter satisfactionDegreesInPreferenceGraph;
+	private RuleRankParameter fuzzySatisfactionDegreeCalculationMethod;
+	private RuleRankParameter rankingProcedure;
+	private RuleRankParameter dominance;
+	private RuleRankParameter dominanceForPairsOfOrdinalValues;
+	private RuleRankParameter negativeExamplesTreatmentForVCDRSA;
+	private RuleRankParameter ruleConditionsSelectionMethodInVCDomLEM;
+	private RuleRankParameter allowEmptyRulesInVCDomLEM;
+	private RuleRankParameter useEdgeRegionsInVCDomLEM;
+	private RuleRankParameter optimizeRuleConsistencyInVCDomLEMWrt;
 	
-	private JRankParameter writeDominationInformation;
-	private JRankParameter writeRulesStatistics;
-	private JRankParameter writeLearningPositiveExamples;
+	private RuleRankParameter writeDominationInformation;
+	private RuleRankParameter writeRulesStatistics;
+	private RuleRankParameter writeLearningPositiveExamples;
 	
 	private Integer precision;
 	
@@ -119,19 +119,19 @@ public class JRankProperties implements Serializable {
 		this.pairs = pairs;
 	}
 	
-	public JRankParameter getTypeOfFamilyOfCriteria() {
+	public RuleRankParameter getTypeOfFamilyOfCriteria() {
 		return typeOfFamilyOfCriteria;
 	}
 	
-	public void setTypeOfFamilyOfCriteria(JRankParameter typeOfFamilyOfCriteria) {
+	public void setTypeOfFamilyOfCriteria(RuleRankParameter typeOfFamilyOfCriteria) {
 		this.typeOfFamilyOfCriteria = typeOfFamilyOfCriteria;
 	}
 	
-	public JRankParameter getConsistencyMeasure() {
+	public RuleRankParameter getConsistencyMeasure() {
 		return consistencyMeasure;
 	}
 	
-	public void setConsistencyMeasure(JRankParameter consistencyMeasure) {
+	public void setConsistencyMeasure(RuleRankParameter consistencyMeasure) {
 		this.consistencyMeasure = consistencyMeasure;
 	}
 	
@@ -143,123 +143,123 @@ public class JRankProperties implements Serializable {
 		this.consistencyMeasureThreshold = consistencyMeasureThreshold;
 	}
 	
-	public JRankParameter getTypeOfRules() {
+	public RuleRankParameter getTypeOfRules() {
 		return typeOfRules;
 	}
 	
-	public void setTypeOfRules(JRankParameter typeOfRules) {
+	public void setTypeOfRules(RuleRankParameter typeOfRules) {
 		this.typeOfRules = typeOfRules;
 	}
 	
-	public JRankParameter getConsideredSetOfRules() {
+	public RuleRankParameter getConsideredSetOfRules() {
 		return consideredSetOfRules;
 	}
 	
-	public void setConsideredSetOfRules(JRankParameter consideredSetOfRules) {
+	public void setConsideredSetOfRules(RuleRankParameter consideredSetOfRules) {
 		this.consideredSetOfRules = consideredSetOfRules;
 	}
 	
-	public JRankParameter getSatisfactionDegreesInPreferenceGraph() {
+	public RuleRankParameter getSatisfactionDegreesInPreferenceGraph() {
 		return satisfactionDegreesInPreferenceGraph;
 	}
 	
-	public void setSatisfactionDegreesInPreferenceGraph(JRankParameter satisfactionDegreesInPreferenceGraph) {
+	public void setSatisfactionDegreesInPreferenceGraph(RuleRankParameter satisfactionDegreesInPreferenceGraph) {
 		this.satisfactionDegreesInPreferenceGraph = satisfactionDegreesInPreferenceGraph;
 	}
 	
-	public JRankParameter getFuzzySatisfactionDegreeCalculationMethod() {
+	public RuleRankParameter getFuzzySatisfactionDegreeCalculationMethod() {
 		return fuzzySatisfactionDegreeCalculationMethod;
 	}
 	
-	public void setFuzzySatisfactionDegreeCalculationMethod(JRankParameter fuzzySatisfactionDegreeCalculationMethod) {
+	public void setFuzzySatisfactionDegreeCalculationMethod(RuleRankParameter fuzzySatisfactionDegreeCalculationMethod) {
 		this.fuzzySatisfactionDegreeCalculationMethod = fuzzySatisfactionDegreeCalculationMethod;
 	}
 	
-	public JRankParameter getRankingProcedure() {
+	public RuleRankParameter getRankingProcedure() {
 		return rankingProcedure;
 	}
 	
-	public void setRankingProcedure(JRankParameter rankingProcedure) {
+	public void setRankingProcedure(RuleRankParameter rankingProcedure) {
 		this.rankingProcedure = rankingProcedure;
 	}
 	
-	public JRankParameter getDominance() {
+	public RuleRankParameter getDominance() {
 		return dominance;
 	}
 	
-	public void setDominance(JRankParameter dominance) {
+	public void setDominance(RuleRankParameter dominance) {
 		this.dominance = dominance;
 	}
 	
-	public JRankParameter getDominanceForPairsOfOrdinalValues() {
+	public RuleRankParameter getDominanceForPairsOfOrdinalValues() {
 		return dominanceForPairsOfOrdinalValues;
 	}
 	
-	public void setDominanceForPairsOfOrdinalValues(JRankParameter dominanceForPairsOfOrdinalValues) {
+	public void setDominanceForPairsOfOrdinalValues(RuleRankParameter dominanceForPairsOfOrdinalValues) {
 		this.dominanceForPairsOfOrdinalValues = dominanceForPairsOfOrdinalValues;
 	}
 	
-	public JRankParameter getNegativeExamplesTreatmentForVCDRSA() {
+	public RuleRankParameter getNegativeExamplesTreatmentForVCDRSA() {
 		return negativeExamplesTreatmentForVCDRSA;
 	}
 	
-	public void setNegativeExamplesTreatmentForVCDRSA(JRankParameter negativeExamplesTreatmentForVCDRSA) {
+	public void setNegativeExamplesTreatmentForVCDRSA(RuleRankParameter negativeExamplesTreatmentForVCDRSA) {
 		this.negativeExamplesTreatmentForVCDRSA = negativeExamplesTreatmentForVCDRSA;
 	}
 	
-	public JRankParameter getRuleConditionsSelectionMethodInVCDomLEM() {
+	public RuleRankParameter getRuleConditionsSelectionMethodInVCDomLEM() {
 		return ruleConditionsSelectionMethodInVCDomLEM;
 	}
 	
-	public void setRuleConditionsSelectionMethodInVCDomLEM(JRankParameter ruleConditionsSelectionMethodInVCDomLEM) {
+	public void setRuleConditionsSelectionMethodInVCDomLEM(RuleRankParameter ruleConditionsSelectionMethodInVCDomLEM) {
 		this.ruleConditionsSelectionMethodInVCDomLEM = ruleConditionsSelectionMethodInVCDomLEM;
 	}
 	
-	public JRankParameter getAllowEmptyRulesInVCDomLEM() {
+	public RuleRankParameter getAllowEmptyRulesInVCDomLEM() {
 		return allowEmptyRulesInVCDomLEM;
 	}
 	
-	public void setAllowEmptyRulesInVCDomLEM(JRankParameter allowEmptyRulesInVCDomLEM) {
+	public void setAllowEmptyRulesInVCDomLEM(RuleRankParameter allowEmptyRulesInVCDomLEM) {
 		this.allowEmptyRulesInVCDomLEM = allowEmptyRulesInVCDomLEM;
 	}
 	
-	public JRankParameter getUseEdgeRegionsInVCDomLEM() {
+	public RuleRankParameter getUseEdgeRegionsInVCDomLEM() {
 		return useEdgeRegionsInVCDomLEM;
 	}
 	
-	public void setUseEdgeRegionsInVCDomLEM(JRankParameter useEdgeRegionsInVCDomLEM) {
+	public void setUseEdgeRegionsInVCDomLEM(RuleRankParameter useEdgeRegionsInVCDomLEM) {
 		this.useEdgeRegionsInVCDomLEM = useEdgeRegionsInVCDomLEM;
 	}
 	
-	public JRankParameter getOptimizeRuleConsistencyInVCDomLEMWrt() {
+	public RuleRankParameter getOptimizeRuleConsistencyInVCDomLEMWrt() {
 		return optimizeRuleConsistencyInVCDomLEMWrt;
 	}
 	
-	public void setOptimizeRuleConsistencyInVCDomLEMWrt(JRankParameter optimizeRuleConsistencyInVCDomLEMWrt) {
+	public void setOptimizeRuleConsistencyInVCDomLEMWrt(RuleRankParameter optimizeRuleConsistencyInVCDomLEMWrt) {
 		this.optimizeRuleConsistencyInVCDomLEMWrt = optimizeRuleConsistencyInVCDomLEMWrt;
 	}
 	
-	public JRankParameter getWriteDominationInformation() {
+	public RuleRankParameter getWriteDominationInformation() {
 		return writeDominationInformation;
 	}
 	
-	public void setWriteDominationInformation(JRankParameter writeDominationInformation) {
+	public void setWriteDominationInformation(RuleRankParameter writeDominationInformation) {
 		this.writeDominationInformation = writeDominationInformation;
 	}
 	
-	public JRankParameter getWriteRulesStatistics() {
+	public RuleRankParameter getWriteRulesStatistics() {
 		return writeRulesStatistics;
 	}
 	
-	public void setWriteRulesStatistics(JRankParameter writeRulesStatistics) {
+	public void setWriteRulesStatistics(RuleRankParameter writeRulesStatistics) {
 		this.writeRulesStatistics = writeRulesStatistics;
 	}
 	
-	public JRankParameter getWriteLearningPositiveExamples() {
+	public RuleRankParameter getWriteLearningPositiveExamples() {
 		return writeLearningPositiveExamples;
 	}
 	
-	public void setWriteLearningPositiveExamples(JRankParameter writeLearningPositiveExamples) {
+	public void setWriteLearningPositiveExamples(RuleRankParameter writeLearningPositiveExamples) {
 		this.writeLearningPositiveExamples = writeLearningPositiveExamples;
 	}
 	
@@ -273,7 +273,7 @@ public class JRankProperties implements Serializable {
 	
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("JRankProperties{\n");
+		final StringBuilder sb = new StringBuilder("RuleRankProperties{\n");
 		sb.append("learningDataFile='").append(learningDataFile).append("\'\n");
 		sb.append(", testDataFile='").append(testDataFile).append("\'\n");
 		sb.append(", pctFile='").append(pctFile).append("\'\n");
@@ -310,7 +310,7 @@ public class JRankProperties implements Serializable {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		JRankProperties that = (JRankProperties) o;
+		RuleRankProperties that = (RuleRankProperties) o;
 		return Objects.equals(learningDataFile, that.learningDataFile) &&
 				Objects.equals(testDataFile, that.testDataFile) &&
 				Objects.equals(pctFile, that.pctFile) &&

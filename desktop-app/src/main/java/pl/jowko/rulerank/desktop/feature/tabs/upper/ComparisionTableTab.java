@@ -1,8 +1,8 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.pct.PCTController;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -13,7 +13,7 @@ import java.io.IOException;
  * Created by Piotr on 2018-05-08.
  * This tab displays partial comparision table from partialPCT.isf file.
  */
-class ComparisionTableTab extends JRankTab {
+class ComparisionTableTab extends RuleRankTab {
 	
 	/**
 	 * Creates partial comparision table tab for partialPCT.isf files.
@@ -29,7 +29,7 @@ class ComparisionTableTab extends JRankTab {
 		try {
 			PCTController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeRanking(container);
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("pct isf", workspaceItem.getFileName(), e);
 		}
 	}

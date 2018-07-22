@@ -1,6 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.workspace;
 
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.PropertiesSaver;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
@@ -26,7 +26,7 @@ public class ExperimentFilesCreator {
 	 * @throws IOException when something goes wrong with file saving
 	 */
 	public static void createPropertiesFile(String dirPath, String isfTableName) throws IOException {
-		JRankProperties properties = new JRankProperties();
+		RuleRankProperties properties = new RuleRankProperties();
 		properties.setLearningDataFile(isfTableName);
 		new PropertiesSaver(properties).save(dirPath + "experiment.properties");
 	}
@@ -40,7 +40,7 @@ public class ExperimentFilesCreator {
 		if(not(filePath.endsWith(".properties")))
 			filePath += ".properties";
 		
-		new PropertiesSaver(new JRankProperties()).save(filePath);
+		new PropertiesSaver(new RuleRankProperties()).save(filePath);
 	}
 	
 	/**

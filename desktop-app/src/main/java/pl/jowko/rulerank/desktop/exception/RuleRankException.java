@@ -6,23 +6,23 @@ package pl.jowko.rulerank.desktop.exception;
  * All custom checked exceptions should extend this exception.
  * Such approach helps to differentiate errors handled by this application from jRS and java errors in catch blocks.
  */
-public class JRankException extends Exception {
+public class RuleRankException extends Exception {
 	
 	private static final long serialVersionUID = 3137511066842981526L;
 	
-	public JRankException() {
+	public RuleRankException() {
 		super();
 	}
 	
-	public JRankException(String msg) {
+	public RuleRankException(String msg) {
 		super(msg);
 	}
 	
-	public JRankException(String msg, Throwable throwable) {
+	public RuleRankException(String msg, Throwable throwable) {
 		super(msg, throwable);
 	}
 	
-	public JRankException(Throwable throwable) {
+	public RuleRankException(Throwable throwable) {
 		super(throwable);
 	}
 	

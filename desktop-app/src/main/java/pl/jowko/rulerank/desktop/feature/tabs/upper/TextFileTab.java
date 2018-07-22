@@ -1,7 +1,7 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.textfile.TextFileController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * This tab contains TextArea containing .txt file content.
  * @see TextFileController
  */
-class TextFileTab extends JRankTab {
+class TextFileTab extends RuleRankTab {
 	
 	/**
 	 * Creates text file tab for .txt files.
@@ -30,7 +30,7 @@ class TextFileTab extends JRankTab {
 		try {
 			TextFileController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem), workspaceItem, this);
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("text", workspaceItem.getFileName(), e);
 		}
 	}

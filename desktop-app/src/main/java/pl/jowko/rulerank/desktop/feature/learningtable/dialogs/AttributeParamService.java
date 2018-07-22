@@ -1,7 +1,7 @@
 package pl.jowko.rulerank.desktop.feature.learningtable.dialogs;
 
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ class AttributeParamService {
 		if(param.isPresent()) {
 			return param.get();
 		}
-		JRankLogger.warn("Value: " + value + " for kind type not found. Setting default value.");
+		RuleRankLogger.warn("Value: " + value + " for kind type not found. Setting default value.");
 		return kinds.get(0);
 	}
 	
@@ -65,7 +65,7 @@ class AttributeParamService {
 		if(param.isPresent()) {
 			return param.get();
 		}
-		JRankLogger.warn("Value: " + value + " for preference type not found. Setting empty value.");
+		RuleRankLogger.warn("Value: " + value + " for preference type not found. Setting empty value.");
 		return null;
 	}
 	

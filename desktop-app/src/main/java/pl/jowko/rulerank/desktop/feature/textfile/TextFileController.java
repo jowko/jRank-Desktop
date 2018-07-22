@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 
@@ -28,7 +28,7 @@ public class TextFileController {
 	
 	private LanguageService labels;
 	private WorkspaceItem workspaceItem;
-	private JRankTab textFileTab;
+	private RuleRankTab textFileTab;
 	
 	/**
 	 * Initializes text tab with TextArea containing file content.
@@ -36,7 +36,7 @@ public class TextFileController {
 	 * @param workspaceItem from workspace tree
 	 * @param textFileTab on with TextArea is placed
 	 */
-	public void initializeTab(String fileContent, WorkspaceItem workspaceItem, JRankTab textFileTab) {
+	public void initializeTab(String fileContent, WorkspaceItem workspaceItem, RuleRankTab textFileTab) {
 		this.workspaceItem = workspaceItem;
 		this.textFileTab = textFileTab;
 		textFileView.setText(fileContent);

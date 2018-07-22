@@ -9,7 +9,7 @@ import pl.jowko.rulerank.desktop.ResourceLoader;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsController;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.IOException;
 
@@ -62,7 +62,7 @@ public class MenuController {
 	}
 	
 	public void onHelpAction() {
-		JRankLogger.info("Help window is not implemented yet.");
+		RuleRankLogger.info("Help window is not implemented yet.");
 	}
 	
 	/**

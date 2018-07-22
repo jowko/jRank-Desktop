@@ -2,7 +2,7 @@ package pl.jowko.rulerank.desktop.feature.learningtable;
 
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.IntegerFieldWrapper;
 import pl.jowko.rulerank.feature.customfx.IntegerField;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
@@ -24,7 +24,7 @@ class IntegerFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 				try {
 					commitEdit(getField());
 				} catch (NumberFormatException e) {
-					JRankLogger.warn("Value: [" + textField.getText() + "] is not valid for integer type. Valid values are from range: " + Integer.MIN_VALUE + " to " + Integer.MAX_VALUE);
+					RuleRankLogger.warn("Value: [" + textField.getText() + "] is not valid for integer type. Valid values are from range: " + Integer.MIN_VALUE + " to " + Integer.MAX_VALUE);
 				}
 			}
 		});

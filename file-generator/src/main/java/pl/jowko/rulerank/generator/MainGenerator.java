@@ -2,9 +2,9 @@ package pl.jowko.rulerank.generator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.jowko.rulerank.desktop.feature.settings.ConfigPaths;
-import pl.jowko.rulerank.desktop.feature.settings.JRankInfo;
+import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettings;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.nio.file.Paths;
  *
  * jRankInfo.json - contains information about application version displayed in about dialog from help settings
  * @see pl.jowko.rulerank.desktop.controller.AboutController
- * @see JRankInfo
+ * @see RuleRankInfo
  *
  * Default data are taken from StubSettings class.
  * @see StubSettings
@@ -49,7 +49,7 @@ public class MainGenerator {
 	 * @throws IOException when something goes wrong with saving files
 	 */
 	public static void main(String[] args) throws IOException {
-		JRankLogger.gen("Starting generating files for settings");
+		RuleRankLogger.gen("Starting generating files for settings");
 		MainGenerator generator = new MainGenerator();
 		generator.generateSettingsFile();
 	}
@@ -67,33 +67,33 @@ public class MainGenerator {
 	 */
 	private void generateSettingsFile() throws IOException {
 		ConfigPaths configPaths = ConfigPaths.getInstance();
-		JRankLogger.gen("Generating data directory: " + configPaths.getDataDirectory());
+		RuleRankLogger.gen("Generating data directory: " + configPaths.getDataDirectory());
 		Files.createDirectories(Paths.get(configPaths.getDataDirectory()));
-		JRankLogger.gen("Data directory created successfully.");
+		RuleRankLogger.gen("Data directory created successfully.");
 		StubSettings stubSettings = new StubSettings(true);
 		
 		
-		JRankLogger.gen("Generating UserSettings file: " + configPaths.getUserSettingsPath());
+		RuleRankLogger.gen("Generating UserSettings file: " + configPaths.getUserSettingsPath());
 		mapper.writerWithDefaultPrettyPrinter()
 				.writeValue(new File(configPaths.getUserSettingsPath()), stubSettings.getSettings());
 		
 		
-		JRankLogger.gen("Generating labels file: " + configPaths.getLabelsPath());
+		RuleRankLogger.gen("Generating labels file: " + configPaths.getLabelsPath());
 		mapper.writerWithDefaultPrettyPrinter()
 				.writeValue(new File(configPaths.getLabelsPath()), stubSettings.getLabels());
 		
 		
-		JRankLogger.gen("Generating languages file: " + configPaths.getLanguagesPath());
+		RuleRankLogger.gen("Generating languages file: " + configPaths.getLanguagesPath());
 		mapper.writerWithDefaultPrettyPrinter()
 				.writeValue(new File(configPaths.getLanguagesPath()), stubSettings.getLanguages());
 		
 		
-		JRankLogger.gen("Generating jRank info file: " + configPaths.getJRankInfoPath());
+		RuleRankLogger.gen("Generating jRank info file: " + configPaths.getJRankInfoPath());
 		mapper.writerWithDefaultPrettyPrinter()
 				.writeValue(new File(configPaths.getJRankInfoPath()), stubSettings.getAppInfo());
 
 		
-		JRankLogger.gen("All files generated successfully.");
+		RuleRankLogger.gen("All files generated successfully.");
 	}
 	
 }

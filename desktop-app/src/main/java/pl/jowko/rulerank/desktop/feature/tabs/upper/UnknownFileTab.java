@@ -1,12 +1,12 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.unknown.UnknownFileController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import java.io.IOException;
  * This tab loads unknown file type as text file.
  * @see UnknownFileController
  */
-class UnknownFileTab extends JRankTab {
+class UnknownFileTab extends RuleRankTab {
 	
 	/**
 	 * Creates unknown file tab for .apx files.
@@ -27,11 +27,11 @@ class UnknownFileTab extends JRankTab {
 	 */
 	UnknownFileTab(WorkspaceItem workspaceItem, String tabName) throws TabInitializationException, IOException {
 		super(tabName);
-		JRankLogger.warn("File [" + workspaceItem.getFileName() + "] is not recognized by application. Trying to open it as text file.");
+		RuleRankLogger.warn("File [" + workspaceItem.getFileName() + "] is not recognized by application. Trying to open it as text file.");
 		try {
 			UnknownFileController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeTab(JRSFileMediator.loadTextFile(workspaceItem));
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("unknown", workspaceItem.getFileName(), e);
 		}
 	}

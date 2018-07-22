@@ -25,13 +25,13 @@ import static pl.poznan.put.cs.idss.jrs.types.PairField.STRICT_ORDINAL_DOMINANCE
 /**
  * Created by Piotr on 2018-05-02.
  */
-class JRankParametersServiceTest extends MasterTest {
+class RuleRankParametersServiceTest extends MasterTest {
 	
-	private JRankParametersService service;
+	private RuleRankParametersService service;
 	
 	@BeforeEach
 	void setUpEach() {
-		service = JRankParametersService.getInstance();
+		service = RuleRankParametersService.getInstance();
 	}
 	
 	@Test
@@ -46,7 +46,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindTypeOFFamilyCriteria() {
-		List<JRankParameter> params = service.getTypeOfFamilyOfCriteria();
+		List<RuleRankParameter> params = service.getTypeOfFamilyOfCriteria();
 		
 		assertEquals(ANY_FAMILY_OF_CRITERIA, service.findByTextValue(params, "any").getValue());
 		assertEquals(CONSISTENT_FAMILY_OF_CRITERIA, service.findByTextValue(params, "consistent").getValue());
@@ -55,7 +55,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindConsistencyMeasure() {
-		List<JRankParameter> params = service.getConsistencyMeasure();
+		List<RuleRankParameter> params = service.getConsistencyMeasure();
 		
 		assertEquals(EPSILON, service.findByTextValue(params, "epsilon").getValue());
 		assertEquals(EPSILON_STAR, service.findByTextValue(params, "epsilon*").getValue());
@@ -66,7 +66,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindTypeOfRules() {
-		List<JRankParameter> params = service.getTypeOfRules();
+		List<RuleRankParameter> params = service.getTypeOfRules();
 		
 		assertEquals(CERTAIN, service.findByTextValue(params, "certain").getValue());
 		assertEquals(POSSIBLE, service.findByTextValue(params, "possible").getValue());
@@ -75,7 +75,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindConsideredSetOfRules() {
-		List<JRankParameter> params = service.getConsideredSetOfRules();
+		List<RuleRankParameter> params = service.getConsideredSetOfRules();
 		
 		assertEquals(MINIMAL_SET_OF_RULES, service.findByTextValue(params, "minimal").getValue());
 		assertEquals(EXHAUSTIVE_SET_OF_RULES, service.findByTextValue(params, "exhaustive").getValue());
@@ -84,7 +84,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindSatisfactionDegreesInPreferenceGraph() {
-		List<JRankParameter> params = service.getSatisfactionDegreesInPreferenceGraph();
+		List<RuleRankParameter> params = service.getSatisfactionDegreesInPreferenceGraph();
 		
 		assertEquals(FUZZY, service.findByTextValue(params, "fuzzy").getValue());
 		assertEquals(CRISP, service.findByTextValue(params, "crisp").getValue());
@@ -93,7 +93,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindFuzzySatisfactionDegreeCalculationMethod() {
-		List<JRankParameter> params = service.getFuzzySatisfactionDegreeCalculationMethod();
+		List<RuleRankParameter> params = service.getFuzzySatisfactionDegreeCalculationMethod();
 		
 		assertEquals(MAX_CREDIBILITY, service.findByTextValue(params, "max-credibility").getValue());
 		assertEquals(MAX_PRODUCT_OF_CREDIBILITY_AND_COVERAGE_FACTOR, service.findByTextValue(params, "max-credibility-x-coverage-factor").getValue());
@@ -102,7 +102,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindRankingProcedure() {
-		List<JRankParameter> params = service.getRankingProcedure();
+		List<RuleRankParameter> params = service.getRankingProcedure();
 		
 		assertEquals(NFS, service.findByTextValue(params, "nfs").getValue());
 		assertEquals(REPEATED_NFS, service.findByTextValue(params, "rnfs").getValue());
@@ -115,7 +115,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindDominance() {
-		List<JRankParameter> params = service.getDominance();
+		List<RuleRankParameter> params = service.getDominance();
 		
 		assertEquals(PARETO, service.findByTextValue(params, "pareto").getValue());
 		assertEquals(LORENZ, service.findByTextValue(params, "lorenz").getValue());
@@ -124,7 +124,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindDominanceForPairsOfOrdinalValues() {
-		List<JRankParameter> params = service.getDominanceForPairsOfOrdinalValues();
+		List<RuleRankParameter> params = service.getDominanceForPairsOfOrdinalValues();
 		
 		assertEquals(STRICT_ORDINAL_DOMINANCE_CHECK_METHOD, service.findByTextValue(params, "strict").getValue());
 		assertEquals(CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD, service.findByTextValue(params, "classic").getValue());
@@ -133,7 +133,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindNegativeExamplesTreatmentForVCDRSA() {
-		List<JRankParameter> params = service.getNegativeExamplesTreatmentForVCDRSA();
+		List<RuleRankParameter> params = service.getNegativeExamplesTreatmentForVCDRSA();
 		
 		assertEquals(COVER_ONLY_INCONSISTENT_NEGATIVE_EXAMPLES, service.findByTextValue(params, "only-inconsistent").getValue());
 		assertEquals(COVER_ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES, service.findByTextValue(params, "only-inconsistent-and-boundary").getValue());
@@ -143,7 +143,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindRuleConditionsSelectionMethodInVCDomLEM() {
-		List<JRankParameter> params = service.getRuleConditionsSelectionMethodInVCDomLEM();
+		List<RuleRankParameter> params = service.getRuleConditionsSelectionMethodInVCDomLEM();
 		
 		assertEquals(CHOOSE_CONDITIONS_FROM_ONE_OBJECT, service.findByTextValue(params, "base").getValue());
 		assertEquals(MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS, service.findByTextValue(params, "mix").getValue());
@@ -152,7 +152,7 @@ class JRankParametersServiceTest extends MasterTest {
 	
 	@Test
 	void shouldFindOptimizeRuleConsistencyInVCDomLEMWrt() {
-		List<JRankParameter> params = service.getOptimizeRuleConsistencyInVCDomLEMWrt();
+		List<RuleRankParameter> params = service.getOptimizeRuleConsistencyInVCDomLEMWrt();
 		
 		assertEquals(APPROXIMATION, service.findByTextValue(params, "approximation").getValue());
 		assertEquals(SET, service.findByTextValue(params, "set").getValue());

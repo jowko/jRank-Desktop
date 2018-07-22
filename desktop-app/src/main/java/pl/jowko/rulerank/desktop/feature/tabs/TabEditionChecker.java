@@ -35,8 +35,8 @@ public class TabEditionChecker {
 	public long getEditedTabsCount(List<Tab> tabs) {
 		return tabs.stream()
 				.filter(tab -> {
-					JRankTab jRankTab = (JRankTab) tab;
-					return jRankTab.isTabEdited();
+					RuleRankTab ruleRankTab = (RuleRankTab) tab;
+					return ruleRankTab.isTabEdited();
 				})
 				.count();
 	}

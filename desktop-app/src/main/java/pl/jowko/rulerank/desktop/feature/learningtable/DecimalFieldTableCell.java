@@ -2,7 +2,7 @@ package pl.jowko.rulerank.desktop.feature.learningtable;
 
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.FloatFieldWrapper;
 import pl.jowko.rulerank.feature.customfx.DecimalField;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
@@ -25,12 +25,12 @@ class DecimalFieldTableCell <T> extends AcceptOnExitTableCell<T> {
 				try {
 					Double value = Double.valueOf(textField.getText());
 					if(value.isInfinite() || value.isNaN()) {
-						JRankLogger.warn("Value: [" + textField.getText() + "] is not valid for decimal field type. Select smaller number.");
+						RuleRankLogger.warn("Value: [" + textField.getText() + "] is not valid for decimal field type. Select smaller number.");
 						return;
 					}
 					commitEdit(getField());
 				} catch (NumberFormatException e) {
-					JRankLogger.warn("Value [" + textField.getText() + "] is not valid for decimal field type. Select valid number.");
+					RuleRankLogger.warn("Value [" + textField.getText() + "] is not valid for decimal field type. Select valid number.");
 				}
 			}
 		});

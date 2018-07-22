@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.rulerank.desktop.MasterTest;
-import pl.jowko.rulerank.desktop.feature.settings.JRankInfo;
+import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettings;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsBuilder;
 
@@ -43,7 +43,7 @@ class ConfigFileManagerTest extends MasterTest {
 	
 	@Test
 	void shouldReadJRankInfo() {
-		JRankInfo info = configFileManager.readJRankInfo();
+		RuleRankInfo info = configFileManager.readJRankInfo();
 		assertNotNull(info);
 	}
 	

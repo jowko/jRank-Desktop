@@ -13,18 +13,18 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNullOrEmpty;
  */
 public class RunnerPropertiesProvider {
 	
-	private JRankParametersService parametersService;
-	private JRankProperties properties;
-	private JRankProperties defaults;
+	private RuleRankParametersService parametersService;
+	private RuleRankProperties properties;
+	private RuleRankProperties defaults;
 	
 	/**
 	 * Initialize instance of this class.
 	 * @param experimentProperties from experiment or form
 	 * @param defaults properties from default.properties file
 	 */
-	public RunnerPropertiesProvider(JRankProperties experimentProperties, JRankProperties defaults) {
-		parametersService = JRankParametersService.getInstance();
-		this.properties = (JRankProperties) Cloner.deepClone(experimentProperties);
+	public RunnerPropertiesProvider(RuleRankProperties experimentProperties, RuleRankProperties defaults) {
+		parametersService = RuleRankParametersService.getInstance();
+		this.properties = (RuleRankProperties) Cloner.deepClone(experimentProperties);
 		this.defaults = defaults;
 	}
 	
@@ -35,7 +35,7 @@ public class RunnerPropertiesProvider {
 	 * All properties are checked.
 	 * @return merged provided properties and default properties
 	 */
-	public JRankProperties getPropertiesWithDefaults() {
+	public RuleRankProperties getPropertiesWithDefaults() {
 		setDefaultPropertiesForFiles();
 		setDefaultPropertiesForRankingInformation();
 		setDefaultPropertiesForParameters();
@@ -146,7 +146,7 @@ public class RunnerPropertiesProvider {
 		return isNullOrEmpty(property);
 	}
 	
-	private boolean shouldSetDefault(JRankParameter parameter) {
+	private boolean shouldSetDefault(RuleRankParameter parameter) {
 		return isNull(parameter) || parametersService.getEmptyParameter().equals(parameter);
 	}
 	

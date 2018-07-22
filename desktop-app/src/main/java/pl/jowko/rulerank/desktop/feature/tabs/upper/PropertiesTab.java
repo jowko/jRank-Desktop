@@ -1,9 +1,9 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.PropertiesController;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
@@ -15,11 +15,11 @@ import java.io.IOException;
  * This tab displays properties form from .properties file.
  * Properties form(ruleRank settings) are fully editable.
  * @see PropertiesController
- * @see JRankProperties
+ * @see RuleRankProperties
  */
-class PropertiesTab extends JRankTab {
+class PropertiesTab extends RuleRankTab {
 	
-	private JRankProperties jRankProperties;
+	private RuleRankProperties ruleRankProperties;
 	
 	/**
 	 * Creates properties tab for .properties files.
@@ -33,9 +33,9 @@ class PropertiesTab extends JRankTab {
 		super(tabName);
 		try {
 			PropertiesController controller = initializeTabAndGetController(workspaceItem);
-			jRankProperties = JRSFileMediator.loadProperties(workspaceItem);
+			ruleRankProperties = JRSFileMediator.loadProperties(workspaceItem);
 			controller.initializeProperties(getJRankProperties(), workspaceItem, this);
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("properties", workspaceItem.getFileName(), e);
 		}
 	}
@@ -45,8 +45,8 @@ class PropertiesTab extends JRankTab {
 		return "/fxml/upperTabs/jRankSettingsTab.fxml";
 	}
 	
-	public JRankProperties getJRankProperties() {
-		return jRankProperties;
+	public RuleRankProperties getJRankProperties() {
+		return ruleRankProperties;
 	}
 	
 }

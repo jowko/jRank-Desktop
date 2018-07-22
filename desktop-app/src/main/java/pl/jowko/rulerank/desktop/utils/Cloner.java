@@ -1,6 +1,6 @@
 package pl.jowko.rulerank.desktop.utils;
 
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -33,7 +33,7 @@ public class Cloner {
 			return ois.readObject();
 		}
 		catch (Exception e) {
-			JRankLogger.error("Error when making deep copy of object: " + e);
+			RuleRankLogger.error("Error when making deep copy of object: " + e);
 			return null;
 		}
 	}

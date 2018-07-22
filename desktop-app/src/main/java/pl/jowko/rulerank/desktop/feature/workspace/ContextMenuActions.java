@@ -9,7 +9,7 @@ import pl.jowko.rulerank.desktop.feature.clipboard.ClipBoardManager;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.service.DialogsService;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 
 import java.io.File;
@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.util.Optional;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.rulerank.desktop.feature.settings.JRankConst.MSG;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -117,7 +117,7 @@ class ContextMenuActions {
 				FileUtils.copyFile(file, newFile, true);
 			
 		} catch (IOException e) {
-			JRankLogger.error("Error when pasting files: ", e);
+			RuleRankLogger.error("Error when pasting files: ", e);
 		}
 		
 		ClipBoardManager.clear();
@@ -138,7 +138,7 @@ class ContextMenuActions {
 		try {
 			ExperimentFilesCreator.createPropertiesFile(selected.getExperimentPath() + fileName);
 		} catch (IOException e) {
-			JRankLogger.error("Error when creating new properties file: ", e);
+			RuleRankLogger.error("Error when creating new properties file: ", e);
 		}
 		refresh();
 	}
@@ -157,7 +157,7 @@ class ContextMenuActions {
 		try {
 			ExperimentFilesCreator.createMemoryContainerForWorkspace(selected.getExperimentPath(), fileName);
 		} catch (ContainerFailureException e) {
-			JRankLogger.error("Error when creating new isf file: ", e);
+			RuleRankLogger.error("Error when creating new isf file: ", e);
 		}
 		refresh();
 	}
@@ -193,7 +193,7 @@ class ContextMenuActions {
 				FileUtils.moveFile(source, target);
 			
 		} catch (IOException e) {
-			JRankLogger.error("Error when renaming file: ", e);
+			RuleRankLogger.error("Error when renaming file: ", e);
 		}
 		refresh();
 	}
@@ -271,7 +271,7 @@ class ContextMenuActions {
 			
 			refresh();
 		} catch (IOException e) {
-			JRankLogger.error("Error when deleting item from workspace: ", e);
+			RuleRankLogger.error("Error when deleting item from workspace: ", e);
 		}
 	}
 	

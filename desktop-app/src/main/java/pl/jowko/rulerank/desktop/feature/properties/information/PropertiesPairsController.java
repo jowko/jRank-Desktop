@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.service.DialogsService;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.util.List;
 
@@ -171,18 +171,18 @@ public class PropertiesPairsController extends AbstractInformationController {
 		FieldItem rightItem = secondListView.getSelectionModel().getSelectedItem();
 		
 		if(isSc && leftItem.equals(rightItem)) {
-			JRankLogger.warn("Object cannot outrank itself. Aborting action.");
+			RuleRankLogger.warn("Object cannot outrank itself. Aborting action.");
 			return;
 		}
 		
 		if(isNull(leftItem) || isNull(rightItem)) {
-			JRankLogger.warn("Select items from both sides first.");
+			RuleRankLogger.warn("Select items from both sides first.");
 			return;
 		}
 		
 		var pair = new PairsItem(leftItem.getFields(), rightItem.getFields(), relation, leftItem.getDisplayedFieldIndex());
 		if(pairsListView.getItems().contains(pair)) {
-			JRankLogger.warn("Selected items were already added with such relation.");
+			RuleRankLogger.warn("Selected items were already added with such relation.");
 			return;
 		}
 		

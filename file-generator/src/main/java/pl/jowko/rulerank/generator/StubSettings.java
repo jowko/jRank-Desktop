@@ -1,7 +1,7 @@
 package pl.jowko.rulerank.generator;
 
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
-import pl.jowko.rulerank.desktop.feature.settings.JRankInfo;
+import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettings;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsBuilder;
 
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static pl.jowko.rulerank.desktop.feature.settings.JRankConst.MSG;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 
 /**
  * Created by Piotr on 2018-03-16.
@@ -23,7 +23,7 @@ class StubSettings {
 	private Map<String, Map<String, String>> labels;
 	private Map<String, String> languages;
 	private UserSettings settings;
-	private JRankInfo appInfo;
+	private RuleRankInfo appInfo;
 	
 	/**
 	 * Creates instance of this class.
@@ -56,7 +56,7 @@ class StubSettings {
 		return settings;
 	}
 	
-	JRankInfo getAppInfo() {
+	RuleRankInfo getAppInfo() {
 		return appInfo;
 	}
 	
@@ -81,7 +81,7 @@ class StubSettings {
 	 */
 	private void createStubAppInfo() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		appInfo = new JRankInfo("1.0-SNAPSHOT", format.format(new Date()));
+		appInfo = new RuleRankInfo("1.0-SNAPSHOT", format.format(new Date()));
 	}
 	
 	/**

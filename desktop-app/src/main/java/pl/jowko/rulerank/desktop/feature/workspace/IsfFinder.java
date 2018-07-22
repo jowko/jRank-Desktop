@@ -1,9 +1,9 @@
 package pl.jowko.rulerank.desktop.feature.workspace;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 
 import java.io.IOException;
@@ -54,7 +54,7 @@ public class IsfFinder {
 		List<WorkspaceItem> items = new FilesFinder().findAllFiles(experimentDirectory);
 		
 		WorkspaceItem propertiesItem = getExperimentProperties(items);
-		JRankProperties properties = JRSFileMediator.loadProperties(propertiesItem);
+		RuleRankProperties properties = JRSFileMediator.loadProperties(propertiesItem);
 		
 		return getContainerFromProperties(properties);
 	}
@@ -70,12 +70,12 @@ public class IsfFinder {
 				.collect(Collectors.toList());
 		
 		if(properties.size() > 1)
-			throw new JRankRuntimeException("Experiment: [" + experimentName + "] has more than one properties file. Fix this issue before accessing this file.");
+			throw new RuleRankRuntimeException("Experiment: [" + experimentName + "] has more than one properties file. Fix this issue before accessing this file.");
 		
 		if(properties.size() == 1)
 			return properties.get(0);
 		
-		throw new JRankRuntimeException("Experiment: [" + experimentName + "] does not have properties file. Fix this issue before accessing this file.");
+		throw new RuleRankRuntimeException("Experiment: [" + experimentName + "] does not have properties file. Fix this issue before accessing this file.");
 	}
 	
 	/**
@@ -87,17 +87,17 @@ public class IsfFinder {
 	 * @param properties contains experiment settings
 	 * @return MemoryContainer with learning data table
 	 */
-	private MemoryContainer getContainerFromProperties(JRankProperties properties) {
+	private MemoryContainer getContainerFromProperties(RuleRankProperties properties) {
 		String dataFilePath = getPathToIsfFile(properties);
 		
 		if(nonNull(dataFilePath)) {
-			JRankLogger.info("Reading learning data table from: [" + dataFilePath + "] for tab");
+			RuleRankLogger.info("Reading learning data table from: [" + dataFilePath + "] for tab");
 			return JRSFileMediator.loadMemoryContainer(dataFilePath);
 		}
 		
 		String extension = getExtension(workspaceItem.getFileName());
 		String isfPath = experimentDirectory + workspaceItem.getFileName().replace(extension, "isf");
-		JRankLogger.info("Learning data table name was not configured in properties file. Assuming path: [" + isfPath + ']');
+		RuleRankLogger.info("Learning data table name was not configured in properties file. Assuming path: [" + isfPath + ']');
 		
 		return JRSFileMediator.loadMemoryContainer(isfPath);
 	}
@@ -110,7 +110,7 @@ public class IsfFinder {
 	 * If none of this paths are configured, null is returned.
 	 * If isf file location is configured, it is checked if path is relative or absolute.
 	 */
-	private String getPathToIsfFile(JRankProperties properties) {
+	private String getPathToIsfFile(RuleRankProperties properties) {
 		String dataFilePath = null;
 		if(isTestFileIncluded && nonNull(properties.getTestDataFile())  && not(properties.getTestDataFile().trim().isEmpty())) {
 			dataFilePath = properties.getTestDataFile();

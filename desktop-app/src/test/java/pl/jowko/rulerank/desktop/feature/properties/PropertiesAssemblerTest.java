@@ -28,9 +28,9 @@ class PropertiesAssemblerTest extends MasterTest {
 	
 	@Test
 	void shouldMapSimpleProperties() {
-		JRankProperties jRankProperties = toJRankProperties(properties);
-		assertEquals("someFile.isf", jRankProperties.getLearningDataFile());
-		assertEquals("1, 2, 3", jRankProperties.getReferenceRanking());
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		assertEquals("someFile.isf", ruleRankProperties.getLearningDataFile());
+		assertEquals("1, 2, 3", ruleRankProperties.getReferenceRanking());
 	}
 	
 	@Test
@@ -43,22 +43,22 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(REFERENCE_RANKING, "referenceRanking");
 		properties.setProperty(PAIRS, "pairs");
 		
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertEquals("pctFile", jRankProperties.getPctFile());
-		assertEquals("pctApxFile", jRankProperties.getPctApxFile());
-		assertEquals("pctRulesFile", jRankProperties.getPctRulesFile());
-		assertEquals("preferenceGraphFile", jRankProperties.getPreferenceGraphFile());
-		assertEquals("rankingFile", jRankProperties.getRankingFile());
-		assertEquals("referenceRanking", jRankProperties.getReferenceRanking());
-		assertEquals("pairs", jRankProperties.getPairs());
+		assertEquals("pctFile", ruleRankProperties.getPctFile());
+		assertEquals("pctApxFile", ruleRankProperties.getPctApxFile());
+		assertEquals("pctRulesFile", ruleRankProperties.getPctRulesFile());
+		assertEquals("preferenceGraphFile", ruleRankProperties.getPreferenceGraphFile());
+		assertEquals("rankingFile", ruleRankProperties.getRankingFile());
+		assertEquals("referenceRanking", ruleRankProperties.getReferenceRanking());
+		assertEquals("pairs", ruleRankProperties.getPairs());
 	}
 	
 	@Test
 	void shouldMapIntegers() {
 		properties.setProperty(PRECISION, "-1");
-		JRankProperties jRankProperties = toJRankProperties(properties);
-		assertEquals(-1, jRankProperties.getPrecision().intValue());
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		assertEquals(-1, ruleRankProperties.getPrecision().intValue());
 	}
 	
 	@Test
@@ -69,13 +69,13 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, "FALSE");
 		properties.setProperty(WRITE_RULES_STATISTICS, "TRASH");
 		
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertEquals("true", jRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
-		assertEquals("true", jRankProperties.getUseEdgeRegionsInVCDomLEM().getTextValue());
-		assertEquals("false", jRankProperties.getWriteDominationInformation().getTextValue());
-		assertEquals("false", jRankProperties.getWriteLearningPositiveExamples().getTextValue());
-		assertNull(jRankProperties.getWriteRulesStatistics());
+		assertEquals("true", ruleRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
+		assertEquals("true", ruleRankProperties.getUseEdgeRegionsInVCDomLEM().getTextValue());
+		assertEquals("false", ruleRankProperties.getWriteDominationInformation().getTextValue());
+		assertEquals("false", ruleRankProperties.getWriteLearningPositiveExamples().getTextValue());
+		assertNull(ruleRankProperties.getWriteRulesStatistics());
 	}
 	
 	@Test
@@ -83,17 +83,17 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(PRECISION, "1de");
 		properties.setProperty(CONSISTENCY_MEASURE_THREASHOLD, "0.a1");
 		
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertNull(jRankProperties.getPrecision());
-		assertNull(jRankProperties.getConsistencyMeasureThreshold());
+		assertNull(ruleRankProperties.getPrecision());
+		assertNull(ruleRankProperties.getConsistencyMeasureThreshold());
 	}
 	
 	@Test
 	void shouldMapDoubles() {
 		properties.setProperty(CONSISTENCY_MEASURE_THREASHOLD, "0.6");
-		JRankProperties jRankProperties = toJRankProperties(properties);
-		assertEquals(0.6, jRankProperties.getConsistencyMeasureThreshold().doubleValue());
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		assertEquals(0.6, ruleRankProperties.getConsistencyMeasureThreshold().doubleValue());
 	}
 	
 	@Test
@@ -112,20 +112,20 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(OPTIMIZE_RULES_CONSISTENCY, "approximation");
 		
 		
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertEquals("consistent", jRankProperties.getTypeOfFamilyOfCriteria().getTextValue());
-		assertEquals("rough-membership", jRankProperties.getConsistencyMeasure().getTextValue());
-		assertEquals("certain", jRankProperties.getTypeOfRules().getTextValue());
-		assertEquals("exhaustive", jRankProperties.getConsideredSetOfRules().getTextValue());
-		assertEquals("crisp", jRankProperties.getSatisfactionDegreesInPreferenceGraph().getTextValue());
-		assertEquals("max-credibility-x-coverage-factor", jRankProperties.getFuzzySatisfactionDegreeCalculationMethod().getTextValue());
-		assertEquals("rnfs", jRankProperties.getRankingProcedure().getTextValue());
-		assertEquals("pareto", jRankProperties.getDominance().getTextValue());
-		assertEquals("classic", jRankProperties.getDominanceForPairsOfOrdinalValues().getTextValue());
-		assertEquals("any", jRankProperties.getNegativeExamplesTreatmentForVCDRSA().getTextValue());
-		assertEquals("mix", jRankProperties.getRuleConditionsSelectionMethodInVCDomLEM().getTextValue());
-		assertEquals("approximation", jRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt().getTextValue());
+		assertEquals("consistent", ruleRankProperties.getTypeOfFamilyOfCriteria().getTextValue());
+		assertEquals("rough-membership", ruleRankProperties.getConsistencyMeasure().getTextValue());
+		assertEquals("certain", ruleRankProperties.getTypeOfRules().getTextValue());
+		assertEquals("exhaustive", ruleRankProperties.getConsideredSetOfRules().getTextValue());
+		assertEquals("crisp", ruleRankProperties.getSatisfactionDegreesInPreferenceGraph().getTextValue());
+		assertEquals("max-credibility-x-coverage-factor", ruleRankProperties.getFuzzySatisfactionDegreeCalculationMethod().getTextValue());
+		assertEquals("rnfs", ruleRankProperties.getRankingProcedure().getTextValue());
+		assertEquals("pareto", ruleRankProperties.getDominance().getTextValue());
+		assertEquals("classic", ruleRankProperties.getDominanceForPairsOfOrdinalValues().getTextValue());
+		assertEquals("any", ruleRankProperties.getNegativeExamplesTreatmentForVCDRSA().getTextValue());
+		assertEquals("mix", ruleRankProperties.getRuleConditionsSelectionMethodInVCDomLEM().getTextValue());
+		assertEquals("approximation", ruleRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt().getTextValue());
 	}
 	
 	@Test
@@ -136,13 +136,13 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(ALLOW_EMPTY_RULES, " true #true|false; allow VC-DomLEM algorithm to induce rules with empty condition part if their consistency is good enough?");
 		properties.setProperty(PRECISION, " -1 #integer value; denotes precision of floating-point numbers; set -1 in order to print floating-point numbers as they are, without rounding");
 		
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertEquals("rankingFile", jRankProperties.getRankingFile());
-		assertEquals(0.8, jRankProperties.getConsistencyMeasureThreshold().doubleValue());
-		assertEquals("certain", jRankProperties.getTypeOfRules().getTextValue());
-		assertEquals("true", jRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
-		assertEquals(-1, jRankProperties.getPrecision().intValue());
+		assertEquals("rankingFile", ruleRankProperties.getRankingFile());
+		assertEquals(0.8, ruleRankProperties.getConsistencyMeasureThreshold().doubleValue());
+		assertEquals("certain", ruleRankProperties.getTypeOfRules().getTextValue());
+		assertEquals("true", ruleRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
+		assertEquals(-1, ruleRankProperties.getPrecision().intValue());
 	}
 	
 	@Test
@@ -153,40 +153,40 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(ALLOW_EMPTY_RULES, " true ");
 		properties.setProperty(PRECISION, " -1 ");
 		
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertEquals("rankingFile", jRankProperties.getRankingFile());
-		assertEquals(0.8, jRankProperties.getConsistencyMeasureThreshold().doubleValue());
-		assertEquals("certain", jRankProperties.getTypeOfRules().getTextValue());
-		assertEquals("true", jRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
-		assertEquals(-1, jRankProperties.getPrecision().intValue());
+		assertEquals("rankingFile", ruleRankProperties.getRankingFile());
+		assertEquals(0.8, ruleRankProperties.getConsistencyMeasureThreshold().doubleValue());
+		assertEquals("certain", ruleRankProperties.getTypeOfRules().getTextValue());
+		assertEquals("true", ruleRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
+		assertEquals(-1, ruleRankProperties.getPrecision().intValue());
 	}
 	
 	@Test
 	void shouldMapToEmptyParameters() {
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertEquals("", jRankProperties.getTypeOfFamilyOfCriteria().getTextValue());
-		assertEquals("", jRankProperties.getConsistencyMeasure().getTextValue());
-		assertEquals("", jRankProperties.getTypeOfRules().getTextValue());
-		assertEquals("", jRankProperties.getConsideredSetOfRules().getTextValue());
-		assertEquals("", jRankProperties.getSatisfactionDegreesInPreferenceGraph().getTextValue());
-		assertEquals("", jRankProperties.getFuzzySatisfactionDegreeCalculationMethod().getTextValue());
-		assertEquals("", jRankProperties.getRankingProcedure().getTextValue());
-		assertEquals("", jRankProperties.getDominance().getTextValue());
-		assertEquals("", jRankProperties.getDominanceForPairsOfOrdinalValues().getTextValue());
-		assertEquals("", jRankProperties.getNegativeExamplesTreatmentForVCDRSA().getTextValue());
-		assertEquals("", jRankProperties.getRuleConditionsSelectionMethodInVCDomLEM().getTextValue());
-		assertEquals("", jRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt().getTextValue());
+		assertEquals("", ruleRankProperties.getTypeOfFamilyOfCriteria().getTextValue());
+		assertEquals("", ruleRankProperties.getConsistencyMeasure().getTextValue());
+		assertEquals("", ruleRankProperties.getTypeOfRules().getTextValue());
+		assertEquals("", ruleRankProperties.getConsideredSetOfRules().getTextValue());
+		assertEquals("", ruleRankProperties.getSatisfactionDegreesInPreferenceGraph().getTextValue());
+		assertEquals("", ruleRankProperties.getFuzzySatisfactionDegreeCalculationMethod().getTextValue());
+		assertEquals("", ruleRankProperties.getRankingProcedure().getTextValue());
+		assertEquals("", ruleRankProperties.getDominance().getTextValue());
+		assertEquals("", ruleRankProperties.getDominanceForPairsOfOrdinalValues().getTextValue());
+		assertEquals("", ruleRankProperties.getNegativeExamplesTreatmentForVCDRSA().getTextValue());
+		assertEquals("", ruleRankProperties.getRuleConditionsSelectionMethodInVCDomLEM().getTextValue());
+		assertEquals("", ruleRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt().getTextValue());
 	}
 	
 	@Test
 	void shouldMapToNulls() {
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertNull(jRankProperties.getRankingFile());
-		assertNull(jRankProperties.getConsistencyMeasureThreshold());
-		assertNull(jRankProperties.getPrecision());
+		assertNull(ruleRankProperties.getRankingFile());
+		assertNull(ruleRankProperties.getConsistencyMeasureThreshold());
+		assertNull(ruleRankProperties.getPrecision());
 	}
 	
 	@Test
@@ -196,12 +196,12 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(TYPE_OF_RULES, "not a key");
 		properties.setProperty(CONSIDERED_SET_OF_RULES, "SuperKey");
 		
-		JRankProperties jRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
 		
-		assertNull(jRankProperties.getTypeOfFamilyOfCriteria());
-		assertNull(jRankProperties.getConsistencyMeasure());
-		assertNull(jRankProperties.getTypeOfRules());
-		assertNull(jRankProperties.getConsideredSetOfRules());
+		assertNull(ruleRankProperties.getTypeOfFamilyOfCriteria());
+		assertNull(ruleRankProperties.getConsistencyMeasure());
+		assertNull(ruleRankProperties.getTypeOfRules());
+		assertNull(ruleRankProperties.getConsideredSetOfRules());
 	}
 	
 	@Test
@@ -217,7 +217,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		System.setOut(System.out);
 	}
 	
-	private JRankProperties toJRankProperties(Properties properties) {
+	private RuleRankProperties toJRankProperties(Properties properties) {
 		PropertiesAssembler assembler = new PropertiesAssembler(properties);
 		return assembler.toJrankProperties();
 	}

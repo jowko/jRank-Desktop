@@ -10,7 +10,7 @@ import static java.util.Objects.nonNull;
  * Created by Piotr on 2018-05-25
  * Very light custom logging implementation.
  * Can be replaced by any logging framework.
- * @see JRankLogger
+ * @see RuleRankLogger
  */
 class CustomLogger {
 	

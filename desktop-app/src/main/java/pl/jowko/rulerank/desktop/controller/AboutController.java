@@ -10,13 +10,13 @@ import javafx.stage.Modality;
 import pl.jowko.rulerank.desktop.Main;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.feature.settings.JRankInfo;
-import pl.jowko.rulerank.desktop.service.JRankInfoService;
+import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
+import pl.jowko.rulerank.desktop.service.RuleRankInfoService;
 
 /**
  * Created by Piotr on 2018-04-10.
  * Controller for about dialog with contains author and version information about application.
- * @see JRankInfo
+ * @see RuleRankInfo
  */
 public class AboutController {
 	
@@ -61,7 +61,7 @@ public class AboutController {
 		labels = LanguageService.getInstance();
 		translateLabels();
 		
-		JRankInfo info = JRankInfoService.getInstance().getInfo();
+		RuleRankInfo info = RuleRankInfoService.getInstance().getInfo();
 		version.setText(info.getVersion());
 		releaseDate.setText(info.getReleaseDate());
 	}

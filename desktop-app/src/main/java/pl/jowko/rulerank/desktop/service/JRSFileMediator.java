@@ -1,9 +1,9 @@
 package pl.jowko.rulerank.desktop.service;
 
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.PropertiesAssembler;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
 import pl.poznan.put.cs.idss.jrs.utilities.ISFLoader;
@@ -36,11 +36,11 @@ public class JRSFileMediator {
 	}
 	
 	/**
-	 * Loads properties from .properties files. As a result return JRankProperties object with filled values.
+	 * Loads properties from .properties files. As a result return RuleRankProperties object with filled values.
 	 * @param item from workspace tree, file path is read from this object
-	 * @return JRankProperties filled with properties values
+	 * @return RuleRankProperties filled with properties values
 	 */
-	public static JRankProperties loadProperties(WorkspaceItem item) throws IOException {
+	public static RuleRankProperties loadProperties(WorkspaceItem item) throws IOException {
 		Properties properties = new Properties();
 		properties.load(new FileInputStream(item.getFilePath()));
 		PropertiesAssembler propertiesAssembler = new PropertiesAssembler(properties);
@@ -64,7 +64,7 @@ public class JRSFileMediator {
 	 */
 	public static void saveMemoryContainer(String filePath, String fileName, MemoryContainer container) {
 		ISFWriter.saveMemoryContainerIntoISF(filePath, container);
-		JRankLogger.info(fileName + " saved successfully in: " + filePath);
+		RuleRankLogger.info(fileName + " saved successfully in: " + filePath);
 	}
 	
 	/**

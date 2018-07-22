@@ -6,7 +6,7 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.feature.customfx.AbstractDialogForm;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.IOException;
 import java.util.Map;
@@ -87,7 +87,7 @@ public class UserSettingsController extends AbstractDialogForm {
 			UserSettingsService.getInstance().saveUserSettings(newUserSettings);
 			onCancelAction();
 		} catch (IOException e) {
-			JRankLogger.error("Error when saving user options: ", e);
+			RuleRankLogger.error("Error when saving user options: ", e);
 			String errorDialogHeader = labels.get(Labels.US_ERROR_DIALOG_HEADER);
 			DialogsService.showErrorDialog(errorDialogHeader, e.getMessage());
 		}

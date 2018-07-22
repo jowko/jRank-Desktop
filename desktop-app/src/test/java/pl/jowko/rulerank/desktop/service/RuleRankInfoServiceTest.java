@@ -3,20 +3,20 @@ package pl.jowko.rulerank.desktop.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.jowko.rulerank.desktop.MasterTest;
-import pl.jowko.rulerank.desktop.feature.settings.JRankInfo;
+import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Created by Piotr on 2018-05-02.
  */
-class JRankInfoServiceTest extends MasterTest {
+class RuleRankInfoServiceTest extends MasterTest {
 	
-	private JRankInfo info;
+	private RuleRankInfo info;
 	
 	@BeforeEach
 	void setUpEach() {
-		info = JRankInfoService.getInstance().getInfo();
+		info = RuleRankInfoService.getInstance().getInfo();
 	}
 	
 	@Test

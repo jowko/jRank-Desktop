@@ -14,23 +14,23 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 /**
  * Created by Piotr on 2018-05-04.
  * This class is used to save properties in .properties file.
- * It converts JRankProperties back to Properties objects and replace old properties file with new one.
+ * It converts RuleRankProperties back to Properties objects and replace old properties file with new one.
  * @see Properties
- * @see JRankProperties
+ * @see RuleRankProperties
  */
 public class PropertiesSaver {
 	
-	private JRankParameter emptyParameter;
-	private JRankProperties jRankProperties;
+	private RuleRankParameter emptyParameter;
+	private RuleRankProperties ruleRankProperties;
 	private Properties properties;
 	
 	/**
-	 * Creates instance of this class and converts JRankProperties to properties.
-	 * @param jRankProperties with will be saved.
+	 * Creates instance of this class and converts RuleRankProperties to properties.
+	 * @param ruleRankProperties with will be saved.
 	 */
-	public PropertiesSaver(JRankProperties jRankProperties) {
-		emptyParameter = JRankParametersService.getInstance().getEmptyParameter();
-		this.jRankProperties = jRankProperties;
+	public PropertiesSaver(RuleRankProperties ruleRankProperties) {
+		emptyParameter = RuleRankParametersService.getInstance().getEmptyParameter();
+		this.ruleRankProperties = ruleRankProperties;
 		properties = new Properties();
 		initializeProperties();
 	}
@@ -49,41 +49,41 @@ public class PropertiesSaver {
 	}
 	
 	/**
-	 * Converts all JRankProperties to Properties object.
+	 * Converts all RuleRankProperties to Properties object.
 	 */
 	private void initializeProperties() {
-		setFilePathProperty(LEARNING_DATA_FILE, jRankProperties.getLearningDataFile(), "isf");
-		setFilePathProperty(TEST_DATA_FILE, jRankProperties.getTestDataFile(), "isf");
-		setFilePathProperty(PCT_FILE, jRankProperties.getPctFile(), "isf");
-		setFilePathProperty(PCT_APX_FILE, jRankProperties.getPctApxFile(), "apx");
-		setFilePathProperty(PCT_RULES_FILE, jRankProperties.getPctRulesFile(), "rules");
-		setFilePathProperty(PREFERENCE_GRAPH_FILE, jRankProperties.getPreferenceGraphFile(), "graph");
-		setFilePathProperty(RANKING_FILE, jRankProperties.getRankingFile(), "ranking");
+		setFilePathProperty(LEARNING_DATA_FILE, ruleRankProperties.getLearningDataFile(), "isf");
+		setFilePathProperty(TEST_DATA_FILE, ruleRankProperties.getTestDataFile(), "isf");
+		setFilePathProperty(PCT_FILE, ruleRankProperties.getPctFile(), "isf");
+		setFilePathProperty(PCT_APX_FILE, ruleRankProperties.getPctApxFile(), "apx");
+		setFilePathProperty(PCT_RULES_FILE, ruleRankProperties.getPctRulesFile(), "rules");
+		setFilePathProperty(PREFERENCE_GRAPH_FILE, ruleRankProperties.getPreferenceGraphFile(), "graph");
+		setFilePathProperty(RANKING_FILE, ruleRankProperties.getRankingFile(), "ranking");
 		
-		setStringProperty(REFERENCE_RANKING, jRankProperties.getReferenceRanking());
-		setStringProperty(PAIRS, jRankProperties.getPairs());
+		setStringProperty(REFERENCE_RANKING, ruleRankProperties.getReferenceRanking());
+		setStringProperty(PAIRS, ruleRankProperties.getPairs());
 		
-		setJRankParameterProperty(TYPE_OF_FAMILY_CRITERIA, jRankProperties.getTypeOfFamilyOfCriteria());
-		setJRankParameterProperty(CONSISTENCY_MEASURE, jRankProperties.getConsistencyMeasure());
-		setNumberProperty(CONSISTENCY_MEASURE_THREASHOLD, jRankProperties.getConsistencyMeasureThreshold());
-		setJRankParameterProperty(TYPE_OF_RULES, jRankProperties.getTypeOfRules());
-		setJRankParameterProperty(CONSIDERED_SET_OF_RULES, jRankProperties.getConsideredSetOfRules());
-		setJRankParameterProperty(SATISFACTION_DEGREE_IN_GRAPH, jRankProperties.getSatisfactionDegreesInPreferenceGraph());
-		setJRankParameterProperty(FUZZY_SAT_DEGREE_CALC_METHOD, jRankProperties.getFuzzySatisfactionDegreeCalculationMethod());
-		setJRankParameterProperty(RANKING_PROCEDURE, jRankProperties.getRankingProcedure());
-		setJRankParameterProperty(DOMINANCE, jRankProperties.getDominance());
-		setJRankParameterProperty(DOMINANCE_FOR_PAIRS, jRankProperties.getDominanceForPairsOfOrdinalValues());
-		setJRankParameterProperty(NEGATIVE_EXAMPLES_TREATMENT, jRankProperties.getNegativeExamplesTreatmentForVCDRSA());
-		setJRankParameterProperty(RULE_CONDITIONS_SELECTION_METHOD, jRankProperties.getRuleConditionsSelectionMethodInVCDomLEM());
-		setJRankParameterProperty(ALLOW_EMPTY_RULES, jRankProperties.getAllowEmptyRulesInVCDomLEM());
-		setJRankParameterProperty(USE_EDGE_REGIONS, jRankProperties.getUseEdgeRegionsInVCDomLEM());
-		setJRankParameterProperty(OPTIMIZE_RULES_CONSISTENCY, jRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		setJRankParameterProperty(TYPE_OF_FAMILY_CRITERIA, ruleRankProperties.getTypeOfFamilyOfCriteria());
+		setJRankParameterProperty(CONSISTENCY_MEASURE, ruleRankProperties.getConsistencyMeasure());
+		setNumberProperty(CONSISTENCY_MEASURE_THREASHOLD, ruleRankProperties.getConsistencyMeasureThreshold());
+		setJRankParameterProperty(TYPE_OF_RULES, ruleRankProperties.getTypeOfRules());
+		setJRankParameterProperty(CONSIDERED_SET_OF_RULES, ruleRankProperties.getConsideredSetOfRules());
+		setJRankParameterProperty(SATISFACTION_DEGREE_IN_GRAPH, ruleRankProperties.getSatisfactionDegreesInPreferenceGraph());
+		setJRankParameterProperty(FUZZY_SAT_DEGREE_CALC_METHOD, ruleRankProperties.getFuzzySatisfactionDegreeCalculationMethod());
+		setJRankParameterProperty(RANKING_PROCEDURE, ruleRankProperties.getRankingProcedure());
+		setJRankParameterProperty(DOMINANCE, ruleRankProperties.getDominance());
+		setJRankParameterProperty(DOMINANCE_FOR_PAIRS, ruleRankProperties.getDominanceForPairsOfOrdinalValues());
+		setJRankParameterProperty(NEGATIVE_EXAMPLES_TREATMENT, ruleRankProperties.getNegativeExamplesTreatmentForVCDRSA());
+		setJRankParameterProperty(RULE_CONDITIONS_SELECTION_METHOD, ruleRankProperties.getRuleConditionsSelectionMethodInVCDomLEM());
+		setJRankParameterProperty(ALLOW_EMPTY_RULES, ruleRankProperties.getAllowEmptyRulesInVCDomLEM());
+		setJRankParameterProperty(USE_EDGE_REGIONS, ruleRankProperties.getUseEdgeRegionsInVCDomLEM());
+		setJRankParameterProperty(OPTIMIZE_RULES_CONSISTENCY, ruleRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
 		
-		setJRankParameterProperty(WRITE_DOMINATION_INFORMATION, jRankProperties.getWriteDominationInformation());
-		setJRankParameterProperty(WRITE_RULES_STATISTICS, jRankProperties.getWriteRulesStatistics());
-		setJRankParameterProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, jRankProperties.getWriteLearningPositiveExamples());
+		setJRankParameterProperty(WRITE_DOMINATION_INFORMATION, ruleRankProperties.getWriteDominationInformation());
+		setJRankParameterProperty(WRITE_RULES_STATISTICS, ruleRankProperties.getWriteRulesStatistics());
+		setJRankParameterProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, ruleRankProperties.getWriteLearningPositiveExamples());
 		
-		setNumberProperty(PRECISION, jRankProperties.getPrecision());
+		setNumberProperty(PRECISION, ruleRankProperties.getPrecision());
 	}
 	
 	private void setStringProperty(String propertyName, String value) {
@@ -108,7 +108,7 @@ public class PropertiesSaver {
 		}
 	}
 	
-	private void setJRankParameterProperty(String propertyName, JRankParameter value) {
+	private void setJRankParameterProperty(String propertyName, RuleRankParameter value) {
 		if(isParameterFilled(value)) {
 			properties.setProperty(propertyName, value.getTextValue());
 		}
@@ -120,7 +120,7 @@ public class PropertiesSaver {
 		}
 	}
 	
-	private boolean isParameterFilled(JRankParameter parameter) {
+	private boolean isParameterFilled(RuleRankParameter parameter) {
 		return nonNull(parameter) && not(emptyParameter.equals(parameter));
 	}
 	

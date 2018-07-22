@@ -5,7 +5,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabEditionChecker;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ class TabsContextMenuCreator {
 	 * All close actions checks, if tabs to close were edited and ask for confirmation in such case.
 	 * @param tab to with ContextMenu will be added
 	 */
-	void create(JRankTab tab) {
+	void create(RuleRankTab tab) {
 		ContextMenu menu = new ContextMenu();
 		menu.getItems().add(createCloseTabMenuItem(tab));
 		menu.getItems().add(createCloseAllTabMenuItem());
@@ -56,11 +56,11 @@ class TabsContextMenuCreator {
 	 * It will check if clicked tab if edited.
 	 * If it was edited, application display confirmation window.
 	 * If it was not edited, application closes tab without confirmation.
-	 * @see JRankTab
+	 * @see RuleRankTab
 	 * @param tab to with close event will be added.
 	 * @return MenuItem with close this action for provided tab
 	 */
-	private MenuItem createCloseTabMenuItem(JRankTab tab) {
+	private MenuItem createCloseTabMenuItem(RuleRankTab tab) {
 		MenuItem closeTab = new MenuItem(labels.get(Labels.TABS_CLOSE_THIS));
 		closeTab.setOnAction(event -> {
 			
@@ -77,7 +77,7 @@ class TabsContextMenuCreator {
 	 * It will check, if any opened tab is in edit mode.
 	 * If it is, application ask form confirmation.
 	 * If no tab is in edit mode, all tabs are closed without confirmation.
-	 * @see JRankTab
+	 * @see RuleRankTab
 	 * @return MenuItem with close all tabs action
 	 */
 	private MenuItem createCloseAllTabMenuItem() {
@@ -97,7 +97,7 @@ class TabsContextMenuCreator {
 	 * Creates close other tabs MenuItem for ContextMenu.
 	 * If any of other tabs are in edit mode, application ask for confirmation.
 	 * If none of other tabs are in edit mode, application closes all other tabs.
-	 * @see JRankTab
+	 * @see RuleRankTab
 	 * @param tab with will not be closed on this action
 	 * @return MenuItem with close other tabs action for provided tab
 	 */

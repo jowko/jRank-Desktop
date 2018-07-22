@@ -7,9 +7,9 @@ import java.util.Objects;
  * Created by Piotr on 2018-05-01.
  * This class is used in properties form as data storage for ComboBox values.
  * It contains label and also text and int value from jRank application.
- * @see JRankParametersService
+ * @see RuleRankParametersService
  */
-public class JRankParameter implements Serializable {
+public class RuleRankParameter implements Serializable {
 	
 	private static final long serialVersionUID = -9123653248987654173L;
 	
@@ -28,7 +28,7 @@ public class JRankParameter implements Serializable {
 	 * @param textValue from jRank application
 	 * @param value from jRank application
 	 */
-	JRankParameter(String label, String textValue, int value) {
+	RuleRankParameter(String label, String textValue, int value) {
 		this.label = label;
 		this.textValue = textValue;
 		this.value = value;
@@ -55,7 +55,7 @@ public class JRankParameter implements Serializable {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		JRankParameter that = (JRankParameter) o;
+		RuleRankParameter that = (RuleRankParameter) o;
 		return value == that.value &&
 				Objects.equals(textValue, that.textValue);
 	}

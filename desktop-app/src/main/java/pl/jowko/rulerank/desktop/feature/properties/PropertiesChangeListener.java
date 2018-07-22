@@ -3,30 +3,30 @@ package pl.jowko.rulerank.desktop.feature.properties;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextInputControl;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
  * Created by Piotr on 2018-05-20.
  * This class is used to detect changes on properties form.
  * It creates listeners for ComboBox and TextField fields.
- * When value in some field changes, this class sets JRankTab to edit mode.
+ * When value in some field changes, this class sets RuleRankTab to edit mode.
  * @see PropertiesController
- * @see JRankTab
+ * @see RuleRankTab
  */
 class PropertiesChangeListener {
 	
 	private PropertiesController controller;
-	private JRankTab propertiesTab;
+	private RuleRankTab propertiesTab;
 	
 	private ChangeListener<? super String> textFieldListener;
-	private ChangeListener<? super JRankParameter> comboBoxListener;
+	private ChangeListener<? super RuleRankParameter> comboBoxListener;
 	
 	/**
 	 * Create instance of this class
 	 * @param controller from with editable fields are extracted
 	 * @param propertiesTab with will be set to edit mode after change in properties field
 	 */
-	PropertiesChangeListener(PropertiesController controller, JRankTab propertiesTab) {
+	PropertiesChangeListener(PropertiesController controller, RuleRankTab propertiesTab) {
 		this.controller = controller;
 		this.propertiesTab = propertiesTab;
 	}
@@ -84,7 +84,7 @@ class PropertiesChangeListener {
 		field.textProperty().addListener(textFieldListener);
 	}
 	
-	private void setUpComboBoxListener(ComboBox<JRankParameter> comboBox) {
+	private void setUpComboBoxListener(ComboBox<RuleRankParameter> comboBox) {
 		comboBox.valueProperty().addListener(comboBoxListener);
 	}
 	

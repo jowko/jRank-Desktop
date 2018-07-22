@@ -14,13 +14,13 @@ import pl.jowko.rulerank.desktop.feature.settings.ConfigurationInitializer;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.rulerank.desktop.feature.tabs.TabEditionChecker;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.IOException;
 import java.util.List;
 
-import static pl.jowko.rulerank.desktop.feature.settings.JRankConst.MIN_HEIGHT;
-import static pl.jowko.rulerank.desktop.feature.settings.JRankConst.MIN_WIDTH;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MIN_HEIGHT;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MIN_WIDTH;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -66,7 +66,7 @@ public class Main extends Application {
 		primaryStage.setMaximized(isMaximized);
 		
 		primaryStage.show();
-		JRankLogger.init("Application started");
+		RuleRankLogger.init("Application started");
 	}
 	
 	/**
@@ -78,18 +78,18 @@ public class Main extends Application {
 	 * @param args are not used in this application
 	 */
 	public static void main(String[] args) {
-		JRankLogger.init("Starting jRank Desktop Application");
+		RuleRankLogger.init("Starting jRank Desktop Application");
 		
 		try {
 			new ConfigurationInitializer().initialize();
 		} catch (ConfigurationException e) {
-			JRankLogger.error(e.getMessage());
+			RuleRankLogger.error(e.getMessage());
 			Platform.exit();
 			return;
 		}
 		
 		launch(args);
-		JRankLogger.info("Application closed");
+		RuleRankLogger.info("Application closed");
 	}
 	
 	/**

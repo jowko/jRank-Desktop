@@ -1,6 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import java.io.IOException;
  * This tab contains information about node arcs in graph.
  * It is used in lower tabs by graph tab.
  */
-class ArcsTab extends JRankTab {
+class ArcsTab extends RuleRankTab {
 	
 	private ArcsController controller;
 	

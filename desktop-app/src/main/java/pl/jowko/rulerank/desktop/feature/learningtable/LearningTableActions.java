@@ -15,10 +15,10 @@ import pl.jowko.rulerank.desktop.feature.learningtable.dialogs.AttributeDialogCo
 import pl.jowko.rulerank.desktop.feature.learningtable.dialogs.AttributeItem;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.EnumFieldWrapper;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.utils.Cloner;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
@@ -46,12 +46,12 @@ public class LearningTableActions {
 	private LearningTableHelper tableHelper;
 	private List<Attribute> attributes;
 	private ComboBox<AttributeItem> selectAttribute;
-	private JRankTab learningTableTab;
+	private RuleRankTab learningTableTab;
 	private LanguageService labels;
 	
 	private int idColumnValue;
 	
-	LearningTableActions(TableView<ObservableList<Field>> learningTable, ComboBox<AttributeItem> selectAttribute, JRankTab learningTableTab) {
+	LearningTableActions(TableView<ObservableList<Field>> learningTable, ComboBox<AttributeItem> selectAttribute, RuleRankTab learningTableTab) {
 		this.learningTable = learningTable;
 		this.tableHelper = new LearningTableHelper();
 		this.selectAttribute = selectAttribute;
@@ -180,7 +180,7 @@ public class LearningTableActions {
 			List<Attribute> attributesToEdit = (List<Attribute>) Cloner.deepClone(getAttributesFromTable());
 			controller.initializeEditAction(this, parent, attributesToEdit);
 		} catch (IOException e) {
-			JRankLogger.error("Error while trying to open customize attributes dialog: " + e.getCause());
+			RuleRankLogger.error("Error while trying to open customize attributes dialog: " + e.getCause());
 		}
 	}
 	
@@ -195,7 +195,7 @@ public class LearningTableActions {
 			AttributeDialogController controller = resourceLoader.getController();
 			controller.initializeAddAction(this, parent);
 		} catch (IOException e) {
-			JRankLogger.error("Error while trying to add new attribute: " + e.getCause());
+			RuleRankLogger.error("Error while trying to add new attribute: " + e.getCause());
 		}
 	}
 	
@@ -210,7 +210,7 @@ public class LearningTableActions {
 	void copySelectedRowsAction() {
 		ObservableList<ObservableList<Field>> items = learningTable.getSelectionModel().getSelectedItems();
 		if(items.size() == 0) {
-			JRankLogger.warn("No rows selected. No rows were copied.");
+			RuleRankLogger.warn("No rows selected. No rows were copied.");
 			return;
 		}
 		
@@ -218,7 +218,7 @@ public class LearningTableActions {
 		List<Integer> indexes = CsvTableCreator.extractIndexes(learningTable);
 		
 		if(columns.size() <= 1) {
-			JRankLogger.warn("Could not copy rows because no attributes are available.");
+			RuleRankLogger.warn("Could not copy rows because no attributes are available.");
 		}
 		// replace ID secret flag with ID label
 		int idIndex = columns.indexOf(ATTRIBUTE_ID_SECRET_NAME);

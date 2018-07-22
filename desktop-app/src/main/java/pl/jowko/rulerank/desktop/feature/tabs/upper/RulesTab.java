@@ -1,8 +1,8 @@
 package pl.jowko.rulerank.desktop.feature.tabs.upper;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.rules.RulesController;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
@@ -16,7 +16,7 @@ import java.io.IOException;
  * @see RulesController
  * @see RulesContainer
  */
-class RulesTab extends JRankTab {
+class RulesTab extends RuleRankTab {
 	
 	/**
 	 * Creates rules tab for .rules files.
@@ -32,7 +32,7 @@ class RulesTab extends JRankTab {
 			RulesContainer container = JRSFileMediator.loadRules(workspaceItem);
 			RulesController controller = initializeTabAndGetController(workspaceItem);
 			controller.initializeRules(container, workspaceItem, this);
-		} catch (JRankRuntimeException e) {
+		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("rules", workspaceItem.getFileName(), e);
 		}
 	}

@@ -16,17 +16,17 @@ import static pl.jowko.rulerank.desktop.feature.properties.TestPropertiesProvide
  */
 class PropertiesSaverTest extends MasterTest {
 	
-	private JRankProperties jRankProperties;
+	private RuleRankProperties ruleRankProperties;
 	
 	@BeforeEach
 	void setUpEach() {
-		jRankProperties = new JRankProperties();
+		ruleRankProperties = new RuleRankProperties();
 	}
 	
 	@Test
 	void shouldMapStringProperty() {
-		jRankProperties.setLearningDataFile(dataFile);
-		jRankProperties.setPreferenceGraphFile(graphFile);
+		ruleRankProperties.setLearningDataFile(dataFile);
+		ruleRankProperties.setPreferenceGraphFile(graphFile);
 		Properties properties = getProperties();
 		
 		assertEquals(dataFile, properties.getProperty(LEARNING_DATA_FILE));
@@ -35,57 +35,57 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldMapNullStringProperty() {
-		jRankProperties.setRankingFile(null);
+		ruleRankProperties.setRankingFile(null);
 		Properties properties = getProperties();
 		assertNull(properties.getProperty(RANKING_FILE));
 	}
 	
 	@Test
 	void shouldMapEmptyStringProperty() {
-		jRankProperties.setRankingFile("");
+		ruleRankProperties.setRankingFile("");
 		Properties properties = getProperties();
 		assertNull(properties.getProperty(RANKING_FILE));
 	}
 	
 	@Test
 	void shouldMapDoubleProperty() {
-		jRankProperties.setConsistencyMeasureThreshold(0.5d);
+		ruleRankProperties.setConsistencyMeasureThreshold(0.5d);
 		Properties properties = getProperties();
 		assertEquals(Double.valueOf(0.5d), Double.valueOf(properties.getProperty(CONSISTENCY_MEASURE_THREASHOLD)));
 	}
 	
 	@Test
 	void shouldNotMapNullDoubleProperty() {
-		jRankProperties.setConsistencyMeasureThreshold(null);
+		ruleRankProperties.setConsistencyMeasureThreshold(null);
 		Properties properties = getProperties();
 		assertNull(properties.getProperty(CONSISTENCY_MEASURE_THREASHOLD));
 	}
 	
 	@Test
 	void shouldMapIntegerProperty() {
-		jRankProperties.setPrecision(-1);
+		ruleRankProperties.setPrecision(-1);
 		Properties properties = getProperties();
 		assertEquals(Integer.valueOf(-1), Integer.valueOf(properties.getProperty(PRECISION)));
 	}
 	
 	@Test
 	void shouldNotMapNullIntegerProperty() {
-		jRankProperties.setPrecision(null);
+		ruleRankProperties.setPrecision(null);
 		Properties properties = getProperties();
 		assertNull(properties.getProperty(PRECISION));
 	}
 	
 	@Test
 	void shouldMapBooleanProperty() {
-		jRankProperties.setWriteLearningPositiveExamples(createParameter("true"));
+		ruleRankProperties.setWriteLearningPositiveExamples(createParameter("true"));
 		Properties properties = getProperties();
 		assertEquals("true", properties.getProperty(WRITE_LEARNING_POSITIVE_EXAMPLES));
 	}
 	
 	@Test
 	void shouldNotMapNullBooleanProperty() {
-		jRankProperties.setWriteLearningPositiveExamples(createParameter("false"));
-		jRankProperties.setWriteRulesStatistics(null);
+		ruleRankProperties.setWriteLearningPositiveExamples(createParameter("false"));
+		ruleRankProperties.setWriteRulesStatistics(null);
 		Properties properties = getProperties();
 		
 		assertEquals("false", properties.getProperty(WRITE_LEARNING_POSITIVE_EXAMPLES));
@@ -94,28 +94,28 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldMapJRankParameter() {
-		jRankProperties.setConsistencyMeasure(createParameter(consistencyMeasure));
+		ruleRankProperties.setConsistencyMeasure(createParameter(consistencyMeasure));
 		Properties properties = getProperties();
 		assertEquals(consistencyMeasure, properties.getProperty(CONSISTENCY_MEASURE));
 	}
 	
 	@Test
 	void shouldNotMapNullJRankParameter() {
-		jRankProperties.setConsistencyMeasure(null);
+		ruleRankProperties.setConsistencyMeasure(null);
 		Properties properties = getProperties();
 		assertNull(properties.getProperty(CONSISTENCY_MEASURE));
 	}
 	
 	@Test
 	void shouldNotMapEmptyJRankParameter() {
-		jRankProperties.setConsistencyMeasure(JRankParametersService.getInstance().getEmptyParameter());
+		ruleRankProperties.setConsistencyMeasure(RuleRankParametersService.getInstance().getEmptyParameter());
 		Properties properties = getProperties();
 		assertNull(properties.getProperty(CONSISTENCY_MEASURE));
 	}
 	
 	@Test
 	void shouldMapAllProperties() {
-		jRankProperties = getFullProperties();
+		ruleRankProperties = getFullProperties();
 		Properties properties = getProperties();
 		
 		assertEquals(dataFile, properties.getProperty(LEARNING_DATA_FILE));
@@ -152,14 +152,14 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldAddExtensionsToFiles() {
-		jRankProperties = getFullProperties();
-		jRankProperties.setLearningDataFile("data");
-		jRankProperties.setTestDataFile("test");
-		jRankProperties.setPctFile("pct");
-		jRankProperties.setPctApxFile("pct");
-		jRankProperties.setPctRulesFile("pct");
-		jRankProperties.setRankingFile("test");
-		jRankProperties.setPreferenceGraphFile("test");
+		ruleRankProperties = getFullProperties();
+		ruleRankProperties.setLearningDataFile("data");
+		ruleRankProperties.setTestDataFile("test");
+		ruleRankProperties.setPctFile("pct");
+		ruleRankProperties.setPctApxFile("pct");
+		ruleRankProperties.setPctRulesFile("pct");
+		ruleRankProperties.setRankingFile("test");
+		ruleRankProperties.setPreferenceGraphFile("test");
 		
 		Properties properties = getProperties();
 		
@@ -174,14 +174,14 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldNotAddExtensionsToFiles() {
-		jRankProperties = getFullProperties();
-		jRankProperties.setLearningDataFile("data.isf.");
-		jRankProperties.setTestDataFile("test.isf.");
-		jRankProperties.setPctFile("pct.isf.");
-		jRankProperties.setPctApxFile("pct.apx.");
-		jRankProperties.setPctRulesFile("pct.rules.");
-		jRankProperties.setRankingFile("test.ranking.");
-		jRankProperties.setPreferenceGraphFile("test.graph.");
+		ruleRankProperties = getFullProperties();
+		ruleRankProperties.setLearningDataFile("data.isf.");
+		ruleRankProperties.setTestDataFile("test.isf.");
+		ruleRankProperties.setPctFile("pct.isf.");
+		ruleRankProperties.setPctApxFile("pct.apx.");
+		ruleRankProperties.setPctRulesFile("pct.rules.");
+		ruleRankProperties.setRankingFile("test.ranking.");
+		ruleRankProperties.setPreferenceGraphFile("test.graph.");
 		
 		Properties properties = getProperties();
 		
@@ -195,7 +195,7 @@ class PropertiesSaverTest extends MasterTest {
 	}
 	
 	private Properties getProperties() {
-		PropertiesSaver saver = new PropertiesSaver(jRankProperties);
+		PropertiesSaver saver = new PropertiesSaver(ruleRankProperties);
 		return saver.getProperties();
 	}
 	

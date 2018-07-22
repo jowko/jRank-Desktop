@@ -1,6 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.properties.information;
 
-import pl.jowko.rulerank.desktop.exception.JRankRuntimeException;
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.utils.StringUtils;
 import pl.poznan.put.cs.idss.jrs.ranking.PairOfIndices;
 import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
@@ -110,7 +110,7 @@ public class InformationExtractor {
 		} else if ("Sc".equalsIgnoreCase(relation)) {
 			return  -1.0;
 		}
-		throw new JRankRuntimeException("Relation string: [" + relation + "] is not recognized. Valid values are: S, Sc");
+		throw new RuleRankRuntimeException("Relation string: [" + relation + "] is not recognized. Valid values are: S, Sc");
 	}
 	
 }

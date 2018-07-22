@@ -11,7 +11,7 @@ import pl.jowko.rulerank.desktop.feature.clipboard.CsvTableCreator;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.learningtable.LearningTable;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
@@ -71,7 +71,7 @@ public class PCTController {
 	private void copySelectedRowsAction() {
 		ObservableList<ObservableList<String>> items = getSelectedItems();
 		if(items.size() == 0) {
-			JRankLogger.warn("No rows selected. No rows were copied.");
+			RuleRankLogger.warn("No rows selected. No rows were copied.");
 			return;
 		}
 		ClipBoardManager.putCsvTable(createTable(pctTable, items));

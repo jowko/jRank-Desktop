@@ -1,7 +1,7 @@
 package pl.jowko.rulerank.desktop.feature.learningtable.dialogs;
 
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.*;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.*;
 
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
@@ -32,7 +32,7 @@ public class AttributeDialogHelper {
 			case ENUM_FIELD:
 				return createEnumFromForm(enumText);
 		}
-		JRankLogger.warn("Field type was not recognized. Setting default StringField.");
+		RuleRankLogger.warn("Field type was not recognized. Setting default StringField.");
 		
 		return new StringFieldWrapper();
 	}

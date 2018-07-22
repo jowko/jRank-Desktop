@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
  * Created by Piotr on 2018-06-24
@@ -24,12 +24,12 @@ public class ArcsController {
 	@FXML private Label inScLabel;
 	@FXML private Label inSc;
 	
-	private JRankTab arcsTab;
+	private RuleRankTab arcsTab;
 	private NodeArcs arcs;
 	
 	private LanguageService labels;
 	
-	void initializeArcs(NodeArcs arcs, JRankTab arcsTab) {
+	void initializeArcs(NodeArcs arcs, RuleRankTab arcsTab) {
 		this.arcsTab = arcsTab;
 		this.arcs = arcs;
 		

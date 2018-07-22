@@ -12,18 +12,18 @@ import static pl.jowko.rulerank.desktop.feature.properties.TestPropertiesProvide
  */
 class RunnerPropertiesProviderTest extends MasterTest {
 	
-	private JRankProperties properties;
-	private JRankProperties defaults;
+	private RuleRankProperties properties;
+	private RuleRankProperties defaults;
 	
 	@BeforeEach
 	void setUpEach() {
-		properties = new JRankProperties();
+		properties = new RuleRankProperties();
 		defaults = getFullProperties();
 	}
 	
 	@Test
 	void shouldGetDefaultsForFiles() {
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals(dataFile, withDefaults.getLearningDataFile());
 		assertEquals(testDataFile, withDefaults.getTestDataFile());
@@ -44,7 +44,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 		properties.setRankingFile("rankingFile2");
 		properties.setPreferenceGraphFile("graphFile");
 		
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals("dataFile2", withDefaults.getLearningDataFile());
 		assertEquals("testDataFile2", withDefaults.getTestDataFile());
@@ -60,7 +60,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 		properties.setLearningDataFile("dataFile2");
 		properties.setPctRulesFile("pctRulesFile2");
 		
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals("dataFile2", withDefaults.getLearningDataFile());
 		assertEquals("pctRulesFile2", withDefaults.getPctRulesFile());
@@ -72,7 +72,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	@Test
 	void shouldGetDefaultReferenceRanking() {
 		defaults.setPairs(null);
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		assertEquals(referenceRanking, withDefaults.getReferenceRanking());
 	}
 	
@@ -80,14 +80,14 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	void shouldNotGetDefaultReferenceRanking() {
 		properties.setReferenceRanking("1,2,3");
 		defaults.setPairs(null);
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		assertEquals("1,2,3", withDefaults.getReferenceRanking());
 	}
 	
 	@Test
 	void shouldGetDefaultPairs() {
 		defaults.setReferenceRanking(null);
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		assertEquals(pairs, withDefaults.getPairs());
 	}
 	
@@ -95,13 +95,13 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	void shouldNotGetDefaultPairs() {
 		properties.setPairs("{1,2}");
 		defaults.setReferenceRanking(null);
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		assertEquals("{1,2}", withDefaults.getPairs());
 	}
 	
 	@Test
 	void shouldGetDefaultParameters() {
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals(typeOfFamilyOfCriteria, withDefaults.getTypeOfFamilyOfCriteria().getTextValue());
 		assertEquals(consistencyMeasure, withDefaults.getConsistencyMeasure().getTextValue());
@@ -130,7 +130,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 		properties.setRuleConditionsSelectionMethodInVCDomLEM(createParameter("ruleConditionsSelectionMethodInVCDomLEM2"));
 		properties.setOptimizeRuleConsistencyInVCDomLEMWrt(createParameter("optimizeRuleConsistencyInVCDomLEMWrt2"));
 		
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals("typeOfFamilyOfCriteria2", withDefaults.getTypeOfFamilyOfCriteria().getTextValue());
 		assertEquals("consistencyMeasure2", withDefaults.getConsistencyMeasure().getTextValue());
@@ -150,7 +150,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 		properties.setTypeOfFamilyOfCriteria(createParameter("typeOfFamilyOfCriteria2"));
 		properties.setDominanceForPairsOfOrdinalValues(createParameter("dominanceForPairsOfOrdinalValues2"));
 		
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals("typeOfFamilyOfCriteria2", withDefaults.getTypeOfFamilyOfCriteria().getTextValue());
 		assertEquals("dominanceForPairsOfOrdinalValues2", withDefaults.getDominanceForPairsOfOrdinalValues().getTextValue());
@@ -160,7 +160,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	
 	@Test
 	void shouldGetDefaultBooleanProperties() {
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals("true", withDefaults.getAllowEmptyRulesInVCDomLEM().getTextValue());
 		assertEquals("false", withDefaults.getUseEdgeRegionsInVCDomLEM().getTextValue());
@@ -177,7 +177,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 		properties.setWriteRulesStatistics(createParameter("false"));
 		properties.setWriteLearningPositiveExamples(createParameter("true"));
 		
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals("false", withDefaults.getAllowEmptyRulesInVCDomLEM().getTextValue());
 		assertEquals("false", withDefaults.getUseEdgeRegionsInVCDomLEM().getTextValue());
@@ -189,7 +189,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	@Test
 	void shouldGetDefaultBooleanPropertiesPartially() {
 		properties.setAllowEmptyRulesInVCDomLEM(createParameter("false"));
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals("false", withDefaults.getAllowEmptyRulesInVCDomLEM().getTextValue());
 		assertEquals("true", withDefaults.getWriteRulesStatistics().getTextValue());
@@ -198,7 +198,7 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	
 	@Test
 	void shouldGetDefaultNumberProperties() {
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals(consistencyMeasureThreshold, withDefaults.getConsistencyMeasureThreshold());
 		assertEquals(precision, withDefaults.getPrecision());
@@ -208,13 +208,13 @@ class RunnerPropertiesProviderTest extends MasterTest {
 	void shouldNotGetDefaultNumberProperties() {
 		properties.setConsistencyMeasureThreshold(0.3d);
 		properties.setPrecision(1);
-		JRankProperties withDefaults = getPropertiesWithDefaults();
+		RuleRankProperties withDefaults = getPropertiesWithDefaults();
 		
 		assertEquals(Double.valueOf(0.3d), withDefaults.getConsistencyMeasureThreshold());
 		assertEquals(Integer.valueOf(1), withDefaults.getPrecision());
 	}
 	
-	private JRankProperties getPropertiesWithDefaults() {
+	private RuleRankProperties getPropertiesWithDefaults() {
 		return new RunnerPropertiesProvider(properties, defaults).getPropertiesWithDefaults();
 	}
 	

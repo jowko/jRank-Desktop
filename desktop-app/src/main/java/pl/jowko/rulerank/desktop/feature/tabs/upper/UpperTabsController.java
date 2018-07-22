@@ -5,13 +5,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import pl.jowko.rulerank.desktop.exception.JRankException;
-import pl.jowko.rulerank.desktop.feature.tabs.JRankTab;
+import pl.jowko.rulerank.desktop.exception.RuleRankException;
+import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.TabInitializationException;
 import pl.jowko.rulerank.desktop.feature.workspace.FileType;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.pct.PCTDetector;
 
@@ -28,8 +28,8 @@ import static java.util.Objects.nonNull;
  * This controller manages upper TabPane.
  * In this pane main tabs are displayed.
  * It allows to add and remove(close) tabs from TabPane.
- * All added tabs should inherit JRankTab class.
- * @see JRankTab
+ * All added tabs should inherit RuleRankTab class.
+ * @see RuleRankTab
  * @see pl.jowko.rulerank.desktop.feature.tabs.upper package for all supported tabs
  */
 public class UpperTabsController {
@@ -70,14 +70,14 @@ public class UpperTabsController {
 				return;
 			}
 			
-			JRankTab tab = createTabForFile(workspaceItem, tabText);
+			RuleRankTab tab = createTabForFile(workspaceItem, tabText);
 			menuCreator.create(tab);
 			upperTabs.getTabs().add(tab);
 			upperTabs.getSelectionModel().select(tab);
-		} catch (JRankException e) {
-			JRankLogger.error(e.getMessage());
+		} catch (RuleRankException e) {
+			RuleRankLogger.error(e.getMessage());
 		} catch (IOException | RuntimeException e) {
-			JRankLogger.error("Unexpected error occurred while creating tab: ", e);
+			RuleRankLogger.error("Unexpected error occurred while creating tab: ", e);
 		}
 	}
 	
@@ -134,8 +134,8 @@ public class UpperTabsController {
 	private Tab getTabIfExists(String newTabText) {
 		return upperTabs.getTabs().stream()
 				.filter(tab -> {
-					JRankTab jRankTab = (JRankTab) tab;
-					return nonNull(jRankTab.getTabName()) && jRankTab.getTabName().equals(newTabText);
+					RuleRankTab ruleRankTab = (RuleRankTab) tab;
+					return nonNull(ruleRankTab.getTabName()) && ruleRankTab.getTabName().equals(newTabText);
 				})
 				.findAny().orElse(null);
 	}
@@ -158,12 +158,12 @@ public class UpperTabsController {
 	 * @param workspaceItem from with tab will be created
 	 * @param tabText do display on tab
 	 * @see pl.jowko.rulerank.desktop.feature.tabs.upper package for all supported tabs
-	 * @return JRankTab for provided item and will initialized data
-	 * @throws JRankException when something goes wrong with initializing tab
+	 * @return RuleRankTab for provided item and will initialized data
+	 * @throws RuleRankException when something goes wrong with initializing tab
 	 * @throws IOException when something goes wrong with reading files
 	 * @throws WrongFileTypeException when directory or root node will be passed to this methd
 	 */
-	private JRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws JRankException, IOException {
+	private RuleRankTab createTabForFile(WorkspaceItem workspaceItem, String tabText) throws RuleRankException, IOException {
 		FileType itemType = workspaceItem.getFileType();
 		switch (itemType) {
 			case ROOT:
@@ -194,14 +194,14 @@ public class UpperTabsController {
 	 * This methods handle isf table case.
 	 * When isf file is loaded, it can represent editable isf for learning or test data.
 	 * But it can also represent non editable Partial Comparision Table(PCT) in isf format.
-	 * This method loads isf table, checks it type and returns JRankTab for provided type.
+	 * This method loads isf table, checks it type and returns RuleRankTab for provided type.
 	 * @param workspaceItem from workspace tree
 	 * @param tabText to display on tab header
-	 * @return JRankTab for isf file
+	 * @return RuleRankTab for isf file
 	 * @throws IOException when something goes wrong with reading files
 	 * @throws TabInitializationException when something goes wrong with initialization of tabs
 	 */
-	private JRankTab handleIsfTable(WorkspaceItem workspaceItem, String tabText) throws IOException, TabInitializationException {
+	private RuleRankTab handleIsfTable(WorkspaceItem workspaceItem, String tabText) throws IOException, TabInitializationException {
 		MemoryContainer container = JRSFileMediator.loadMemoryContainer(workspaceItem.getFilePath());
 		
 		if(isNull(container))

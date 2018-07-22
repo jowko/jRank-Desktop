@@ -13,9 +13,9 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
  */
 class PropertiesControllerHelper {
 	
-	private JRankParametersService parametersService;
+	private RuleRankParametersService parametersService;
 	private PropertiesController controller;
-	private JRankProperties editableProperties;
+	private RuleRankProperties editableProperties;
 	
 	/**
 	 * Initializes instance of this class.
@@ -23,7 +23,7 @@ class PropertiesControllerHelper {
 	 * @param controller from properties form
 	 */
 	PropertiesControllerHelper(PropertiesController controller) {
-		parametersService = JRankParametersService.getInstance();
+		parametersService = RuleRankParametersService.getInstance();
 		this.controller = controller;
 		editableProperties = controller.editableProperties;
 		
@@ -45,7 +45,7 @@ class PropertiesControllerHelper {
 	 * Used when restoring default values in form.
 	 * @param editableProperties with will replace current form values
 	 */
-	void setEditableProperties(JRankProperties editableProperties) {
+	void setEditableProperties(RuleRankProperties editableProperties) {
 		this.editableProperties = editableProperties;
 	}
 	
@@ -53,7 +53,7 @@ class PropertiesControllerHelper {
 	 * Clear all fields to empty values.
 	 */
 	void clearForm() {
-		JRankParameter emptyParameter = parametersService.getEmptyParameter();
+		RuleRankParameter emptyParameter = parametersService.getEmptyParameter();
 		
 		editableProperties.setLearningDataFile(null);
 		editableProperties.setTestDataFile(null);
@@ -139,49 +139,49 @@ class PropertiesControllerHelper {
 	
 	/**
 	 * Extract all values from properties form and assembles new JrankProperties from them.
-	 * @return JRankProperties with values from properties form.
+	 * @return RuleRankProperties with values from properties form.
 	 */
-	JRankProperties getPropertiesFromForm() {
-		JRankProperties jRankProperties = new JRankProperties();
+	RuleRankProperties getPropertiesFromForm() {
+		RuleRankProperties ruleRankProperties = new RuleRankProperties();
 		
-		jRankProperties.setLearningDataFile(controller.learningDataFile.getText());
-		jRankProperties.setTestDataFile(controller.testDataFile.getText());
-		jRankProperties.setPctFile(controller.pctFile.getText());
-		jRankProperties.setPctApxFile(controller.pctApxFile.getText());
-		jRankProperties.setPctRulesFile(controller.pctRulesFile.getText());
-		jRankProperties.setPreferenceGraphFile(controller.graphFile.getText());
-		jRankProperties.setRankingFile(controller.rankingFile.getText());
+		ruleRankProperties.setLearningDataFile(controller.learningDataFile.getText());
+		ruleRankProperties.setTestDataFile(controller.testDataFile.getText());
+		ruleRankProperties.setPctFile(controller.pctFile.getText());
+		ruleRankProperties.setPctApxFile(controller.pctApxFile.getText());
+		ruleRankProperties.setPctRulesFile(controller.pctRulesFile.getText());
+		ruleRankProperties.setPreferenceGraphFile(controller.graphFile.getText());
+		ruleRankProperties.setRankingFile(controller.rankingFile.getText());
 		
-		jRankProperties.setReferenceRanking(controller.referenceRanking.getText());
-		jRankProperties.setPairs(controller.pairs.getText());
+		ruleRankProperties.setReferenceRanking(controller.referenceRanking.getText());
+		ruleRankProperties.setPairs(controller.pairs.getText());
 		
-		jRankProperties.setTypeOfFamilyOfCriteria(controller.typeOfFamilyCriteria.getValue());
-		jRankProperties.setTypeOfRules(controller.typeOfRules.getValue());
-		jRankProperties.setConsideredSetOfRules(controller.consideredSetOfRules.getValue());
+		ruleRankProperties.setTypeOfFamilyOfCriteria(controller.typeOfFamilyCriteria.getValue());
+		ruleRankProperties.setTypeOfRules(controller.typeOfRules.getValue());
+		ruleRankProperties.setConsideredSetOfRules(controller.consideredSetOfRules.getValue());
 		
-		jRankProperties.setConsistencyMeasure(controller.consistencyMeasure.getValue());
-		jRankProperties.setConsistencyMeasureThreshold(getDoubleOrNull(controller.consistencyMeasureThreshold.getText()));
-		jRankProperties.setPrecision(getIntegerOrNull(controller.precision.getText()));
+		ruleRankProperties.setConsistencyMeasure(controller.consistencyMeasure.getValue());
+		ruleRankProperties.setConsistencyMeasureThreshold(getDoubleOrNull(controller.consistencyMeasureThreshold.getText()));
+		ruleRankProperties.setPrecision(getIntegerOrNull(controller.precision.getText()));
 		
-		jRankProperties.setRankingProcedure(controller.rankingProcedure.getValue());
-		jRankProperties.setDominance(controller.dominance.getValue());
-		jRankProperties.setDominanceForPairsOfOrdinalValues(controller.dominanceForPairs.getValue());
+		ruleRankProperties.setRankingProcedure(controller.rankingProcedure.getValue());
+		ruleRankProperties.setDominance(controller.dominance.getValue());
+		ruleRankProperties.setDominanceForPairsOfOrdinalValues(controller.dominanceForPairs.getValue());
 		
-		jRankProperties.setSatisfactionDegreesInPreferenceGraph(controller.satisfactionDegreesInGraph.getValue());
-		jRankProperties.setFuzzySatisfactionDegreeCalculationMethod(controller.fuzzyCalculationMethod.getValue());
+		ruleRankProperties.setSatisfactionDegreesInPreferenceGraph(controller.satisfactionDegreesInGraph.getValue());
+		ruleRankProperties.setFuzzySatisfactionDegreeCalculationMethod(controller.fuzzyCalculationMethod.getValue());
 		
-		jRankProperties.setNegativeExamplesTreatmentForVCDRSA(controller.negativeExamplesTreatment.getValue());
-		jRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(controller.optimizeRuleConsistency.getValue());
-		jRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(controller.ruleConditionsSelectionMethod.getValue());
+		ruleRankProperties.setNegativeExamplesTreatmentForVCDRSA(controller.negativeExamplesTreatment.getValue());
+		ruleRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(controller.optimizeRuleConsistency.getValue());
+		ruleRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(controller.ruleConditionsSelectionMethod.getValue());
 		
-		jRankProperties.setAllowEmptyRulesInVCDomLEM(controller.allowEmptyRules.getValue());
-		jRankProperties.setUseEdgeRegionsInVCDomLEM(controller.useEdgeRegions.getValue());
+		ruleRankProperties.setAllowEmptyRulesInVCDomLEM(controller.allowEmptyRules.getValue());
+		ruleRankProperties.setUseEdgeRegionsInVCDomLEM(controller.useEdgeRegions.getValue());
 		
-		jRankProperties.setWriteDominationInformation(controller.writeDominationInformation.getValue());
-		jRankProperties.setWriteRulesStatistics(controller.writeRulesStatistics.getValue());
-		jRankProperties.setWriteLearningPositiveExamples(controller.writeLearningPositiveExamples.getValue());
+		ruleRankProperties.setWriteDominationInformation(controller.writeDominationInformation.getValue());
+		ruleRankProperties.setWriteRulesStatistics(controller.writeRulesStatistics.getValue());
+		ruleRankProperties.setWriteLearningPositiveExamples(controller.writeLearningPositiveExamples.getValue());
 		
-		return jRankProperties;
+		return ruleRankProperties;
 	}
 	
 	/**
@@ -196,7 +196,7 @@ class PropertiesControllerHelper {
 	
 	/**
 	 * Fills all ComboBoxes with options to choose.
-	 * @see JRankParametersService
+	 * @see RuleRankParametersService
 	 */
 	private void fillComboBoxes() {
 		controller.typeOfFamilyCriteria.getItems().addAll(parametersService.getTypeOfFamilyOfCriteria());

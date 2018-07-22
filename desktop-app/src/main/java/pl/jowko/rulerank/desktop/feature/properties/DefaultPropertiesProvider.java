@@ -10,16 +10,16 @@ import java.util.Properties;
  * Created by Piotr on 2018-05-04.
  * This class loads default.properties file from workspace.
  * It is assumed, that default properties are in main workspace directory(workspace path).
- * @see JRankProperties
+ * @see RuleRankProperties
  */
 public class DefaultPropertiesProvider {
 	
 	/**
 	 * Reads default.properties file from main workspace directory(workspacePath).
-	 * @return JRankProperties object with all properties
+	 * @return RuleRankProperties object with all properties
 	 * @throws IOException when something goes wrong with file reading
 	 */
-	public JRankProperties getDefaultProperties() throws IOException {
+	public RuleRankProperties getDefaultProperties() throws IOException {
 		String propertiesPath = WorkspaceService.getInstance().getWorkspacePath() + "\\default.properties";
 		
 		Properties properties = new Properties();

@@ -6,7 +6,7 @@ import com.fxgraph.graph.MouseClickAction;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import pl.jowko.rulerank.desktop.feature.tabs.lower.LowerTabsController;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.IOException;
 
@@ -72,7 +72,7 @@ class GraphSelectAction implements MouseClickAction {
 				arcsTab.setOnCloseRequest(event -> arcsTab = null);
 				graphController.initializeCloseEventForGraphTab(arcsTab);
 			} catch (IOException e) {
-				JRankLogger.error("Error when opening rule statistics: " + e);
+				RuleRankLogger.error("Error when opening rule statistics: " + e);
 			}
 		} else { // tab already exists
 			arcsTab.getController().initializeArcs(arcs);

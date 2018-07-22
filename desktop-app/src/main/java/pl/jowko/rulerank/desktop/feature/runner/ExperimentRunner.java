@@ -4,12 +4,12 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.rulerank.desktop.feature.properties.DefaultPropertiesProvider;
-import pl.jowko.rulerank.desktop.feature.properties.JRankProperties;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.RunnerPropertiesProvider;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.utils.FileExtensionExtractor;
-import pl.jowko.rulerank.logger.JRankLogger;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.Settings;
 import pl.poznan.put.cs.idss.jrs.ranking.Ranker;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerParameters;
@@ -28,7 +28,7 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNullOrEmpty;
  */
 public class ExperimentRunner {
 	
-	private JRankProperties properties;
+	private RuleRankProperties properties;
 	private ExperimentRunnerValidator validator;
 	private String experimentPath;
 	
@@ -38,12 +38,12 @@ public class ExperimentRunner {
 	 * @param properties from properties form
 	 * @param propertiesItem representing properties file in workspace tree
 	 */
-	public ExperimentRunner(JRankProperties properties, WorkspaceItem propertiesItem) {
+	public ExperimentRunner(RuleRankProperties properties, WorkspaceItem propertiesItem) {
 		RunnerPropertiesProvider propertiesProvider;
 		LanguageService labels = LanguageService.getInstance();
 		
 		try {
-			JRankProperties defaults = new DefaultPropertiesProvider().getDefaultProperties();
+			RuleRankProperties defaults = new DefaultPropertiesProvider().getDefaultProperties();
 			propertiesProvider = new RunnerPropertiesProvider(properties, defaults);
 		} catch (IOException e) {
 			throw new RunnerException(labels.get(Labels.RUN_PROP_READ_ERROR) + e.getMessage());
@@ -68,13 +68,13 @@ public class ExperimentRunner {
 		Settings.getInstance().precision = properties.getPrecision();
 		
 		RankerParameters parameters =  new RankerParametersAssembler(properties, learningTable, testTable).getParameters();
-		JRankLogger.info("Performing experiment with parameters:\n" + properties);
+		RuleRankLogger.info("Performing experiment with parameters:\n" + properties);
 		
 		Ranker ranker = new Ranker();
 		RankerResults results = ranker.run(parameters);
-		JRankLogger.info("Output from RuleRank:");
+		RuleRankLogger.info("Output from RuleRank:");
 		for(String msg : ranker.getMessages()) {
-			JRankLogger.none(msg);
+			RuleRankLogger.none(msg);
 		}
 		
 		new ResultsSaver(results, properties, experimentPath).save();
