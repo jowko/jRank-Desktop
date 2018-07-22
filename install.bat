@@ -27,18 +27,7 @@ echo Copying data directory
 ROBOCOPY data "RuleRank\data"
 
 echo Copying example experiments
-
-echo Copying Airlines
-ROBOCOPY workspace\Airlines RuleRank\workspace\Airlines
-
-echo Copying Houses7
-ROBOCOPY workspace\Houses7 RuleRank\workspace\Houses7
-
-echo Copying Houses11
-ROBOCOPY workspace\Houses11 RuleRank\workspace\Houses11
-
-echo Copying default.properties file
-ROBOCOPY workspace\ RuleRank\workspace\
+ROBOCOPY workspace RuleRank\workspace /E
 
 echo creating run.bat file
 @echo java -jar RuleRank-1.0-SNAPSHOT.jar -Xms128m > RuleRank\run.bat
