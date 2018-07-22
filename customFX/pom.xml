@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>pl.jowko.jRank</groupId>
-        <artifactId>jRank-Desktop</artifactId>
+        <groupId>pl.jowko.RuleRank</groupId>
+        <artifactId>ruleRank-Desktop</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     

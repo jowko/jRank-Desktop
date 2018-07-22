@@ -7,7 +7,7 @@ import pl.jowko.rulerank.logger.RuleRankLogger;
  * All logging should be performed with class RuleRankLogger.
  * @see RuleRankLogger
  */
-module jRankLogger {
+module RuleRankLoggerModule {
 	
 	exports pl.jowko.rulerank.logger;
  

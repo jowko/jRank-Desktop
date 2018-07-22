@@ -12,7 +12,7 @@ module jRank.desktop {
 	requires javafx.fxml;
 	requires javafx.controls;
 	
- 	requires jRankLogger;
+ 	requires RuleRankLoggerModule;
 	requires customFX;
 	requires fxgraph;
 	

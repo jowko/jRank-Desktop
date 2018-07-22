@@ -5,28 +5,28 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>pl.jowko.jRank</groupId>
-		<artifactId>jRank-Desktop</artifactId>
+		<groupId>pl.jowko.RuleRank</groupId>
+		<artifactId>ruleRank-Desktop</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>desktop-app</artifactId>
 	<packaging>jar</packaging>
-	<name>jRank Desktop Edition Application</name>
+	<name>RuleRank Desktop Edition Application</name>
 	
 	<dependencies>
 		<dependency>
-			<groupId>pl.jowko.jRank</groupId>
-			<artifactId>jRank-logger</artifactId>
+			<groupId>pl.jowko.RuleRank</groupId>
+			<artifactId>RuleRank-logger</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>pl.jowko.jRank</groupId>
+			<groupId>pl.jowko.RuleRank</groupId>
 			<artifactId>customFX</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>pl.jowko.jrank</groupId>
+			<groupId>pl.jowko.RuleRank</groupId>
 			<artifactId>fxgraph</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
