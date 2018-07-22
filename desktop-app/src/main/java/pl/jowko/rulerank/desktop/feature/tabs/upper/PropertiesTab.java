@@ -34,7 +34,7 @@ class PropertiesTab extends RuleRankTab {
 		try {
 			PropertiesController controller = initializeTabAndGetController(workspaceItem);
 			ruleRankProperties = JRSFileMediator.loadProperties(workspaceItem);
-			controller.initializeProperties(getJRankProperties(), workspaceItem, this);
+			controller.initializeProperties(getRuleRankProperties(), workspaceItem, this);
 		} catch (RuleRankRuntimeException e) {
 			throwInitializationException("properties", workspaceItem.getFileName(), e);
 		}
@@ -45,7 +45,7 @@ class PropertiesTab extends RuleRankTab {
 		return "/fxml/upperTabs/propertiesTab.fxml";
 	}
 	
-	public RuleRankProperties getJRankProperties() {
+	public RuleRankProperties getRuleRankProperties() {
 		return ruleRankProperties;
 	}
 	

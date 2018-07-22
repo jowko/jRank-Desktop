@@ -27,7 +27,7 @@ public class DefaultPropertiesProvider {
 		
 		PropertiesAssembler assembler = new PropertiesAssembler(properties);
 		
-		return assembler.toJrankProperties();
+		return assembler.toRuleRankProperties();
 	}
 	
 }

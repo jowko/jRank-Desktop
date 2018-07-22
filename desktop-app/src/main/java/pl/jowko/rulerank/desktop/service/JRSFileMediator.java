@@ -44,7 +44,7 @@ public class JRSFileMediator {
 		Properties properties = new Properties();
 		properties.load(new FileInputStream(item.getFilePath()));
 		PropertiesAssembler propertiesAssembler = new PropertiesAssembler(properties);
-		return propertiesAssembler.toJrankProperties();
+		return propertiesAssembler.toRuleRankProperties();
 	}
 	
 	/**

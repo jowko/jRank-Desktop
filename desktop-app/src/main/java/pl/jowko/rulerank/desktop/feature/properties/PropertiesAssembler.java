@@ -40,7 +40,7 @@ public class PropertiesAssembler {
 	 * In such case all remaining properties keys will be logged.
 	 * @return RuleRankProperties containing options from properties file
 	 */
-	public RuleRankProperties toJrankProperties() {
+	public RuleRankProperties toRuleRankProperties() {
 		RuleRankProperties prop = new RuleRankProperties();
 		
 		prop.setLearningDataFile(getStringFromProperty(LEARNING_DATA_FILE));

@@ -63,25 +63,25 @@ public class PropertiesSaver {
 		setStringProperty(REFERENCE_RANKING, ruleRankProperties.getReferenceRanking());
 		setStringProperty(PAIRS, ruleRankProperties.getPairs());
 		
-		setJRankParameterProperty(TYPE_OF_FAMILY_CRITERIA, ruleRankProperties.getTypeOfFamilyOfCriteria());
-		setJRankParameterProperty(CONSISTENCY_MEASURE, ruleRankProperties.getConsistencyMeasure());
+		setParameterProperty(TYPE_OF_FAMILY_CRITERIA, ruleRankProperties.getTypeOfFamilyOfCriteria());
+		setParameterProperty(CONSISTENCY_MEASURE, ruleRankProperties.getConsistencyMeasure());
 		setNumberProperty(CONSISTENCY_MEASURE_THREASHOLD, ruleRankProperties.getConsistencyMeasureThreshold());
-		setJRankParameterProperty(TYPE_OF_RULES, ruleRankProperties.getTypeOfRules());
-		setJRankParameterProperty(CONSIDERED_SET_OF_RULES, ruleRankProperties.getConsideredSetOfRules());
-		setJRankParameterProperty(SATISFACTION_DEGREE_IN_GRAPH, ruleRankProperties.getSatisfactionDegreesInPreferenceGraph());
-		setJRankParameterProperty(FUZZY_SAT_DEGREE_CALC_METHOD, ruleRankProperties.getFuzzySatisfactionDegreeCalculationMethod());
-		setJRankParameterProperty(RANKING_PROCEDURE, ruleRankProperties.getRankingProcedure());
-		setJRankParameterProperty(DOMINANCE, ruleRankProperties.getDominance());
-		setJRankParameterProperty(DOMINANCE_FOR_PAIRS, ruleRankProperties.getDominanceForPairsOfOrdinalValues());
-		setJRankParameterProperty(NEGATIVE_EXAMPLES_TREATMENT, ruleRankProperties.getNegativeExamplesTreatmentForVCDRSA());
-		setJRankParameterProperty(RULE_CONDITIONS_SELECTION_METHOD, ruleRankProperties.getRuleConditionsSelectionMethodInVCDomLEM());
-		setJRankParameterProperty(ALLOW_EMPTY_RULES, ruleRankProperties.getAllowEmptyRulesInVCDomLEM());
-		setJRankParameterProperty(USE_EDGE_REGIONS, ruleRankProperties.getUseEdgeRegionsInVCDomLEM());
-		setJRankParameterProperty(OPTIMIZE_RULES_CONSISTENCY, ruleRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		setParameterProperty(TYPE_OF_RULES, ruleRankProperties.getTypeOfRules());
+		setParameterProperty(CONSIDERED_SET_OF_RULES, ruleRankProperties.getConsideredSetOfRules());
+		setParameterProperty(SATISFACTION_DEGREE_IN_GRAPH, ruleRankProperties.getSatisfactionDegreesInPreferenceGraph());
+		setParameterProperty(FUZZY_SAT_DEGREE_CALC_METHOD, ruleRankProperties.getFuzzySatisfactionDegreeCalculationMethod());
+		setParameterProperty(RANKING_PROCEDURE, ruleRankProperties.getRankingProcedure());
+		setParameterProperty(DOMINANCE, ruleRankProperties.getDominance());
+		setParameterProperty(DOMINANCE_FOR_PAIRS, ruleRankProperties.getDominanceForPairsOfOrdinalValues());
+		setParameterProperty(NEGATIVE_EXAMPLES_TREATMENT, ruleRankProperties.getNegativeExamplesTreatmentForVCDRSA());
+		setParameterProperty(RULE_CONDITIONS_SELECTION_METHOD, ruleRankProperties.getRuleConditionsSelectionMethodInVCDomLEM());
+		setParameterProperty(ALLOW_EMPTY_RULES, ruleRankProperties.getAllowEmptyRulesInVCDomLEM());
+		setParameterProperty(USE_EDGE_REGIONS, ruleRankProperties.getUseEdgeRegionsInVCDomLEM());
+		setParameterProperty(OPTIMIZE_RULES_CONSISTENCY, ruleRankProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
 		
-		setJRankParameterProperty(WRITE_DOMINATION_INFORMATION, ruleRankProperties.getWriteDominationInformation());
-		setJRankParameterProperty(WRITE_RULES_STATISTICS, ruleRankProperties.getWriteRulesStatistics());
-		setJRankParameterProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, ruleRankProperties.getWriteLearningPositiveExamples());
+		setParameterProperty(WRITE_DOMINATION_INFORMATION, ruleRankProperties.getWriteDominationInformation());
+		setParameterProperty(WRITE_RULES_STATISTICS, ruleRankProperties.getWriteRulesStatistics());
+		setParameterProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, ruleRankProperties.getWriteLearningPositiveExamples());
 		
 		setNumberProperty(PRECISION, ruleRankProperties.getPrecision());
 	}
@@ -108,7 +108,7 @@ public class PropertiesSaver {
 		}
 	}
 	
-	private void setJRankParameterProperty(String propertyName, RuleRankParameter value) {
+	private void setParameterProperty(String propertyName, RuleRankParameter value) {
 		if(isParameterFilled(value)) {
 			properties.setProperty(propertyName, value.getTextValue());
 		}

@@ -28,7 +28,7 @@ class PropertiesAssemblerTest extends MasterTest {
 	
 	@Test
 	void shouldMapSimpleProperties() {
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		assertEquals("someFile.isf", ruleRankProperties.getLearningDataFile());
 		assertEquals("1, 2, 3", ruleRankProperties.getReferenceRanking());
 	}
@@ -43,7 +43,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(REFERENCE_RANKING, "referenceRanking");
 		properties.setProperty(PAIRS, "pairs");
 		
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertEquals("pctFile", ruleRankProperties.getPctFile());
 		assertEquals("pctApxFile", ruleRankProperties.getPctApxFile());
@@ -57,7 +57,7 @@ class PropertiesAssemblerTest extends MasterTest {
 	@Test
 	void shouldMapIntegers() {
 		properties.setProperty(PRECISION, "-1");
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		assertEquals(-1, ruleRankProperties.getPrecision().intValue());
 	}
 	
@@ -69,7 +69,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(WRITE_LEARNING_POSITIVE_EXAMPLES, "FALSE");
 		properties.setProperty(WRITE_RULES_STATISTICS, "TRASH");
 		
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertEquals("true", ruleRankProperties.getAllowEmptyRulesInVCDomLEM().getTextValue());
 		assertEquals("true", ruleRankProperties.getUseEdgeRegionsInVCDomLEM().getTextValue());
@@ -83,7 +83,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(PRECISION, "1de");
 		properties.setProperty(CONSISTENCY_MEASURE_THREASHOLD, "0.a1");
 		
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertNull(ruleRankProperties.getPrecision());
 		assertNull(ruleRankProperties.getConsistencyMeasureThreshold());
@@ -92,7 +92,7 @@ class PropertiesAssemblerTest extends MasterTest {
 	@Test
 	void shouldMapDoubles() {
 		properties.setProperty(CONSISTENCY_MEASURE_THREASHOLD, "0.6");
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		assertEquals(0.6, ruleRankProperties.getConsistencyMeasureThreshold().doubleValue());
 	}
 	
@@ -112,7 +112,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(OPTIMIZE_RULES_CONSISTENCY, "approximation");
 		
 		
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertEquals("consistent", ruleRankProperties.getTypeOfFamilyOfCriteria().getTextValue());
 		assertEquals("rough-membership", ruleRankProperties.getConsistencyMeasure().getTextValue());
@@ -136,7 +136,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(ALLOW_EMPTY_RULES, " true #true|false; allow VC-DomLEM algorithm to induce rules with empty condition part if their consistency is good enough?");
 		properties.setProperty(PRECISION, " -1 #integer value; denotes precision of floating-point numbers; set -1 in order to print floating-point numbers as they are, without rounding");
 		
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertEquals("rankingFile", ruleRankProperties.getRankingFile());
 		assertEquals(0.8, ruleRankProperties.getConsistencyMeasureThreshold().doubleValue());
@@ -153,7 +153,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(ALLOW_EMPTY_RULES, " true ");
 		properties.setProperty(PRECISION, " -1 ");
 		
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertEquals("rankingFile", ruleRankProperties.getRankingFile());
 		assertEquals(0.8, ruleRankProperties.getConsistencyMeasureThreshold().doubleValue());
@@ -164,7 +164,7 @@ class PropertiesAssemblerTest extends MasterTest {
 	
 	@Test
 	void shouldMapToEmptyParameters() {
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertEquals("", ruleRankProperties.getTypeOfFamilyOfCriteria().getTextValue());
 		assertEquals("", ruleRankProperties.getConsistencyMeasure().getTextValue());
@@ -182,7 +182,7 @@ class PropertiesAssemblerTest extends MasterTest {
 	
 	@Test
 	void shouldMapToNulls() {
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertNull(ruleRankProperties.getRankingFile());
 		assertNull(ruleRankProperties.getConsistencyMeasureThreshold());
@@ -196,7 +196,7 @@ class PropertiesAssemblerTest extends MasterTest {
 		properties.setProperty(TYPE_OF_RULES, "not a key");
 		properties.setProperty(CONSIDERED_SET_OF_RULES, "SuperKey");
 		
-		RuleRankProperties ruleRankProperties = toJRankProperties(properties);
+		RuleRankProperties ruleRankProperties = toRuleRankProperties(properties);
 		
 		assertNull(ruleRankProperties.getTypeOfFamilyOfCriteria());
 		assertNull(ruleRankProperties.getConsistencyMeasure());
@@ -210,16 +210,16 @@ class PropertiesAssemblerTest extends MasterTest {
 		System.setOut(new PrintStream(outContent));
 		
 		properties.setProperty("SomeUnknownProperty", "Key");
-		toJRankProperties(properties);
+		toRuleRankProperties(properties);
 		
 		assertTrue(outContent.toString().contains("WARN") && outContent.toString().contains("SomeUnknownProperty"));
 		
 		System.setOut(System.out);
 	}
 	
-	private RuleRankProperties toJRankProperties(Properties properties) {
+	private RuleRankProperties toRuleRankProperties(Properties properties) {
 		PropertiesAssembler assembler = new PropertiesAssembler(properties);
-		return assembler.toJrankProperties();
+		return assembler.toRuleRankProperties();
 	}
 	
 }
