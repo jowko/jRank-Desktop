@@ -39,10 +39,10 @@ class GraphReader {
 	 * Creates instance of this class and creates graph from provided text content.
 	 * @param content from .graph file
 	 * @param workspaceItem with is used to load MemoryContainer
+	 * @param selectAction with handles select node action
 	 */
-	GraphReader(String content, WorkspaceItem workspaceItem) {
+	GraphReader(String content, WorkspaceItem workspaceItem, GraphSelectAction selectAction) {
 		this.content = content;
-		GraphSelectAction selectAction = new GraphSelectAction();
 		graph = new Graph(selectAction);
 		splitPattern = Pattern.compile(" ");
 		quotesPattern = Pattern.compile("\"(.*?)\"");

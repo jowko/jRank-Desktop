@@ -426,6 +426,16 @@ public class Labels {
 	public static final String TXT_TAB_SAVE_BUTTON = "TXT_TAB_SAVE_BUTTON";
 	public static final String TXT_TAB_CANCEL_BUTTON = "TXT_TAB_CANCEL_BUTTON";
 	
+	// Graph file tab
+	public static final String ARCS_OUTGOING = "ARCS_OUTGOING";
+	public static final String ARCS_OUTGOING_S = "ARCS_OUTGOING_S";
+	public static final String ARCS_OUTGOING_SC = "ARCS_OUTGOING_SC";
+	public static final String ARCS_INGOING = "ARCS_INGOING";
+	public static final String ARCS_INGOING_S = "ARCS_INGOING_S";
+	public static final String ARCS_INGOING_SC = "ARCS_INGOING_SC";
+	public static final String ARCS_NONE = "ARCS_NONE";
+	public static final String ARCS_TAB_TITLE = "ARCS_TAB_TITLE";
+	
 	private Labels() {}
 	
 }
