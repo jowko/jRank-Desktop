@@ -97,7 +97,7 @@ class PropertiesAssemblerTest extends MasterTest {
 	}
 	
 	@Test
-	void shouldMapJRankParameters() {
+	void shouldMapParameters() {
 		properties.setProperty(TYPE_OF_FAMILY_CRITERIA, "consistent");
 		properties.setProperty(CONSISTENCY_MEASURE, "rough-membership");
 		properties.setProperty(TYPE_OF_RULES, "certain");
