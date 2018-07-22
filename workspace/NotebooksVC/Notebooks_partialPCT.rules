@@ -1,0 +1,138 @@
+[FILEINFO]
+Program: jrs
+Algorithm: VC-DOMLEM
+DataFileDirectory: 
+DataFileName: Notebooks_partialPCT.isf
+Objects: 36
+Decision: Comprehensive_preference_grade
+Duration: 20 [ms]
+Comment: Rules generated with VC-DOMLEM algorithm
+
+[PARAMETERS]
+RulesFormat: PCT_PARETO
+ConsistencyLevel: 0.1
+Classes: -1.0, 0.0
+
+[ATTRIBUTES]
++ Pair_of_examples: (numbercoded) (pair), none, description
++ Evaluations_difference_on_price: (integer), cost
++ Evaluations_difference_on_LCD: (continuous), gain
++ Evaluations_difference_on_weight: (continuous), cost
++ Comprehensive_preference_grade: (continuous), gain, decision
+
+decision: Comprehensive_preference_grade
+
+[PREFERENCES]
+Pair_of_examples: none
+Evaluations_difference_on_price: cost
+Evaluations_difference_on_LCD: gain
+Evaluations_difference_on_weight: cost
+Comprehensive_preference_grade: gain
+
+[RULES]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_price) <= -284] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+2: [DIFF(Evaluations_difference_on_price) <= -166] & [DIFF(Evaluations_difference_on_weight) <= 0.02] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+3: [DIFF(Evaluations_difference_on_price) <= 71] & [DIFF(Evaluations_difference_on_LCD) >= 0.0] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+#Certain at most rules
+4: [DIFF(Evaluations_difference_on_price) >= 95] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+5: [DIFF(Evaluations_difference_on_price) >= -189] & [DIFF(Evaluations_difference_on_LCD) <= -1.7] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+
+[RULESINFO]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_price) <= -284] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 3, 4, 5, 6, 8, 9, 10, 11, 12, 15, 16, 17, 18, 22, 23, 24, 29, 36
+Support: 9
+SupportingExamples: 3, 4, 5, 6, 9, 10, 11, 12, 17
+Strength: 0.25
+Confidence: 1.0
+CoverageFactor: 0.429
+Coverage: 9
+CoveredExamples: 3, 4, 5, 6, 9, 10, 11, 12, 17
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.238
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.619
+
+2: [DIFF(Evaluations_difference_on_price) <= -166] & [DIFF(Evaluations_difference_on_weight) <= 0.02] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 3, 4, 5, 6, 8, 9, 10, 11, 12, 15, 16, 17, 18, 22, 23, 24, 29, 36
+Support: 7
+SupportingExamples: 3, 4, 5, 9, 10, 11, 16
+Strength: 0.194
+Confidence: 0.875
+CoverageFactor: 0.333
+Coverage: 8
+CoveredExamples: 3, 4, 5, 9, 10, 11, 16, 35
+NegativeCoverage: 1
+NegativeCoveredExamples: 35
+InconsistencyMeasure: 0.067
+EpsilonPrimMeasure: 0.048
+f-ConfirmationMeasure: 0.667
+A-ConfirmationMeasure: 0.143
+Z-ConfirmationMeasure: 0.7
+l-ConfirmationMeasure: 1.609
+c1-ConfirmationMeasure: 0.35
+
+3: [DIFF(Evaluations_difference_on_price) <= 71] & [DIFF(Evaluations_difference_on_LCD) >= 0.0] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 3, 4, 5, 6, 8, 9, 10, 11, 12, 15, 16, 17, 18, 22, 23, 24, 29, 36
+Support: 15
+SupportingExamples: 1, 3, 6, 8, 9, 10, 11, 12, 15, 18, 22, 23, 24, 29, 36
+Strength: 0.417
+Confidence: 0.938
+CoverageFactor: 0.714
+Coverage: 16
+CoveredExamples: 1, 3, 6, 7, 8, 9, 10, 11, 12, 15, 18, 22, 23, 24, 29, 36
+NegativeCoverage: 1
+NegativeCoveredExamples: 7
+InconsistencyMeasure: 0.067
+EpsilonPrimMeasure: 0.048
+f-ConfirmationMeasure: 0.829
+A-ConfirmationMeasure: 0.486
+Z-ConfirmationMeasure: 0.85
+l-ConfirmationMeasure: 2.372
+c1-ConfirmationMeasure: 0.425
+
+#Certain at most rules
+4: [DIFF(Evaluations_difference_on_price) >= 95] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 13, 14, 19, 20, 21, 25, 26, 27, 28, 31, 32, 33, 34, 35
+Support: 12
+SupportingExamples: 13, 14, 19, 20, 21, 25, 26, 27, 28, 31, 32, 33
+Strength: 0.333
+Confidence: 0.857
+CoverageFactor: 0.8
+Coverage: 14
+CoveredExamples: 2, 13, 14, 19, 20, 21, 25, 26, 27, 28, 30, 31, 32, 33
+NegativeCoverage: 2
+NegativeCoveredExamples: 2, 30
+InconsistencyMeasure: 0.095
+EpsilonPrimMeasure: 0.133
+f-ConfirmationMeasure: 0.787
+A-ConfirmationMeasure: 0.673
+Z-ConfirmationMeasure: 0.755
+l-ConfirmationMeasure: 2.128
+c1-ConfirmationMeasure: 0.378
+
+5: [DIFF(Evaluations_difference_on_price) >= -189] & [DIFF(Evaluations_difference_on_LCD) <= -1.7] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 13, 14, 19, 20, 21, 25, 26, 27, 28, 31, 32, 33, 34, 35
+Support: 4
+SupportingExamples: 14, 32, 34, 35
+Strength: 0.111
+Confidence: 0.667
+CoverageFactor: 0.267
+Coverage: 6
+CoveredExamples: 2, 14, 16, 32, 34, 35
+NegativeCoverage: 2
+NegativeCoveredExamples: 2, 16
+InconsistencyMeasure: 0.095
+EpsilonPrimMeasure: 0.133
+f-ConfirmationMeasure: 0.474
+A-ConfirmationMeasure: 0.12
+Z-ConfirmationMeasure: 0.429
+l-ConfirmationMeasure: 1.03
+c1-ConfirmationMeasure: 0.214
+

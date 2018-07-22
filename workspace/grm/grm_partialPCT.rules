@@ -1,0 +1,118 @@
+[FILEINFO]
+Program: jrs
+Algorithm: VC-DOMLEM
+DataFileDirectory: 
+DataFileName: grm_partialPCT.isf
+Objects: 36
+Decision: Comprehensive_preference_grade
+Duration: 10 [ms]
+Comment: Rules generated with VC-DOMLEM algorithm
+
+[PARAMETERS]
+RulesFormat: PCT_PARETO
+ConsistencyLevel: 1.0
+Classes: -1.0, 0.0
+
+[ATTRIBUTES]
++ Pair_of_examples: (numbercoded) (pair), none, description
++ Evaluations_difference_on_AET: (continuous), cost
++ Evaluations_difference_on_CRU: (integer), cost
++ Evaluations_on_I: [1, 2] (pair), gain
++ Comprehensive_preference_grade: (continuous), gain, decision
+
+decision: Comprehensive_preference_grade
+
+[PREFERENCES]
+Pair_of_examples: none
+Evaluations_difference_on_AET: cost
+Evaluations_difference_on_CRU: cost
+Evaluations_on_I: gain
+Comprehensive_preference_grade: gain
+
+[RULES]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_AET) <= -2.1] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+2: [DIFF(Evaluations_difference_on_CRU) <= -2] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+#Certain at most rules
+3: [DIFF(Evaluations_difference_on_AET) >= 2.1] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+4: [DIFF(Evaluations_difference_on_CRU) >= 2] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+
+[RULESINFO]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_AET) <= -2.1] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 2, 3, 4, 5, 6, 9, 10, 11, 12, 17, 18, 23, 24, 30
+Support: 11
+SupportingExamples: 2, 3, 4, 5, 6, 11, 12, 17, 18, 23, 24
+Strength: 0.306
+Confidence: 1.0
+CoverageFactor: 0.524
+Coverage: 11
+CoveredExamples: 2, 3, 4, 5, 6, 11, 12, 17, 18, 23, 24
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.314
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.657
+
+2: [DIFF(Evaluations_difference_on_CRU) <= -2] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 2, 3, 4, 5, 6, 9, 10, 11, 12, 17, 18, 23, 24, 30
+Support: 8
+SupportingExamples: 3, 6, 9, 10, 11, 12, 24, 30
+Strength: 0.222
+Confidence: 1.0
+CoverageFactor: 0.381
+Coverage: 8
+CoveredExamples: 3, 6, 9, 10, 11, 12, 24, 30
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.204
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.602
+
+#Certain at most rules
+3: [DIFF(Evaluations_difference_on_AET) >= 2.1] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 7, 13, 14, 19, 20, 25, 26, 27, 28, 31, 32, 33, 34, 35
+Support: 11
+SupportingExamples: 7, 13, 19, 25, 26, 27, 28, 31, 32, 33, 34
+Strength: 0.306
+Confidence: 1.0
+CoverageFactor: 0.733
+Coverage: 11
+CoveredExamples: 7, 13, 19, 25, 26, 27, 28, 31, 32, 33, 34
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.616
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.808
+
+4: [DIFF(Evaluations_difference_on_CRU) >= 2] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 7, 13, 14, 19, 20, 25, 26, 27, 28, 31, 32, 33, 34, 35
+Support: 8
+SupportingExamples: 13, 14, 20, 26, 31, 32, 34, 35
+Strength: 0.222
+Confidence: 1.0
+CoverageFactor: 0.533
+Coverage: 8
+CoveredExamples: 13, 14, 20, 26, 31, 32, 34, 35
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.4
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.7
+

@@ -1,0 +1,20 @@
+**ATTRIBUTES
++ name: (nominal) description
++ price: (integer)
++ time: (integer)
++ comfort: (integer)
+
+**PREFERENCES
+price: cost
+time: cost
+comfort: gain
+
+**EXAMPLES
+RER	3	10	1
+METRO1	4	20	2
+METRO2	2	20	0
+BUS	6	40	0
+TAXI	30	30	3
+SNCF	3	20	2
+
+**END

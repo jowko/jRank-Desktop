@@ -1,0 +1,18 @@
+**ATTRIBUTES
++name: (nominal) description
++x: [_8, _7, _6, _2, 2]
++y: [_2, 2, 3, 4, 5]
+
+**PREFERENCES
+name: none
+x: gain
+y: gain
+
+**EXAMPLES
+A  2 _2
+B _2  2
+C _6  3
+D _7  5
+E _8  4
+
+**END

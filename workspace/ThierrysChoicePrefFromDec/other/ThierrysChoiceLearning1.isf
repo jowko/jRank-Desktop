@@ -1,0 +1,26 @@
+**ATTRIBUTES
++name: (nominal) description
++price: (continuous)
++accel: (continuous)
++pick_up: (continuous)
++brakes: (continuous)
++road_h: (continuous)
++rank: (integer) decision
+
+**PREFERENCES
+price: cost
+accel: cost
+pick_up: cost
+brakes: gain
+road_h: gain
+rank: cost
+
+**EXAMPLES
+
+Nissan_Sunny		16973	29	34.9	2.66	2.5	2
+Ford_Escort		19800	29.4	34.7	2	1.75	4
+Peugeot_309_16V		17537	28.3	34.8	2.33	2.75	1
+Mitsubishi_Galant	17219	30.2	36.9	1.66	1.25	3
+Renault_21		21334	28.9	36.7	2	2.25	5
+
+**END

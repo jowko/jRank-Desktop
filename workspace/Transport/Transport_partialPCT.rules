@@ -1,0 +1,78 @@
+[FILEINFO]
+Program: jrs
+Algorithm: VC-DOMLEM
+DataFileDirectory: 
+DataFileName: Transport_partialPCT.isf
+Objects: 9
+Decision: Comprehensive_preference_grade
+Duration: 10 [ms]
+Comment: Rules generated with VC-DOMLEM algorithm
+
+[PARAMETERS]
+RulesFormat: PCT_PARETO
+ConsistencyLevel: 1.0
+Classes: -1.0, 0.0
+
+[ATTRIBUTES]
++ Pair_of_examples: (numbercoded) (pair), none, description
++ Evaluations_difference_on_price: (integer), cost
++ Evaluations_difference_on_time: (integer), cost
++ Evaluations_difference_on_comfort: (integer), gain
++ Comprehensive_preference_grade: (continuous), gain, decision
+
+decision: Comprehensive_preference_grade
+
+[PREFERENCES]
+Pair_of_examples: none
+Evaluations_difference_on_price: cost
+Evaluations_difference_on_time: cost
+Evaluations_difference_on_comfort: gain
+Comprehensive_preference_grade: gain
+
+[RULES]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_time) <= 0] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+#Certain at most rules
+2: [DIFF(Evaluations_difference_on_time) >= 10] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+
+[RULESINFO]
+#Certain at least rules
+1: [DIFF(Evaluations_difference_on_time) <= 0] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 2, 3, 5, 6, 9
+Support: 6
+SupportingExamples: 1, 2, 3, 5, 6, 9
+Strength: 0.667
+Confidence: 1.0
+CoverageFactor: 1.0
+Coverage: 6
+CoveredExamples: 1, 2, 3, 5, 6, 9
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 1.0
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 1.0
+
+#Certain at most rules
+2: [DIFF(Evaluations_difference_on_time) >= 10] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 4, 7, 8
+Support: 3
+SupportingExamples: 4, 7, 8
+Strength: 0.333
+Confidence: 1.0
+CoverageFactor: 1.0
+Coverage: 3
+CoveredExamples: 4, 7, 8
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 1.0
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 1.0
+

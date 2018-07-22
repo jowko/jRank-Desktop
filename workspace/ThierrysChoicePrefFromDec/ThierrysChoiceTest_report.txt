@@ -1,0 +1,4 @@
+Kendal's tau with respect to true global ranking:	1.0
+Kendal's tau with respect to true global ranking, ignoring pairs that cannot be preserved:	1.0
+Kendal's tau with respect to true global ranking, ignoring correct indifference relation:	1.0
+Kendal's tau with respect to true global ranking, ignoring correct indifference relation and pairs that cannot be preserved:	1.0

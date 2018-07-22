@@ -1,0 +1,136 @@
+[FILEINFO]
+Program: jrs
+Algorithm: VC-DOMLEM
+DataFileDirectory: 
+DataFileName: respectOfData_partialPCT.isf
+Objects: 6
+Decision: Comprehensive_preference_grade
+Duration: 10 [ms]
+Comment: Rules generated with VC-DOMLEM algorithm
+
+[PARAMETERS]
+RulesFormat: PCT_PARETO
+ConsistencyLevel: 1.0
+Classes: -1.0, 0.0
+
+[ATTRIBUTES]
++ Pair_of_examples: (numbercoded) (pair), none, description
++ Evaluations_on_x: [_8, _7, _6, _2, 2] (pair), gain
++ Evaluations_on_y: [_2, 2, 3, 4, 5] (pair), gain
++ Comprehensive_preference_grade: (continuous), gain, decision
+
+decision: Comprehensive_preference_grade
+
+[PREFERENCES]
+Pair_of_examples: none
+Evaluations_on_x: gain
+Evaluations_on_y: gain
+Comprehensive_preference_grade: gain
+
+[RULES]
+#Certain at least rules
+1: {PAIR(Evaluations_on_y) D (3,3)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+2: {PAIR(Evaluations_on_x) D (2,2)} & {PAIR(Evaluations_on_y) D (_2,2)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+3: {PAIR(Evaluations_on_x) D (_2,_2)} & {PAIR(Evaluations_on_y) D (2,2)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+#Certain at most rules
+4: {(_2,2) D PAIR(Evaluations_on_x)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+5: {(_2,3) D PAIR(Evaluations_on_y)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+
+[RULESINFO]
+#Certain at least rules
+1: {PAIR(Evaluations_on_y) D (3,3)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 4, 5, 6
+Support: 1
+SupportingExamples: 6
+Strength: 0.167
+Confidence: 1.0
+CoverageFactor: 0.25
+Coverage: 1
+CoveredExamples: 6
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.1
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.55
+
+2: {PAIR(Evaluations_on_x) D (2,2)} & {PAIR(Evaluations_on_y) D (_2,2)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 4, 5, 6
+Support: 2
+SupportingExamples: 1, 4
+Strength: 0.333
+Confidence: 1.0
+CoverageFactor: 0.5
+Coverage: 2
+CoveredExamples: 1, 4
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.25
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.625
+
+3: {PAIR(Evaluations_on_x) D (_2,_2)} & {PAIR(Evaluations_on_y) D (2,2)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+LearningPositiveExamples: 1, 4, 5, 6
+Support: 1
+SupportingExamples: 5
+Strength: 0.167
+Confidence: 1.0
+CoverageFactor: 0.25
+Coverage: 1
+CoveredExamples: 5
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.1
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.55
+
+#Certain at most rules
+4: {(_2,2) D PAIR(Evaluations_on_x)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 2, 3
+Support: 1
+SupportingExamples: 2
+Strength: 0.167
+Confidence: 1.0
+CoverageFactor: 0.5
+Coverage: 1
+CoveredExamples: 2
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.4
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.7
+
+5: {(_2,3) D PAIR(Evaluations_on_y)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+LearningPositiveExamples: 2, 3
+Support: 1
+SupportingExamples: 3
+Strength: 0.167
+Confidence: 1.0
+CoverageFactor: 0.5
+Coverage: 1
+CoveredExamples: 3
+NegativeCoverage: 0
+NegativeCoveredExamples: 
+InconsistencyMeasure: 0.0
+EpsilonPrimMeasure: 0.0
+f-ConfirmationMeasure: 1.0
+A-ConfirmationMeasure: 0.4
+Z-ConfirmationMeasure: 1.0
+l-ConfirmationMeasure: Infinity
+c1-ConfirmationMeasure: 0.7
+

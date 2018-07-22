@@ -5,7 +5,7 @@ DataFileDirectory:
 DataFileName: Houses7_partialPCT.isf
 Objects: 25
 Decision: Comprehensive_preference_grade
-Duration: 15 [ms]
+Duration: 20 [ms]
 Comment: Rules generated with VC-DOMLEM algorithm
 
 [PARAMETERS]
