@@ -44,7 +44,7 @@
                   <ListView fx:id="pairsListView" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                   <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="removeSelectedButton" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#removeSelectedAction" text="Remove selected" />
+                        <Button fx:id="removeSelectedButton" minHeight="30.0" minWidth="130.0" mnemonicParsing="false" onAction="#removeSelectedAction" text="Remove selected" />
                      </children>
                   </VBox>
                </children>
