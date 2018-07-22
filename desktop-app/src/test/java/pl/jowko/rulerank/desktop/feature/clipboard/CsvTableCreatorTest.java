@@ -2,6 +2,7 @@ package pl.jowko.rulerank.desktop.feature.clipboard;
 
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
+import pl.jowko.rulerank.desktop.MasterTest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by Piotr on 2018-05-27
  */
-class CsvTableCreatorTest {
+class CsvTableCreatorTest extends MasterTest {
 	
 	@Test
 	void shouldCreateCsvTable() {

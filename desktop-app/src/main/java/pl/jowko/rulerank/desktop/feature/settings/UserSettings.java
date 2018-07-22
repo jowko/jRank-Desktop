@@ -37,6 +37,7 @@ public class UserSettings implements Serializable {
 	
 	private String language;
 	private String workspacePath;
+	private String csvSeparator;
 	private boolean tooltipsEnabled;
 	private boolean advancedPropertiesEnabled;
 	private boolean manualInfoEditionEnabled;
@@ -56,6 +57,14 @@ public class UserSettings implements Serializable {
 	
 	public void setWorkspacePath(String workspacePath) {
 		this.workspacePath = workspacePath;
+	}
+	
+	public String getCsvSeparator() {
+		return csvSeparator;
+	}
+	
+	public void setCsvSeparator(String csvSeparator) {
+		this.csvSeparator = csvSeparator;
 	}
 	
 	public boolean isTooltipsEnabled() {

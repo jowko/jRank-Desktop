@@ -9,6 +9,7 @@ public class UserSettingsBuilder {
 	
 	private String language;
 	private String workspacePath;
+	private String csvSeparator;
 	private boolean tooltipsEnabled;
 	private boolean advancedPropertiesEnabled;
 	private boolean manualInfoEditionEnabled;
@@ -21,6 +22,11 @@ public class UserSettingsBuilder {
 	
 	public UserSettingsBuilder setWorkspacePath(String workspacePath) {
 		this.workspacePath = workspacePath;
+		return this;
+	}
+	
+	public UserSettingsBuilder setCsvSeparator(String csvSeparator) {
+		this.csvSeparator = csvSeparator;
 		return this;
 	}
 	
@@ -55,6 +61,7 @@ public class UserSettingsBuilder {
 		UserSettings settings = new UserSettings();
 		settings.setLanguage(language);
 		settings.setWorkspacePath(workspacePath);
+		settings.setCsvSeparator(csvSeparator);
 		settings.setTooltipsEnabled(tooltipsEnabled);
 		settings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled);
 		settings.setManualInfoEditionEnabled(manualInfoEditionEnabled);

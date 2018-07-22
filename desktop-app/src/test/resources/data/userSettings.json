@@ -1,5 +1,9 @@
 {
   "language" : "ENG",
   "workspacePath" : "\\workspace",
-  "tooltipsEnabled" : true
+  "csvSeparator" : ";",
+  "tooltipsEnabled" : true,
+  "advancedPropertiesEnabled" : false,
+  "manualInfoEditionEnabled" : false,
+  "startMaximized" : true
 }

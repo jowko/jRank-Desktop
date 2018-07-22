@@ -38,6 +38,10 @@ public class UserSettingsController extends AbstractDialogForm {
 	@FXML
 	TextField workspaceField;
 	@FXML
+	Label csvSeparatorLabel;
+	@FXML
+	TextField csvSeparator;
+	@FXML
 	CheckBox tooltipsEnabled;
 	@FXML
 	CheckBox advancedPropertiesEnabled;
@@ -64,6 +68,7 @@ public class UserSettingsController extends AbstractDialogForm {
 		initializeNewSettings();
 		initializeLanguages();
 		workspaceField.setText(newUserSettings.getWorkspacePath());
+		csvSeparator.setText(newUserSettings.getCsvSeparator());
 		tooltipsEnabled.setSelected(newUserSettings.isTooltipsEnabled());
 		advancedPropertiesEnabled.setSelected(newUserSettings.isAdvancedPropertiesEnabled());
 		manualEditionEnabled.setSelected(newUserSettings.isManualInfoEditionEnabled());
@@ -113,6 +118,7 @@ public class UserSettingsController extends AbstractDialogForm {
 			newUserSettings = new UserSettingsBuilder()
 					.setLanguage(settings.getLanguage())
 					.setWorkspacePath(settings.getWorkspacePath())
+					.setCsvSeparator(settings.getCsvSeparator())
 					.setTooltipsEnabled(settings.isTooltipsEnabled())
 					.setAdvancedPropertiesEnabled(settings.isAdvancedPropertiesEnabled())
 					.setManualInfoEditionEnabled(settings.isManualInfoEditionEnabled())
@@ -125,8 +131,9 @@ public class UserSettingsController extends AbstractDialogForm {
 	 * Update user settings with values extracted from UI form.
 	 */
 	private void updateNewSettings() {
-		newUserSettings.setWorkspacePath(workspaceField.getText());
 		newUserSettings.setLanguage(getLangCode());
+		newUserSettings.setWorkspacePath(workspaceField.getText());
+		newUserSettings.setCsvSeparator(csvSeparator.getText());
 		newUserSettings.setTooltipsEnabled(tooltipsEnabled.isSelected());
 		newUserSettings.setAdvancedPropertiesEnabled(advancedPropertiesEnabled.isSelected());
 		newUserSettings.setManualInfoEditionEnabled(manualEditionEnabled.isSelected());

@@ -1,5 +1,7 @@
 package pl.jowko.rulerank.desktop.feature.clipboard;
 
+import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
+
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ public class CsvTable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		char separator = ';';
+		String separator = UserSettingsService.getInstance().getUserSettings().getCsvSeparator();
 		
 		for(CsvRow row : rows) {
 			List<String> cells = row.getCells();

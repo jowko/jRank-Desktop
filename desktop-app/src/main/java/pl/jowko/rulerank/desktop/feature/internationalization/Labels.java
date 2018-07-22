@@ -66,6 +66,7 @@ public class Labels {
 	public static final String US_TITLE = "US_TITLE";
 	public static final String LANGUAGE = "LANGUAGE";
 	public static final String WORKSPACE = "WORKSPACE";
+	public static final String CSV_SEPARATOR = "CSV_SEPARATOR";
 	public static final String TOOLTIPS_ENABLED = "TOOLTIPS_ENABLED";
 	public static final String ADVANCED_PROPERTIES_ENABLED = "ADVANCED_PROPERTIES_ENABLED";
 	public static final String ADVANCED_PROPERTIES_ENABLED_TOOLTIP = "ADVANCED_PROPERTIES_ENABLED_TOOLTIP";
