@@ -6,5 +6,5 @@ module file.generator {
  	requires com.fasterxml.jackson.databind;
  	
  	requires RuleRankLoggerModule;
- 	requires jRank.desktop;
+ 	requires RuleRank.desktop;
 }

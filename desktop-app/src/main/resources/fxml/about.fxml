@@ -34,7 +34,7 @@
                   <Label fx:id="releaseDate" text="2060-01-01" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Label fx:id="bottomText" prefHeight="40.0" text="JRank Ultimate Desktop Edition was developed as part of master thesis." wrapText="true">
+            <Label fx:id="bottomText" prefHeight="40.0" text="RuleRank Ultimate Desktop Edition was developed as part of master thesis." wrapText="true">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>

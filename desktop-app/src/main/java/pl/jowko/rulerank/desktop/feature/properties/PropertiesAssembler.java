@@ -147,7 +147,7 @@ public class PropertiesAssembler {
 	 * @see RuleRankParametersService
 	 * @param parameters list with available options for provided property name
 	 * @param parameterName with will be extracted
-	 * @return JRankProperty for provided value or empty property indicating no option selected
+	 * @return RuleRankParameter for provided value or empty property indicating no option selected
 	 */
 	private RuleRankParameter getParameter(List<RuleRankParameter> parameters, String parameterName) {
 		String parameterValue = getStringFromProperty(parameterName);

@@ -78,7 +78,7 @@ public class Main extends Application {
 	 * @param args are not used in this application
 	 */
 	public static void main(String[] args) {
-		RuleRankLogger.init("Starting jRank Desktop Application");
+		RuleRankLogger.init("Starting RuleRank Desktop Application");
 		
 		try {
 			new ConfigurationInitializer().initialize();

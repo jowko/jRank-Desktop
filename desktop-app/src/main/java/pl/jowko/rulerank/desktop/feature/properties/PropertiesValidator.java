@@ -14,7 +14,7 @@ import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
 /**
  * Created by Piotr on 2018-05-06.
  * This class perform validation on properties form before save.
- * Most of validations were extracted from JRank console application.
+ * Most of validations were extracted from RuleRank console application.
  * @see PropertiesController
  */
 public class PropertiesValidator extends Validator {
@@ -32,7 +32,7 @@ public class PropertiesValidator extends Validator {
 	
 	/**
 	 * Perform validation on properties.
-	 * Code was modeled by validation in jRank console application
+	 * Code was modeled by validation in RuleRank console application
 	 */
 	private void validate() {
 		if(StringUtils.isNullOrEmpty(properties.getLearningDataFile()))

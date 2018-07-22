@@ -6,7 +6,7 @@
  * Also exports catalog related with settings and internationalization, because file-generator project uses them.
  * File Generator projects generates json files with default settings and labels.
  */
-module jRank.desktop {
+module RuleRank.desktop {
 	
 	requires javafx.base;
 	requires javafx.fxml;

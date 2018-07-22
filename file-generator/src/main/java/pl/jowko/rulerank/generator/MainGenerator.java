@@ -88,7 +88,7 @@ public class MainGenerator {
 				.writeValue(new File(configPaths.getLanguagesPath()), stubSettings.getLanguages());
 		
 		
-		RuleRankLogger.gen("Generating jRank info file: " + configPaths.getRuleRankInfoPath());
+		RuleRankLogger.gen("Generating RuleRank info file: " + configPaths.getRuleRankInfoPath());
 		mapper.writerWithDefaultPrettyPrinter()
 				.writeValue(new File(configPaths.getRuleRankInfoPath()), stubSettings.getAppInfo());
 

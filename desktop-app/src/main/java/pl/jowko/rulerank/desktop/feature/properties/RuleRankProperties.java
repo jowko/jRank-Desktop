@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Created by Piotr on 2018-04-29.
- * Container for all jRank options from .properties file.
+ * Container for all RuleRank options from .properties file.
  * @see PropertiesAssembler
  */
 public class RuleRankProperties implements Serializable {

@@ -9,7 +9,7 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNullOrEmpty;
 /**
  * Created by Piotr on 2018-05-06.
  * This class merges properties from experiment/form with default properties.
- * Result is used for running jRank algorithm and in form validation.
+ * Result is used for running RuleRank algorithm and in form validation.
  */
 public class RunnerPropertiesProvider {
 	

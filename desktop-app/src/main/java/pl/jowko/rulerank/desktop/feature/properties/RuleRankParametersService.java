@@ -23,7 +23,7 @@ import static pl.poznan.put.cs.idss.jrs.types.PairField.STRICT_ORDINAL_DOMINANCE
 /**
  * Created by Piotr on 2018-05-01.
  * This class creates all data used in ComboBoxes on properties form.
- * It provides RuleRankParameter lists with are used to pass and display data from "enum" jRank options.
+ * It provides RuleRankParameter lists with are used to pass and display data from "enum" RuleRank options.
  * @see RuleRankParameter
  */
 class RuleRankParametersService {

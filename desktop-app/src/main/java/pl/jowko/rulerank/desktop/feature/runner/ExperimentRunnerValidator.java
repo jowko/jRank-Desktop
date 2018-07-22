@@ -168,7 +168,7 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * This method was copied from jRank console application.
+	 * This method was copied from RuleRank console application.
 	 * It will calculate ranking using decision attribute.
 	 */
 	private void calculateAndSetReferenceRanking() {

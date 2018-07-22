@@ -2,7 +2,7 @@ package pl.jowko.rulerank.desktop.feature.properties;
 
 /**
  * Created by Piotr on 2018-04-29.
- * Names of properties used in jRank application.
+ * Names of properties used in RuleRank application.
  */
 class Names {
 	

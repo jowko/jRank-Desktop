@@ -138,7 +138,7 @@ class PropertiesControllerHelper {
 	}
 	
 	/**
-	 * Extract all values from properties form and assembles new JrankProperties from them.
+	 * Extract all values from properties form and assembles new RuleRankProperties from them.
 	 * @return RuleRankProperties with values from properties form.
 	 */
 	RuleRankProperties getPropertiesFromForm() {
