@@ -70,7 +70,7 @@ public class MainGenerator {
 		RuleRankLogger.gen("Generating data directory: " + configPaths.getDataDirectory());
 		Files.createDirectories(Paths.get(configPaths.getDataDirectory()));
 		RuleRankLogger.gen("Data directory created successfully.");
-		StubSettings stubSettings = new StubSettings(true);
+		StubSettings stubSettings = new StubSettings(false);
 		
 		
 		RuleRankLogger.gen("Generating UserSettings file: " + configPaths.getUserSettingsPath());
