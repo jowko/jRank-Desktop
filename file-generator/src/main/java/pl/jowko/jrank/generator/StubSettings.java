@@ -71,7 +71,7 @@ class StubSettings {
 				.setTooltipsEnabled(true)
 				.setAdvancedPropertiesEnabled(false)
 				.setManualInfoEditionEnabled(false)
-				.setStartMaximized(false)
+				.setStartMaximized(true)
 				.createUserSettings();
 	}
 	

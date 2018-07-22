@@ -4,5 +4,5 @@
   "tooltipsEnabled" : true,
   "advancedPropertiesEnabled" : false,
   "manualInfoEditionEnabled" : false,
-  "startMaximized" : false
+  "startMaximized" : true
 }
