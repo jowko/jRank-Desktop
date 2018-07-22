@@ -13,7 +13,7 @@ public class ConfigPaths {
 	private String userSettingsPath;
 	private String labelsPath;
 	private String languagesPath;
-	private String jRankInfoPath;
+	private String ruleRankInfoPath;
 	
 	private ConfigPaths() {
 		dataDirectory = "data/";
@@ -38,7 +38,7 @@ public class ConfigPaths {
 		userSettingsPath = dataDirectory + "userSettings.json";
 		labelsPath = dataDirectory + "labels.json";
 		languagesPath = dataDirectory + "languages.json";
-		jRankInfoPath = dataDirectory + "jRankInfo.json";
+		ruleRankInfoPath = dataDirectory + "ruleRankInfo.json";
 	}
 	
 	public String getDataDirectory() {
@@ -57,8 +57,8 @@ public class ConfigPaths {
 		return languagesPath;
 	}
 	
-	public String getJRankInfoPath() {
-		return jRankInfoPath;
+	public String getRuleRankInfoPath() {
+		return ruleRankInfoPath;
 	}
 	
 }

@@ -28,7 +28,7 @@ public class RuleRankInfoService {
 	}
 	
 	private void loadInfo() {
-		info = ConfigFileManager.getInstance().readJRankInfo();
+		info = ConfigFileManager.getInstance().readRuleRankInfo();
 	}
 	
 }

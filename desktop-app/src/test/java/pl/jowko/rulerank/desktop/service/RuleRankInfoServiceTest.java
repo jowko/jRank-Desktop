@@ -20,7 +20,7 @@ class RuleRankInfoServiceTest extends MasterTest {
 	}
 	
 	@Test
-	void shouldGetJRankInfo() {
+	void shouldGetRuleRankInfo() {
 		assertNotNull(info);
 	}
 	

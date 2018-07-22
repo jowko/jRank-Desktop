@@ -18,7 +18,7 @@ import static java.util.Objects.isNull;
  * This class manages configuration files from data directory.
  *
  * Supported configuration files:
- * jRankInfo.json - contains information about application version displayed in about dialog from help settings
+ * ruleRankInfo.json - contains information about application version displayed in about dialog from help settings
  * @see pl.jowko.rulerank.desktop.controller.AboutController
  * @see RuleRankInfo
  *
@@ -85,15 +85,15 @@ public class ConfigFileManager {
 	}
 	
 	/**
-	 * Reads information about application version from jRankInfo.json file
+	 * Reads information about application version from ruleRankInfo.json file
 	 * @see pl.jowko.rulerank.desktop.controller.AboutController
 	 * @see RuleRankInfo
 	 * @return RuleRankInfo mapped from config file
 	 * @throws ConfigurationException when there is problem with reading this file
 	 */
-	public RuleRankInfo readJRankInfo() {
+	public RuleRankInfo readRuleRankInfo() {
 		try {
-			return mapper.readValue(new File(configPaths.getJRankInfoPath()), RuleRankInfo.class);
+			return mapper.readValue(new File(configPaths.getRuleRankInfoPath()), RuleRankInfo.class);
 		} catch (IOException e) {
 			RuleRankLogger.error(e.getMessage());
 			throw new ConfigurationException(e.getMessage());

@@ -31,7 +31,7 @@ import java.nio.file.Paths;
  * @see pl.jowko.rulerank.desktop.feature.internationalization.LanguageService
  * @see pl.jowko.rulerank.desktop.feature.settings.UserSettingsController
  *
- * jRankInfo.json - contains information about application version displayed in about dialog from help settings
+ * ruleRankInfo.json - contains information about application version displayed in about dialog from help settings
  * @see pl.jowko.rulerank.desktop.controller.AboutController
  * @see RuleRankInfo
  *
@@ -88,9 +88,9 @@ public class MainGenerator {
 				.writeValue(new File(configPaths.getLanguagesPath()), stubSettings.getLanguages());
 		
 		
-		RuleRankLogger.gen("Generating jRank info file: " + configPaths.getJRankInfoPath());
+		RuleRankLogger.gen("Generating jRank info file: " + configPaths.getRuleRankInfoPath());
 		mapper.writerWithDefaultPrettyPrinter()
-				.writeValue(new File(configPaths.getJRankInfoPath()), stubSettings.getAppInfo());
+				.writeValue(new File(configPaths.getRuleRankInfoPath()), stubSettings.getAppInfo());
 
 		
 		RuleRankLogger.gen("All files generated successfully.");

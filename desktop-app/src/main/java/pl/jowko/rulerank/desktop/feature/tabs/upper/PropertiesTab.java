@@ -42,7 +42,7 @@ class PropertiesTab extends RuleRankTab {
 	
 	@Override
 	protected String getResourceName() {
-		return "/fxml/upperTabs/jRankSettingsTab.fxml";
+		return "/fxml/upperTabs/propertiesTab.fxml";
 	}
 	
 	public RuleRankProperties getJRankProperties() {

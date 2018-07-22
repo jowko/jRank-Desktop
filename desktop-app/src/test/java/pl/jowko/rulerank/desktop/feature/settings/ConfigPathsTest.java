@@ -23,7 +23,7 @@ class ConfigPathsTest {
 		assertEquals("data/userSettings.json", configPaths.getUserSettingsPath());
 		assertEquals("data/labels.json", configPaths.getLabelsPath());
 		assertEquals("data/languages.json", configPaths.getLanguagesPath());
-		assertEquals("data/jRankInfo.json", configPaths.getJRankInfoPath());
+		assertEquals("data/ruleRankInfo.json", configPaths.getRuleRankInfoPath());
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ class ConfigPathsTest {
 		assertEquals("someDirectory/forTests/userSettings.json", configPaths.getUserSettingsPath());
 		assertEquals("someDirectory/forTests/labels.json", configPaths.getLabelsPath());
 		assertEquals("someDirectory/forTests/languages.json", configPaths.getLanguagesPath());
-		assertEquals("someDirectory/forTests/jRankInfo.json", configPaths.getJRankInfoPath());
+		assertEquals("someDirectory/forTests/ruleRankInfo.json", configPaths.getRuleRankInfoPath());
 	}
 	
 }

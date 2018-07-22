@@ -40,14 +40,14 @@ public class ConfigurationInitializer {
 	
 	/**
 	 * Initializes service and read data needed to about dialog in help menu.
-	 * Read file: jRankInfo.json
+	 * Read file: ruleRankInfo.json
 	 */
 	private void initializeInfoService() {
 		try {
 			RuleRankInfoService.getInstance();
 		} catch (ConfigurationException e) {
 			isError = true;
-			RuleRankLogger.error("Could not load jRankInfo.json file: " + e.getMessage());
+			RuleRankLogger.error("Could not load ruleRankInfo.json file: " + e.getMessage());
 		}
 	}
 	

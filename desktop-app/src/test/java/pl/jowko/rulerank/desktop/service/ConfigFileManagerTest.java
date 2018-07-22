@@ -42,8 +42,8 @@ class ConfigFileManagerTest extends MasterTest {
 	}
 	
 	@Test
-	void shouldReadJRankInfo() {
-		RuleRankInfo info = configFileManager.readJRankInfo();
+	void shouldReadRuleRankInfo() {
+		RuleRankInfo info = configFileManager.readRuleRankInfo();
 		assertNotNull(info);
 	}
 	
