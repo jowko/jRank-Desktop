@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import pl.jowko.jrank.feature.customfx.DecimalField?>
-<?import pl.jowko.jrank.feature.customfx.IntegerField?>
-<ScrollPane fitToWidth="true" minHeight="250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.properties.PropertiesController">
+<?import pl.jowko.rulerank.feature.customfx.DecimalField?>
+<?import pl.jowko.rulerank.feature.customfx.IntegerField?>
+<ScrollPane fitToWidth="true" minHeight="250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.rulerank.desktop.feature.properties.PropertiesController">
 	<VBox>
       <FlowPane VBox.vgrow="ALWAYS">
          <children>

@@ -20,25 +20,25 @@ module jRank.desktop {
 	requires jrs;
 	requires org.apache.commons.io;
 	
-	opens pl.jowko.jrank.desktop.controller;
-	opens pl.jowko.jrank.desktop.feature.graph;
-	opens pl.jowko.jrank.desktop.feature.approximations;
-	opens pl.jowko.jrank.desktop.feature.learningtable;
-	opens pl.jowko.jrank.desktop.feature.learningtable.dialogs;
-	opens pl.jowko.jrank.desktop.feature.pct;
-	opens pl.jowko.jrank.desktop.feature.properties;
-	opens pl.jowko.jrank.desktop.feature.properties.information;
-	opens pl.jowko.jrank.desktop.feature.ranking;
-	opens pl.jowko.jrank.desktop.feature.rules;
-	opens pl.jowko.jrank.desktop.feature.settings;
-	opens pl.jowko.jrank.desktop.feature.tabs.lower;
-	opens pl.jowko.jrank.desktop.feature.tabs.upper;
-	opens pl.jowko.jrank.desktop.feature.textfile;
-	opens pl.jowko.jrank.desktop.feature.unknown;
-	opens pl.jowko.jrank.desktop.feature.workspace;
+	opens pl.jowko.rulerank.desktop.controller;
+	opens pl.jowko.rulerank.desktop.feature.graph;
+	opens pl.jowko.rulerank.desktop.feature.approximations;
+	opens pl.jowko.rulerank.desktop.feature.learningtable;
+	opens pl.jowko.rulerank.desktop.feature.learningtable.dialogs;
+	opens pl.jowko.rulerank.desktop.feature.pct;
+	opens pl.jowko.rulerank.desktop.feature.properties;
+	opens pl.jowko.rulerank.desktop.feature.properties.information;
+	opens pl.jowko.rulerank.desktop.feature.ranking;
+	opens pl.jowko.rulerank.desktop.feature.rules;
+	opens pl.jowko.rulerank.desktop.feature.settings;
+	opens pl.jowko.rulerank.desktop.feature.tabs.lower;
+	opens pl.jowko.rulerank.desktop.feature.tabs.upper;
+	opens pl.jowko.rulerank.desktop.feature.textfile;
+	opens pl.jowko.rulerank.desktop.feature.unknown;
+	opens pl.jowko.rulerank.desktop.feature.workspace;
  
-	exports pl.jowko.jrank.desktop.controller;
- 	exports pl.jowko.jrank.desktop.feature.internationalization;
- 	exports pl.jowko.jrank.desktop.feature.settings;
- 	exports pl.jowko.jrank.desktop;
+	exports pl.jowko.rulerank.desktop.controller;
+ 	exports pl.jowko.rulerank.desktop.feature.internationalization;
+ 	exports pl.jowko.rulerank.desktop.feature.settings;
+ 	exports pl.jowko.rulerank.desktop;
 }

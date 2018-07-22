@@ -3,10 +3,10 @@
  * This module provides logging mediator.
  * It can use any provided logging implementation.
  * All logging should be performed with class JRankLogger.
- * @see pl.jowko.jrank.logger.JRankLogger
+ * @see pl.jowko.rulerank.logger.JRankLogger
  */
 module jRankLogger {
 	
-	exports pl.jowko.jrank.logger;
+	exports pl.jowko.rulerank.logger;
  
 }

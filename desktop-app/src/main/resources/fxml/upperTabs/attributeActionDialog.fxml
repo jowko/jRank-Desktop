@@ -3,9 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import pl.jowko.jrank.feature.customfx.CustomTextArea?>
-<?import pl.jowko.jrank.feature.customfx.StringTextField?>
-<DialogPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.jrank.desktop.feature.learningtable.dialogs.AttributeDialogController">
+<?import pl.jowko.rulerank.feature.customfx.CustomTextArea?>
+<?import pl.jowko.rulerank.feature.customfx.StringTextField?>
+<DialogPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.rulerank.desktop.feature.learningtable.dialogs.AttributeDialogController">
    <content>
       <HBox>
          <children>

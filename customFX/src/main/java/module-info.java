@@ -9,5 +9,5 @@
 module customFX {
 	requires javafx.controls;
 	
- 	exports pl.jowko.jrank.feature.customfx;
+ 	exports pl.jowko.rulerank.feature.customfx;
 }

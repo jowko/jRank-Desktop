@@ -83,7 +83,7 @@
 						<configuration>
 							<archive>
 								<manifest>
-									<mainClass>pl.jowko.jrank.generator.MainGenerator</mainClass>
+									<mainClass>pl.jowko.rulerank.generator.MainGenerator</mainClass>
 								</manifest>
 							</archive>
 							<descriptorRefs>
