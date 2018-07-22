@@ -1,4 +1,4 @@
-# JRank Ultimate Desktop Edition
+# RuleRank Ultimate Desktop Edition
 This project has a goal to write desktop app for solving ranking problems with DRSA methods.
 It is UI wrapper for ruleRank console application.
 
@@ -13,7 +13,7 @@ Project with JavaFx application. Here is whole UI and logic.
 ### file-generator
 Used only in development. Generates config files for desktop app.
 
-### jRank-logger
+### rule-rank-logger
 Logging mediator for whole project.
 
 
@@ -33,14 +33,14 @@ Before installation of this application, ensure that:
 
 ### Installation steps:
 1. Run install.bat script. On linux you have to create own script.
-2. Go to created jRank directory.
-3. Run run.bat. Whole folder is standalone instance of JRank Ultimate Desktop Edition application.
+2. Go to created RuleRank directory.
+3. Run run.bat. Whole folder is standalone instance of RuleRank Ultimate Desktop Edition application.
 
 install.bat script will perform following actions:
 - installation of lib\jRS.jar to local maven repository
 - clean build of whole application
-- creation of jRank directory
-- copying of all necessary files to jRank directory
+- creation of RuleRank directory
+- copying of all necessary files to RuleRank directory
 - create run.bat script to run this app
 
 
