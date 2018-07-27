@@ -126,7 +126,7 @@ class PCTCreator {
 	 * @param column with is currently created for provided attribute
 	 */
 	private void setCellValueFactory(Attribute attribute, int columnIndex, IndexedTableColumn<ObservableList<Field>, Field> column) {
-		if(attribute.getInitialValue() instanceof FloatField && "Comprehensive_preference_grade".equalsIgnoreCase(attribute.getName())) {
+		if(attribute.getInitialValue() instanceof FloatField && "Relation".equalsIgnoreCase(attribute.getName())) {
 			column.setCellValueFactory(param -> {
 				FloatField field = (FloatField) param.getValue().get(columnIndex);
 				String value;
