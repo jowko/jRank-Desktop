@@ -60,7 +60,7 @@
                   <Insets />
                </opaqueInsets>
              </GridPane>
-            <Label fx:id="infoText" minHeight="40.0" text="Settings will be allied after application restart." wrapText="true">
+            <Label fx:id="infoText" minHeight="40.0" text="Settings will be applied after application restart." wrapText="true">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin></Label>

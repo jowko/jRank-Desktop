@@ -147,7 +147,7 @@
     "RUN_SOURCE_CONTENT" : "More than one information source is configured. What source should be used in experiment?",
     "PROP_EMPTY_RULE_CONDITIONS" : "Rule conditions selection method in VCDomLEM should be configured",
     "ATT_DIALOG_CANCEL_BUTTON" : "Cancel",
-    "US_INFO" : "Settings will be allied after application restart.",
+    "US_INFO" : "Settings will be applied after application restart.",
     "FUZZY_EXHAUSTIVE_POSSIBLE_ROUGH_MEMBERSHIP" : "Fuzzy satisfaction degrees cannot be used in DRSA for exhaustive set of possible rules with rough membership measure. Assuming crisp satisfaction degrees in preference graph.",
     "RUN_OVERRIDE_FILES" : "After experiment execution, files from previous experiment will be overridden. Do you want to override this files? (You can change file names for the experiment in properties form). Overridden file names:",
     "WORK_MENU_ADD_ISF_PROMPT" : "Enter file name for isf file: ",

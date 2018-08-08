@@ -178,7 +178,7 @@ class StubSettings {
 		language.put(Labels.MANUAL_EDITION_ENABLED, "Manual ranking/pairs edition");
 		language.put(Labels.MANUAL_EDITION_ENABLED_TOOLTIP, "Enables manual edition of properties form text fields containing ranking and pairs data");
 		language.put(Labels.START_MAXIMIZED, "Start maximized");
-		language.put(Labels.US_INFO, "Settings will be allied after application restart.");
+		language.put(Labels.US_INFO, "Settings will be applied after application restart.");
 		language.put(Labels.LANGUAGE_ERROR, "Language code is not valid. Choose another language.\n");
 		language.put(Labels.WORKSPACE_ERROR, "Provided workspace folder path: " + MSG + " is not correct\n");
 		language.put(Labels.ERROR_DIALOG_TITLE, "Unexpected error");

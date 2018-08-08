@@ -41,7 +41,7 @@
     "WORKSPACE" : "Workspace path: ",
     "ABOUT_AUTHOR" : "Author:",
     "BUTTON_SAVE" : "Save",
-    "US_INFO" : "Settings will be allied after application restart.",
+    "US_INFO" : "Settings will be applied after application restart.",
     "ERROR_DIALOG_TITLE" : "Unexpected error",
     "LANGUAGE" : "Language: ",
     "MENU_USER_SETTINGS" : "User settings",
