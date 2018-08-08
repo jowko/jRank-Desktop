@@ -307,6 +307,7 @@
     "TOOL_REFRESH_BUTTON" : "Refresh workspace",
     "VALIDATION_DIALOG_TITLE" : "Validation Fail",
     "CONSISTENCY_MEASURE_THRESHOLD" : "Consistency measure threshold:",
+    "TXT_TAB_ABANDON_CHANGES" : "Do you want to abandon changes in form?",
     "TABS_CLOSE_ALL_CONFIRM" : "At least one tab have unsaved changes. Do you want to close all tabs and loose unsaved changes?",
     "WORK_MENU_RENAME" : "Rename file",
     "ARCS_INGOING" : "Ingoing arcs:",

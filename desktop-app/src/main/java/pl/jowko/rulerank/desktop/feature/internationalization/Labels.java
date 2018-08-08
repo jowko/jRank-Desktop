@@ -428,6 +428,7 @@ public class Labels {
 	// Text file tab
 	public static final String TXT_TAB_SAVE_BUTTON = "TXT_TAB_SAVE_BUTTON";
 	public static final String TXT_TAB_CANCEL_BUTTON = "TXT_TAB_CANCEL_BUTTON";
+	public static final String TXT_TAB_ABANDON_CHANGES = "TXT_TAB_ABANDON_CHANGES";
 	
 	// Graph file tab
 	public static final String ARCS_OUTGOING = "ARCS_OUTGOING";

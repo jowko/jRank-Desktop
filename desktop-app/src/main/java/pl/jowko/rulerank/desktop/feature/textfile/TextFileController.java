@@ -5,12 +5,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.rulerank.desktop.feature.tabs.RemovableChangeListener;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
+import pl.jowko.rulerank.desktop.service.DialogsService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-11.
@@ -41,6 +45,7 @@ public class TextFileController {
 		this.textFileTab = textFileTab;
 		textFileView.setText(fileContent);
 		labels = LanguageService.getInstance();
+		initializeEditAndCloseEvent();
 		translateFields();
 	}
 	
@@ -58,11 +63,36 @@ public class TextFileController {
 	}
 	
 	public void cancelAction() {
+		if(isUserWishToKeepChanges()) {
+			return;
+		}
 		closeTab();
+	}
+	
+	private void initializeEditAndCloseEvent() {
+		textFileTab.setOnCloseRequest(event -> {
+			if(isUserWishToKeepChanges()) {
+				event.consume();
+			}
+		});
+		textFileView.textProperty().addListener(new RemovableChangeListener(textFileTab, textFileView));
 	}
 	
 	private void closeTab() {
 		UpperTabsController.getInstance().closeTab(textFileTab);
+	}
+	
+	/**
+	 * Check, if user wants to keep changes.
+	 * If table was edited, it will show confirmation dialog.
+	 */
+	private boolean isUserWishToKeepChanges() {
+		return textFileTab.isTabEdited() && not(showAbandonChangesConfirmationDialog());
+	}
+	
+	private boolean showAbandonChangesConfirmationDialog() {
+		String header = labels.get(Labels.TXT_TAB_ABANDON_CHANGES);
+		return DialogsService.showConfirmationDialog(header, "");
 	}
 	
 	private void translateFields() {

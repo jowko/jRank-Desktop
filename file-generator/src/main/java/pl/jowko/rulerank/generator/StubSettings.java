@@ -546,6 +546,7 @@ class StubSettings {
 	private void createEnglishTextTabLabels(Map<String,String> language) {
 		language.put(Labels.TXT_TAB_SAVE_BUTTON, "Save");
 		language.put(Labels.TXT_TAB_CANCEL_BUTTON, "Cancel");
+		language.put(Labels.TXT_TAB_ABANDON_CHANGES, "Do you want to abandon changes in form?");
 	}
 	
 	private void createEnglishGraphTabLabels(Map<String, String> language) {
