@@ -48,6 +48,7 @@ class ResultsSaver {
 		saveRulesFile();
 		saveRankingFile();
 		saveGraphFile();
+		saveReportFile();
 	}
 	
 	private void savePctFile() {
@@ -113,6 +114,17 @@ class ResultsSaver {
 			logFileSaved(properties.getPreferenceGraphFile(), graphPath);
 		} catch (IOException e) {
 			RuleRankLogger.error("Error when saving graph file: " + e);
+		}
+	}
+	
+	private void saveReportFile() {
+		try {
+			String reportFilePath = properties.getLearningDataFile().replaceFirst("[.]isf", "_report") + ".txt";
+			String absolutePath = getAbsolutePath(reportFilePath);
+			results.writeErrors(absolutePath);
+			logFileSaved(reportFilePath, absolutePath);
+		} catch (IOException e) {
+			RuleRankLogger.error("Error while saving report file: " + e);
 		}
 	}
 	
