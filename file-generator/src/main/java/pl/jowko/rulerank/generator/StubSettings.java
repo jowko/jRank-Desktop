@@ -104,6 +104,7 @@ class StubSettings {
 		language.put(Labels.CONFIRM_DIALOG_TITLE, "Confirm action");
 		language.put(Labels.CONFIRM_DIALOG_YES, "Yes");
 		language.put(Labels.CONFIRM_DIALOG_NO, "No");
+		language.put(Labels.ABANDON_CHANGES_HEADER, "Do you want to abandon changes in form?");
 		
 		createEnglishMenuLabels(language);
 		createEnglishToolbarLabels(language);
@@ -472,7 +473,6 @@ class StubSettings {
 		language.put(Labels.LEARN_TABLE_COPY_ROWS, "Copy selected rows");
 		
 		language.put(Labels.LEARN_TABLE_REMOVE_ALL_HEADER, "Do you want to remove ALL examples from table?");
-		language.put(Labels.LEARN_TABLE_ABANDON_CHANGES, "Do you want to abandon changes in form?");
 		language.put(Labels.LEARN_TABLE_ERRORS, "Table contains errors:");
 		language.put(Labels.LEARN_TABLE_SAVE_CONFIRM, "Do you want to save form?");
 		
@@ -546,7 +546,6 @@ class StubSettings {
 	private void createEnglishTextTabLabels(Map<String,String> language) {
 		language.put(Labels.TXT_TAB_SAVE_BUTTON, "Save");
 		language.put(Labels.TXT_TAB_CANCEL_BUTTON, "Cancel");
-		language.put(Labels.TXT_TAB_ABANDON_CHANGES, "Do you want to abandon changes in form?");
 	}
 	
 	private void createEnglishGraphTabLabels(Map<String, String> language) {

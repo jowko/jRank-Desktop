@@ -63,6 +63,7 @@ public class Labels {
 	public static final String CONFIRM_DIALOG_TITLE = "CONFIRM_DIALOG_TITLE";
 	public static final String CONFIRM_DIALOG_YES = "CONFIRM_DIALOG_YES";
 	public static final String CONFIRM_DIALOG_NO = "CONFIRM_DIALOG_NO";
+	public static final String ABANDON_CHANGES_HEADER = "ABANDON_CHANGES_HEADER";
 	
 	// User Settings
 	public static final String US_TITLE = "US_TITLE";
@@ -358,7 +359,6 @@ public class Labels {
 	public static final String LEARN_TABLE_COPY_ROWS = "LEARN_TABLE_COPY_ROWS";
 	
 	public static final String LEARN_TABLE_REMOVE_ALL_HEADER = "LEARN_TABLE_REMOVE_ALL_HEADER";
-	public static final String LEARN_TABLE_ABANDON_CHANGES = "LEARN_TABLE_ABANDON_CHANGES";
 	public static final String LEARN_TABLE_ERRORS = "LEARN_TABLE_ERRORS";
 	public static final String LEARN_TABLE_SAVE_CONFIRM = "LEARN_TABLE_SAVE_CONFIRM";
 	
@@ -428,7 +428,6 @@ public class Labels {
 	// Text file tab
 	public static final String TXT_TAB_SAVE_BUTTON = "TXT_TAB_SAVE_BUTTON";
 	public static final String TXT_TAB_CANCEL_BUTTON = "TXT_TAB_CANCEL_BUTTON";
-	public static final String TXT_TAB_ABANDON_CHANGES = "TXT_TAB_ABANDON_CHANGES";
 	
 	// Graph file tab
 	public static final String ARCS_OUTGOING = "ARCS_OUTGOING";

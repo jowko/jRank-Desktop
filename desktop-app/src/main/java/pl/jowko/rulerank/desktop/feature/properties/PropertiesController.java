@@ -18,6 +18,7 @@ import pl.jowko.rulerank.desktop.feature.runner.RunnerException;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
+import pl.jowko.rulerank.desktop.service.AbandonableTabForm;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import pl.jowko.rulerank.desktop.utils.Cloner;
@@ -38,7 +39,7 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
  * Created by Piotr on 2018-04-29.
  * Controller for properties form tab.
  */
-public class PropertiesController {
+public class PropertiesController implements AbandonableTabForm {
 	
 	@FXML Button runExperimentButton;
 	
@@ -188,6 +189,7 @@ public class PropertiesController {
 	 * If user made some changes in form, he will be asked if he want to keep changes.
 	 */
 	public void cancelAction() {
+		editableProperties = controllerHelper.getPropertiesFromForm();
 		if(isUserWishToKeepChanges())
 			return;
 		closeTab();
@@ -198,6 +200,7 @@ public class PropertiesController {
 	 * If user made some changes in form, he will be asked if he want to keep changes.
 	 */
 	public void clearFormAction() {
+		editableProperties = controllerHelper.getPropertiesFromForm();
 		if(isUserWishToKeepChanges())
 			return;
 		controllerHelper.clearForm();
@@ -208,6 +211,7 @@ public class PropertiesController {
 	 * It will ask user to confirm this action.
 	 */
 	public void restoreOriginalValuesAction() {
+		editableProperties = controllerHelper.getPropertiesFromForm();
 		if(isUserWishToKeepChanges())
 			return;
 		
@@ -293,6 +297,11 @@ public class PropertiesController {
 		initializeInformationForm("/fxml/upperTabs/properties/pairsDialog.fxml", Labels.PROP_PAIRS_TITLE, result);
 	}
 	
+	@Override
+	public RuleRankTab getTab() {
+		return propertiesTab;
+	}
+	
 	/**
 	 * Initializes information form on with pairs or ranking is edited.
 	 * If field contains invalid content, dialog will not show and user see errors message.
@@ -365,18 +374,6 @@ public class PropertiesController {
 	}
 	
 	/**
-	 * Initialize close event.
-	 * When user edited data and closes form, he will be asked to confirm this action.
-	 */
-	private void initializeCloseEvent() {
-		propertiesTab.setOnCloseRequest(event -> {
-			if(isUserWishToKeepChanges()) {
-				event.consume();
-			}
-		});
-	}
-	
-	/**
 	 * Checks, if form has valid values.
 	 * If form containing errors, they will be displayed to user.
 	 * @return true if form is valid, false otherwise
@@ -407,16 +404,6 @@ public class PropertiesController {
 			return DialogsService.showConfirmationDialog(header, validator.getErrorMessages());
 		}
 		return true;
-	}
-	
-	private boolean isUserWishToKeepChanges() {
-		editableProperties = controllerHelper.getPropertiesFromForm();
-		return propertiesTab.isTabEdited() && not(showConfirmActionDialog());
-	}
-	
-	private boolean showConfirmActionDialog() {
-		String header = labels.get(Labels.PROP_ABANDON_CHANGES);
-		return DialogsService.showConfirmationDialog(header);
 	}
 	
 }

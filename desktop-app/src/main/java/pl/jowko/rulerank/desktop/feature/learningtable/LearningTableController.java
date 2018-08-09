@@ -1,6 +1,5 @@
 package pl.jowko.rulerank.desktop.feature.learningtable;
 
-import javafx.beans.value.ChangeListener;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +15,7 @@ import pl.jowko.rulerank.desktop.feature.tabs.RemovableChangeListener;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
+import pl.jowko.rulerank.desktop.service.AbandonableTabForm;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import pl.jowko.rulerank.logger.RuleRankLogger;
@@ -32,7 +32,7 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
  * Created by Piotr on 2018-05-08.
  * Controller for editable learning data table.
  */
-public class LearningTableController {
+public class LearningTableController implements AbandonableTabForm {
 	
 	@FXML
 	Label selectAttributeLabel;
@@ -177,6 +177,11 @@ public class LearningTableController {
 		closeTab();
 	}
 	
+	@Override
+	public RuleRankTab getTab() {
+		return learningTableTab;
+	}
+	
 	/**
 	 * This will initialize edit event for table.
 	 * If any action related with table edition will occur, this code will set learning tab to edit mode.
@@ -224,35 +229,11 @@ public class LearningTableController {
 	}
 	
 	/**
-	 * Initialize event listener, with will ask for confirmation when tab was edited and user wants to close it.
-	 */
-	private void initializeCloseEvent() {
-		learningTableTab.setOnCloseRequest(event -> {
-			if(isUserWishToKeepChanges()) {
-				event.consume();
-			}
-		});
-	}
-	
-	/**
-	 * Check, if user wants to keep changes.
-	 * If table was edited, it will show confirmation dialog.
-	 */
-	private boolean isUserWishToKeepChanges() {
-		return learningTableTab.isTabEdited() && not(showAbandonChangesConfirmationDialog());
-	}
-	
-	/**
 	 * Extract data from UI table and put them in LearningTable
 	 * @see LearningTableAssembler
 	 */
 	private LearningTable matchDataFromUIToLearningTable() {
 		return new LearningTableAssembler(learningTable, table, tableActions.getAttributes()).getLearningTableFromUITable();
-	}
-	
-	private boolean showAbandonChangesConfirmationDialog() {
-		String header = labels.get(Labels.LEARN_TABLE_ABANDON_CHANGES);
-		return DialogsService.showConfirmationDialog(header, "");
 	}
 	
 	private void closeTab() {

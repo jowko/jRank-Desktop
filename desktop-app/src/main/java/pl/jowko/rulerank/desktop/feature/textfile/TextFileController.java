@@ -9,18 +9,16 @@ import pl.jowko.rulerank.desktop.feature.tabs.RemovableChangeListener;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
-import pl.jowko.rulerank.desktop.service.DialogsService;
+import pl.jowko.rulerank.desktop.service.AbandonableTabForm;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
  * Created by Piotr on 2018-05-11.
  * Shows text(.txt) files in TextArea and allows to edit them.
  */
-public class TextFileController {
+public class TextFileController implements AbandonableTabForm {
 	
 	@FXML
 	private TextArea textFileView;
@@ -49,6 +47,11 @@ public class TextFileController {
 		translateFields();
 	}
 	
+	@Override
+	public RuleRankTab getTab() {
+		return textFileTab;
+	}
+	
 	/**
 	 * Save text from TextArea to original file.
 	 * @throws IOException when something go wrong with file save
@@ -70,29 +73,12 @@ public class TextFileController {
 	}
 	
 	private void initializeEditAndCloseEvent() {
-		textFileTab.setOnCloseRequest(event -> {
-			if(isUserWishToKeepChanges()) {
-				event.consume();
-			}
-		});
+		initializeCloseEvent();
 		textFileView.textProperty().addListener(new RemovableChangeListener<>(textFileTab, textFileView.textProperty()));
 	}
 	
 	private void closeTab() {
 		UpperTabsController.getInstance().closeTab(textFileTab);
-	}
-	
-	/**
-	 * Check, if user wants to keep changes.
-	 * If table was edited, it will show confirmation dialog.
-	 */
-	private boolean isUserWishToKeepChanges() {
-		return textFileTab.isTabEdited() && not(showAbandonChangesConfirmationDialog());
-	}
-	
-	private boolean showAbandonChangesConfirmationDialog() {
-		String header = labels.get(Labels.TXT_TAB_ABANDON_CHANGES);
-		return DialogsService.showConfirmationDialog(header, "");
 	}
 	
 	private void translateFields() {
