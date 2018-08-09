@@ -119,10 +119,9 @@ class ResultsSaver {
 	
 	private void saveReportFile() {
 		try {
-			String reportFilePath = properties.getLearningDataFile().replaceFirst("[.]isf", "_report") + ".txt";
-			String absolutePath = getAbsolutePath(reportFilePath);
-			results.writeErrors(absolutePath);
-			logFileSaved(reportFilePath, absolutePath);
+			String reportFilePath = getAbsolutePath(properties.getReportFile());
+			results.writeErrors(reportFilePath);
+			logFileSaved(properties.getReportFile(), reportFilePath);
 		} catch (IOException e) {
 			RuleRankLogger.error("Error while saving report file: " + e);
 		}

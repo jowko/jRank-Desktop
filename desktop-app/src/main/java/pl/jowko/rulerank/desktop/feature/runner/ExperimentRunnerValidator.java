@@ -25,7 +25,6 @@ import java.nio.file.Paths;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
-import static pl.jowko.rulerank.desktop.utils.FileExtensionExtractor.getFileName;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 import static pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainerDecisionsManager.getFirstDecisionAttributeIndex;
 
@@ -118,13 +117,13 @@ class ExperimentRunnerValidator {
 		if(isNull(container))
 			throw new RunnerException(containerName + labels.get(Labels.RUN_FILE_IS_EMPTY));
 		
-		LearningTable learningTable = new LearningTable(container);
-		LearningTableValidator validator = new LearningTableValidator(learningTable);
+		LearningTable table = new LearningTable(container);
+		LearningTableValidator learningTableValidator = new LearningTableValidator(table);
 		
-		if(validator.isValid())
-			return learningTable;
+		if(learningTableValidator.isValid())
+			return table;
 		
-		throw new RunnerException(labels.get(Labels.RUN_ISF_ERRORS) + '\n' + validator.getErrorMessages());
+		throw new RunnerException(labels.get(Labels.RUN_ISF_ERRORS) + '\n' + learningTableValidator.getErrorMessages());
 	}
 	
 	private MemoryContainer readMemoryContainer(String filePath) {
@@ -204,11 +203,12 @@ class ExperimentRunnerValidator {
 	private String getOverriddenFileNames() {
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append(getFileNameIfExists(properties.getPctFile(), true, ".isf"));
-		builder.append(getFileNameIfExists(properties.getPctApxFile(), true, ".apx"));
-		builder.append(getFileNameIfExists(properties.getPctRulesFile(), true, ".rules"));
-		builder.append(getFileNameIfExists(properties.getRankingFile(), false, ".ranking"));
-		builder.append(getFileNameIfExists(properties.getPreferenceGraphFile(), false, ".graph"));
+		builder.append(getFileNameIfExists(properties.getPctFile()));
+		builder.append(getFileNameIfExists(properties.getPctApxFile()));
+		builder.append(getFileNameIfExists(properties.getPctRulesFile()));
+		builder.append(getFileNameIfExists(properties.getRankingFile()));
+		builder.append(getFileNameIfExists(properties.getPreferenceGraphFile()));
+		builder.append(getFileNameIfExists(properties.getReportFile()));
 		
 		if(builder.length() > 0)
 			return builder.substring(0, builder.length()-2); // skip last space and comma
@@ -220,26 +220,11 @@ class ExperimentRunnerValidator {
 	 * Checks if file with provided path exists.
 	 * If file exists, its file name will be returned.
 	 * @param fileName of file to check
-	 * @param isPctFile indicates if this file is one of pct files
-	 * @param extension to indicate file extension
 	 */
-	private String getFileNameIfExists(String fileName, boolean isPctFile, String extension) {
-		String filePath;
-		if(isNotNullOrEmpty(fileName)) {
-			filePath = getAbsolutePath(Paths.get(fileName));
-		} else {
-			Path path = Paths.get(properties.getLearningDataFile()).getFileName();
-			filePath = getFileName(path.toString());
-			
-			if(isPctFile)
-				filePath += "_partialPCT" + extension;
-			else
-				filePath += extension;
-			
-			filePath = experimentPath + filePath;
-		}
-		
+	private String getFileNameIfExists(String fileName) {
+		String filePath = getAbsolutePath(Paths.get(fileName));
 		Path path = Paths.get(filePath);
+		
 		if(Files.exists(path))
 			return " [" + path.getFileName() + "], ";
 		else

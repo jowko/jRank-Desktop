@@ -59,12 +59,12 @@ public class ExperimentRunner {
 	 * It prepares rest of data, logs experiment parameters, runs experiment and save results.
 	 */
 	public void run() {
+		initializeFileNames();
 		if(not(validator.isValid())) {
 			return;
 		}
 		LearningTable learningTable = validator.getLearningTable();
 		LearningTable testTable = validator.getTestTable();
-		initializeFileNames();
 		Settings.getInstance().precision = properties.getPrecision();
 		
 		RankerParameters parameters =  new RankerParametersAssembler(properties, learningTable, testTable).getParameters();
@@ -82,29 +82,39 @@ public class ExperimentRunner {
 	}
 	
 	/**
-	 * If file names in properties were not configured, they will be replaced with default ones calculated from learning table name.
+	 * If file names in properties were not configured, they will be replaced with default ones calculated from learning or test table name.
+	 * Learning table name is used in: rules, partial pct and apx
+	 * Test table name is used in: graph and ranking
 	 */
 	private void initializeFileNames() {
-		String baseName = Paths.get(properties.getLearningDataFile()).getFileName().toString();
-		baseName = FileExtensionExtractor.getFileName(baseName);
-		
 		if(isNullOrEmpty(properties.getTestDataFile()))
 			properties.setTestDataFile(properties.getLearningDataFile());
 		
+		String learningBaseName = getBaseFileName(properties.getLearningDataFile());
+		String testBaseName = getBaseFileName(properties.getTestDataFile());
+		
 		if(isNullOrEmpty(properties.getPctFile()))
-			properties.setPctFile(baseName + "_partialPCT.isf");
+			properties.setPctFile(learningBaseName + "_partialPCT.isf");
 		
 		if(isNullOrEmpty(properties.getPctApxFile()))
-			properties.setPctApxFile(baseName + "_partialPCT.apx");
+			properties.setPctApxFile(learningBaseName + "_partialPCT.apx");
 		
 		if(isNullOrEmpty(properties.getPctRulesFile()))
-			properties.setPctRulesFile(baseName + "_partialPCT.rules");
+			properties.setPctRulesFile(learningBaseName + "_partialPCT.rules");
 		
 		if(isNullOrEmpty(properties.getRankingFile()))
-			properties.setRankingFile(baseName + ".ranking");
+			properties.setRankingFile(testBaseName + ".ranking");
 		
 		if(isNullOrEmpty(properties.getPreferenceGraphFile()))
-			properties.setPreferenceGraphFile(baseName + ".graph");
+			properties.setPreferenceGraphFile(testBaseName + ".graph");
+		
+		String reportFilePath = properties.getTestDataFile().replaceFirst("[.]isf", "_report") + ".txt";
+		properties.setReportFile(reportFilePath);
+	}
+	
+	private String getBaseFileName(String fileName) {
+		String baseName = Paths.get(fileName).getFileName().toString();
+		return FileExtensionExtractor.getFileName(baseName);
 	}
 	
 }

@@ -25,6 +25,8 @@ public class RuleRankProperties implements Serializable {
 	private String referenceRanking;
 	private String pairs;
 	
+	private String reportFile;
+	
 	private RuleRankParameter typeOfFamilyOfCriteria;
 	private RuleRankParameter consistencyMeasure;
 	private Double consistencyMeasureThreshold;
@@ -271,6 +273,14 @@ public class RuleRankProperties implements Serializable {
 		this.precision = precision;
 	}
 	
+	public String getReportFile() {
+		return reportFile;
+	}
+	
+	public void setReportFile(String reportFile) {
+		this.reportFile = reportFile;
+	}
+	
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder("RuleRankProperties{\n");
@@ -281,6 +291,7 @@ public class RuleRankProperties implements Serializable {
 		sb.append(", pctRulesFile='").append(pctRulesFile).append("\'\n");
 		sb.append(", preferenceGraphFile='").append(preferenceGraphFile).append("\'\n");
 		sb.append(", rankingFile='").append(rankingFile).append("\'\n");
+		sb.append(", reportFile=").append(reportFile).append('\n');
 		sb.append(", referenceRanking='").append(referenceRanking).append("\'\n");
 		sb.append(", pairs='").append(pairs).append("\'\n");
 		sb.append(", typeOfFamilyOfCriteria=").append(typeOfFamilyOfCriteria).append('\n');
@@ -318,6 +329,7 @@ public class RuleRankProperties implements Serializable {
 				Objects.equals(pctRulesFile, that.pctRulesFile) &&
 				Objects.equals(preferenceGraphFile, that.preferenceGraphFile) &&
 				Objects.equals(rankingFile, that.rankingFile) &&
+				Objects.equals(reportFile, that.reportFile) &&
 				Objects.equals(referenceRanking, that.referenceRanking) &&
 				Objects.equals(pairs, that.pairs) &&
 				Objects.equals(typeOfFamilyOfCriteria, that.typeOfFamilyOfCriteria) &&
@@ -344,7 +356,7 @@ public class RuleRankProperties implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(learningDataFile, testDataFile, pctFile, pctApxFile, pctRulesFile,
-				preferenceGraphFile, rankingFile, referenceRanking, pairs, typeOfFamilyOfCriteria,
+				preferenceGraphFile, rankingFile, reportFile, referenceRanking, pairs, typeOfFamilyOfCriteria,
 				consistencyMeasure, consistencyMeasureThreshold, typeOfRules, consideredSetOfRules,
 				satisfactionDegreesInPreferenceGraph, fuzzySatisfactionDegreeCalculationMethod,
 				rankingProcedure, dominance, dominanceForPairsOfOrdinalValues, negativeExamplesTreatmentForVCDRSA,
