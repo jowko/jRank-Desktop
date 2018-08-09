@@ -1,20 +1,20 @@
 **ATTRIBUTES
 
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_difference_on_AET: (continuous), cost
-+ Evaluations_difference_on_CRU: (integer), cost
-+ Evaluations_on_I: [1, 2] (pair), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ diff_AET: (continuous), cost
++ diff_CRU: (integer), cost
++ I: [1, 2] (pair), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 **PREFERENCES
 
 Pair_of_examples: none
-Evaluations_difference_on_AET: cost
-Evaluations_difference_on_CRU: cost
-Evaluations_on_I: gain
-Comprehensive_preference_grade: gain
+diff_AET: cost
+diff_CRU: cost
+I: gain
+Relation: gain
 
 **EXAMPLES
 

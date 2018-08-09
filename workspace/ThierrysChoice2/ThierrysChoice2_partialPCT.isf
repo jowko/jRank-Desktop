@@ -1,24 +1,24 @@
 **ATTRIBUTES
 
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_difference_on_price: (continuous), cost
-+ Evaluations_difference_on_accel: (continuous), cost
-+ Evaluations_difference_on_pick_up: (continuous), cost
-+ Evaluations_difference_on_brakes: (continuous), gain
-+ Evaluations_difference_on_road_h: (continuous), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ diff_price: (continuous), cost
++ diff_accel: (continuous), cost
++ diff_pick_up: (continuous), cost
++ diff_brakes: (continuous), gain
++ diff_road_h: (continuous), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 **PREFERENCES
 
 Pair_of_examples: none
-Evaluations_difference_on_price: cost
-Evaluations_difference_on_accel: cost
-Evaluations_difference_on_pick_up: cost
-Evaluations_difference_on_brakes: gain
-Evaluations_difference_on_road_h: gain
-Comprehensive_preference_grade: gain
+diff_price: cost
+diff_accel: cost
+diff_pick_up: cost
+diff_brakes: gain
+diff_road_h: gain
+Relation: gain
 
 **EXAMPLES
 

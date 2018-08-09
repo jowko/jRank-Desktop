@@ -2,10 +2,10 @@
 Program: jrs
 Algorithm: VC-DOMLEM
 DataFileDirectory: 
-DataFileName: BankruptcyRisk_partialPCT.isf
+DataFileName: 
 Objects: 49
-Decision: Comprehensive_preference_grade
-Duration: 30 [ms]
+Decision: Relation
+Duration: 33 [ms]
 Comment: Rules generated with VC-DOMLEM algorithm
 
 [PARAMETERS]
@@ -15,52 +15,52 @@ Classes: -1.0, 0.0
 
 [ATTRIBUTES]
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_difference_on_at1: (continuous), gain
-+ Evaluations_difference_on_at2: (continuous), gain
-+ Evaluations_difference_on_at3: (continuous), cost
-+ Evaluations_difference_on_at4: (continuous), cost
-+ Evaluations_difference_on_at5: (continuous), cost
-+ Evaluations_difference_on_at6: (continuous), cost
-+ Evaluations_on_at7: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at8: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at9: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at10: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at11: [1, 2, 3, 4] (pair), gain
-+ Evaluations_on_at12: [1, 2, 3, 4, 5] (pair), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ diff_at1: (continuous), gain
++ diff_at2: (continuous), gain
++ diff_at3: (continuous), cost
++ diff_at4: (continuous), cost
++ diff_at5: (continuous), cost
++ diff_at6: (continuous), cost
++ at7: [1, 2, 3, 4, 5] (pair), gain
++ at8: [1, 2, 3, 4, 5] (pair), gain
++ at9: [1, 2, 3, 4, 5] (pair), gain
++ at10: [1, 2, 3, 4, 5] (pair), gain
++ at11: [1, 2, 3, 4] (pair), gain
++ at12: [1, 2, 3, 4, 5] (pair), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 [PREFERENCES]
 Pair_of_examples: none
-Evaluations_difference_on_at1: gain
-Evaluations_difference_on_at2: gain
-Evaluations_difference_on_at3: cost
-Evaluations_difference_on_at4: cost
-Evaluations_difference_on_at5: cost
-Evaluations_difference_on_at6: cost
-Evaluations_on_at7: gain
-Evaluations_on_at8: gain
-Evaluations_on_at9: gain
-Evaluations_on_at10: gain
-Evaluations_on_at11: gain
-Evaluations_on_at12: gain
-Comprehensive_preference_grade: gain
+diff_at1: gain
+diff_at2: gain
+diff_at3: cost
+diff_at4: cost
+diff_at5: cost
+diff_at6: cost
+at7: gain
+at8: gain
+at9: gain
+at10: gain
+at11: gain
+at12: gain
+Relation: gain
 
 [RULES]
 #Certain at least rules
-1: [DIFF(Evaluations_difference_on_at1) >= 5.5] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
-2: [DIFF(Evaluations_difference_on_at2) >= 36.8] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
-3: {PAIR(Evaluations_on_at7) D (4,4)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
-4: [DIFF(Evaluations_difference_on_at1) >= 0.0] & [DIFF(Evaluations_difference_on_at2) >= 0.0] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+1: (diff_at1 >= 5.5) => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+2: (diff_at2 >= 36.8) => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+3: {PAIR(at7) D (4,4)} => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+4: (diff_at1 >= 0.0) & (diff_at2 >= 0.0) => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
 #Certain at most rules
-5: [DIFF(Evaluations_difference_on_at1) <= -5.5] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
-6: [DIFF(Evaluations_difference_on_at2) <= -36.8] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
-7: {(3,4) D PAIR(Evaluations_on_at12)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+5: (diff_at1 <= -5.5) => (Relation <= -1.0) |CERTAIN, AT_MOST, -1.0|
+6: (diff_at2 <= -36.8) => (Relation <= -1.0) |CERTAIN, AT_MOST, -1.0|
+7: {(3,4) D PAIR(at12)} => (Relation <= -1.0) |CERTAIN, AT_MOST, -1.0|
 
 [RULESINFO]
 #Certain at least rules
-1: [DIFF(Evaluations_difference_on_at1) >= 5.5] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+1: (diff_at1 >= 5.5) => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
 LearningPositiveExamples: 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 25, 26, 27, 28, 33, 34, 35, 41, 42, 49
 Support: 19
 SupportingExamples: 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 19, 20, 21, 26, 27, 28, 35, 42
@@ -79,7 +79,7 @@ Z-ConfirmationMeasure: 1.0
 l-ConfirmationMeasure: Infinity
 c1-ConfirmationMeasure: 0.738
 
-2: [DIFF(Evaluations_difference_on_at2) >= 36.8] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+2: (diff_at2 >= 36.8) => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
 LearningPositiveExamples: 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 25, 26, 27, 28, 33, 34, 35, 41, 42, 49
 Support: 15
 SupportingExamples: 3, 4, 5, 6, 7, 12, 13, 14, 19, 20, 21, 26, 27, 28, 34
@@ -98,7 +98,7 @@ Z-ConfirmationMeasure: 1.0
 l-ConfirmationMeasure: Infinity
 c1-ConfirmationMeasure: 0.665
 
-3: {PAIR(Evaluations_on_at7) D (4,4)} => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+3: {PAIR(at7) D (4,4)} => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
 LearningPositiveExamples: 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 25, 26, 27, 28, 33, 34, 35, 41, 42, 49
 Support: 15
 SupportingExamples: 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21
@@ -117,7 +117,7 @@ Z-ConfirmationMeasure: 1.0
 l-ConfirmationMeasure: Infinity
 c1-ConfirmationMeasure: 0.665
 
-4: [DIFF(Evaluations_difference_on_at1) >= 0.0] & [DIFF(Evaluations_difference_on_at2) >= 0.0] => (Comprehensive_preference_grade >= 0.0) |CERTAIN, AT_LEAST, 0.0|
+4: (diff_at1 >= 0.0) & (diff_at2 >= 0.0) => (Relation >= 0.0) |CERTAIN, AT_LEAST, 0.0|
 LearningPositiveExamples: 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 25, 26, 27, 28, 33, 34, 35, 41, 42, 49
 Support: 25
 SupportingExamples: 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 19, 20, 21, 25, 26, 27, 28, 33, 35, 41, 49
@@ -137,7 +137,7 @@ l-ConfirmationMeasure: Infinity
 c1-ConfirmationMeasure: 0.891
 
 #Certain at most rules
-5: [DIFF(Evaluations_difference_on_at1) <= -5.5] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+5: (diff_at1 <= -5.5) => (Relation <= -1.0) |CERTAIN, AT_MOST, -1.0|
 LearningPositiveExamples: 8, 15, 16, 22, 23, 24, 29, 30, 31, 32, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48
 Support: 19
 SupportingExamples: 8, 15, 16, 22, 23, 29, 30, 31, 32, 36, 37, 38, 39, 43, 44, 45, 46, 47, 48
@@ -156,7 +156,7 @@ Z-ConfirmationMeasure: 1.0
 l-ConfirmationMeasure: Infinity
 c1-ConfirmationMeasure: 0.922
 
-6: [DIFF(Evaluations_difference_on_at2) <= -36.8] => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+6: (diff_at2 <= -36.8) => (Relation <= -1.0) |CERTAIN, AT_MOST, -1.0|
 LearningPositiveExamples: 8, 15, 16, 22, 23, 24, 29, 30, 31, 32, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48
 Support: 15
 SupportingExamples: 15, 22, 29, 30, 31, 32, 36, 37, 38, 39, 40, 43, 44, 45, 46
@@ -175,7 +175,7 @@ Z-ConfirmationMeasure: 1.0
 l-ConfirmationMeasure: Infinity
 c1-ConfirmationMeasure: 0.794
 
-7: {(3,4) D PAIR(Evaluations_on_at12)} => (Comprehensive_preference_grade <= -1.0) |CERTAIN, AT_MOST, -1.0|
+7: {(3,4) D PAIR(at12)} => (Relation <= -1.0) |CERTAIN, AT_MOST, -1.0|
 LearningPositiveExamples: 8, 15, 16, 22, 23, 24, 29, 30, 31, 32, 36, 37, 38, 39, 40, 43, 44, 45, 46, 47, 48
 Support: 12
 SupportingExamples: 22, 23, 24, 29, 30, 31, 36, 37, 38, 43, 44, 45

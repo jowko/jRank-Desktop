@@ -1,20 +1,20 @@
 **ATTRIBUTES
 
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_difference_on_price: (integer), cost
-+ Evaluations_difference_on_time: (integer), cost
-+ Evaluations_difference_on_comfort: (integer), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ diff_price: (integer), cost
++ diff_time: (integer), cost
++ diff_comfort: (integer), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 **PREFERENCES
 
 Pair_of_examples: none
-Evaluations_difference_on_price: cost
-Evaluations_difference_on_time: cost
-Evaluations_difference_on_comfort: gain
-Comprehensive_preference_grade: gain
+diff_price: cost
+diff_time: cost
+diff_comfort: gain
+Relation: gain
 
 **EXAMPLES
 

@@ -1,4 +1,0 @@
-Kendal's tau with respect to preference information:	1.0
-Kendal's tau with respect to preference information, ignoring pairs that cannot be preserved:	1.0
-Kendal's tau with respect to preference information, ignoring correct indifference relation:	1.0
-Kendal's tau with respect to preference information, ignoring correct indifference relation and pairs that cannot be preserved:	1.0

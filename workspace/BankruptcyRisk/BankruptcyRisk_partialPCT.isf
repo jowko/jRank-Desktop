@@ -1,38 +1,38 @@
 **ATTRIBUTES
 
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_difference_on_at1: (continuous), gain
-+ Evaluations_difference_on_at2: (continuous), gain
-+ Evaluations_difference_on_at3: (continuous), cost
-+ Evaluations_difference_on_at4: (continuous), cost
-+ Evaluations_difference_on_at5: (continuous), cost
-+ Evaluations_difference_on_at6: (continuous), cost
-+ Evaluations_on_at7: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at8: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at9: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at10: [1, 2, 3, 4, 5] (pair), gain
-+ Evaluations_on_at11: [1, 2, 3, 4] (pair), gain
-+ Evaluations_on_at12: [1, 2, 3, 4, 5] (pair), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ diff_at1: (continuous), gain
++ diff_at2: (continuous), gain
++ diff_at3: (continuous), cost
++ diff_at4: (continuous), cost
++ diff_at5: (continuous), cost
++ diff_at6: (continuous), cost
++ at7: [1, 2, 3, 4, 5] (pair), gain
++ at8: [1, 2, 3, 4, 5] (pair), gain
++ at9: [1, 2, 3, 4, 5] (pair), gain
++ at10: [1, 2, 3, 4, 5] (pair), gain
++ at11: [1, 2, 3, 4] (pair), gain
++ at12: [1, 2, 3, 4, 5] (pair), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 **PREFERENCES
 
 Pair_of_examples: none
-Evaluations_difference_on_at1: gain
-Evaluations_difference_on_at2: gain
-Evaluations_difference_on_at3: cost
-Evaluations_difference_on_at4: cost
-Evaluations_difference_on_at5: cost
-Evaluations_difference_on_at6: cost
-Evaluations_on_at7: gain
-Evaluations_on_at8: gain
-Evaluations_on_at9: gain
-Evaluations_on_at10: gain
-Evaluations_on_at11: gain
-Evaluations_on_at12: gain
-Comprehensive_preference_grade: gain
+diff_at1: gain
+diff_at2: gain
+diff_at3: cost
+diff_at4: cost
+diff_at5: cost
+diff_at6: cost
+at7: gain
+at8: gain
+at9: gain
+at10: gain
+at11: gain
+at12: gain
+Relation: gain
 
 **EXAMPLES
 

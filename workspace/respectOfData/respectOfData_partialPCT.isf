@@ -1,18 +1,18 @@
 **ATTRIBUTES
 
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_difference_on_x: (integer), gain
-+ Evaluations_difference_on_y: (integer), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ diff_x: (integer), gain
++ diff_y: (integer), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 **PREFERENCES
 
 Pair_of_examples: none
-Evaluations_difference_on_x: gain
-Evaluations_difference_on_y: gain
-Comprehensive_preference_grade: gain
+diff_x: gain
+diff_y: gain
+Relation: gain
 
 **EXAMPLES
 

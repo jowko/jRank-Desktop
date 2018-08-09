@@ -1,18 +1,18 @@
 **ATTRIBUTES
 
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_on_x: [_8, _7, _6, _2, 2] (pair), gain
-+ Evaluations_on_y: [_2, 2, 3, 4, 5] (pair), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ x: [_8, _7, _6, _2, 2] (pair), gain
++ y: [_2, 2, 3, 4, 5] (pair), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 **PREFERENCES
 
 Pair_of_examples: none
-Evaluations_on_x: gain
-Evaluations_on_y: gain
-Comprehensive_preference_grade: gain
+x: gain
+y: gain
+Relation: gain
 
 **EXAMPLES
 

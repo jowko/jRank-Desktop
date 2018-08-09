@@ -1,34 +1,34 @@
 **ATTRIBUTES
 
 + Pair_of_examples: (numbercoded) (pair), none, description
-+ Evaluations_difference_on_A1: (continuous), gain
-+ Evaluations_difference_on_A2: (continuous), gain
-+ Evaluations_difference_on_A3: (continuous), cost
-+ Evaluations_difference_on_A4: (continuous), gain
-+ Evaluations_difference_on_A5: (continuous), gain
-+ Evaluations_difference_on_A6: (continuous), gain
-+ Evaluations_difference_on_A7: (continuous), gain
-+ Evaluations_difference_on_A8: (continuous), cost
-+ Evaluations_difference_on_A9: (continuous), gain
-+ Evaluations_difference_on_A10: (continuous), gain
-+ Comprehensive_preference_grade: (continuous), gain, decision
++ diff_A1: (continuous), gain
++ diff_A2: (continuous), gain
++ diff_A3: (continuous), cost
++ diff_A4: (continuous), gain
++ diff_A5: (continuous), gain
++ diff_A6: (continuous), gain
++ diff_A7: (continuous), gain
++ diff_A8: (continuous), cost
++ diff_A9: (continuous), gain
++ diff_A10: (continuous), gain
++ Relation: (continuous), gain, decision
 
-decision: Comprehensive_preference_grade
+decision: Relation
 
 **PREFERENCES
 
 Pair_of_examples: none
-Evaluations_difference_on_A1: gain
-Evaluations_difference_on_A2: gain
-Evaluations_difference_on_A3: cost
-Evaluations_difference_on_A4: gain
-Evaluations_difference_on_A5: gain
-Evaluations_difference_on_A6: gain
-Evaluations_difference_on_A7: gain
-Evaluations_difference_on_A8: cost
-Evaluations_difference_on_A9: gain
-Evaluations_difference_on_A10: gain
-Comprehensive_preference_grade: gain
+diff_A1: gain
+diff_A2: gain
+diff_A3: cost
+diff_A4: gain
+diff_A5: gain
+diff_A6: gain
+diff_A7: gain
+diff_A8: cost
+diff_A9: gain
+diff_A10: gain
+Relation: gain
 
 **EXAMPLES
 

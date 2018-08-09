@@ -1,19 +1,22 @@
 **ATTRIBUTES
-+name: (nominal) description
-+x: (integer)
-+y: (integer)
+
++ name: (nominal), none, description
++ x: (integer), gain
++ y: (integer), gain
+
 
 **PREFERENCES
+
 name: none
 x: gain
 y: gain
 
 **EXAMPLES
 
-A  2 -2
-B -2  2
-C -6  3
-D -7  5
-E -8  4
+A, 2, -2
+B, -2, 2
+C, -6, 3
+D, -7, 5
+E, -8, 4
 
 **END
