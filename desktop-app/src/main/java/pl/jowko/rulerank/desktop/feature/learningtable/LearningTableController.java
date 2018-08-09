@@ -12,6 +12,7 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.learningtable.dialogs.AttributeItem;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.CardinalFieldWrapper;
 import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer;
+import pl.jowko.rulerank.desktop.feature.tabs.RemovableChangeListener;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
@@ -188,9 +189,7 @@ public class LearningTableController {
 		learningTable.getColumns().addListener((ListChangeListener<? super TableColumn<ObservableList<Field>, ?>>) listener ->
 				learningTableTab.setTabEdited(true)
 		);
-		learningTable.editingCellProperty().addListener((ChangeListener<? super TablePosition<ObservableList<Field>, ?>>) (ov, o, n) ->
-				learningTableTab.setTabEdited(true)
-		);
+		learningTable.editingCellProperty().addListener(new RemovableChangeListener<>(learningTableTab, learningTable.editingCellProperty()));
 	}
 	
 	/**

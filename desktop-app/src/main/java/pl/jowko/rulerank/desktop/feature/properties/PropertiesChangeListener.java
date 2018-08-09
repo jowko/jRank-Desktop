@@ -1,8 +1,8 @@
 package pl.jowko.rulerank.desktop.feature.properties;
 
-import javafx.beans.value.ChangeListener;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextInputControl;
+import pl.jowko.rulerank.desktop.feature.tabs.RemovableChangeListener;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
@@ -18,9 +18,6 @@ class PropertiesChangeListener {
 	private PropertiesController controller;
 	private RuleRankTab propertiesTab;
 	
-	private ChangeListener<? super String> textFieldListener;
-	private ChangeListener<? super RuleRankParameter> comboBoxListener;
-	
 	/**
 	 * Create instance of this class
 	 * @param controller from with editable fields are extracted
@@ -35,7 +32,6 @@ class PropertiesChangeListener {
 	 * Set ups listeners for all editable fields in properties form
 	 */
 	void setUpListeners() {
-		initializeListeners();
 		setUpListenersForTextFields();
 		setUpListenersForComboBoxes();
 	}
@@ -75,21 +71,12 @@ class PropertiesChangeListener {
 		setUpComboBoxListener(controller.writeLearningPositiveExamples);
 	}
 	
-	private void initializeListeners() {
-		textFieldListener = (observable, oldValue, newValue) -> propertiesChanged();
-		comboBoxListener = (observable, oldValue, newValue) -> propertiesChanged();
-	}
-	
 	private void setUpTextFieldListener(TextInputControl field) {
-		field.textProperty().addListener(textFieldListener);
+		field.textProperty().addListener(new RemovableChangeListener<>(propertiesTab, field.textProperty()));
 	}
 	
 	private void setUpComboBoxListener(ComboBox<RuleRankParameter> comboBox) {
-		comboBox.valueProperty().addListener(comboBoxListener);
-	}
-	
-	private void propertiesChanged() {
-		propertiesTab.setTabEdited(true);
+		comboBox.valueProperty().addListener(new RemovableChangeListener<>(propertiesTab, comboBox.valueProperty()));
 	}
 	
 }
