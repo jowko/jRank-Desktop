@@ -75,7 +75,7 @@ public class TextFileController {
 				event.consume();
 			}
 		});
-		textFileView.textProperty().addListener(new RemovableChangeListener(textFileTab, textFileView));
+		textFileView.textProperty().addListener(new RemovableChangeListener<>(textFileTab, textFileView.textProperty()));
 	}
 	
 	private void closeTab() {
