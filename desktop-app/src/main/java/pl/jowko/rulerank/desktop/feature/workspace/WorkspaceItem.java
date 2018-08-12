@@ -3,6 +3,9 @@ package pl.jowko.rulerank.desktop.feature.workspace;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getParentDirectory;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
+
 /**
  * Created by Piotr on 2018-04-21.
  * This class represents one position in workspace tree.
@@ -44,8 +47,18 @@ public class WorkspaceItem {
 	 */
 	public String getExperimentPath() {
 		if(FileType.DIRECTORY.equals(fileType) || FileType.ROOT.equals(fileType))
-			return filePath + "\\";
-		return Paths.get(filePath).getParent().toString() + "\\";
+			return getSubDirectoryPath(filePath);
+		return getParentDirectory(filePath);
+	}
+	
+	/**
+	 * Gets experiment name from file path.
+	 * @return name of directory for experiment associated with this item
+	 */
+	public String getExperimentName() {
+		if(FileType.DIRECTORY.equals(fileType) || FileType.ROOT.equals(fileType))
+			return filePath;
+		return Paths.get(filePath).getParent().getFileName().toString();
 	}
 	
 	@Override

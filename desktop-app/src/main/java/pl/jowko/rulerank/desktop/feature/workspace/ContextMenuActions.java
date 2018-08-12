@@ -22,6 +22,7 @@ import java.util.Optional;
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getParentDirectory;
 
 /**
  * Created by Piotr on 2018-06-10
@@ -212,7 +213,7 @@ class ContextMenuActions {
 		
 		String filePath;
 		if(isDirectory)
-			filePath = Paths.get(selected.getExperimentPath()).getParent().toString() + "\\" + newFileName;
+			filePath = getParentDirectory(selected.getExperimentPath()) + newFileName;
 		else
 			filePath = selected.getExperimentPath() + newFileName;
 		

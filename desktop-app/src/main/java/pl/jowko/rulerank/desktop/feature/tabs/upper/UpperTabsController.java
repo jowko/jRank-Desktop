@@ -16,12 +16,11 @@ import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.pct.PCTDetector;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
 
 /**
  * Created by Piotr on 2018-04-29.
@@ -147,8 +146,7 @@ public class UpperTabsController {
 	 * @return String containing experiment and file name
 	 */
 	private String createTabText(WorkspaceItem workspaceItem) {
-		Path path = Paths.get(workspaceItem.getFilePath());
-		return path.getParent().getFileName().toString() + "\\" + workspaceItem.getFileName();
+		return getSubDirectoryPath(workspaceItem.getExperimentName()) + workspaceItem.getFileName();
 	}
 	
 	/**

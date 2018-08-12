@@ -3,10 +3,10 @@ package pl.jowko.rulerank.desktop.feature.workspace;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.Objects;
 
 import static java.util.Objects.isNull;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsolute;
 
 /**
  * Created by Piotr on 2018-04-18.
@@ -41,7 +41,7 @@ public class WorkspaceService {
 		}
 		
 		try {
-			path = getAbsolutePath(path);
+			path = getAbsolute(path);
 			File f = new File(path);
 			
 			if(!f.exists() || !f.isDirectory()) {
@@ -60,20 +60,7 @@ public class WorkspaceService {
 	 */
 	public String getWorkspacePath() {
 		String workspacePath = userSettingsService.getUserSettings().getWorkspacePath();
-		return getAbsolutePath(workspacePath);
-	}
-	
-	/**
-	 * Convert provided path to absolute and return result.
-	 * If path is already absolute, nothing happens.
-	 * @param path to convert to absolute
-	 * @return absolute path
-	 */
-	private String getAbsolutePath(String path) {
-		if(!Paths.get(path).isAbsolute()) {
-			return new File("").getAbsolutePath() + path;
-		}
-		return path;
+		return getAbsolute(workspacePath);
 	}
 	
 }

@@ -18,6 +18,7 @@ import java.util.List;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
 
 /**
  * Created by Piotr on 2018-04-09.
@@ -67,7 +68,7 @@ public class ToolbarController {
 				return;
 		}
 		
-		String dirPath = selectedDirectory.getAbsolutePath() + "\\";
+		String dirPath = getSubDirectoryPath(selectedDirectory.getAbsolutePath());
 		ExperimentFilesCreator.createPropertiesFile(dirPath, selectedDirectory.getName());
 		ExperimentFilesCreator.createMemoryContainer(dirPath, selectedDirectory.getName());
 		

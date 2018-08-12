@@ -16,6 +16,7 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.FileExtensionExtractor.getExtension;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFilePath;
 
 /**
  * Created by Piotr on 2018-06-08
@@ -27,7 +28,6 @@ public class IsfFinder {
 	private WorkspaceItem workspaceItem;
 	private boolean isTestFileIncluded;
 	private String experimentDirectory;
-	private String experimentName;
 	
 	/**
 	 * Initializes instance of this class.
@@ -39,9 +39,7 @@ public class IsfFinder {
 		this.workspaceItem = workspaceItem;
 		this.isTestFileIncluded = isTestFileIncluded;
 		
-		Path experimentPath = Paths.get(workspaceItem.getFilePath()).getParent();
-		experimentDirectory = experimentPath.toString() + "\\";
-		experimentName = experimentPath.getFileName().toString();
+		experimentDirectory = workspaceItem.getExperimentPath();
 	}
 	
 	/**
@@ -70,12 +68,12 @@ public class IsfFinder {
 				.collect(Collectors.toList());
 		
 		if(properties.size() > 1)
-			throw new RuleRankRuntimeException("Experiment: [" + experimentName + "] has more than one properties file. Fix this issue before accessing this file.");
+			throw new RuleRankRuntimeException("Experiment: [" + workspaceItem.getExperimentName() + "] has more than one properties file. Fix this issue before accessing this file.");
 		
 		if(properties.size() == 1)
 			return properties.get(0);
 		
-		throw new RuleRankRuntimeException("Experiment: [" + experimentName + "] does not have properties file. Fix this issue before accessing this file.");
+		throw new RuleRankRuntimeException("Experiment: [" + workspaceItem.getExperimentName() + "] does not have properties file. Fix this issue before accessing this file.");
 	}
 	
 	/**
@@ -121,12 +119,7 @@ public class IsfFinder {
 		if(isNull(dataFilePath))
 			return null;
 		
-		Path path = Paths.get(dataFilePath);
-		if(path.isAbsolute())
-			return dataFilePath;
-		
-		// path is relative
-		return experimentDirectory + dataFilePath;
+		return getAbsoluteExperimentFilePath(experimentDirectory, dataFilePath);
 	}
 	
 }

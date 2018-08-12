@@ -25,6 +25,7 @@ import java.nio.file.Paths;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFilePath;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 import static pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainerDecisionsManager.getFirstDecisionAttributeIndex;
 
@@ -127,8 +128,7 @@ class ExperimentRunnerValidator {
 	}
 	
 	private MemoryContainer readMemoryContainer(String filePath) {
-		Path path = Paths.get(filePath);
-		String containerPath = getAbsolutePath(path);
+		String containerPath = getAbsoluteExperimentFilePath(experimentPath, filePath);
 		RuleRankLogger.info("Reading learning table from: " + containerPath);
 		
 		return JRSFileMediator.loadMemoryContainer(containerPath);
@@ -222,21 +222,13 @@ class ExperimentRunnerValidator {
 	 * @param fileName of file to check
 	 */
 	private String getFileNameIfExists(String fileName) {
-		String filePath = getAbsolutePath(Paths.get(fileName));
+		String filePath = getAbsoluteExperimentFilePath(experimentPath, fileName);
 		Path path = Paths.get(filePath);
 		
 		if(Files.exists(path))
 			return " [" + path.getFileName() + "], ";
 		else
 			return "";
-	}
-	
-	private String getAbsolutePath(Path path) {
-		if(path.isAbsolute()) {
-			return path.toString();
-		} else {
-			return experimentPath + path.toString();
-		}
 	}
 	
 }

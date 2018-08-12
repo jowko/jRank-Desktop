@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
+
 /**
  * Created by Piotr on 2018-05-04.
  * This class loads default.properties file from workspace.
@@ -20,7 +22,7 @@ public class DefaultPropertiesProvider {
 	 * @throws IOException when something goes wrong with file reading
 	 */
 	public RuleRankProperties getDefaultProperties() throws IOException {
-		String propertiesPath = WorkspaceService.getInstance().getWorkspacePath() + "\\default.properties";
+		String propertiesPath = getSubDirectoryPath(WorkspaceService.getInstance().getWorkspacePath()) + "default.properties";
 		
 		Properties properties = new Properties();
 		properties.load(new FileInputStream(propertiesPath));

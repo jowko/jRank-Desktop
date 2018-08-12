@@ -29,11 +29,10 @@ import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFilePath;
 
 /**
  * Created by Piotr on 2018-04-29.
@@ -361,10 +360,7 @@ public class PropertiesController implements AbandonableTabForm {
 		if(StringUtils.isNullOrEmpty(isfFilePath)) {
 			throw new ConfigurationException("Could not locate isf table. Learning data file is not configured in properties form.");
 		}
-		Path path = Paths.get(isfFilePath);
-		if(not(path.isAbsolute())) {
-			isfFilePath = workspaceItem.getExperimentPath() + isfFilePath;
-		}
+		isfFilePath = getAbsoluteExperimentFilePath(workspaceItem.getExperimentPath(), isfFilePath);
 		
 		return JRSFileMediator.loadMemoryContainer(isfFilePath);
 	}

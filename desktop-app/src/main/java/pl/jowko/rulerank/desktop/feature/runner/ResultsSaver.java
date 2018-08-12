@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static java.util.Objects.isNull;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFilePath;
 
 /**
  * Created by Piotr on 2018-06-05
@@ -128,12 +129,7 @@ class ResultsSaver {
 	}
 	
 	private String getAbsolutePath(String filePath) {
-		Path path = Paths.get(filePath);
-		if(path.isAbsolute()) {
-			return path.toString();
-		} else {
-			return experimentPath + path.toString();
-		}
+		return getAbsoluteExperimentFilePath(experimentPath, filePath);
 	}
 	
 	private void logFileSaved(String fileName, String absoluteFilePath) {
