@@ -1,5 +1,7 @@
 package pl.jowko.rulerank.desktop.utils;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -59,7 +61,7 @@ public class PathUtils {
 	 * @return subdirectory path for provided directory
 	 */
 	public static String getSubDirectoryPath(String directory) {
-		return directory + "\\";
+		return FilenameUtils.concat(directory, "");
 	}
 	
 }
