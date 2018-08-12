@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.Objects;
 
 import static java.util.Objects.isNull;
-import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsolute;
+import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteSubDirectoryPath;
 
 /**
  * Created by Piotr on 2018-04-18.
@@ -41,7 +41,7 @@ public class WorkspaceService {
 		}
 		
 		try {
-			path = getAbsolute(path);
+			path = getAbsoluteSubDirectoryPath(path);
 			File f = new File(path);
 			
 			if(!f.exists() || !f.isDirectory()) {
@@ -60,7 +60,7 @@ public class WorkspaceService {
 	 */
 	public String getWorkspacePath() {
 		String workspacePath = userSettingsService.getUserSettings().getWorkspacePath();
-		return getAbsolute(workspacePath);
+		return getAbsoluteSubDirectoryPath(workspacePath);
 	}
 	
 }

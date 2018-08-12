@@ -15,16 +15,16 @@ public class PathUtils {
 	private PathUtils() {}
 	
 	/**
-	 * This method converts provided path to absolute path.
-	 * If provided path is already absolute, it will be returned without changes.
-	 * @param filePath with will be converted to absolute path
-	 * @return absolute path
+	 * This method converts provided path to absolute path and returns it subdirectory.
+	 * If provided path is already absolute, it will be returned with subdirectory.
+	 * @param directory with will be converted to absolute path
+	 * @return absolute path to subdirectory for provided path
 	 */
-	public static String getAbsolute(String filePath) {
-		if(!Paths.get(filePath).isAbsolute()) {
-			return new File("").getAbsolutePath() + filePath;
+	public static String getAbsoluteSubDirectoryPath(String directory) {
+		if(!Paths.get(directory).isAbsolute()) {
+			return getSubDirectoryPath(new File("").getAbsolutePath()) + directory;
 		}
-		return filePath;
+		return getSubDirectoryPath(directory);
 	}
 	
 	/**
