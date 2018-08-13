@@ -25,7 +25,7 @@ public class WorkspaceController {
 	private UserSettingsValidator settingsValidator;
 	private LanguageService labels;
 	private TreeBuilder treeBuilder;
-	private boolean isConfigValid = true;
+	private boolean configValid = true;
 	
 	public static WorkspaceController getInstance() {
 		return instance;
@@ -33,6 +33,13 @@ public class WorkspaceController {
 	
 	public void refresh() {
 		treeBuilder.refreshTree();
+	}
+	
+	/**
+	 * @return true if workspace is properly configured, false otherwise
+	 */
+	public boolean isConfigValid() {
+		return configValid;
 	}
 	
 	/**
@@ -50,7 +57,7 @@ public class WorkspaceController {
 		labels = LanguageService.getInstance();
 		
 		validateConfiguration();
-		if(not(isConfigValid)) {
+		if(not(configValid)) {
 			return;
 		}
 		
@@ -69,7 +76,7 @@ public class WorkspaceController {
 		if(not(validationErrors.isEmpty())) {
 			String errorDialogHeader = labels.get(Labels.US_SETTINGS_ERROR);
 			DialogsService.showErrorDialog(errorDialogHeader, validationErrors);
-			isConfigValid = false;
+			configValid = false;
 		}
 	}
 	

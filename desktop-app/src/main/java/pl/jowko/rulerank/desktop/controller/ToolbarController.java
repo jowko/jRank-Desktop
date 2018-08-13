@@ -11,6 +11,7 @@ import pl.jowko.rulerank.desktop.feature.workspace.FilesFinder;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceService;
 import pl.jowko.rulerank.desktop.service.DialogsService;
+import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 
 import java.io.*;
@@ -44,6 +45,11 @@ public class ToolbarController {
 	 * It will display any changes in directories structure.
 	 */
 	public void refreshAction() {
+		if(not(WorkspaceController.getInstance().isConfigValid())) {
+			logWorkspaceError("Refresh");
+			return;
+		}
+		
 		WorkspaceController.getInstance().refresh();
 	}
 	
@@ -55,6 +61,11 @@ public class ToolbarController {
 	 * @throws ContainerFailureException when something goes wrong with creating example MemoryContainer
 	 */
 	public void createExperimentAction() throws IOException, ContainerFailureException {
+		if(not(WorkspaceController.getInstance().isConfigValid())) {
+			logWorkspaceError("Create experiment");
+			return;
+		}
+		
 		File selectedDirectory = showSelectDirectoryDialog();
 		if(isNull(selectedDirectory))
 			return;
@@ -91,6 +102,10 @@ public class ToolbarController {
 	private void translateButtons() {
 		refreshButton.setText(labels.get(Labels.TOOL_REFRESH_BUTTON));
 		createButton.setText(labels.get(Labels.TOOL_CREATE_BUTTON));
+	}
+	
+	private void logWorkspaceError(String action) {
+		RuleRankLogger.warn(action + " action aborted. Workspace is not configured properly. See user settings");
 	}
 	
 }
