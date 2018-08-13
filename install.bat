@@ -34,3 +34,6 @@ COPY README.txt RuleRank
 
 echo creating run.bat file
 @echo java -jar RuleRank-1.0-SNAPSHOT.jar -Xms128m > RuleRank\run.bat
+
+echo creating run.sh file
+@echo java -jar RuleRank-1.0-SNAPSHOT.jar -Xms128m > RuleRank\run.sh

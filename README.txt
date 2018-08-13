@@ -3,8 +3,9 @@
 # Application requirements
 - Java JRE 10
 
-To run application on Windows, run run.bat file.
-At this moment, Linux and Mac isn't supported.
+To run application, execute run.* file depending on Operating System.
+
+At this moment Mac isn't supported.
 
 
 # Change log
