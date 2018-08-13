@@ -5,6 +5,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
+import pl.jowko.rulerank.desktop.service.DialogsService;
 
 import java.util.Optional;
 
@@ -48,6 +49,7 @@ class ExperimentRunnerDialog {
 		LanguageService labels = LanguageService.getInstance();
 		dialog.setTitle(labels.get(Labels.RUN_SOURCE_TITLE));
 		dialog.setContentText(labels.get(Labels.RUN_SOURCE_CONTENT));
+		DialogsService.resizeDialogPane(dialog.getDialogPane());
 		
 		ButtonType rankingButton = new ButtonType(labels.get(Labels.RUN_SOURCE_RANKING), ButtonBar.ButtonData.OK_DONE);
 		ButtonType pairsButton = new ButtonType(labels.get(Labels.RUN_SOURCE_PAIRS), ButtonBar.ButtonData.OK_DONE);

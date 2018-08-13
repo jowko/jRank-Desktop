@@ -11,6 +11,7 @@ import pl.jowko.rulerank.desktop.Main;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
+import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.service.RuleRankInfoService;
 
 /**
@@ -52,6 +53,7 @@ public class AboutController {
 		dialog.initModality(Modality.APPLICATION_MODAL);
 		dialog.setResizable(false);
 		dialog.initOwner(Main.getScene().getWindow());
+		DialogsService.resizeDialogPane(dialog.getDialogPane());
 		
 		dialog.showAndWait();
 	}

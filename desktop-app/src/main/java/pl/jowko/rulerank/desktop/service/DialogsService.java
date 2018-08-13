@@ -1,9 +1,6 @@
 package pl.jowko.rulerank.desktop.service;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
@@ -35,7 +32,7 @@ public class DialogsService {
 		alert.setTitle(labels.get(Labels.ERROR_DIALOG_TITLE));
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
-		resizeAlert(alert);
+		resizeDialogPane(alert.getDialogPane());
 		alert.showAndWait();
 	}
 	
@@ -49,7 +46,7 @@ public class DialogsService {
 		alert.setTitle(title);
 		alert.setHeaderText("");
 		alert.setContentText(msg);
-		resizeAlert(alert);
+		resizeDialogPane(alert.getDialogPane());
 		alert.showAndWait();
 	}
 	
@@ -62,7 +59,7 @@ public class DialogsService {
 		alert.setTitle(labels.get(Labels.DIALOG_ACTION_FAIL));
 		alert.setHeaderText("");
 		alert.setContentText(msg);
-		resizeAlert(alert);
+		resizeDialogPane(alert.getDialogPane());
 		alert.showAndWait();
 	}
 	
@@ -76,7 +73,7 @@ public class DialogsService {
 		alert.setTitle(labels.get(Labels.VALIDATION_DIALOG_TITLE));
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
-		resizeAlert(alert);
+		resizeDialogPane(alert.getDialogPane());
 		
 		alert.showAndWait();
 	}
@@ -106,7 +103,7 @@ public class DialogsService {
 		alert.setTitle(labels.get(CONFIRM_DIALOG_TITLE));
 		alert.setHeaderText(header);
 		alert.setContentText(content);
-		resizeAlert(alert);
+		resizeDialogPane(alert.getDialogPane());
 		
 		// change default button to No
 		Button yesButton = (Button) alert.getDialogPane().lookupButton(yesButtonType);
@@ -122,10 +119,10 @@ public class DialogsService {
 	/**
 	 * This methods fixes bug with size of alert on some computers and Operating Systems.
 	 * See: https://bugs.openjdk.java.net/browse/JDK-8087981
-	 * @param alert to resize
+	 * @param dialogPane to resize
 	 */
-	private static void resizeAlert(Alert alert) {
-		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+	public static void resizeDialogPane(DialogPane dialogPane) {
+		dialogPane.setMinHeight(Region.USE_PREF_SIZE);
 	}
 	
 }
