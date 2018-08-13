@@ -67,7 +67,7 @@ class StubSettings {
 	private void createStubSettings() {
 		settings = new UserSettingsBuilder()
 				.setLanguage("ENG")
-				.setWorkspacePath("\\workspace")
+				.setWorkspacePath("workspace")
 				.setCsvSeparator(";")
 				.setTooltipsEnabled(true)
 				.setAdvancedPropertiesEnabled(false)
