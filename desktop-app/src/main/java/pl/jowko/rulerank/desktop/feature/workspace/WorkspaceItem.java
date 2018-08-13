@@ -1,8 +1,10 @@
 package pl.jowko.rulerank.desktop.feature.workspace;
 
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.Objects;
 
+import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getParentDirectory;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
 
@@ -10,7 +12,9 @@ import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
  * Created by Piotr on 2018-04-21.
  * This class represents one position in workspace tree.
  */
-public class WorkspaceItem {
+public class WorkspaceItem implements Comparable<WorkspaceItem> {
+	
+	private static Comparator<String> stringComparator = Comparator.comparing(String::toLowerCase);
 	
 	private String fileName;
 	private String filePath;
@@ -83,6 +87,25 @@ public class WorkspaceItem {
 	@Override
 	public int hashCode() {
 		return Objects.hash(fileName, filePath, fileType);
+	}
+	
+	/**
+	 * Compares provided object with this object.
+	 * It is used in sorting.
+	 * Directories will be returned on top of the list.
+	 * File names are sorted alphabetically with ignoring character case.
+	 * @param o to be compared to
+	 * @return -1, if provided object should be above this item, 0 if it is doesn't matter, 1 if should be below this item
+	 */
+	@Override
+	public int compareTo(WorkspaceItem o) {
+		if(fileType.equals(FileType.DIRECTORY) && not(o.fileType.equals(FileType.DIRECTORY))) {
+			return -1;
+		}
+		if(not(fileType.equals(FileType.DIRECTORY)) && o.fileType.equals(FileType.DIRECTORY)) {
+			return 1;
+		}
+		return stringComparator.compare(fileName, o.fileName);
 	}
 	
 }
