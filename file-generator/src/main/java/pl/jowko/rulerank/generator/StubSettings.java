@@ -419,6 +419,7 @@ class StubSettings {
 		language.put(Labels.RUN_FILE_IS_EMPTY, " is empty or is not found");
 		language.put(Labels.RUN_ISF_ERRORS, "Isf table contains errors: ");
 		language.put(Labels.RUN_TEXT_PARSE_ERROR, "Error when parsing text from properties field: ");
+		language.put(Labels.RUN_NO_RULES, "#There are no rules here, since used exhaustive set of decision rules is virtual.");
 	}
 	
 	private void createEnglishAttributeDialogLabels(Map<String, String> language) {

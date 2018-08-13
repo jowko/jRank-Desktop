@@ -305,6 +305,7 @@ public class Labels {
 	public static final String RUN_FILE_IS_EMPTY = "RUN_FILE_IS_EMPTY";
 	public static final String RUN_ISF_ERRORS = "RUN_ISF_ERRORS";
 	public static final String RUN_TEXT_PARSE_ERROR = "RUN_TEXT_PARSE_ERROR";
+	public static final String RUN_NO_RULES = "RUN_NO_RULES";
 	
 	
 	// Learning table attribute dialog

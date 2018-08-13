@@ -1,5 +1,7 @@
 package pl.jowko.rulerank.desktop.feature.runner;
 
+import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
+import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.properties.RuleRankParameter;
 import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
@@ -7,12 +9,14 @@ import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerResults;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFilePath;
+import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.EXHAUSTIVE_SET_OF_RULES;
 
 /**
  * Created by Piotr on 2018-06-05
@@ -68,13 +72,20 @@ class ResultsSaver {
 		}
 	}
 	
+	/**
+	 * Saves rule file.
+	 * If exhaustive set of rules were chosen, .no-rules file with be generated instead of .rules.
+	 * Also, old .rules and .no-rules file will be deleted.
+	 */
 	private void saveRulesFile() {
 		String rulesPath = getAbsolutePath(properties.getPctRulesFile());
 		
-		if(isNull(results.rulesContainer)) {
-			handleNoRulesCase(rulesPath);
+		if(EXHAUSTIVE_SET_OF_RULES == properties.getConsideredSetOfRules().getValue()) {
+			handleNoRulesCase(rulesPath, properties.getPctRulesFile());
 			return;
 		}
+		
+		removeNoRulesFile(rulesPath);
 		
 		try {
 			boolean writeRulesStatistics = getBoolean(properties.getWriteRulesStatistics());
@@ -86,15 +97,45 @@ class ResultsSaver {
 		}
 	}
 	
-	private void handleNoRulesCase(String rulesPath) {
+	/**
+	 * This method handles situation, when exhaustive set was chosen.
+	 * .rule file will be deleted if exists and .no-rules file will be generated.
+	 * @param filePath
+	 * @param relativePath
+	 */
+	private void handleNoRulesCase(String filePath, String relativePath) {
 		try {
-			RuleRankLogger.info("No rules generated. Rules file not created.");
-			Path path = Paths.get(rulesPath);
-			if(Files.exists(path)) {
-				Files.delete(path);
+			RuleRankLogger.info("No rules generated. Rules file not created. Removing old rules files.");
+			Path rulesPath = Paths.get(filePath);
+			if(Files.exists(rulesPath)) {
+				Files.delete(rulesPath);
 			}
+			
+			String noRulesPath = filePath.replace(".rules", ".no-rules");
+			try (PrintWriter out = new PrintWriter(noRulesPath)) {
+				out.println("[FILEINFO]");
+				out.println(LanguageService.getInstance().get(Labels.RUN_NO_RULES));
+			}
+			logFileSaved(relativePath.replace(".rules", ".no-rules"), filePath);
+			
 		} catch (IOException e) {
 			RuleRankLogger.error("Error when deleting old rules file: " + e.getMessage());
+		}
+	}
+	
+	/**
+	 * Removes no-rules file if exists
+	 * @param rulesPath with is absolute path to .rules file
+	 */
+	private void removeNoRulesFile(String rulesPath) {
+		try {
+			String noRules = rulesPath.replace(".rules", ".no-rules");
+			Path noRulesPath = Paths.get(noRules);
+			if(Files.exists(noRulesPath)) {
+				Files.delete(noRulesPath);
+			}
+		} catch (IOException e) {
+			RuleRankLogger.error("Error when deleting old no-rules file: " + e.getMessage());
 		}
 	}
 	

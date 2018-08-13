@@ -200,6 +200,7 @@
     "MENU_USER_SETTINGS" : "User settings",
     "PROP_DATA_PANEL" : "Learning information",
     "LEARN_TABLE_ATTRIBUTE_NAMES_NOT_UNIQUE" : "Attribute names should be unique. Non unique attribute names:",
+    "RUN_NO_RULES" : "#There are no rules here, since used exhaustive set of decision rules is virtual.",
     "RULES_AT_MOST" : "AT MOST",
     "RUN_PROP_READ_ERROR" : "Error while reading default.properties file: ",
     "LEARN_TABLE_REMOVE_ATTRIBUTE_FAIL" : "No attribute was selected. Remove action aborted.",
