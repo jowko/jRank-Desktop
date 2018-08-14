@@ -22,6 +22,7 @@ module RuleRank.desktop {
 	
 	opens pl.jowko.rulerank.desktop.controller;
 	opens pl.jowko.rulerank.desktop.feature.graph;
+	opens pl.jowko.rulerank.desktop.feature.help;
 	opens pl.jowko.rulerank.desktop.feature.approximations;
 	opens pl.jowko.rulerank.desktop.feature.learningtable;
 	opens pl.jowko.rulerank.desktop.feature.learningtable.dialogs;

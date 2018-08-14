@@ -111,6 +111,7 @@ class StubSettings {
 		createEnglishWorkspaceLabels(language);
 		createEnglishUserSettingsLabels(language);
 		createEnglishAboutLabels(language);
+		createEnglishHelpLabels(language);
 		createEnglishTabsLabels(language);
 		createEnglishPropertiesLabels(language);
 		createEnglishPropertiesMessages(language);
@@ -196,6 +197,12 @@ class StubSettings {
 		language.put(Labels.ABOUT_VERSION, "Version:");
 		language.put(Labels.ABOUT_RELEASE_DATE, "Release Date:");
 		language.put(Labels.ABOUT_BOTTOM_INFO, "RuleRank Ultimate Desktop Edition was developed as part of master thesis.");
+	}
+	
+	private void createEnglishHelpLabels(Map<String, String> language) {
+		language.put(Labels.HELP_TITLE, "Help");
+		language.put(Labels.HELP_PAGE_URL, "Project page:");
+		language.put(Labels.HELP_CONTACT_INFO, "Contact information:");
 	}
 	
 	private void createEnglishTabsLabels(Map<String, String> language) {

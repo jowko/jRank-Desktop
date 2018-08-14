@@ -14,6 +14,7 @@ public class ConfigPaths {
 	private String labelsPath;
 	private String languagesPath;
 	private String ruleRankInfoPath;
+	private String helpInfoPath;
 	
 	private ConfigPaths() {
 		dataDirectory = "data/";
@@ -39,6 +40,7 @@ public class ConfigPaths {
 		labelsPath = dataDirectory + "labels.json";
 		languagesPath = dataDirectory + "languages.json";
 		ruleRankInfoPath = dataDirectory + "ruleRankInfo.json";
+		helpInfoPath = dataDirectory + "helpInfo.json";
 	}
 	
 	public String getDataDirectory() {
@@ -59,6 +61,10 @@ public class ConfigPaths {
 	
 	public String getRuleRankInfoPath() {
 		return ruleRankInfoPath;
+	}
+	
+	public String getHelpInfoPath() {
+		return helpInfoPath;
 	}
 	
 }

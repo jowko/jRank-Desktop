@@ -2,6 +2,7 @@ package pl.jowko.rulerank.desktop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.jowko.rulerank.desktop.exception.ConfigurationException;
+import pl.jowko.rulerank.desktop.feature.help.HelpInfo;
 import pl.jowko.rulerank.desktop.feature.settings.ConfigPaths;
 import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettings;
@@ -129,6 +130,21 @@ public class ConfigFileManager {
 	public Map<String, Map<String, String>> readLabels() {
 		try {
 			return mapper.readValue(new File(configPaths.getLabelsPath()), Map.class);
+		} catch (IOException e) {
+			RuleRankLogger.error(e.getMessage());
+			throw new ConfigurationException(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Reads information for help dialog.
+	 * @see HelpInfo
+	 * @see pl.jowko.rulerank.desktop.feature.help.HelpController
+	 * @return object containing information for help dialog
+	 */
+	public HelpInfo readHelpInfo() {
+		try {
+			return mapper.readValue(new File(configPaths.getHelpInfoPath()), HelpInfo.class);
 		} catch (IOException e) {
 			RuleRankLogger.error(e.getMessage());
 			throw new ConfigurationException(e.getMessage());

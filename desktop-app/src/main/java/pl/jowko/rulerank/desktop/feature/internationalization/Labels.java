@@ -88,6 +88,11 @@ public class Labels {
 	public static final String ABOUT_RELEASE_DATE = "ABOUT_RELEASE_DATE";
 	public static final String ABOUT_BOTTOM_INFO = "ABOUT_BOTTOM_INFO";
 	
+	// Help dialog
+	public static final String HELP_TITLE = "HELP_TITLE";
+	public static final String HELP_PAGE_URL = "HELP_PAGE_URL";
+	public static final String HELP_CONTACT_INFO = "HELP_CONTACT_INFO";
+	
 	
 	// tabs
 	public static final String TABS_CLOSE_THIS = "TABS_CLOSE_THIS";

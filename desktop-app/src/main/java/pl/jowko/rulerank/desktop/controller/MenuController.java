@@ -6,6 +6,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import pl.jowko.rulerank.desktop.Main;
 import pl.jowko.rulerank.desktop.ResourceLoader;
+import pl.jowko.rulerank.desktop.feature.help.HelpController;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsController;
@@ -61,8 +62,11 @@ public class MenuController {
 		controller.createWindow(root, Main.getScene(), labels.get(Labels.US_TITLE));
 	}
 	
-	public void onHelpAction() {
-		RuleRankLogger.info("Help window is not implemented yet.");
+	public void onHelpAction() throws IOException {
+		ResourceLoader loader = new ResourceLoader("/fxml/helpInfo.fxml");
+		Parent root = loader.load();
+		HelpController controller = loader.getController();
+		controller.createWindow(root, Main.getScene(), labels.get(Labels.HELP_TITLE));
 	}
 	
 	/**

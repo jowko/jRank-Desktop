@@ -1,6 +1,7 @@
 package pl.jowko.rulerank.desktop;
 
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -36,6 +37,7 @@ public class Main extends Application {
 	
 	private static Scene scene;
 	private static Stage stage;
+	private static HostServices services;
 	
 	private LanguageService labels;
 	
@@ -54,6 +56,7 @@ public class Main extends Application {
 		
 		scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
 		stage = primaryStage;
+		services = getHostServices();
 		labels = LanguageService.getInstance();
 		
 		primaryStage.setTitle(labels.get(Labels.APP_TITLE));
@@ -100,6 +103,13 @@ public class Main extends Application {
 	 */
 	public static Scene getScene() {
 		return scene;
+	}
+	
+	/**
+	 * @return services with can be used to open browser
+	 */
+	public static HostServices getServices() {
+		return services;
 	}
 	
 	/**
