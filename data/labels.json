@@ -43,6 +43,7 @@
     "PAIRS" : "Pairs:",
     "DOMINANCE_FOR_PAIRS" : "Dominance for pairs of ordinal values:",
     "PROP_INFO_RANKING" : "Ranking",
+    "HELP_COPY_URL" : "Copy link",
     "EXHAUSTIVE_SET_OF_RULES" : "Exhaustive",
     "TOOLTIPS_ENABLED" : "Tooltips enabled",
     "PROP_EMPTY_NEGATIVE_EXAMPLES" : "Negative examples treatment for VCDRSA should be configured",

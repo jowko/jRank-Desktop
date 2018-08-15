@@ -203,6 +203,7 @@ class StubSettings {
 		language.put(Labels.HELP_TITLE, "Help");
 		language.put(Labels.HELP_PAGE_URL, "Project page:");
 		language.put(Labels.HELP_CONTACT_INFO, "Contact information:");
+		language.put(Labels.HELP_COPY_URL, "Copy link");
 	}
 	
 	private void createEnglishTabsLabels(Map<String, String> language) {
