@@ -8,6 +8,8 @@ public class RuleRankConst {
 	
 	public static final String MSG = "[MSG]";
 	
+	public static final String COMMON_CSS = "common.css";
+	
 	public static final double MIN_WIDTH = 1366;
 	public static final double MIN_HEIGHT = 768;
 	

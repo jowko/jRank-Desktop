@@ -8,6 +8,7 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.service.ConfigFileManager;
 import pl.jowko.rulerank.feature.customfx.AbstractDialogForm;
+import pl.jowko.rulerank.feature.customfx.SelectableLabel;
 
 /**
  * Created by Piotr on 2018-08-14
@@ -22,13 +23,11 @@ public class HelpController extends AbstractDialogForm {
 	@FXML
 	private Label contactInfoLabel;
 	@FXML
-	private Label contactInfo;
+	private SelectableLabel contactInfo;
 	@FXML
 	private Label additionalInfo;
 	
 	private HelpInfo helpInfo;
-	
-	private LanguageService labels;
 	
 	@FXML
 	private void initialize() {
@@ -55,7 +54,7 @@ public class HelpController extends AbstractDialogForm {
 	}
 	
 	private void translateLabels() {
-		labels = LanguageService.getInstance();
+		LanguageService labels = LanguageService.getInstance();
 		pageUrlLabel.setText(labels.get(Labels.HELP_PAGE_URL));
 		contactInfoLabel.setText(labels.get(Labels.HELP_CONTACT_INFO));
 	}

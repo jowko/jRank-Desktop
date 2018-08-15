@@ -7,6 +7,8 @@ import pl.poznan.put.cs.idss.jrs.rules.Rule;
 
 import java.io.IOException;
 
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COMMON_CSS;
+
 /**
  * Created by Piotr on 2018-05-21.
  * This class represents tab for statistics screen.
@@ -27,7 +29,7 @@ class StatisticsTab extends RuleRankTab {
 		
 		ResourceLoader loader = new ResourceLoader(getResourceName());
 		Parent tabContent = loader.load();
-		tabContent.getStylesheets().add("common.css");
+		tabContent.getStylesheets().add(COMMON_CSS);
 		super.setContent(tabContent);
 		
 		controller = loader.getController();

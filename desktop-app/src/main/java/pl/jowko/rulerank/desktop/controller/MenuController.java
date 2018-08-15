@@ -10,9 +10,10 @@ import pl.jowko.rulerank.desktop.feature.help.HelpController;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsController;
-import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.IOException;
+
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COMMON_CSS;
 
 /**
  * Created by Piotr on 2018-03-17.
@@ -65,6 +66,7 @@ public class MenuController {
 	public void onHelpAction() throws IOException {
 		ResourceLoader loader = new ResourceLoader("/fxml/helpInfo.fxml");
 		Parent root = loader.load();
+		root.getStylesheets().add(COMMON_CSS);
 		HelpController controller = loader.getController();
 		controller.createWindow(root, Main.getScene(), labels.get(Labels.HELP_TITLE));
 	}

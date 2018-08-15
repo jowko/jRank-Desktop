@@ -20,6 +20,7 @@ import pl.jowko.rulerank.logger.RuleRankLogger;
 import java.io.IOException;
 import java.util.List;
 
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COMMON_CSS;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MIN_HEIGHT;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MIN_WIDTH;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
@@ -44,7 +45,7 @@ public class Main extends Application {
 	/**
 	 * This method is started by JavaFX thread to build UI application.
 	 * Methods is called after successful validation of configuration files.
-	 * It creates root element and add common.css to it.
+	 * It creates root element and add css file to it.
 	 * It also configures main window and show it.
 	 * @param primaryStage on with UI will be build, provided by JavaFX
 	 * @throws IOException when something goes wrong with reading fxml files.
@@ -52,7 +53,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		Parent root = new ResourceLoader("/fxml/root.fxml").load();
-		root.getStylesheets().add("common.css");
+		root.getStylesheets().add(COMMON_CSS);
 		
 		scene = new Scene(root, MIN_WIDTH, MIN_HEIGHT);
 		stage = primaryStage;

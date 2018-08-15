@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
+<?import pl.jowko.rulerank.feature.customfx.SelectableLabel?>
 <DialogPane maxWidth="500.0" minHeight="250.0" minWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.rulerank.desktop.feature.help.HelpController">
 	<header>
 	</header>
@@ -17,7 +18,7 @@
             <Label fx:id="pageUrlLabel" text="Project page:" />
             <Hyperlink fx:id="pageUrl" text="Hyperlink" wrapText="true" />
             <Label fx:id="contactInfoLabel" text="Contact information:" />
-            <Label fx:id="contactInfo" wrapText="true" />
+            <SelectableLabel fx:id="contactInfo" />
             <Label fx:id="additionalInfo" wrapText="true" />
          </children>
       </VBox>
