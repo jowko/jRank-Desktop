@@ -32,7 +32,6 @@ class RuleRankParametersService {
 	
 	private LanguageService labels;
 	
-	private RuleRankParameter emptyParameter;
 	private List<RuleRankParameter> typeOfFamilyOfCriteria;
 	private List<RuleRankParameter> consistencyMeasure;
 	private List<RuleRankParameter> typeOfRules;
@@ -73,10 +72,11 @@ class RuleRankParametersService {
 	}
 	
 	/**
-	 * @return empty paramter with no label and text value. It is treated as no option were chosen.
+	 * @return new empty parameter. This parameter is later changed in properties to should default value label.
+	 * If user choose empty parameter from list, it value won't be saved to file.
 	 */
-	public RuleRankParameter getEmptyParameter() {
-		return emptyParameter;
+	public RuleRankParameter getDefaultParameter() {
+		return new RuleRankParameter("", "", Integer.MIN_VALUE);
 	}
 	
 	public List<RuleRankParameter> getTypeOfFamilyOfCriteria() {
@@ -132,7 +132,6 @@ class RuleRankParametersService {
 	}
 	
 	private void initializeParameters() {
-		emptyParameter = new RuleRankParameter("", "", Integer.MIN_VALUE);
 		initTypeOfFamilyOfCriteria();
 		initConsistencyMeasure();
 		initTypeOfRules();
@@ -150,14 +149,14 @@ class RuleRankParametersService {
 	
 	private void initTypeOfFamilyOfCriteria() {
 		typeOfFamilyOfCriteria = new ArrayList<>();
-		typeOfFamilyOfCriteria.add(getEmptyParameter());
+		typeOfFamilyOfCriteria.add(getDefaultParameter());
 		typeOfFamilyOfCriteria.add(new RuleRankParameter(get(Labels.ANY_FAMILY_OF_CRITERIA),"any", ANY_FAMILY_OF_CRITERIA));
 		typeOfFamilyOfCriteria.add(new RuleRankParameter(get(Labels.CONSISTENT_FAMILY_OF_CRITERIA),"consistent", CONSISTENT_FAMILY_OF_CRITERIA));
 	}
 	
 	private void initConsistencyMeasure() {
 		consistencyMeasure = new ArrayList<>();
-		consistencyMeasure.add(getEmptyParameter());
+		consistencyMeasure.add(getDefaultParameter());
 		consistencyMeasure.add(new RuleRankParameter(get(Labels.EPSILON),"epsilon", EPSILON));
 		consistencyMeasure.add(new RuleRankParameter(get(Labels.EPSILON_STAR),"epsilon*", EPSILON_STAR));
 		consistencyMeasure.add(new RuleRankParameter(get(Labels.EPSILON_PRIM),"epsilon'", EPSILON_PRIM));
@@ -166,35 +165,35 @@ class RuleRankParametersService {
 	
 	private void initTypeOfRules() {
 		typeOfRules = new ArrayList<>();
-		typeOfRules.add(getEmptyParameter());
+		typeOfRules.add(getDefaultParameter());
 		typeOfRules.add(new RuleRankParameter(get(Labels.RULE_CERTAIN),"certain", CERTAIN));
 		typeOfRules.add(new RuleRankParameter(get(Labels.RULE_POSSIBLE),"possible", POSSIBLE));
 	}
 	
 	private void initConsideredSetOfRules() {
 		consideredSetOfRules = new ArrayList<>();
-		consideredSetOfRules.add(getEmptyParameter());
+		consideredSetOfRules.add(getDefaultParameter());
 		consideredSetOfRules.add(new RuleRankParameter(get(Labels.MINIMAL_SET_OF_RULES),"minimal", MINIMAL_SET_OF_RULES));
 		consideredSetOfRules.add(new RuleRankParameter(get(Labels.EXHAUSTIVE_SET_OF_RULES),"exhaustive", EXHAUSTIVE_SET_OF_RULES));
 	}
 	
 	private void initSatisfactionDegreesInPreferenceGraph() {
 		satisfactionDegreesInPreferenceGraph = new ArrayList<>();
-		satisfactionDegreesInPreferenceGraph.add(getEmptyParameter());
+		satisfactionDegreesInPreferenceGraph.add(getDefaultParameter());
 		satisfactionDegreesInPreferenceGraph.add(new RuleRankParameter(get(Labels.SATISFACTION_FUZZY),"fuzzy", FUZZY));
 		satisfactionDegreesInPreferenceGraph.add(new RuleRankParameter(get(Labels.SATISFACTION_CRISP),"crisp", CRISP));
 	}
 	
 	private void initFuzzySatisfactionDegreeCalculationMethod() {
 		fuzzySatisfactionDegreeCalculationMethod = new ArrayList<>();
-		fuzzySatisfactionDegreeCalculationMethod.add(getEmptyParameter());
+		fuzzySatisfactionDegreeCalculationMethod.add(getDefaultParameter());
 		fuzzySatisfactionDegreeCalculationMethod.add(new RuleRankParameter(get(Labels.MAX_CREDIBILITY),"max-credibility", MAX_CREDIBILITY));
 		fuzzySatisfactionDegreeCalculationMethod.add(new RuleRankParameter(get(Labels.MAX_CREDIBILITY_X_FACTOR),"max-credibility-x-coverage-factor", MAX_PRODUCT_OF_CREDIBILITY_AND_COVERAGE_FACTOR));
 	}
 	
 	private void initRankingProcedure() {
 		rankingProcedure = new ArrayList<>();
-		rankingProcedure.add(emptyParameter);
+		rankingProcedure.add(getDefaultParameter());
 		rankingProcedure.add(new RuleRankParameter(get(Labels.NFS),"nfs", NFS));
 		rankingProcedure.add(new RuleRankParameter(get(Labels.REPEATED_NFS),"rnfs", REPEATED_NFS));
 		rankingProcedure.add(new RuleRankParameter(get(Labels.NFS_CLOSURE),"nfs-*", NFS_CLOSURE));
@@ -205,21 +204,21 @@ class RuleRankParametersService {
 	
 	private void initDominance() {
 		dominance = new ArrayList<>();
-		dominance.add(getEmptyParameter());
+		dominance.add(getDefaultParameter());
 		dominance.add(new RuleRankParameter(get(Labels.PARETO),"pareto", PARETO));
 		dominance.add(new RuleRankParameter(get(Labels.LORENZ),"lorenz", LORENZ));
 	}
 	
 	private void initDominanceForPairsOfOrdinalValues() {
 		dominanceForPairsOfOrdinalValues = new ArrayList<>();
-		dominanceForPairsOfOrdinalValues.add(getEmptyParameter());
+		dominanceForPairsOfOrdinalValues.add(getDefaultParameter());
 		dominanceForPairsOfOrdinalValues.add(new RuleRankParameter(get(Labels.STRICT_ORDINAL_DOMINANCE_CHECK_METHOD),"strict", STRICT_ORDINAL_DOMINANCE_CHECK_METHOD));
 		dominanceForPairsOfOrdinalValues.add(new RuleRankParameter(get(Labels.CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD),"classic", CLASSIC_ORDINAL_DOMINANCE_CHECK_METHOD));
 	}
 	
 	private void initNegativeExamplesTreatmentForVCDRSA() {
 		negativeExamplesTreatmentForVCDRSA = new ArrayList<>();
-		negativeExamplesTreatmentForVCDRSA.add(getEmptyParameter());
+		negativeExamplesTreatmentForVCDRSA.add(getDefaultParameter());
 		negativeExamplesTreatmentForVCDRSA.add(new RuleRankParameter(get(Labels.ONLY_INCONSISTENT_NEGATIVE_EXAMPLES),"only-inconsistent", COVER_ONLY_INCONSISTENT_NEGATIVE_EXAMPLES));
 		negativeExamplesTreatmentForVCDRSA.add(new RuleRankParameter(get(Labels.ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES),"only-inconsistent-and-boundary", COVER_ONLY_INCONSISTENT_AND_BOUNDARY_NEGATIVE_EXAMPLES));
 		negativeExamplesTreatmentForVCDRSA.add(new RuleRankParameter(get(Labels.ANY_NEGATIVE_EXAMPLES),"any", COVER_ANY_NEGATIVE_EXAMPLES));
@@ -227,21 +226,21 @@ class RuleRankParametersService {
 	
 	private void initRuleConditionsSelectionMethodInVCDomLEM() {
 		ruleConditionsSelectionMethodInVCDomLEM = new ArrayList<>();
-		ruleConditionsSelectionMethodInVCDomLEM.add(getEmptyParameter());
+		ruleConditionsSelectionMethodInVCDomLEM.add(getDefaultParameter());
 		ruleConditionsSelectionMethodInVCDomLEM.add(new RuleRankParameter(get(Labels.CHOOSE_CONDITIONS_FROM_ONE_OBJECT),"base", CHOOSE_CONDITIONS_FROM_ONE_OBJECT));
 		ruleConditionsSelectionMethodInVCDomLEM.add(new RuleRankParameter(get(Labels.MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS),"mix", MIX_CONDITIONS_FROM_DIFFERENT_OBJECTS));
 	}
 	
 	private void initOptimizeRuleConsistencyInVCDomLEMWrt() {
 		optimizeRuleConsistencyInVCDomLEMWrt = new ArrayList<>();
-		optimizeRuleConsistencyInVCDomLEMWrt.add(getEmptyParameter());
+		optimizeRuleConsistencyInVCDomLEMWrt.add(getDefaultParameter());
 		optimizeRuleConsistencyInVCDomLEMWrt.add(new RuleRankParameter(get(Labels.CONSISTENCY_APPROXIMATION),"approximation", APPROXIMATION));
 		optimizeRuleConsistencyInVCDomLEMWrt.add(new RuleRankParameter(get(Labels.CONSISTENCY_SET),"set", SET));
 	}
 	
 	private void initBooleanParameter() {
 		booleanParameter = new ArrayList<>();
-		booleanParameter.add(getEmptyParameter());
+		booleanParameter.add(getDefaultParameter());
 		booleanParameter.add(new RuleRankParameter(get(Labels.BOOLEAN_YES),"true", Integer.MAX_VALUE));
 		booleanParameter.add(new RuleRankParameter(get(Labels.BOOLEAN_NO),"false", Integer.MAX_VALUE));
 	}

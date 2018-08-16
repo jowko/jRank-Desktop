@@ -29,7 +29,7 @@ public class PropertiesSaver {
 	 * @param ruleRankProperties with will be saved.
 	 */
 	public PropertiesSaver(RuleRankProperties ruleRankProperties) {
-		emptyParameter = RuleRankParametersService.getInstance().getEmptyParameter();
+		emptyParameter = RuleRankParametersService.getInstance().getDefaultParameter();
 		this.ruleRankProperties = ruleRankProperties;
 		properties = new Properties();
 		initializeProperties();

@@ -21,7 +21,7 @@ public class PropertiesMandatoryFieldsValidator extends Validator {
 	 */
 	public PropertiesMandatoryFieldsValidator(RuleRankProperties properties) {
 		this.properties = properties;
-		emptyParameter = RuleRankParametersService.getInstance().getEmptyParameter();
+		emptyParameter = RuleRankParametersService.getInstance().getDefaultParameter();
 		validate();
 	}
 	

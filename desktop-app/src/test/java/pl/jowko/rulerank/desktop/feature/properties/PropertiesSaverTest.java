@@ -108,7 +108,7 @@ class PropertiesSaverTest extends MasterTest {
 	
 	@Test
 	void shouldNotMapEmptyParameter() {
-		ruleRankProperties.setConsistencyMeasure(RuleRankParametersService.getInstance().getEmptyParameter());
+		ruleRankProperties.setConsistencyMeasure(RuleRankParametersService.getInstance().getDefaultParameter());
 		Properties properties = getProperties();
 		assertNull(properties.getProperty(CONSISTENCY_MEASURE));
 	}

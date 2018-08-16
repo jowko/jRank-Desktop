@@ -38,6 +38,10 @@ public class RuleRankParameter implements Serializable {
 		return label;
 	}
 	
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	
 	public String getTextValue() {
 		return textValue;
 	}

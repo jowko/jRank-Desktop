@@ -53,7 +53,7 @@ class PropertiesControllerHelper {
 	 * Clear all fields to empty values.
 	 */
 	void clearForm() {
-		RuleRankParameter emptyParameter = parametersService.getEmptyParameter();
+		RuleRankParameter emptyParameter = parametersService.getDefaultParameter();
 		
 		editableProperties.setLearningDataFile(null);
 		editableProperties.setTestDataFile(null);

@@ -147,7 +147,7 @@ public class RunnerPropertiesProvider {
 	}
 	
 	private boolean shouldSetDefault(RuleRankParameter parameter) {
-		return isNull(parameter) || parametersService.getEmptyParameter().equals(parameter);
+		return isNull(parameter) || parametersService.getDefaultParameter().equals(parameter);
 	}
 	
 }

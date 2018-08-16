@@ -153,7 +153,7 @@ public class PropertiesAssembler {
 		String parameterValue = getStringFromProperty(parameterName);
 		
 		if(isNull(parameterValue))
-			return paramService.getEmptyParameter();
+			return paramService.getDefaultParameter();
 		
 		RuleRankParameter parameter = paramService.findByTextValue(parameters, parameterValue);
 		if(isNull(parameter)) {
