@@ -55,6 +55,11 @@ public class RuleRankParameter implements Serializable {
 		return label;
 	}
 	
+	/**
+	 * This method and hashCode intentionally skip label field.
+	 * @param o to be compared to
+	 * @return true if objects are same
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -64,6 +69,10 @@ public class RuleRankParameter implements Serializable {
 				Objects.equals(textValue, that.textValue);
 	}
 	
+	/**
+	 * This method and equals intentionally skip label field.
+	 * @return hashCode
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(textValue, value);
