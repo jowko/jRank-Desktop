@@ -206,6 +206,7 @@ public class PropertiesController implements AbandonableTabForm {
 		if(isUserWishToKeepChanges())
 			return;
 		controllerHelper.clearForm();
+		propertiesTab.setTabEdited(true);
 	}
 	
 	/**
