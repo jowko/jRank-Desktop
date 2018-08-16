@@ -29,7 +29,8 @@ class ConfigFileManagerTest extends MasterTest {
 	static void restoreUserSettings() throws IOException {
 		UserSettings userSettings = new UserSettingsBuilder()
 				.setLanguage("ENG")
-				.setWorkspacePath("\\workspace")
+				.setWorkspacePath("workspace")
+				.setCsvSeparator(";")
 				.createUserSettings();
 		ConfigFileManager.getInstance().saveUserSettings(userSettings);
 		ConfigFileManager.getInstance().readUserSettings();
