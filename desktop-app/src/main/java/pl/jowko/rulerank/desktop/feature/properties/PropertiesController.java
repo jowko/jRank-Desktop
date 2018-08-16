@@ -126,6 +126,8 @@ public class PropertiesController implements AbandonableTabForm {
 	private RuleRankTab propertiesTab;
 	RuleRankProperties properties;
 	RuleRankProperties editableProperties;
+	RuleRankProperties defaultProperties;
+	
 	
 	/**
 	 * Initialize properties form with provided data.
@@ -133,13 +135,14 @@ public class PropertiesController implements AbandonableTabForm {
 	 * @param workspaceItem from workspace tree with represents properties file
 	 * @param propertiesTab on with properties form is located
 	 */
-	public void initializeProperties(RuleRankProperties properties, WorkspaceItem workspaceItem, RuleRankTab propertiesTab) {
+	public void initializeProperties(RuleRankProperties properties, WorkspaceItem workspaceItem, RuleRankTab propertiesTab) throws IOException {
 		this.properties = properties;
 		this.workspaceItem = workspaceItem;
 		this.propertiesTab = propertiesTab;
 		
 		labels = LanguageService.getInstance();
 		editableProperties = (RuleRankProperties) Cloner.deepClone(properties);
+		defaultProperties = new DefaultPropertiesProvider().getDefaultProperties();
 		controllerHelper = new PropertiesControllerHelper(this);
 		
 		initializeCloseEvent();
@@ -240,32 +243,26 @@ public class PropertiesController implements AbandonableTabForm {
 	 * @see RunnerPropertiesProvider
 	 */
 	public void validateFormDefaultsAction() {
-		try {
-			editableProperties = controllerHelper.getPropertiesFromForm();
-			RuleRankProperties defaultProperties = new DefaultPropertiesProvider().getDefaultProperties();
-			
-			RunnerPropertiesProvider runnerPropertiesProvider = new RunnerPropertiesProvider(editableProperties, defaultProperties);
-			RuleRankProperties propertiesWithDefaults = runnerPropertiesProvider.getPropertiesWithDefaults();
-			
-			PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults);
-			if(not(validator.isValid())) {
-				DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
-				return;
-			}
-			
-			PropertiesMandatoryFieldsValidator emptyFieldsValidator = new PropertiesMandatoryFieldsValidator(propertiesWithDefaults);
-			if(not(emptyFieldsValidator.isValid())) {
-				DialogsService.showValidationFailedDialog("", emptyFieldsValidator.getErrorMessages());
-				return;
-			}
-			
-			String title = labels.get(Labels.PROP_VD_DIALOG_TITLE);
-			String content = labels.get(Labels.PROP_VD_DIALOG_CONTENT);
-			DialogsService.showInfoDialog(title, content);
-			
-		} catch (IOException e) {
-			RuleRankLogger.error("Error when reading default.properties: " + e.getMessage());
+		editableProperties = controllerHelper.getPropertiesFromForm();
+		
+		RunnerPropertiesProvider runnerPropertiesProvider = new RunnerPropertiesProvider(editableProperties, defaultProperties);
+		RuleRankProperties propertiesWithDefaults = runnerPropertiesProvider.getPropertiesWithDefaults();
+		
+		PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults);
+		if(not(validator.isValid())) {
+			DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
+			return;
 		}
+		
+		PropertiesMandatoryFieldsValidator emptyFieldsValidator = new PropertiesMandatoryFieldsValidator(propertiesWithDefaults);
+		if(not(emptyFieldsValidator.isValid())) {
+			DialogsService.showValidationFailedDialog("", emptyFieldsValidator.getErrorMessages());
+			return;
+		}
+		
+		String title = labels.get(Labels.PROP_VD_DIALOG_TITLE);
+		String content = labels.get(Labels.PROP_VD_DIALOG_CONTENT);
+		DialogsService.showInfoDialog(title, content);
 	}
 	
 	/**

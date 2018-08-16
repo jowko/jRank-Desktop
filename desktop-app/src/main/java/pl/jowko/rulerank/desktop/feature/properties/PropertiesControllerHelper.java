@@ -1,7 +1,11 @@
 package pl.jowko.rulerank.desktop.feature.properties;
 
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextInputControl;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.rulerank.feature.customfx.DecimalField;
+
+import java.util.List;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
@@ -13,9 +17,10 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
  */
 class PropertiesControllerHelper {
 	
-	private RuleRankParametersService parametersService;
-	private PropertiesController controller;
-	private RuleRankProperties editableProperties;
+	private RuleRankParametersService service;
+	private PropertiesController ctrl;
+	private RuleRankProperties editableProp;
+	private RuleRankProperties defaultProp;
 	
 	/**
 	 * Initializes instance of this class.
@@ -23,9 +28,10 @@ class PropertiesControllerHelper {
 	 * @param controller from properties form
 	 */
 	PropertiesControllerHelper(PropertiesController controller) {
-		parametersService = RuleRankParametersService.getInstance();
-		this.controller = controller;
-		editableProperties = controller.editableProperties;
+		service = RuleRankParametersService.getInstance();
+		this.ctrl = controller;
+		editableProp = controller.editableProperties;
+		defaultProp = controller.defaultProperties;
 		
 		initTitledPanes();
 		fillComboBoxes();
@@ -46,95 +52,103 @@ class PropertiesControllerHelper {
 	 * @param editableProperties with will replace current form values
 	 */
 	void setEditableProperties(RuleRankProperties editableProperties) {
-		this.editableProperties = editableProperties;
+		this.editableProp = editableProperties;
 	}
 	
 	/**
 	 * Clear all fields to empty values.
 	 */
 	void clearForm() {
-		RuleRankParameter emptyParameter = parametersService.getDefaultParameter();
+		RuleRankParameter emptyParameter = service.getDefaultParameter();
 		
-		editableProperties.setLearningDataFile(null);
-		editableProperties.setTestDataFile(null);
-		editableProperties.setPctFile(null);
-		editableProperties.setPctApxFile(null);
-		editableProperties.setPctRulesFile(null);
-		editableProperties.setPreferenceGraphFile(null);
-		editableProperties.setRankingFile(null);
+		editableProp.setLearningDataFile(null);
+		editableProp.setTestDataFile(null);
+		editableProp.setPctFile(null);
+		editableProp.setPctApxFile(null);
+		editableProp.setPctRulesFile(null);
+		editableProp.setPreferenceGraphFile(null);
+		editableProp.setRankingFile(null);
 		
-		editableProperties.setReferenceRanking(null);
-		editableProperties.setPairs(null);
+		editableProp.setReferenceRanking(null);
+		editableProp.setPairs(null);
 		
-		editableProperties.setTypeOfFamilyOfCriteria(emptyParameter);
-		editableProperties.setTypeOfRules(emptyParameter);
-		editableProperties.setConsideredSetOfRules(emptyParameter);
+		editableProp.setTypeOfFamilyOfCriteria(emptyParameter);
+		editableProp.setTypeOfRules(emptyParameter);
+		editableProp.setConsideredSetOfRules(emptyParameter);
 		
-		editableProperties.setConsistencyMeasure(emptyParameter);
-		editableProperties.setConsistencyMeasureThreshold(null);
-		editableProperties.setPrecision(null);
+		editableProp.setConsistencyMeasure(emptyParameter);
+		editableProp.setConsistencyMeasureThreshold(null);
+		editableProp.setPrecision(null);
 		
-		editableProperties.setRankingProcedure(emptyParameter);
-		editableProperties.setDominance(emptyParameter);
-		editableProperties.setDominanceForPairsOfOrdinalValues(emptyParameter);
+		editableProp.setRankingProcedure(emptyParameter);
+		editableProp.setDominance(emptyParameter);
+		editableProp.setDominanceForPairsOfOrdinalValues(emptyParameter);
 		
-		editableProperties.setSatisfactionDegreesInPreferenceGraph(emptyParameter);
-		editableProperties.setFuzzySatisfactionDegreeCalculationMethod(emptyParameter);
+		editableProp.setSatisfactionDegreesInPreferenceGraph(emptyParameter);
+		editableProp.setFuzzySatisfactionDegreeCalculationMethod(emptyParameter);
 		
-		editableProperties.setNegativeExamplesTreatmentForVCDRSA(emptyParameter);
-		editableProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(emptyParameter);
-		editableProperties.setRuleConditionsSelectionMethodInVCDomLEM(emptyParameter);
+		editableProp.setNegativeExamplesTreatmentForVCDRSA(emptyParameter);
+		editableProp.setOptimizeRuleConsistencyInVCDomLEMWrt(emptyParameter);
+		editableProp.setRuleConditionsSelectionMethodInVCDomLEM(emptyParameter);
 		
-		editableProperties.setAllowEmptyRulesInVCDomLEM(emptyParameter);
-		editableProperties.setUseEdgeRegionsInVCDomLEM(emptyParameter);
+		editableProp.setAllowEmptyRulesInVCDomLEM(emptyParameter);
+		editableProp.setUseEdgeRegionsInVCDomLEM(emptyParameter);
 		
-		editableProperties.setWriteDominationInformation(emptyParameter);
-		editableProperties.setWriteRulesStatistics(emptyParameter);
-		editableProperties.setWriteLearningPositiveExamples(emptyParameter);
+		editableProp.setWriteDominationInformation(emptyParameter);
+		editableProp.setWriteRulesStatistics(emptyParameter);
+		editableProp.setWriteLearningPositiveExamples(emptyParameter);
 		
 		fillFieldsValues();
 	}
 	
 	/**
-	 * Fills all fields with data extracted from editableProperties variable.
+	 * Fills all fields with data extracted from editableProp variable.
 	 */
 	void fillFieldsValues() {
-		controller.learningDataFile.setText(editableProperties.getLearningDataFile());
-		controller.testDataFile.setText(editableProperties.getTestDataFile());
-		controller.pctFile.setText(editableProperties.getPctFile());
-		controller.pctApxFile.setText(editableProperties.getPctApxFile());
-		controller.pctRulesFile.setText(editableProperties.getPctRulesFile());
-		controller.graphFile.setText(editableProperties.getPreferenceGraphFile());
-		controller.rankingFile.setText(editableProperties.getRankingFile());
+		fillTextValue(ctrl.learningDataFile, editableProp.getLearningDataFile(), defaultProp.getLearningDataFile());
+		fillTextValue(ctrl.testDataFile, editableProp.getTestDataFile(), defaultProp.getTestDataFile());
+		fillTextValue(ctrl.pctFile, editableProp.getPctFile(), defaultProp.getPctFile());
+		fillTextValue(ctrl.pctApxFile, editableProp.getPctApxFile(), defaultProp.getPctApxFile());
+		fillTextValue(ctrl.pctRulesFile, editableProp.getPctRulesFile(), defaultProp.getPctRulesFile());
+		fillTextValue(ctrl.graphFile, editableProp.getPreferenceGraphFile(), defaultProp.getPreferenceGraphFile());
+		fillTextValue(ctrl.rankingFile, editableProp.getRankingFile(), defaultProp.getRankingFile());
 		
-		controller.referenceRanking.setText(editableProperties.getReferenceRanking());
-		controller.pairs.setText(editableProperties.getPairs());
+		fillTextValue(ctrl.referenceRanking, editableProp.getReferenceRanking(), defaultProp.getReferenceRanking());
+		fillTextValue(ctrl.pairs, editableProp.getPairs(), defaultProp.getPairs());
 		
-		controller.typeOfFamilyCriteria.getSelectionModel().select(editableProperties.getTypeOfFamilyOfCriteria());
-		controller.typeOfRules.getSelectionModel().select(editableProperties.getTypeOfRules());
-		controller.consideredSetOfRules.getSelectionModel().select(editableProperties.getConsideredSetOfRules());
+		fillComboBoxValue(ctrl.typeOfFamilyCriteria, editableProp.getTypeOfFamilyOfCriteria(), defaultProp.getTypeOfFamilyOfCriteria());
+		fillComboBoxValue(ctrl.typeOfRules, editableProp.getTypeOfRules(), defaultProp.getTypeOfRules());
+		fillComboBoxValue(ctrl.consideredSetOfRules, editableProp.getConsideredSetOfRules(), defaultProp.getConsideredSetOfRules());
 		
-		controller.consistencyMeasure.getSelectionModel().select(editableProperties.getConsistencyMeasure());
-		controller.consistencyMeasureThreshold.setText(getStringOrNull(editableProperties.getConsistencyMeasureThreshold()));
-		controller.precision.setText(getStringOrNull(editableProperties.getPrecision()));
+		fillComboBoxValue(ctrl.consistencyMeasure, editableProp.getConsistencyMeasure(), defaultProp.getConsistencyMeasure());
+		fillTextValue(ctrl.consistencyMeasureThreshold, getStringOrNull(editableProp.getConsistencyMeasureThreshold()), getStringOrNull(defaultProp.getConsistencyMeasureThreshold()));
+		fillTextValue(ctrl.precision, getStringOrNull(editableProp.getPrecision()), getStringOrNull(defaultProp.getPrecision()));
 		
-		controller.rankingProcedure.getSelectionModel().select(editableProperties.getRankingProcedure());
-		controller.dominance.getSelectionModel().select(editableProperties.getDominance());
-		controller.dominanceForPairs.getSelectionModel().select(editableProperties.getDominanceForPairsOfOrdinalValues());
+		fillComboBoxValue(ctrl.rankingProcedure, editableProp.getRankingProcedure(), defaultProp.getRankingProcedure());
+		fillComboBoxValue(ctrl.dominance, editableProp.getDominance(), defaultProp.getDominance());
+		fillComboBoxValue(ctrl.dominanceForPairs, editableProp.getDominanceForPairsOfOrdinalValues(), defaultProp.getDominanceForPairsOfOrdinalValues());
 		
-		controller.satisfactionDegreesInGraph.getSelectionModel().select(editableProperties.getSatisfactionDegreesInPreferenceGraph());
-		controller.fuzzyCalculationMethod.getSelectionModel().select(editableProperties.getFuzzySatisfactionDegreeCalculationMethod());
+		fillComboBoxValue(ctrl.satisfactionDegreesInGraph, editableProp.getSatisfactionDegreesInPreferenceGraph(), defaultProp.getSatisfactionDegreesInPreferenceGraph());
+		fillComboBoxValue(ctrl.fuzzyCalculationMethod, editableProp.getFuzzySatisfactionDegreeCalculationMethod(), defaultProp.getFuzzySatisfactionDegreeCalculationMethod());
 		
-		controller.negativeExamplesTreatment.getSelectionModel().select(editableProperties.getNegativeExamplesTreatmentForVCDRSA());
-		controller.optimizeRuleConsistency.getSelectionModel().select(editableProperties.getOptimizeRuleConsistencyInVCDomLEMWrt());
-		controller.ruleConditionsSelectionMethod.getSelectionModel().select(editableProperties.getRuleConditionsSelectionMethodInVCDomLEM());
+		fillComboBoxValue(ctrl.negativeExamplesTreatment, editableProp.getNegativeExamplesTreatmentForVCDRSA(), defaultProp.getNegativeExamplesTreatmentForVCDRSA());
+		fillComboBoxValue(ctrl.optimizeRuleConsistency, editableProp.getOptimizeRuleConsistencyInVCDomLEMWrt(), defaultProp.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		fillComboBoxValue(ctrl.ruleConditionsSelectionMethod, editableProp.getRuleConditionsSelectionMethodInVCDomLEM(), defaultProp.getRuleConditionsSelectionMethodInVCDomLEM());
 		
-		controller.allowEmptyRules.getSelectionModel().select(editableProperties.getAllowEmptyRulesInVCDomLEM());
-		controller.useEdgeRegions.getSelectionModel().select(editableProperties.getUseEdgeRegionsInVCDomLEM());
+		fillComboBoxValue(ctrl.allowEmptyRules, editableProp.getAllowEmptyRulesInVCDomLEM(), defaultProp.getAllowEmptyRulesInVCDomLEM());
+		fillComboBoxValue(ctrl.useEdgeRegions, editableProp.getUseEdgeRegionsInVCDomLEM(), defaultProp.getUseEdgeRegionsInVCDomLEM());
 		
-		controller.writeDominationInformation.getSelectionModel().select(editableProperties.getWriteDominationInformation());
-		controller.writeRulesStatistics.getSelectionModel().select(editableProperties.getWriteRulesStatistics());
-		controller.writeLearningPositiveExamples.getSelectionModel().select(editableProperties.getWriteLearningPositiveExamples());
+		fillComboBoxValue(ctrl.writeDominationInformation, editableProp.getWriteDominationInformation(), defaultProp.getWriteDominationInformation());
+		fillComboBoxValue(ctrl.writeRulesStatistics, editableProp.getWriteRulesStatistics(), defaultProp.getWriteRulesStatistics());
+		fillComboBoxValue(ctrl.writeLearningPositiveExamples, editableProp.getWriteLearningPositiveExamples(), defaultProp.getWriteLearningPositiveExamples());
+	}
+	
+	private void fillTextValue(TextInputControl textField, String textValue, String defaultValue) {
+		textField.setText(textValue);
+	}
+	
+	private void fillComboBoxValue(ComboBox<RuleRankParameter> comboBox, RuleRankParameter parameter, RuleRankParameter defaultParameter) {
+		comboBox.getSelectionModel().select(parameter);
 	}
 	
 	/**
@@ -144,42 +158,42 @@ class PropertiesControllerHelper {
 	RuleRankProperties getPropertiesFromForm() {
 		RuleRankProperties ruleRankProperties = new RuleRankProperties();
 		
-		ruleRankProperties.setLearningDataFile(controller.learningDataFile.getText());
-		ruleRankProperties.setTestDataFile(controller.testDataFile.getText());
-		ruleRankProperties.setPctFile(controller.pctFile.getText());
-		ruleRankProperties.setPctApxFile(controller.pctApxFile.getText());
-		ruleRankProperties.setPctRulesFile(controller.pctRulesFile.getText());
-		ruleRankProperties.setPreferenceGraphFile(controller.graphFile.getText());
-		ruleRankProperties.setRankingFile(controller.rankingFile.getText());
+		ruleRankProperties.setLearningDataFile(ctrl.learningDataFile.getText());
+		ruleRankProperties.setTestDataFile(ctrl.testDataFile.getText());
+		ruleRankProperties.setPctFile(ctrl.pctFile.getText());
+		ruleRankProperties.setPctApxFile(ctrl.pctApxFile.getText());
+		ruleRankProperties.setPctRulesFile(ctrl.pctRulesFile.getText());
+		ruleRankProperties.setPreferenceGraphFile(ctrl.graphFile.getText());
+		ruleRankProperties.setRankingFile(ctrl.rankingFile.getText());
 		
-		ruleRankProperties.setReferenceRanking(controller.referenceRanking.getText());
-		ruleRankProperties.setPairs(controller.pairs.getText());
+		ruleRankProperties.setReferenceRanking(ctrl.referenceRanking.getText());
+		ruleRankProperties.setPairs(ctrl.pairs.getText());
 		
-		ruleRankProperties.setTypeOfFamilyOfCriteria(controller.typeOfFamilyCriteria.getValue());
-		ruleRankProperties.setTypeOfRules(controller.typeOfRules.getValue());
-		ruleRankProperties.setConsideredSetOfRules(controller.consideredSetOfRules.getValue());
+		ruleRankProperties.setTypeOfFamilyOfCriteria(ctrl.typeOfFamilyCriteria.getValue());
+		ruleRankProperties.setTypeOfRules(ctrl.typeOfRules.getValue());
+		ruleRankProperties.setConsideredSetOfRules(ctrl.consideredSetOfRules.getValue());
 		
-		ruleRankProperties.setConsistencyMeasure(controller.consistencyMeasure.getValue());
-		ruleRankProperties.setConsistencyMeasureThreshold(getDoubleOrNull(controller.consistencyMeasureThreshold.getText()));
-		ruleRankProperties.setPrecision(getIntegerOrNull(controller.precision.getText()));
+		ruleRankProperties.setConsistencyMeasure(ctrl.consistencyMeasure.getValue());
+		ruleRankProperties.setConsistencyMeasureThreshold(getDoubleOrNull(ctrl.consistencyMeasureThreshold.getText()));
+		ruleRankProperties.setPrecision(getIntegerOrNull(ctrl.precision.getText()));
 		
-		ruleRankProperties.setRankingProcedure(controller.rankingProcedure.getValue());
-		ruleRankProperties.setDominance(controller.dominance.getValue());
-		ruleRankProperties.setDominanceForPairsOfOrdinalValues(controller.dominanceForPairs.getValue());
+		ruleRankProperties.setRankingProcedure(ctrl.rankingProcedure.getValue());
+		ruleRankProperties.setDominance(ctrl.dominance.getValue());
+		ruleRankProperties.setDominanceForPairsOfOrdinalValues(ctrl.dominanceForPairs.getValue());
 		
-		ruleRankProperties.setSatisfactionDegreesInPreferenceGraph(controller.satisfactionDegreesInGraph.getValue());
-		ruleRankProperties.setFuzzySatisfactionDegreeCalculationMethod(controller.fuzzyCalculationMethod.getValue());
+		ruleRankProperties.setSatisfactionDegreesInPreferenceGraph(ctrl.satisfactionDegreesInGraph.getValue());
+		ruleRankProperties.setFuzzySatisfactionDegreeCalculationMethod(ctrl.fuzzyCalculationMethod.getValue());
 		
-		ruleRankProperties.setNegativeExamplesTreatmentForVCDRSA(controller.negativeExamplesTreatment.getValue());
-		ruleRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(controller.optimizeRuleConsistency.getValue());
-		ruleRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(controller.ruleConditionsSelectionMethod.getValue());
+		ruleRankProperties.setNegativeExamplesTreatmentForVCDRSA(ctrl.negativeExamplesTreatment.getValue());
+		ruleRankProperties.setOptimizeRuleConsistencyInVCDomLEMWrt(ctrl.optimizeRuleConsistency.getValue());
+		ruleRankProperties.setRuleConditionsSelectionMethodInVCDomLEM(ctrl.ruleConditionsSelectionMethod.getValue());
 		
-		ruleRankProperties.setAllowEmptyRulesInVCDomLEM(controller.allowEmptyRules.getValue());
-		ruleRankProperties.setUseEdgeRegionsInVCDomLEM(controller.useEdgeRegions.getValue());
+		ruleRankProperties.setAllowEmptyRulesInVCDomLEM(ctrl.allowEmptyRules.getValue());
+		ruleRankProperties.setUseEdgeRegionsInVCDomLEM(ctrl.useEdgeRegions.getValue());
 		
-		ruleRankProperties.setWriteDominationInformation(controller.writeDominationInformation.getValue());
-		ruleRankProperties.setWriteRulesStatistics(controller.writeRulesStatistics.getValue());
-		ruleRankProperties.setWriteLearningPositiveExamples(controller.writeLearningPositiveExamples.getValue());
+		ruleRankProperties.setWriteDominationInformation(ctrl.writeDominationInformation.getValue());
+		ruleRankProperties.setWriteRulesStatistics(ctrl.writeRulesStatistics.getValue());
+		ruleRankProperties.setWriteLearningPositiveExamples(ctrl.writeLearningPositiveExamples.getValue());
 		
 		return ruleRankProperties;
 	}
@@ -189,9 +203,9 @@ class PropertiesControllerHelper {
 	 */
 	private void initTitledPanes() {
 		boolean isAdvancedPropertiesEnabled = UserSettingsService.getInstance().getUserSettings().isAdvancedPropertiesEnabled();
-		controller.filesPane.setExpanded(isAdvancedPropertiesEnabled);
-		controller.parametersPane.setExpanded(isAdvancedPropertiesEnabled);
-		controller.additionalInfoPane.setExpanded(isAdvancedPropertiesEnabled);
+		ctrl.filesPane.setExpanded(isAdvancedPropertiesEnabled);
+		ctrl.parametersPane.setExpanded(isAdvancedPropertiesEnabled);
+		ctrl.additionalInfoPane.setExpanded(isAdvancedPropertiesEnabled);
 	}
 	
 	/**
@@ -199,29 +213,33 @@ class PropertiesControllerHelper {
 	 * @see RuleRankParametersService
 	 */
 	private void fillComboBoxes() {
-		controller.typeOfFamilyCriteria.getItems().addAll(parametersService.getTypeOfFamilyOfCriteria());
-		controller.typeOfRules.getItems().addAll(parametersService.getTypeOfRules());
-		controller.consideredSetOfRules.getItems().addAll(parametersService.getConsideredSetOfRules());
+		fillComboBox(ctrl.typeOfFamilyCriteria, service.getTypeOfFamilyOfCriteria());
+		fillComboBox(ctrl.typeOfRules, service.getTypeOfRules());
+		fillComboBox(ctrl.consideredSetOfRules, service.getConsideredSetOfRules());
 		
-		controller.consistencyMeasure.getItems().addAll(parametersService.getConsistencyMeasure());
+		fillComboBox(ctrl.consistencyMeasure, service.getConsistencyMeasure());
 		
-		controller.rankingProcedure.getItems().addAll(parametersService.getRankingProcedure());
-		controller.dominance.getItems().addAll(parametersService.getDominance());
-		controller.dominanceForPairs.getItems().addAll(parametersService.getDominanceForPairsOfOrdinalValues());
+		fillComboBox(ctrl.rankingProcedure, service.getRankingProcedure());
+		fillComboBox(ctrl.dominance, service.getDominance());
+		fillComboBox(ctrl.dominanceForPairs, service.getDominanceForPairsOfOrdinalValues());
 		
-		controller.satisfactionDegreesInGraph.getItems().addAll(parametersService.getSatisfactionDegreesInPreferenceGraph());
-		controller.fuzzyCalculationMethod.getItems().addAll(parametersService.getFuzzySatisfactionDegreeCalculationMethod());
+		fillComboBox(ctrl.satisfactionDegreesInGraph, service.getSatisfactionDegreesInPreferenceGraph());
+		fillComboBox(ctrl.fuzzyCalculationMethod, service.getFuzzySatisfactionDegreeCalculationMethod());
 		
-		controller.negativeExamplesTreatment.getItems().addAll(parametersService.getNegativeExamplesTreatmentForVCDRSA());
-		controller.optimizeRuleConsistency.getItems().addAll(parametersService.getOptimizeRuleConsistencyInVCDomLEMWrt());
-		controller.ruleConditionsSelectionMethod.getItems().addAll(parametersService.getRuleConditionsSelectionMethodInVCDomLEM());
+		fillComboBox(ctrl.negativeExamplesTreatment, service.getNegativeExamplesTreatmentForVCDRSA());
+		fillComboBox(ctrl.optimizeRuleConsistency, service.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		fillComboBox(ctrl.ruleConditionsSelectionMethod, service.getRuleConditionsSelectionMethodInVCDomLEM());
 		
-		controller.allowEmptyRules.getItems().addAll(parametersService.getBooleanParameter());
-		controller.useEdgeRegions.getItems().addAll(parametersService.getBooleanParameter());
+		fillComboBox(ctrl.allowEmptyRules, service.getBooleanParameter());
+		fillComboBox(ctrl.useEdgeRegions, service.getBooleanParameter());
 		
-		controller.writeDominationInformation.getItems().addAll(parametersService.getBooleanParameter());
-		controller.writeRulesStatistics.getItems().addAll(parametersService.getBooleanParameter());
-		controller.writeLearningPositiveExamples.getItems().addAll(parametersService.getBooleanParameter());
+		fillComboBox(ctrl.writeDominationInformation, service.getBooleanParameter());
+		fillComboBox(ctrl.writeRulesStatistics, service.getBooleanParameter());
+		fillComboBox(ctrl.writeLearningPositiveExamples, service.getBooleanParameter());
+	}
+	
+	private void fillComboBox(ComboBox<RuleRankParameter> comboBox, List<RuleRankParameter> list) {
+		comboBox.getItems().addAll(list);
 	}
 	
 	private String getStringOrNull(Object value) {
