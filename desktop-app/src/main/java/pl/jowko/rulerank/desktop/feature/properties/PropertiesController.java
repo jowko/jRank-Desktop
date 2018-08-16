@@ -220,6 +220,7 @@ public class PropertiesController implements AbandonableTabForm {
 		editableProperties = (RuleRankProperties) Cloner.deepClone(properties);
 		controllerHelper.setEditableProperties(editableProperties);
 		controllerHelper.fillFieldsValues();
+		propertiesTab.setTabEdited(false);
 	}
 	
 	/**
