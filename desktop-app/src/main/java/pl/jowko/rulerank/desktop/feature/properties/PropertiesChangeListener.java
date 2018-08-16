@@ -2,7 +2,6 @@ package pl.jowko.rulerank.desktop.feature.properties;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextInputControl;
-import pl.jowko.rulerank.desktop.feature.tabs.RemovableChangeListener;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
@@ -72,11 +71,15 @@ class PropertiesChangeListener {
 	}
 	
 	private void setUpTextFieldListener(TextInputControl field) {
-		field.textProperty().addListener(new RemovableChangeListener<>(propertiesTab, field.textProperty()));
+		field.textProperty().addListener((o, old, n) ->
+			propertiesTab.setTabEdited(true)
+		);
 	}
 	
 	private void setUpComboBoxListener(ComboBox<RuleRankParameter> comboBox) {
-		comboBox.valueProperty().addListener(new RemovableChangeListener<>(propertiesTab, comboBox.valueProperty()));
+		comboBox.valueProperty().addListener((o, old, n) ->
+				propertiesTab.setTabEdited(true)
+		);
 	}
 	
 }
