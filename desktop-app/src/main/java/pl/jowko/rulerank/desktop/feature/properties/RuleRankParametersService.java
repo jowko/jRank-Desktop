@@ -44,7 +44,13 @@ class RuleRankParametersService {
 	private List<RuleRankParameter> negativeExamplesTreatmentForVCDRSA;
 	private List<RuleRankParameter> ruleConditionsSelectionMethodInVCDomLEM;
 	private List<RuleRankParameter> optimizeRuleConsistencyInVCDomLEMWrt;
+	
 	private List<RuleRankParameter> booleanParameter;
+	private List<RuleRankParameter> allowEmptyRules;
+	private List<RuleRankParameter> useEdgeRegions;
+	private List<RuleRankParameter> writeDominationInfo;
+	private List<RuleRankParameter> writeRulesStatistics;
+	private List<RuleRankParameter> writePositiveExamples;
 	
 	private RuleRankParametersService() {
 		labels = LanguageService.getInstance();
@@ -129,6 +135,26 @@ class RuleRankParametersService {
 	
 	public List<RuleRankParameter> getBooleanParameter() {
 		return booleanParameter;
+	}
+	
+	public List<RuleRankParameter> getAllowEmptyRules() {
+		return allowEmptyRules;
+	}
+	
+	public List<RuleRankParameter> getUseEdgeRegions() {
+		return useEdgeRegions;
+	}
+	
+	public List<RuleRankParameter> getWriteDominationInfo() {
+		return writeDominationInfo;
+	}
+	
+	public List<RuleRankParameter> getWriteRulesStatistics() {
+		return writeRulesStatistics;
+	}
+	
+	public List<RuleRankParameter> getWritePositiveExamples() {
+		return writePositiveExamples;
 	}
 	
 	private void initializeParameters() {
@@ -239,10 +265,20 @@ class RuleRankParametersService {
 	}
 	
 	private void initBooleanParameter() {
-		booleanParameter = new LinkedList<>();
-		booleanParameter.add(getDefaultParameter());
-		booleanParameter.add(new RuleRankParameter(get(Labels.BOOLEAN_YES),"true", Integer.MAX_VALUE));
-		booleanParameter.add(new RuleRankParameter(get(Labels.BOOLEAN_NO),"false", Integer.MAX_VALUE));
+		booleanParameter = createBooleanValues();
+		allowEmptyRules = createBooleanValues();
+		useEdgeRegions = createBooleanValues();
+		writeDominationInfo = createBooleanValues();
+		writeRulesStatistics = createBooleanValues();
+		writePositiveExamples = createBooleanValues();
+	}
+	
+	private List<RuleRankParameter> createBooleanValues() {
+		List<RuleRankParameter> list = new LinkedList<>();
+		list.add(getDefaultParameter());
+		list.add(new RuleRankParameter(get(Labels.BOOLEAN_YES),"true", Integer.MAX_VALUE));
+		list.add(new RuleRankParameter(get(Labels.BOOLEAN_NO),"false", Integer.MAX_VALUE));
+		return list;
 	}
 	
 	private String get(String labelCode) {

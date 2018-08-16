@@ -230,12 +230,12 @@ class PropertiesControllerHelper {
 		fillComboBox(ctrl.optimizeRuleConsistency, service.getOptimizeRuleConsistencyInVCDomLEMWrt());
 		fillComboBox(ctrl.ruleConditionsSelectionMethod, service.getRuleConditionsSelectionMethodInVCDomLEM());
 		
-		fillComboBox(ctrl.allowEmptyRules, service.getBooleanParameter());
-		fillComboBox(ctrl.useEdgeRegions, service.getBooleanParameter());
+		fillComboBox(ctrl.allowEmptyRules, service.getAllowEmptyRules());
+		fillComboBox(ctrl.useEdgeRegions, service.getUseEdgeRegions());
 		
-		fillComboBox(ctrl.writeDominationInformation, service.getBooleanParameter());
-		fillComboBox(ctrl.writeRulesStatistics, service.getBooleanParameter());
-		fillComboBox(ctrl.writeLearningPositiveExamples, service.getBooleanParameter());
+		fillComboBox(ctrl.writeDominationInformation, service.getWriteDominationInfo());
+		fillComboBox(ctrl.writeRulesStatistics, service.getWriteRulesStatistics());
+		fillComboBox(ctrl.writeLearningPositiveExamples, service.getWritePositiveExamples());
 	}
 	
 	private void fillComboBox(ComboBox<RuleRankParameter> comboBox, List<RuleRankParameter> list) {
