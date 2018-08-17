@@ -151,11 +151,22 @@ class PropertiesControllerHelper {
 		fillComboBoxValue(ctrl.writeLearningPositiveExamples, editableProp.getWriteLearningPositiveExamples());
 	}
 	
+	/**
+	 * Fills provided text field with value from properties and sets prompt(grey text) with default value
+	 * @param textField on with current and default value will be set
+	 * @param textValue with will be set in text field
+	 * @param defaultValue with will be set as prompt text in text field
+	 */
 	private void fillTextValue(TextInputControl textField, String textValue, String defaultValue) {
 		textField.setPromptText(defaultValue);
 		textField.setText(textValue);
 	}
 	
+	/**
+	 * Selects provided parameter in provided ComboBox or sets default value(first position in ComboBox)
+	 * @param comboBox on with value will be selected
+	 * @param parameter with will be selected
+	 */
 	private void fillComboBoxValue(ComboBox<RuleRankParameter> comboBox, RuleRankParameter parameter) {
 		if(emptyValue.equals(parameter)) {
 			comboBox.getSelectionModel().select(0);
@@ -251,6 +262,13 @@ class PropertiesControllerHelper {
 		fillComboBox(ctrl.writeLearningPositiveExamples, service.getWritePositiveExamples(), defaultProp.getWriteLearningPositiveExamples());
 	}
 	
+	/**
+	 * Fills comboBox with list of values and sets first element in list as default one.
+	 * Default element will contain special text and default value from provided defaultParameter
+	 * @param comboBox on with items list will be added
+	 * @param list with will be added to ComboBox
+	 * @param defaultParameter with will be used to set first value in list
+	 */
 	private void fillComboBox(ComboBox<RuleRankParameter> comboBox, List<RuleRankParameter> list, RuleRankParameter defaultParameter) {
 		RuleRankParameter defaultValue = service.getDefaultParameter();
 		String label = labels.get(Labels.PROP_DEFAULT_VALUE).replace(MSG, defaultParameter.getLabel());
