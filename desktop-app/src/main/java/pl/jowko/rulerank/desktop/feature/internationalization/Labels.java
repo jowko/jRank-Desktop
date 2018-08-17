@@ -152,6 +152,7 @@ public class Labels {
 	public static final String RESTORE_VALUES_BUTTON = "RESTORE_VALUES_BUTTON";
 	public static final String PROP_VALIDATE_FORM = "PROP_VALIDATE_FORM";
 	public static final String VALIDATE_FORM_DEFAULTS = "VALIDATE_FORM_DEFAULTS";
+	public static final String PROP_DEFAULT_VALUE = "PROP_DEFAULT_VALUE";
 	
 	// Properties form messages
 	public static final String PROP_ERROR_SAVE = "PROP_ERROR_SAVE";

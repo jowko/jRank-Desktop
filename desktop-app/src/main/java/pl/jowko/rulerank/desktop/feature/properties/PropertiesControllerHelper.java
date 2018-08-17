@@ -2,12 +2,15 @@ package pl.jowko.rulerank.desktop.feature.properties;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextInputControl;
+import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
+import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
 import pl.jowko.rulerank.feature.customfx.DecimalField;
 
 import java.util.List;
 
 import static java.util.Objects.isNull;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
@@ -19,8 +22,11 @@ class PropertiesControllerHelper {
 	
 	private RuleRankParametersService service;
 	private PropertiesController ctrl;
+	private LanguageService labels;
+	
 	private RuleRankProperties editableProp;
 	private RuleRankProperties defaultProp;
+	private RuleRankParameter emptyValue;
 	
 	/**
 	 * Initializes instance of this class.
@@ -32,6 +38,8 @@ class PropertiesControllerHelper {
 		this.ctrl = controller;
 		editableProp = controller.editableProperties;
 		defaultProp = controller.defaultProperties;
+		emptyValue = service.getDefaultParameter();
+		labels = LanguageService.getInstance();
 		
 		initTitledPanes();
 		fillComboBoxes();
@@ -116,39 +124,44 @@ class PropertiesControllerHelper {
 		fillTextValue(ctrl.referenceRanking, editableProp.getReferenceRanking(), defaultProp.getReferenceRanking());
 		fillTextValue(ctrl.pairs, editableProp.getPairs(), defaultProp.getPairs());
 		
-		fillComboBoxValue(ctrl.typeOfFamilyCriteria, editableProp.getTypeOfFamilyOfCriteria(), defaultProp.getTypeOfFamilyOfCriteria());
-		fillComboBoxValue(ctrl.typeOfRules, editableProp.getTypeOfRules(), defaultProp.getTypeOfRules());
-		fillComboBoxValue(ctrl.consideredSetOfRules, editableProp.getConsideredSetOfRules(), defaultProp.getConsideredSetOfRules());
+		fillComboBoxValue(ctrl.typeOfFamilyCriteria, editableProp.getTypeOfFamilyOfCriteria());
+		fillComboBoxValue(ctrl.typeOfRules, editableProp.getTypeOfRules());
+		fillComboBoxValue(ctrl.consideredSetOfRules, editableProp.getConsideredSetOfRules());
 		
-		fillComboBoxValue(ctrl.consistencyMeasure, editableProp.getConsistencyMeasure(), defaultProp.getConsistencyMeasure());
+		fillComboBoxValue(ctrl.consistencyMeasure, editableProp.getConsistencyMeasure());
 		fillTextValue(ctrl.consistencyMeasureThreshold, getStringOrNull(editableProp.getConsistencyMeasureThreshold()), getStringOrNull(defaultProp.getConsistencyMeasureThreshold()));
 		fillTextValue(ctrl.precision, getStringOrNull(editableProp.getPrecision()), getStringOrNull(defaultProp.getPrecision()));
 		
-		fillComboBoxValue(ctrl.rankingProcedure, editableProp.getRankingProcedure(), defaultProp.getRankingProcedure());
-		fillComboBoxValue(ctrl.dominance, editableProp.getDominance(), defaultProp.getDominance());
-		fillComboBoxValue(ctrl.dominanceForPairs, editableProp.getDominanceForPairsOfOrdinalValues(), defaultProp.getDominanceForPairsOfOrdinalValues());
+		fillComboBoxValue(ctrl.rankingProcedure, editableProp.getRankingProcedure());
+		fillComboBoxValue(ctrl.dominance, editableProp.getDominance());
+		fillComboBoxValue(ctrl.dominanceForPairs, editableProp.getDominanceForPairsOfOrdinalValues());
 		
-		fillComboBoxValue(ctrl.satisfactionDegreesInGraph, editableProp.getSatisfactionDegreesInPreferenceGraph(), defaultProp.getSatisfactionDegreesInPreferenceGraph());
-		fillComboBoxValue(ctrl.fuzzyCalculationMethod, editableProp.getFuzzySatisfactionDegreeCalculationMethod(), defaultProp.getFuzzySatisfactionDegreeCalculationMethod());
+		fillComboBoxValue(ctrl.satisfactionDegreesInGraph, editableProp.getSatisfactionDegreesInPreferenceGraph());
+		fillComboBoxValue(ctrl.fuzzyCalculationMethod, editableProp.getFuzzySatisfactionDegreeCalculationMethod());
 		
-		fillComboBoxValue(ctrl.negativeExamplesTreatment, editableProp.getNegativeExamplesTreatmentForVCDRSA(), defaultProp.getNegativeExamplesTreatmentForVCDRSA());
-		fillComboBoxValue(ctrl.optimizeRuleConsistency, editableProp.getOptimizeRuleConsistencyInVCDomLEMWrt(), defaultProp.getOptimizeRuleConsistencyInVCDomLEMWrt());
-		fillComboBoxValue(ctrl.ruleConditionsSelectionMethod, editableProp.getRuleConditionsSelectionMethodInVCDomLEM(), defaultProp.getRuleConditionsSelectionMethodInVCDomLEM());
+		fillComboBoxValue(ctrl.negativeExamplesTreatment, editableProp.getNegativeExamplesTreatmentForVCDRSA());
+		fillComboBoxValue(ctrl.optimizeRuleConsistency, editableProp.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		fillComboBoxValue(ctrl.ruleConditionsSelectionMethod, editableProp.getRuleConditionsSelectionMethodInVCDomLEM());
 		
-		fillComboBoxValue(ctrl.allowEmptyRules, editableProp.getAllowEmptyRulesInVCDomLEM(), defaultProp.getAllowEmptyRulesInVCDomLEM());
-		fillComboBoxValue(ctrl.useEdgeRegions, editableProp.getUseEdgeRegionsInVCDomLEM(), defaultProp.getUseEdgeRegionsInVCDomLEM());
+		fillComboBoxValue(ctrl.allowEmptyRules, editableProp.getAllowEmptyRulesInVCDomLEM());
+		fillComboBoxValue(ctrl.useEdgeRegions, editableProp.getUseEdgeRegionsInVCDomLEM());
 		
-		fillComboBoxValue(ctrl.writeDominationInformation, editableProp.getWriteDominationInformation(), defaultProp.getWriteDominationInformation());
-		fillComboBoxValue(ctrl.writeRulesStatistics, editableProp.getWriteRulesStatistics(), defaultProp.getWriteRulesStatistics());
-		fillComboBoxValue(ctrl.writeLearningPositiveExamples, editableProp.getWriteLearningPositiveExamples(), defaultProp.getWriteLearningPositiveExamples());
+		fillComboBoxValue(ctrl.writeDominationInformation, editableProp.getWriteDominationInformation());
+		fillComboBoxValue(ctrl.writeRulesStatistics, editableProp.getWriteRulesStatistics());
+		fillComboBoxValue(ctrl.writeLearningPositiveExamples, editableProp.getWriteLearningPositiveExamples());
 	}
 	
 	private void fillTextValue(TextInputControl textField, String textValue, String defaultValue) {
+		textField.setPromptText(defaultValue);
 		textField.setText(textValue);
 	}
 	
-	private void fillComboBoxValue(ComboBox<RuleRankParameter> comboBox, RuleRankParameter parameter, RuleRankParameter defaultParameter) {
-		comboBox.getSelectionModel().select(parameter);
+	private void fillComboBoxValue(ComboBox<RuleRankParameter> comboBox, RuleRankParameter parameter) {
+		if(emptyValue.equals(parameter)) {
+			comboBox.getSelectionModel().select(0);
+		} else {
+			comboBox.getSelectionModel().select(parameter);
+		}
 	}
 	
 	/**
@@ -213,32 +226,36 @@ class PropertiesControllerHelper {
 	 * @see RuleRankParametersService
 	 */
 	private void fillComboBoxes() {
-		fillComboBox(ctrl.typeOfFamilyCriteria, service.getTypeOfFamilyOfCriteria());
-		fillComboBox(ctrl.typeOfRules, service.getTypeOfRules());
-		fillComboBox(ctrl.consideredSetOfRules, service.getConsideredSetOfRules());
+		fillComboBox(ctrl.typeOfFamilyCriteria, service.getTypeOfFamilyOfCriteria(), defaultProp.getTypeOfFamilyOfCriteria());
+		fillComboBox(ctrl.typeOfRules, service.getTypeOfRules(), defaultProp.getTypeOfRules());
+		fillComboBox(ctrl.consideredSetOfRules, service.getConsideredSetOfRules(), defaultProp.getConsideredSetOfRules());
 		
-		fillComboBox(ctrl.consistencyMeasure, service.getConsistencyMeasure());
+		fillComboBox(ctrl.consistencyMeasure, service.getConsistencyMeasure(), defaultProp.getConsistencyMeasure());
 		
-		fillComboBox(ctrl.rankingProcedure, service.getRankingProcedure());
-		fillComboBox(ctrl.dominance, service.getDominance());
-		fillComboBox(ctrl.dominanceForPairs, service.getDominanceForPairsOfOrdinalValues());
+		fillComboBox(ctrl.rankingProcedure, service.getRankingProcedure(), defaultProp.getRankingProcedure());
+		fillComboBox(ctrl.dominance, service.getDominance(), defaultProp.getDominance());
+		fillComboBox(ctrl.dominanceForPairs, service.getDominanceForPairsOfOrdinalValues(), defaultProp.getDominanceForPairsOfOrdinalValues());
 		
-		fillComboBox(ctrl.satisfactionDegreesInGraph, service.getSatisfactionDegreesInPreferenceGraph());
-		fillComboBox(ctrl.fuzzyCalculationMethod, service.getFuzzySatisfactionDegreeCalculationMethod());
+		fillComboBox(ctrl.satisfactionDegreesInGraph, service.getSatisfactionDegreesInPreferenceGraph(), defaultProp.getSatisfactionDegreesInPreferenceGraph());
+		fillComboBox(ctrl.fuzzyCalculationMethod, service.getFuzzySatisfactionDegreeCalculationMethod(), defaultProp.getFuzzySatisfactionDegreeCalculationMethod());
 		
-		fillComboBox(ctrl.negativeExamplesTreatment, service.getNegativeExamplesTreatmentForVCDRSA());
-		fillComboBox(ctrl.optimizeRuleConsistency, service.getOptimizeRuleConsistencyInVCDomLEMWrt());
-		fillComboBox(ctrl.ruleConditionsSelectionMethod, service.getRuleConditionsSelectionMethodInVCDomLEM());
+		fillComboBox(ctrl.negativeExamplesTreatment, service.getNegativeExamplesTreatmentForVCDRSA(), defaultProp.getNegativeExamplesTreatmentForVCDRSA());
+		fillComboBox(ctrl.optimizeRuleConsistency, service.getOptimizeRuleConsistencyInVCDomLEMWrt(), defaultProp.getOptimizeRuleConsistencyInVCDomLEMWrt());
+		fillComboBox(ctrl.ruleConditionsSelectionMethod, service.getRuleConditionsSelectionMethodInVCDomLEM(), defaultProp.getRuleConditionsSelectionMethodInVCDomLEM());
 		
-		fillComboBox(ctrl.allowEmptyRules, service.getAllowEmptyRules());
-		fillComboBox(ctrl.useEdgeRegions, service.getUseEdgeRegions());
+		fillComboBox(ctrl.allowEmptyRules, service.getAllowEmptyRules(), defaultProp.getAllowEmptyRulesInVCDomLEM());
+		fillComboBox(ctrl.useEdgeRegions, service.getUseEdgeRegions(), defaultProp.getUseEdgeRegionsInVCDomLEM());
 		
-		fillComboBox(ctrl.writeDominationInformation, service.getWriteDominationInfo());
-		fillComboBox(ctrl.writeRulesStatistics, service.getWriteRulesStatistics());
-		fillComboBox(ctrl.writeLearningPositiveExamples, service.getWritePositiveExamples());
+		fillComboBox(ctrl.writeDominationInformation, service.getWriteDominationInfo(), defaultProp.getWriteDominationInformation());
+		fillComboBox(ctrl.writeRulesStatistics, service.getWriteRulesStatistics(), defaultProp.getWriteRulesStatistics());
+		fillComboBox(ctrl.writeLearningPositiveExamples, service.getWritePositiveExamples(), defaultProp.getWriteLearningPositiveExamples());
 	}
 	
-	private void fillComboBox(ComboBox<RuleRankParameter> comboBox, List<RuleRankParameter> list) {
+	private void fillComboBox(ComboBox<RuleRankParameter> comboBox, List<RuleRankParameter> list, RuleRankParameter defaultParameter) {
+		RuleRankParameter defaultValue = service.getDefaultParameter();
+		String label = labels.get(Labels.PROP_DEFAULT_VALUE).replace(MSG, defaultParameter.getLabel());
+		defaultValue.setLabel(label);
+		list.set(0, defaultValue);
 		comboBox.getItems().addAll(list);
 	}
 	

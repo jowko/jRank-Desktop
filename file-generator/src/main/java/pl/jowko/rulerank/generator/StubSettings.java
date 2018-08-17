@@ -262,6 +262,7 @@ class StubSettings {
 		language.put(Labels.RESTORE_VALUES_BUTTON, "Restore original values");
 		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
 		language.put(Labels.VALIDATE_FORM_DEFAULTS, "Validate form with defaults");
+		language.put(Labels.PROP_DEFAULT_VALUE, "default (" + MSG + ")");
 	}
 	
 	private void createEnglishPropertiesMessages(Map<String, String> language) {
