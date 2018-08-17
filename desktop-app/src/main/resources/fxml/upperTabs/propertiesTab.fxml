@@ -15,8 +15,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import pl.jowko.rulerank.feature.customfx.DecimalField?>
 <?import pl.jowko.rulerank.feature.customfx.IntegerField?>
+<?import pl.jowko.rulerank.feature.customfx.DecimalField?>
 <ScrollPane fitToWidth="true" minHeight="250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.jowko.rulerank.desktop.feature.properties.PropertiesController">
 	<VBox>
       <FlowPane VBox.vgrow="ALWAYS">
@@ -92,13 +92,13 @@
                   <GridPane>
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
@@ -106,17 +106,17 @@
                      <children>
                         <Label fx:id="typeOfFamilyCriteriaLabel" text="Type of family criteria:" />
                         <Label fx:id="typeOfRulesLabel" text="Type of rules:" GridPane.columnIndex="3" />
-                        <ComboBox fx:id="typeOfFamilyCriteria" minWidth="180.0" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="typeOfFamilyCriteria" minWidth="200.0" GridPane.columnIndex="1" />
                         <Label GridPane.columnIndex="6" />
-                        <ComboBox fx:id="typeOfRules" minWidth="180.0" GridPane.columnIndex="4" />
+                        <ComboBox fx:id="typeOfRules" minWidth="200.0" GridPane.columnIndex="4" />
                         <Label fx:id="consideredSetOfRulesLabel" text="Considered set of rules:" GridPane.columnIndex="6" />
-                        <ComboBox fx:id="consideredSetOfRules" minWidth="160.0" GridPane.columnIndex="7" />
+                        <ComboBox fx:id="consideredSetOfRules" minWidth="200.0" GridPane.columnIndex="7" />
                      </children>
                   </GridPane>
                   <GridPane>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="210.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" />
@@ -130,20 +130,20 @@
                      <children>
                         <Label fx:id="consistencyMeasureLabel" text="Consistency measure:" />
                         <Label fx:id="consistencyMeasureThresholdLabel" prefHeight="17.0" prefWidth="197.0" text="Consistency measure threshold:" GridPane.columnIndex="3" />
-                        <ComboBox fx:id="consistencyMeasure" minWidth="180.0" GridPane.columnIndex="1" />
-                        <DecimalField fx:id="consistencyMeasureThreshold" maxWidth="80.0" GridPane.columnIndex="4" />
+                        <ComboBox fx:id="consistencyMeasure" minWidth="200.0" GridPane.columnIndex="1" />
+                        <DecimalField fx:id="consistencyMeasureThreshold" maxWidth="100.0" minWidth="100.0" GridPane.columnIndex="4" />
                      </children>
                   </GridPane>
                   <GridPane>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="140.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="210.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="120.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
@@ -151,20 +151,20 @@
                      <children>
                         <Label fx:id="rankingProcedureLabel" text="Ranking procedure:" />
                         <Label fx:id="dominanceLabel" text="Dominance:" GridPane.columnIndex="3" />
-                        <ComboBox fx:id="rankingProcedure" minWidth="180.0" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="rankingProcedure" minWidth="200.0" GridPane.columnIndex="1" />
                         <Label GridPane.columnIndex="6" />
-                        <ComboBox fx:id="dominance" minWidth="180.0" GridPane.columnIndex="4" />
+                        <ComboBox fx:id="dominance" minWidth="200.0" GridPane.columnIndex="4" />
                         <Label fx:id="dominanceForPairsLabel" text="Dominance for pairs of ordinal values:" GridPane.columnIndex="6" />
-                        <ComboBox fx:id="dominanceForPairs" minWidth="90.0" GridPane.columnIndex="7" />
+                        <ComboBox fx:id="dominanceForPairs" minWidth="130.0" GridPane.columnIndex="7" />
                      </children>
                   </GridPane>
                   <GridPane>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="260.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="180.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="245.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="280.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="130.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="245.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
@@ -174,23 +174,23 @@
                      <children>
                         <Label fx:id="satisfactionDegreesInGraphLabel" text="Satisfaction degrees in preference graph:" />
                         <Label fx:id="fuzzyCalculationMethodLabel" text="Fuzzy satisfaction degree calculation method:" GridPane.columnIndex="3" />
-                        <ComboBox fx:id="satisfactionDegreesInGraph" minWidth="180.0" GridPane.columnIndex="1" />
-                        <ComboBox fx:id="fuzzyCalculationMethod" minWidth="180.0" GridPane.columnIndex="4" />
+                        <ComboBox fx:id="satisfactionDegreesInGraph" minWidth="245.0" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="fuzzyCalculationMethod" minWidth="245.0" GridPane.columnIndex="4" />
                         <Label fx:id="negativeExamplesTreatmentLabel" text="Negative examples treatment for VCDRSA:" GridPane.rowIndex="1" />
                         <Label fx:id="optimizeRuleConsistencyLabel" text="Optimize rule consistency in VCDomLEMWrt:" GridPane.rowIndex="2" />
                         <Label fx:id="ruleConditionsSelectionMethodLabel" text="Rule conditions selection method in VCDomLEM:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="negativeExamplesTreatment" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="optimizeRuleConsistency" minWidth="180.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <ComboBox fx:id="ruleConditionsSelectionMethod" minWidth="180.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="negativeExamplesTreatment" minWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="optimizeRuleConsistency" minWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="ruleConditionsSelectionMethod" minWidth="245.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
@@ -211,10 +211,10 @@
             <GridPane>
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
