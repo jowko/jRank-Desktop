@@ -14,9 +14,10 @@ import java.util.stream.Collectors;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 
 /**
+ * This class serves as container for different settings with will be saved to file.<br>
+ * It could be replaced with external resource bundle.<br>
+ *<br>
  * Created by Piotr on 2018-03-16.
- * This class serves as container for different settings with will be saved to file.
- * It could be replaced with external resource bundle.
  */
 class StubSettings {
 	
@@ -570,9 +571,9 @@ class StubSettings {
 	}
 	
 	/**
-	 * Generates stub language - for test only.
-	 * Result of this methods should not be included in public release version.
-	 * It creates stub labels by adding "1" character to all labels values.
+	 * Generates stub language - for test only.<br>
+	 * Result of this methods should not be included in public release version.<br>
+	 * It creates stub labels by adding "1" character to all labels values.<br>
 	 * Stub language helps to check, if labels are changing correctly on all screens.
 	 */
 	private void generateStubLanguage() {
