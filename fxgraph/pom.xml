@@ -10,7 +10,7 @@
     
     <properties>
         <java.version>10</java.version>
-        <maven.compiler.version>3.7.0</maven.compiler.version>
+        <maven.compiler.version>3.8.0</maven.compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
@@ -26,29 +26,8 @@
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
-                <!-- This is needed to compile project to java 10 in maven 3.7.0 compiler plugin -->
-                <dependencies>
-                    <dependency>
-                        <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm</artifactId>
-                        <version>6.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             
-            <!-- This plugin with asm 6.2 is needed to generate JavaDoc on Java 10-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.0</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm</artifactId>
-                        <version>6.2</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
         </plugins>
     </build>
     

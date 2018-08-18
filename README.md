@@ -44,5 +44,10 @@ install.bat script will perform following actions:
 - create run.bat script to run this app
 
 
+## Generating JavaDoc
+JavaDoc can be easily generated using Intellij Idea.
+To do so, open Tools -> Generate JavaDoc... -> choose options and add -html5 parameter(Other command line arguments).
+
+
 ## Author
 - Piotr Jowko
