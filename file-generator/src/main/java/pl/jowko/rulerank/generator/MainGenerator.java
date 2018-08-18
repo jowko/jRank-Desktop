@@ -12,31 +12,32 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
+ * Used to generate settings files for desktop application. Only used for development.<br>
+ *<br>
+ * It generates 4 configuration files:<br>
+ *<br>
+ * userSettings.json - contains user settings, with are editable in user settings dialog form from settings menu<br>
+ * {@link pl.jowko.rulerank.desktop.feature.settings.UserSettingsController} <br>
+ * {@link UserSettings} <br>
+ *<br>
+ * labels.json - contains map of maps, where languages with labels codes and translations are stored<br>
+ * {@link pl.jowko.rulerank.desktop.feature.internationalization.LanguageService} <br>
+ * {@link pl.jowko.rulerank.desktop.feature.internationalization.Labels} <br>
+ *<br>
+ * languages.json - contains map of language codes and language labels.<br>
+ * Example: "ENG" : "English"<br>
+ * It is used mostly in user settings form<br>
+ * {@link pl.jowko.rulerank.desktop.feature.internationalization.LanguageService} <br>
+ * {@link pl.jowko.rulerank.desktop.feature.settings.UserSettingsController} <br>
+ *<br>
+ * ruleRankInfo.json - contains information about application version displayed in about dialog from help settings<br>
+ * {@link pl.jowko.rulerank.desktop.controller.AboutController} <br>
+ * {@link RuleRankInfo} <br>
+ *<br>
+ * Default data are taken from StubSettings class.<br>
+ * {@link StubSettings} <br>
+ * <br>
  * Created by Piotr on 2018-03-16.
- * Used to generate settings files for desktop application. Only used for development.
- *
- * It generates 4 configuration files:
- *
- * userSettings.json - contains user settings, with are editable in user settings dialog form from settings menu
- * @see pl.jowko.rulerank.desktop.feature.settings.UserSettingsController
- * @see UserSettings
- *
- * labels.json - contains map of maps, where languages with labels codes and translations are stored
- * @see pl.jowko.rulerank.desktop.feature.internationalization.LanguageService
- * @see pl.jowko.rulerank.desktop.feature.internationalization.Labels
- *
- * languages.json - contains map of language codes and language labels.
- * Example: "ENG" : "English"
- * It is used mostly in user settings form
- * @see pl.jowko.rulerank.desktop.feature.internationalization.LanguageService
- * @see pl.jowko.rulerank.desktop.feature.settings.UserSettingsController
- *
- * ruleRankInfo.json - contains information about application version displayed in about dialog from help settings
- * @see pl.jowko.rulerank.desktop.controller.AboutController
- * @see RuleRankInfo
- *
- * Default data are taken from StubSettings class.
- * @see StubSettings
  */
 public class MainGenerator {
 	
