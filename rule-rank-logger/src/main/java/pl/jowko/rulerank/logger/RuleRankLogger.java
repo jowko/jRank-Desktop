@@ -1,11 +1,12 @@
 package pl.jowko.rulerank.logger;
 
 /**
+ * This class serves as mediator between application and logger.<br>
+ * Because of this, logger implementation can be easily changed.<br>
+ * All logging should be performed using this class.<br>
+ * Ignoring this may result in death penalty.<br>
+ *<br>
  * Created by Piotr on 2018-03-17.
- * This class serves as mediator between application and logger.
- * Because of this, logger implementation can be easily changed.
- * All logging should be performed using this class.
- * Ignoring this may result in death penalty.
  */
 public class RuleRankLogger {
 	

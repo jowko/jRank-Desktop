@@ -1,10 +1,12 @@
 import pl.jowko.rulerank.logger.RuleRankLogger;
 
 /**
+ * This module provides logging mediator.<br>
+ * It can use any provided logging implementation.<br>
+ * All logging should be performed with class RuleRankLogger.<br>
+ *<br>
  * Created by Piotr on 2018-03-25.
- * This module provides logging mediator.
- * It can use any provided logging implementation.
- * All logging should be performed with class RuleRankLogger.
+ *
  * @see RuleRankLogger
  */
 module RuleRankLoggerModule {
