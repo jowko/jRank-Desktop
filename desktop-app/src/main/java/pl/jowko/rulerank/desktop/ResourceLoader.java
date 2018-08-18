@@ -5,15 +5,16 @@ import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 
 /**
+ * This class serves as mediator between reading JavaFX files and application.<br>
+ * <br>
  * Created by Piotr on 2018-03-25.
- * This class serves as mediator between reading JavaFX files and application.
  */
 public class ResourceLoader {
 	
 	private FXMLLoader fxmlLoader;
 	
 	/**
-	 * Initialize instance of this class.
+	 * Initialize instance of this class. <br>
 	 * Resource location will be set in this constructor.
 	 * @param resourceName to load from resource catalog. Should be fxml file.
 	 */
@@ -23,7 +24,7 @@ public class ResourceLoader {
 	}
 	
 	/**
-	 * Load fxml file from provided location.
+	 * Load fxml file from provided location. <br>
 	 * It will return Parent object containing content of fxml file.
 	 * @see javafx.scene.Parent
 	 * @return Parent object with content of fxml file
@@ -34,8 +35,8 @@ public class ResourceLoader {
 	}
 	
 	/**
-	 * Gets controller for specified resource.
-	 * Resource should be loaded first.
+	 * Gets controller for specified resource. <br>
+	 * Resource should be loaded first. <br>
 	 * If fxml file doesn't have controller, JavaFX will throw exception with error when calling this method.
 	 * @return controller from loaded fxml file
 	 */

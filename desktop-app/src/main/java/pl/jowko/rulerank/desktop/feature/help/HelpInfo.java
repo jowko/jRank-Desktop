@@ -1,9 +1,10 @@
 package pl.jowko.rulerank.desktop.feature.help;
 
 /**
+ * This class contains information for help dialog. <br>
+ * It is read only. <br>
+ *  <br>
  * Created by Piotr on 2018-08-14
- * This class contains information for help dialog.
- * It is read only.
  */
 public class HelpInfo {
 	

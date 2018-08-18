@@ -24,8 +24,9 @@ import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class reads graph from file and initializes data for UI. <br>
+ *  <br>
  * Created by Piotr on 2018-06-06
- * This class reads graph from file and initializes data for UI.
  */
 class GraphReader {
 	
@@ -69,15 +70,15 @@ class GraphReader {
 	}
 	
 	/**
-	 * Extracts graph from .graph file.
-	 * It will create edges and cells using extracted data.
-	 * For each line, it is checked, if line contains edge or node.
-	 * Lines with doesn't contain edge or nodes are skipped.
-	 * It will also extract labels for nodes and color for edges.
-	 *
-	 * Valid format for node line:
-	 * 1 [label="1"];
-	 * Valid format for edge line:
+	 * Extracts graph from .graph file. <br>
+	 * It will create edges and cells using extracted data. <br>
+	 * For each line, it is checked, if line contains edge or node. <br>
+	 * Lines with doesn't contain edge or nodes are skipped. <br>
+	 * It will also extract labels for nodes and color for edges. <br>
+	 * <br>
+	 * Valid format for node line: <br>
+	 * 1 [label="1"]; <br>
+	 * Valid format for edge line: <br>
 	 * 1 -> 7 [color="green"];
 	 */
 	private void extractGraph() {
@@ -109,8 +110,8 @@ class GraphReader {
 	}
 	
 	/**
-	 * Extract value from text with is in double quotes.
-	 * Such text: [label="1"];
+	 * Extract value from text with is in double quotes. <br>
+	 * Such text: [label="1"]; <br>
 	 * Will return 1
 	 * @param text from with value will be extracted
 	 * @return extracted value from double quotes
@@ -131,8 +132,8 @@ class GraphReader {
 	}
 	
 	/**
-	 * This methods finds all description fields indexes in container.
-	 * They are later used to create tooltips for nodes
+	 * This methods finds all description fields indexes in container. <br>
+	 * They are later used to create tooltips for nodes <br>
 	 * @return list of indices of description fields/attributes
 	 */
 	private List<Integer> getDescriptionFieldsIds() {

@@ -10,11 +10,12 @@ import java.util.Objects;
 import static java.util.Objects.isNull;
 
 /**
+ * This class serves as label translator for application. <br>
+ * It translates label codes to text containing proper translation. <br>
+ * Current language is extracted from user settings. <br>
+ * Labels are stored in labels.json file in data directory. <br>
+ *  <br>
  * Created by Piotr on 2018-03-16.
- * This class serves as label translator for application.
- * It translates label codes to text containing proper translation.
- * Current language is extracted from user settings.
- * Labels are stored in labels.json file in data directory.
  * @see Labels
  */
 public class LanguageService {
@@ -30,7 +31,7 @@ public class LanguageService {
 	}
 	
 	/**
-	 * Gets instance of this class and creates new if it doesn't exits.
+	 * Gets instance of this class and creates new if it doesn't exits. <br>
 	 * language.json and labels.json files are read in private constructor.
 	 * @return instance of this class
 	 */
@@ -42,8 +43,8 @@ public class LanguageService {
 	}
 	
 	/**
-	 * Gets translation for provided label code.
-	 * It uses user settings to get current active language.
+	 * Gets translation for provided label code. <br>
+	 * It uses user settings to get current active language. <br>
 	 * When language or label code is not found, this situation is logged into WARN log and special label is returned to show this on UI.
 	 * @see Labels
 	 * @see UserSettingsService
@@ -67,7 +68,7 @@ public class LanguageService {
 	}
 	
 	/**
-	 * Get labels map, where key is language code.
+	 * Get labels map, where key is language code. <br>
 	 * Nested map contains translation, where key is label code from Labels class.
 	 * @see Labels
 	 * @return map of map containing translation for all available languages
@@ -77,9 +78,9 @@ public class LanguageService {
 	}
 	
 	/**
-	 * Gets language map, where key is language code and value is language description.
-	 * Example:
-	 * key - ENG, value - English
+	 * Gets language map, where key is language code and value is language description. <br>
+	 * Example: <br>
+	 * key - ENG, value - English <br>
 	 * @return map of languages
 	 */
 	public Map<String, String> getLanguages() {

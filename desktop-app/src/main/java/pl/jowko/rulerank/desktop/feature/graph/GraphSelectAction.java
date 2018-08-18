@@ -15,8 +15,9 @@ import static java.util.Objects.nonNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class perform select action on graph node when node is clicked. <br>
+ *  <br>
  * Created by Piotr on 2018-06-24
- * This class perform select action on graph node when node is clicked.
  */
 class GraphSelectAction implements MouseClickAction {
 	
@@ -29,8 +30,8 @@ class GraphSelectAction implements MouseClickAction {
 	}
 	
 	/**
-	 * Performs select action on graph node.
-	 * It will add select circle to selected node and remove selection from previous node.
+	 * Performs select action on graph node. <br>
+	 * It will add select circle to selected node and remove selection from previous node. <br>
 	 * Also it will initialize/update arcs tab with displays additional information related with node.
 	 * @param node with is clicked
 	 */
@@ -57,8 +58,8 @@ class GraphSelectAction implements MouseClickAction {
 	}
 	
 	/**
-	 * Show arcs tab and fill it with information from graph node.
-	 * It will create tab if it not exists and initialize all needed events.
+	 * Show arcs tab and fill it with information from graph node. <br>
+	 * It will create tab if it not exists and initialize all needed events. <br>
 	 * If tab already exists, it will update tab with new data.
 	 * @param node with will be used in arcs tab
 	 */

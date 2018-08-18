@@ -1,11 +1,12 @@
 package pl.jowko.rulerank.desktop.feature.internationalization;
 
 /**
+ * This class contains constants values for internationalization. <br>
+ * They are used in application to display labels using LanguageService <br>
+ * This codes are saved in labels.json file and later read into map of labels. <br>
+ * Config data are saved in file-generator project. <br>
+ *  <br>
  * Created by Piotr on 2018-03-16.
- * This class contains constants values for internationalization.
- * They are used in application to display labels using LanguageService
- * This codes are saved in labels.json file and later read into map of labels.
- * Config data are saved in file-generator project.
  * @see LanguageService
  */
 public class Labels {

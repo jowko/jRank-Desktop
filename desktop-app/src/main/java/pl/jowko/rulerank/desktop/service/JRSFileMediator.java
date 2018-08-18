@@ -17,9 +17,10 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 /**
+ * This class serves as mediator between jRS files and application.<br>
+ * It loads and save files used in java Rough Set library.<br>
+ * <br>
  * Created by Piotr on 2018-05-16.
- * This class serves as mediator between jRS files and application.
- * It loads and save files used in java Rough Set library.
  */
 public class JRSFileMediator {
 	

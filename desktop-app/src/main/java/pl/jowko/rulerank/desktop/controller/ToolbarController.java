@@ -22,8 +22,9 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
 
 /**
+ * Controller for toolbar in main window. It handles toolbar actions.<br>
+ * <br>
  * Created by Piotr on 2018-04-09.
- * Controller for toolbar in main window. It handles toolbar actions.
  */
 public class ToolbarController {
 	
@@ -41,7 +42,7 @@ public class ToolbarController {
 	}
 	
 	/**
-	 * This action refresh all workspace tree.
+	 * This action refresh all workspace tree. <br>
 	 * It will display any changes in directories structure.
 	 */
 	public void refreshAction() {
@@ -54,8 +55,8 @@ public class ToolbarController {
 	}
 	
 	/**
-	 * Creates new experiment.
-	 * User chooses new catalog(or creates one) and properties and isf file will be created in this catalog.
+	 * Creates new experiment. <br>
+	 * User chooses new catalog(or creates one) and properties and isf file will be created in this catalog. <br>
 	 * Also workspace tree will be refreshed.
 	 * @throws IOException when something goes wrong with file reading
 	 * @throws ContainerFailureException when something goes wrong with creating example MemoryContainer

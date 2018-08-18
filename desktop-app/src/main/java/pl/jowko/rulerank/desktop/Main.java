@@ -26,10 +26,11 @@ import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MIN_WIDTH
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * Main class with contains static main method and extends JavaFX Application class.<br>
+ * It reads all configuration files before UI start.<br>
+ * If some files from configuration are not available or corrupted, UI application doesn't start and application closes with error.<br>
+ * <br>
  * Created by Piotr on 2018-03-16.
- * Main class with contains static main method and extends JavaFX Application class.
- * It reads all configuration files before UI start.
- * If some files from configuration are not available or corrupted, UI application doesn't start and application closes with error.
  * @see Application
  * @see ConfigurationInitializer
  * @see ConfigurationException
@@ -43,9 +44,9 @@ public class Main extends Application {
 	private LanguageService labels;
 	
 	/**
-	 * This method is started by JavaFX thread to build UI application.
-	 * Methods is called after successful validation of configuration files.
-	 * It creates root element and add css file to it.
+	 * This method is started by JavaFX thread to build UI application. <br>
+	 * Methods is called after successful validation of configuration files. <br>
+	 * It creates root element and add css file to it. <br>
 	 * It also configures main window and show it.
 	 * @param primaryStage on with UI will be build, provided by JavaFX
 	 * @throws IOException when something goes wrong with reading fxml files.
@@ -74,8 +75,8 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * Checks, if config files are valid.
-	 * If they are valid, applications start UI thread.
+	 * Checks, if config files are valid. <br>
+	 * If they are valid, applications start UI thread. <br>
 	 * If not, application closes displaying errors.
 	 * @see ConfigurationInitializer
 	 * @see ConfigurationException
@@ -97,8 +98,8 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * Gets scene associated with root window.
-	 * Some say, that it is a good practice to attach DialogPane to some window.
+	 * Gets scene associated with root window. <br>
+	 * Some say, that it is a good practice to attach DialogPane to some window. <br>
 	 * This methods provides Scene object for such case.
 	 * @return Scene from main window
 	 */
@@ -114,7 +115,7 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * Close application properly.
+	 * Close application properly. <br>
 	 * It will fire onCloseRequest with will close application.
 	 */
 	public static void closeApplication() {
@@ -127,10 +128,10 @@ public class Main extends Application {
 	}
 	
 	/**
-	 * Initialize handler for onCloseRequest event.
-	 * It will check if any tabs were edited.
-	 * If at least one tab was edited, applications ask for confirmation to close app.
-	 * If user confirms close action or no tabs were edited, application will be closed.
+	 * Initialize handler for onCloseRequest event. <br>
+	 * It will check if any tabs were edited. <br>
+	 * If at least one tab was edited, applications ask for confirmation to close app. <br>
+	 * If user confirms close action or no tabs were edited, application will be closed. <br>
 	 * If user didn't confirmed close action, nothing happens.
 	 * @see TabEditionChecker
 	 */

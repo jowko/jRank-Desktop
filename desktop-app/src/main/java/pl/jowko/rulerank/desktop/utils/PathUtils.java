@@ -7,15 +7,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
+ * This class contains helper method for path processing.<br>
+ * <br>
  * Created by Piotr on 2018-08-12
- * This class contains helper method for path processing.
  */
 public class PathUtils {
 	
 	private PathUtils() {}
 	
 	/**
-	 * This method converts provided path to absolute path and returns it subdirectory.
+	 * This method converts provided path to absolute path and returns it subdirectory. <br>
 	 * If provided path is already absolute, it will be returned with subdirectory.
 	 * @param directory with will be converted to absolute path
 	 * @return absolute path to subdirectory for provided path
@@ -38,8 +39,8 @@ public class PathUtils {
 	}
 	
 	/**
-	 * Gets absolute file path in provided experiment.
-	 * If provided filePath is absolute, it is returned as result.
+	 * Gets absolute file path in provided experiment. <br>
+	 * If provided filePath is absolute, it is returned as result. <br>
 	 * If path is relative, it is assumed, that file should be in experiment directory or subdirectory.
 	 * @param experimentPath with should be absolute
 	 * @param filePath with can be absolute or relative
