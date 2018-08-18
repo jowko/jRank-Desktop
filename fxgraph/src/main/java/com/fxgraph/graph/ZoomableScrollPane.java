@@ -10,7 +10,7 @@ import javafx.scene.transform.Scale;
 /**
  * This code was copied from StackOverflow:
  * https://stackoverflow.com/a/30696075/8906826
- *
+ *<br>
  * This class enables zoom on ScrollPane.
  */
 public class ZoomableScrollPane extends ScrollPane {

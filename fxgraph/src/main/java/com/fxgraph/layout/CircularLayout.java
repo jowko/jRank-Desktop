@@ -6,8 +6,8 @@ import com.fxgraph.graph.Graph;
 import java.util.List;
 
 /**
+ * This layout draws all nodes in one circle.<br>
  * Created by Piotr on 2018-06-06
- * This layout draws all nodes in one circle.
  */
 public class CircularLayout extends Layout {
 	
