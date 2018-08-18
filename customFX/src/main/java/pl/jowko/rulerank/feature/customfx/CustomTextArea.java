@@ -7,10 +7,12 @@ import java.util.regex.Pattern;
 import static java.util.Objects.isNull;
 
 /**
+ * This class provides base for custom text area fields.<br>
+ * It allows to type only specific characters by using pattern.<br>
+ * It is very similar to CustomTextField class.<br>
+ *<br>
  * Created by Piotr on 2018-05-13.
- * This class provides base for custom text area fields.
- * It allows to type only specific characters by using pattern.
- * It is very similar to CustomTextField class.
+ *
  * @see CustomTextField
  */
 public class CustomTextArea extends TextArea {

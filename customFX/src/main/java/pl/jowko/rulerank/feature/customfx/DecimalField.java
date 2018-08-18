@@ -1,9 +1,11 @@
 package pl.jowko.rulerank.feature.customfx;
 
 /**
+ * This TextField accepts decimal numbers on input.<br>
+ * By default, this fields have char limit of 10 000 characters.<br>
+ *<br>
  * Created by Piotr on 2018-05-06.
- * This TextField accepts decimal numbers on input.
- * By default, this fields have char limit of 10 000 characters.
+ *
  * @see CustomTextField
  */
 public class DecimalField extends CustomTextField {

@@ -1,9 +1,11 @@
 package pl.jowko.rulerank.feature.customfx;
 
 /**
- * Created by Piotr on 2018-05-13.
- * This TextField accepts all characters with matches with provided pattern.
- * By default, this fields have char limit of 10 000 characters.
+ * This TextField accepts all characters with matches with provided pattern.<br>
+ * By default, this fields have char limit of 10 000 characters.<br>
+ *<br>
+ * Created by Piotr on 2018-05-13.<br>
+ *
  * @see CustomTextField
  */
 public class StringTextField extends CustomTextField {
