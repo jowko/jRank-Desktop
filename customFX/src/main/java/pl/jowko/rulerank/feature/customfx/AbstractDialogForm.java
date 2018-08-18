@@ -7,8 +7,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
+ * This class provides functionality common for all Dialog form windows.<br>
  * Created by Piotr on 2018-05-28
- * This class provides functionality common for all Dialog form windows.
  */
 public abstract class AbstractDialogForm {
 	

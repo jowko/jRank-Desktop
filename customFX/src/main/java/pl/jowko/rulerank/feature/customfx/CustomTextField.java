@@ -7,11 +7,13 @@ import java.util.regex.Pattern;
 import static java.util.Objects.isNull;
 
 /**
+ * This class provides base for custom text fields.<br>
+ * It allows to set maximum char limit for TextField.<br>
+ * It also allows to type only specific characters by using pattern.<br>
+ * It is very similar to CustomTextArea class<br>
+ *<br>
  * Created by Piotr on 2018-05-09.
- * This class provides base for custom text fields.
- * It allows to set maximum char limit for TextField.
- * It also allows to type only specific characters by using pattern.
- * It is very similar to CustomTextArea class
+ *
  * @see CustomTextArea
  */
 public class CustomTextField extends TextField {
