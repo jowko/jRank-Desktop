@@ -5,8 +5,9 @@ import java.util.regex.Pattern;
 import static java.util.Objects.isNull;
 
 /**
+ * This class helps to extract file extensions from file path.<br>
+ * <br>
  * Created by Piotr on 2018-05-26
- * This class helps to extract file extensions from file path.
  */
 public class FileExtensionExtractor {
 	
@@ -19,7 +20,7 @@ public class FileExtensionExtractor {
 	private FileExtensionExtractor() {}
 	
 	/**
-	 * This method splits provided file path to base and extension.
+	 * This method splits provided file path to base and extension. <br>
 	 * If filePath doesn't contains extension, null will be returned.
 	 * @param filePath to split
 	 * @return file extension
@@ -41,7 +42,7 @@ public class FileExtensionExtractor {
 	}
 	
 	/**
-	 * This method splits provided file name to base and extension.
+	 * This method splits provided file name to base and extension. <br>
 	 * Base file name will be returned.
 	 * @param fileName to split
 	 * @return base file name

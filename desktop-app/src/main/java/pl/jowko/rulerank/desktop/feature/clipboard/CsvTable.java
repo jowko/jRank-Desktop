@@ -5,9 +5,10 @@ import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
 import java.util.List;
 
 /**
+ * This class represents CSV table. <br>
+ * It contains list of rows, with each has list of cells. <br>
+ *  <br>
  * Created by Piotr on 2018-05-27
- * This class represents CSV table.
- * It contains list of rows, with each has list of cells.
  */
 public class CsvTable {
 	
@@ -22,7 +23,7 @@ public class CsvTable {
 	}
 	
 	/**
-	 * Convert CSV table to string value.
+	 * Convert CSV table to string value. <br>
 	 * It will return table containing all rows, in with each cell is separated by separator.
 	 */
 	@Override

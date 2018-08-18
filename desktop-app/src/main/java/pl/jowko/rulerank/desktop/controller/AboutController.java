@@ -15,8 +15,9 @@ import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.service.RuleRankInfoService;
 
 /**
+ * Controller for about dialog with contains author and version information about application.<br>
+ * <br>
  * Created by Piotr on 2018-04-10.
- * Controller for about dialog with contains author and version information about application.
  * @see RuleRankInfo
  */
 public class AboutController {

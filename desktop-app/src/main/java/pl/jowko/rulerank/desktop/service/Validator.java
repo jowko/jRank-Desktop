@@ -4,9 +4,10 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 
 /**
+ * This class serves as base for all validators in ruleRank application.<br>
+ * It provides some utility methods and StringBuilder for errors.<br>
+ * <br>
  * Created by Piotr on 2018-05-27
- * This class serves as base for all validators in ruleRank application.
- * It provides some utility methods and StringBuilder for errors.
  */
 public abstract class Validator {
 	

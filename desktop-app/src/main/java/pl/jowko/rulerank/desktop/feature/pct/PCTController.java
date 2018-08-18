@@ -19,8 +19,9 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.feature.clipboard.CsvTableCreator.createTable;
 
 /**
+ * Controller for Partial Comparision Table(PCT) <br>
+ *  <br>
  * Created by Piotr on 2018-05-28
- * Controller for Partial Comparision Table(PCT)
  */
 public class PCTController {
 	
@@ -30,7 +31,7 @@ public class PCTController {
 	private LanguageService labels;
 	
 	/**
-	 * Initialize Partial Comparision Table(PCT).
+	 * Initialize Partial Comparision Table(PCT). <br>
 	 * If will convert provided MemoryContainer to Learning table and initialize UI table.
 	 * @param isfTable with will be displayed on UI table
 	 */
@@ -64,7 +65,7 @@ public class PCTController {
 	}
 	
 	/**
-	 * Copy selected rows action.
+	 * Copy selected rows action. <br>
 	 * This action will copy to user clipboard all selected rows in csv format.
 	 * @see CsvTableCreator
 	 */
@@ -78,8 +79,8 @@ public class PCTController {
 	}
 	
 	/**
-	 * Gets list of selected items(list of fields) and converts each item to list of string containing cell values.
-	 * It will return list of list, where each list represents row and each object in nested list represents cell.
+	 * Gets list of selected items(list of fields) and converts each item to list of string containing cell values. <br>
+	 * It will return list of list, where each list represents row and each object in nested list represents cell. <br>
 	 * @return selected items in String list format
 	 */
 	private ObservableList<ObservableList<String>> getSelectedItems() {

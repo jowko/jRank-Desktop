@@ -1,8 +1,9 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
 /**
+ * This class contains data displayed in Arcs tab. <br>
+ *  <br>
  * Created by Piotr on 2018-07-07
- * This class contains data displayed in Arcs tab.
  * @see ArcsTab
  * @see NodeArcsAssembler
  */
@@ -15,7 +16,7 @@ class NodeArcs {
 	private String inSc;
 	
 	/**
-	 * Creates instance of this class.
+	 * Creates instance of this class. <br>
 	 * This class is used to display data in ArcsTab
 	 * @param nodeId with is used in tab header
 	 * @param outS representing outgoing relation S row

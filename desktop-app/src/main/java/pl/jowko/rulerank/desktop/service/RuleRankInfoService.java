@@ -5,6 +5,8 @@ import pl.jowko.rulerank.desktop.feature.settings.RuleRankInfo;
 import static java.util.Objects.isNull;
 
 /**
+ * Service for managing about dialog information.<br>
+ * <br>
  * Created by Piotr on 2018-04-14.
  */
 public class RuleRankInfoService {

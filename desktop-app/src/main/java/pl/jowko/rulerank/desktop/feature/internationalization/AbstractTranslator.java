@@ -1,10 +1,11 @@
 package pl.jowko.rulerank.desktop.feature.internationalization;
 
 /**
+ * This is abstract implementation of Translator interface. <br>
+ * It provides LanguageService and get method to its children. <br>
+ * To use it, simply extend it. <br>
+ *  <br>
  * Created by Piotr on 2018-05-20.
- * This is abstract implementation of Translator interface.
- * It provides LanguageService and get method to its children.
- * To use it, simply extend it.
  */
 public abstract class AbstractTranslator implements Translator {
 	

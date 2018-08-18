@@ -11,9 +11,10 @@ import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 
 /**
+ * Controller for graph visualisation tab. <br>
+ * It will extract data from .graph and .isf file and display it in tab. <br>
+ *  <br>
  * Created by Piotr on 2018-06-06
- * Controller for graph visualisation tab.
- * It will extract data from .graph and .isf file and display it in tab.
  */
 public class GraphController {
 	
@@ -24,7 +25,7 @@ public class GraphController {
 	private Graph graph;
 	
 	/**
-	 * Initialize graph tab.
+	 * Initialize graph tab. <br>
 	 * It will extract nodes and edges from graphFileContent and visualise it on tab.
 	 * @param graphFileContent from .graph file
 	 * @param workspaceItem representing .graph file
@@ -47,8 +48,8 @@ public class GraphController {
 	}
 	
 	/**
-	 * Initializes close event for graph tab.
-	 * If graph tab is closed, arcs tab is also automatically closed.
+	 * Initializes close event for graph tab. <br>
+	 * If graph tab is closed, arcs tab is also automatically closed. <br>
 	 * Force close is called for graphTab, because firing onClosed event will cancel close of graphTab.
 	 * @see UpperTabsController
 	 */

@@ -11,8 +11,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * This class prepares data for arcs tab. <br>
+ *  <br>
  * Created by Piotr on 2018-07-07
- * This class prepares data for arcs tab.
  * @see ArcsTab
  * @see NodeArcs
  */

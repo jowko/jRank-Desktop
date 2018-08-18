@@ -5,9 +5,10 @@ import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import java.io.IOException;
 
 /**
+ * This tab contains information about node arcs in graph. <br>
+ * It is used in lower tabs by graph tab. <br>
+ *  <br>
  * Created by Piotr on 2018-06-24
- * This tab contains information about node arcs in graph.
- * It is used in lower tabs by graph tab.
  */
 class ArcsTab extends RuleRankTab {
 	

@@ -17,8 +17,9 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.PCT_ID;
 
 /**
+ * This class extract data from Learning table and creates columns and items(rows) for PCT table. <br>
+ *  <br>
  * Created by Piotr on 2018-05-28
- * This class extract data from Learning table and creates columns and items(rows) for PCT table.
  * @see PCTController
  */
 class PCTCreator {
@@ -31,7 +32,7 @@ class PCTCreator {
 	private List<ObservableList<Field>> items;
 	
 	/**
-	 * Create instance of this class.
+	 * Create instance of this class. <br>
 	 * It will generate columns and items(rows) containing data extracted from isf table.
 	 * @param isfTable with will be used to create columns and items(rows)
 	 */
@@ -43,8 +44,8 @@ class PCTCreator {
 	}
 	
 	/**
-	 * Gets columns for PCT table.
-	 * Columns have format:
+	 * Gets columns for PCT table. <br>
+	 * Columns have format: <br>
 	 * ID | attributes from MemoryContainer...
 	 * @return list of columns
 	 */
@@ -53,8 +54,8 @@ class PCTCreator {
 	}
 	
 	/**
-	 * Gets items for PCT table.
-	 * Items have format:
+	 * Gets items for PCT table. <br>
+	 * Items have format: <br>
 	 * ID | fields from MemoryContainer...
 	 * @return list of items(rows)
 	 */
@@ -71,7 +72,7 @@ class PCTCreator {
 	}
 	
 	/**
-	 * Creates columns from attributes extracted from MemoryContainer.
+	 * Creates columns from attributes extracted from MemoryContainer. <br>
 	 * First column is ID column, rest represents attributes.
 	 */
 	private void createColumns() {
@@ -117,10 +118,10 @@ class PCTCreator {
 	}
 	
 	/**
-	 * Sets cell value factory for column cell.
-	 * This code is responsible for way in with data is displayed in table.
-	 * It will display S or Sc label for grade column.
-	 * In other cases it will display value from field.
+	 * Sets cell value factory for column cell. <br>
+	 * This code is responsible for way in with data is displayed in table. <br>
+	 * It will display S or Sc label for grade column. <br>
+	 * In other cases it will display value from field. <br>
 	 * @param attribute from with column is created
 	 * @param columnIndex with indicates cell position in example
 	 * @param column with is currently created for provided attribute
@@ -157,7 +158,7 @@ class PCTCreator {
 	}
 	
 	/**
-	 * Create item(row) from provided example.
+	 * Create item(row) from provided example. <br>
 	 * Also creates ID field for first position using rowIndex.
 	 * @param example from with fields are extracted
 	 * @param rowIndex with is used to create ID cell

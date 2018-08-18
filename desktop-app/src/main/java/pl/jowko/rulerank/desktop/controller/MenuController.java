@@ -16,8 +16,9 @@ import java.io.IOException;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COMMON_CSS;
 
 /**
+ * Controller for main menu bar. It handles actions after menu item click.<br>
+ * <br>
  * Created by Piotr on 2018-03-17.
- * Controller for main menu bar. It handles actions after menu item click.
  */
 public class MenuController {
 	
@@ -52,7 +53,7 @@ public class MenuController {
 	}
 	
 	/**
-	 * Displays user settings modal dialog, on with user can edit own settings.
+	 * Displays user settings modal dialog, on with user can edit own settings. <br>
 	 * It loads fxml file and initializes all necessary data
 	 * @throws IOException when something goes wrong
 	 */
@@ -72,7 +73,7 @@ public class MenuController {
 	}
 	
 	/**
-	 * Displays user about modal dialog, with displays information about author and version of app.
+	 * Displays user about modal dialog, with displays information about author and version of app. <br>
 	 * It loads fxml file and initializes all necessary data
 	 * @throws IOException when something goes wrong
 	 */

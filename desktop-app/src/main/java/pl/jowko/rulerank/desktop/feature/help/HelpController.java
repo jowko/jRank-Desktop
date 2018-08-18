@@ -15,8 +15,9 @@ import pl.jowko.rulerank.feature.customfx.SelectableLabel;
 import pl.jowko.rulerank.logger.RuleRankLogger;
 
 /**
+ * This controller manages help dialog. <br>
+ *  <br>
  * Created by Piotr on 2018-08-14
- * This controller manages help dialog.
  */
 public class HelpController extends AbstractDialogForm {
 	
@@ -62,7 +63,7 @@ public class HelpController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Initializes Context menu on page url field.
+	 * Initializes Context menu on page url field. <br>
 	 * It adds Copy action to this field with copies url to user clipboard.
 	 */
 	private void initializePageUrlContextMenu() {

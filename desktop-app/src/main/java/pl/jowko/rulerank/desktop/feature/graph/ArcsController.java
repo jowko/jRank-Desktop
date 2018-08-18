@@ -7,9 +7,10 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
+ * This controller controls information about graphNode in graph in graph tab. <br>
+ * It displays information about graphNode arcs. <br>
+ *  <br>
  * Created by Piotr on 2018-06-24
- * This controller controls information about graphNode in graph in graph tab.
- * It displays information about graphNode arcs.
  */
 public class ArcsController {
 	
