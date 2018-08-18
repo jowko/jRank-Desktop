@@ -20,7 +20,7 @@ import java.util.Objects;
  *
  * If user wants to see Model field value as label, he will choose Model from ComboBox and application sets displayedFieldIndex to 1.
  */
-class FieldItem implements Serializable {
+class FieldItem implements Serializable, Comparable<FieldItem> {
 	
 	private static final long serialVersionUID = -8442666730012290047L;
 	
@@ -68,6 +68,20 @@ class FieldItem implements Serializable {
 	@Override
 	public String toString() {
 		return fields.get(displayedFieldIndex).toString();
+	}
+	
+	/**
+	 * Compares two elements.
+	 * Objects are compared only by id field(first element in list).
+	 * @param o to be compared
+	 * @return 0 if elements are equal, -1 if o is bigger than than this, 1 otherwise
+	 */
+	@Override
+	public int compareTo(FieldItem o) {
+		if(this.equals(o)) {
+			return 0;
+		}
+		return fields.get(0).compareTo(o.fields.get(0));
 	}
 	
 }

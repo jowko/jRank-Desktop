@@ -6,6 +6,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static javafx.collections.FXCollections.observableArrayList;
@@ -294,7 +297,8 @@ public class PropertiesRankingController extends AbstractInformationController {
 	
 	/**
 	 * Removes provided toRemove element from parent element in tree.
-	 * It also restores removed field element in daraView.
+	 * It also restores removed field element in dataView.
+	 * Restored elements are sorted by id field.
 	 * @param parent from with item will be removed
 	 * @param toRemove with will be removed from parent
 	 */
@@ -302,6 +306,9 @@ public class PropertiesRankingController extends AbstractInformationController {
 		parent.getChildren().remove(toRemove);
 		if(not(toRemove.getValue().isRankingNode())) {
 			dataView.getItems().add(toRemove.getValue().getItem());
+			List<FieldItem> sortedList = new LinkedList<>(dataView.getItems().sorted());
+			dataView.getItems().clear();
+			dataView.getItems().addAll(sortedList);
 		}
 	}
 	
