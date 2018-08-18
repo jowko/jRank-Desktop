@@ -15,7 +15,7 @@ import com.fxgraph.graph.Model;
 /**
  * This code was copied from StackOverflow:
  * https://stackoverflow.com/a/30696075/8906826
- *
+ *<br>
  * This class contains class with main method and example graph.
  */
 public class Main extends Application {

@@ -7,6 +7,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
+ * This class allows to draw cell as circle.<br>
  * Created by Piotr on 2018-06-02
  */
 public class CircleCell extends Cell {
