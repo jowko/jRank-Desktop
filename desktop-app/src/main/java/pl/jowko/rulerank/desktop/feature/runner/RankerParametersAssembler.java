@@ -20,9 +20,10 @@ import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
+ * This class creates instance of RankerParameters class. <br>
+ * It will fill it with properties and data from isf tables. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This class creates instance of RankerParameters class.
- * It will fill it with properties and data from isf tables.
  * @see RankerParameters
  * @see pl.poznan.put.cs.idss.jrs.ranking.Ranker
  */
@@ -52,7 +53,7 @@ class RankerParametersAssembler {
 	}
 	
 	/**
-	 * Fills RankerParameters with data.
+	 * Fills RankerParameters with data. <br>
 	 * It will configure ruleRank algorithm settings, learning and test isf table, and pairs or ranking
 	 * @param learningTable containing learning data
 	 * @param testTable containing test data

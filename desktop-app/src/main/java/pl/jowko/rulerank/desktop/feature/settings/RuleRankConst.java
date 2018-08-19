@@ -1,8 +1,9 @@
 package pl.jowko.rulerank.desktop.feature.settings;
 
 /**
+ * This class contains some constants related with application settings. <br>
+ *  <br>
  * Created by Piotr on 2018-03-17.
- * This class contains some constants related with application settings.
  */
 public class RuleRankConst {
 	

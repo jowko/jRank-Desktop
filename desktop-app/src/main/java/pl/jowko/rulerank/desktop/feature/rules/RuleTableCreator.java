@@ -12,9 +12,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * This class creates columns and row items for rule table. <br>
+ * It converts list of rules to table containing decisions and conditions from rules <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This class creates columns and row items for rule table.
- * It converts list of rules to table containing decisions and conditions from rules
  */
 class RuleTableCreator {
 	
@@ -73,23 +74,23 @@ class RuleTableCreator {
 	}
 	
 	/**
-	 * Creates columns for rules table from rules list.
-	 *
-	 * Columns have format:
-	 * ID
-	 * Decision Part 1
-	 * Separator Column
-	 * Decision Part N
-	 * Then column(<=)
-	 * Condition 1
-	 * Separator Column
-	 * Condition M
-	 *
-	 * Where:
-	 * N is maximum number of decision for all provided rules
-	 * M is maximum number of conditions for all provided rules
-	 *
-	 * For each decision and conditions two columns are created.
+	 * Creates columns for rules table from rules list. <br>
+	 * <br>
+	 * Columns have format: <br>
+	 * ID <br>
+	 * Decision Part 1 <br>
+	 * Separator Column <br>
+	 * Decision Part N <br>
+	 * Then column(<=) <br>
+	 * Condition 1 <br>
+	 * Separator Column <br>
+	 * Condition M <br>
+	 * <br>
+	 * Where: <br>
+	 * N is maximum number of decision for all provided rules <br>
+	 * M is maximum number of conditions for all provided rules <br>
+	 * <br>
+	 * For each decision and conditions two columns are created. <br>
 	 */
 	private void createColumns() {
 		columns = new ArrayList<>();
@@ -121,7 +122,7 @@ class RuleTableCreator {
 	}
 	
 	/**
-	 * Create JavaFX read only column for rules table.
+	 * Create JavaFX read only column for rules table. <br>
 	 * When creating column, index for IndexedTableColumn is incremented by 1, because we already created one column(ID), and index starts from 0.
 	 * @param headerText with will be displayed in header
 	 * @param columnIndex from with cell values will be extracted from rows
@@ -140,7 +141,7 @@ class RuleTableCreator {
 	}
 	
 	/**
-	 * Creates ID column with have Integer type.
+	 * Creates ID column with have Integer type. <br>
 	 * Integer type is needed for proper number sorting.
 	 * @return column with integer type for ID
 	 */
@@ -167,7 +168,7 @@ class RuleTableCreator {
 	}
 	
 	/**
-	 * This method create RuleRow item. Most of the code was copied from jMAF application.
+	 * This method create RuleRow item. Most of the code was copied from jMAF application. <br>
 	 * It fills appropriate string values to row cells basing on decision and conditions count.
 	 * @param rule from with row item will be created
 	 * @return RuleRow containing rule and text for all columns in row

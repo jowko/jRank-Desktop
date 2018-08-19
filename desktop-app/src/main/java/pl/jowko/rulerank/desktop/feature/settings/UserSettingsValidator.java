@@ -12,8 +12,9 @@ import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class validates configuration from userSettings.json file and user settings dialog form from settings menu. <br>
+ *  <br>
  * Created by Piotr on 2018-04-18.
- * This class validates configuration from userSettings.json file and user settings dialog form from settings menu.
  * @see UserSettings
  * @see UserSettingsController
  * @see pl.jowko.rulerank.desktop.feature.workspace.WorkspaceController
@@ -51,9 +52,9 @@ public class UserSettingsValidator {
 	}
 	
 	/**
-	 * Validate current configuration to check if its correct.
-	 * Methods checks if provided language code is valid(exists in languages.json file).
-	 * Also checks if provided workspacePath exists.
+	 * Validate current configuration to check if its correct. <br>
+	 * Methods checks if provided language code is valid(exists in languages.json file). <br>
+	 * Also checks if provided workspacePath exists. <br>
 	 * Such problem with configuration can occur, when files were edited manually by user.
 	 * @see WorkspaceService
 	 * @see pl.jowko.rulerank.desktop.feature.workspace.WorkspaceController
@@ -76,7 +77,7 @@ public class UserSettingsValidator {
 	}
 	
 	/**
-	 * Return provided value of "null" text if value is null.
+	 * Return provided value of "null" text if value is null. <br>
 	 * It is used to display error message.
 	 * @param value to transform
 	 * @return value or "null" string

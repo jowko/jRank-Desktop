@@ -13,9 +13,10 @@ import static pl.jowko.rulerank.desktop.feature.rules.RuleConstantsTranslator.ge
 import static pl.jowko.rulerank.desktop.feature.rules.RuleConstantsTranslator.getUsageType;
 
 /**
+ * This is controller for rule statistics. <br>
+ * It shows rule statistics in tab. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This is controller for rule statistics.
- * It shows rule statistics in tab.
  */
 public class StatisticsController {
 	
@@ -68,7 +69,7 @@ public class StatisticsController {
 	}
 	
 	/**
-	 * This methods will display statistics from provided rule to statistics grid in tab.
+	 * This methods will display statistics from provided rule to statistics grid in tab. <br>
 	 * Calling this method more than once will replace values in UI with new from provided rule.
 	 * @param rule from with statistics will be extracted
 	 */
@@ -87,7 +88,7 @@ public class StatisticsController {
 	}
 	
 	/**
-	 * Sets text values for labels in statistics grid.
+	 * Sets text values for labels in statistics grid. <br>
 	 * Also remove error style from support field, because it is only used when statistics are not available.
 	 * @param rule from with statistics will be extracted
 	 */
@@ -125,7 +126,7 @@ public class StatisticsController {
 	}
 	
 	/**
-	 * Retrurns String for provided characteristic decision
+	 * Returns String for provided characteristic decision
 	 */
 	private String translateCharacteristicDecisionClass(String characteristicDecision) {
 		if("-1.0".equals(characteristicDecision))
@@ -136,7 +137,7 @@ public class StatisticsController {
 	}
 	
 	/**
-	 * Sets information on statistics tab, that statistics for provided rule are not available.
+	 * Sets information on statistics tab, that statistics for provided rule are not available. <br>
 	 * Also clears all fields on GridPane.
 	 */
 	private void setStatisticsUnavailable() {

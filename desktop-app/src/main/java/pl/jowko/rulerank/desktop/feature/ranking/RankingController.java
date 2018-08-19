@@ -22,9 +22,10 @@ import static pl.jowko.rulerank.desktop.feature.clipboard.CsvTableCreator.create
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * Controller for ranking tab and table. <br>
+ * It creates table from provided ranking and MemoryContainer. <br>
+ *  <br>
  * Created by Piotr on 2018-05-22.
- * Controller for ranking tab and table.
- * It creates table from provided ranking and MemoryContainer.
  */
 public class RankingController {
 	
@@ -50,7 +51,7 @@ public class RankingController {
 	}
 	
 	/**
-	 * If table contains unknown fields, it means that ranking is not up to date with learning table.
+	 * If table contains unknown fields, it means that ranking is not up to date with learning table. <br>
 	 * To generate ranking, all non decision fields in ranking should be known.
 	 */
 	private void checkIfTableHasUnknownFields(LearningTable table) throws TabInitializationException {
@@ -76,7 +77,7 @@ public class RankingController {
 	}
 	
 	/**
-	 * Copy selected rows action.
+	 * Copy selected rows action. <br>
 	 * This action will copy to user clipboard all selected rows in csv format.
 	 * @see CsvTableCreator
 	 */
@@ -90,7 +91,7 @@ public class RankingController {
 	}
 	
 	/**
-	 * Gets list of selected items(RankingRow) and converts each RankingRow to list of string containing cell values.
+	 * Gets list of selected items(RankingRow) and converts each RankingRow to list of string containing cell values. <br>
 	 * It will return list of list, where each list represents row and each object in nested list represents cell.
 	 * @return selected RankingRow objects flattened to string list
 	 */

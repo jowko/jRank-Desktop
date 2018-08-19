@@ -10,9 +10,10 @@ import pl.jowko.rulerank.desktop.service.DialogsService;
 import java.util.Optional;
 
 /**
+ * This class creates dialog where user can chose information source for experiment. <br>
+ * He will be asked, if we configured more than one information source. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This class creates dialog where user can chose information source for experiment.
- * He will be asked, if we configured more than one information source.
  * @see ExperimentRunnerValidator
  */
 class ExperimentRunnerDialog {
@@ -28,8 +29,8 @@ class ExperimentRunnerDialog {
 	private int chosenOption;
 	
 	/**
-	 * Creates instance of this class.
-	 * Each param flag indicates what information source user configured.
+	 * Creates instance of this class. <br>
+	 * Each param flag indicates what information source user configured. <br>
 	 * All three options can be true at once.
 	 * @param isRanking indicates that user configured ranking
 	 * @param isPairs indicates that user configured pairs

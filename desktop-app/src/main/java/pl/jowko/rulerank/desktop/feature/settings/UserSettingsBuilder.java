@@ -1,8 +1,9 @@
 package pl.jowko.rulerank.desktop.feature.settings;
 
 /**
+ * Builder for UserSettings class. <br>
+ *  <br>
  * Created by Piotr on 2018-05-11.
- * Builder for UserSettings class.
  * @see UserSettings
  */
 public class UserSettingsBuilder {
@@ -51,8 +52,8 @@ public class UserSettingsBuilder {
 	}
 	
 	/**
-	 * Creates UserSettings from data set in builder.
-	 * All options are optional.
+	 * Creates UserSettings from data set in builder. <br>
+	 * All options are optional. <br>
 	 * This method should be called as last in creation of UserSettings using this builder.
 	 * @see UserSettings
 	 * @return UserSettings instance with data provided to builder.

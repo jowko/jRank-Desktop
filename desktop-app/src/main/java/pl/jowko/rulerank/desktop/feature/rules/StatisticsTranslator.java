@@ -4,8 +4,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.AbstractTranslator
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 
 /**
+ * This class translates labels on rule statistics screen. <br>
+ *  <br>
  * Created by Piotr on 2018-05-22.
- * This class translates labels on rule statistics screen.
  */
 class StatisticsTranslator extends AbstractTranslator {
 	

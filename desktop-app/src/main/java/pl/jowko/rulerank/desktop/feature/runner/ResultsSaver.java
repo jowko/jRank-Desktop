@@ -19,8 +19,9 @@ import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFil
 import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.EXHAUSTIVE_SET_OF_RULES;
 
 /**
+ * This class saves results from experiment. <br>
+ *  <br>
  * Created by Piotr on 2018-06-05
- * This class saves results from experiment.
  */
 class ResultsSaver {
 	
@@ -40,8 +41,8 @@ class ResultsSaver {
 	}
 	
 	/**
-	 * Saves all experiment files from RankerResults object.
-	 * Files path and other options are extracted from RuleRankProperties.
+	 * Saves all experiment files from RankerResults object. <br>
+	 * Files path and other options are extracted from RuleRankProperties. <br>
 	 * All files will be saved in experimentPath.
 	 */
 	void save() {
@@ -73,8 +74,8 @@ class ResultsSaver {
 	}
 	
 	/**
-	 * Saves rule file.
-	 * If exhaustive set of rules were chosen, .no-rules file with be generated instead of .rules.
+	 * Saves rule file. <br>
+	 * If exhaustive set of rules were chosen, .no-rules file with be generated instead of .rules. <br>
 	 * Also, old .rules and .no-rules file will be deleted.
 	 */
 	private void saveRulesFile() {
@@ -98,7 +99,7 @@ class ResultsSaver {
 	}
 	
 	/**
-	 * This method handles situation, when exhaustive set was chosen.
+	 * This method handles situation, when exhaustive set was chosen. <br>
 	 * .rule file will be deleted if exists and .no-rules file will be generated.
 	 * @param filePath
 	 * @param relativePath

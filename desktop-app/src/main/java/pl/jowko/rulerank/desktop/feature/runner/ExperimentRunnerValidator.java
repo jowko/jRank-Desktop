@@ -30,9 +30,10 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 import static pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainerDecisionsManager.getFirstDecisionAttributeIndex;
 
 /**
+ * This class validates properties before running ruleRank experiment. <br>
+ * It also reads learning memory container. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This class validates properties before running ruleRank experiment.
- * It also reads learning memory container.
  */
 class ExperimentRunnerValidator {
 	
@@ -59,7 +60,7 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * Checks, if provided properties are valid.
+	 * Checks, if provided properties are valid. <br>
 	 * It will validate properties, learning and test data table and check if any files will be overridden.
 	 * @return true if all files are valid
 	 */
@@ -135,8 +136,8 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * This method checks, what sources of information user configured.
-	 * If used configured more than one source of information,
+	 * This method checks, what sources of information user configured. <br>
+	 * If used configured more than one source of information, <br>
 	 * he will be asked to chose on of them.
 	 * @see ExperimentRunnerDialog
 	 */
@@ -167,7 +168,7 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * This method was copied from RuleRank console application.
+	 * This method was copied from RuleRank console application. <br>
 	 * It will calculate ranking using decision attribute.
 	 */
 	private void calculateAndSetReferenceRanking() {
@@ -217,7 +218,7 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * Checks if file with provided path exists.
+	 * Checks if file with provided path exists. <br>
 	 * If file exists, its file name will be returned.
 	 * @param fileName of file to check
 	 */
