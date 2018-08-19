@@ -287,6 +287,9 @@ public class Labels {
 	public static final String PROP_INFO_REMOVE_BUTTON = "PROP_INFO_REMOVE_BUTTON";
 	public static final String PROP_INFO_SAVE_BUTTON = "PROP_INFO_SAVE_BUTTON";
 	public static final String PROP_INFO_CANCEL_BUTTON = "PROP_INFO_CANCEL_BUTTON";
+	public static final String PROP_INFO_ADD_S_MENU = "PROP_INFO_ADD_S_MENU";
+	public static final String PROP_INFO_ADD_SC_MENU = "PROP_INFO_ADD_SC_MENU";
+	public static final String PROP_INFO_REMOVE_MENU = "PROP_INFO_REMOVE_MENU";
 	
 	public static final String PROP_INFO_RANKING = "PROP_INFO_RANKING";
 	public static final String PROP_INFO_RANK = "PROP_INFO_RANK";

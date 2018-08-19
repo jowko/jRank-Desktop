@@ -403,6 +403,9 @@ class StubSettings {
 		language.put(Labels.PROP_INFO_REMOVE_BUTTON, "Remove selected");
 		language.put(Labels.PROP_INFO_SAVE_BUTTON, "Save");
 		language.put(Labels.PROP_INFO_CANCEL_BUTTON, "Cancel");
+		language.put(Labels.PROP_INFO_ADD_S_MENU, "Add S");
+		language.put(Labels.PROP_INFO_ADD_SC_MENU, "Add Sc");
+		language.put(Labels.PROP_INFO_REMOVE_MENU, "Remove");
 		
 		language.put(Labels.PROP_INFO_RANKING, "Ranking");
 		language.put(Labels.PROP_INFO_RANK, "Rank ");

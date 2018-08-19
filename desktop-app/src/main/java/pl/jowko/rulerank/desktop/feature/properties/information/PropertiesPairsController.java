@@ -61,6 +61,7 @@ public class PropertiesPairsController extends AbstractInformationController {
 		secondListView.getItems().addAll(fieldItems);
 		pairsListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		readPreviousPairs();
+		initializeContextMenus();
 		initializeKeyBoardActions();
 		translatePairFields();
 	}
@@ -132,6 +133,46 @@ public class PropertiesPairsController extends AbstractInformationController {
 				return;
 			}
 		});
+	}
+	
+	/**
+	 * Initializes context menus for all list views
+	 */
+	private void initializeContextMenus() {
+		initializeMenuForListView();
+		initializeMenuForPairsListView();
+	}
+	
+	/**
+	 * Creates context menu for first and second list view. <br>
+	 * It will create Add S and Sc MenuItems with work in same way like buttons.
+	 */
+	private void initializeMenuForListView() {
+		MenuItem sItem = new MenuItem(labels.get(Labels.PROP_INFO_ADD_S_MENU));
+		sItem.setOnAction(event ->
+			addSAction()
+		);
+		
+		MenuItem scItem = new MenuItem(labels.get(Labels.PROP_INFO_ADD_SC_MENU));
+		scItem.setOnAction(event ->
+				addScAction()
+		);
+		
+		ContextMenu menu = new ContextMenu(sItem, scItem);
+		firstListView.setContextMenu(menu);
+		secondListView.setContextMenu(menu);
+	}
+	
+	/**
+	 * Creates context menu for pairs list view. <br>
+	 * It will create delete item action.
+	 */
+	private void initializeMenuForPairsListView() {
+		MenuItem deleteItem = new MenuItem(labels.get(Labels.PROP_INFO_REMOVE_MENU));
+		deleteItem.setOnAction(event ->
+				removeSelectedAction()
+		);
+		pairsListView.setContextMenu(new ContextMenu(deleteItem));
 	}
 	
 	/**
