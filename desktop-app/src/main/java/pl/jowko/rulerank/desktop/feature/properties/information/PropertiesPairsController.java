@@ -111,6 +111,7 @@ public class PropertiesPairsController extends AbstractInformationController {
 	 * It ignores all whitespaces, because it doesn't matter how many whitespaces were typed.
 	 * @return true if user wish to keep changes, false otherwise
 	 */
+	@Override
 	protected boolean isUserWishToKeepChanges() {
 		String newValue = convertPairsToText().replace(" ", "");
 		String oldValue = result.get().replace(" ", "");
@@ -184,13 +185,13 @@ public class PropertiesPairsController extends AbstractInformationController {
 		FieldItem leftItem = firstListView.getSelectionModel().getSelectedItem();
 		FieldItem rightItem = secondListView.getSelectionModel().getSelectedItem();
 		
-		if(isSc && leftItem.equals(rightItem)) {
-			RuleRankLogger.warn("Object cannot outrank itself. Aborting action.");
+		if(isNull(leftItem) || isNull(rightItem)) {
+			RuleRankLogger.warn("Select items from both sides first.");
 			return;
 		}
 		
-		if(isNull(leftItem) || isNull(rightItem)) {
-			RuleRankLogger.warn("Select items from both sides first.");
+		if(isSc && leftItem.equals(rightItem)) {
+			RuleRankLogger.warn("Object cannot outrank itself. Aborting action.");
 			return;
 		}
 		
