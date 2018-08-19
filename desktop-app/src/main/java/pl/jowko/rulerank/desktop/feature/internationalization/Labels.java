@@ -291,8 +291,8 @@ public class Labels {
 	public static final String PROP_INFO_RANKING = "PROP_INFO_RANKING";
 	public static final String PROP_INFO_RANK = "PROP_INFO_RANK";
 	public static final String PROP_INFO_REMOVE = "PROP_INFO_REMOVE";
-	public static final String PROP_INFO_ADD_BEGIN = "PROP_INFO_ADD_BEGIN";
-	public static final String PROP_INFO_ADD_END = "PROP_INFO_ADD_END";
+	public static final String PROP_INFO_ADD_ABOVE = "PROP_INFO_ADD_ABOVE";
+	public static final String PROP_INFO_ADD_BELOW = "PROP_INFO_ADD_BELOW";
 	public static final String PROP_INFO_RANKING_PARSE_EXCEPTION = "PROP_INFO_RANKING_PARSE_EXCEPTION";
 	public static final String PROP_INFO_DISPLAY_LABEL = "PROP_INFO_DISPLAY_LABEL";
 	public static final String PROP_INFO_R_SAVE_BUTTON = "PROP_INFO_R_SAVE_BUTTON";

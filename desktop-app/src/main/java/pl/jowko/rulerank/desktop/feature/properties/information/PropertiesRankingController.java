@@ -239,22 +239,22 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Initializes ContextMenu for ranking tree.
-	 * 3 actions are added:
-	 * - Remove selected - remove selected item from tree
-	 * - Add begin - add new rank node on begin of tree
-	 * - Add end - add new rank node at the end of tree
+	 * Initializes ContextMenu for ranking tree. <br>
+	 * 3 actions are added: <br>
+	 * - Remove selected - remove selected item from tree <br>
+	 * - Add above - add new rank node above selected rank <br>
+	 * - Add below - add new rank node below selected rank
 	 */
 	private void initializeContextMenu() {
 		ContextMenu menu = new ContextMenu();
 		menu.getItems().add(createRemoveMenu());
-		menu.getItems().add(createAddBeginMenu());
-		menu.getItems().add(createAddEndMenu());
+		menu.getItems().add(createAddAboveMenuItem());
+		menu.getItems().add(createAddBelowMenuItem());
 		rankingTree.setContextMenu(menu);
 	}
 	
 	/**
-	 * Creates remove selected menu item.
+	 * Creates remove selected menu item. <br>
 	 * This item will remove node with all its children.
 	 * @return menu item for remove selected action
 	 */
@@ -267,32 +267,53 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Creates add rank at the begin action.
-	 * It will ad new Rank node as first element in root children and recalculate rank labels
+	 * Creates add rank above menu item for selected node. <br>
+	 * It will also recalculate rank positions.
 	 * @return menu item for add begin action
 	 */
-	private MenuItem createAddBeginMenu() {
-		MenuItem item = new MenuItem(labels.get(Labels.PROP_INFO_ADD_BEGIN));
-		item.setOnAction(event -> {
-			var rankingItem = createRankingNode();
-			rankingTree.getRoot().getChildren().add(0, rankingItem);
-			recalculateRankingPosition();
-		});
+	private MenuItem createAddAboveMenuItem() {
+		MenuItem item = new MenuItem(labels.get(Labels.PROP_INFO_ADD_ABOVE));
+		item.setOnAction(event ->
+			addNewRanking(false)
+		);
 		return item;
 	}
 	
 	/**
-	 * Creates add rank at the end action.
-	 * It will add new Rank node as last element in root children.
+	 * Creates add rank below menu item for selected node. <br>
+	 * It will also recalculate rank positions.
 	 * @return menu item for add end action
 	 */
-	private MenuItem createAddEndMenu() {
-		MenuItem item = new MenuItem(labels.get(Labels.PROP_INFO_ADD_END));
-		item.setOnAction(event -> {
-			var rankingItem = createRankingNode();
-			rankingTree.getRoot().getChildren().add(rankingItem);
-		});
+	private MenuItem createAddBelowMenuItem() {
+		MenuItem item = new MenuItem(labels.get(Labels.PROP_INFO_ADD_BELOW));
+		item.setOnAction(event ->
+			addNewRanking(true)
+		);
 		return item;
+	}
+	
+	/**
+	 * Add new rank position to ranking tree below or above selected item. <br>
+	 * It will extract selected item and index of it. <br>
+	 * After this it will place new item below or above selected item. <br>
+	 * @param isAddBelow indicates if new rank should be added below or above selected rank
+	 */
+	private void addNewRanking(boolean isAddBelow) {
+		var selectedItem = rankingTree.getSelectionModel().getSelectedItem();
+		int level = rankingTree.getTreeItemLevel(selectedItem);
+		
+		if(level == 2) {
+			selectedItem = selectedItem.getParent();
+		}
+		
+		var rootItem = rankingTree.getRoot();
+		int index = rootItem.getChildren().indexOf(selectedItem);
+		if(isAddBelow) {
+			index++;
+		}
+		
+		rootItem.getChildren().add(index, createRankingNode());
+		recalculateRankingPosition();
 	}
 	
 	/**
