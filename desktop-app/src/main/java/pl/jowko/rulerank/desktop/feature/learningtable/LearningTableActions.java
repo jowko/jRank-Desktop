@@ -32,8 +32,9 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class contains different actions for Learning data table. <br>
+ *  <br>
  * Created by Piotr on 2018-05-19.
- * This class contains different actions for Learning data table.
  */
 public class LearningTableActions {
 	
@@ -78,7 +79,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Creates new column in learning table and adds new field to all examples.
+	 * Creates new column in learning table and adds new field to all examples. <br>
 	 * All added fields are of type unknown.
 	 * @param attribute to save
 	 */
@@ -93,7 +94,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Creates new column from provided attribute.
+	 * Creates new column from provided attribute. <br>
 	 * It also fixes bug with removing row with is currently in edition by adding null check onEditCommit listener
 	 * @param attribute from with new column will be created
 	 */
@@ -118,11 +119,10 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Creates ID column.
+	 * Creates ID column. <br>
 	 * It will add special column with row number with is not editable.
 	 */
 	void createIdColumn() {
-		LanguageService labels = LanguageService.getInstance();
 		Attribute idColumn = new Attribute(ATTRIBUTE_ID_SECRET_NAME, new CardinalFieldWrapper());
 		AttributeTableColumn column = new AttributeTableColumn(idColumn, 0);
 		column.setMinWidth(50);
@@ -136,7 +136,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Adds new example to table.
+	 * Adds new example to table. <br>
 	 * This method creates row of fields with default values.
 	 */
 	void addExampleAction() {
@@ -149,7 +149,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Removes all selected examples(rows) from learning table.
+	 * Removes all selected examples(rows) from learning table. <br>
 	 * If no rows were selected, logs information about it and returns.
 	 */
 	void removeSelectedExamplesAction() {
@@ -164,7 +164,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Shows customize attributes dialog(AttributeDialogController).
+	 * Shows customize attributes dialog(AttributeDialogController). <br>
 	 * This method loads fxml resource and pass it to the controller.
 	 */
 	void customizeAttributes() {
@@ -185,7 +185,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Show add new attribute dialog.
+	 * Show add new attribute dialog. <br>
 	 * This method loads fxml resource and pass it to the controller.
 	 */
 	void addNewAttribute() {
@@ -200,10 +200,10 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Copies all selected rows(items) to user clipboard.
-	 * It will put columns headers on first row and items on next rows.
-	 * It needs to know original indexes of columns with is calculated here.
-	 * JavaFX in case of reorder, only reorders columns in table.
+	 * Copies all selected rows(items) to user clipboard. <br>
+	 * It will put columns headers on first row and items on next rows. <br>
+	 * It needs to know original indexes of columns with is calculated here. <br>
+	 * JavaFX in case of reorder, only reorders columns in table. <br>
 	 * Item positions are not changing.
 	 * @see CsvTableCreator
 	 */
@@ -263,7 +263,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Replace old attribute with new one.
+	 * Replace old attribute with new one. <br>
 	 * This method replaces attribute both in model and in UI table.
 	 * @param oldAttribute to replace
 	 * @param editedAttribute as replacement
@@ -286,7 +286,7 @@ public class LearningTableActions {
 	}
 	
 	/**
-	 * Sets css styles for column headers.
+	 * Sets css styles for column headers. <br>
 	 * If field is not active, all css styles from column are removed to avoid overwriting not active style properties
 	 */
 	private void setCssStyleForColumn(AttributeTableColumn tableColumn) {

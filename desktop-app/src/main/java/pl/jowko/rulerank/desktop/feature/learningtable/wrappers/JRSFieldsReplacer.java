@@ -7,17 +7,18 @@ import static pl.jowko.rulerank.desktop.feature.learningtable.wrappers.EnumField
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class replaces jRS fields using wrapper fields. <br>
+ * It also allows to revert this action. <br>
+ * Wrappers are needed to fix some issues related with unknown fields. <br>
+ *  <br>
  * Created by Piotr on 2018-05-13.
- * This class replaces jRS fields using wrapper fields.
- * It also allows to revert this action.
- * Wrappers are needed to fix some issues related with unknown fields.
  */
 public class JRSFieldsReplacer {
 	
 	private JRSFieldsReplacer() {}
 	
 	/**
-	 * This method replaces jRS fields with wrapped ones.
+	 * This method replaces jRS fields with wrapped ones. <br>
 	 * All fields from attributes and examples are replaced.
 	 * @param table containing examples and attributes to replace with raw jRS fields
 	 */
@@ -27,7 +28,7 @@ public class JRSFieldsReplacer {
 	}
 	
 	/**
-	 * This method replaces wrapper field with jRS fields.
+	 * This method replaces wrapper field with jRS fields. <br>
 	 * All fieldd in examples and attributes will be replaced.
 	 * @param table containing examples and attributes to replace with wrapped fields
 	 */
@@ -37,11 +38,11 @@ public class JRSFieldsReplacer {
 	}
 	
 	/**
-	 * Replace jRS fields in attributes with wrappers.
+	 * Replace jRS fields in attributes with wrappers. <br>
 	 * It will replace all instances of jRS fields to wrapped ones.
 	 * @param table containing examples and attributes to replace with raw jRS fields
 	 */
-	static private void replaceJRSFieldsInAttributes(LearningTable table) {
+	private static void replaceJRSFieldsInAttributes(LearningTable table) {
 		for(Attribute attribute : table.getAttributes()) {
 			Field initialValue = attribute.getInitialValue();
 			
@@ -73,7 +74,7 @@ public class JRSFieldsReplacer {
 	}
 	
 	/**
-	 * Replace all fields in examples with wrapped ones.
+	 * Replace all fields in examples with wrapped ones. <br>
 	 * It will replace all instances of jRS fields to wrapped ones.
 	 * @param table containing examples and attributes to replace with raw jRS fields
 	 */
@@ -136,7 +137,7 @@ public class JRSFieldsReplacer {
 	}
 	
 	/**
-	 * Replace all wrapper fields in attributes with jRS fields.
+	 * Replace all wrapper fields in attributes with jRS fields. <br>
 	 * Unknown fields are not used in attribute initialValue.
 	 * @param table containing examples and attributes to replace with wrapped fields
 	 */
@@ -166,13 +167,12 @@ public class JRSFieldsReplacer {
 	}
 	
 	/**
-	 * Replace wrapped fields with jRS raw fields.
-	 * In most cases, this is not needed for any field except enums.
-	 * Enums need to be processed, because unknown field value is marked with special flag.
-	 * @see EnumFieldWrapper
-	 *
-	 * Rest of the fields are replaced while extracting fields from UI table to LearningTable object.
-	 * @see pl.jowko.rulerank.desktop.feature.learningtable.LearningTableAssembler
+	 * Replace wrapped fields with jRS raw fields. <br>
+	 * In most cases, this is not needed for any field except enums. <br>
+	 * Enums need to be processed, because unknown field value is marked with special flag. <br>
+	 * {@link EnumFieldWrapper} <br>
+	 *  <br>
+	 * Rest of the fields are replaced while extracting fields from UI table to LearningTable object.  <br>
 	 * @param table containing examples and attributes to replace with wrapped fields
 	 */
 	private static void replaceWrappersInExamples(LearningTable table) {
@@ -218,9 +218,9 @@ public class JRSFieldsReplacer {
 	}
 	
 	/**
-	 * This method checks, if enum field has set special flag.
-	 * After check it returns enum field with is set as unknown or with data extracted from wrapper.
-	 * UNKNOWN_FIELD_FLAG indicates, that enum field is unknown.
+	 * This method checks, if enum field has set special flag. <br>
+	 * After check it returns enum field with is set as unknown or with data extracted from wrapper. <br>
+	 * UNKNOWN_FIELD_FLAG indicates, that enum field is unknown. <br>
 	 * This flag is needed to differentiate unknown item in ComboBox.
 	 * @see EnumFieldWrapper
 	 */

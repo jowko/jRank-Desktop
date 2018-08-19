@@ -13,9 +13,10 @@ import java.util.List;
 import static pl.jowko.rulerank.desktop.feature.learningtable.LearningTableActions.ATTRIBUTE_ID_SECRET_NAME;
 
 /**
+ * This class helps to assemble LearningTable from UI table. <br>
+ * It creates new LearningTable containing newest data from UI table. <br>
+ *  <br>
  * Created by Piotr on 2018-05-15.
- * This class helps to assemble LearningTable from UI table.
- * It creates new LearningTable containing newest data from UI table.
  */
 class LearningTableAssembler {
 	
@@ -69,8 +70,8 @@ class LearningTableAssembler {
 	}
 	
 	/**
-	 * Extract all fields from UI table using items and create list of examples from them.
-	 * This method will replace wrapped fields with raw jRS fields.
+	 * Extract all fields from UI table using items and create list of examples from them. <br>
+	 * This method will replace wrapped fields with raw jRS fields. <br>
 	 * This is because of not overriding duplicate method with is used in Example class.
 	 * @see pl.jowko.rulerank.desktop.feature.learningtable.wrappers;
 	 */
@@ -84,8 +85,8 @@ class LearningTableAssembler {
 	}
 	
 	/**
-	 * When reordering columns, indexes of columns are changing, but items indexes are not.
-	 * After column reorder columns and items have different field order.
+	 * When reordering columns, indexes of columns are changing, but items indexes are not. <br>
+	 * After column reorder columns and items have different field order. <br>
 	 * This method gets row as a parameter and return array of fields with valid order(same order as in a column)
 	 * @param row of UI learning table
 	 * @return Field array with valid order of fields

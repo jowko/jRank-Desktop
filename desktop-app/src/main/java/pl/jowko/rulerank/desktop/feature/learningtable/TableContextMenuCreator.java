@@ -9,9 +9,10 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
+ * This class creates ContextMenu for Learning table. <br>
+ * Actions are performed by LearningTableActions class <br>
+ *  <br>
  * Created by Piotr on 2018-05-19.
- * This class creates ContextMenu for Learning table.
- * Actions are performed by LearningTableActions class
  * @see LearningTableActions
  * @see LearningTableController
  */
@@ -33,12 +34,12 @@ class TableContextMenuCreator {
 	}
 	
 	/**
-	 * Create ContextMenu for learning table.
-	 * For now, following actions are implemented:
-	 * - Create example - adds new empty row to table
-	 * - Customize attributes - opens edit attribute dialog for columns in table
-	 * - Add attribute - opens add attribute dialog to add new column to table
-	 * - Remove selected examples - removes selected rows from table
+	 * Create ContextMenu for learning table. <br>
+	 * For now, following actions are implemented: <br>
+	 * - Create example - adds new empty row to table <br>
+	 * - Customize attributes - opens edit attribute dialog for columns in table <br>
+	 * - Add attribute - opens add attribute dialog to add new column to table <br>
+	 * - Remove selected examples - removes selected rows from table <br>
 	 * - Copy selected rows - Copies selected rows to user clipboard in CSV format
 	 */
 	void create() {

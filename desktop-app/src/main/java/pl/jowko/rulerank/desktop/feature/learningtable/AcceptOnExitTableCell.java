@@ -6,10 +6,11 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class fixes bug related with not committing value after loosing focus in field in JavaFX. <br>
+ * See: https://stackoverflow.com/a/33475309/8906826 <br>
+ * Its extend standard JavaFX table column and CustomFieldTableCell to provide custom fields functionality. <br>
+ *  <br>
  * Created by Piotr on 2018-05-18.
- * This class fixes bug related with not committing value after loosing focus in field in JavaFX.
- * See: https://stackoverflow.com/a/33475309/8906826
- * Its extend standard JavaFX table column and CustomFieldTableCell to provide custom fields functionality.
  * @see CustomFieldTableCell
  */
 abstract class AcceptOnExitTableCell <T> extends CustomFieldTableCell<T> {

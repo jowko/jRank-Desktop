@@ -6,8 +6,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.internationalization.Translator;
 
 /**
+ * This class translates UI fields from Learning table. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This class translates UI fields from Learning table.
  */
 class LearningTableTranslator implements Translator {
 	

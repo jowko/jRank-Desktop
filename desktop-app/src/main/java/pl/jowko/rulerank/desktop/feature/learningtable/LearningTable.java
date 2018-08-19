@@ -15,8 +15,9 @@ import java.util.Objects;
 import static java.util.Objects.isNull;
 
 /**
+ * This class stores data extracted from MemoryContainer. <br>
+ *  <br>
  * Created by Piotr on 2018-05-08.
- * This class stores data extracted from MemoryContainer.
  * @see MemoryContainer
  */
 public class LearningTable implements Serializable {

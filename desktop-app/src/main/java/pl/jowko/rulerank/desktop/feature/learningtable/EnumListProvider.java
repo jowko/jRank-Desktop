@@ -9,8 +9,9 @@ import java.util.List;
 import static pl.jowko.rulerank.desktop.feature.learningtable.wrappers.EnumFieldWrapper.UNKNOWN_FIELD_FLAG;
 
 /**
+ * This class extract values from enum field domains and returns list of string with domain element names. <br>
+ *  <br>
  * Created by Piotr on 2018-05-14.
- * This class extract values from enum field domains and returns list of string with domain element names.
  */
 public class EnumListProvider {
 	
@@ -25,7 +26,7 @@ public class EnumListProvider {
 	}
 	
 	/**
-	 * Gets list of String containing domain element names.
+	 * Gets list of String containing domain element names. <br>
 	 * Flag indicating unknown field will be removed from this list.
 	 * @see EnumFieldWrapper
 	 * @return list of domain element names

@@ -6,9 +6,10 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
+ * TableColumn for learning data table. <br>
+ * It contains attribute related with displayed column. <br>
+ *  <br>
  * Created by Piotr on 2018-05-13.
- * TableColumn for learning data table.
- * It contains attribute related with displayed column.
  */
 class AttributeTableColumn extends IndexedTableColumn<ObservableList<Field>, Field> {
 	

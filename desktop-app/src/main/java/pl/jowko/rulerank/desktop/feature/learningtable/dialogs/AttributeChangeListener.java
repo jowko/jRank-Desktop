@@ -8,9 +8,10 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class handle change event in attributes ListView. <br>
+ * When attribute is selected, attribute from form is validated and saved if it is valid. <br>
+ *  <br>
  * Created by Piotr on 2018-05-19.
- * This class handle change event in attributes ListView.
- * When attribute is selected, attribute from form is validated and saved if it is valid.
  */
 class AttributeChangeListener implements ChangeListener<AttributeItem> {
 	
@@ -30,7 +31,7 @@ class AttributeChangeListener implements ChangeListener<AttributeItem> {
 	}
 	
 	/**
-	 * This method is called when change event is called in attribute ListView.
+	 * This method is called when change event is called in attribute ListView. <br>
 	 * It checks, if attribute form is valid, save valid attribute and change edited attribute in form to selected.
 	 * @param observable from ListView
 	 * @param oldValue from ListView
@@ -53,9 +54,9 @@ class AttributeChangeListener implements ChangeListener<AttributeItem> {
 	}
 	
 	/**
-	 * Checks if attribute form is valid.
-	 * If form is not valid, this method changes current selected item to previous one.
-	 * Two boolean flags are used, because when this method change value of selected item, changed event is fired again.
+	 * Checks if attribute form is valid. <br>
+	 * If form is not valid, this method changes current selected item to previous one. <br>
+	 * Two boolean flags are used, because when this method change value of selected item, changed event is fired again. <br>
 	 * Flags prevent this code from infinite loop and from saving invalid data.
 	 * @param oldValue from changed method
 	 * @return true if form is valid, false otherwise

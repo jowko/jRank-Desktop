@@ -3,9 +3,10 @@ package pl.jowko.rulerank.desktop.feature.learningtable.wrappers;
 import pl.poznan.put.cs.idss.jrs.types.StringField;
 
 /**
+ * Wrapper for String type field. <br>
+ * It replaces toString method to display empty String when field is unknown. <br>
+ *  <br>
  * Created by Piotr on 2018-05-24
- * Wrapper for String type field.
- * It replaces toString method to display empty String when field is unknown.
  */
 public class StringFieldWrapper extends StringField {
 	

@@ -14,8 +14,9 @@ import static java.util.stream.Collectors.groupingBy;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class validates provided Learning Table <br>
+ *  <br>
  * Created by Piotr on 2018-05-16.
- * This class validates provided Learning Table
  * @see Validator
  * @see LearningTableController
  */
@@ -33,9 +34,9 @@ public class LearningTableValidator extends Validator {
 	}
 	
 	/**
-	 * Validate provided table. This will check, if:
-	 * - there is only one decision attribute
-	 * - attribute names are unique
+	 * Validate provided table. This will check, if: <br>
+	 * - there is only one decision attribute <br>
+	 * - attribute names are unique <br>
 	 * - non decision fields doesn't contain unknown fields
 	 */
 	private void validateTable() {
@@ -50,7 +51,7 @@ public class LearningTableValidator extends Validator {
 	}
 	
 	/**
-	 * This method will check, if there is only one active decision attribute.
+	 * This method will check, if there is only one active decision attribute. <br>
 	 * If validation fails, it will print all active decision attribute in error message
 	 */
 	private void validateDecisionAttributes() {
@@ -70,7 +71,7 @@ public class LearningTableValidator extends Validator {
 	}
 	
 	/**
-	 * This method will check, if attribute names are unique.
+	 * This method will check, if attribute names are unique. <br>
 	 * If validation fails, it will print error message containing names of this attributes.
 	 */
 	private void validateAttributeUniqueness() {

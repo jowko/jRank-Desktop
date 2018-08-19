@@ -12,10 +12,11 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class extends standard JavaFX TableColumn. <br>
+ * This class provides support for custom TextField in edited table cell. <br>
+ * Most of this code was copied from TableCell and related classes, because it doesn't support extending very well. <br>
+ *  <br>
  * Created by Piotr on 2018-05-11.
- * This class extends standard JavaFX TableColumn.
- * This class provides support for custom TextField in edited table cell.
- * Most of this code was copied from TableCell and related classes, because it doesn't support extending very well.
  * @see CustomTextField
  */
 abstract class CustomFieldTableCell<T> extends TableCell<T, Field> {

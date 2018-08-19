@@ -5,17 +5,18 @@ import pl.poznan.put.cs.idss.jrs.types.EnumField;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
+ * This class replaces equals method due to JavaFX passing null to equals method when ComboBox is created. <br>
+ * Using original EnumField results in NullPointerException. <br>
+ * This class replaces toString method to display empty String when field is unknown. <br>
+ *  <br>
  * Created by Piotr on 2018-05-12.
- * This class replaces equals method due to JavaFX passing null to equals method when ComboBox is created.
- * Using original EnumField results in NullPointerException.
- * This class replaces toString method to display empty String when field is unknown.
  */
 public class EnumFieldWrapper extends EnumField {
 	
 	/**
-	 * This flag is used to indicate, that enum field value is unknown.
-	 * This variable value should be set in enum field in such case.
-	 * Setting jRS unknown boolean in enum field leads to weird errors in JavaFX and using this flag bypasses this problem.
+	 * This flag is used to indicate, that enum field value is unknown. <br>
+	 * This variable value should be set in enum field in such case. <br>
+	 * Setting jRS unknown boolean in enum field leads to weird errors in JavaFX and using this flag bypasses this problem. <br>
 	 * If this flag is set as enum value, it will be displayed as empty string in UI table.
 	 * @see pl.jowko.rulerank.desktop.feature.learningtable.EnumFieldConverter
 	 */

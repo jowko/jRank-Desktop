@@ -5,8 +5,9 @@ import pl.jowko.rulerank.desktop.feature.learningtable.wrappers.*;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
+ * This class contains helper methods related with jRS fields. <br>
+ *  <br>
  * Created by Piotr on 2018-05-14.
- * This class contains helper methods related with jRS fields.
  */
 class RuleRankFieldHelper {
 	
