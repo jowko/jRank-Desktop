@@ -4,9 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
 /**
+ * This controller shows text content of files when file type is not recognized by application. <br>
+ * File content is displayed in non editable TextArea field. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This controller shows text content of files when file type is not recognized by application.
- * File content is displayed in non editable TextArea field.
  */
 public class UnknownFileController {
 	

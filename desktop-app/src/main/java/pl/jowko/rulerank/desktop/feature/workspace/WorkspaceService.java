@@ -9,8 +9,9 @@ import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteSubDirectoryPath;
 
 /**
+ * This class helps manage workspace items in workspace tree. <br>
+ *  <br>
  * Created by Piotr on 2018-04-18.
- * This class helps manage workspace items in workspace tree.
  */
 public class WorkspaceService {
 	
@@ -30,7 +31,7 @@ public class WorkspaceService {
 	}
 	
 	/**
-	 * Checks, if workspace path is valid.
+	 * Checks, if workspace path is valid. <br>
 	 * When path doesn't exists, it is assumed that path is invalid.
 	 * @param path from user settings form or userSettings.json file
 	 * @return true if path is valid, false otherwise

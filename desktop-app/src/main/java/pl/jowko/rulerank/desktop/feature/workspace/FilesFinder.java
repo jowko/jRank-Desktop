@@ -15,9 +15,10 @@ import java.util.stream.Stream;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This is helper class, with finds workspace items in workspace main directory. <br>
+ * It is used to construct workspace tree. <br>
+ *  <br>
  * Created by Piotr on 2018-04-21.
- * This is helper class, with finds workspace items in workspace main directory.
- * It is used to construct workspace tree.
  * @see TreeBuilder
  */
 public class FilesFinder {
@@ -29,7 +30,7 @@ public class FilesFinder {
 	}
 	
 	/**
-	 * Find all files in provided directory.
+	 * Find all files in provided directory. <br>
 	 * Files are sorted before return.
 	 * @see WorkspaceService
 	 * @return list of files in provided directory
@@ -54,7 +55,7 @@ public class FilesFinder {
 	}
 	
 	/**
-	 * Finds all files for provided directory path.
+	 * Finds all files for provided directory path. <br>
 	 * All files from provided directory will be returned as result list.
 	 * @param directoryPath from with extract files data.
 	 * @return list of files in directory
@@ -77,7 +78,7 @@ public class FilesFinder {
 	}
 	
 	/**
-	 * Convert provided path to workspace item
+	 * Convert provided path to workspace item <br>
 	 * It returns workspace item with correct FileType.
 	 * @see FileType
 	 * @param path of file to convert
@@ -91,7 +92,7 @@ public class FilesFinder {
 	}
 	
 	/**
-	 * Checks file path extension and return correct enum for this file type.
+	 * Checks file path extension and return correct enum for this file type. <br>
 	 * This enum is used to differentiate different workspace item types later.
 	 * @see FileType
 	 * @see pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController

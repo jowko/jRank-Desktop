@@ -19,9 +19,10 @@ import static pl.jowko.rulerank.desktop.utils.FileExtensionExtractor.getExtensio
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFilePath;
 
 /**
+ * This class is used to load isf file using workspaceItem. <br>
+ * It will try to read isf file name from properties or guess its name using workspaceItem file name. <br>
+ *  <br>
  * Created by Piotr on 2018-06-08
- * This class is used to load isf file using workspaceItem.
- * It will try to read isf file name from properties or guess its name using workspaceItem file name.
  */
 public class IsfFinder {
 	
@@ -43,7 +44,7 @@ public class IsfFinder {
 	}
 	
 	/**
-	 * Get memory container for experiment associated with provided workspaceItem.
+	 * Get memory container for experiment associated with provided workspaceItem. <br>
 	 * It uses .properties file to find correct path for learning data file.
 	 * @return MemoryContainer
 	 * @throws IOException when something goes wrong
@@ -58,7 +59,7 @@ public class IsfFinder {
 	}
 	
 	/**
-	 * Gets .properties item for current experiment.
+	 * Gets .properties item for current experiment. <br>
 	 * If in experiment directory is more than one properties file, or there is no such file, exception is thrown.
 	 * @param items from current experiment
 	 * @return properties item containing properties path
@@ -77,10 +78,10 @@ public class IsfFinder {
 	}
 	
 	/**
-	 * Gets MemoryContainer using properties file.
-	 * Then full path for isf file is calculated and file is loaded.
-	 * If properties doesn't have isf file configured, it is assumed that isf table is in same directory as file represented by workspaceItem.
-	 * Also is assumed that isf file name is same as workspaceItem file name.
+	 * Gets MemoryContainer using properties file. <br>
+	 * Then full path for isf file is calculated and file is loaded. <br>
+	 * If properties doesn't have isf file configured, it is assumed that isf table is in same directory as file represented by workspaceItem. <br>
+	 * Also is assumed that isf file name is same as workspaceItem file name. <br>
 	 * If workspaceItem file had name: someExperiment.ranking, it is assumed that isf file have name: someExperiment.isf.
 	 * @param properties contains experiment settings
 	 * @return MemoryContainer with learning data table
@@ -101,11 +102,11 @@ public class IsfFinder {
 	}
 	
 	/**
-	 * Get path to isf file.
-	 * It checks in properties have configured isf file location.
-	 * At first, test data file configuration is checked.
-	 * It it is not configured, learning data file configuration is checked.
-	 * If none of this paths are configured, null is returned.
+	 * Get path to isf file. <br>
+	 * It checks in properties have configured isf file location. <br>
+	 * At first, test data file configuration is checked. <br>
+	 * It it is not configured, learning data file configuration is checked. <br>
+	 * If none of this paths are configured, null is returned. <br>
 	 * If isf file location is configured, it is checked if path is relative or absolute.
 	 */
 	private String getPathToIsfFile(RuleRankProperties properties) {
