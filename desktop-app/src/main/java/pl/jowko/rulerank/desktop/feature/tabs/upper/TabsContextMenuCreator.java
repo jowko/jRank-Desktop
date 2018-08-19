@@ -14,9 +14,10 @@ import java.util.List;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class creates context menus for tab headers. <br>
+ * This actions must be created for each tab with are added to TabPane. <br>
+ * <br>
  * Created by Piotr on 2018-05-18.
- * This class creates context menus for tab headers.
- * This actions must be created for each tab with are added to TabPane.
  * @see TabEditionChecker
  */
 class TabsContextMenuCreator {
@@ -36,10 +37,10 @@ class TabsContextMenuCreator {
 	}
 	
 	/**
-	 * Create ContextMenu for provided tab. Three actions are added:
-	 * - Close this tab
-	 * - Close all tabs
-	 * - Close all except this
+	 * Create ContextMenu for provided tab. Three actions are added: <br>
+	 * - Close this tab <br>
+	 * - Close all tabs <br>
+	 * - Close all except this <br>
 	 * All close actions checks, if tabs to close were edited and ask for confirmation in such case.
 	 * @param tab to with ContextMenu will be added
 	 */
@@ -52,9 +53,9 @@ class TabsContextMenuCreator {
 	}
 	
 	/**
-	 * Creates close this tab MenuItem for ContextMenu.
-	 * It will check if clicked tab if edited.
-	 * If it was edited, application display confirmation window.
+	 * Creates close this tab MenuItem for ContextMenu. <br>
+	 * It will check if clicked tab if edited. <br>
+	 * If it was edited, application display confirmation window. <br>
 	 * If it was not edited, application closes tab without confirmation.
 	 * @see RuleRankTab
 	 * @param tab to with close event will be added.
@@ -73,9 +74,9 @@ class TabsContextMenuCreator {
 	}
 	
 	/**
-	 * Creates close all tabs MenuItem for ContextMenu.
-	 * It will check, if any opened tab is in edit mode.
-	 * If it is, application ask form confirmation.
+	 * Creates close all tabs MenuItem for ContextMenu. <br>
+	 * It will check, if any opened tab is in edit mode. <br>
+	 * If it is, application ask form confirmation. <br>
 	 * If no tab is in edit mode, all tabs are closed without confirmation.
 	 * @see RuleRankTab
 	 * @return MenuItem with close all tabs action
@@ -94,8 +95,8 @@ class TabsContextMenuCreator {
 	}
 	
 	/**
-	 * Creates close other tabs MenuItem for ContextMenu.
-	 * If any of other tabs are in edit mode, application ask for confirmation.
+	 * Creates close other tabs MenuItem for ContextMenu. <br>
+	 * If any of other tabs are in edit mode, application ask for confirmation. <br>
 	 * If none of other tabs are in edit mode, application closes all other tabs.
 	 * @see RuleRankTab
 	 * @param tab with will not be closed on this action

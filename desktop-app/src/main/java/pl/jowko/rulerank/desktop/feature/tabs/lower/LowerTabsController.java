@@ -8,9 +8,10 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
+ * Controller for lower tabs. <br>
+ * It contains tabs for logs and also some additional tabs. <br>
+ * <br>
  * Created by Piotr on 2018-04-09.
- * Controller for lower tabs.
- * It contains tabs for logs and also some additional tabs.
  */
 public class LowerTabsController {
 	
@@ -28,8 +29,8 @@ public class LowerTabsController {
 	}
 	
 	/**
-	 * Initialize this controller.
-	 * Prepare instance for getInstance method.
+	 * Initialize this controller. <br>
+	 * Prepare instance for getInstance method. <br>
 	 * Disable manual closing of logs tab.
 	 */
 	@FXML
@@ -41,7 +42,7 @@ public class LowerTabsController {
 	}
 	
 	/**
-	 * Add provided tab to lower tabs.
+	 * Add provided tab to lower tabs. <br>
 	 * This tab will be closable and selected after addition.
 	 * @param tab to add
 	 */
@@ -52,7 +53,7 @@ public class LowerTabsController {
 	}
 	
 	/**
-	 * This method selects log tab.
+	 * This method selects log tab. <br>
 	 * When tab will be selected, it will be focused.
 	 */
 	public void focusOnLogTab() {
@@ -60,7 +61,7 @@ public class LowerTabsController {
 	}
 	
 	/**
-	 * This method selects provided tab.
+	 * This method selects provided tab. <br>
 	 * Focus will be set on provided tab in lower tabs.
 	 * @param tab on with focus will be set
 	 */
@@ -69,7 +70,7 @@ public class LowerTabsController {
 	}
 	
 	/**
-	 * Remove provided tab from lower tabs.
+	 * Remove provided tab from lower tabs. <br>
 	 * Tab will be closed automatically and removed from lower tabs.
 	 */
 	public void closeTab(RuleRankTab tab) {

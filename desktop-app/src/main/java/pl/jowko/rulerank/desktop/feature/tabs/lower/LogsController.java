@@ -12,9 +12,10 @@ import java.io.PrintStream;
 import static java.util.Objects.nonNull;
 
 /**
+ * Controller for logs tab. <br>
+ * It sets output stream to TextArea in logs tab. <br>
+ * <br>
  * Created by Piotr on 2018-04-10.
- * Controller for logs tab.
- * It sets output stream to TextArea in logs tab.
  */
 public class LogsController {
 	
@@ -22,8 +23,8 @@ public class LogsController {
 	TextArea logsTextArea;
 	
 	/**
-	 * Initializes logs tab.
-	 * It replaces output and error stream with custom solution.
+	 * Initializes logs tab. <br>
+	 * It replaces output and error stream with custom solution. <br>
 	 * This enables to add all output text to TextArea component.
 	 */
 	@FXML
@@ -38,8 +39,8 @@ public class LogsController {
 	}
 	
 	/**
-	 * This method add listener to TextArea text property.
-	 * On each text change(new logs), log tab will be focused.
+	 * This method add listener to TextArea text property. <br>
+	 * On each text change(new logs), log tab will be focused. <br>
 	 * Instance of controller is got by each time, because on the start of application instance of LowerTabsController can be null.
 	 * @see LowerTabsController
 	 */
@@ -58,7 +59,7 @@ public class LogsController {
 	}
 	
 	/**
-	 * Create context menu item for clear action.
+	 * Create context menu item for clear action. <br>
 	 * This action will clear all logs from TextArea.
 	 * @return MenuItem with clear action
 	 */
@@ -69,7 +70,7 @@ public class LogsController {
 	}
 	
 	/**
-	 * This class overrides output stream.
+	 * This class overrides output stream. <br>
 	 * It appends all output text to TextArea.
 	 */
 	public static class Console extends OutputStream {

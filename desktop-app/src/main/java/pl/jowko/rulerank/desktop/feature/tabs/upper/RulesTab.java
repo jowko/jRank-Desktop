@@ -11,15 +11,16 @@ import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
 import java.io.IOException;
 
 /**
+ * This class loads RulesContainer and creates tab for rules from .rules file. <br>
+ * <br>
  * Created by Piotr on 2018-05-08.
- * This class loads RulesContainer and creates tab for rules from .rules file.
  * @see RulesController
  * @see RulesContainer
  */
 class RulesTab extends RuleRankTab {
 	
 	/**
-	 * Creates rules tab for .rules files.
+	 * Creates rules tab for .rules files. <br>
 	 * It will load fxml file and initialize tab with .rules file content.
 	 * @param workspaceItem from workspace tree
 	 * @param tabName to display on tab header(tab text)

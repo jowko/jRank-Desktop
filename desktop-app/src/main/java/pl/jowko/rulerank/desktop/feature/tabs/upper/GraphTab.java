@@ -10,13 +10,14 @@ import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import java.io.IOException;
 
 /**
+ * This tab displays graph visualisation using data from .graph file. <br>
+ * <br>
  * Created by Piotr on 2018-05-08.
- * This tab displays graph visualisation using data from .graph file.
  */
 class GraphTab extends RuleRankTab {
 	
 	/**
-	 * Creates graph visualisation tab for .graph files.
+	 * Creates graph visualisation tab for .graph files. <br>
 	 * It will load fxml file and initialize tab with .graph file content.
 	 * @param workspaceItem from workspace tree
 	 * @param tabName to display on tab header(tab text)

@@ -14,12 +14,14 @@ import java.io.IOException;
 import static java.util.Objects.isNull;
 
 /**
+ *
+ * Tab for ranking tab. <br>
+ * It loads .ranking file, .properties file and .isf file. <br>
+ * If experiment contains multiple .properties files, class throws error. <br>
+ * Properties file is used to get path to .isf file. <br>
+ * If properties doesn't contain isf file path, it is assumed, that isf file is in same directory as ranking file and have same name. <br>
+ * <br>
  * Created by Piotr on 2018-05-08.
- * Tab for ranking tab.
- * It loads .ranking file, .properties file and .isf file.
- * If experiment contains multiple .properties files, class throws error.
- * Properties file is used to get path to .isf file.
- * If properties doesn't contain isf file path, it is assumed, that isf file is in same directory as ranking file and have same name.
  * @see RankingController
  * @see IsfFinder
  */
@@ -28,8 +30,8 @@ class RankingTab extends RuleRankTab {
 	
 	
 	/**
-	 * Creates ranking tab for .ranking files.
-	 * It will load fxml file and initialize tab with .ranking file content.
+	 * Creates ranking tab for .ranking files. <br>
+	 * It will load fxml file and initialize tab with .ranking file content. <br>
 	 * It also loads MemoryContainer and properties file.
 	 * @param workspaceItem from workspace tree
 	 * @param tabName to display on tab header(tab text)

@@ -10,13 +10,14 @@ import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import java.io.IOException;
 
 /**
+ * This tab displays partial comparision table from partialPCT.isf file. <br>
+ * <br>
  * Created by Piotr on 2018-05-08.
- * This tab displays partial comparision table from partialPCT.isf file.
  */
 class ComparisionTableTab extends RuleRankTab {
 	
 	/**
-	 * Creates partial comparision table tab for partialPCT.isf files.
+	 * Creates partial comparision table tab for partialPCT.isf files. <br>
 	 * It will load fxml file and initialize tab with .partialPCT.isf file content.
 	 * @param container with isf table of PCT type
 	 * @param workspaceItem from workspace tree

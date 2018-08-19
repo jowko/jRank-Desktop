@@ -10,15 +10,16 @@ import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import java.io.IOException;
 
 /**
+ * This tab displays learning data table from .isf files. <br>
+ * Table is fully editable and customizable. <br>
+ * <br>
  * Created by Piotr on 2018-05-08.
- * This tab displays learning data table from .isf files.
- * Table is fully editable and customizable.
  * @see LearningTableController
  */
 class LearningTableTab extends RuleRankTab {
 	
 	/**
-	 * Creates learning data table tab for .isf files.
+	 * Creates learning data table tab for .isf files. <br>
 	 * It will load fxml file and initialize tab with .isf file content.
 	 *
 	 * @param container with isf table

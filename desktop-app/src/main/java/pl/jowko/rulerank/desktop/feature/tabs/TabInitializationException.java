@@ -3,8 +3,9 @@ package pl.jowko.rulerank.desktop.feature.tabs;
 import pl.jowko.rulerank.desktop.exception.RuleRankException;
 
 /**
+ * This exception is thrown when creating of tab failed with some error. <br>
+ * <br>
  * Created by Piotr on 2018-05-21.
- * This exception is thrown when creating of tab failed with some error.
  */
 public class TabInitializationException extends RuleRankException {
 	

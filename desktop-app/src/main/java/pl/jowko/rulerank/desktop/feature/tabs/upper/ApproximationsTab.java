@@ -10,15 +10,16 @@ import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import java.io.IOException;
 
 /**
+ * This tab displays approximations file(.apx). <br>
+ * For now, this file is displayed as text file. <br>
+ * <br>
  * Created by Piotr on 2018-05-08.
- * This tab displays approximations file(.apx).
- * For now, this file is displayed as text file.
  * @see ApproximationsController
  */
 class ApproximationsTab extends RuleRankTab {
 	
 	/**
-	 * Creates approximations tab for .apx files.
+	 * Creates approximations tab for .apx files. <br>
 	 * It will load fxml file and initialize tab with .apx file content.
 	 * @param workspaceItem from workspace tree
 	 * @param tabName to display on tab header(tab text)
