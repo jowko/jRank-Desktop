@@ -2,6 +2,7 @@ package pl.jowko.rulerank.desktop.feature.properties.information;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
@@ -205,6 +206,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 		
 		rankingTree.setRoot(root);
 		initializeContextMenu();
+		initializeKeyBoardActions();
 		readPreviousRanking();
 	}
 	
@@ -251,6 +253,18 @@ public class PropertiesRankingController extends AbstractInformationController {
 		menu.getItems().add(createAddAboveMenuItem());
 		menu.getItems().add(createAddBelowMenuItem());
 		rankingTree.setContextMenu(menu);
+	}
+	
+	/**
+	 * Initializes keyboard actions for ranking tree.
+	 */
+	private void initializeKeyBoardActions() {
+		rankingTree.setOnKeyPressed(event -> {
+			if (KeyCode.DELETE == event.getCode()) {
+				removeItemAction(rankingTree.getSelectionModel().getSelectedItem());
+				return;
+			}
+		});
 	}
 	
 	/**

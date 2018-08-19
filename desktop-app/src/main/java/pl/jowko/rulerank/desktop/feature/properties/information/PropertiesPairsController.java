@@ -3,6 +3,7 @@ package pl.jowko.rulerank.desktop.feature.properties.information;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.logger.RuleRankLogger;
@@ -60,6 +61,7 @@ public class PropertiesPairsController extends AbstractInformationController {
 		secondListView.getItems().addAll(fieldItems);
 		pairsListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		readPreviousPairs();
+		initializeKeyBoardActions();
 		translatePairFields();
 	}
 	
@@ -117,6 +119,18 @@ public class PropertiesPairsController extends AbstractInformationController {
 			return false;
 		
 		return not(showConfirmActionDialog());
+	}
+	
+	/**
+	 * Initializes keyboard actions for pairs list.
+	 */
+	private void initializeKeyBoardActions() {
+		pairsListView.setOnKeyPressed(event -> {
+			if (KeyCode.DELETE == event.getCode()) {
+				removeSelectedAction();
+				return;
+			}
+		});
 	}
 	
 	/**
