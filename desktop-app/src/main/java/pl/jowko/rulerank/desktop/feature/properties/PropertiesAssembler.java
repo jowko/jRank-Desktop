@@ -12,8 +12,9 @@ import static pl.jowko.rulerank.desktop.feature.properties.Names.*;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * Transform Properties object to RuleRankProperties object. <br>
+ *  <br>
  * Created by Piotr on 2018-04-29.
- * Transform Properties object to RuleRankProperties object.
  * @see Properties
  * @see RuleRankProperties
  */
@@ -34,9 +35,9 @@ public class PropertiesAssembler {
 	}
 	
 	/**
-	 * Convert provided properties to RuleRankProperties object.
-	 * After getting property from properties, they are removed from properties objects.
-	 * If any properties will remain after mapping, this means that some properties are not recognized by application.
+	 * Convert provided properties to RuleRankProperties object. <br>
+	 * After getting property from properties, they are removed from properties objects. <br>
+	 * If any properties will remain after mapping, this means that some properties are not recognized by application. <br>
 	 * In such case all remaining properties keys will be logged.
 	 * @return RuleRankProperties containing options from properties file
 	 */
@@ -84,8 +85,8 @@ public class PropertiesAssembler {
 	}
 	
 	/**
-	 * Get string value from property.
-	 * This method removes spaces and comments from provided property.
+	 * Get string value from property. <br>
+	 * This method removes spaces and comments from provided property. <br>
 	 * It will also remove provided property from properties object.
 	 * @param parameterName with will be extracted
 	 * @return String value for provided property name or null
@@ -141,7 +142,7 @@ public class PropertiesAssembler {
 	}
 	
 	/**
-	 * Gets RuleRankParameter for provided property name.
+	 * Gets RuleRankParameter for provided property name. <br>
 	 * After extracting property text value, search is perform in parameters list to extract correct RuleRankParameter
 	 * @see RuleRankParameter
 	 * @see RuleRankParametersService
@@ -171,8 +172,8 @@ public class PropertiesAssembler {
 	}
 	
 	/**
-	 * When properties are extracted, all valid values are removed from properties object.
-	 * If any properties remains after mapping, this means that some properties were not recognized by application.
+	 * When properties are extracted, all valid values are removed from properties object. <br>
+	 * If any properties remains after mapping, this means that some properties were not recognized by application. <br>
 	 * In such case all properties keys are logged.
 	 */
 	private void validatePropertiesAndShowWarnings() {

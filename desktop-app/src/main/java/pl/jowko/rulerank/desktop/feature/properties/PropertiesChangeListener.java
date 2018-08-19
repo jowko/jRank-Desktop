@@ -5,10 +5,11 @@ import javafx.scene.control.TextInputControl;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 
 /**
+ * This class is used to detect changes on properties form. <br>
+ * It creates listeners for ComboBox and TextField fields. <br>
+ * When value in some field changes, this class sets RuleRankTab to edit mode. <br>
+ *  <br>
  * Created by Piotr on 2018-05-20.
- * This class is used to detect changes on properties form.
- * It creates listeners for ComboBox and TextField fields.
- * When value in some field changes, this class sets RuleRankTab to edit mode.
  * @see PropertiesController
  * @see RuleRankTab
  */

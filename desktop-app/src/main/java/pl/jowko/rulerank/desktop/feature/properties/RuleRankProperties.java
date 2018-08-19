@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * Container for all RuleRank options from .properties file. <br>
+ *  <br>
  * Created by Piotr on 2018-04-29.
- * Container for all RuleRank options from .properties file.
  * @see PropertiesAssembler
  */
 public class RuleRankProperties implements Serializable {

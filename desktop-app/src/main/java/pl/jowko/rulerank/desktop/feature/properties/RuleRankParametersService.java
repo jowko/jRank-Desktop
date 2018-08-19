@@ -21,9 +21,10 @@ import static pl.poznan.put.cs.idss.jrs.types.PairField.CLASSIC_ORDINAL_DOMINANC
 import static pl.poznan.put.cs.idss.jrs.types.PairField.STRICT_ORDINAL_DOMINANCE_CHECK_METHOD;
 
 /**
+ * This class creates all data used in ComboBoxes on properties form. <br>
+ * It provides RuleRankParameter lists with are used to pass and display data from "enum" RuleRank options. <br>
+ *  <br>
  * Created by Piotr on 2018-05-01.
- * This class creates all data used in ComboBoxes on properties form.
- * It provides RuleRankParameter lists with are used to pass and display data from "enum" RuleRank options.
  * @see RuleRankParameter
  */
 class RuleRankParametersService {

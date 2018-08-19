@@ -5,8 +5,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 
 /**
+ * This class translates fields from properties tab. <br>
+ *  <br>
  * Created by Piotr on 2018-05-07.
- * This class translates fields from properties tab.
  */
 class PropertiesTranslatorHelper extends AbstractTranslator {
 	

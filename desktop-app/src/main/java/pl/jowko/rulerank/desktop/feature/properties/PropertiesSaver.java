@@ -12,9 +12,10 @@ import static pl.jowko.rulerank.desktop.utils.FileExtensionExtractor.getExtensio
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
+ * This class is used to save properties in .properties file. <br>
+ * It converts RuleRankProperties back to Properties objects and replace old properties file with new one. <br>
+ *  <br>
  * Created by Piotr on 2018-05-04.
- * This class is used to save properties in .properties file.
- * It converts RuleRankProperties back to Properties objects and replace old properties file with new one.
  * @see Properties
  * @see RuleRankProperties
  */
@@ -93,7 +94,7 @@ public class PropertiesSaver {
 	}
 	
 	/**
-	 * Sets filePath property.
+	 * Sets filePath property. <br>
 	 * If user typed property with no file extension, it will be added to property value.
 	 * @see PropertiesValidator
 	 * @see pl.jowko.rulerank.desktop.utils.FileExtensionExtractor

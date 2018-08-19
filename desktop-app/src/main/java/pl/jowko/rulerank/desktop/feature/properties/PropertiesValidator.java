@@ -12,9 +12,10 @@ import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.DRSA;
 import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
 
 /**
+ * This class perform validation on properties form before save. <br>
+ * Most of validations were extracted from RuleRank console application. <br>
+ *  <br>
  * Created by Piotr on 2018-05-06.
- * This class perform validation on properties form before save.
- * Most of validations were extracted from RuleRank console application.
  * @see PropertiesController
  */
 public class PropertiesValidator extends Validator {
@@ -31,7 +32,7 @@ public class PropertiesValidator extends Validator {
 	}
 	
 	/**
-	 * Perform validation on properties.
+	 * Perform validation on properties. <br>
 	 * Code was modeled by validation in RuleRank console application
 	 */
 	private void validate() {
@@ -122,8 +123,8 @@ public class PropertiesValidator extends Validator {
 	}
 	
 	/**
-	 * Check if files have correct extensions.
-	 * Files should have correct extensions or no extensions.
+	 * Check if files have correct extensions. <br>
+	 * Files should have correct extensions or no extensions. <br>
 	 * If files have no extensions, they will be added on properties save.
 	 * @see PropertiesSaver
 	 * @see pl.jowko.rulerank.desktop.utils.FileExtensionExtractor

@@ -1,9 +1,10 @@
 package pl.jowko.rulerank.desktop.feature.properties.information;
 
 /**
+ * This class contains name of attribute and index of it in container. <br>
+ * It is used in ComboBoxes to change label display. <br>
+ *  <br>
  * Created by Piotr on 2018-05-29
- * This class contains name of attribute and index of it in container.
- * It is used in ComboBoxes to change label display.
  * @see FieldItem
  */
 class AttributeItem {

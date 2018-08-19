@@ -9,9 +9,10 @@ import java.util.Properties;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
 
 /**
+ * This class loads default.properties file from workspace. <br>
+ * It is assumed, that default properties are in main workspace directory(workspace path). <br>
+ *  <br>
  * Created by Piotr on 2018-05-04.
- * This class loads default.properties file from workspace.
- * It is assumed, that default properties are in main workspace directory(workspace path).
  * @see RuleRankProperties
  */
 public class DefaultPropertiesProvider {

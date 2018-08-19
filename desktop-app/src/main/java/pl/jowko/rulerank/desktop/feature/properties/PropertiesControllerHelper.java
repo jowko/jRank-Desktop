@@ -14,8 +14,9 @@ import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
+ * This class contains useful methods for PropertiesController <br>
+ *  <br>
  * Created by Piotr on 2018-05-04.
- * This class contains useful methods for PropertiesController
  * @see PropertiesController
  */
 class PropertiesControllerHelper {
@@ -29,7 +30,7 @@ class PropertiesControllerHelper {
 	private RuleRankParameter emptyValue;
 	
 	/**
-	 * Initializes instance of this class.
+	 * Initializes instance of this class. <br>
 	 * This class will manipulate controller fields.
 	 * @param controller from properties form
 	 */
@@ -55,7 +56,7 @@ class PropertiesControllerHelper {
 	}
 	
 	/**
-	 * Sets properties with are used to fill fields in properties form.
+	 * Sets properties with are used to fill fields in properties form. <br>
 	 * Used when restoring default values in form.
 	 * @param editableProperties with will replace current form values
 	 */
@@ -263,7 +264,7 @@ class PropertiesControllerHelper {
 	}
 	
 	/**
-	 * Fills comboBox with list of values and sets first element in list as default one.
+	 * Fills comboBox with list of values and sets first element in list as default one. <br>
 	 * Default element will contain special text and default value from provided defaultParameter
 	 * @param comboBox on with items list will be added
 	 * @param list with will be added to ComboBox

@@ -14,8 +14,9 @@ import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This controller is used in pairs configuration for properties form. <br>
+ *  <br>
  * Created by Piotr on 2018-05-28
- * This controller is used in pairs configuration for properties form.
  * @see pl.jowko.rulerank.desktop.feature.properties.PropertiesController
  * @see PairsItem
  */
@@ -45,8 +46,8 @@ public class PropertiesPairsController extends AbstractInformationController {
 	Button cancelButton;
 	
 	/**
-	 * Initialize all UI fields.
-	 * It also initializes change labels event to change labels when user select different label from ComboBox.
+	 * Initialize all UI fields. <br>
+	 * It also initializes change labels event to change labels when user select different label from ComboBox. <br>
 	 * Also reads values from provided String property
 	 */
 	@Override
@@ -106,9 +107,9 @@ public class PropertiesPairsController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Checks if user wish to keep changes.
-	 * If no changes occurred, It is assumed that user doesn't want to keep changes.
-	 * If changes are detected, Confirmation dialog will be shown.
+	 * Checks if user wish to keep changes. <br>
+	 * If no changes occurred, It is assumed that user doesn't want to keep changes. <br>
+	 * If changes are detected, Confirmation dialog will be shown. <br>
 	 * It ignores all whitespaces, because it doesn't matter how many whitespaces were typed.
 	 * @return true if user wish to keep changes, false otherwise
 	 */
@@ -176,7 +177,7 @@ public class PropertiesPairsController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Parses previous settings for pairs with are extracted from properties form text.
+	 * Parses previous settings for pairs with are extracted from properties form text. <br>
 	 * If any error occur, it will throw exception with message about error.
 	 * @throws TextParseFailException when anything goes wrong with pairs text parsing
 	 */
@@ -189,11 +190,11 @@ public class PropertiesPairsController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Reads previous settings from StringProperty.
-	 * If property is empty, it is assumed that no previous settings exists.
-	 * It will extract all triples of pairs with relation.
-	 * It will ignore any whitespaces.
-	 * Valid format of pairs is:
+	 * Reads previous settings from StringProperty. <br>
+	 * If property is empty, it is assumed that no previous settings exists. <br>
+	 * It will extract all triples of pairs with relation. <br>
+	 * It will ignore any whitespaces. <br>
+	 * Valid format of pairs is: <br>
 	 * {1,2} S, {5,2} Sc
 	 */
 	private void readPreviousPairsFromText() {
@@ -216,10 +217,10 @@ public class PropertiesPairsController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Adds pair item to pairListView.
-	 * It will extract selected items from first and second ListView.
-	 * Then it will add them with provided relation to pairs set.
-	 * If such pair already exists, nothing will be added.
+	 * Adds pair item to pairListView. <br>
+	 * It will extract selected items from first and second ListView. <br>
+	 * Then it will add them with provided relation to pairs set. <br>
+	 * If such pair already exists, nothing will be added. <br>
 	 * @param relation S or Sc, for added pair
 	 */
 	private void addPairItem(String relation, boolean isSc) {
@@ -246,7 +247,7 @@ public class PropertiesPairsController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Change displayed label in all ListView to label with provided index.
+	 * Change displayed label in all ListView to label with provided index. <br>
 	 * All values are redisplayed immediately.
 	 * @param index from AttributeItem
 	 * @see AttributeItem
@@ -262,10 +263,10 @@ public class PropertiesPairsController extends AbstractInformationController {
 	}
 	
 	/**
-	 * This methods converts pairs from pairs ListView to text with can be passed to ruleRank.
-	 * Output text have such format:
-	 * {1,2} S, {5,2} Sc
-	 *
+	 * This methods converts pairs from pairs ListView to text with can be passed to ruleRank. <br>
+	 * Output text have such format: <br>
+	 * {1,2} S, {5,2} Sc <br>
+	 * <br>
 	 * @return text containing pairs with relations in original ruleRank format
 	 */
 	private String convertPairsToText() {

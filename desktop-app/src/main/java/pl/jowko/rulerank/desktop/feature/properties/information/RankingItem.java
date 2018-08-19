@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * This class is used in ranking dialog for TreeView. <br>
+ * It contains data needed in ranking positions processing. <br>
+ * There are three types of nodes in ranking TreeView: <br>
+ * Root - not editable and mandatory by JavaFX, it contains label and has flag isRootNode set to true <br>
+ * Ranking - it is initialized with label, serves as container for fields on positions <br>
+ * Field - it contains FieldItem with represents row from MemoryTable. <br>
+ *  <br>
  * Created by Piotr on 2018-05-30
- * This class is used in ranking dialog for TreeView.
- * It contains data needed in ranking positions processing.
- * There are three types of nodes in ranking TreeView:
- * Root - not editable and mandatory by JavaFX, it contains label and has flag isRootNode set to true
- * Ranking - it is initialized with label, serves as container for fields on positions
- * Field - it contains FieldItem with represents row from MemoryTable.
  */
 class RankingItem implements Serializable {
 	
@@ -56,7 +57,7 @@ class RankingItem implements Serializable {
 	}
 	
 	/**
-	 * Sets this instance as root node.
+	 * Sets this instance as root node. <br>
 	 * It should be only used for first created instance of this class with label.
 	 * @param rootNode with indicates is this instance is root item in TreeView
 	 */

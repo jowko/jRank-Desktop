@@ -14,16 +14,19 @@ import java.util.stream.Collectors;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class allows to extract ranking and pair information from text format. <br>
+ * Result is returned in jRS format. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This class allows to extract ranking and pair information from text format.
- * Result is returned in jRS format.
  */
 public class InformationExtractor {
 	
+	private InformationExtractor() {}
+	
 	/**
-	 * Extract ranking from provided text.
-	 * Ranking should have such format:
-	 * 1, 2 4, 3 ...
+	 * Extract ranking from provided text. <br>
+	 * Ranking should have such format: <br>
+	 * 1, 2 4, 3 ... <br>
 	 * Where numbers are indexes(starting from 1) representing items in MemoryContainer(isf table)
 	 * @param text from properties form
 	 * @return SimpleRanking object created from text
@@ -54,9 +57,9 @@ public class InformationExtractor {
 	}
 	
 	/**
-	 * Extract pairs from provided text.
-	 * Pairs should have such format:
-	 * {1,2} S, {3,2} Sc, ...
+	 * Extract pairs from provided text. <br>
+	 * Pairs should have such format: <br>
+	 * {1,2} S, {3,2} Sc, ... <br>
 	 * Where numbers are indexes(starting from 1) representing items in MemoryContainer(isf table)
 	 * @param text from properties form
 	 * @return list of wrappers for PairOfIndices

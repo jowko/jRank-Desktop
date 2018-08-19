@@ -14,9 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class contains base functionality used both in ranking and pairs controllers. <br>
+ * Both controllers are used in modal window on with learning information is configured. <br>
+ *  <br>
  * Created by Piotr on 2018-05-29
- * This class contains base functionality used both in ranking and pairs controllers.
- * Both controllers are used in modal window on with learning information is configured.
  * @see PropertiesPairsController
  * @see PropertiesRankingController
  */
@@ -31,7 +32,7 @@ public abstract class AbstractInformationController extends AbstractDialogForm {
 	private int rowId = 1;
 	
 	/**
-	 * Initialize common part of information form.
+	 * Initialize common part of information form. <br>
 	 * It will extract data from MemoryContainer and call custom initialize method from upper class.
 	 * @param container containing learning data file from edited experiment
 	 * @param result containing StringProperty to with result will be saved. This property should have previous value of field from properties form.
@@ -45,14 +46,14 @@ public abstract class AbstractInformationController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Abstract initialize method.
+	 * Abstract initialize method. <br>
 	 * All custom initialization should take place in this method
 	 */
 	abstract void initialize();
 	
 	/**
-	 * Initializes items for ComboBoxes and ListView or TreeView.
-	 * It will extract all description attribute names for ComboBox and add ID value.
+	 * Initializes items for ComboBoxes and ListView or TreeView. <br>
+	 * It will extract all description attribute names for ComboBox and add ID value. <br>
 	 * Items for Views are extracted from examples.
 	 */
 	private void initializeItems() {
@@ -76,7 +77,7 @@ public abstract class AbstractInformationController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Create item from example fields.
+	 * Create item from example fields. <br>
 	 * It also creates ID field.
 	 * @param fields from example
 	 * @param indexes of description fields
