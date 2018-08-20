@@ -238,7 +238,6 @@
     "LEARN_TABLE_DECISION_VALIDATION" : "Table can only have one active decision attribute. Current decision attributes: ",
     "ARCS_INGOING_SC" : "Ingoing relation Sc:",
     "OPTIMIZE_POSSIBLE_RULES" : "In VC-DomLEM, consistency of possible rules cannot be optimized w.r.t. set, only w.r.t. upper approximation of that set. Assuming optimization of rule consistency measure w.r.t. upper approximation.",
-    "PROP_INFO_ADD_ABOVE" : "Add Rank above",
     "VALIDATION_DIALOG_HEADER" : "There were validation errors: ",
     "EDIT_PAIRS_BUTTON" : "Edit pairs",
     "STAT_COVERED_EXAMPLES" : "Covered examples:",

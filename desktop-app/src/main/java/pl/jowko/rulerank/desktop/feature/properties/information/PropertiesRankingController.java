@@ -245,13 +245,11 @@ public class PropertiesRankingController extends AbstractInformationController {
 	 * Initializes ContextMenu for ranking tree. <br>
 	 * 3 actions are added: <br>
 	 * - Remove selected - remove selected item from tree <br>
-	 * - Add above - add new rank node above selected rank <br>
 	 * - Add below - add new rank node below selected rank
 	 */
 	private void initializeContextMenu() {
 		ContextMenu menu = new ContextMenu();
 		menu.getItems().add(createRemoveMenu());
-		menu.getItems().add(createAddAboveMenuItem());
 		menu.getItems().add(createAddBelowMenuItem());
 		rankingTree.setContextMenu(menu);
 	}
@@ -263,7 +261,6 @@ public class PropertiesRankingController extends AbstractInformationController {
 		rankingTree.setOnKeyPressed(event -> {
 			if (KeyCode.DELETE == event.getCode()) {
 				removeItemAction(rankingTree.getSelectionModel().getSelectedItem());
-				return;
 			}
 		});
 	}
@@ -282,19 +279,6 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Creates add rank above menu item for selected node. <br>
-	 * It will also recalculate rank positions.
-	 * @return menu item for add begin action
-	 */
-	private MenuItem createAddAboveMenuItem() {
-		MenuItem item = new MenuItem(labels.get(Labels.PROP_INFO_ADD_ABOVE));
-		item.setOnAction(event ->
-			addNewRanking(false)
-		);
-		return item;
-	}
-	
-	/**
 	 * Creates add rank below menu item for selected node. <br>
 	 * It will also recalculate rank positions.
 	 * @return menu item for add end action
@@ -302,18 +286,17 @@ public class PropertiesRankingController extends AbstractInformationController {
 	private MenuItem createAddBelowMenuItem() {
 		MenuItem item = new MenuItem(labels.get(Labels.PROP_INFO_ADD_BELOW));
 		item.setOnAction(event ->
-			addNewRanking(true)
+			addNewRankingBelow()
 		);
 		return item;
 	}
 	
 	/**
-	 * Add new rank position to ranking tree below or above selected item. <br>
+	 * Add new rank position to ranking tree below selected item. <br>
 	 * It will extract selected item and index of it. <br>
-	 * After this it will place new item below or above selected item.
-	 * @param isAddBelow indicates if new rank should be added below or above selected rank
+	 * After this it will place new item below selected item.
 	 */
-	private void addNewRanking(boolean isAddBelow) {
+	private void addNewRankingBelow() {
 		var selectedItem = rankingTree.getSelectionModel().getSelectedItem();
 		int level = rankingTree.getTreeItemLevel(selectedItem);
 		
@@ -323,9 +306,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 		
 		var rootItem = rankingTree.getRoot();
 		int index = rootItem.getChildren().indexOf(selectedItem);
-		if(isAddBelow) {
-			index++;
-		}
+		index++;
 		
 		rootItem.getChildren().add(index, createRankingNode());
 		recalculateRankingPosition();
