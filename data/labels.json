@@ -171,6 +171,7 @@
     "PROP_EXT_GRAPH" : "Preference graph file extension is not valid. Valid extension: graph",
     "HELP_CONTACT_INFO" : "Contact information:",
     "STAT_CONFIDENCE" : "Confidence:",
+    "PROP_INFO_REMOVE_ALL_CONFIRM" : "Do you want to clear whole ranking?",
     "REFERENCE_RANKING_TOOLTIP" : "Comma-separated list of places; at each place there may be just one or many objects' numbers, separated by white spaces (objects' numbers start from 1)",
     "LEARN_TABLE_INACTIVE" : "inactive, ",
     "PCT_ID" : "ID",

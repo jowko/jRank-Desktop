@@ -416,6 +416,7 @@ class StubSettings {
 		language.put(Labels.PROP_INFO_DISPLAY_LABEL, "Displayed label:");
 		language.put(Labels.PROP_INFO_R_SAVE_BUTTON, "Save");
 		language.put(Labels.PROP_INFO_R_CANCEL_BUTTON, "Cancel");
+		language.put(Labels.PROP_INFO_REMOVE_ALL_CONFIRM, "Do you want to clear whole ranking?");
 	}
 	
 	private void createEnglishExperimentRunnerLabels(Map<String,String> language) {

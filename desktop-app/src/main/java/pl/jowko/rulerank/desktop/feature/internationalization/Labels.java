@@ -300,7 +300,7 @@ public class Labels {
 	public static final String PROP_INFO_DISPLAY_LABEL = "PROP_INFO_DISPLAY_LABEL";
 	public static final String PROP_INFO_R_SAVE_BUTTON = "PROP_INFO_R_SAVE_BUTTON";
 	public static final String PROP_INFO_R_CANCEL_BUTTON = "PROP_INFO_R_CANCEL_BUTTON";
-	
+	public static final String PROP_INFO_REMOVE_ALL_CONFIRM = "PROP_INFO_REMOVE_ALL_CONFIRM";
 	
 	// Experiment running
 	public static final String RUN_PROP_READ_ERROR = "RUN_PROP_READ_ERROR";

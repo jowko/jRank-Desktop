@@ -7,6 +7,7 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -177,8 +178,11 @@ public class PropertiesRankingController extends AbstractInformationController {
 			return;
 		
 		var parent = selected.getParent();
-		if(selected.getValue().isRootNode())
+		if(selected.getValue().isRootNode()) {
+			removeAllItems();
 			return;
+		}
+		
 		// if it is rank node, it contains children with also need to be removed and restored in ListView
 		var children = observableArrayList(selected.getChildren());
 		children.forEach(child ->
@@ -186,6 +190,24 @@ public class PropertiesRankingController extends AbstractInformationController {
 		);
 		removeTreeElement(parent, selected);
 		
+		recalculateRankingPosition();
+	}
+	
+	/**
+	 * Removes all ranks from tree. <br>
+	 * It will ask for confirmation for this action.
+	 */
+	private void removeAllItems() {
+		String header = labels.get(Labels.PROP_INFO_REMOVE_ALL_CONFIRM);
+		boolean result = DialogsService.showConfirmationDialog(header);
+		if(not(result)) {
+			return;
+		}
+		
+		List<TreeItem<RankingItem>> ranks = new ArrayList<>(rankingTree.getRoot().getChildren());
+		for(var rank : ranks) {
+			removeItemAction(rank);
+		}
 		recalculateRankingPosition();
 	}
 	
