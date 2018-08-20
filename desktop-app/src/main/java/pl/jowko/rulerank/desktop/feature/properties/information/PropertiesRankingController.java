@@ -262,6 +262,9 @@ public class PropertiesRankingController extends AbstractInformationController {
 			if (KeyCode.DELETE == event.getCode()) {
 				removeItemAction(rankingTree.getSelectionModel().getSelectedItem());
 			}
+			if (KeyCode.A == event.getCode()) {
+				addNewRankingBelow();
+			}
 		});
 	}
 	
