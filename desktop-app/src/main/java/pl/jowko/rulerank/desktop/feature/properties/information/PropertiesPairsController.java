@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.logger.RuleRankLogger;
@@ -131,9 +132,24 @@ public class PropertiesPairsController extends AbstractInformationController {
 		pairsListView.setOnKeyPressed(event -> {
 			if (KeyCode.DELETE == event.getCode()) {
 				removeSelectedAction();
-				return;
 			}
 		});
+		firstListView.setOnKeyPressed(this::handleListViewKeys);
+		secondListView.setOnKeyPressed(this::handleListViewKeys);
+	}
+	
+	/**
+	 * Handles keys for first and second list view
+	 * @param event from list view
+	 */
+	private void handleListViewKeys(KeyEvent event) {
+		if (KeyCode.S == event.getCode()) {
+			addSAction();
+			return;
+		}
+		if (KeyCode.C == event.getCode()) {
+			addScAction();
+		}
 	}
 	
 	/**
