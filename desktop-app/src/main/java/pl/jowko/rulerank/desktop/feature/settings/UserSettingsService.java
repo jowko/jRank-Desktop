@@ -53,12 +53,18 @@ public class UserSettingsService {
 		return userSettings;
 	}
 	
-	/** Used in tests */
+	/**
+	 * Used in tests
+	 * @param language to be set
+	 */
 	public void setLanguage(String language) {
 		userSettings.setLanguage(language);
 	}
 	
-	/** Used in tests */
+	/**
+	 * Used in tests
+	 * @param userSettings to be set
+	 */
 	public void setUserSettings(UserSettings userSettings) {
 		this.userSettings = userSettings;
 	}

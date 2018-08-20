@@ -21,8 +21,10 @@ public class Cloner {
 	/**
 	 * This method makes a "deep clone" of any Java object it is given. <br>
 	 * All provided objects should implement Serializable interface
-	 * @see java.io.Serializable
 	 * https://alvinalexander.com/java/java-deep-clone-example-source-code
+	 * @param object to clone
+	 * @see java.io.Serializable
+	 * @return deep clone of provided object
 	 */
 	public static Object deepClone(Object object) {
 		try {

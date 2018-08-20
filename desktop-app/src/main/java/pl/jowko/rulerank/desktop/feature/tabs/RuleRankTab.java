@@ -87,6 +87,7 @@ public abstract class RuleRankTab extends Tab {
 	 * Gets original tab name. <br>
 	 * This value doesn't change, so if tab is in edit mode and has modified name, original value will be returned by this method. <br>
 	 * To get current tab text(header), use getText() method
+	 * @return String value of tab name
 	 */
 	public String getTabName() {
 		return tabName;

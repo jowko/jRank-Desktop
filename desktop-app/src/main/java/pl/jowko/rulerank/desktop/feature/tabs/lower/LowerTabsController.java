@@ -72,6 +72,7 @@ public class LowerTabsController {
 	/**
 	 * Remove provided tab from lower tabs. <br>
 	 * Tab will be closed automatically and removed from lower tabs.
+	 * @param tab to be closed
 	 */
 	public void closeTab(RuleRankTab tab) {
 		lowerTabs.getTabs().remove(tab);

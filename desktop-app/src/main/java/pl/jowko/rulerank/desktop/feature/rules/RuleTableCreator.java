@@ -28,7 +28,7 @@ class RuleTableCreator {
 	
 	private int rowId;
 	/**
-	 * Index of <= operator in row
+	 * Index of {@literal <=} operator in row
 	 */
 	private int thenOperatorColumnID;
 	/**
@@ -81,7 +81,7 @@ class RuleTableCreator {
 	 * Decision Part 1 <br>
 	 * Separator Column <br>
 	 * Decision Part N <br>
-	 * Then column(<=) <br>
+	 * {@literal Then column(<=)} <br>
 	 * Condition 1 <br>
 	 * Separator Column <br>
 	 * Condition M <br>
@@ -202,6 +202,8 @@ class RuleTableCreator {
 	
 	/**
 	 * Checks decision type and returns label for provided type.
+	 * @param decisionCondition with is translated to label
+	 * @return String value of decision condition
 	 */
 	private String translateDecision(Condition decisionCondition) {
 		SingleCondition condition = (SingleCondition) decisionCondition;

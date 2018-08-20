@@ -42,6 +42,8 @@ public class LearningTableHelper {
 	/**
 	 * When removing column from table, indexes are not correctly related to columns. <br>
 	 * After column removal cellValueFactory must be recreated with new indexes.
+	 * @param columns for with cell factories will be recreated
+	 * @param removedIndex with represents index of removed attribute
 	 */
 	void recreateCellValuesFactories(List<TableColumn<ObservableList<Field>, ?>> columns, int removedIndex) {
 		for(int i=0; i<columns.size(); i++) {
@@ -191,6 +193,8 @@ public class LearningTableHelper {
 	/**
 	 * Creates tooltip for provided attribute. <br>
 	 * Tooltip contains information about preference, kind, activeness and field type
+	 * @param attribute for with tooltip will be created
+	 * @return tooltip created from data extracted from attribute
 	 */
 	private Tooltip createColumnTooltip(Attribute attribute) {
 		StringBuilder builder = new StringBuilder();

@@ -40,6 +40,7 @@ public class JRSFileMediator {
 	 * Loads properties from .properties files. As a result return RuleRankProperties object with filled values.
 	 * @param item from workspace tree, file path is read from this object
 	 * @return RuleRankProperties filled with properties values
+	 * @throws IOException when something goes wrong with file reading
 	 */
 	public static RuleRankProperties loadProperties(WorkspaceItem item) throws IOException {
 		Properties properties = new Properties();

@@ -79,7 +79,7 @@ class GraphReader {
 	 * Valid format for node line: <br>
 	 * 1 [label="1"]; <br>
 	 * Valid format for edge line: <br>
-	 * 1 -> 7 [color="green"];
+	 * {@literal 1 -> 7} [color="green"];
 	 */
 	private void extractGraph() {
 		Scanner scanner = new Scanner(content);

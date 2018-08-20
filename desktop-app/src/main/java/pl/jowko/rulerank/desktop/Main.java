@@ -133,6 +133,7 @@ public class Main extends Application {
 	 * If at least one tab was edited, applications ask for confirmation to close app. <br>
 	 * If user confirms close action or no tabs were edited, application will be closed. <br>
 	 * If user didn't confirmed close action, nothing happens.
+	 * @param primaryStage on with UI will be build, provided by JavaFX
 	 * @see TabEditionChecker
 	 */
 	private void setOnCloseEvent(Stage primaryStage) {

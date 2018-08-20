@@ -51,6 +51,7 @@ public class GraphController {
 	 * Initializes close event for graph tab. <br>
 	 * If graph tab is closed, arcs tab is also automatically closed. <br>
 	 * Force close is called for graphTab, because firing onClosed event will cancel close of graphTab.
+	 * @param arcsTab with represents rule rank tab containing arcs information
 	 * @see UpperTabsController
 	 */
 	void initializeCloseEventForGraphTab(RuleRankTab arcsTab) {

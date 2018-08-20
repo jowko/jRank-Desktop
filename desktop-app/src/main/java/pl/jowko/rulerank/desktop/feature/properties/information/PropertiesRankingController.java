@@ -99,7 +99,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 	 * It ignores all whitespaces, because it doesn't matter how many whitespaces were typed. <br>
 	 * Due to whitespaces removal, it can not detect changes in some extreme cases. <br>
 	 * Example: <br>
-	 * 1, 2 4 in this method is same as -> 1, 24
+	 * 1, 2 4 in this method is same as 1, 24
 	 * @return true if user wants to keep changes
 	 */
 	@Override

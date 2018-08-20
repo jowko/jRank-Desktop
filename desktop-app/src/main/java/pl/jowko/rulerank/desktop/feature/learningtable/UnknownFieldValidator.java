@@ -40,6 +40,9 @@ public class UnknownFieldValidator {
 	/**
 	 * Check if fields from example have unknown value. <br>
 	 * Decision attributes are excluded from validation, because they can contain unknown values.
+	 * @param fields to validate with are extracted from example
+	 * @param attributes with are used for validation
+	 * @return true if example is invalid, false otherwise
 	 */
 	private boolean isExampleInvalid(Field[] fields, List<Attribute> attributes) {
 		for(int i=0; i<attributes.size(); i++) {

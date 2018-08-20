@@ -108,6 +108,8 @@ public class IsfFinder {
 	 * It it is not configured, learning data file configuration is checked. <br>
 	 * If none of this paths are configured, null is returned. <br>
 	 * If isf file location is configured, it is checked if path is relative or absolute.
+	 * @param properties from experiment
+	 * @return String path to isf file(learning or test data file)
 	 */
 	private String getPathToIsfFile(RuleRankProperties properties) {
 		String dataFilePath = null;

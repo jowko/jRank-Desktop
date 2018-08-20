@@ -288,6 +288,7 @@ public class LearningTableActions {
 	/**
 	 * Sets css styles for column headers. <br>
 	 * If field is not active, all css styles from column are removed to avoid overwriting not active style properties
+	 * @param tableColumn for with css style will be set
 	 */
 	private void setCssStyleForColumn(AttributeTableColumn tableColumn) {
 		Attribute attribute = tableColumn.getAttribute();

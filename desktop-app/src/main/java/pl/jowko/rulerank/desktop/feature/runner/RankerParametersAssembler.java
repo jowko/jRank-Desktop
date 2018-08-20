@@ -135,6 +135,7 @@ class RankerParametersAssembler {
 	/**
 	 * Converts LearningTable to MemoryContainer
 	 * @param learningTable from with data will be extracted
+	 * @return memory container created from data with were extracted from learning table
 	 */
 	private MemoryContainer getContainer(LearningTable learningTable) {
 		MemoryContainer dataContainer;

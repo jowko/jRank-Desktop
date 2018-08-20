@@ -217,6 +217,7 @@ public class LearningTableController implements AbandonableTabForm {
 	/**
 	 * Create row of data for provided example. <br>
 	 * It will create ID cell and cell for each field in example.
+	 * @param example for with row of data will be created
 	 * @return list of fields with ID cell and cells created from example fields
 	 */
 	private ObservableList<Field> createItemRow(Example example) {
@@ -232,6 +233,7 @@ public class LearningTableController implements AbandonableTabForm {
 	/**
 	 * Extract data from UI table and put them in LearningTable
 	 * @see LearningTableAssembler
+	 * @return learning table extracted from UI table
 	 */
 	private LearningTable matchDataFromUIToLearningTable() {
 		return new LearningTableAssembler(learningTable, table, tableActions.getAttributes()).getLearningTableFromUITable();
@@ -244,7 +246,9 @@ public class LearningTableController implements AbandonableTabForm {
 	/**
 	 * Validate table and check if data is valid. <br>
 	 * If table is not valid, it will show error messages and ask for confirmation to save.
+	 * @param tableToSave with will be validated
 	 * @see LearningTableValidator
+	 * @return true if table is valid, false otherwise
 	 */
 	private boolean isTableValid(LearningTable tableToSave) {
 		LearningTableValidator validator = new LearningTableValidator(tableToSave);

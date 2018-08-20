@@ -101,8 +101,8 @@ class ResultsSaver {
 	/**
 	 * This method handles situation, when exhaustive set was chosen. <br>
 	 * .rule file will be deleted if exists and .no-rules file will be generated.
-	 * @param filePath
-	 * @param relativePath
+	 * @param filePath with represents absolute path to file
+	 * @param relativePath with is relative path to file
 	 */
 	private void handleNoRulesCase(String filePath, String relativePath) {
 		try {

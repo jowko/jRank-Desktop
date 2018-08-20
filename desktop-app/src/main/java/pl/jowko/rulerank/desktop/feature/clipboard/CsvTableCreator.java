@@ -41,9 +41,11 @@ public class CsvTableCreator {
 	 * With such information, we can write c3 to position 0, c2 to 1 and c1 to 2. <br>
 	 * In such case indexes list should have values: 2, 1, 0 <br>
 	 * <br>
+	 * @param <T> with represents cell in row
 	 * @param headers with indicates columns names
 	 * @param tableItems with are rows
 	 * @param indexes with order of displayed fields
+	 * @return CsvTable created from provided parameters
 	 */
 	public static <T> CsvTable createTable(List<String> headers, ObservableList<ObservableList<T>> tableItems, List<Integer> indexes) {
 		List<CsvRow> rows = new ArrayList<>();
@@ -65,7 +67,11 @@ public class CsvTableCreator {
 	/**
 	 * Create Csv table from provided UI JavaFX table and selected items. <br>
 	 * Table should use IndexedTableColumn class when creating columns.
+	 * @param <T> with represents cell in row
+	 * @param table with represents table from javaFX
+	 * @param selectedItems with represents selected items from table
 	 * @see IndexedTableColumn
+	 * @return CsvTable created from provided parameters
 	 */
 	public static <T> CsvTable createTable(TableView<?> table, ObservableList<ObservableList<T>> selectedItems) {
 		List<String> columns = CsvTableCreator.extractColumnNames(table);
@@ -76,7 +82,9 @@ public class CsvTableCreator {
 	/**
 	 * Extract column names from table. <br>
 	 * Table should use IndexedTableColumn class when creating columns.
+	 * @param table from javaFX UI
 	 * @see IndexedTableColumn
+	 * @return list of colum names extracted from table
 	 */
 	public static List<String> extractColumnNames(TableView<?> table) {
 		return table.getColumns().stream()
@@ -87,7 +95,9 @@ public class CsvTableCreator {
 	/**
 	 * Extract indexes from table. <br>
 	 * Table should use IndexedTableColumn class when creating columns.
+	 * @param table from javaFX UI
 	 * @see IndexedTableColumn
+	 * @return list of indices of columns in table
 	 */
 	public static List<Integer> extractIndexes(TableView<?> table) {
 		return table.getColumns().stream()

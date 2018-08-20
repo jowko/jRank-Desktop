@@ -222,6 +222,7 @@ public class PropertiesPairsController extends AbstractInformationController {
 	 * Then it will add them with provided relation to pairs set. <br>
 	 * If such pair already exists, nothing will be added. <br>
 	 * @param relation S or Sc, for added pair
+	 * @param isSc with indicates if this item is in Sc relation
 	 */
 	private void addPairItem(String relation, boolean isSc) {
 		FieldItem leftItem = firstListView.getSelectionModel().getSelectedItem();

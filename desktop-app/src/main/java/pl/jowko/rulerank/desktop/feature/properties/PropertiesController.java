@@ -135,6 +135,7 @@ public class PropertiesController implements AbandonableTabForm {
 	 * @param properties loaded from .properties file
 	 * @param workspaceItem from workspace tree with represents properties file
 	 * @param propertiesTab on with properties form is located
+	 * @throws IOException when something goes wrong with file reading
 	 */
 	public void initializeProperties(RuleRankProperties properties, WorkspaceItem workspaceItem, RuleRankTab propertiesTab) throws IOException {
 		this.properties = properties;
@@ -306,6 +307,7 @@ public class PropertiesController implements AbandonableTabForm {
 	 * If field contains invalid content, dialog will not show and user see errors message.
 	 * @param fxmlPath to pairs or ranking dialog path
 	 * @param titleLabel to display on modal window
+	 * @param result with is observable property to pass result value
 	 * @throws IOException when something goes wrong with reading files
 	 */
 	private void initializeInformationForm(String fxmlPath, String titleLabel, StringProperty result) throws IOException {

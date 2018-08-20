@@ -42,6 +42,8 @@ class AttributeParamService {
 	
 	/**
 	 * Find kind param by specified jRS int value.
+	 * @param value from jRS
+	 * @return found param representing kind type
 	 */
 	AttributeParam getKindByValue(int value) {
 		Optional<AttributeParam> param =  kinds.stream()
@@ -57,6 +59,8 @@ class AttributeParamService {
 	
 	/**
 	 * Find preference param by specified jRS int value.
+	 * @param value from jRS
+	 * @return found param representing kind type
 	 */
 	AttributeParam getPreferenceByValue(int value) {
 		Optional<AttributeParam> param =  preferences.stream()

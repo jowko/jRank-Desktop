@@ -23,6 +23,7 @@ public interface AbandonableTabForm {
 	/**
 	 * Check, if user wants to keep changes. <br>
 	 * If table was edited, it will show confirmation dialog.
+	 * @return true if user wish to keep changes, false otherwise
 	 */
 	default boolean isUserWishToKeepChanges() {
 		return getTab().isTabEdited() && not(showAbandonChangesConfirmationDialog());

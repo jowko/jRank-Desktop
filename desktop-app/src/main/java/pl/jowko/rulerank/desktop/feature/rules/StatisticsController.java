@@ -127,6 +127,8 @@ public class StatisticsController {
 	
 	/**
 	 * Returns String for provided characteristic decision
+	 * @param characteristicDecision with will be translated to label
+	 * @return String value of characteristic decision
 	 */
 	private String translateCharacteristicDecisionClass(String characteristicDecision) {
 		if("-1.0".equals(characteristicDecision))

@@ -38,6 +38,7 @@ public class RankingController {
 	 * Initializes ranking from provided data.
 	 * @param rankingFileContent from .ranking file
 	 * @param isfTable containing learning data table
+	 * @throws TabInitializationException when something goes wrong with initializing tab
 	 */
 	public void initializeRanking(String rankingFileContent, MemoryContainer isfTable) throws TabInitializationException {
 		LearningTable table = new LearningTable(isfTable);
@@ -53,6 +54,8 @@ public class RankingController {
 	/**
 	 * If table contains unknown fields, it means that ranking is not up to date with learning table. <br>
 	 * To generate ranking, all non decision fields in ranking should be known.
+	 * @param table with is loaded from isf file and represents data from experiment
+	 * @throws TabInitializationException when table contains unknown fields
 	 */
 	private void checkIfTableHasUnknownFields(LearningTable table) throws TabInitializationException {
 		UnknownFieldValidator validator = new UnknownFieldValidator(table);

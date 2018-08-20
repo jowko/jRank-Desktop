@@ -32,6 +32,7 @@ public class FilesFinder {
 	/**
 	 * Find all files in provided directory. <br>
 	 * Files are sorted before return.
+	 * @param directoryPath on with files will be found
 	 * @see WorkspaceService
 	 * @return list of files in provided directory
 	 */

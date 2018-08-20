@@ -222,7 +222,9 @@ public class JRSFieldsReplacer {
 	 * After check it returns enum field with is set as unknown or with data extracted from wrapper. <br>
 	 * UNKNOWN_FIELD_FLAG indicates, that enum field is unknown. <br>
 	 * This flag is needed to differentiate unknown item in ComboBox.
+	 * @param wrapper to process
 	 * @see EnumFieldWrapper
+	 * @return processed enum field
 	 */
 	private static EnumField getEnumField(EnumField wrapper) {
 		EnumField field;

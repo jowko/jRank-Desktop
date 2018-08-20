@@ -73,7 +73,6 @@ class LearningTableAssembler {
 	 * Extract all fields from UI table using items and create list of examples from them. <br>
 	 * This method will replace wrapped fields with raw jRS fields. <br>
 	 * This is because of not overriding duplicate method with is used in Example class.
-	 * @see pl.jowko.rulerank.desktop.feature.learningtable.wrappers;
 	 */
 	private void addExamples() {
 		ObservableList<ObservableList<Field>> rows = learningTable.getItems();

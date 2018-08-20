@@ -96,6 +96,9 @@ public class PropertiesSaver {
 	/**
 	 * Sets filePath property. <br>
 	 * If user typed property with no file extension, it will be added to property value.
+	 * @param propertyName with is used as property key
+	 * @param value with will be saved to property value
+	 * @param extension with indicates file extension of provided file
 	 * @see PropertiesValidator
 	 * @see pl.jowko.rulerank.desktop.utils.FileExtensionExtractor
 	 */
