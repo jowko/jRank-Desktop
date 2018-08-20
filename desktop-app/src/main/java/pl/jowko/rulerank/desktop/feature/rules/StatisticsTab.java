@@ -10,9 +10,10 @@ import java.io.IOException;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COMMON_CSS;
 
 /**
+ * This class represents tab for statistics screen. <br>
+ * It loads fxml file and passes rule to controller. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This class represents tab for statistics screen.
- * It loads fxml file and passes rule to controller.
  */
 class StatisticsTab extends RuleRankTab {
 	

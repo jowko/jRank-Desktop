@@ -7,10 +7,11 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 import static pl.jowko.rulerank.feature.customfx.StringTextField.ALPHANUMERIC_FIELD_PATTERN;
 
 /**
+ * This class provides special field on edit event for String field type. <br>
+ * This field accepts only alphanumeric characters. <br>
+ * It also allows to handle unknown field type. <br>
+ *  <br>
  * Created by Piotr on 2018-05-13.
- * This class provides special field on edit event for String field type.
- * This field accepts only alphanumeric characters.
- * It also allows to handle unknown field type.
  * @see StringTextField
  */
 class StringFieldTableCell <T> extends AcceptOnExitTableCell<T> {

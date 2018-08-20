@@ -10,9 +10,10 @@ import pl.jowko.rulerank.desktop.service.DialogsService;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This controller manages TreeView containing all files and directories from workspace directory. <br>
+ * It builds nested tree containing all components. <br>
+ *  <br>
  * Created by Piotr on 2018-04-09.
- * This controller manages TreeView containing all files and directories from workspace directory.
- * It builds nested tree containing all components.
  * @see UserSettingsValidator
  */
 public class WorkspaceController {
@@ -43,9 +44,9 @@ public class WorkspaceController {
 	}
 	
 	/**
-	 * Initialize workspace tree.
-	 * This method perform configuration validation before creating workspace tree.
-	 * Such problems can occur when user edits configuration files manually and make mistakes.
+	 * Initialize workspace tree. <br>
+	 * This method perform configuration validation before creating workspace tree. <br>
+	 * Such problems can occur when user edits configuration files manually and make mistakes. <br>
 	 * If configuration is valid, its creates workspace tree from files and directories in workspace directory.
 	 * @see UserSettingsValidator
 	 * @see TreeBuilder
@@ -67,8 +68,8 @@ public class WorkspaceController {
 	}
 	
 	/**
-	 * Perform validation of configuration files.
-	 * If user configuration is not valid, this controller doesn't create workspace tree.
+	 * Perform validation of configuration files. <br>
+	 * If user configuration is not valid, this controller doesn't create workspace tree. <br>
 	 * It checks if workspacePath and user language is valid.
 	 */
 	private void validateConfiguration() {

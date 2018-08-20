@@ -16,24 +16,25 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This controller handles action on properties ranking dialog form. <br>
+ * This dialog has ListView with contains data from MemoryContainer. <br>
+ * TreeView is used to store and configure ranking. <br>
+ * <br>
+ * In TreeView, 3 types of nodes are used: <br>
+ * root - main item in tree, needed by JavaFX <br>
+ * rank - serve as container for items from MemoryContainer. <br>
+ * position - represents single element from MemoryContainer. <br>
+ * <br>
+ * Example tree: <br>
+ * Ranking <br>
+ *   Ranking     // root <br>
+ *   	Rank 1   // rank <br>
+ *   	  3      // position <br>
+ *   	Rank 2   // rank <br>
+ *   	  4      // position <br>
+ *   	  6	     // position <br>
+ *  <br>
  * Created by Piotr on 2018-05-28
- * This controller handles action on properties ranking dialog form.
- * This dialog has ListView with contains data from MemoryContainer.
- * TreeView is used to store and configure ranking.
- *
- * In TreeView, 3 types of nodes are used:
- * root - main item in tree, needed by JavaFX
- * rank - serve as container for items from MemoryContainer.
- * position - represents single element from MemoryContainer.
- *
- * Example tree:
- * Ranking
- *   Ranking     // root
- *   	Rank 1   // rank
- *   	  3      // position
- *   	Rank 2   // rank
- *   	  4      // position
- *   	  6	     // position
  */
 public class PropertiesRankingController extends AbstractInformationController {
 	
@@ -55,9 +56,9 @@ public class PropertiesRankingController extends AbstractInformationController {
 	private int rankingPosition = 1;
 	
 	/**
-	 * Initializes controller.
-	 * It fills all Views and ComboBox with data and initializes needed fields.
-	 * It also initializes drag and drop action.
+	 * Initializes controller. <br>
+	 * It fills all Views and ComboBox with data and initializes needed fields. <br>
+	 * It also initializes drag and drop action. <br>
 	 * Some initialization is also performed in AbstractInformationController
 	 * @see DragAndDropInitializer
 	 * @see AbstractInformationController
@@ -93,12 +94,12 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Checks, if any changes were made to ranking.
-	 * If changes were detected, application will ask if user want to keep changes.
-	 * It ignores all whitespaces, because it doesn't matter how many whitespaces were typed.
-	 * Due to whitespaces removal, it can not detect changes in some extreme cases.
-	 * Example:
-	 * 1, 2 4 in this method is same as -> 1, 24
+	 * Checks, if any changes were made to ranking. <br>
+	 * If changes were detected, application will ask if user want to keep changes. <br>
+	 * It ignores all whitespaces, because it doesn't matter how many whitespaces were typed. <br>
+	 * Due to whitespaces removal, it can not detect changes in some extreme cases. <br>
+	 * Example: <br>
+	 * 1, 2 4 in this method is same as 1, 24
 	 * @return true if user wants to keep changes
 	 */
 	@Override
@@ -113,7 +114,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 	
 	
 	/**
-	 * Creates node for rank position.
+	 * Creates node for rank position. <br>
 	 * It will display proper label and ranking position.
 	 * @return TreeItem of rank position type
 	 */
@@ -166,8 +167,8 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Removes provided tree item.
-	 * It will remove it and also remove its all children(if it is rank node).
+	 * Removes provided tree item. <br>
+	 * It will remove it and also remove its all children(if it is rank node). <br>
 	 * If removed item was last in rank container, its parent(rank node) also be removed.
 	 * @param selected node with will be removed
 	 */
@@ -189,9 +190,9 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Initializes ListView and TreeView.
-	 * It fills this views with data and also creates ContextMenu for TreeView.
-	 * ListView data are extracted from memory container.
+	 * Initializes ListView and TreeView. <br>
+	 * It fills this views with data and also creates ContextMenu for TreeView. <br>
+	 * ListView data are extracted from memory container. <br>
 	 * TreeView data are extracted from ranking field in properties form.
 	 * @see pl.jowko.rulerank.desktop.feature.properties.PropertiesController
 	 * @see AbstractInformationController
@@ -211,8 +212,8 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * This methods reloads labels in ListView and TreeView.
-	 * User can configure displayed labels by selecting field from ComboBox.
+	 * This methods reloads labels in ListView and TreeView. <br>
+	 * User can configure displayed labels by selecting field from ComboBox. <br>
 	 * This code will redisplay items using index of this label
 	 * @param index from ComboBox with is used to determine, with label should be displayed
 	 */
@@ -225,8 +226,8 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Changes labels in TreeView.
-	 * All nodes are updated, so traversal of all items is performed.
+	 * Changes labels in TreeView. <br>
+	 * All nodes are updated, so traversal of all items is performed. <br>
 	 * This is done by recurrence method.
 	 * @param item to change label
 	 * @param index to with change label
@@ -309,7 +310,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 	/**
 	 * Add new rank position to ranking tree below or above selected item. <br>
 	 * It will extract selected item and index of it. <br>
-	 * After this it will place new item below or above selected item. <br>
+	 * After this it will place new item below or above selected item.
 	 * @param isAddBelow indicates if new rank should be added below or above selected rank
 	 */
 	private void addNewRanking(boolean isAddBelow) {
@@ -331,8 +332,8 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Removes provided toRemove element from parent element in tree.
-	 * It also restores removed field element in dataView.
+	 * Removes provided toRemove element from parent element in tree. <br>
+	 * It also restores removed field element in dataView. <br>
 	 * Restored elements are sorted by id field.
 	 * @param parent from with item will be removed
 	 * @param toRemove with will be removed from parent
@@ -348,10 +349,10 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Recalculates labels for rank nodes.
-	 * After rank node remove, rank numbers are not in good order.
-	 * Example:
-	 * Rank 1,2,3 - when we remove rank 2, it will leave such tree: Rank 1,3
+	 * Recalculates labels for rank nodes. <br>
+	 * After rank node remove, rank numbers are not in good order. <br>
+	 * Example: <br>
+	 * Rank 1,2,3 - when we remove rank 2, it will leave such tree: Rank 1,3 <br>
 	 * This method will replace labels for tree to such format: Rank 1,2
 	 */
 	private void recalculateRankingPosition() {
@@ -363,23 +364,23 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Reads ranking from properties ranking field and initializes rankingTree with data.
-	 * It can throw exception, when any error occurs when parsing.
-	 *
-	 * Example ranking:
-	 * 1, 2 3 6, 4
-	 * Such ranking will create 3 positions arrays:
-	 * 1  |  2 3 6  | 4
-	 *
-	 * With lead to such tree:
-	 * Rank 1
-	 *   1
-	 * Rank 2
-	 *   2
-	 *   3
-	 *   6
-	 * Rank 3
-	 *   4
+	 * Reads ranking from properties ranking field and initializes rankingTree with data. <br>
+	 * It can throw exception, when any error occurs when parsing. <br>
+	 * <br>
+	 * Example ranking: <br>
+	 * 1, 2 3 6, 4 <br>
+	 * Such ranking will create 3 positions arrays: <br>
+	 * 1  |  2 3 6  | 4 <br>
+	 * <br>
+	 * With lead to such tree: <br>
+	 * Rank 1 <br>
+	 *   1 <br>
+	 * Rank 2 <br>
+	 *   2 <br>
+	 *   3 <br>
+	 *   6 <br>
+	 * Rank 3 <br>
+	 *   4 <br>
 	 *
 	 * @throws TextParseFailException when anything goes wrong with text parsing
 	 */
@@ -398,7 +399,7 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Adds provided positions to next Rank item.
+	 * Adds provided positions to next Rank item. <br>
 	 * Positions array represents single set of row number from MemoryContainer with are separated by comma.
 	 * @param positions representing row ids for single Rank
 	 */
@@ -416,11 +417,11 @@ public class PropertiesRankingController extends AbstractInformationController {
 	}
 	
 	/**
-	 * Converts ranking from rankingTree to ruleRank string.
-	 * It is assumed, that first level from root represents Rank N.
-	 * Second level represents rows from MemoryContainer.
-	 * Example ranking:
-	 * 1, 3 6, 7
+	 * Converts ranking from rankingTree to ruleRank string. <br>
+	 * It is assumed, that first level from root represents Rank N. <br>
+	 * Second level represents rows from MemoryContainer. <br>
+	 * Example ranking: <br>
+	 * 1, 3 6, 7 <br>
 	 * Only id values are used in ranking construction.
 	 * @return String containing ranking
 	 */

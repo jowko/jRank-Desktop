@@ -10,15 +10,16 @@ import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import java.io.IOException;
 
 /**
+ * Creates tab for .txt file. <br>
+ * This tab contains TextArea containing .txt file content. <br>
+ * <br>
  * Created by Piotr on 2018-05-11.
- * Creates tab for .txt file.
- * This tab contains TextArea containing .txt file content.
  * @see TextFileController
  */
 class TextFileTab extends RuleRankTab {
 	
 	/**
-	 * Creates text file tab for .txt files.
+	 * Creates text file tab for .txt files. <br>
 	 * It will load fxml file and initialize tab with .txt file content.
 	 * @param workspaceItem from workspace tree
 	 * @param tabName to display on tab header(tab text)

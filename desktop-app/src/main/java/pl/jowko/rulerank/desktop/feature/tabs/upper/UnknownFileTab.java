@@ -11,14 +11,15 @@ import pl.jowko.rulerank.logger.RuleRankLogger;
 import java.io.IOException;
 
 /**
+ * This tab loads unknown file type as text file. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This tab loads unknown file type as text file.
  * @see UnknownFileController
  */
 class UnknownFileTab extends RuleRankTab {
 	
 	/**
-	 * Creates unknown file tab for .apx files.
+	 * Creates unknown file tab for .apx files. <br>
 	 * It will load fxml file and initialize tab with unknown file content.
 	 * @param workspaceItem from workspace tree
 	 * @param tabName to display on tab header(tab text)

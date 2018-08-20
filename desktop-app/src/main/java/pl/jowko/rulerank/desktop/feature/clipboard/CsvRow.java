@@ -3,9 +3,10 @@ package pl.jowko.rulerank.desktop.feature.clipboard;
 import java.util.List;
 
 /**
+ * This class represents single row of csv table. <br>
+ * Each element in cells list represents String value of CSV cell(without separator) <br>
+ *  <br>
  * Created by Piotr on 2018-05-27
- * This class represents single row of csv table.
- * Each element in cells list represents String value of CSV cell(without separator)
  */
 public class CsvRow {
 	

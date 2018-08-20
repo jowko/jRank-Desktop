@@ -9,7 +9,7 @@ import com.fxgraph.graph.Graph;
 /**
  * This code was copied from StackOverflow:
  * https://stackoverflow.com/a/30696075/8906826
- *
+ *<br>
  * This layout puts graph nodes in random positions on screen.
  */
 public class RandomLayout extends Layout {

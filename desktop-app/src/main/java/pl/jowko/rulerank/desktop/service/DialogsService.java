@@ -8,8 +8,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.*;
 
 /**
+ * This class provides api for creating alert dialogs.<br>
+ * <br>
  * Created by Piotr on 2018-04-18.
- * This class provides api for creating alert dialogs.
  */
 public class DialogsService {
 	
@@ -88,7 +89,7 @@ public class DialogsService {
 	}
 	
 	/**
-	 * Show default confirmation dialog.
+	 * Show default confirmation dialog. <br>
 	 * No button is focused as default.
 	 * @param header to display on header field
 	 * @param content to display as text content
@@ -117,7 +118,7 @@ public class DialogsService {
 	}
 	
 	/**
-	 * This methods fixes bug with size of alert on some computers and Operating Systems.
+	 * This methods fixes bug with size of alert on some computers and Operating Systems. <br>
 	 * See: https://bugs.openjdk.java.net/browse/JDK-8087981
 	 * @param dialogPane to resize
 	 */

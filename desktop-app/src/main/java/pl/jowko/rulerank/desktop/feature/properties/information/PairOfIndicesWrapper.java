@@ -3,11 +3,12 @@ package pl.jowko.rulerank.desktop.feature.properties.information;
 import pl.poznan.put.cs.idss.jrs.ranking.PairOfIndices;
 
 /**
+ * This class wraps PairOfIndices class. <br>
+ * It adds relation variable to it. <br>
+ * In jRS, pair items and relations are stored in different variables. <br>
+ * This class enables storing this in one place. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This class wraps PairOfIndices class.
- * It adds relation variable to it.
- * In jRS, pair items and relations are stored in different variables.
- * This class enables storing this in one place.
  * @see PairOfIndices
  */
 public class PairOfIndicesWrapper {

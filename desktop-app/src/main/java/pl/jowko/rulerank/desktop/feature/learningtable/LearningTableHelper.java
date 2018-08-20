@@ -27,8 +27,9 @@ import java.util.List;
 import static pl.jowko.rulerank.desktop.feature.learningtable.wrappers.EnumFieldWrapper.UNKNOWN_FIELD_FLAG;
 
 /**
+ * Class contains useful methods for managing learning table. <br>
+ *  <br>
  * Created by Piotr on 2018-05-13.
- * Class contains useful methods for managing learning table.
  */
 public class LearningTableHelper {
 	
@@ -39,8 +40,10 @@ public class LearningTableHelper {
 	}
 	
 	/**
-	 * When removing column from table, indexes are not correctly related to columns.
+	 * When removing column from table, indexes are not correctly related to columns. <br>
 	 * After column removal cellValueFactory must be recreated with new indexes.
+	 * @param columns for with cell factories will be recreated
+	 * @param removedIndex with represents index of removed attribute
 	 */
 	void recreateCellValuesFactories(List<TableColumn<ObservableList<Field>, ?>> columns, int removedIndex) {
 		for(int i=0; i<columns.size(); i++) {
@@ -59,7 +62,7 @@ public class LearningTableHelper {
 	}
 	
 	/**
-	 * Sets cell factories with are needed to switch column cell to edit mode.
+	 * Sets cell factories with are needed to switch column cell to edit mode. <br>
 	 * It creates appropriate fields for each field type.
 	 * @param column to with add cellFactory, attribute is extracted from here
 	 * @param columnIndex needed to extract cell data from correct position from row
@@ -104,8 +107,8 @@ public class LearningTableHelper {
 	}
 	
 	/**
-	 * In case of editing attribute with enum field type, ComboBoxes need to be recreated with new enum values.
-	 * This method create new cell factory for provided column.
+	 * In case of editing attribute with enum field type, ComboBoxes need to be recreated with new enum values. <br>
+	 * This method create new cell factory for provided column. <br>
 	 * Also replaces old enum fields with new ones for each row.
 	 * @param column from with enum field is extracted
 	 * @param attributeIndex with is used to extract correct cell from row.
@@ -141,7 +144,7 @@ public class LearningTableHelper {
 	}
 	
 	/**
-	 * Created label for column with is displayed in column header.
+	 * Created label for column with is displayed in column header. <br>
 	 * Also contains tooltip with more details about attribute
 	 * @param attribute from with label is created
 	 * @return Label with tooltip
@@ -188,8 +191,10 @@ public class LearningTableHelper {
 	}
 	
 	/**
-	 * Creates tooltip for provided attribute.
+	 * Creates tooltip for provided attribute. <br>
 	 * Tooltip contains information about preference, kind, activeness and field type
+	 * @param attribute for with tooltip will be created
+	 * @return tooltip created from data extracted from attribute
 	 */
 	private Tooltip createColumnTooltip(Attribute attribute) {
 		StringBuilder builder = new StringBuilder();
@@ -220,8 +225,8 @@ public class LearningTableHelper {
 	}
 	
 	/**
-	 * This method add values to ComboBox for enum field in editable table.
-	 * It also handles unknown enum value.
+	 * This method add values to ComboBox for enum field in editable table. <br>
+	 * It also handles unknown enum value. <br>
 	 * It adds UNKNOWN_FIELD_FLAG to enum domain and to ComboBox as selectable option.
 	 * @see EnumFieldWrapper
 	 * @param column to with add enum field

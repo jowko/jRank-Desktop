@@ -23,11 +23,12 @@ import static java.util.Objects.nonNull;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
 
 /**
+ * This controller manages upper TabPane. <br>
+ * In this pane main tabs are displayed. <br>
+ * It allows to add and remove(close) tabs from TabPane. <br>
+ * All added tabs should inherit RuleRankTab class. <br>
+ *  <br>
  * Created by Piotr on 2018-04-29.
- * This controller manages upper TabPane.
- * In this pane main tabs are displayed.
- * It allows to add and remove(close) tabs from TabPane.
- * All added tabs should inherit RuleRankTab class.
  * @see RuleRankTab
  * @see pl.jowko.rulerank.desktop.feature.tabs.upper package for all supported tabs
  */
@@ -51,12 +52,12 @@ public class UpperTabsController {
 	}
 	
 	/**
-	 * Creates tab from provided workspace tree item.
-	 * It will check, if tab for provided item exists.
-	 * If such tab exists, nothing happens.
-	 * If such tab doesn't exits, new tab will be created for provided item.
-	 * Only one tab for each workspace item can be created.
-	 * Created tab will load necessary data and focus will be set on new tab.
+	 * Creates tab from provided workspace tree item. <br>
+	 * It will check, if tab for provided item exists. <br>
+	 * If such tab exists, nothing happens. <br>
+	 * If such tab doesn't exits, new tab will be created for provided item. <br>
+	 * Only one tab for each workspace item can be created. <br>
+	 * Created tab will load necessary data and focus will be set on new tab. <br>
 	 * If some error occurs while creating tab, tab will not be created and error will be logged.
 	 * @param workspaceItem from workspace tree
 	 */
@@ -81,8 +82,8 @@ public class UpperTabsController {
 	}
 	
 	/**
-	 * Close provided tab in correct way.
-	 * It will fire onClosed event for closed tab if is available.
+	 * Close provided tab in correct way. <br>
+	 * It will fire onClosed event for closed tab if is available. <br>
 	 * If this event isn't available, tab will be closed.
 	 * @param tab to close
 	 */
@@ -96,7 +97,7 @@ public class UpperTabsController {
 	}
 	
 	/**
-	 * Force close of tab.
+	 * Force close of tab. <br>
 	 * No close handler will be fired with this close action.
 	 * @param tab to close
 	 */
@@ -105,8 +106,8 @@ public class UpperTabsController {
 	}
 	
 	/**
-	 * Close all provided tab from list.
-	 * It will fire onClosed event for each closed tab if is available.
+	 * Close all provided tab from list. <br>
+	 * It will fire onClosed event for each closed tab if is available. <br>
 	 * If this event isn't available, tab will be closed.
 	 * @param tabs to close
 	 */
@@ -140,7 +141,7 @@ public class UpperTabsController {
 	}
 	
 	/**
-	 * Creates tab text(header) from workspace item.
+	 * Creates tab text(header) from workspace item. <br>
 	 * Experiment name and file name will be concatenated to form tab name.
 	 * @param workspaceItem for with tab text will be created
 	 * @return String containing experiment and file name
@@ -150,8 +151,8 @@ public class UpperTabsController {
 	}
 	
 	/**
-	 * Creates tab of correct type for provided workspace item and tab text.
-	 * Each file type has own tab type and fxml file.
+	 * Creates tab of correct type for provided workspace item and tab text. <br>
+	 * Each file type has own tab type and fxml file. <br>
 	 * If application tries to create tab for directory or for root node, WrongFileTypeException will be thrown
 	 * @param workspaceItem from with tab will be created
 	 * @param tabText do display on tab
@@ -189,9 +190,9 @@ public class UpperTabsController {
 	}
 	
 	/**
-	 * This methods handle isf table case.
-	 * When isf file is loaded, it can represent editable isf for learning or test data.
-	 * But it can also represent non editable Partial Comparision Table(PCT) in isf format.
+	 * This methods handle isf table case. <br>
+	 * When isf file is loaded, it can represent editable isf for learning or test data. <br>
+	 * But it can also represent non editable Partial Comparision Table(PCT) in isf format. <br>
 	 * This method loads isf table, checks it type and returns RuleRankTab for provided type.
 	 * @param workspaceItem from workspace tree
 	 * @param tabText to display on tab header

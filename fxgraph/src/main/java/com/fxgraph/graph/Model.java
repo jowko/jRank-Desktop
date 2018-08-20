@@ -127,7 +127,7 @@ public class Model {
 	
 	/**
 	 * Attach all cells which don't have a parent to graphParent
-	 * @param cellList
+	 * @param cellList with will be added to graph
 	 */
 	public void attachOrphansToGraphParent( List<Cell> cellList) {
 		
@@ -141,7 +141,7 @@ public class Model {
 	
 	/**
 	 * Remove the graphParent reference if it is set
-	 * @param cellList
+	 * @param cellList with will be added to graph
 	 */
 	public void disconnectFromGraphParent( List<Cell> cellList) {
 		

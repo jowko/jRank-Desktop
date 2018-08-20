@@ -11,9 +11,10 @@ import java.util.Optional;
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.*;
 
 /**
+ * This class provides values for ComboBoxes in attribute form. <br>
+ * It also helps to translate jRS values to appropriate format on attribute form. <br>
+ *  <br>
  * Created by Piotr on 2018-05-13.
- * This class provides values for ComboBoxes in attribute form.
- * It also helps to translate jRS values to appropriate format on attribute form.
  */
 class AttributeParamService {
 	
@@ -41,6 +42,8 @@ class AttributeParamService {
 	
 	/**
 	 * Find kind param by specified jRS int value.
+	 * @param value from jRS
+	 * @return found param representing kind type
 	 */
 	AttributeParam getKindByValue(int value) {
 		Optional<AttributeParam> param =  kinds.stream()
@@ -56,6 +59,8 @@ class AttributeParamService {
 	
 	/**
 	 * Find preference param by specified jRS int value.
+	 * @param value from jRS
+	 * @return found param representing kind type
 	 */
 	AttributeParam getPreferenceByValue(int value) {
 		Optional<AttributeParam> param =  preferences.stream()

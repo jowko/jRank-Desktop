@@ -9,9 +9,10 @@ import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class creates tooltips for properties form and its fields. <br>
+ * If tooltips are disabled in user settings, they will not be added to form. <br>
+ *  <br>
  * Created by Piotr on 2018-05-07.
- * This class creates tooltips for properties form and its fields.
- * If tooltips are disabled in user settings, they will not be added to form.
  * @see PropertiesController
  */
 class PropertiesTooltipsHelper {
@@ -34,7 +35,7 @@ class PropertiesTooltipsHelper {
 	}
 	
 	/**
-	 * Add tooltips for fields in properties form.
+	 * Add tooltips for fields in properties form. <br>
 	 * If user disabled showing tooltips in user settings, tooltips will not be created.
 	 */
 	void initializeTooltips() {
@@ -107,7 +108,7 @@ class PropertiesTooltipsHelper {
 	}
 	
 	/**
-	 * Create tooltip with provided label.
+	 * Create tooltip with provided label. <br>
 	 * It is initialized with default settings
 	 * @param labelCode with is used to find translation
 	 * @return tooltip containing text translated with labelCode

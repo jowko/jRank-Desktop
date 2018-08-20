@@ -4,8 +4,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.AbstractTranslator
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 
 /**
+ * This class translates UI fields on Attribute form <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This class translates UI fields on Attribute form
  */
 class AttributeDialogTranslator extends AbstractTranslator {
 	

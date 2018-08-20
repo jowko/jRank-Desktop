@@ -3,8 +3,9 @@ package pl.jowko.rulerank.desktop.feature.properties.information;
 import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 
 /**
+ * This exception should be thrown when parsing ranking or pairs from properties text failed. <br>
+ *  <br>
  * Created by Piotr on 2018-05-29
- * This exception should be thrown when parsing ranking or pairs from properties text failed.
  */
 public class TextParseFailException extends RuleRankRuntimeException {
 	

@@ -15,27 +15,28 @@ import java.util.Map;
 import static java.util.Objects.isNull;
 
 /**
+ * This class manages configuration files from data directory.<br>
+ *<br>
+ * Supported configuration files:<br>
+ * ruleRankInfo.json - contains information about application version displayed in about dialog from help settings <br>
+ * {@link pl.jowko.rulerank.desktop.controller.AboutController} <br>
+ * {@link RuleRankInfo} <br>
+ *
+ * labels.json - contains map of maps, where languages with labels codes and translations are stored <br>
+ * {@link pl.jowko.rulerank.desktop.feature.internationalization.LanguageService}<br>
+ * {@link pl.jowko.rulerank.desktop.feature.internationalization.Labels}<br>
+ *<br>
+ * languages.json - contains map of language codes and language labels.<br>
+ * Example: "ENG" : "English"<br>
+ * It is used mostly in user settings form <br>
+ * {@link pl.jowko.rulerank.desktop.feature.internationalization.LanguageService} <br>
+ * {@link pl.jowko.rulerank.desktop.feature.settings.UserSettingsController} <br>
+ *
+ * userSettings.json - contains user settings, with are editable in user settings dialog form from settings menu <br>
+ * {@link pl.jowko.rulerank.desktop.feature.settings.UserSettingsController} <br>
+ * {@link UserSettings} <br>
+ *  <br>
  * Created by Piotr on 2018-03-16.
- * This class manages configuration files from data directory.
- *
- * Supported configuration files:
- * ruleRankInfo.json - contains information about application version displayed in about dialog from help settings
- * @see pl.jowko.rulerank.desktop.controller.AboutController
- * @see RuleRankInfo
- *
- * labels.json - contains map of maps, where languages with labels codes and translations are stored
- * @see pl.jowko.rulerank.desktop.feature.internationalization.LanguageService
- * @see pl.jowko.rulerank.desktop.feature.internationalization.Labels
- *
- * languages.json - contains map of language codes and language labels.
- * Example: "ENG" : "English"
- * It is used mostly in user settings form
- * @see pl.jowko.rulerank.desktop.feature.internationalization.LanguageService
- * @see pl.jowko.rulerank.desktop.feature.settings.UserSettingsController
- *
- * userSettings.json - contains user settings, with are editable in user settings dialog form from settings menu
- * @see pl.jowko.rulerank.desktop.feature.settings.UserSettingsController
- * @see UserSettings
  */
 public class ConfigFileManager {
 	
@@ -102,8 +103,8 @@ public class ConfigFileManager {
 	}
 	
 	/**
-	 * Reads language map with all available languages from languages.json file.
-	 * Languages are in such format:
+	 * Reads language map with all available languages from languages.json file. <br>
+	 * Languages are in such format: <br>
 	 * "ENG" : "English"
 	 * @see pl.jowko.rulerank.desktop.feature.internationalization.LanguageService
 	 * @return map of languages, where key is language code and value is language label
@@ -119,8 +120,8 @@ public class ConfigFileManager {
 	}
 	
 	/**
-	 * Reads labels from labels.json file.
-	 * First map contains language code and labels map for that language.
+	 * Reads labels from labels.json file. <br>
+	 * First map contains language code and labels map for that language. <br>
 	 * Nested map contains labels codes as keys and translations as values.
 	 * @see pl.jowko.rulerank.desktop.feature.internationalization.Labels
 	 * @see pl.jowko.rulerank.desktop.feature.internationalization.LanguageService

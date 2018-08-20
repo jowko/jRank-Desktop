@@ -8,9 +8,10 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 
 /**
+ * This class creates ContextMenu for workspace tree. <br>
+ * Are actions are performed on selected workspace item. <br>
+ *  <br>
  * Created by Piotr on 2018-06-10
- * This class creates ContextMenu for workspace tree.
- * Are actions are performed on selected workspace item.
  * @see ContextMenuActions
  */
 class ContextMenuCreator {
@@ -23,14 +24,14 @@ class ContextMenuCreator {
 	}
 	
 	/**
-	 * This method creates class to handle actions and creates context menu.
-	 * Current implemented actions:
-	 *  - Delete - It deletes selected item and its children. It ask for confirmation first.
-	 *  - Copy   - It copies selected item to user ClipBoard
-	 *  - Paste  - It pastes item from clipboard to selected directory
-	 *  - Cut    - It cuts selected item to user ClipBoard
-	 *  - Rename - It renames item with new name provided by user
-	 *  - Add properties - It adds new properties file to selected directory
+	 * This method creates class to handle actions and creates context menu. <br>
+	 * Current implemented actions: <br>
+	 *  - Delete - It deletes selected item and its children. It ask for confirmation first. <br>
+	 *  - Copy   - It copies selected item to user ClipBoard <br>
+	 *  - Paste  - It pastes item from clipboard to selected directory <br>
+	 *  - Cut    - It cuts selected item to user ClipBoard <br>
+	 *  - Rename - It renames item with new name provided by user <br>
+	 *  - Add properties - It adds new properties file to selected directory <br>
 	 *  - Add isf        - It adds new isf file to selected directory
 	 * @param treeView on with actions will be performed
 	 * @see ContextMenuActions

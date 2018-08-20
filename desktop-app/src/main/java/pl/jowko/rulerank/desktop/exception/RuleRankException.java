@@ -1,10 +1,11 @@
 package pl.jowko.rulerank.desktop.exception;
 
 /**
+ * This checked exception serves as marker exception.<br>
+ * All custom checked exceptions should extend this exception.<br>
+ * Such approach helps to differentiate errors handled by this application from jRS and java errors in catch blocks.<br>
+ * <br>
  * Created by Piotr on 2018-05-22.
- * This checked exception serves as marker exception.
- * All custom checked exceptions should extend this exception.
- * Such approach helps to differentiate errors handled by this application from jRS and java errors in catch blocks.
  */
 public class RuleRankException extends Exception {
 	

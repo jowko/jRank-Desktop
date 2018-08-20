@@ -22,9 +22,10 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNullOrEmpty;
 
 /**
+ * This class is used to perform ruleRank experiment. <br>
+ * It prepares data, validates them, runs experiment and save results. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This class is used to perform ruleRank experiment.
- * It prepares data, validates them, runs experiment and save results.
  */
 public class ExperimentRunner {
 	
@@ -33,7 +34,7 @@ public class ExperimentRunner {
 	private String experimentPath;
 	
 	/**
-	 * Creates instance of this class.
+	 * Creates instance of this class. <br>
 	 * Also prepares properties for later processing.
 	 * @param properties from properties form
 	 * @param propertiesItem representing properties file in workspace tree
@@ -55,7 +56,7 @@ public class ExperimentRunner {
 	}
 	
 	/**
-	 * Runs ruleRank experiment.
+	 * Runs ruleRank experiment. <br>
 	 * It prepares rest of data, logs experiment parameters, runs experiment and save results.
 	 */
 	public void run() {
@@ -82,8 +83,8 @@ public class ExperimentRunner {
 	}
 	
 	/**
-	 * If file names in properties were not configured, they will be replaced with default ones calculated from learning or test table name.
-	 * Learning table name is used in: rules, partial pct and apx
+	 * If file names in properties were not configured, they will be replaced with default ones calculated from learning or test table name. <br>
+	 * Learning table name is used in: rules, partial pct and apx <br>
 	 * Test table name is used in: graph and ranking
 	 */
 	private void initializeFileNames() {

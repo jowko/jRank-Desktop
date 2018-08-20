@@ -6,8 +6,9 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 
 /**
+ * This class initializes keyboard shortcuts actions for workspace actions. <br>
+ *  <br>
  * Created by Piotr on 2018-06-10
- * This class initializes keyboard shortcuts actions for workspace actions.
  * @see ContextMenuActions
  */
 class KeyBoardActionsHandler {
@@ -24,12 +25,12 @@ class KeyBoardActionsHandler {
 	}
 	
 	/**
-	 * Initializes handler for processing keyboard events.
-	 * Current supported keys:
-	 * - Delete - deletes item from workspace tree
-	 * - Copy   - copies item from workspace tree
-	 * - Paste  - paste item into workspace tree
-	 * - Cut    - cuts item from workspace tree
+	 * Initializes handler for processing keyboard events. <br>
+	 * Current supported keys: <br>
+	 * - Delete - deletes item from workspace tree <br>
+	 * - Copy   - copies item from workspace tree <br>
+	 * - Paste  - paste item into workspace tree <br>
+	 * - Cut    - cuts item from workspace tree <br>
 	 * - Rename - renames item from workspace tree
 	 * @param treeView on with handler will be configured
 	 */

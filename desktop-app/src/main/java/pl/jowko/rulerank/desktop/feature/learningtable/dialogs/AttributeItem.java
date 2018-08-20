@@ -5,10 +5,11 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import java.util.Objects;
 
 /**
+ * This class serves as wrapper for Attribute. <br>
+ * It is used in some places in UI. <br>
+ * Main function of this class is to provide elegant toString implementation for UI. <br>
+ *  <br>
  * Created by Piotr on 2018-05-25
- * This class serves as wrapper for Attribute.
- * It is used in some places in UI.
- * Main function of this class is to provide elegant toString implementation for UI.
  */
 public class AttributeItem {
 	

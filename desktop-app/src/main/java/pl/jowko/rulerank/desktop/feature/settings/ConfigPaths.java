@@ -1,9 +1,10 @@
 package pl.jowko.rulerank.desktop.feature.settings;
 
 /**
+ * This class contains path to configuration files. <br>
+ * Configuration files should be in data directory in main catalog of application. <br>
+ *  <br>
  * Created by Piotr on 2018-05-02.
- * This class contains path to configuration files.
- * Configuration files should be in data directory in main catalog of application.
  */
 public class ConfigPaths {
 	
@@ -29,7 +30,7 @@ public class ConfigPaths {
 	}
 	
 	/**
-	 * Sets new directory for config files.
+	 * Sets new directory for config files. <br>
 	 * Paths to all config files are updated with new settings.
 	 * @param dataDirectory for new config catalog
 	 */

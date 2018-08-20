@@ -5,8 +5,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.AbstractTranslator
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 
 /**
+ * This class translates UI components for user settings dialog. <br>
+ *  <br>
  * Created by Piotr on 2018-05-20.
- * This class translates UI components for user settings dialog.
  */
 class UserSettingsTranslator extends AbstractTranslator {
 	

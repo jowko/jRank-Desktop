@@ -8,16 +8,17 @@ import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This handler handles click event on workspace item in workspace tree. <br>
+ * It opens file if its item was clicked twice. <br>
+ *  <br>
  * Created by Piotr on 2018-04-29.
- * This handler handles click event on workspace item in workspace tree.
- * It opens file if its item was clicked twice.
  * @see TreeBuilder
  * @see UpperTabsController
  */
 class ClickEventHandler {
 	
 	/**
-	 * Handle event fired when user double clicks on workspace tree item.
+	 * Handle event fired when user double clicks on workspace tree item. <br>
 	 * It opens tab with file content or do nothing if user clicked on root node(workspace main directory) or catalog.
 	 * @param event with is fired by user action
 	 * @param cell on with this event was performed
@@ -35,7 +36,7 @@ class ClickEventHandler {
 	}
 	
 	/**
-	 * Check if file type is valid for file opening.
+	 * Check if file type is valid for file opening. <br>
 	 * If user clicked on catalog or root node, this method will return false.
 	 * @param workspaceItem on with user clicked
 	 * @return true if item can be opened in tab

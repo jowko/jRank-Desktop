@@ -5,8 +5,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.poznan.put.cs.idss.jrs.rules.Rule;
 
 /**
+ * This class translates Rule constants to string values. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This class translates Rule constants to string values.
  */
 class RuleConstantsTranslator {
 	

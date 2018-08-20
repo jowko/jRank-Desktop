@@ -6,9 +6,10 @@ import pl.jowko.rulerank.desktop.service.Validator;
 import static java.util.Objects.isNull;
 
 /**
+ * This class validates, if properties for experiment have set values for needed fields. <br>
+ * This class validates result of merge between defaults and form properties. <br>
+ *  <br>
  * Created by Piotr on 2018-06-05
- * This class validates, if properties for experiment have set values for needed fields.
- * This class validates result of merge between defaults and form properties.
  */
 public class PropertiesMandatoryFieldsValidator extends Validator {
 	

@@ -7,9 +7,10 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNullOrEmpty;
 
 /**
+ * This class merges properties from experiment/form with default properties. <br>
+ * Result is used for running RuleRank algorithm and in form validation. <br>
+ *  <br>
  * Created by Piotr on 2018-05-06.
- * This class merges properties from experiment/form with default properties.
- * Result is used for running RuleRank algorithm and in form validation.
  */
 public class RunnerPropertiesProvider {
 	
@@ -29,9 +30,9 @@ public class RunnerPropertiesProvider {
 	}
 	
 	/**
-	 * Merge provided properties with defaults and return result.
-	 * If property from provided properties is null or empty, it will be replaced with default value.
-	 * If both provided properties and defaults have filled property A, property A is taken from provided properties.
+	 * Merge provided properties with defaults and return result. <br>
+	 * If property from provided properties is null or empty, it will be replaced with default value. <br>
+	 * If both provided properties and defaults have filled property A, property A is taken from provided properties. <br>
 	 * All properties are checked.
 	 * @return merged provided properties and default properties
 	 */

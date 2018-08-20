@@ -7,9 +7,11 @@ import java.util.Calendar;
 import static java.util.Objects.nonNull;
 
 /**
- * Created by Piotr on 2018-05-25
- * Very light custom logging implementation.
- * Can be replaced by any logging framework.
+ * Very light custom logging implementation.<br>
+ * Can be replaced by any logging framework.<br>
+ *<br>
+ * Created by Piotr on 2018-05-25<br>
+ *
  * @see RuleRankLogger
  */
 class CustomLogger {

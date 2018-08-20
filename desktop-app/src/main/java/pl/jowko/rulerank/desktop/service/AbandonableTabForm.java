@@ -7,9 +7,10 @@ import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This interface allows to display confirmation dialog when tab is marked as edited.<br>
+ * If user edited tab and try to close it, he will be asked to confirm action.<br>
+ * <br>
  * Created by Piotr on 2018-08-09
- * This interface allows to display confirmation dialog when tab is marked as edited.
- * If user edited tab and try to close it, he will be asked to confirm action.
  */
 public interface AbandonableTabForm {
 	
@@ -20,15 +21,16 @@ public interface AbandonableTabForm {
 	RuleRankTab getTab();
 	
 	/**
-	 * Check, if user wants to keep changes.
+	 * Check, if user wants to keep changes. <br>
 	 * If table was edited, it will show confirmation dialog.
+	 * @return true if user wish to keep changes, false otherwise
 	 */
 	default boolean isUserWishToKeepChanges() {
 		return getTab().isTabEdited() && not(showAbandonChangesConfirmationDialog());
 	}
 	
 	/**
-	 * Initialize close event for tab.
+	 * Initialize close event for tab. <br>
 	 * It will display confirmation dialog on close event for user if he edited tab.
 	 */
 	default void initializeCloseEvent() {

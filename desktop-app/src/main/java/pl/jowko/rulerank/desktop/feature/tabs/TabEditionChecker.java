@@ -7,8 +7,9 @@ import pl.jowko.rulerank.desktop.service.DialogsService;
 import java.util.List;
 
 /**
+ * This class helps to detect if any tabs are edited. <br>
+ * <br>
  * Created by Piotr on 2018-05-25
- * This class helps to detect if any tabs are edited.
  */
 public class TabEditionChecker {
 	

@@ -3,8 +3,9 @@ package pl.jowko.rulerank.desktop.feature.runner;
 import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 
 /**
+ * This exception is thrown when something goes wrong with running ruleRank experiment. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This exception is thrown when something goes wrong with running ruleRank experiment.
  */
 public class RunnerException extends RuleRankRuntimeException {
 	

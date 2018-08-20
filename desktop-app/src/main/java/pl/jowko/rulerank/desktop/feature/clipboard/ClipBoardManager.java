@@ -5,8 +5,9 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 
 /**
+ * This class copies objects to user clipboard. <br>
+ *  <br>
  * Created by Piotr on 2018-05-27
- * This class copies objects to user clipboard.
  */
 public class ClipBoardManager {
 	
@@ -20,6 +21,7 @@ public class ClipBoardManager {
 	
 	/**
 	 * Copy some string to user clipboard
+	 * @param text with will be copied to clipboard
 	 */
 	public static void putString(String text) {
 		ClipboardContent content = new ClipboardContent();
@@ -46,8 +48,9 @@ public class ClipBoardManager {
 	}
 	
 	/**
-	 * Copy csv table to user clipboard.
+	 * Copy csv table to user clipboard. <br>
 	 * It will be passed as text.
+	 * @param table with will be converted to string and put to clipboard
 	 */
 	public static void putCsvTable(CsvTable table) {
 		putString(table.toString());

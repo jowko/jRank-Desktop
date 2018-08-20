@@ -4,10 +4,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 /**
+ * This class adds change listener to any text input. <br>
+ * If any change in fields occurs, this class marks tab as edited. <br>
+ * After this listener removes itself. <br>
+ * <br>
  * Created by Piotr on 2018-08-08
- * This class adds change listener to any text input.
- * If any change in fields occurs, this class marks tab as edited.
- * After this listener removes itself.
  */
 public class RemovableChangeListener <T> implements ChangeListener<T> {
 	

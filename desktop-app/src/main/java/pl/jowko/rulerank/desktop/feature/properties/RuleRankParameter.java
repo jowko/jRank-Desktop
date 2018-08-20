@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * This class is used in properties form as data storage for ComboBox values. <br>
+ * It contains label and also text and int value from RuleRank application. <br>
+ *  <br>
  * Created by Piotr on 2018-05-01.
- * This class is used in properties form as data storage for ComboBox values.
- * It contains label and also text and int value from RuleRank application.
  * @see RuleRankParametersService
  */
 public class RuleRankParameter implements Serializable {

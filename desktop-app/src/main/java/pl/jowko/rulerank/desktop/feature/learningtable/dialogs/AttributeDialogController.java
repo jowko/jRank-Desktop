@@ -27,9 +27,10 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class serve as controller for attributeActionDialog.fxml file. <br>
+ * It manages editing and adding attribute form. <br>
+ *  <br>
  * Created by Piotr on 2018-05-19.
- * This class serve as controller for attributeActionDialog.fxml file.
- * It manages editing and adding attribute form.
  */
 public class AttributeDialogController extends AbstractDialogForm {
 	
@@ -109,7 +110,7 @@ public class AttributeDialogController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Validates and save added/edited attributes. After successful action closes this dialog.
+	 * Validates and save added/edited attributes. After successful action closes this dialog. <br>
 	 * Method called by saveButton.
 	 */
 	public void saveAction() {
@@ -126,7 +127,7 @@ public class AttributeDialogController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Close this dialog without validation or saving.
+	 * Close this dialog without validation or saving. <br>
 	 * Method called by cancelButton.
 	 */
 	public void cancelAction() {
@@ -134,7 +135,7 @@ public class AttributeDialogController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Clear all editable fields on form.
+	 * Clear all editable fields on form. <br>
 	 * Method called by clearButton.
 	 */
 	public void clearFormAction() {
@@ -157,7 +158,7 @@ public class AttributeDialogController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Initialize form for edit action.
+	 * Initialize form for edit action. <br>
 	 * It sets values from editedAttribute to UI fields.
 	 */
 	void initializeFieldsForEdit() {
@@ -249,7 +250,7 @@ public class AttributeDialogController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Initialize attributes in ListView.
+	 * Initialize attributes in ListView. <br>
 	 * It fills ListView component with attribute values and select currently edited attribute.
 	 */
 	private void initializeAttributesListView() {
@@ -277,7 +278,7 @@ public class AttributeDialogController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Initialize field type field.
+	 * Initialize field type field. <br>
 	 * It will extract all values from FieldType enum except Pair field, with is not editable field type.
 	 * @see FieldType
 	 */

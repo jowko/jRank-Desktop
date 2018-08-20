@@ -1,8 +1,8 @@
 package com.fxgraph.graph;
 
 /**
+ * This interface is used to perform mouse click action on graph node.<br>
  * Created by Piotr on 2018-06-24
- * This interface is used to perform mouse click action on graph node.
  */
 public interface MouseClickAction {
 	

@@ -4,9 +4,10 @@ import java.io.File;
 import java.io.Serializable;
 
 /**
+ * This class is used in copy and paste action in workspace tree. <br>
+ * It is saved in user ClipBoard. <br>
+ *  <br>
  * Created by Piotr on 2018-06-10
- * This class is used in copy and paste action in workspace tree.
- * It is saved in user ClipBoard.
  */
 class FileDataFormat implements Serializable {
 	

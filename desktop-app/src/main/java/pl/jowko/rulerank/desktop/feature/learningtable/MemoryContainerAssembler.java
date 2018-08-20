@@ -6,10 +6,11 @@ import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Example;
 
 /**
+ * This class helps to convert LearningTable to MemoryContainer. <br>
+ * Provided LearningTable should contain only jRS field types. <br>
+ * No wrapper fields are allowed. <br>
+ *  <br>
  * Created by Piotr on 2018-05-15.
- * This class helps to convert LearningTable to MemoryContainer.
- * Provided LearningTable should contain only jRS field types.
- * No wrapper fields are allowed.
  * @see pl.jowko.rulerank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer
  * @see LearningTable
  * @see MemoryContainer
@@ -19,8 +20,8 @@ public class MemoryContainerAssembler {
 	private MemoryContainerAssembler() {}
 	
 	/**
-	 * Creates MemoryContainer object from LearningTable object.
-	 * Learning table should contain only jRS field types.
+	 * Creates MemoryContainer object from LearningTable object. <br>
+	 * Learning table should contain only jRS field types. <br>
 	 * No wrapper fields are allowed.
 	 * @see pl.jowko.rulerank.desktop.feature.learningtable.wrappers.JRSFieldsReplacer
 	 * @param table with raw jRS fields

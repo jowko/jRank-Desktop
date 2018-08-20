@@ -26,9 +26,10 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.feature.clipboard.CsvTableCreator.createTable;
 
 /**
+ * This is controller for rules tab and table. <br>
+ * It displays rules table and enables viewing rule statistics. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This is controller for rules tab and table.
- * It displays rules table and enables viewing rule statistics.
  */
 public class RulesController {
 	
@@ -66,7 +67,7 @@ public class RulesController {
 	}
 	
 	/**
-	 * Initialize table content. It creates appropriate number of columns and items.
+	 * Initialize table content. It creates appropriate number of columns and items. <br>
 	 * Also sets listeners to show statistics when user click on or select row
 	 */
 	private void initializeTable() {
@@ -79,8 +80,8 @@ public class RulesController {
 	}
 	
 	/**
-	 * Initialize listeners to show statistics tab.
-	 * Listener is bind to click and select event.
+	 * Initialize listeners to show statistics tab. <br>
+	 * Listener is bind to click and select event. <br>
 	 * This means, that statistics tab will be shown when user click on row or select row by click or arrows.
 	 */
 	private void initializeShowStatisticsEvent() {
@@ -111,7 +112,7 @@ public class RulesController {
 	}
 	
 	/**
-	 * Copy selected rows action.
+	 * Copy selected rows action. <br>
 	 * This action will copy to user clipboard all selected rows in csv format.
 	 * @see CsvTableCreator
 	 */
@@ -125,7 +126,7 @@ public class RulesController {
 	}
 	
 	/**
-	 * Gets list of selected items(RuleRow) and converts each RuleRow to list of string containing cell values.
+	 * Gets list of selected items(RuleRow) and converts each RuleRow to list of string containing cell values. <br>
 	 * It will return list of list, where each list represents row and each object in nested list represents cell.
 	 * @return selected RuleRow objects flattened to string list
 	 */
@@ -144,9 +145,9 @@ public class RulesController {
 	}
 	
 	/**
-	 * Show statistics tab in lower tabs.
-	 * If Statistics tab wasn't created, this method will create new tab.
-	 * If Statistics tab was created, this method will display new data on existing statistics tab.
+	 * Show statistics tab in lower tabs. <br>
+	 * If Statistics tab wasn't created, this method will create new tab. <br>
+	 * If Statistics tab was created, this method will display new data on existing statistics tab. <br>
 	 * It also adds close listener to statistics tab to remove statisticsTab reference. This enables recreating statistics tab if user closed it manually.
 	 * @param rule to display
 	 */
@@ -165,8 +166,8 @@ public class RulesController {
 	}
 	
 	/**
-	 * Initializes close event for rules tab.
-	 * If rules tab are closed, statistics tab are also automatically closed.
+	 * Initializes close event for rules tab. <br>
+	 * If rules tab are closed, statistics tab are also automatically closed. <br>
 	 * Force close is called for rulesTab, because firing onClosed event will cancel close of rulesTab.
 	 * @see UpperTabsController
 	 */

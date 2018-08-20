@@ -7,10 +7,11 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 import java.util.List;
 
 /**
+ * In isf table, only decision attribute can have unknown field values in experiment. <br>
+ * But isf supports setting all fields to unknown values, so user should have such options. <br>
+ * This class validates, if any non decision field in Learning table has unknown value set. <br>
+ *  <br>
  * Created by Piotr on 2018-05-27
- * In isf table, only decision attribute can have unknown field values in experiment.
- * But isf supports setting all fields to unknown values, so user should have such options.
- * This class validates, if any non decision field in Learning table has unknown value set.
  */
 public class UnknownFieldValidator {
 	
@@ -37,8 +38,11 @@ public class UnknownFieldValidator {
 	}
 	
 	/**
-	 * Check if fields from example have unknown value.
+	 * Check if fields from example have unknown value. <br>
 	 * Decision attributes are excluded from validation, because they can contain unknown values.
+	 * @param fields to validate with are extracted from example
+	 * @param attributes with are used for validation
+	 * @return true if example is invalid, false otherwise
 	 */
 	private boolean isExampleInvalid(Field[] fields, List<Attribute> attributes) {
 		for(int i=0; i<attributes.size(); i++) {

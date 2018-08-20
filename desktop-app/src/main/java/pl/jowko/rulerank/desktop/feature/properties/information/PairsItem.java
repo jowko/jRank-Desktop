@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class is used to display pairs with relations on pairs dialog. <br>
+ * <br>
+ * It will display them in such format: <br>
+ * Field_1_Label Relation Field_2_Label <br>
+ * <br>
+ * Labels are stored in lists of fields. <br>
+ *  <br>
  * Created by Piotr on 2018-05-29
- * This class is used to display pairs with relations on pairs dialog.
- *
- * It will display them in such format:
- * Field_1_Label Relation Field_2_Label
- *
- * Labels are stored in lists of fields.
  * @see PropertiesPairsController
  * @see FieldItem
  */

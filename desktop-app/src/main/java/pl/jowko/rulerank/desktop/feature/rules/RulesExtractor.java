@@ -9,8 +9,9 @@ import java.util.List;
 import static java.util.Objects.nonNull;
 
 /**
+ * This class extracts all rules from RulesContainer into one List. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This class extracts all rules from RulesContainer into one List.
  */
 class RulesExtractor {
 	
@@ -27,7 +28,7 @@ class RulesExtractor {
 	}
 	
 	/**
-	 * Extract all rules types from RulesContainer.
+	 * Extract all rules types from RulesContainer. <br>
 	 * Nine rules lists are loaded into one. (Certain, Possible, Approximate) rules with (At least, At most, Equal) characteristics.
 	 * @return union of all rules from RulesContainer
 	 */

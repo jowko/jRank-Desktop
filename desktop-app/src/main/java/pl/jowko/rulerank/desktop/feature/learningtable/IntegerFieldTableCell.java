@@ -6,10 +6,11 @@ import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
 /**
+ * This class provides special field on edit event for Integer field type. <br>
+ * This field only accepts integer numbers. <br>
+ * It also allows to handle unknown field type. <br>
+ *  <br>
  * Created by Piotr on 2018-05-09.
- * This class provides special field on edit event for Integer field type.
- * This field only accepts integer numbers.
- * It also allows to handle unknown field type.
  * @see IntegerField
  */
 class IntegerFieldTableCell <T> extends AcceptOnExitTableCell<T> {

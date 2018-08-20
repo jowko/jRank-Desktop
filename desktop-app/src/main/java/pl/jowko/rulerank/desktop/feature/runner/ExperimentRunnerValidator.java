@@ -30,9 +30,10 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 import static pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainerDecisionsManager.getFirstDecisionAttributeIndex;
 
 /**
+ * This class validates properties before running ruleRank experiment. <br>
+ * It also reads learning memory container. <br>
+ *  <br>
  * Created by Piotr on 2018-06-04
- * This class validates properties before running ruleRank experiment.
- * It also reads learning memory container.
  */
 class ExperimentRunnerValidator {
 	
@@ -59,7 +60,7 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * Checks, if provided properties are valid.
+	 * Checks, if provided properties are valid. <br>
 	 * It will validate properties, learning and test data table and check if any files will be overridden.
 	 * @return true if all files are valid
 	 */
@@ -105,6 +106,7 @@ class ExperimentRunnerValidator {
 	/**
 	 * Loads isf data table and validates it.
 	 * @param filePath to isf file
+	 * @param containerName with represents isf file name
 	 * @return LearningTable containing isf data table
 	 */
 	private LearningTable readAndValidateMemoryContainer(String filePath, String containerName) {
@@ -135,8 +137,8 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * This method checks, what sources of information user configured.
-	 * If used configured more than one source of information,
+	 * This method checks, what sources of information user configured. <br>
+	 * If used configured more than one source of information, <br>
 	 * he will be asked to chose on of them.
 	 * @see ExperimentRunnerDialog
 	 */
@@ -167,7 +169,7 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * This method was copied from RuleRank console application.
+	 * This method was copied from RuleRank console application. <br>
 	 * It will calculate ranking using decision attribute.
 	 */
 	private void calculateAndSetReferenceRanking() {
@@ -203,12 +205,12 @@ class ExperimentRunnerValidator {
 	private String getOverriddenFileNames() {
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append(getFileNameIfExists(properties.getPctFile()));
-		builder.append(getFileNameIfExists(properties.getPctApxFile()));
-		builder.append(getFileNameIfExists(properties.getPctRulesFile()));
-		builder.append(getFileNameIfExists(properties.getRankingFile()));
-		builder.append(getFileNameIfExists(properties.getPreferenceGraphFile()));
-		builder.append(getFileNameIfExists(properties.getReportFile()));
+		builder.append(getFilePathIfExists(properties.getPctFile()));
+		builder.append(getFilePathIfExists(properties.getPctApxFile()));
+		builder.append(getFilePathIfExists(properties.getPctRulesFile()));
+		builder.append(getFilePathIfExists(properties.getRankingFile()));
+		builder.append(getFilePathIfExists(properties.getPreferenceGraphFile()));
+		builder.append(getFilePathIfExists(properties.getReportFile()));
 		
 		if(builder.length() > 0)
 			return builder.substring(0, builder.length()-2); // skip last space and comma
@@ -217,11 +219,12 @@ class ExperimentRunnerValidator {
 	}
 	
 	/**
-	 * Checks if file with provided path exists.
+	 * Checks if file with provided path exists. <br>
 	 * If file exists, its file name will be returned.
 	 * @param fileName of file to check
+	 * @return String value of file path or empty string
 	 */
-	private String getFileNameIfExists(String fileName) {
+	private String getFilePathIfExists(String fileName) {
 		String filePath = getAbsoluteExperimentFilePath(experimentPath, fileName);
 		Path path = Paths.get(filePath);
 		

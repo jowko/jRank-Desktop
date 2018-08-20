@@ -9,8 +9,9 @@ import static java.util.Objects.nonNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class initializes drag and drop action for ranking configuration in properties form. <br>
+ *  <br>
  * Created by Piotr on 2018-05-30
- * This class initializes drag and drop action for ranking configuration in properties form.
  * @see PropertiesRankingController
  */
 class DragAndDropInitializer {
@@ -20,7 +21,7 @@ class DragAndDropInitializer {
 	private DataFormat rankingItemFormat;
 	
 	/**
-	 * Create instance of this class.
+	 * Create instance of this class. <br>
 	 * It will initialize all events for drag and drop action for ranking dialog.
 	 * @param controller with is used to perform some actions and access Views variables
 	 */
@@ -31,11 +32,11 @@ class DragAndDropInitializer {
 	}
 	
 	/**
-	 * Init data format with is used in Clipboard.
-	 * This field serves as key for fields on drag and drop event.
-	 * Each created field must have unique ID and this field is not removed after closing this dialog.
-	 * So check is performed to find out, if such format already exists.
-	 * Such situation happens, when user opens dialog more than one in application run time.
+	 * Init data format with is used in Clipboard. <br>
+	 * This field serves as key for fields on drag and drop event. <br>
+	 * Each created field must have unique ID and this field is not removed after closing this dialog. <br>
+	 * So check is performed to find out, if such format already exists. <br>
+	 * Such situation happens, when user opens dialog more than one in application run time. <br>
 	 * rankingItemFormat is used in case of drag and drop between ranking tree items
 	 */
 	private void initDataFormat() {
@@ -49,8 +50,8 @@ class DragAndDropInitializer {
 	}
 	
 	/**
-	 * Initializes drag and drop event between dataView and rankingTree.
-	 * Items from dataView can be dragged and dropped to rankingTree.
+	 * Initializes drag and drop event between dataView and rankingTree. <br>
+	 * Items from dataView can be dragged and dropped to rankingTree. <br>
 	 * After such operation, item from ListView will be removed and added to ranking tree.
 	 */
 	private void initDragAndDrop() {
@@ -132,8 +133,8 @@ class DragAndDropInitializer {
 	}
 	
 	/**
-	 * Handle drop event on ranking tree.
-	 * It will create position node for dragged field.
+	 * Handle drop event on ranking tree. <br>
+	 * It will create position node for dragged field. <br>
 	 * It also creates new Rank node, when item was dragged to root node or empty cell.
 	 * @param event with was fired
 	 * @param treeCell on with this event was fired

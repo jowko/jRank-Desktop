@@ -17,15 +17,16 @@ import java.nio.file.Paths;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * This class helps to create new properties and isf files. <br>
+ *  <br>
  * Created by Piotr on 2018-06-09
- * This class helps to create new properties and isf files.
  */
 public class ExperimentFilesCreator {
 	
 	private ExperimentFilesCreator() {}
 	
 	/**
-	 * Creates new .properties file.
+	 * Creates new .properties file. <br>
 	 * Properties will be saved in provided directory and learning data table will be configured in them.
 	 * @param dirPath to save properties
 	 * @param isfTableName with will be used to configure properties
@@ -94,7 +95,7 @@ public class ExperimentFilesCreator {
 	}
 	
 	/**
-	 * Creates new example MemoryContainer(isf file).
+	 * Creates new example MemoryContainer(isf file). <br>
 	 * Created container will have one example with one attribute, because it cannot be empty.
 	 * @param dirPath to save MemoryContainer
 	 * @param isfTableName on with container will be saved

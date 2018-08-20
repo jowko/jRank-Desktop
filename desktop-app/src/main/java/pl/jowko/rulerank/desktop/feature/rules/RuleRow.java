@@ -5,9 +5,10 @@ import pl.poznan.put.cs.idss.jrs.rules.Rule;
 import java.util.List;
 
 /**
+ * This class contains data for row in rule table. <br>
+ * Cells list and id is used to display text in columns. <br>
+ *  <br>
  * Created by Piotr on 2018-05-21.
- * This class contains data for row in rule table.
- * Cells list and id is used to display text in columns.
  */
 class RuleRow {
 	

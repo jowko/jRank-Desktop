@@ -20,11 +20,12 @@ import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.RANK
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.RANKING_POSITION;
 
 /**
+ * This class creates table from provided .ranking file content and MemoryContainer. <br>
+ * It creates rows and columns for ranking table. <br>
+ * Table have such format: <br>
+ * POSITION | EVALUATION | FIELDS FROM ISF TABLE ... <br>
+ *  <br>
  * Created by Piotr on 2018-05-22.
- * This class creates table from provided .ranking file content and MemoryContainer.
- * It creates rows and columns for ranking table.
- * Table have such format:
- * POSITION | EVALUATION | FIELDS FROM ISF TABLE ...
  */
 class RankingTableCreator {
 	
@@ -37,13 +38,13 @@ class RankingTableCreator {
 	private List<TableColumn<RankingRow, ?>> columns;
 	private List<RankingRow> items;
 	/**
-	 * jRS supports saving ranking with starting positions from 0 or 1.
+	 * jRS supports saving ranking with starting positions from 0 or 1. <br>
 	 * This variable helps to handle both cases
 	 */
 	private int increment;
 	
 	/**
-	 * Create instance of this class.
+	 * Create instance of this class. <br>
 	 * Also creates all data for ranking table.
 	 * @param rankingFileContent containing .ranking content as String
 	 * @param isfTable containing learning data table from .isf file
@@ -60,8 +61,8 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Gets columns for ranking table
-	 * Columns have format:
+	 * Gets columns for ranking table <br>
+	 * Columns have format: <br>
 	 * POSITION | EVALUATION | ATTRIBUTES...
 	 * @return list of columns
 	 */
@@ -70,8 +71,8 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Gets items(rows) for ranking table.
-	 * Items have format:
+	 * Gets items(rows) for ranking table. <br>
+	 * Items have format: <br>
 	 * POSITION | EVALUATION | Fields from examples...
 	 * @return items(rows) for table
 	 */
@@ -80,7 +81,7 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Initialize columns and rows for ranking table.
+	 * Initialize columns and rows for ranking table. <br>
 	 * Also catch and rethrows some exceptions
 	 */
 	private void initializeData() {
@@ -96,9 +97,9 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Creates columns for ranking table.
-	 * First column is positions containing positions extracted from .ranking file.
-	 * Second column is evaluation containing evaluations extracted from .ranking file.
+	 * Creates columns for ranking table. <br>
+	 * First column is positions containing positions extracted from .ranking file. <br>
+	 * Second column is evaluation containing evaluations extracted from .ranking file. <br>
 	 * Rest of columns is created from learning data table.
 	 */
 	private void createColumns() {
@@ -143,9 +144,9 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Create column from provided attribute.
-	 * Attribute name is used as column header.
-	 * Column have also tooltip containing information about attribute.
+	 * Create column from provided attribute. <br>
+	 * Attribute name is used as column header. <br>
+	 * Column have also tooltip containing information about attribute. <br>
 	 * When creating column, index for IndexedTableColumn is incremented by 2, because we already created two columns, and index starts from 0.
 	 * @param attribute from with column is created
 	 * @param columnIndex with is used to extract correct cell from row
@@ -162,9 +163,9 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Sets cell factory for column.
-	 * This method check field type for column.
-	 * Without converting numbers to number types, sorting for them will not work correctly.
+	 * Sets cell factory for column. <br>
+	 * This method check field type for column. <br>
+	 * Without converting numbers to number types, sorting for them will not work correctly. <br>
 	 * If field type is not number type, column use String to display rows content.
 	 * @param column for with cellValueFactory will be created
 	 * @param fieldType from attribute
@@ -193,15 +194,15 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Creates rows from provided .ranking file.
-	 * Ranking file can have following format:
-	 *
-	 * 1:	1, 2	10.0
-	 * 2:	5, 7	1.0
-	 * 3:	3	-5.0
-	 *
-	 * Where first column is position in ranking,
-	 * second contains indexes of objects on this position
+	 * Creates rows from provided .ranking file. <br>
+	 * Ranking file can have following format: <br>
+	 * <br>
+	 * 1:	1, 2	10.0 <br>
+	 * 2:	5, 7	1.0 <br>
+	 * 3:	3	-5.0 <br>
+	 * <br>
+	 * Where first column is position in ranking, <br>
+	 * second contains indexes of objects on this position <br>
 	 * and last contains evaluation.
 	 */
 	private void createRows() {
@@ -217,10 +218,10 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Creates data for row from one line of file.
-	 * Positions and indexes for examples can be indexes from 0 or 1.
-	 * Increment variable is used to handle both cases.
-	 * New row in table is created for each example.
+	 * Creates data for row from one line of file. <br>
+	 * Positions and indexes for examples can be indexes from 0 or 1. <br>
+	 * Increment variable is used to handle both cases. <br>
+	 * New row in table is created for each example. <br>
 	 * So if position 2 have 3 examples, three rows will be created with position 2.
 	 * @param values from scanner split by whitespaces
 	 */
@@ -253,9 +254,9 @@ class RankingTableCreator {
 	}
 	
 	/**
-	 * Checks from what index data is incremented.
-	 * Positions and examples indexes can be indexed from 0 or 1.
-	 * This methods checks, if first position starts from 0 or 1.
+	 * Checks from what index data is incremented. <br>
+	 * Positions and examples indexes can be indexed from 0 or 1. <br>
+	 * This methods checks, if first position starts from 0 or 1. <br>
 	 * Integer.MIN_VALUE is used to determine, if increment was already calculated.
 	 * @param firstPosition from first line of .ranking file
 	 */

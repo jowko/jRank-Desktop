@@ -29,8 +29,9 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * Controller for editable learning data table. <br>
+ *  <br>
  * Created by Piotr on 2018-05-08.
- * Controller for editable learning data table.
  */
 public class LearningTableController implements AbandonableTabForm {
 	
@@ -57,9 +58,9 @@ public class LearningTableController implements AbandonableTabForm {
 	private LanguageService labels;
 	
 	/**
-	 * Initialize table and all needed data.
-	 * This class creates LearningTable from provided MemoryContainer.
-	 * It will wrap jRS raw fields with custom wrappers.
+	 * Initialize table and all needed data. <br>
+	 * This class creates LearningTable from provided MemoryContainer. <br>
+	 * It will wrap jRS raw fields with custom wrappers. <br>
 	 * It also initializes all needed events and ContextMenu.
 	 * @param container from with data for table are extracted
 	 * @param tableTab in with learning table is set
@@ -83,8 +84,8 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Change behavior of sorting in UI table.
-	 * This code should remove multi sorting and handle unknown fields on sort action.
+	 * Change behavior of sorting in UI table. <br>
+	 * This code should remove multi sorting and handle unknown fields on sort action. <br>
 	 * It is needed, because jRS fields will throw exception when comparing unknown fields.
 	 * @see UnknownFieldSortCallback
 	 */
@@ -99,8 +100,8 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Disable right click row select.
-	 * When user selects rows and right click on table to execute some action, row below mouse cursor is also selected.
+	 * Disable right click row select. <br>
+	 * When user selects rows and right click on table to execute some action, row below mouse cursor is also selected. <br>
 	 * This event will be disabled by this code to avoid accident row selects.
 	 */
 	private void disableRightClickSelect() {
@@ -116,7 +117,7 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * This action will remove selected attribute.
+	 * This action will remove selected attribute. <br>
 	 * If no attribute was selected, it will inform user about this in dialog.
 	 * @see LearningTableActions
 	 */
@@ -131,7 +132,7 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * This action will remove all examples(row) from learning table.
+	 * This action will remove all examples(row) from learning table. <br>
 	 * It will ask for confirmation.
 	 */
 	public void removeAllExamplesAction() {
@@ -141,10 +142,10 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Save edited learning table.
-	 * This method will extract data from UI table and put them into new LearningTable object.
-	 * Them it will validate, if table is valid.
-	 * After this, it will replace wrappers with raw jRS fields.
+	 * Save edited learning table. <br>
+	 * This method will extract data from UI table and put them into new LearningTable object. <br>
+	 * Them it will validate, if table is valid. <br>
+	 * After this, it will replace wrappers with raw jRS fields. <br>
 	 * Then it converts LearningTable object to MemoryContainer and save it to file.
 	 * @see LearningTableAssembler
 	 * @see JRSFieldsReplacer
@@ -167,7 +168,7 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Closes tab containing learning data table.
+	 * Closes tab containing learning data table. <br>
 	 * If edition occurred, application ask for confirmation.
 	 */
 	public void cancelAction() {
@@ -183,8 +184,8 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * This will initialize edit event for table.
-	 * If any action related with table edition will occur, this code will set learning tab to edit mode.
+	 * This will initialize edit event for table. <br>
+	 * If any action related with table edition will occur, this code will set learning tab to edit mode. <br>
 	 * This solution has one flaw - if user perform change and reverse it, table will be still in edit mode.
 	 */
 	private void initializeTableEditionHandler() {
@@ -214,8 +215,9 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Create row of data for provided example.
+	 * Create row of data for provided example. <br>
 	 * It will create ID cell and cell for each field in example.
+	 * @param example for with row of data will be created
 	 * @return list of fields with ID cell and cells created from example fields
 	 */
 	private ObservableList<Field> createItemRow(Example example) {
@@ -231,6 +233,7 @@ public class LearningTableController implements AbandonableTabForm {
 	/**
 	 * Extract data from UI table and put them in LearningTable
 	 * @see LearningTableAssembler
+	 * @return learning table extracted from UI table
 	 */
 	private LearningTable matchDataFromUIToLearningTable() {
 		return new LearningTableAssembler(learningTable, table, tableActions.getAttributes()).getLearningTableFromUITable();
@@ -241,9 +244,11 @@ public class LearningTableController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Validate table and check if data is valid.
+	 * Validate table and check if data is valid. <br>
 	 * If table is not valid, it will show error messages and ask for confirmation to save.
+	 * @param tableToSave with will be validated
 	 * @see LearningTableValidator
+	 * @return true if table is valid, false otherwise
 	 */
 	private boolean isTableValid(LearningTable tableToSave) {
 		LearningTableValidator validator = new LearningTableValidator(tableToSave);

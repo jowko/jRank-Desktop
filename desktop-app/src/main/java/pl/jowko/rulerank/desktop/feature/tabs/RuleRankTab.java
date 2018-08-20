@@ -11,8 +11,9 @@ import java.io.IOException;
 import static java.util.Objects.nonNull;
 
 /**
+ * This class contains functionality common for tabs in this application. <br>
+ * <br>
  * Created by Piotr on 2018-04-29.
- * This class contains functionality common for tabs in this application.
  */
 public abstract class RuleRankTab extends Tab {
 	
@@ -22,7 +23,7 @@ public abstract class RuleRankTab extends Tab {
 	private boolean tabEdited;
 	
 	/**
-	 * Creates instance of this class.
+	 * Creates instance of this class. <br>
 	 * Also setting tab text.
 	 * @param tabName to display on table header and with will be final
 	 */
@@ -38,8 +39,8 @@ public abstract class RuleRankTab extends Tab {
 	protected abstract String getResourceName();
 	
 	/**
-	 * Initialize tab from provided workspace item.
-	 * It loads fxml file for tab by getResourceName method
+	 * Initialize tab from provided workspace item. <br>
+	 * It loads fxml file for tab by getResourceName method <br>
 	 * It will return Controller from fxml file.
 	 * @param workspaceItem with will be loaded
 	 * @param <T> controller from fxml file
@@ -57,9 +58,9 @@ public abstract class RuleRankTab extends Tab {
 	}
 	
 	/**
-	 * This method throws TabInitializationException.
-	 * It should be used when some error occurred on tab initialization.
-	 * It appends tab name and file name to exception message.
+	 * This method throws TabInitializationException. <br>
+	 * It should be used when some error occurred on tab initialization. <br>
+	 * It appends tab name and file name to exception message. <br>
 	 * Also gets messages from all nested exceptions and pass it to exception message without stacktrace.
 	 * @param tabName where error occurred
 	 * @param fileName from with tab had to be created
@@ -83,16 +84,17 @@ public abstract class RuleRankTab extends Tab {
 	}
 	
 	/**
-	 * Gets original tab name.
-	 * This value doesn't change, so if tab is in edit mode and has modified name, original value will be returned by this method.
+	 * Gets original tab name. <br>
+	 * This value doesn't change, so if tab is in edit mode and has modified name, original value will be returned by this method. <br>
 	 * To get current tab text(header), use getText() method
+	 * @return String value of tab name
 	 */
 	public String getTabName() {
 		return tabName;
 	}
 	
 	/**
-	 * Checks if tab was edited.
+	 * Checks if tab was edited. <br>
 	 * If tab was edited, it should have * character in tab name(header).
 	 * @return true if tab was edited, false otherwise
 	 */
@@ -101,8 +103,8 @@ public abstract class RuleRankTab extends Tab {
 	}
 	
 	/**
-	 * Inform tab about its edition state.
-	 * When tab is edited, * character is added on beginning of name.
+	 * Inform tab about its edition state. <br>
+	 * When tab is edited, * character is added on beginning of name. <br>
 	 * If tab edition is canceled, * character is removed from beginning of tab name when this character was added before.
 	 * @param tabEdited with inform tab about edition state
 	 */

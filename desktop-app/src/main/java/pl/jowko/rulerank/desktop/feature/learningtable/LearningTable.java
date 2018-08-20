@@ -15,8 +15,9 @@ import java.util.Objects;
 import static java.util.Objects.isNull;
 
 /**
+ * This class stores data extracted from MemoryContainer. <br>
+ *  <br>
  * Created by Piotr on 2018-05-08.
- * This class stores data extracted from MemoryContainer.
  * @see MemoryContainer
  */
 public class LearningTable implements Serializable {
@@ -31,6 +32,7 @@ public class LearningTable implements Serializable {
 	
 	/**
 	 * Extract data from provided MemoryContainer and create instance of LearningTable
+	 * @param container with represents isf file
 	 */
 	public LearningTable(MemoryContainer container) {
 		attributes = new ArrayList<>();
@@ -49,6 +51,9 @@ public class LearningTable implements Serializable {
 	
 	/**
 	 * Create LearningTable without attributes and examples
+	 * @param fileInfo with is not currently used
+	 * @param description with is not currently used
+	 * @param id with is not currently used
 	 */
 	public LearningTable(FileInfo fileInfo, MemoryContainerDescription description, String id) {
 		attributes = new ArrayList<>();

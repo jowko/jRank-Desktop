@@ -10,14 +10,15 @@ import pl.poznan.put.cs.idss.jrs.types.Field;
 import java.util.Comparator;
 
 /**
+ * This class is used to change sort behavior in learning data table. <br>
+ * When table contains unknown fields, sorting results in exception. <br>
+ * jRS fields in compareTo method throws exception, when at least one of field has unknown value. <br>
+ * This class "wraps" sorting of this fields to fix this issue. <br>
+ * It checks if any of compared fields is unknown. <br>
+ * When one of the fields is unknown, object will be compared manually in this class. <br>
+ * If values for this fields are known, this class uses comparators from jRS fields. <br>
+ *  <br>
  * Created by Piotr on 2018-05-25
- * This class is used to change sort behavior in learning data table.
- * When table contains unknown fields, sorting results in exception.
- * jRS fields in compareTo method throws exception, when at least one of field has unknown value.
- * This class "wraps" sorting of this fields to fix this issue.
- * It checks if any of compared fields is unknown.
- * When one of the fields is unknown, object will be compared manually in this class.
- * If values for this fields are known, this class uses comparators from jRS fields.
  * @see LearningTableController
  */
 class UnknownFieldSortCallback implements Callback<TableView<ObservableList<Field>>, Boolean> {

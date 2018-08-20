@@ -9,8 +9,9 @@ import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.feature.learningtable.wrappers.EnumFieldWrapper.UNKNOWN_FIELD_FLAG;
 
 /**
+ * This class helps to convert enum field values to string values for display in ComboBox. <br>
+ *  <br>
  * Created by Piotr on 2018-05-12.
- * This class helps to convert enum field values to string values for display in ComboBox.
  */
 class EnumFieldConverter extends StringConverter<Field> {
 	
@@ -21,7 +22,7 @@ class EnumFieldConverter extends StringConverter<Field> {
 	}
 	
 	/**
-	 * Gets text from provided field to display on ComboBox.
+	 * Gets text from provided field to display on ComboBox. <br>
 	 * If field is unknown, empty String will be returned.
 	 */
 	@Override
@@ -36,7 +37,7 @@ class EnumFieldConverter extends StringConverter<Field> {
 	}
 	
 	/**
-	 * Create enum field from provided string.
+	 * Create enum field from provided string. <br>
 	 * If string is empty or contains '?' character, it will be returned as unknown field.
 	 */
 	@Override

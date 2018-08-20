@@ -7,8 +7,9 @@ import java.io.IOException;
 import static java.util.Objects.isNull;
 
 /**
+ * Service used in places, where UserSettings needs to be used. <br>
+ *  <br>
  * Created by Piotr on 2018-03-17.
- * Service used in places, where UserSettings needs to be used.
  * @see UserSettings
  */
 public class UserSettingsService {
@@ -21,9 +22,9 @@ public class UserSettingsService {
 	}
 	
 	/**
-	 * Gets instance of this class or create new when such instance doesn't exists.
+	 * Gets instance of this class or create new when such instance doesn't exists. <br>
 	 * userSettings.json file is read in private constructor of this class.
-	 * @return
+	 * @return instance of this service
 	 */
 	public static UserSettingsService getInstance() {
 		if(isNull(instance)) {
@@ -37,8 +38,8 @@ public class UserSettingsService {
 	}
 	
 	/**
-	 * Saves UserSettings to userSettings.json file in configuration directory.
-	 * Current settings in memory are not replaced.
+	 * Saves UserSettings to userSettings.json file in configuration directory. <br>
+	 * Current settings in memory are not replaced. <br>
 	 * To see settings changed, application restart is required.
 	 * @see UserSettingsController
 	 * @param newUserSettings from user settings dialog form
@@ -52,12 +53,18 @@ public class UserSettingsService {
 		return userSettings;
 	}
 	
-	/** Used in tests */
+	/**
+	 * Used in tests
+	 * @param language to be set
+	 */
 	public void setLanguage(String language) {
 		userSettings.setLanguage(language);
 	}
 	
-	/** Used in tests */
+	/**
+	 * Used in tests
+	 * @param userSettings to be set
+	 */
 	public void setUserSettings(UserSettings userSettings) {
 		this.userSettings = userSettings;
 	}

@@ -16,10 +16,11 @@ import java.util.Optional;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * Controller for User settings dialog from settings menu. <br>
+ * It allows to customize all editable options of application. <br>
+ * Settings are saved in userSettings.json file in data directory, where rest of configuration files resides. <br>
+ *  <br>
  * Created by Piotr on 2018-03-17.
- * Controller for User settings dialog from settings menu.
- * It allows to customize all editable options of application.
- * Settings are saved in userSettings.json file in data directory, where rest of configuration files resides.
  * @see UserSettings
  * @see UserSettingsValidator
  */
@@ -58,7 +59,7 @@ public class UserSettingsController extends AbstractDialogForm {
 	private UserSettingsValidator settingsValidator;
 	
 	/**
-	 * Initialize needed objects.
+	 * Initialize needed objects. <br>
 	 * Also sets current value from settings into UI fields.
 	 */
 	@FXML
@@ -77,9 +78,9 @@ public class UserSettingsController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Perform save action.
-	 * Settings are validated and if correct, they are saved to files.
-	 * User settings are not reloaded in application after change.
+	 * Perform save action. <br>
+	 * Settings are validated and if correct, they are saved to files. <br>
+	 * User settings are not reloaded in application after change. <br>
 	 * Application restart is required to do this.
 	 */
 	public void onSaveAction() {
@@ -107,8 +108,8 @@ public class UserSettingsController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Initialize user settings for form.
-	 * Deep copy is performed to avoid changing settings with are already used in application.
+	 * Initialize user settings for form. <br>
+	 * Deep copy is performed to avoid changing settings with are already used in application. <br>
 	 * Also static reference is remembered, to remember options on form after save and return without application restart.
 	 */
 	private static void initializeNewSettings() {
@@ -141,9 +142,9 @@ public class UserSettingsController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Validate user settings if they are correct.
-	 * Application checks if workspace path is valid.
-	 * Application also checks if provided lang code is provided.
+	 * Validate user settings if they are correct. <br>
+	 * Application checks if workspace path is valid. <br>
+	 * Application also checks if provided lang code is provided. <br>
 	 * This prevent errors when read in userSettings.json file contains wrong options(like not existing language code)
 	 * @see UserSettingsValidator
 	 * @return true if settings are valid, false otherwise
@@ -159,7 +160,7 @@ public class UserSettingsController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Initialize languages ComboBox.
+	 * Initialize languages ComboBox. <br>
 	 * It is filled with data from languages.json file.
 	 */
 	private void initializeLanguages() {
@@ -169,8 +170,8 @@ public class UserSettingsController extends AbstractDialogForm {
 	}
 	
 	/**
-	 * Get correct language code using chosen value from language ComboBox.
-	 * If languages contains: "ENG" : "English",
+	 * Get correct language code using chosen value from language ComboBox. <br>
+	 * If languages contains: "ENG" : "English", <br>
 	 * this method should extract value "ENG" using "English" option from ComboBox.
 	 * @return String with proper lang code
 	 */

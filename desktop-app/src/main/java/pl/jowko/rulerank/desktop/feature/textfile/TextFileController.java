@@ -15,8 +15,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
+ * Shows text(.txt) files in TextArea and allows to edit them. <br>
+ *  <br>
  * Created by Piotr on 2018-05-11.
- * Shows text(.txt) files in TextArea and allows to edit them.
  */
 public class TextFileController implements AbandonableTabForm {
 	

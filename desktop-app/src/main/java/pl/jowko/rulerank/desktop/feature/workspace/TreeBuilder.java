@@ -11,6 +11,8 @@ import java.util.List;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
+ * Class used for creating workspace tree from workspace items. <br>
+ *  <br>
  * Created by Piotr on 2018-04-21.
  * @see FilesFinder
  * @see WorkspaceController
@@ -38,9 +40,9 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * This method refresh WorkspaceTree.
-	 * It will recreate tree again.
-	 * It uses recursive method to do it.
+	 * This method refresh WorkspaceTree. <br>
+	 * It will recreate tree again. <br>
+	 * It uses recursive method to do it. <br>
 	 * It will retain information about expanded nodes.
 	 */
 	void refreshTree() {
@@ -52,10 +54,10 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * This method rebuilds workspace tree.
-	 * It loads items to tree and checks, if they were previously expanded.
-	 * Then it calls itself recursively.
-	 * If number of elements in tree will change, information about expanded nodes can be lost.
+	 * This method rebuilds workspace tree. <br>
+	 * It loads items to tree and checks, if they were previously expanded. <br>
+	 * Then it calls itself recursively. <br>
+	 * If number of elements in tree will change, information about expanded nodes can be lost. <br>
 	 * It was done in such way for simplicity and such solution is less error prone.
 	 * @param originalRoot from workspace tree
 	 * @param newRoot with will replace root in workspace tree
@@ -80,7 +82,7 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * Initializes on click event on workspace tree item.
+	 * Initializes on click event on workspace tree item. <br>
 	 * When user double clicks on tree item, related file should be opened in tab.
 	 * @see ClickEventHandler
 	 */
@@ -94,7 +96,7 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * Initializes workspace tree.
+	 * Initializes workspace tree. <br>
 	 * It will load files from first and second level from main workspace catalog.
 	 */
 	private void initializeWorkspaceTree() {
@@ -119,7 +121,7 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * Fills main workspace item(root tree item) with file items.
+	 * Fills main workspace item(root tree item) with file items. <br>
 	 * It will convert provided WorkspaceItem list to TreeItem list and add them all as child for root.
 	 * @param rootTreeItem with represents root in TreeView
 	 * @param childrenItems with represents first level children
@@ -137,10 +139,10 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * Initializes expand event handler.
-	 * It will all items for children of expanded node and create TreeItems for them.
-	 * This enables to expand children of provided node.
-	 *
+	 * Initializes expand event handler. <br>
+	 * It will all items for children of expanded node and create TreeItems for them. <br>
+	 * This enables to expand children of provided node. <br>
+	 * <br>
 	 * @param treeItem to with event will be added
 	 */
 	private void initializeExpandEventHandler(TreeItem<WorkspaceItem> treeItem) {
@@ -159,7 +161,7 @@ class TreeBuilder {
 	}
 	
 	/**
-	 * This method finds files and directories with are directly in directoryItem.
+	 * This method finds files and directories with are directly in directoryItem. <br>
 	 * All found files and directories will be added to tree item list.
 	 * @param directoryItem for with files will be found
 	 * @return list of TreeItems representing files and directories in provided directory

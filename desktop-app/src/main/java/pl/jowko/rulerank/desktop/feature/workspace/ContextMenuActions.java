@@ -25,9 +25,10 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getParentDirectory;
 
 /**
+ * This class handles all actions for ContextMenu in workspace. <br>
+ * It uses current selected item on all actions. <br>
+ *  <br>
  * Created by Piotr on 2018-06-10
- * This class handles all actions for ContextMenu in workspace.
- * It uses current selected item on all actions.
  * @see ContextMenuCreator
  */
 class ContextMenuActions {
@@ -38,7 +39,7 @@ class ContextMenuActions {
 	private DataFormat pasteFormat;
 	
 	/**
-	 * Creates instance of this class.
+	 * Creates instance of this class. <br>
 	 * Also initializes keyboard shortcuts for all workspace tree actions
 	 * @param treeView on with actions will be performed
 	 * @see KeyBoardActionsHandler
@@ -53,9 +54,9 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * This action deletes selected item.
-	 * It does nothing when selected item is root.
-	 * It will ask for confirmation when deleting.
+	 * This action deletes selected item. <br>
+	 * It does nothing when selected item is root. <br>
+	 * It will ask for confirmation when deleting. <br>
 	 * When deleting directory, all items in it will be removed.
 	 */
 	void deleteItemAction() {
@@ -75,7 +76,7 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Copies item to user clipboard.
+	 * Copies item to user clipboard. <br>
 	 * If item is root or directory, nothing happens.
 	 */
 	void copyItemAction() {
@@ -83,7 +84,7 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Cuts selected item and puts it in user clipboard.
+	 * Cuts selected item and puts it in user clipboard. <br>
 	 * Is user make paste action, this item will be removed.
 	 */
 	void cutItemAction() {
@@ -91,7 +92,7 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Paste file from user clipboard to selected experiment directory.
+	 * Paste file from user clipboard to selected experiment directory. <br>
 	 * If user performed cut action, file will be renamed instead of copied.
 	 */
 	void pasteItemAction() {
@@ -127,8 +128,8 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Adds .properties file to directory of selected item.
-	 * User will be asked to provide file name.
+	 * Adds .properties file to directory of selected item. <br>
+	 * User will be asked to provide file name. <br>
 	 * If user didn't provided valid file extension, it will be automatically added.
 	 */
 	void addPropertiesFileAction() {
@@ -150,8 +151,8 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Adds .isf file to directory of selected item.
-	 * User will be asked to provide file name.
+	 * Adds .isf file to directory of selected item. <br>
+	 * User will be asked to provide file name. <br>
 	 * If user didn't provided valid file extension, it will be automatically added.
 	 */
 	void addIsfFileAction() {
@@ -173,8 +174,8 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Adds .txt file do directory of selected item.
-	 * User will be asked to provide file name.
+	 * Adds .txt file do directory of selected item. <br>
+	 * User will be asked to provide file name. <br>
 	 * If user didn't provided valid file extension, it will be automatically added.
 	 */
 	void addTextFileAction() {
@@ -197,7 +198,7 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Renames selected item.
+	 * Renames selected item. <br>
 	 * User will be asked to provide file name by entering value in dialog field.
 	 */
 	void renameItemAction() {
@@ -236,7 +237,7 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Initializes DataFormat used in user ClipBoard.
+	 * Initializes DataFormat used in user ClipBoard. <br>
 	 * It have to be initialized only once during runtime of application.
 	 */
 	private void initializeDataFormats() {
@@ -259,7 +260,7 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Adds selected item to user ClipBoard.
+	 * Adds selected item to user ClipBoard. <br>
 	 * If selected item is root or directory, nothing happens.
 	 * @param isCutAction determines, if cut action was performed
 	 */
@@ -293,8 +294,8 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Deletes selected item on path.
-	 * If path is directory, all files in it will be also deleted.
+	 * Deletes selected item on path. <br>
+	 * If path is directory, all files in it will be also deleted. <br>
 	 * If any IO exception occur, it will be logged(example: file used by other process)
 	 * @param filePath to remove
 	 * @param isDirectory to indicate if file is directory
@@ -313,7 +314,7 @@ class ContextMenuActions {
 	}
 	
 	/**
-	 * Creates and shows dialog with one TextField.
+	 * Creates and shows dialog with one TextField. <br>
 	 * User is asked to write some value there and it will be returned from this method.
 	 * @param msg to display to user
 	 * @param defaultValue to initialize TextField value

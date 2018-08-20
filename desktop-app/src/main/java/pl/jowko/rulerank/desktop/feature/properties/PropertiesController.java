@@ -35,8 +35,9 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteExperimentFilePath;
 
 /**
+ * Controller for properties form tab. <br>
+ *  <br>
  * Created by Piotr on 2018-04-29.
- * Controller for properties form tab.
  */
 public class PropertiesController implements AbandonableTabForm {
 	
@@ -134,6 +135,7 @@ public class PropertiesController implements AbandonableTabForm {
 	 * @param properties loaded from .properties file
 	 * @param workspaceItem from workspace tree with represents properties file
 	 * @param propertiesTab on with properties form is located
+	 * @throws IOException when something goes wrong with file reading
 	 */
 	public void initializeProperties(RuleRankProperties properties, WorkspaceItem workspaceItem, RuleRankTab propertiesTab) throws IOException {
 		this.properties = properties;
@@ -152,7 +154,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * This action performs experiment using settings from current and default properties.
+	 * This action performs experiment using settings from current and default properties. <br>
 	 * It also uses configured isf tables.
 	 * @see ExperimentRunner
 	 */
@@ -167,8 +169,8 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Save properties form to .properties file.
-	 * It will validate, if form is correct.
+	 * Save properties form to .properties file. <br>
+	 * It will validate, if form is correct. <br>
 	 * Then it will save file to it original location.
 	 */
 	public void saveAction() {
@@ -187,7 +189,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Close properties tab.
+	 * Close properties tab. <br>
 	 * If user made some changes in form, he will be asked if he want to keep changes.
 	 */
 	public void cancelAction() {
@@ -198,7 +200,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Clears all form(sets empty or null values in form fields)
+	 * Clears all form(sets empty or null values in form fields) <br>
 	 * If user made some changes in form, he will be asked if he want to keep changes.
 	 */
 	public void clearFormAction() {
@@ -210,7 +212,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Restore original values in properties form.
+	 * Restore original values in properties form. <br>
 	 * It will ask user to confirm this action.
 	 */
 	public void restoreOriginalValuesAction() {
@@ -236,11 +238,11 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * This methods validates properties form with default values.
-	 * When running ruleRank application, all experiment settings are needed.
-	 * So if user will leave some fields empty, they will be replaced with default values.
-	 * Default values are taken from default.properties in main workspace directory.
-	 * This method will load default properties and merge them with values from form.
+	 * This methods validates properties form with default values. <br>
+	 * When running ruleRank application, all experiment settings are needed. <br>
+	 * So if user will leave some fields empty, they will be replaced with default values. <br>
+	 * Default values are taken from default.properties in main workspace directory. <br>
+	 * This method will load default properties and merge them with values from form. <br>
 	 * Then it will perform validation on result.
 	 * @see RunnerPropertiesProvider
 	 */
@@ -268,7 +270,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Initializes edit ranking action.
+	 * Initializes edit ranking action. <br>
 	 * It will create ranking dialog for ranking edition.
 	 * @throws IOException when something goes wrong with loading files
 	 */
@@ -282,7 +284,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Initializes edit pairs action.
+	 * Initializes edit pairs action. <br>
 	 * It will create ranking dialog for pairs edition.
 	 * @throws IOException when something goes wrong with loading files
 	 */
@@ -301,10 +303,11 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Initializes information form on with pairs or ranking is edited.
+	 * Initializes information form on with pairs or ranking is edited. <br>
 	 * If field contains invalid content, dialog will not show and user see errors message.
 	 * @param fxmlPath to pairs or ranking dialog path
 	 * @param titleLabel to display on modal window
+	 * @param result with is observable property to pass result value
 	 * @throws IOException when something goes wrong with reading files
 	 */
 	private void initializeInformationForm(String fxmlPath, String titleLabel, StringProperty result) throws IOException {
@@ -330,7 +333,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Loads MemoryContainer using learning table path from properties form.
+	 * Loads MemoryContainer using learning table path from properties form. <br>
 	 * It can show dialog containing error, when isf table is not configured.
 	 * @return MemoryContainer or null
 	 */
@@ -349,7 +352,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Loads MemoryContainer(isf table) from learning data file path extracted from proporties form.
+	 * Loads MemoryContainer(isf table) from learning data file path extracted from properties form. <br>
 	 * If file path is not configured, ConfigurationException is thrown
 	 * @return MemoryContainer
 	 * @throws ConfigurationException when learning data file path is not configured
@@ -369,7 +372,7 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Checks, if form has valid values.
+	 * Checks, if form has valid values. <br>
 	 * If form containing errors, they will be displayed to user.
 	 * @return true if form is valid, false otherwise
 	 */
@@ -385,8 +388,8 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Checks, if form has valid values.
-	 * It it contains errors, this errors are shown to user.
+	 * Checks, if form has valid values. <br>
+	 * It it contains errors, this errors are shown to user. <br>
 	 * Application also ask, if user still want to save form.
 	 * @return true if form is valid or user wish to save form with invalid values.
 	 */

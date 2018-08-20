@@ -3,8 +3,9 @@ package pl.jowko.rulerank.desktop.feature.ranking;
 import java.util.List;
 
 /**
+ * This class serves as container for data in ranking tab. <br>
+ *  <br>
  * Created by Piotr on 2018-05-22.
- * This class serves as container for data in ranking tab.
  */
 class RankingRow {
 	

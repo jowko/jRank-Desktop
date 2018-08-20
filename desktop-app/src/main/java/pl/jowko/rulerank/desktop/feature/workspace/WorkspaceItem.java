@@ -9,8 +9,9 @@ import static pl.jowko.rulerank.desktop.utils.PathUtils.getParentDirectory;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getSubDirectoryPath;
 
 /**
+ * This class represents one position in workspace tree. <br>
+ *  <br>
  * Created by Piotr on 2018-04-21.
- * This class represents one position in workspace tree.
  */
 public class WorkspaceItem implements Comparable<WorkspaceItem> {
 	
@@ -90,9 +91,9 @@ public class WorkspaceItem implements Comparable<WorkspaceItem> {
 	}
 	
 	/**
-	 * Compares provided object with this object.
-	 * It is used in sorting.
-	 * Directories will be returned on top of the list.
+	 * Compares provided object with this object. <br>
+	 * It is used in sorting. <br>
+	 * Directories will be returned on top of the list. <br>
 	 * File names are sorted alphabetically with ignoring character case.
 	 * @param o to be compared to
 	 * @return -1, if provided object should be above this item, 0 if it is doesn't matter, 1 if should be below this item
