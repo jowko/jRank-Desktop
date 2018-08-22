@@ -27,13 +27,13 @@ class GraphReaderTest {
 	}
 	
 	@Test
-	void simpleGraph_extractData() {
+	void simpleGraphExtractData() {
 		GraphDto graph = getGraph(simpleGraphContent);
 		assertThatGraphIsNotEmpty(graph);
 	}
 	
 	@Test
-	void labeledGraph_extractData() {
+	void labeledGraphExtractData() {
 		GraphDto graph = getGraph(labeledGraphContent);
 		assertThatGraphIsNotEmpty(graph);
 	}
@@ -47,13 +47,13 @@ class GraphReaderTest {
 	}
 	
 	@Test
-	void simpleGraph_extractCells() {
+	void simpleGraphExtractCells() {
 		GraphDto graph = getGraph(simpleGraphContent);
 		checkIfCellsAreExtractedCorrectly(graph);
 	}
 	
 	@Test
-	void labeledGraph_extractCells() {
+	void labeledGraphExtractCells() {
 		GraphDto graph = getGraph(labeledGraphContent);
 		checkIfCellsAreExtractedCorrectly(graph);
 	}
@@ -69,7 +69,7 @@ class GraphReaderTest {
 	}
 	
 	@Test
-	void simpleGraph_extractEdges() {
+	void simpleGraphExtractEdges() {
 		List<EdgeDto> edges = getGraph(simpleGraphContent).getEdges();
 		
 		checkIfEdgesAreExtractedCorrectly(edges);
@@ -79,7 +79,7 @@ class GraphReaderTest {
 	}
 	
 	@Test
-	void labeledGraph_extractEdges() {
+	void labeledGraphExtractEdges() {
 		List<EdgeDto> edges = getGraph(labeledGraphContent).getEdges();
 		
 		checkIfEdgesAreExtractedCorrectly(edges);
