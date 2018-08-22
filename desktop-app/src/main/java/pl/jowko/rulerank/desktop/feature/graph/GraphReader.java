@@ -7,20 +7,16 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
-import pl.jowko.rulerank.desktop.feature.workspace.IsfFinder;
-import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.types.Attribute;
 import pl.poznan.put.cs.idss.jrs.types.Field;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -39,15 +35,15 @@ class GraphReader {
 	/**
 	 * Creates instance of this class and creates graph from provided text content.
 	 * @param content from .graph file
-	 * @param workspaceItem with is used to load MemoryContainer
+	 * @param container with content of isf file
 	 * @param selectAction with handles select node action
 	 */
-	GraphReader(String content, WorkspaceItem workspaceItem, GraphSelectAction selectAction) {
+	GraphReader(String content, MemoryContainer container, GraphSelectAction selectAction) {
 		this.content = content;
+		this.container = container;
 		graph = new Graph(selectAction);
 		splitPattern = Pattern.compile(" ");
 		quotesPattern = Pattern.compile("\"(.*?)\"");
-		loadMemoryContainer(workspaceItem);
 		extractGraph();
 	}
 	
@@ -59,15 +55,6 @@ class GraphReader {
 		return graph;
 	}
 	
-	private void loadMemoryContainer(WorkspaceItem workspaceItem) {
-		try {
-			container = new IsfFinder(workspaceItem, true).getMemoryContainer();
-			if(isNull(container))
-				throw new RuleRankRuntimeException("Isf data file was not found on provided path");
-		} catch (IOException e) {
-			throw new RuleRankRuntimeException("Error when reading isf file for graph: " + e.getMessage());
-		}
-	}
 	
 	/**
 	 * Extracts graph from .graph file. <br>
