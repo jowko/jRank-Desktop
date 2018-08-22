@@ -19,8 +19,15 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 class GraphReader {
 	
 	private String content;
-	private Pattern splitPattern;
-	private Pattern quotesPattern;
+	private static final Pattern splitPattern;
+	private static final Pattern labelPattern;
+	private static final Pattern colorPattern;
+	
+	static {
+		splitPattern = Pattern.compile(" ");
+		labelPattern = Pattern.compile("label=\"(.*?)\"");
+		colorPattern = Pattern.compile("color=\"(.*?)\"");
+	}
 	
 	/**
 	 * Creates instance of this class and creates graph from provided text content.
@@ -28,8 +35,7 @@ class GraphReader {
 	 */
 	GraphReader(String content) {
 		this.content = content;
-		splitPattern = Pattern.compile(" ");
-		quotesPattern = Pattern.compile("\"(.*?)\"");
+		
 	}
 	
 	/**
@@ -58,11 +64,11 @@ class GraphReader {
 			String[] values = splitPattern.split(line);
 			// edges
 			if(line.contains("->")) {
-				String color = findValueInQuotes(values[3]);
+				String color = findValueInQuotes(line, colorPattern);
 				edges.add(new EdgeDto(values[0], values[2], getColor(color)));
 			
 			} else { // vertices
-				String label = findValueInQuotes(values[1]);
+				String label = findValueInQuotes(line, labelPattern);
 				cells.add(new CellDto(values[0], label, Color.LIGHTGREY));
 			}
 		}
@@ -75,10 +81,11 @@ class GraphReader {
 	 * Such text: [label="1"]; <br>
 	 * Will return 1
 	 * @param text from with value will be extracted
+	 * @param pattern to be searched
 	 * @return extracted value from double quotes
 	 */
-	private String findValueInQuotes(String text) {
-		Matcher matcher = quotesPattern.matcher(text);
+	private String findValueInQuotes(String text, Pattern pattern) {
+		Matcher matcher = pattern.matcher(text);
 		if(matcher.find())
 			return matcher.group(1);
 		throw new RuleRankRuntimeException("Graph file doesn't contain label or color values in double quotes");
