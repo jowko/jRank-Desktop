@@ -3,12 +3,15 @@ package pl.jowko.rulerank.desktop.feature.graph;
 import com.fxgraph.graph.Cell;
 import com.fxgraph.graph.Edge;
 import com.fxgraph.graph.Graph;
+import com.fxgraph.graph.LabeledEdge;
 import javafx.scene.paint.Color;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
  * This class prepares data for arcs tab. <br>
@@ -23,8 +26,8 @@ class NodeArcsAssembler {
 	private Graph graph;
 	private LanguageService labels;
 	
-	private static Color S_RELATION_COLOR = Color.GREEN;
-	private static Color SC_RELATION_COLOR = Color.RED;
+	private static final Color S_RELATION_COLOR = Color.GREEN;
+	private static final Color SC_RELATION_COLOR = Color.RED;
 	
 	/**
 	 * Initializes instance of this class
@@ -78,6 +81,15 @@ class NodeArcsAssembler {
 					} else {
 						builder.append(edge.getSource().getCellId());
 					}
+					
+					if(edge instanceof LabeledEdge) {
+						String label = ((LabeledEdge)edge).getLabel();
+						if(isNotNullOrEmpty(label)) {
+							builder.append(' ');
+							builder.append(label);
+						}
+					}
+					
 					builder.append(", ");
 				});
 		

@@ -61,7 +61,7 @@ class GraphAssembler {
 		});
 		
 		graphDto.getEdges().forEach(dto ->
-			model.addEdge(dto.getSourceId(), dto.getTargetId(), dto.getColor())
+			model.addEdge(dto.getSourceId(), dto.getTargetId(), dto.getLabel(), dto.getColor())
 		);
 		
 		graph.endUpdate();

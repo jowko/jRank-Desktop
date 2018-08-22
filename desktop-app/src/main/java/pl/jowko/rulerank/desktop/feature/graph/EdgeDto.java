@@ -12,16 +12,19 @@ class EdgeDto {
 	
 	private String sourceId;
 	private String targetId;
+	private String label;
 	private Color color;
 	
 	/**
 	 * @param sourceId of cell in edge
 	 * @param targetId of cell in edge
+	 * @param label from edge with will be displayed in arcs tab
 	 * @param color of edge
 	 */
-	EdgeDto(String sourceId, String targetId, Color color) {
+	EdgeDto(String sourceId, String targetId, String label, Color color) {
 		this.sourceId = sourceId;
 		this.targetId = targetId;
+		this.label = label;
 		this.color = color;
 	}
 	
@@ -31,6 +34,10 @@ class EdgeDto {
 	
 	String getTargetId() {
 		return targetId;
+	}
+	
+	String getLabel() {
+		return label;
 	}
 	
 	Color getColor() {

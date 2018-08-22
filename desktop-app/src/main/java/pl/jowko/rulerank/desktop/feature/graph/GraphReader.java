@@ -65,7 +65,8 @@ class GraphReader {
 				// edges
 				if(line.contains("->")) {
 					String color = findValueInQuotes(line, colorPattern);
-					edges.add(new EdgeDto(values[0], values[2], getColor(color)));
+					String label = findLabelForEdge(line);
+					edges.add(new EdgeDto(values[0], values[2], label, getColor(color)));
 					
 				} else { // vertices
 					String label = findValueInQuotes(line, labelPattern);
@@ -90,6 +91,20 @@ class GraphReader {
 		if(matcher.find())
 			return matcher.group(1);
 		throw new RuleRankRuntimeException("Graph file doesn't contain label or color values in double quotes");
+	}
+	
+	/**
+	 * Extract value from text with is in double quotes. <br>
+	 * Such text: [label="1"]; <br>
+	 * Will return 1
+	 * @param text from with value will be extracted
+	 * @return extracted value from double quotes
+	 */
+	private String findLabelForEdge(String text) {
+		Matcher matcher = labelPattern.matcher(text);
+		if(matcher.find())
+			return matcher.group(1);
+		return "";
 	}
 	
 	private Color getColor(String value) {
