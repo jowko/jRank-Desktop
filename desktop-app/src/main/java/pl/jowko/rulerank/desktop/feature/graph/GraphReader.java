@@ -52,28 +52,29 @@ class GraphReader {
 	 * @return Graph dto containing edges and cells
 	 */
 	GraphDto extractGraph() {
-		Scanner scanner = new Scanner(content);
-		List<EdgeDto> edges = new ArrayList<>();
-		List<CellDto> cells = new ArrayList<>();
-		
-		while(scanner.hasNextLine()) {
-			String line = scanner.nextLine();
-			if(not(Character.isDigit(line.charAt(0))))
-				continue;
+		try (Scanner scanner = new Scanner(content)) {
+			List<EdgeDto> edges = new ArrayList<>();
+			List<CellDto> cells = new ArrayList<>();
 			
-			String[] values = splitPattern.split(line);
-			// edges
-			if(line.contains("->")) {
-				String color = findValueInQuotes(line, colorPattern);
-				edges.add(new EdgeDto(values[0], values[2], getColor(color)));
-			
-			} else { // vertices
-				String label = findValueInQuotes(line, labelPattern);
-				cells.add(new CellDto(values[0], label, Color.LIGHTGREY));
+			while(scanner.hasNextLine()) {
+				String line = scanner.nextLine();
+				if(not(Character.isDigit(line.charAt(0))))
+					continue;
+				
+				String[] values = splitPattern.split(line);
+				// edges
+				if(line.contains("->")) {
+					String color = findValueInQuotes(line, colorPattern);
+					edges.add(new EdgeDto(values[0], values[2], getColor(color)));
+					
+				} else { // vertices
+					String label = findValueInQuotes(line, labelPattern);
+					cells.add(new CellDto(values[0], label, Color.LIGHTGREY));
+				}
 			}
+			
+			return new GraphDto(cells, edges);
 		}
-		
-		return new GraphDto(cells, edges);
 	}
 	
 	/**
