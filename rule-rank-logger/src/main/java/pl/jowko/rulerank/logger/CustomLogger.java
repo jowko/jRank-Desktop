@@ -20,10 +20,6 @@ class CustomLogger {
 		log(Level.INFO, null, msg, null);
 	}
 	
-	void info(String msg, Throwable throwable) {
-		log(Level.INFO, null, msg, throwable);
-	}
-	
 	void info(String category, String msg) {
 		log(Level.INFO, category, msg, null);
 	}
@@ -40,19 +36,11 @@ class CustomLogger {
 		log(Level.ERROR, null, msg, throwable);
 	}
 	
-	void error(Throwable throwable) {
-		log(Level.ERROR, null, null, throwable);
-	}
-	
-	void debug(String msg) {
-		log(Level.DEBUG, null, msg, null);
-	}
-	
 	void none(String msg) {
 		log(Level.NONE, null, msg, null);
 	}
 	
-	void log(Level level, String category, String message, Throwable throwable) {
+	private void log(Level level, String category, String message, Throwable throwable) {
 		StringBuilder builder = new StringBuilder(256);
 		
 		Calendar calendar = Calendar.getInstance();
@@ -85,6 +73,8 @@ class CustomLogger {
 				break;
 			case INFO:
 				builder.append(" INFO: ");
+				break;
+			default:
 				break;
 		}
 		

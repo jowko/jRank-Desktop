@@ -4,8 +4,6 @@ import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceService;
 
-import java.util.Objects;
-
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.WORKSPACE_ERROR;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
@@ -44,7 +42,7 @@ public class UserSettingsValidator {
 			errorMsg += labels.get(WORKSPACE_ERROR).replace(MSG, path);
 		}
 		
-		if(Objects.isNull(language) || not(labels.getLanguages().containsValue(language))) {
+		if(isNull(language) || not(labels.getLanguages().containsValue(language))) {
 			errorMsg += labels.get(Labels.LANGUAGE_ERROR);
 		}
 		

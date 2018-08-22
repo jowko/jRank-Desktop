@@ -3,7 +3,6 @@ package pl.jowko.rulerank.desktop.feature.workspace;
 import pl.jowko.rulerank.desktop.feature.settings.UserSettingsService;
 
 import java.io.File;
-import java.util.Objects;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.PathUtils.getAbsoluteSubDirectoryPath;
@@ -37,13 +36,13 @@ public class WorkspaceService {
 	 * @return true if path is valid, false otherwise
 	 */
 	public boolean isWorkspacePathValid(String path) {
-		if(Objects.isNull(path) || path.isEmpty()) {
+		if(isNull(path) || path.isEmpty()) {
 			return false;
 		}
 		
 		try {
-			path = getAbsoluteSubDirectoryPath(path);
-			File f = new File(path);
+			String absolutePath = getAbsoluteSubDirectoryPath(path);
+			File f = new File(absolutePath);
 			
 			if(!f.exists() || !f.isDirectory()) {
 				return false;

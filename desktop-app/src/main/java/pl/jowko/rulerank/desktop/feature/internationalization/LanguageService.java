@@ -5,7 +5,6 @@ import pl.jowko.rulerank.desktop.service.ConfigFileManager;
 import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.util.Map;
-import java.util.Objects;
 
 import static java.util.Objects.isNull;
 
@@ -54,13 +53,13 @@ public class LanguageService {
 	public String get(String code) {
 		String lang = UserSettingsService.getInstance().getLanguage();
 		Map<String, String> langCodes = labels.get(lang);
-		if(Objects.isNull(langCodes)) {
+		if(isNull(langCodes)) {
 			RuleRankLogger.warn("User language: [" + lang + "] is not recognized.");
 			return '[' + lang + ":" + code + ']';
 		}
 		
 		String label = langCodes.get(code);
-		if(Objects.isNull(label)) {
+		if(isNull(label)) {
 			RuleRankLogger.warn("Label: [" + code + "] for language: [" + lang + "] is not found.");
 			return '[' + lang + ":" + code + ']';
 		}

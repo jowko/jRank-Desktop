@@ -46,10 +46,6 @@ public class RuleRankLogger {
 		logger.error(msg);
 	}
 	
-	public static void debug(String msg) {
-		logger.debug(msg);
-	}
-	
 	/**
 	 * None level serves to log message without log level text.
 	 * It is used to log output from ruleRank with have logging level in messages.

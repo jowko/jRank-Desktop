@@ -13,6 +13,8 @@ import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
  */
 public class AttributeDialogHelper {
 	
+	private AttributeDialogHelper() {}
+	
 	/**
 	 * This method checks what type was selected in form and return new Field object with corresponding type.
 	 * @see FieldType
@@ -32,10 +34,11 @@ public class AttributeDialogHelper {
 				return new FloatFieldWrapper();
 			case ENUM_FIELD:
 				return createEnumFromForm(enumText);
+			default:
+				RuleRankLogger.warn("Field type was not recognized. Setting default StringField.");
+				return new StringFieldWrapper();
 		}
-		RuleRankLogger.warn("Field type was not recognized. Setting default StringField.");
 		
-		return new StringFieldWrapper();
 	}
 	
 	/**

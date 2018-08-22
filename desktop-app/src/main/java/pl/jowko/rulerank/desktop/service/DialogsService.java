@@ -2,7 +2,6 @@ package pl.jowko.rulerank.desktop.service;
 
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.*;
@@ -30,7 +29,7 @@ public class DialogsService {
 	public static void showErrorDialog(String header, String msg) {
 		LanguageService labels = LanguageService.getInstance();
 		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setTitle(labels.get(Labels.ERROR_DIALOG_TITLE));
+		alert.setTitle(labels.get(ERROR_DIALOG_TITLE));
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
 		resizeDialogPane(alert.getDialogPane());
@@ -57,7 +56,7 @@ public class DialogsService {
 	 */
 	public static void showActionFailedDialog(String msg) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setTitle(labels.get(Labels.DIALOG_ACTION_FAIL));
+		alert.setTitle(labels.get(DIALOG_ACTION_FAIL));
 		alert.setHeaderText("");
 		alert.setContentText(msg);
 		resizeDialogPane(alert.getDialogPane());
@@ -71,7 +70,7 @@ public class DialogsService {
 	 */
 	public static void showValidationFailedDialog(String header, String msg) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setTitle(labels.get(Labels.VALIDATION_DIALOG_TITLE));
+		alert.setTitle(labels.get(VALIDATION_DIALOG_TITLE));
 		alert.setHeaderText(header);
 		alert.setContentText(msg);
 		resizeDialogPane(alert.getDialogPane());

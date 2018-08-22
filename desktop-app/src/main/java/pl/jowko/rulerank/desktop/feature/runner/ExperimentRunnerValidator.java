@@ -12,7 +12,6 @@ import pl.jowko.rulerank.desktop.feature.properties.PropertiesValidator;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
-import pl.jowko.rulerank.desktop.utils.StringUtils;
 import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
@@ -73,7 +72,7 @@ class ExperimentRunnerValidator {
 		
 		learningTable = readAndValidateMemoryContainer(properties.getLearningDataFile(), labels.get(Labels.RUN_LEARNING_FILE));
 		
-		if(StringUtils.isNotNullOrEmpty(properties.getTestDataFile()))
+		if(isNotNullOrEmpty(properties.getTestDataFile()))
 			testTable = readAndValidateMemoryContainer(properties.getTestDataFile(), labels.get(Labels.RUN_TEST_FILE));
 		else
 			testTable = learningTable;
