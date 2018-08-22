@@ -314,13 +314,13 @@ class StubSettings {
 	}
 	
 	private void createEnglishPropertiesTooltips(Map<String, String> language) {
-		language.put(Labels.LEARNING_FILE_TOOLTIP, "Absolute or relative path to the learning ISF data file; folders must be separated by / or \\\\");
-		language.put(Labels.TEST_FILE_TOOLTIP, "Absolute or relative path to the test ISF data file; folders must be separated by / or \\\\; if not given, then assumed to be equal to 'Learning data file'");
-		language.put(Labels.PCT_FILE_TOOLTIP, "Absolute or relative path to the ISF file where PCT created from preference information will be saved; folders must be separated by / or \\\\; if not given, then set automatically using value of 'Learning data file' parameter");
-		language.put(Labels.PCT_APX_FILE_TOOLTIP, "Absolute or relative path to the file where approximations for PCT created from preference information will be saved; folders must be separated by / or \\\\; if not given, then set automatically using value of 'Learning data file' parameter");
-		language.put(Labels.PCT_RULES_FILE_TOOLTIP, "Absolute or relative path to the file where rules for PCT created from preference information will be saved; folders must be separated by / or \\\\; if not given, then set automatically using value of 'Learning data file' parameter");
-		language.put(Labels.GRAPH_FILE_TOOLTIP, "Absolute or relative path to the file where preference graph resulting from application of rules to all pairs of objects will be saved; folders must be separated by / or \\\\; if not given, then set automatically using value of 'Test data file' parameter");
-		language.put(Labels.RANKING_FILE_TOOLTIP, "Absolute or relative path to the file where ranking of all objects will be saved; folders must be separated by / or \\\\; if not given, then set automatically using value of 'Test data file' parameter");
+		language.put(Labels.LEARNING_FILE_TOOLTIP, "Absolute or relative path to the learning ISF data file; folders must be separated by /");
+		language.put(Labels.TEST_FILE_TOOLTIP, "Absolute or relative path to the test ISF data file; folders must be separated by /; if not given, then assumed to be equal to 'Learning data file'");
+		language.put(Labels.PCT_FILE_TOOLTIP, "Absolute or relative path to the ISF file where PCT created from preference information will be saved; folders must be separated by /; if not given, then set automatically using value of 'Learning data file' parameter");
+		language.put(Labels.PCT_APX_FILE_TOOLTIP, "Absolute or relative path to the file where approximations for PCT created from preference information will be saved; folders must be separated by /; if not given, then set automatically using value of 'Learning data file' parameter");
+		language.put(Labels.PCT_RULES_FILE_TOOLTIP, "Absolute or relative path to the file where rules for PCT created from preference information will be saved; folders must be separated by /; if not given, then set automatically using value of 'Learning data file' parameter");
+		language.put(Labels.GRAPH_FILE_TOOLTIP, "Absolute or relative path to the file where preference graph resulting from application of rules to all pairs of objects will be saved; folders must be separated by /; if not given, then set automatically using value of 'Test data file' parameter");
+		language.put(Labels.RANKING_FILE_TOOLTIP, "Absolute or relative path to the file where ranking of all objects will be saved; folders must be separated by /; if not given, then set automatically using value of 'Test data file' parameter");
 		
 		language.put(Labels.REFERENCE_RANKING_TOOLTIP, "Comma-separated list of places; at each place there may be just one or many objects' numbers, separated by white spaces (objects' numbers start from 1)");
 		language.put(Labels.PAIRS_TOOLTIP, "Comma-separated list of compared pairs; each entry consists of a pair of examples (comma-separated, in {}) and S or Sc flag indicating the result of comparison (e.g., {1, 2} S, {2, 4} Sc)");
