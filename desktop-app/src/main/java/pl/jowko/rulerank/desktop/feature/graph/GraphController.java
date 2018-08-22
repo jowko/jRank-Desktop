@@ -5,17 +5,10 @@ import com.fxgraph.layout.CircularLayout;
 import com.fxgraph.layout.Layout;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.desktop.feature.tabs.RuleRankTab;
 import pl.jowko.rulerank.desktop.feature.tabs.lower.LowerTabsController;
 import pl.jowko.rulerank.desktop.feature.tabs.upper.UpperTabsController;
-import pl.jowko.rulerank.desktop.feature.workspace.IsfFinder;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
-import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
-
-import java.io.IOException;
-
-import static java.util.Objects.isNull;
 
 /**
  * Controller for graph visualisation tab. <br>
@@ -42,8 +35,7 @@ public class GraphController {
 		this.graphTab = graphTab;
 		GraphSelectAction selectAction = new GraphSelectAction(this);
 		
-		MemoryContainer container = loadMemoryContainer(workspaceItem);
-		graph = new GraphReader(graphFileContent, container, selectAction).getGraph();
+		graph = new GraphAssembler(graphFileContent, workspaceItem).createGraph(selectAction);
 		
 		borderPane.setCenter(graph.getScrollPane());
 		
@@ -67,18 +59,6 @@ public class GraphController {
 			LowerTabsController.getInstance().closeTab(arcsTab);
 			UpperTabsController.getInstance().forceCloseTab(graphTab);
 		});
-	}
-	
-	private MemoryContainer loadMemoryContainer(WorkspaceItem workspaceItem) {
-		try {
-			MemoryContainer container = new IsfFinder(workspaceItem, true).getMemoryContainer();
-			if(isNull(container))
-				throw new RuleRankRuntimeException("Isf data file was not found on provided path");
-			
-			return container;
-		} catch (IOException e) {
-			throw new RuleRankRuntimeException("Error when reading isf file for graph: " + e.getMessage());
-		}
 	}
 	
 }
