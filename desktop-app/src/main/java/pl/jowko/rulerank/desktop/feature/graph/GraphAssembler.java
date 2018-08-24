@@ -51,6 +51,7 @@ class GraphAssembler {
 	Graph createGraph(GraphSelectAction selectAction) {
 		GraphDto graphDto = graphReader.extractGraph();
 		Graph graph = new Graph(selectAction);
+		graph.setEdgeEarlierEndsSimulationEnabled(true);
 		
 		Model model = graph.getModel();
 		

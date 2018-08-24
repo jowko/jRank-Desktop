@@ -16,6 +16,11 @@ public class Graph {
 	
 	private ZoomableScrollPane scrollPane;
 	
+	/**
+	 * Determines if earlier edge ends should be simulated using array strokes
+	 */
+	private boolean edgeEarlierEndsSimulationEnabled;
+	
 	MouseGestures mouseGestures;
 	
 	/**
@@ -88,6 +93,14 @@ public class Graph {
 	
 	public double getScale() {
 		return this.scrollPane.getScaleValue();
+	}
+	
+	public boolean isEdgeEarlierEndsSimulationEnabled() {
+		return edgeEarlierEndsSimulationEnabled;
+	}
+	
+	public void setEdgeEarlierEndsSimulationEnabled(boolean edgeEarlierEndsSimulationEnabled) {
+		this.edgeEarlierEndsSimulationEnabled = edgeEarlierEndsSimulationEnabled;
 	}
 	
 }

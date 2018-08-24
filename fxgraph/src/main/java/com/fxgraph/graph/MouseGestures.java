@@ -1,8 +1,12 @@
 package com.fxgraph.graph;
 
+import com.fxgraph.layout.EdgeStrokeArraySetter;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This code was copied from StackOverflow:
@@ -68,6 +72,15 @@ public class MouseGestures {
 			offsetY /= scale;
 			
 			node.relocate(offsetX, offsetY);
+			
+			if(graph.isEdgeEarlierEndsSimulationEnabled() && node instanceof Cell) {
+				String cellId = ((Cell)node).getCellId();
+				List<Edge> edges = graph.getModel().getAllEdges().stream()
+						.filter(edge -> edge.getSource().getCellId().equals(cellId) || edge.getTarget().getCellId().equals(cellId))
+						.collect(Collectors.toList());
+				
+				EdgeStrokeArraySetter.setStrokeArray(edges);
+			}
 			
 		}
 	};

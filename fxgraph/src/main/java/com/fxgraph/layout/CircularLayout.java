@@ -36,6 +36,9 @@ public class CircularLayout extends Layout {
 			cell.relocate(x, y);
 		}
 		
+		if(graph.isEdgeEarlierEndsSimulationEnabled()) {
+			EdgeStrokeArraySetter.setStrokeArray(graph.getModel().getAllEdges());
+		}
 	}
 	
 }
