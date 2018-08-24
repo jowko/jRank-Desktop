@@ -112,6 +112,7 @@ class TreeBuilder {
 		List<WorkspaceItem> childrenItems = filesFinder.findFilesInDirectory(workspacePath);
 		
 		WorkspaceItem root = filesFinder.mapPathToWorkspaceFile(Paths.get(workspacePath));
+		childrenItems.remove(root);
 		TreeItem<WorkspaceItem> rootTreeItem = new TreeItem<> (root);
 		rootTreeItem.setExpanded(true);
 		
