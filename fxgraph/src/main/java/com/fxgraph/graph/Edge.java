@@ -2,7 +2,7 @@ package com.fxgraph.graph;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
+import javafx.scene.shape.QuadCurve;
 
 /**
  * This code was copied from StackOverflow:
@@ -13,7 +13,7 @@ public class Edge extends Group {
 	protected Cell source;
 	protected Cell target;
 	
-	protected Line line;
+	protected QuadCurve line;
 	
 	public Edge(Cell source, Cell target) {
 		this(source, target, Color.GRAY);
@@ -27,7 +27,7 @@ public class Edge extends Group {
 		source.addCellChild(target);
 		target.addCellParent(source);
 		
-		line = new Line();
+		line = new QuadCurve();
 		line.setStroke(color);
 		
 		line.startXProperty().bind( source.layoutXProperty().add(source.getBoundsInParent().getWidth() / 2.0));
@@ -48,7 +48,7 @@ public class Edge extends Group {
 		return target;
 	}
 	
-	public Line getLine() {
+	public QuadCurve getLine() {
 		return line;
 	}
 	
