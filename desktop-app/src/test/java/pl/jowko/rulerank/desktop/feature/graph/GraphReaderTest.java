@@ -1,12 +1,10 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
 import javafx.scene.paint.Color;
-import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * Created by Piotr on 2018-08-22
  */
-class GraphReaderTest {
+class GraphReaderTest extends AbstractGraphTest {
 	
 	private static String simpleGraphContent;
 	private static String labeledGraphContent;
@@ -103,16 +101,6 @@ class GraphReaderTest {
 		assertEquals("2", three.getSourceId());
 		assertEquals("3", three.getTargetId());
 		assertEquals(Color.GRAY, three.getColor());
-	}
-	
-	
-	private GraphDto getGraph(String content) {
-		GraphReader reader = new GraphReader(content);
-		return reader.extractGraph();
-	}
-	
-	private static String getFileContent(String path) throws IOException {
-		return IOUtils.toString(GraphReaderTest.class.getResourceAsStream(path), Charset.defaultCharset());
 	}
 	
 }
