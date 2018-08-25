@@ -269,10 +269,6 @@ public class Labels {
 	public static final String RESTORE_VALUES_BUTTON_TOOLTIP = "RESTORE_VALUES_BUTTON_TOOLTIP";
 	public static final String VALIDATE_FORM_DEFAULTS_TOOLTIP = "VALIDATE_FORM_DEFAULTS_TOOLTIP";
 	
-	public static final String PARAMETERS_TOOLTIP = "PARAMETERS_TOOLTIP";
-	public static final String WRITE_INFO_TOOLTIP = "WRITE_INFO_TOOLTIP";
-	public static final String FILE_PANE_TOOLTIP = "FILE_PANE_TOOLTIP";
-	
 	
 	// Properties dialog labels
 	public static final String PROP_RANKING_TITLE = "PROP_RANKING_TITLE";
