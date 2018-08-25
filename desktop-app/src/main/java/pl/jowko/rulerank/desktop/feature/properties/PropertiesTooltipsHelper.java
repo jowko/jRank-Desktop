@@ -30,7 +30,7 @@ class PropertiesTooltipsHelper {
 	PropertiesTooltipsHelper(PropertiesController controller) {
 		labels = LanguageService.getInstance();
 		this.controller = controller;
-		showDuration = new Duration(10_000);
+		showDuration = new Duration(20_000);
 		delayDuration = new Duration(1500);
 	}
 	
