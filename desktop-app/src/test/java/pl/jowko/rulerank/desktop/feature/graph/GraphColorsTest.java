@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class GraphColorsTest extends AbstractGraphTest {
 	
 	//TODO Finish tests
-	//TODO Finish JavaDoc
 	private static GraphDto graph;
 	
 	@BeforeAll
@@ -45,7 +44,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	/**
 	 * 4 - 3 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 4 - 3 Red
 	 */
 	@Test
 	void case2() {
@@ -55,7 +54,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	/**
 	 * 6 - 5 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 6 - 5 Red
+	 * 6 - 5 Green
 	 */
 	@Test
 	void case3() {
@@ -87,7 +86,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 11 - 12 [color="red"]; <br>
 	 * 12 - 11 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 11 - 12 LightGray <br>
+	 * 11 - 12 Red <br>
+	 * 12 - 11 Red
 	 */
 	@Test
 	void case6() {
@@ -98,7 +98,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 13 - 14 [color="red"]; <br>
 	 * 14 - 13 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 13 - 14 Red <br>
+	 * 14 - 13 Green
 	 */
 	@Test
 	void case7() {
@@ -110,7 +111,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 16 - 15 [color="red"]; <br>
 	 * 16 - 15 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 17 - 18 Red <br>
+	 * 18 - 17 LightGray
 	 */
 	@Test
 	void case8() {
@@ -120,7 +122,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	/**
 	 * 17 - 18 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 17 - 18 Green
 	 */
 	@Test
 	void case9() {
@@ -131,7 +133,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 19 - 20 [color="green"]; <br>
 	 * 20 - 19 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 19 - 20 Green <br>
+	 * 20 - 19 Red
 	 */
 	@Test
 	void case10() {
@@ -142,7 +145,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 21 - 22 [color="green"]; <br>
 	 * 22 - 21 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 21 - 22 Green <br>
+	 * 22 - 21 Green
 	 */
 	@Test
 	void case11() {
@@ -154,7 +158,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 24 - 23 [color="green"]; <br>
 	 * 24 - 23 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 23 - 24 Green <br>
+	 * 24 - 23 LightGray
 	 */
 	@Test
 	void case12() {
@@ -165,7 +170,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 25 - 26 [color="green"]; <br>
 	 * 25 - 26 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 25 - 26 LightGray
 	 */
 	@Test
 	void case13() {
@@ -177,7 +182,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 27 - 28 [color="red"]; <br>
 	 * 28 - 27 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 27 - 28 LightGray <br>
+	 * 28 - 27 Red
 	 */
 	@Test
 	void case14() {
@@ -189,7 +195,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 29 - 30 [color="red"]; <br>
 	 * 30 - 29 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 29 - 30 LightGray <br>
+	 * 30 - 29 Green
 	 */
 	@Test
 	void case15() {
@@ -202,7 +209,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 32 - 31 [color="red"]; <br>
 	 * 32 - 31 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 4 - 3 LightGreen
+	 * 31 - 32 LightGray <br>
+	 * 32 - 31 LightGray
 	 */
 	@Test
 	void case16() {
