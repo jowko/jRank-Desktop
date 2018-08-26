@@ -103,7 +103,7 @@ public class LearningTableDataProvider {
 	 * Creates attribute with provided name and with type of provided field.
 	 * @param name of attribute
 	 * @param field with serves as initial value for attribute
-	 * @return
+	 * @return attribute with provided name and field type
 	 */
 	static Attribute createAttribute(String name, Field field) {
 		Attribute attribute = new Attribute(name, field);
@@ -164,7 +164,7 @@ public class LearningTableDataProvider {
 	 * EnumDomain contains allowed values for EnumField.
 	 * @see EnumField
 	 * @see EnumDomain
-	 * @return
+	 * @return example enum domain
 	 */
 	public static EnumDomain createEnumDomain() {
 		return new EnumDomain(new String[]{"1", "2", "3"});

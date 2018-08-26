@@ -25,7 +25,7 @@ class GraphReducer {
 	/**
 	 * Reduces edges between same pairs of cells. <br>
 	 * If graph contains two edges: {@literal 1 -> 2 Red, 1 -> 2 Green, it will be reduced to 1 -> 2 LightGrey} <br>
-	 * In first step, it will map sourceId -> Related Edges
+	 * In first step, it will map sourceId to Related Edges
 	 * @param dto with will be reduced
 	 * @return reduced graph with Red, Green, LightGrey or Black edges
 	 */
@@ -38,7 +38,7 @@ class GraphReducer {
 	
 	/**
 	 * Reduces number of edges
-	 * @param map of sourceId -> Related Edges
+	 * @param map of sourceId to Related Edges
 	 * @return list of reduced edges, with maximum of 2 connections between cells, example: {@literal 1 -> 2, 2 -> 1}
 	 */
 	private List<EdgeDto> reduceEdges(Map<String, List<EdgeDto>> map) {
