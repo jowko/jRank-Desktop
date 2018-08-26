@@ -18,6 +18,8 @@ import java.util.Scanner;
 
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.RANKING_EVALUATION;
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.RANKING_POSITION;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_L;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_S;
 
 /**
  * This class creates table from provided .ranking file content and MemoryContainer. <br>
@@ -123,7 +125,7 @@ class RankingTableCreator {
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getPosition())
 		);
-		column.setMinWidth(50d);
+		column.setMinWidth(COLUMN_WIDTH_S);
 		
 		return column;
 	}
@@ -138,7 +140,7 @@ class RankingTableCreator {
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().getEvaluation())
 		);
-		column.setMinWidth(50d);
+		column.setMinWidth(COLUMN_WIDTH_L);
 		
 		return column;
 	}
@@ -155,7 +157,7 @@ class RankingTableCreator {
 	private IndexedTableColumn<RankingRow, Object> createColumn(Attribute attribute, int columnIndex) {
 		IndexedTableColumn<RankingRow, Object> column = new IndexedTableColumn<>(attribute.getName(), columnIndex+2);
 		setCellValueFactory(column, attribute.getInitialValue(), columnIndex);
-		column.setMinWidth(50d);
+		column.setMinWidth(COLUMN_WIDTH_L);
 		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
 		column.setGraphic(tableHelper.getColumnLabel(attribute));
 		
@@ -226,12 +228,12 @@ class RankingTableCreator {
 	 * @param values from scanner split by whitespaces
 	 */
 	private void createRowsForPosition(String[] values) {
-		int position = Integer.valueOf(values[0].replace(":", ""));
-		double evaluation = Double.valueOf(values[values.length-1]);
+		int position = Integer.parseInt(values[0].replace(":", ""));
+		double evaluation = Double.parseDouble(values[values.length-1]);
 		calculateIncrement(position);
 		
 		for(int i=1; i<values.length - 1; i++) {
-			int exampleNumber = Integer.valueOf(values[i].replace(",", ""));
+			int exampleNumber = Integer.parseInt(values[i].replace(",", ""));
 			Field[] fields = isfTable.getExamples().get(exampleNumber - increment).getFields();
 			addNewRow(position, evaluation, fields);
 		}

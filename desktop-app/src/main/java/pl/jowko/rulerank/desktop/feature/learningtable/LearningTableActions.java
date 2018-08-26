@@ -29,6 +29,8 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static javafx.collections.FXCollections.observableArrayList;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_L;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_S;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -102,7 +104,7 @@ public class LearningTableActions {
 		int attributeIndex = learningTable.getColumns().size();
 		AttributeTableColumn column = new AttributeTableColumn(attribute, attributeIndex);
 		column.setGraphic(tableHelper.getColumnLabel(attribute));
-		column.setMinWidth(50);
+		column.setMinWidth(COLUMN_WIDTH_L);
 		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
 		setCssStyleForColumn(column);
 		
@@ -125,7 +127,7 @@ public class LearningTableActions {
 	void createIdColumn() {
 		Attribute idColumn = new Attribute(ATTRIBUTE_ID_SECRET_NAME, new CardinalFieldWrapper());
 		AttributeTableColumn column = new AttributeTableColumn(idColumn, 0);
-		column.setMinWidth(50);
+		column.setMinWidth(COLUMN_WIDTH_S);
 		column.setEditable(false);
 		column.setText(labels.get(Labels.LEARN_TABLE_ID));
 		
@@ -272,7 +274,7 @@ public class LearningTableActions {
 		AttributeTableColumn tableColumn = (AttributeTableColumn) getColumnByAttribute(oldAttribute);
 		tableColumn.setGraphic(tableHelper.getColumnLabel(editedAttribute));
 		tableColumn.setAttribute(editedAttribute);
-		tableColumn.setMinWidth(50);
+		tableColumn.setMinWidth(COLUMN_WIDTH_S);
 		tableColumn.setPrefWidth(tableHelper.getColumnPrefWidth(editedAttribute));
 		int attributeIndex = attributes.indexOf(oldAttribute);
 		setCssStyleForColumn(tableColumn);

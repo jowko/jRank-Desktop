@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_L;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_S;
+
 /**
  * This class creates columns and row items for rule table. <br>
  * It converts list of rules to table containing decisions and conditions from rules <br>
@@ -100,25 +103,29 @@ class RuleTableCreator {
 		
 		for(int i=0; i<columnsCount-1; i++) {
 			if(i%2 == 1 && i!= thenOperatorColumnID-1) { // create column for separators and operators
-				TableColumn<RuleRow, String> column = createColumn("", i);
-				column.setResizable(false);
-				column.setMaxWidth(50d);
+				var column = createColumn("", i);
+				setSmallSize(column);
 				columns.add(column);
 				
 			} else if(i < thenOperatorColumnID-1) {
 				columns.add(createColumn(labels.get(Labels.RULES_DECISION_PART), i));
 				
 			} else if(i == thenOperatorColumnID-1) {
-				TableColumn<RuleRow, String> column = createColumn("<=", i);
+				var column = createColumn("<=", i);
 				column.setSortable(false);
-				column.setResizable(false);
-				column.setMaxWidth(50d);
+				setSmallSize(column);
 				columns.add(column);
 				
 			} else {
 				columns.add(createColumn(labels.get(Labels.RULES_CONDITION_PART) + conditionColumnNumber++, i));
 			}
 		}
+	}
+	
+	private void setSmallSize(TableColumn<RuleRow, String> column) {
+		column.setResizable(false);
+		column.setMinWidth(COLUMN_WIDTH_S);
+		column.setMaxWidth(COLUMN_WIDTH_S);
 	}
 	
 	/**
@@ -135,7 +142,7 @@ class RuleTableCreator {
 				new ReadOnlyObjectWrapper<>(param.getValue().getCells().get(columnIndex))
 		);
 		column.setReorderable(false);
-		column.setMinWidth(30d);
+		column.setMinWidth(COLUMN_WIDTH_L);
 		
 		return column;
 	}
@@ -152,7 +159,7 @@ class RuleTableCreator {
 				new ReadOnlyObjectWrapper<>(param.getValue().getId())
 		);
 		column.setReorderable(false);
-		column.setMinWidth(30d);
+		column.setMinWidth(COLUMN_WIDTH_S);
 		
 		return column;
 	}

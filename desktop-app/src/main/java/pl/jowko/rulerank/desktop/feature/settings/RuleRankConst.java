@@ -11,8 +11,12 @@ public class RuleRankConst {
 	
 	public static final String COMMON_CSS = "common.css";
 	
-	public static final double MIN_WIDTH = 1366;
-	public static final double MIN_HEIGHT = 768;
+	public static final double MIN_WIDTH = 1366d;
+	public static final double MIN_HEIGHT = 768d;
+	
+	public static final double COLUMN_WIDTH_S = 50d;
+	public static final double COLUMN_WIDTH_L = 80d;
+	public static final double COLUMN_WIDTH_XL = 120d;
 	
 	private RuleRankConst() {}
 	

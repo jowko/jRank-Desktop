@@ -15,6 +15,8 @@ import java.util.List;
 
 import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.PCT_ID;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_S;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_XL;
 
 /**
  * This class extract data from Learning table and creates columns and items(rows) for PCT table. <br>
@@ -92,7 +94,7 @@ class PCTCreator {
 	private IndexedTableColumn<ObservableList<Field>, ?> createIdColumn() {
 		IndexedTableColumn<ObservableList<Field>, Field> column = new IndexedTableColumn<>(labels.get(PCT_ID), 0);
 		column.setText(labels.get(PCT_ID));
-		column.setMinWidth(50d);
+		column.setMinWidth(COLUMN_WIDTH_S);
 		column.setCellValueFactory(param ->
 				new ReadOnlyObjectWrapper<>(param.getValue().get(0))
 		);
@@ -108,8 +110,7 @@ class PCTCreator {
 	 */
 	private IndexedTableColumn<ObservableList<Field>, ?> createColumn(Attribute attribute, int columnIndex) {
 		IndexedTableColumn<ObservableList<Field>, Field> column = new IndexedTableColumn<>(attribute.getName(), columnIndex);
-		column.setMinWidth(50d);
-		column.setPrefWidth(tableHelper.getColumnPrefWidth(attribute));
+		column.setMinWidth(COLUMN_WIDTH_XL);
 		column.setGraphic(tableHelper.getColumnLabel(attribute));
 		
 		setCellValueFactory(attribute, columnIndex, column);
