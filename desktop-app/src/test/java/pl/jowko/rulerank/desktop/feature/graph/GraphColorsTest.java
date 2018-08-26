@@ -1,8 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,6 +9,9 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.SC_COLOR;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_COLOR;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_SC_COLOR;
 
 /**
  * This class test all cases for coloring graph(16 cases). <br>
@@ -19,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * <br>
  * Created by Piotr on 2018-08-25
  */
-@Disabled
 class GraphColorsTest extends AbstractGraphTest {
 	
 	private static GraphDto graph;
@@ -27,7 +27,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	@BeforeAll
 	static void loadFiles() throws IOException {
 		String allColorsGraphContent = getFileContent("/graph/allColorsGraph.graph");
-		graph = getGraph(allColorsGraphContent);
+		GraphDto dto = getGraph(allColorsGraphContent);
+		graph = new GraphReducer().reduce(dto);
 	}
 	
 	@Test
@@ -53,7 +54,7 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(0, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.RED, edges2.get(0).getColor());
+		assertEquals(SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -68,14 +69,14 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(0, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.GREEN, edges2.get(0).getColor());
+		assertEquals(S_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
 	 * 8 - 7 [color="green"]; <br>
 	 * 8 - 7 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 8 - 7 LightGrey
+	 * 8 - 7 Grey
 	 */
 	@Test
 	void case4() {
@@ -84,7 +85,7 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(0, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -99,7 +100,7 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(0, edges2.size());
-		assertEquals(Color.RED, edges.get(0).getColor());
+		assertEquals(SC_COLOR, edges.get(0).getColor());
 	}
 	
 	/**
@@ -116,8 +117,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.RED, edges.get(0).getColor());
-		assertEquals(Color.RED, edges2.get(0).getColor());
+		assertEquals(SC_COLOR, edges.get(0).getColor());
+		assertEquals(SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -134,8 +135,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.RED, edges.get(0).getColor());
-		assertEquals(Color.GREEN, edges2.get(0).getColor());
+		assertEquals(SC_COLOR, edges.get(0).getColor());
+		assertEquals(S_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -144,7 +145,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 16 - 15 [color="green"]; <br>
 	 * Should Give: <br>
 	 * 15 - 16 Red <br>
-	 * 16 - 15 LightGrey
+	 * 16 - 15 Grey
 	 */
 	@Test
 	void case8() {
@@ -153,8 +154,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.RED, edges.get(0).getColor());
-		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
+		assertEquals(SC_COLOR, edges.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -169,7 +170,7 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(0, edges2.size());
-		assertEquals(Color.GREEN, edges.get(0).getColor());
+		assertEquals(S_COLOR, edges.get(0).getColor());
 	}
 	
 	/**
@@ -186,8 +187,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.GREEN, edges.get(0).getColor());
-		assertEquals(Color.RED, edges2.get(0).getColor());
+		assertEquals(S_COLOR, edges.get(0).getColor());
+		assertEquals(SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -204,8 +205,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.GREEN, edges.get(0).getColor());
-		assertEquals(Color.GREEN, edges2.get(0).getColor());
+		assertEquals(S_COLOR, edges.get(0).getColor());
+		assertEquals(S_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -214,7 +215,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 24 - 23 [color="red"]; <br>
 	 * Should Give: <br>
 	 * 23 - 24 Green <br>
-	 * 24 - 23 LightGrey
+	 * 24 - 23 Grey
 	 */
 	@Test
 	void case12() {
@@ -223,15 +224,15 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.GREEN, edges.get(0).getColor());
-		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
+		assertEquals(S_COLOR, edges.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
 	 * 25 - 26 [color="green"]; <br>
 	 * 25 - 26 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 25 - 26 LightGrey
+	 * 25 - 26 Grey
 	 */
 	@Test
 	void case13() {
@@ -240,7 +241,7 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(0, edges2.size());
-		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges.get(0).getColor());
 	}
 	
 	/**
@@ -248,7 +249,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 27 - 28 [color="red"]; <br>
 	 * 28 - 27 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 27 - 28 LightGrey <br>
+	 * 27 - 28 Grey <br>
 	 * 28 - 27 Red
 	 */
 	@Test
@@ -258,8 +259,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
-		assertEquals(Color.RED, edges2.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges.get(0).getColor());
+		assertEquals(SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -267,7 +268,7 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 29 - 30 [color="red"]; <br>
 	 * 30 - 29 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 29 - 30 LightGrey <br>
+	 * 29 - 30 Grey <br>
 	 * 30 - 29 Green
 	 */
 	@Test
@@ -277,8 +278,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
-		assertEquals(Color.GREEN, edges2.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges.get(0).getColor());
+		assertEquals(S_COLOR, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -287,8 +288,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 32 - 31 [color="red"]; <br>
 	 * 32 - 31 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 31 - 32 LightGrey <br>
-	 * 32 - 31 LightGrey
+	 * 31 - 32 Grey <br>
+	 * 32 - 31 Grey
 	 */
 	@Test
 	void case16() {
@@ -297,8 +298,8 @@ class GraphColorsTest extends AbstractGraphTest {
 		
 		assertEquals(1, edges.size());
 		assertEquals(1, edges2.size());
-		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
-		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges.get(0).getColor());
+		assertEquals(S_SC_COLOR, edges2.get(0).getColor());
 	}
 	
 	private void assertThatGraphIsNotEmpty(GraphDto graph) {

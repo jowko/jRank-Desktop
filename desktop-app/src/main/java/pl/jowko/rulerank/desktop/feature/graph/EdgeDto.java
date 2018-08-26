@@ -1,6 +1,9 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
 import javafx.scene.paint.Color;
+import pl.jowko.rulerank.logger.RuleRankLogger;
+
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.ERROR_COLOR;
 
 /**
  * Contains data needed to create edge in Graph. <br>
@@ -26,6 +29,10 @@ class EdgeDto {
 		this.targetId = targetId;
 		this.label = label;
 		this.color = color;
+		
+		if(color.equals(ERROR_COLOR)) {
+			RuleRankLogger.warn("Color was not recognized for edge: " + toString());
+		}
 	}
 	
 	String getSourceId() {
@@ -42,6 +49,17 @@ class EdgeDto {
 	
 	Color getColor() {
 		return color;
+	}
+	
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("EdgeDto{");
+		sb.append("sourceId='").append(sourceId).append('\'');
+		sb.append(", targetId='").append(targetId).append('\'');
+		sb.append(", label='").append(label).append('\'');
+		sb.append(", color=").append(color);
+		sb.append('}');
+		return sb.toString();
 	}
 	
 }

@@ -49,7 +49,8 @@ class GraphAssembler {
 	 * @return Graph filled with cells and edges extracted from graph file
 	 */
 	Graph createGraph(GraphSelectAction selectAction) {
-		GraphDto graphDto = graphReader.extractGraph();
+		GraphDto graphDto = new GraphReducer().reduce(graphReader.extractGraph());
+		
 		Graph graph = new Graph(selectAction);
 		graph.setEdgeEarlierEndsSimulationEnabled(true);
 		

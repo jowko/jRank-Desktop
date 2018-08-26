@@ -1,6 +1,5 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
-import javafx.scene.paint.Color;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.*;
 
 /**
  * Created by Piotr on 2018-08-22
@@ -61,7 +61,7 @@ class GraphReaderTest extends AbstractGraphTest {
 		for(var cell : graph.getCells()) {
 			assertEquals(String.valueOf(index), cell.getCellId());
 			assertEquals("test" + index, cell.getLabel());
-			assertEquals(Color.LIGHTGREY, cell.getColor());
+			assertEquals(CELL_COLOR, cell.getColor());
 			index++;
 		}
 	}
@@ -90,17 +90,17 @@ class GraphReaderTest extends AbstractGraphTest {
 		EdgeDto first = edges.get(0);
 		assertEquals("1", first.getSourceId());
 		assertEquals("3", first.getTargetId());
-		assertEquals(Color.GREEN, first.getColor());
+		assertEquals(S_COLOR, first.getColor());
 		
 		EdgeDto second = edges.get(1);
 		assertEquals("1", second.getSourceId());
 		assertEquals("2", second.getTargetId());
-		assertEquals(Color.RED, second.getColor());
+		assertEquals(SC_COLOR, second.getColor());
 		
 		EdgeDto three = edges.get(2);
 		assertEquals("2", three.getSourceId());
 		assertEquals("3", three.getTargetId());
-		assertEquals(Color.GRAY, three.getColor());
+		assertEquals(ERROR_COLOR, three.getColor());
 	}
 	
 }

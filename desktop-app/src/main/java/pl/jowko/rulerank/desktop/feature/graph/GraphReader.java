@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.*;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -70,7 +71,7 @@ class GraphReader {
 					
 				} else { // vertices
 					String label = findValueInQuotes(line, labelPattern);
-					cells.add(new CellDto(values[0], label, Color.LIGHTGREY));
+					cells.add(new CellDto(values[0], label, CELL_COLOR));
 				}
 			}
 			
@@ -109,10 +110,10 @@ class GraphReader {
 	
 	private Color getColor(String value) {
 		if("green".equalsIgnoreCase(value))
-			return Color.GREEN;
+			return S_COLOR;
 		if("red".equalsIgnoreCase(value))
-			return Color.RED;
-		return Color.GRAY;
+			return SC_COLOR;
+		return ERROR_COLOR;
 	}
 	
 }

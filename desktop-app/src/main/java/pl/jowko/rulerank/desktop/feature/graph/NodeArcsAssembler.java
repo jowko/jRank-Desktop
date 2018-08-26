@@ -11,6 +11,9 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.SC_COLOR;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_COLOR;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_SC_COLOR;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
@@ -25,9 +28,6 @@ class NodeArcsAssembler {
 	private Cell node;
 	private Graph graph;
 	private LanguageService labels;
-	
-	private static final Color S_RELATION_COLOR = Color.GREEN;
-	private static final Color SC_RELATION_COLOR = Color.RED;
 	
 	/**
 	 * Initializes instance of this class
@@ -55,10 +55,10 @@ class NodeArcsAssembler {
 				.filter(edge -> edge.getTarget().getCellId().equals(nodeId))
 				.collect(Collectors.toList());
 		
-		String outS = getNodesIds(outEdges, S_RELATION_COLOR, true);
-		String outSc = getNodesIds(outEdges, SC_RELATION_COLOR, true);
-		String inS = getNodesIds(inEdges, S_RELATION_COLOR, false);
-		String inSc = getNodesIds(inEdges, SC_RELATION_COLOR, false);
+		String outS = getNodesIds(outEdges, S_COLOR, true);
+		String outSc = getNodesIds(outEdges, SC_COLOR, true);
+		String inS = getNodesIds(inEdges, S_COLOR, false);
+		String inSc = getNodesIds(inEdges, SC_COLOR, false);
 		
 		return new NodeArcs(nodeId, outS, outSc, inS, inSc);
 	}
@@ -74,7 +74,7 @@ class NodeArcsAssembler {
 		StringBuilder builder = new StringBuilder();
 		
 		edges.stream()
-				.filter(edge -> relationColor.equals(edge.getLine().getStroke()))
+				.filter(edge -> relationColor.equals(edge.getLine().getStroke()) || S_SC_COLOR.equals(edge.getLine().getStroke()))
 				.forEach(edge -> {
 					if(isOutRelation) {
 						builder.append(edge.getTarget().getCellId());

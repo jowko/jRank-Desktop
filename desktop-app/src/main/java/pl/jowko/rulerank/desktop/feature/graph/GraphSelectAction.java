@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.SELECTION_COLOR;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -54,7 +55,7 @@ class GraphSelectAction implements MouseClickAction {
 	
 	private void selectNode(Cell node) {
 		lastSelected = (CircleCell) node;
-		lastSelected.getCircle().setStroke(Color.BLUE);
+		lastSelected.getCircle().setStroke(SELECTION_COLOR);
 	}
 	
 	/**
