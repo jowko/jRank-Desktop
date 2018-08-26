@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +35,7 @@ public class FilesFinder {
 	 * @see WorkspaceService
 	 * @return list of files in provided directory
 	 */
-	List<WorkspaceItem> findFilesInDirectory(String directoryPath) {
+	public List<WorkspaceItem> findFilesInDirectory(String directoryPath) {
 		List<WorkspaceItem> paths = null;
 		
 		try (Stream<Path> workspacePaths = Files.walk(Paths.get(directoryPath), 1)) {
@@ -53,29 +52,6 @@ public class FilesFinder {
 		Collections.sort(paths);
 		
 		return paths;
-	}
-	
-	/**
-	 * Finds all files for provided directory path. <br>
-	 * All files from provided directory will be returned as result list.
-	 * @param directoryPath from with extract files data.
-	 * @return list of files in directory
-	 */
-	public List<WorkspaceItem> findAllFiles(String directoryPath) {
-		List<WorkspaceItem> files = new ArrayList<>();
-		
-		try (Stream<Path> filesPath = Files.walk(Paths.get(directoryPath))) {
-			
-			files = filesPath
-					.filter(Files::isRegularFile)
-					.map(this::mapPathToWorkspaceFile)
-					.collect(Collectors.toList());
-			
-		} catch (IOException e) {
-			RuleRankLogger.error("Error when reading directory tree: " + directoryPath + " ", e);
-		}
-		
-		return files;
 	}
 	
 	/**

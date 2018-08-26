@@ -48,7 +48,7 @@ public class IsfFinder {
 	 * @throws IOException when something goes wrong
 	 */
 	public MemoryContainer getMemoryContainer() throws IOException {
-		List<WorkspaceItem> items = new FilesFinder().findAllFiles(experimentDirectory);
+		List<WorkspaceItem> items = new FilesFinder().findFilesInDirectory(experimentDirectory);
 		
 		WorkspaceItem propertiesItem = getExperimentProperties(items);
 		RuleRankProperties properties = JRSFileMediator.loadProperties(propertiesItem);
@@ -63,7 +63,8 @@ public class IsfFinder {
 	 * @return properties item containing properties path
 	 */
 	private WorkspaceItem getExperimentProperties(List<WorkspaceItem> items) {
-		List<WorkspaceItem> properties = items.stream().filter(item -> FileType.PROPERTIES.equals(item.getFileType()))
+		List<WorkspaceItem> properties = items.stream()
+				.filter(item -> FileType.PROPERTIES.equals(item.getFileType()))
 				.collect(Collectors.toList());
 		
 		if(properties.size() > 1)
