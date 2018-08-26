@@ -1,5 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
+import javafx.scene.paint.Color;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Disabled
 class GraphColorsTest extends AbstractGraphTest {
 	
-	//TODO Finish tests
 	private static GraphDto graph;
 	
 	@BeforeAll
@@ -37,8 +37,8 @@ class GraphColorsTest extends AbstractGraphTest {
 	
 	@Test
 	void case1ShouldHaveNoEdges() {
-		assertEquals(0, getEdgeBySourceId("1").size());
-		assertEquals(0, getEdgeBySourceId("2").size());
+		assertEquals(0, getEdgesBySourceId("1").size());
+		assertEquals(0, getEdgesBySourceId("2").size());
 	}
 	
 	/**
@@ -48,7 +48,12 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case2() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("3");
+		List<EdgeDto> edges2 = getEdgesBySourceId("4");
+		
+		assertEquals(0, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.RED, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -58,18 +63,28 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case3() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("5");
+		List<EdgeDto> edges2 = getEdgesBySourceId("6");
+		
+		assertEquals(0, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.GREEN, edges2.get(0).getColor());
 	}
 	
 	/**
 	 * 8 - 7 [color="green"]; <br>
 	 * 8 - 7 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 8 - 7 LightGray
+	 * 8 - 7 LightGrey
 	 */
 	@Test
 	void case4() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("7");
+		List<EdgeDto> edges2 = getEdgesBySourceId("8");
+		
+		assertEquals(0, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -79,7 +94,12 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case5() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("9");
+		List<EdgeDto> edges2 = getEdgesBySourceId("10");
+		
+		assertEquals(1, edges.size());
+		assertEquals(0, edges2.size());
+		assertEquals(Color.RED, edges.get(0).getColor());
 	}
 	
 	/**
@@ -91,7 +111,13 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case6() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("11");
+		List<EdgeDto> edges2 = getEdgesBySourceId("12");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.RED, edges.get(0).getColor());
+		assertEquals(Color.RED, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -103,7 +129,13 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case7() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("13");
+		List<EdgeDto> edges2 = getEdgesBySourceId("14");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.RED, edges.get(0).getColor());
+		assertEquals(Color.GREEN, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -111,12 +143,18 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 16 - 15 [color="red"]; <br>
 	 * 16 - 15 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 17 - 18 Red <br>
-	 * 18 - 17 LightGray
+	 * 15 - 16 Red <br>
+	 * 16 - 15 LightGrey
 	 */
 	@Test
 	void case8() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("15");
+		List<EdgeDto> edges2 = getEdgesBySourceId("16");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.RED, edges.get(0).getColor());
+		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -126,7 +164,12 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case9() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("17");
+		List<EdgeDto> edges2 = getEdgesBySourceId("18");
+		
+		assertEquals(1, edges.size());
+		assertEquals(0, edges2.size());
+		assertEquals(Color.GREEN, edges.get(0).getColor());
 	}
 	
 	/**
@@ -138,7 +181,13 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case10() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("19");
+		List<EdgeDto> edges2 = getEdgesBySourceId("20");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.GREEN, edges.get(0).getColor());
+		assertEquals(Color.RED, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -150,7 +199,13 @@ class GraphColorsTest extends AbstractGraphTest {
 	 */
 	@Test
 	void case11() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("21");
+		List<EdgeDto> edges2 = getEdgesBySourceId("22");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.GREEN, edges.get(0).getColor());
+		assertEquals(Color.GREEN, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -159,22 +214,33 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 24 - 23 [color="red"]; <br>
 	 * Should Give: <br>
 	 * 23 - 24 Green <br>
-	 * 24 - 23 LightGray
+	 * 24 - 23 LightGrey
 	 */
 	@Test
 	void case12() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("23");
+		List<EdgeDto> edges2 = getEdgesBySourceId("24");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.GREEN, edges.get(0).getColor());
+		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
 	}
 	
 	/**
 	 * 25 - 26 [color="green"]; <br>
 	 * 25 - 26 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 25 - 26 LightGray
+	 * 25 - 26 LightGrey
 	 */
 	@Test
 	void case13() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("25");
+		List<EdgeDto> edges2 = getEdgesBySourceId("26");
+		
+		assertEquals(1, edges.size());
+		assertEquals(0, edges2.size());
+		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
 	}
 	
 	/**
@@ -182,12 +248,18 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 27 - 28 [color="red"]; <br>
 	 * 28 - 27 [color="red"]; <br>
 	 * Should Give: <br>
-	 * 27 - 28 LightGray <br>
+	 * 27 - 28 LightGrey <br>
 	 * 28 - 27 Red
 	 */
 	@Test
 	void case14() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("27");
+		List<EdgeDto> edges2 = getEdgesBySourceId("28");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
+		assertEquals(Color.RED, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -195,12 +267,18 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 29 - 30 [color="red"]; <br>
 	 * 30 - 29 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 29 - 30 LightGray <br>
+	 * 29 - 30 LightGrey <br>
 	 * 30 - 29 Green
 	 */
 	@Test
 	void case15() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("29");
+		List<EdgeDto> edges2 = getEdgesBySourceId("30");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
+		assertEquals(Color.GREEN, edges2.get(0).getColor());
 	}
 	
 	/**
@@ -209,12 +287,18 @@ class GraphColorsTest extends AbstractGraphTest {
 	 * 32 - 31 [color="red"]; <br>
 	 * 32 - 31 [color="green"]; <br>
 	 * Should Give: <br>
-	 * 31 - 32 LightGray <br>
-	 * 32 - 31 LightGray
+	 * 31 - 32 LightGrey <br>
+	 * 32 - 31 LightGrey
 	 */
 	@Test
 	void case16() {
-	
+		List<EdgeDto> edges = getEdgesBySourceId("31");
+		List<EdgeDto> edges2 = getEdgesBySourceId("32");
+		
+		assertEquals(1, edges.size());
+		assertEquals(1, edges2.size());
+		assertEquals(Color.LIGHTGREY, edges.get(0).getColor());
+		assertEquals(Color.LIGHTGREY, edges2.get(0).getColor());
 	}
 	
 	private void assertThatGraphIsNotEmpty(GraphDto graph) {
@@ -222,11 +306,11 @@ class GraphColorsTest extends AbstractGraphTest {
 		assertNotNull(graph.getCells());
 		assertNotNull(graph.getEdges());
 		assertEquals(32, graph.getCells().size());
-		assertEquals(32, graph.getEdges().size());
+		assertEquals(24, graph.getEdges().size());
 	}
 	
 	
-	private List<EdgeDto> getEdgeBySourceId(String sourceId) {
+	private List<EdgeDto> getEdgesBySourceId(String sourceId) {
 			return graph.getEdges().stream()
 					.filter(edge -> edge.getSourceId().equals(sourceId))
 					.collect(Collectors.toList());
