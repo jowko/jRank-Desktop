@@ -209,13 +209,14 @@ class RankingTableCreator {
 	 */
 	private void createRows() {
 		items = new ArrayList<>();
-		Scanner scanner = new Scanner(rankingFileContent);
-		while(scanner.hasNextLine()) {
-			String line = scanner.nextLine().trim();
-			if(line.isEmpty())
-				continue;
-			
-			createRowsForPosition(line.split("\\s+"));
+		try (Scanner scanner = new Scanner(rankingFileContent)) {
+			while(scanner.hasNextLine()) {
+				String line = scanner.nextLine().trim();
+				if(line.isEmpty())
+					continue;
+				
+				createRowsForPosition(line.split("\\s+"));
+			}
 		}
 	}
 	
