@@ -1,10 +1,10 @@
 package com.fxgraph.layout;
 
-import java.util.List;
-import java.util.Random;
-
 import com.fxgraph.graph.Cell;
 import com.fxgraph.graph.Graph;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * This code was copied from StackOverflow:

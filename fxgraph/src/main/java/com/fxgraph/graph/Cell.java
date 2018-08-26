@@ -1,10 +1,10 @@
 package com.fxgraph.graph;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This code was copied from StackOverflow:

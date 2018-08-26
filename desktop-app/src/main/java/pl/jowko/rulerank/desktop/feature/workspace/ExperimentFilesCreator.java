@@ -1,7 +1,7 @@
 package pl.jowko.rulerank.desktop.feature.workspace;
 
-import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.PropertiesSaver;
+import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;

@@ -7,9 +7,7 @@ import pl.poznan.put.cs.idss.jrs.ranking.SimpleRanking;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static pl.jowko.rulerank.desktop.feature.properties.information.InformationExtractor.extractPairs;
 import static pl.jowko.rulerank.desktop.feature.properties.information.InformationExtractor.extractRanking;
 

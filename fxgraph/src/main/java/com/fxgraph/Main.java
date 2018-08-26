@@ -1,5 +1,8 @@
 package com.fxgraph;
 
+import com.fxgraph.graph.CellType;
+import com.fxgraph.graph.Graph;
+import com.fxgraph.graph.Model;
 import com.fxgraph.graph.MouseClickAction;
 import com.fxgraph.layout.Layout;
 import com.fxgraph.layout.RandomLayout;
@@ -7,10 +10,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import com.fxgraph.graph.CellType;
-import com.fxgraph.graph.Graph;
-import com.fxgraph.graph.Model;
 
 /**
  * This code was copied from StackOverflow:

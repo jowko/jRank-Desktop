@@ -3,7 +3,6 @@ package pl.jowko.rulerank.desktop.feature.graph;
 import com.fxgraph.cells.CircleCell;
 import com.fxgraph.graph.Cell;
 import com.fxgraph.graph.MouseClickAction;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import pl.jowko.rulerank.desktop.feature.tabs.lower.LowerTabsController;
 import pl.jowko.rulerank.logger.RuleRankLogger;

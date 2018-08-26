@@ -1,9 +1,8 @@
 package com.fxgraph.cells;
 
+import com.fxgraph.graph.Cell;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import com.fxgraph.graph.Cell;
 
 /**
  * This code was copied from StackOverflow:

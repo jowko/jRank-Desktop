@@ -11,9 +11,7 @@ import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.SC_COLOR;
-import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_COLOR;
-import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_SC_COLOR;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.*;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**

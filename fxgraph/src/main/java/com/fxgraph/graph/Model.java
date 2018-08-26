@@ -1,14 +1,14 @@
 package com.fxgraph.graph;
 
+import com.fxgraph.cells.CircleCell;
+import com.fxgraph.cells.RectangleCell;
+import com.fxgraph.cells.TriangleCell;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.fxgraph.cells.CircleCell;
-import com.fxgraph.cells.TriangleCell;
-import com.fxgraph.cells.RectangleCell;
-import javafx.scene.paint.Color;
 
 /**
  * This code was copied from StackOverflow:

@@ -14,7 +14,8 @@ import pl.jowko.rulerank.desktop.service.DialogsService;
 import pl.jowko.rulerank.logger.RuleRankLogger;
 import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;

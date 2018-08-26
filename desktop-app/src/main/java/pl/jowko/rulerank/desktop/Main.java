@@ -20,9 +20,7 @@ import pl.jowko.rulerank.logger.RuleRankLogger;
 import java.io.IOException;
 import java.util.List;
 
-import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COMMON_CSS;
-import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MIN_HEIGHT;
-import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MIN_WIDTH;
+import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.*;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**

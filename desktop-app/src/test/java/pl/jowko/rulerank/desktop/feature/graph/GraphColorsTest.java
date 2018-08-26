@@ -9,9 +9,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.SC_COLOR;
-import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_COLOR;
-import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.S_SC_COLOR;
+import static pl.jowko.rulerank.desktop.feature.graph.GraphColor.*;
 
 /**
  * This class test all cases for coloring graph(16 cases). <br>
