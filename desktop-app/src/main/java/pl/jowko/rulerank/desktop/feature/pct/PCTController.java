@@ -19,7 +19,7 @@ import static javafx.collections.FXCollections.observableArrayList;
 import static pl.jowko.rulerank.desktop.feature.clipboard.CsvTableCreator.createTable;
 
 /**
- * Controller for Partial Comparision Table(PCT) <br>
+ * Controller for Partial Pairwise Comparison Table(PCT) <br>
  *  <br>
  * Created by Piotr on 2018-05-28
  */
@@ -31,7 +31,7 @@ public class PCTController {
 	private LanguageService labels;
 	
 	/**
-	 * Initialize Partial Comparision Table(PCT). <br>
+	 * Initialize Partial Pairwise Comparison Table(PCT). <br>
 	 * If will convert provided MemoryContainer to Learning table and initialize UI table.
 	 * @param isfTable with will be displayed on UI table
 	 */

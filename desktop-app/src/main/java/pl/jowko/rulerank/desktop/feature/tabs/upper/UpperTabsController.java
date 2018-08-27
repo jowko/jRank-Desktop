@@ -192,7 +192,7 @@ public class UpperTabsController {
 	/**
 	 * This methods handle isf table case. <br>
 	 * When isf file is loaded, it can represent editable isf for learning or test data. <br>
-	 * But it can also represent non editable Partial Comparision Table(PCT) in isf format. <br>
+	 * But it can also represent non editable Partial Pairwise Comparison Table(PCT) in isf format. <br>
 	 * This method loads isf table, checks it type and returns RuleRankTab for provided type.
 	 * @param workspaceItem from workspace tree
 	 * @param tabText to display on tab header
