@@ -135,8 +135,9 @@ class ContextMenuActions {
 				RuleRankLogger.error("Error when pasting files: ", e);
 			}
 		}
-		
-		ClipBoardManager.clear();
+		if(isCut.get()) {
+			ClipBoardManager.clear();
+		}
 		refresh();
 	}
 	
