@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>pl.jowko.RuleRank</groupId>
 		<artifactId>ruleRank-Desktop</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0</version>
 	</parent>
 	
 	<artifactId>file-generator</artifactId>
@@ -18,13 +18,13 @@
 		<dependency>
 			<groupId>pl.jowko.RuleRank</groupId>
 			<artifactId>desktop-app</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>pl.jowko.RuleRank</groupId>
 			<artifactId>RuleRank-logger</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		
 		<dependency>

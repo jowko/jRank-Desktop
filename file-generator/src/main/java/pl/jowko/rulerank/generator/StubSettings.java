@@ -83,7 +83,7 @@ class StubSettings {
 	 */
 	private void createStubAppInfo() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		appInfo = new RuleRankInfo("1.0-SNAPSHOT", format.format(new Date()));
+		appInfo = new RuleRankInfo("1.0", format.format(new Date()));
 	}
 	
 	/**

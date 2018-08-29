@@ -9,7 +9,7 @@ echo Building whole project
 call mvn clean install
 
 echo Generating labels and config files
-call java -jar file-generator\target\file-generator-1.0-SNAPSHOT-jar-with-dependencies.jar
+call java -jar file-generator\target\file-generator-1.0-jar-with-dependencies.jar
 
 echo Removing old RuleRank files
 if exist RuleRank\ del /s /f /q RuleRank\*.*
@@ -21,7 +21,7 @@ echo Creating default workspace folder
 md RuleRank\workspace
 
 echo Copying and renaming main jar file
-COPY desktop-app\target\desktop-app-1.0-SNAPSHOT-jar-with-dependencies.jar "RuleRank\RuleRank-1.0-SNAPSHOT.jar"
+COPY desktop-app\target\desktop-app-1.0-jar-with-dependencies.jar "RuleRank\RuleRank-1.0.jar"
 
 echo Copying data directory
 ROBOCOPY data "RuleRank\data"
@@ -36,7 +36,7 @@ echo Copying manual file
 COPY doc\Manual.pdf "RuleRank\Manual-1.0.pdf"
 
 echo creating run.bat file
-@echo java -jar RuleRank-1.0-SNAPSHOT.jar -Xms128m > RuleRank\run.bat
+@echo java -jar RuleRank-1.0.jar -Xms128m > RuleRank\run.bat
 
 echo creating run.sh file
-@echo java -jar RuleRank-1.0-SNAPSHOT.jar -Xms128m > RuleRank\run.sh
+@echo java -jar RuleRank-1.0.jar -Xms128m > RuleRank\run.sh
