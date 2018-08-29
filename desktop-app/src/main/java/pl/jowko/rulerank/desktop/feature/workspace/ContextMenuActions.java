@@ -121,8 +121,13 @@ class ContextMenuActions {
 				
 				if(isCut.get())
 					FileUtils.moveFile(file, newFile);
-				else
+				else {
+					if(newFile.exists()) {
+						throw new FileExistsException("Destination '" + newFile.getAbsolutePath() + "' already exists.");
+					}
 					FileUtils.copyFile(file, newFile, true);
+				}
+				
 				
 			} catch (FileExistsException e) {
 				RuleRankLogger.warn(e.getMessage() + ". Aborting action.");
