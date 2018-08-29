@@ -41,8 +41,12 @@ install.bat script will perform following actions:
 - clean build of whole application
 - creation of RuleRank directory
 - copying of all necessary files to RuleRank directory
+- copy Manual.pdf file from doc directory to RuleRank directory
 - create run.bat script to run this app
 
+## Editing manual
+Manual files are located in doc folder.
+LaTeX needs to be installed to edit and compile pdf file.
 
 ## Generating JavaDoc
 JavaDoc can be easily generated using Intellij Idea.

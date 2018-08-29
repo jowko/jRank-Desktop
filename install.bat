@@ -32,6 +32,9 @@ ROBOCOPY workspace RuleRank\workspace /E
 echo Copying readme file
 COPY README.txt RuleRank
 
+echo Copying manual file
+COPY doc\Manual.pdf "RuleRank\Manual-1.0.pdf"
+
 echo creating run.bat file
 @echo java -jar RuleRank-1.0-SNAPSHOT.jar -Xms128m > RuleRank\run.bat
 
