@@ -47,6 +47,7 @@ install.bat script will perform following actions:
 ## Editing manual
 Manual files are located in doc folder.
 LaTeX needs to be installed to edit and compile pdf file.
+PDF file is not automatically compiled by install.bat file!
 
 ## Generating JavaDoc
 JavaDoc can be easily generated using Intellij Idea.
