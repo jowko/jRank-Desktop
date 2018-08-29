@@ -371,6 +371,8 @@ class StubSettings {
 		language.put(Labels.REPEATED_NFS_CLOSURE, "RNFS-*");
 		language.put(Labels.NFS_P_CLOSURE, "NFS-P-*");
 		language.put(Labels.REPEATED_NFS_P_CLOSURE, "RNFS-P-*");
+		language.put(Labels.MIF, "MiF");
+		language.put(Labels.REPEATED_MIF, "RMiF");
 		language.put(Labels.PARETO, "Pareto");
 		language.put(Labels.LORENZ, "Lorenz");
 		language.put(Labels.STRICT_ORDINAL_DOMINANCE_CHECK_METHOD, "Strict");

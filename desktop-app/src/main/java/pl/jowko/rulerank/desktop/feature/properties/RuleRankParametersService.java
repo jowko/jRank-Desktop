@@ -227,6 +227,8 @@ class RuleRankParametersService {
 		rankingProcedure.add(new RuleRankParameter(get(Labels.REPEATED_NFS_CLOSURE),"rnfs-*", REPEATED_NFS_CLOSURE));
 		rankingProcedure.add(new RuleRankParameter(get(Labels.NFS_P_CLOSURE),"nfs-p-*", NFS_P_CLOSURE));
 		rankingProcedure.add(new RuleRankParameter(get(Labels.REPEATED_NFS_P_CLOSURE),"rnfs-p-*", REPEATED_NFS_P_CLOSURE));
+		rankingProcedure.add(new RuleRankParameter(get(Labels.MIF),"mif", MIF));
+		rankingProcedure.add(new RuleRankParameter(get(Labels.REPEATED_MIF),"rmif", REPEATED_MIF));
 	}
 	
 	private void initDominance() {

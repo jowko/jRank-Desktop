@@ -219,6 +219,8 @@ public class Labels {
 	public static final String REPEATED_NFS_CLOSURE = "REPEATED_NFS_CLOSURE";
 	public static final String NFS_P_CLOSURE = "NFS_P_CLOSURE";
 	public static final String REPEATED_NFS_P_CLOSURE = "REPEATED_NFS_P_CLOSURE";
+	public static final String MIF = "MIF";
+	public static final String REPEATED_MIF = "REPEATED_MIF";
 	public static final String PARETO = "PARETO";
 	public static final String LORENZ = "LORENZ";
 	public static final String STRICT_ORDINAL_DOMINANCE_CHECK_METHOD = "STRICT_ORDINAL_DOMINANCE_CHECK_METHOD";
