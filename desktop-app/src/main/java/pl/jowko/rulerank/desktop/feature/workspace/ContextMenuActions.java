@@ -4,6 +4,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.DataFormat;
+import org.apache.commons.io.FileExistsException;
 import org.apache.commons.io.FileUtils;
 import pl.jowko.rulerank.desktop.feature.clipboard.ClipBoardManager;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
@@ -230,6 +231,8 @@ class ContextMenuActions {
 			else
 				FileUtils.moveFile(source, target);
 			
+		} catch (FileExistsException e) {
+			RuleRankLogger.warn(e.getMessage() + ". Aborting action. Choose another name.");
 		} catch (IOException e) {
 			RuleRankLogger.error("Error when renaming file: ", e);
 		}
