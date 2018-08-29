@@ -38,6 +38,7 @@ public class GraphController {
 		graph = new GraphAssembler(graphFileContent, workspaceItem).createGraph(selectAction);
 		
 		borderPane.setCenter(graph.getScrollPane());
+		borderPane.getStylesheets().add("graph.css");
 		
 		Layout layout = new CircularLayout(graph);
 		layout.execute();
