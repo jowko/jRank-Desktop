@@ -4,6 +4,9 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 
+import java.io.File;
+import java.util.List;
+
 /**
  * This class copies objects to user clipboard. <br>
  *  <br>
@@ -37,6 +40,16 @@ public class ClipBoardManager {
 	public static void putObject(DataFormat key, Object value) {
 		ClipboardContent content = new ClipboardContent();
 		content.put(key, value);
+		clipboard.setContent(content);
+	}
+	
+	/**
+	 * Puts provided list fo files to user clipboard.
+	 * @param files with will be putted to cliboard
+	 */
+	public static void putFile(List<File> files) {
+		ClipboardContent content = new ClipboardContent();
+		content.putFiles(files);
 		clipboard.setContent(content);
 	}
 	
