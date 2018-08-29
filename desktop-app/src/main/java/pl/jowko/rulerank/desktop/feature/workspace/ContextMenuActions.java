@@ -124,6 +124,8 @@ class ContextMenuActions {
 				else
 					FileUtils.copyFile(file, newFile, true);
 				
+			} catch (FileExistsException e) {
+				RuleRankLogger.warn(e.getMessage() + ". Aborting action.");
 			} catch (IOException e) {
 				RuleRankLogger.error("Error when pasting files: ", e);
 			}
