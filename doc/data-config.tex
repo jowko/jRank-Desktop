@@ -7,7 +7,7 @@ Data directory in RUDE application contains all configuration files. It shouldn'
 
 RUDE can support user created translations for other languages. Currently only English is supported officially.
 
-All languages translations are stored in map(key-value), where key represents language code and value represents displayed text(translation). This maps are stored in JSON files. So files after changes should be valid JSON. You can use online JSON validator for validating.\\
+All languages translations are stored in map (key-value), where key represents language code and value represents displayed text (translation). This maps are stored in JSON files. So files after changes should be valid JSON. You can use online JSON validator for validating.\\
 
 To add own language, you have to perform this steps:
 \begin{enumerate}
@@ -15,8 +15,8 @@ To add own language, you have to perform this steps:
 	\item Make backup copy of data directory.
 	\item Open languages.json file.
 	\item Add own language code and language name to file. Each entry must be separated by comma. Text value for language is displayed in user settings as possible option in language configuration field.
-	\item Open labels.json file. Copy and paste content in first brackets: "ENG" : \{...\}. Remember, that each language entry must be separated by comma.
-	\item Replace "ENG" with own language code from languages.json file.
+	\item Open labels.json file. Copy and paste content in first brackets: ''ENG'' : \{...\}. Remember, that each language entry must be separated by comma.
+	\item Replace ''ENG'' with own language code from languages.json file.
 	\item Translate text in values for keys.
 	\item Save all files
 \end{enumerate}

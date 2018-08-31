@@ -38,7 +38,7 @@ Below, we describe meaning of all parameters.
 	\item \textbf{Learning data file} - absolute or relative path to learning isf file. Directories must be separated by $\backslash$ character.
 	\item \textbf{Test data file} - absolute or relative path to test isf file. Directories must be separated by $\backslash$ character. If not configured, it is assumed, that learning file is also test file.
 	\item \textbf{Reference ranking} - initial ranking of objects in experiment.
-	\item \textbf{Pairs} - pairs of object in outranking(S) or non-outranking(Sc) relation.
+	\item \textbf{Pairs} - pairs of object in outranking (S) or non-outranking (Sc) relation.
 	\item \textbf{Type of family criteria} - can be consistent or any.
 	\item \textbf{Type of rules} - can be certain of possible.
 	\item \textbf{Considered set of rules} - if exhaustive, virtual exhaustive set of rules will be considered, if minimal, explicit minimal set of rules induced by VC-DomLEM algorithm will be considered.
@@ -47,8 +47,8 @@ Below, we describe meaning of all parameters.
 	\item \textbf{Ranking procedure} - method used for calculating ranking from preference graph.
 	\item \textbf{Dominance} - dominance relation used to calculate approximations of S and Sc relations in PCT.
 	\item \textbf{Dominance for pairs of ordinal values} - indicator of the considered definition of dominance pairs of ordinal values in PCT.
-	\item \textbf{Satisfaction degrees in preference graph} - weights in the preference graph. Can be fuzzy(from [0,1]) or crisp(0 or 1). Fuzzy satisfaction degree cannot be used with DRSA with exhaustive set of possible rules and rough membership.
-	\item \textbf{Fuzzy satisfaction degree calculation method} - method for calculating fuzzy satisfaction degree in preference graph. Can be maximum of credibility over covering rules(max credibility) or maximum product of credibility and coverage factor over covering rules.
+	\item \textbf{Satisfaction degrees in preference graph} - weights in the preference graph. Can be fuzzy (from [0,1]) or crisp (0 or 1). Fuzzy satisfaction degree cannot be used with DRSA with exhaustive set of possible rules and rough membership.
+	\item \textbf{Fuzzy satisfaction degree calculation method} - method for calculating fuzzy satisfaction degree in preference graph. Can be maximum of credibility over covering rules (max credibility) or maximum product of credibility and coverage factor over covering rules.
 	\item \textbf{Negative examples treatment for VCDRSA} - sets strategy for covering negative examples by rules in VC-DRSA.
 	\item \textbf{Rule conditions selection method in VCDomLEM} - strategy of rule conditions selection, either base (it can employ only elementary conditions built using evaluations of a single pair of objects) or mix (denotes that each rule can employ elementary conditions built using evaluations of different pairs of objects).
 	\item \textbf{Optimize rule consistency in VCDomLEMWrt} - TODO
@@ -80,7 +80,7 @@ Default properties are loaded on each properties form. They are displayed to use
 
 \subsection{Ranking configuration}\label{sub:properties-ranking}
 
-Ranking field represents initial ranking of objects in experiment. It can be edited by clicking on "Edit ranking" button.
+Ranking field represents initial ranking of objects in experiment. It can be edited by clicking on ''Edit ranking'' button.
 
 Ranking can be configured manually in big text field, but it is not recommended and disabled by default. See \hyperref[section:user-settings]{User settings section}. Objects on left list are sorted by object ID.
 
@@ -90,20 +90,20 @@ Ranking can be configured manually in big text field, but it is not recommended 
 	\caption{Ranking edition modal dialog}
 \end{figure*}
 
-By default, objects ID(number of object) is displayed. If you created description attribute, it can be used as label for objects. You can change this in "Displayed label" field.
+By default, objects ID (number of object) is displayed. If you created description attribute, it can be used as label for objects. You can change this in ''Displayed label'' field.
 
 You can drag and drop objects from left list to right tree. If you place object on empty cell, new rank position will be created automatically. If you drag object to rank or element in rank, dragged object will be added to existing rank.
 
 On right tree, you can perform two actions, with can be also invoked on selected item by context menu or keyboard shortcut:
 \begin{itemize}
-	\item \textbf{Remove selected(Delete)} - removes selected object from ranking. Removed object will return to list on the left. If rank was selected, all objects from rank will be removed to.
-	\item \textbf{Add Rank below(A)} - adds new rank position below selected position.
+	\item \textbf{Remove selected (Delete)} - removes selected object from ranking. Removed object will return to list on the left. If rank was selected, all objects from rank will be removed to.
+	\item \textbf{Add Rank below (A)} - adds new rank position below selected position.
 \end{itemize}
 
 
 \subsection{Pairs configuration}\label{sub:properties-pairs}
 
-Pairs field represents comparison pairs of object in Pairwise Comparison Table. They can be edited by clicking on "Edit pairs" button.
+Pairs field represents comparison pairs of object in Pairwise Comparison Table. They can be edited by clicking on ''Edit pairs'' button.
 
 Pairs can be configured manually in big text field, but it is not recommended and disabled by default. See \hyperref[section:user-settings]{User settings section}.
 
@@ -113,15 +113,15 @@ Pairs can be configured manually in big text field, but it is not recommended an
 	\caption{Pairs edition modal dialog}
 \end{figure*}
 
-By default, objects ID(number of object) is displayed. If you created description attribute, it can be used as label for objects. You can change this in "Displayed label" field. 
+By default, objects ID (number of object) is displayed. If you created description attribute, it can be used as label for objects. You can change this in ''Displayed label'' field. 
 
-First and second list contains all objects from experiment. Third list contains compared pairs of this objects with relation S(outranking) or Sc(non-outranking).
+First and second list contains all objects from experiment. Third list contains compared pairs of this objects with relation S (outranking) or Sc (non-outranking).
 
 Three actions are available for this screen. Each can be invoked by pressing button, choosing option from context menu or by keyboard shortcut. First two actions are for first two lists, third is for pairs lists:
 \begin{itemize}
-	\item \textbf{Add S(S)} - adds selected pair of objects from first and second list to pairs lists. Objects are added in outranking relation.
-	\item \textbf{Add Sc(C))} - adds selected pair of objects from first and second list to pairs lists. Objects are added in non-outranking relation.
-	\item \textbf{Remove selected(Delete)} - removes selected pair from third list.
+	\item \textbf{Add S (S)} - adds selected pair of objects from first and second list to pairs lists. Objects are added in outranking relation.
+	\item \textbf{Add Sc (C))} - adds selected pair of objects from first and second list to pairs lists. Objects are added in non-outranking relation.
+	\item \textbf{Remove selected (Delete)} - removes selected pair from third list.
 \end{itemize}
 
 
