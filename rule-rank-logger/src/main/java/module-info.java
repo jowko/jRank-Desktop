@@ -1,5 +1,3 @@
-import pl.jowko.rulerank.logger.RuleRankLogger;
-
 /**
  * This module provides logging mediator.<br>
  * It can use any provided logging implementation.<br>

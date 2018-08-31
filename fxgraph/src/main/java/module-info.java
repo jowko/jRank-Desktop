@@ -8,8 +8,8 @@
  */
 module fxgraph {
 	
-	requires javafx.graphics;
-	requires javafx.controls;
+	requires transitive javafx.graphics;
+	requires transitive javafx.controls;
 	
 	opens com.fxgraph;
 	
