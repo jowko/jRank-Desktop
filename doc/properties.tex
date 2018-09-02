@@ -19,7 +19,7 @@ With default user settings, properties form will be opened with hidden sections 
 
 \begin{figure*}[!ht] 
 	\centering
-	\makebox[\textwidth]{\includegraphics[width=.7\paperwidth]{properties}}
+	\makebox[\textwidth]{\includegraphics[width=.65\paperwidth]{properties}}
 	\caption{Properties form with default settings}
 \end{figure*}
 
@@ -51,7 +51,7 @@ Below, we describe meaning of all parameters.
 	\item \textbf{Fuzzy satisfaction degree calculation method} - method for calculating fuzzy satisfaction degree in preference graph. Can be maximum of credibility over covering rules (max credibility) or maximum product of credibility and coverage factor over covering rules.
 	\item \textbf{Negative examples treatment for VCDRSA} - sets strategy for covering negative examples by rules in VC-DRSA.
 	\item \textbf{Rule conditions selection method in VCDomLEM} - strategy of rule conditions selection, either base (it can employ only elementary conditions built using evaluations of a single pair of objects) or mix (denotes that each rule can employ elementary conditions built using evaluations of different pairs of objects).
-	\item \textbf{Optimize rule consistency in VCDomLEMWrt} - TODO
+	\item \textbf{Optimize rule consistency in VCDomLEMWrt} - set of pairs of objects with respect to which value of rule consistency measure optimized in VC-DomLEM algorithm is calculated. Can be lower (or upper) approximation of the preference relation for which a certain (or possible, respectively) rule is generated or entire preference relation (for certain rules only) – either approximation or set.
 	\item \textbf{Allow empty rules in VCDomLEM} - if true, rules with empty condition part can be generated if they have good consistency.
 	\item \textbf{Use edge regions in VCDomLEM} - if true, only pairs of objects from EDGE region will be used to create rules condition.
 	\item \textbf{Write domination information} - if true, sections [P-dominating sets] and [P-dominated sets] will be saved to .apx file.

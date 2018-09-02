@@ -7,7 +7,7 @@ Learning and test data tables are stored in isf files. Columns represents object
 
 \begin{figure*}[!ht] 
 	\centering
-	\makebox[\textwidth]{\includegraphics[width=.7\paperwidth]{raw/isf-file}}
+	\makebox[\textwidth]{\includegraphics[width=.6\paperwidth]{raw/isf-file}}
 	\caption{Isf table edition window for Houses7 experiment}
 \end{figure*}
 
@@ -51,8 +51,8 @@ New attribute can be added by choosing ''Add attribute'' option from context men
 \end{figure*}
 
 Field type was described earlier in \hyperref[sub:isf-examples]{Table edition section}. By default, field is active, with means that it is not excluded from experiment.
-If attribute condition type will be selected, attribute will be used in experiment as normal field. For decision kind, TODO.\\ Description field kind is not used in experiment and serves only for informational purposes. Preference type is used to determine if values in field have cost or gain criterion.\\
-Enum values field is only used for enum field type. If enum field type is chosen, list of values can be provided there by separating them by comma.
+If attribute condition type will be selected, attribute will be used in experiment as normal field. If decision type was selected and has gain/cost preference type, it can be used to calculate reference ranking from examples in isf table. It will be used when running experiment. 
+\\ Description field kind is not used in experiment and serves only for informational purposes. Preference type is used to determine if values in field have cost or gain criterion. Enum values field is only used for enum field type. If enum field type is chosen, list of values can be provided there by separating them by comma.
 
 \subsection{Customizing existing attribute}\label{sub:isf-cust-attr}
 
