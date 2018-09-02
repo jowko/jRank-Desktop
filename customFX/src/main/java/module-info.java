@@ -8,7 +8,7 @@
  * Created by Piotr on 2018-05-07.
  */
 module customFX {
-	requires javafx.controls;
+	requires transitive javafx.controls;
 	
  	exports pl.jowko.rulerank.feature.customfx;
 }
