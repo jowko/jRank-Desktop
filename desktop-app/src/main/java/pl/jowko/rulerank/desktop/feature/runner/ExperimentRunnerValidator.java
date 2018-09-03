@@ -191,7 +191,7 @@ class ExperimentRunnerValidator {
 	
 	private boolean isContainerHasDecisionAttribute() {
 		for(Attribute attribute : learningTable.getAttributes()) {
-			if(attribute.getKind() == Attribute.DECISION)
+			if(attribute.getKind() == Attribute.DECISION && attribute.getPreferenceType() != Attribute.NONE)
 				return true;
 		}
 		return false;
