@@ -128,7 +128,7 @@ public class PropertiesController implements AbandonableTabForm {
 	RuleRankProperties properties;
 	RuleRankProperties editableProperties;
 	RuleRankProperties defaultProperties;
-	
+	boolean defaultPropertiesEdition;
 	
 	/**
 	 * Initialize properties form with provided data.
@@ -145,12 +145,18 @@ public class PropertiesController implements AbandonableTabForm {
 		labels = LanguageService.getInstance();
 		editableProperties = (RuleRankProperties) Cloner.deepClone(properties);
 		defaultProperties = new DefaultPropertiesProvider().getDefaultProperties();
+		defaultPropertiesEdition = "default.properties".equals(workspaceItem.getFileName());
 		controllerHelper = new PropertiesControllerHelper(this);
 		
 		initializeCloseEvent();
 		new PropertiesTooltipsHelper(this).initializeTooltips();
 		new PropertiesTranslatorHelper(this).translateFields();
 		new PropertiesChangeListener(this, propertiesTab).setUpListeners();
+		
+		if(defaultPropertiesEdition) {
+			runExperimentButton.setDisable(true);
+			validateFormDefaults.setDisable(true);
+		}
 	}
 	
 	/**
@@ -252,7 +258,7 @@ public class PropertiesController implements AbandonableTabForm {
 		RunnerPropertiesProvider runnerPropertiesProvider = new RunnerPropertiesProvider(editableProperties, defaultProperties);
 		RuleRankProperties propertiesWithDefaults = runnerPropertiesProvider.getPropertiesWithDefaults();
 		
-		PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults);
+		PropertiesValidator validator = new PropertiesValidator(propertiesWithDefaults, defaultPropertiesEdition);
 		if(not(validator.isValid())) {
 			DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
 			return;
@@ -378,7 +384,7 @@ public class PropertiesController implements AbandonableTabForm {
 	 */
 	private boolean isFormValid() {
 		editableProperties = controllerHelper.getPropertiesFromForm();
-		PropertiesValidator validator = new PropertiesValidator(editableProperties);
+		PropertiesValidator validator = new PropertiesValidator(editableProperties, defaultPropertiesEdition);
 		
 		if(not(validator.isValid())) {
 			DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
@@ -395,7 +401,7 @@ public class PropertiesController implements AbandonableTabForm {
 	 */
 	private boolean isFormValidForSave() {
 		editableProperties = controllerHelper.getPropertiesFromForm();
-		PropertiesValidator validator = new PropertiesValidator(editableProperties);
+		PropertiesValidator validator = new PropertiesValidator(editableProperties, defaultPropertiesEdition);
 		
 		if(not(validator.isValid())) {
 			String header = labels.get(Labels.PROP_SAVE_ERROR_CONFIRM);

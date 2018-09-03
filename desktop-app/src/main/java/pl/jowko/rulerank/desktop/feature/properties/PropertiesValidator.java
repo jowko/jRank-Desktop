@@ -21,6 +21,7 @@ import static pl.poznan.put.cs.idss.jrs.ranking.RankerParameters.VCDRSA;
 public class PropertiesValidator extends Validator {
 	
 	private RuleRankProperties properties;
+	private boolean validatingDefaultProperties;
 	
 	/**
 	 * Creates instance of this class and validates provided properties
@@ -32,11 +33,22 @@ public class PropertiesValidator extends Validator {
 	}
 	
 	/**
+	 * Creates instance of this class and validates provided properties
+	 * @param properties to validate
+	 * @param validatingDefaultProperties flag with indicates if default.properties file is validated
+	 */
+	public PropertiesValidator(RuleRankProperties properties, boolean validatingDefaultProperties) {
+		this.properties = properties;
+		this.validatingDefaultProperties = validatingDefaultProperties;
+		validate();
+	}
+	
+	/**
 	 * Perform validation on properties. <br>
 	 * Code was modeled by validation in RuleRank console application
 	 */
 	private void validate() {
-		if(StringUtils.isNullOrEmpty(properties.getLearningDataFile()))
+		if(not(validatingDefaultProperties) && StringUtils.isNullOrEmpty(properties.getLearningDataFile()))
 			appendError(Labels.LEARNING_DATA_FILE_EMPTY);
 		
 		if(validateConsistencyMeasureThreshold())

@@ -11,6 +11,7 @@ import java.util.List;
 
 import static java.util.Objects.isNull;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.MSG;
+import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
 
 /**
@@ -159,7 +160,9 @@ class PropertiesControllerHelper {
 	 * @param defaultValue with will be set as prompt text in text field
 	 */
 	private void fillTextValue(TextInputControl textField, String textValue, String defaultValue) {
-		textField.setPromptText(defaultValue);
+		if(not(ctrl.defaultPropertiesEdition)) {
+			textField.setPromptText(defaultValue);
+		}
 		textField.setText(textValue);
 	}
 	
@@ -271,10 +274,14 @@ class PropertiesControllerHelper {
 	 * @param defaultParameter with will be used to set first value in list
 	 */
 	private void fillComboBox(ComboBox<RuleRankParameter> comboBox, List<RuleRankParameter> list, RuleRankParameter defaultParameter) {
-		RuleRankParameter defaultValue = service.getDefaultParameter();
-		String label = labels.get(Labels.PROP_DEFAULT_VALUE).replace(MSG, defaultParameter.getLabel());
-		defaultValue.setLabel(label);
-		list.set(0, defaultValue);
+		if(not(ctrl.defaultPropertiesEdition)) {
+			RuleRankParameter defaultValue = service.getDefaultParameter();
+			String label = labels.get(Labels.PROP_DEFAULT_VALUE).replace(MSG, defaultParameter.getLabel());
+			defaultValue.setLabel(label);
+			list.set(0, defaultValue);
+		} else {
+			list.set(0, service.getDefaultParameter());
+		}
 		comboBox.getItems().addAll(list);
 	}
 	
