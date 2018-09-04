@@ -340,6 +340,7 @@ public class Labels {
 	public static final String ATT_DIALOG_FIELD_EMPTY = "ATT_DIALOG_FIELD_EMPTY";
 	public static final String ATT_DIALOG_PREFERENCE_EMPTY = "ATT_DIALOG_PREFERENCE_EMPTY";
 	public static final String ATT_DIALOG_ENUMS_EMPTY = "ATT_DIALOG_ENUMS_EMPTY";
+	public static final String ATT_DIALOG_RESERVED_KEYWORD = "ATT_DIALOG_RESERVED_KEYWORD";
 	public static final String ATT_DIALOG_VALIDATION_FAIL = "ATT_DIALOG_VALIDATION_FAIL";
 	public static final String ATT_DIALOG_ENUMS_TOOLTIP = "ATT_DIALOG_ENUMS_TOOLTIP";
 	

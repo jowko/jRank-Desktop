@@ -457,6 +457,7 @@ class StubSettings {
 		language.put(Labels.ATT_DIALOG_FIELD_EMPTY, "Field type should be set\n");
 		language.put(Labels.ATT_DIALOG_PREFERENCE_EMPTY, "Preference type should be set\n");
 		language.put(Labels.ATT_DIALOG_ENUMS_EMPTY, "Enum values should not be empty\n");
+		language.put(Labels.ATT_DIALOG_RESERVED_KEYWORD, "Name cannot be equal to one of reserved words in isf file format\n");
 		language.put(Labels.ATT_DIALOG_VALIDATION_FAIL, "There are errors on form");
 		language.put(Labels.ATT_DIALOG_ENUMS_TOOLTIP, "Write cardinal values here separated by coma.");
 	}

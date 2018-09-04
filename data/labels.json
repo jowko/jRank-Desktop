@@ -39,6 +39,7 @@
     "TABS_CLOSE_THIS_CONFIRM" : "Do you want to close this tab? You loose unsaved changes.",
     "PROP_INFO_CANCEL_BUTTON" : "Cancel",
     "BUTTON_CANCEL" : "Cancel",
+    "ATT_DIALOG_RESERVED_KEYWORD" : "Name cannot be equal to one of reserved words in isf file format\n",
     "RULES_POSSIBLE" : "POSSIBLE",
     "PAIRS" : "Pairs:",
     "DOMINANCE_FOR_PAIRS" : "Dominance for pairs of ordinal values:",

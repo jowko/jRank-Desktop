@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static javafx.collections.FXCollections.observableArrayList;
+import static pl.jowko.rulerank.desktop.feature.learningtable.dialogs.AttributeKeywordChecker.isAttributeNameIsfKeyword;
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
@@ -188,6 +189,10 @@ public class AttributeDialogController extends AbstractDialogForm {
 		}
 		if(FieldType.ENUM_FIELD.equals(typeField.getValue()) && enumsField.getText().isEmpty()) {
 			errorsMsg += labels.get(Labels.ATT_DIALOG_ENUMS_EMPTY);
+		}
+		
+		if(isAttributeNameIsfKeyword(nameField.getText().trim())) {
+			errorsMsg += labels.get(Labels.ATT_DIALOG_RESERVED_KEYWORD);
 		}
 		
 		if(not(errorsMsg.isEmpty())) {
