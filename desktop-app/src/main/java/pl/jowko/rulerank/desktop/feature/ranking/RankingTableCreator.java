@@ -20,6 +20,7 @@ import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.RANK
 import static pl.jowko.rulerank.desktop.feature.internationalization.Labels.RANKING_POSITION;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_L;
 import static pl.jowko.rulerank.desktop.feature.settings.RuleRankConst.COLUMN_WIDTH_S;
+import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 
 /**
  * This class creates table from provided .ranking file content and MemoryContainer. <br>
@@ -44,6 +45,8 @@ class RankingTableCreator {
 	 * This variable helps to handle both cases
 	 */
 	private int increment;
+	
+	private boolean evaluationColumnVisible = true;
 	
 	/**
 	 * Create instance of this class. <br>
@@ -88,8 +91,8 @@ class RankingTableCreator {
 	 */
 	private void initializeData() {
 		try {
-			createColumns();
 			createRows();
+			createColumns();
 		} catch (NumberFormatException e) {
 			throw new RankingInitializationException("Error when parsing numbers: " + e.getMessage());
 		} catch (IndexOutOfBoundsException e) {
@@ -141,6 +144,9 @@ class RankingTableCreator {
 				new ReadOnlyObjectWrapper<>(param.getValue().getEvaluation())
 		);
 		column.setMinWidth(COLUMN_WIDTH_L);
+		if(not(evaluationColumnVisible)) {
+			column.setVisible(false);
+		}
 		
 		return column;
 	}
@@ -215,7 +221,7 @@ class RankingTableCreator {
 				if(line.isEmpty())
 					continue;
 				
-				createRowsForPosition(line.split("\\s+"));
+				createRowsForPosition(line.split("\t"));
 			}
 		}
 	}
@@ -230,11 +236,20 @@ class RankingTableCreator {
 	 */
 	private void createRowsForPosition(String[] values) {
 		int position = Integer.parseInt(values[0].replace(":", ""));
-		double evaluation = Double.parseDouble(values[values.length-1]);
+		Double evaluation;
 		calculateIncrement(position);
 		
-		for(int i=1; i<values.length - 1; i++) {
-			int exampleNumber = Integer.parseInt(values[i].replace(",", ""));
+		if(values.length == 3) {
+			evaluation = Double.parseDouble(values[2]);
+		} else {
+			evaluationColumnVisible = false;
+			evaluation = Double.MIN_VALUE;
+		}
+		
+		String[] indices = values[1].split("\\s+");
+		
+		for(int i=0; i<indices.length; i++) {
+			int exampleNumber = Integer.parseInt(indices[i].replace(",", ""));
 			Field[] fields = isfTable.getExamples().get(exampleNumber - increment).getFields();
 			addNewRow(position, evaluation, fields);
 		}

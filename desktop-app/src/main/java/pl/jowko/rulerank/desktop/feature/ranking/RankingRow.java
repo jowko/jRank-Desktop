@@ -10,7 +10,7 @@ import java.util.List;
 class RankingRow {
 	
 	private int position;
-	private double evaluation;
+	private Double evaluation;
 	private List<String> cells;
 	
 	/**
@@ -19,7 +19,7 @@ class RankingRow {
 	 * @param evaluation score
 	 * @param cells from MemoryContainer containing data from learning table
 	 */
-	RankingRow(int position, double evaluation, List<String> cells) {
+	RankingRow(int position, Double evaluation, List<String> cells) {
 		this.position = position;
 		this.evaluation = evaluation;
 		this.cells = cells;
@@ -29,7 +29,7 @@ class RankingRow {
 		return position;
 	}
 	
-	double getEvaluation() {
+	Double getEvaluation() {
 		return evaluation;
 	}
 	
