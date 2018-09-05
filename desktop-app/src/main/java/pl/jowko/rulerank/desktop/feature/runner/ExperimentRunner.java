@@ -1,5 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.runner;
 
+import pl.jowko.rulerank.desktop.exception.ConfigurationException;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
 import pl.jowko.rulerank.desktop.feature.learningtable.LearningTable;
@@ -46,7 +47,7 @@ public class ExperimentRunner {
 		try {
 			RuleRankProperties defaults = new DefaultPropertiesProvider().getDefaultProperties();
 			propertiesProvider = new RunnerPropertiesProvider(properties, defaults);
-		} catch (IOException e) {
+		} catch (IOException | ConfigurationException e) {
 			throw new RunnerException(labels.get(Labels.RUN_PROP_READ_ERROR) + e.getMessage());
 		}
 		

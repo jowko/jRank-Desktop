@@ -1,8 +1,10 @@
 package pl.jowko.rulerank.desktop.feature.properties;
 
+import pl.jowko.rulerank.desktop.exception.ConfigurationException;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceService;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -26,7 +28,11 @@ public class DefaultPropertiesProvider {
 		String propertiesPath = getSubDirectoryPath(WorkspaceService.getInstance().getWorkspacePath()) + "default.properties";
 		
 		Properties properties = new Properties();
-		properties.load(new FileInputStream(propertiesPath));
+		try {
+			properties.load(new FileInputStream(propertiesPath));
+		} catch (FileNotFoundException e) {
+			throw new ConfigurationException("default.properties file was not found: " + e.getMessage());
+		}
 		
 		PropertiesAssembler assembler = new PropertiesAssembler(properties);
 		
