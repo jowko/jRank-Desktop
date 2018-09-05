@@ -5,7 +5,10 @@
 
 To run application, execute run.* file depending on Operating System.
 
-At this moment Mac isn't supported.
+Currently supported operating systems:
+- Windows
+- Linux
+- Mac OS
 
 # Help
 See Manual pdf file for features description.
