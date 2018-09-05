@@ -9,8 +9,6 @@ import javafx.scene.paint.Color;
  */
 class GraphColor {
 	
-	private GraphColor() {}
-	
 	static final Color S_COLOR = Color.GREEN;
 	static final Color SC_COLOR = Color.RED;
 	static final Color S_SC_COLOR = Color.GREY;
@@ -18,5 +16,7 @@ class GraphColor {
 	
 	static final Color CELL_COLOR = Color.LIGHTGREY;
 	static final Color SELECTION_COLOR = Color.BLUE;
+	
+	private GraphColor() {}
 	
 }
