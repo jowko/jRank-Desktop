@@ -3,7 +3,7 @@ REM Script for creating RuleRank installation
 @echo off
 
 echo Copying jRS.jar to local maven repo
-call mvn install:install-file -Dfile=lib\jRS.jar -DgroupId=pl.poznan.put.cs.idss -DartifactId=jrs -Dversion=2018.09.05 -Dpackaging=jar
+call mvn install:install-file -Dfile=lib\jRS.jar -DgroupId=pl.poznan.put.cs.idss -DartifactId=jrs -Dversion=2018.09.07 -Dpackaging=jar
 
 echo Building whole project
 call mvn clean install
