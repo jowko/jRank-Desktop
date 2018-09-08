@@ -13,6 +13,7 @@ import pl.poznan.put.cs.idss.jrs.core.ContainerFailureException;
 import pl.poznan.put.cs.idss.jrs.core.mem.MemoryContainer;
 import pl.poznan.put.cs.idss.jrs.ranking.PairOfIndices;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerParameters;
+import pl.poznan.put.cs.idss.jrs.wrappers.JRank;
 
 import java.util.List;
 
@@ -68,6 +69,8 @@ class RankerParametersAssembler {
 		} else if(isNotNullOrEmpty(properties.getPairs())) {
 			extractPairs();
 		}
+		
+		calculatePairsThatCannotBePreserved();
 	}
 	
 	/**
@@ -103,6 +106,16 @@ class RankerParametersAssembler {
 			parameters.pairs[i] = list.get(i).getPair();
 			parameters.preferences[i] = list.get(i).getRelation();
 		}
+	}
+	
+	/**
+	 * Calculates pairs that cannot be preserved in preference/non-outranking relation.
+	 */
+	private void calculatePairsThatCannotBePreserved() {
+		JRank jRank = new JRank();
+		
+		parameters.learningPairsThatCannotBePreservedInOriginalRelation = jRank.calculateLearningPairsThatCannotBePreservedInOriginalRelation(parameters);
+		parameters.testPairsThatCannotBePreservedInPreferenceRelation = jRank.calculateTestPairsThatCannotBePreservedInPreferenceRelation(parameters.testInformationTable);
 	}
 	
 	private void throwErrorOnTextParsing(RuntimeException e) {

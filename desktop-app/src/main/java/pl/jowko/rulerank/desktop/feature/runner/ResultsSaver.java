@@ -6,7 +6,9 @@ import pl.jowko.rulerank.desktop.feature.properties.RuleRankParameter;
 import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.service.JRSFileMediator;
 import pl.jowko.rulerank.logger.RuleRankLogger;
+import pl.poznan.put.cs.idss.jrs.Settings;
 import pl.poznan.put.cs.idss.jrs.ranking.RankerResults;
+import pl.poznan.put.cs.idss.jrs.rules.RulesContainer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,6 +31,8 @@ class ResultsSaver {
 	private RuleRankProperties properties;
 	private String experimentPath;
 	
+	private Settings snapshot;
+	
 	/**
 	 * @param results from ruleRank experiment
 	 * @param properties from properties form with were used in experiment
@@ -49,13 +53,33 @@ class ResultsSaver {
 		if(isNull(results))
 			return;
 		
+		storeGlobalSettings();
+		Settings.getInstance().precision = properties.getPrecision();
+		
 		savePctFile();
 		saveApxFile();
 		saveRulesFile();
 		saveRankingFile();
 		saveGraphFile();
 		saveReportFile();
+		
+		restoreGlobalSettings();
 	}
+	
+	/**
+	 * Stores modified global settings in jRS library
+	 */
+	private void storeGlobalSettings() {
+		snapshot = Settings.getInstance().makeSnapshot();
+	}
+	
+	/**
+	 * Restores modified global settings in jRS library
+	 */
+	private void restoreGlobalSettings() {
+		Settings.getInstance().restoreFromSnapshot(snapshot);
+	}
+	
 	
 	private void savePctFile() {
 		String pctFilePath = getAbsolutePath(properties.getPctFile());
@@ -91,11 +115,37 @@ class ResultsSaver {
 		try {
 			boolean writeRulesStatistics = getBoolean(properties.getWriteRulesStatistics());
 			boolean writeLearningExamples = getBoolean(properties.getWriteLearningPositiveExamples());
+			addAdditionalInformationToRules();
 			results.rulesContainer.writeRules(rulesPath, writeRulesStatistics, writeLearningExamples);
 			logFileSaved(properties.getPctRulesFile(), rulesPath);
 		} catch (IOException e) {
 			RuleRankLogger.error("Error when saving pct rules file: " + e);
 		}
+	}
+	
+	/**
+	 * Adds some additional information about files like in ruleRank console application.
+	 */
+	private void addAdditionalInformationToRules() {
+		String pctFile = properties.getPctFile();
+		String pctFileDirectory;
+		String pctFileName;
+		
+		int lastIndexOf = pctFile.lastIndexOf("/");
+		if (lastIndexOf == -1) {
+			lastIndexOf = pctFile.lastIndexOf("\\");
+		}
+		if (lastIndexOf == -1) {
+			pctFileDirectory = ""; //current directory
+			pctFileName = pctFile;
+		}
+		else {
+			pctFileDirectory = pctFile.substring(0, lastIndexOf); //substring without char at lastIndexOf
+			pctFileName = pctFile.substring(lastIndexOf + 1);
+		}
+		
+		results.rulesContainer.getFileInfo().putParameterValue(RulesContainer.dataFileDirectoryParameterName, pctFileDirectory);
+		results.rulesContainer.getFileInfo().putParameterValue(RulesContainer.dataFileNameParameterName, pctFileName);
 	}
 	
 	/**
