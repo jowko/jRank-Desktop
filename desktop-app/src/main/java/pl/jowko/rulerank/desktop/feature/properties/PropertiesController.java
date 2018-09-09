@@ -142,7 +142,7 @@ public class PropertiesController implements AbandonableTabForm {
 		this.propertiesTab = propertiesTab;
 		
 		labels = LanguageService.getInstance();
-		editableProperties = (RuleRankProperties) Cloner.deepClone(properties);
+		editableProperties = Cloner.deepClone(properties);
 		defaultProperties = new DefaultPropertiesProvider().getDefaultProperties();
 		defaultPropertiesEdition = "default.properties".equals(workspaceItem.getFileName());
 		controllerHelper = new PropertiesControllerHelper(this);
@@ -224,7 +224,7 @@ public class PropertiesController implements AbandonableTabForm {
 		if(isUserWishToKeepChanges())
 			return;
 		
-		editableProperties = (RuleRankProperties) Cloner.deepClone(properties);
+		editableProperties = Cloner.deepClone(properties);
 		controllerHelper.setEditableProperties(editableProperties);
 		controllerHelper.fillFieldsValues();
 		propertiesTab.setTabEdited(false);

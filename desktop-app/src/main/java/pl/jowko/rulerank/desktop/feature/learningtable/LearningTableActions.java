@@ -179,7 +179,7 @@ public class LearningTableActions {
 			ResourceLoader resourceLoader = new ResourceLoader("/fxml/upperTabs/attributeActionDialog.fxml");
 			Parent parent = resourceLoader.load();
 			AttributeDialogController controller = resourceLoader.getController();
-			List<Attribute> attributesToEdit = (List<Attribute>) Cloner.deepClone(getAttributesFromTable());
+			List<Attribute> attributesToEdit = Cloner.deepClone(getAttributesFromTable());
 			controller.initializeEditAction(this, parent, attributesToEdit);
 		} catch (IOException e) {
 			RuleRankLogger.error("Error while trying to open customize attributes dialog: " + e.getCause());

@@ -25,7 +25,7 @@ public class RunnerPropertiesProvider {
 	 */
 	public RunnerPropertiesProvider(RuleRankProperties experimentProperties, RuleRankProperties defaults) {
 		parametersService = RuleRankParametersService.getInstance();
-		this.properties = (RuleRankProperties) Cloner.deepClone(experimentProperties);
+		this.properties = Cloner.deepClone(experimentProperties);
 		this.defaults = defaults;
 	}
 	

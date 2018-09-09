@@ -1,5 +1,6 @@
 package pl.jowko.rulerank.desktop.utils;
 
+import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
 import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.ByteArrayInputStream;
@@ -26,18 +27,17 @@ public class Cloner {
 	 * @see java.io.Serializable
 	 * @return deep clone of provided object
 	 */
-	public static Object deepClone(Object object) {
+	public static <T> T deepClone(T object) {
 		try {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
 			oos.writeObject(object);
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
-			return ois.readObject();
+			return (T) ois.readObject();
 		}
 		catch (Exception e) {
-			RuleRankLogger.error("Error when making deep copy of object: " + e);
-			return null;
+			throw new RuleRankRuntimeException("Error when making deep copy of object: " + e.getMessage());
 		}
 	}
 	

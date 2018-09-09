@@ -17,7 +17,7 @@ class ClonerTest {
 		NestedObject nestedObject = new NestedObject("someName");
 		ClonedObject clonedObject = new ClonedObject(33d, 1, nestedObject);
 		
-		ClonedObject deepCopy = (ClonedObject) Cloner.deepClone(clonedObject);
+		ClonedObject deepCopy = Cloner.deepClone(clonedObject);
 		
 		assertEquals(clonedObject, deepCopy);
 	}
@@ -27,7 +27,7 @@ class ClonerTest {
 		NestedObject nestedObject = new NestedObject("someName");
 		ClonedObject clonedObject = new ClonedObject(33d, 1, nestedObject);
 		
-		ClonedObject deepCopy = (ClonedObject) Cloner.deepClone(clonedObject);
+		ClonedObject deepCopy = Cloner.deepClone(clonedObject);
 		clonedObject.value = 22d;
 		clonedObject.primitive = 2;
 		clonedObject.nestedObject = new NestedObject("someOtherName");
