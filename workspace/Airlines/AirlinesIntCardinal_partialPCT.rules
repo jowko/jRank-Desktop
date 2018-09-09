@@ -2,10 +2,10 @@
 Program: jrs
 Algorithm: VC-DOMLEM
 DataFileDirectory: 
-DataFileName: 
+DataFileName: AirlinesIntCardinal_partialPCT.isf
 Objects: 121
 Decision: Relation
-Duration: 41 [ms]
+Duration: 70 [ms]
 Comment: Rules generated with VC-DOMLEM algorithm
 
 [PARAMETERS]

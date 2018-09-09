@@ -2,7 +2,7 @@
 Program: jrs
 Algorithm: VC-DOMLEM
 DataFileDirectory: 
-DataFileName: 
+DataFileName: Notebooks_partialPCT.isf
 Objects: 36
 Decision: Relation
 Duration: 2 [ms]

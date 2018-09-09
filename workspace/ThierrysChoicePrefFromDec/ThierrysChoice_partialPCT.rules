@@ -2,7 +2,7 @@
 Program: jrs
 Algorithm: VC-DOMLEM
 DataFileDirectory: 
-DataFileName: 
+DataFileName: ThierrysChoice_partialPCT.isf
 Objects: 9
 Decision: Relation
 Duration: 1 [ms]

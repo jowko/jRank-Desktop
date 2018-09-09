@@ -1,0 +1,2 @@
+Kendal's tau with respect to preference information:	0.9166666666666666
+Kendal's tau with respect to preference information, ignoring pairs that cannot be preserved:	1.0

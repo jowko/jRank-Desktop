@@ -2,10 +2,10 @@
 Program: jrs
 Algorithm: VC-DOMLEM
 DataFileDirectory: 
-DataFileName: 
+DataFileName: BankruptcyRisk_partialPCT.isf
 Objects: 49
 Decision: Relation
-Duration: 33 [ms]
+Duration: 32 [ms]
 Comment: Rules generated with VC-DOMLEM algorithm
 
 [PARAMETERS]

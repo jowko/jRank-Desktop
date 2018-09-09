@@ -2,10 +2,10 @@
 Program: jrs
 Algorithm: VC-DOMLEM
 DataFileDirectory: 
-DataFileName: 
+DataFileName: Notebooks_partialPCT.isf
 Objects: 36
 Decision: Relation
-Duration: 2 [ms]
+Duration: 3 [ms]
 Comment: Rules generated with VC-DOMLEM algorithm
 
 [PARAMETERS]
