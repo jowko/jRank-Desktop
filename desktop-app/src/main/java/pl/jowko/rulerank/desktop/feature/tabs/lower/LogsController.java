@@ -5,6 +5,8 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import pl.jowko.rulerank.logger.RuleRankLogger;
+import pl.poznan.put.cs.idss.jrs.output.OM;
+import pl.poznan.put.cs.idss.jrs.output.SystemOut;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -35,7 +37,14 @@ public class LogsController {
 		System.setErr(ps);
 		initializeContextMenu();
 		initializeFocusLogTabEvent();
+		initializeJrsLogging();
 		RuleRankLogger.init("Initialized logs tab");
+	}
+	
+	private void initializeJrsLogging() {
+		SystemOut systemOut = new SystemOut();
+		OM.addOutput(systemOut);
+		OM.setDefaultOutput(systemOut.getKey());
 	}
 	
 	/**

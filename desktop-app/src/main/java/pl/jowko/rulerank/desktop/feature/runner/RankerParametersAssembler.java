@@ -27,7 +27,9 @@ import static pl.jowko.rulerank.desktop.utils.StringUtils.isNotNullOrEmpty;
  * Created by Piotr on 2018-06-04
  * @see RankerParameters
  * @see pl.poznan.put.cs.idss.jrs.ranking.Ranker
+ * @deprecated Not used anymore, JRank.java is used instead
  */
+@Deprecated
 class RankerParametersAssembler {
 	
 	private RuleRankProperties properties;

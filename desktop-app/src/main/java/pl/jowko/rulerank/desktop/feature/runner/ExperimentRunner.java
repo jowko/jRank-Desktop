@@ -3,21 +3,21 @@ package pl.jowko.rulerank.desktop.feature.runner;
 import pl.jowko.rulerank.desktop.exception.ConfigurationException;
 import pl.jowko.rulerank.desktop.feature.internationalization.Labels;
 import pl.jowko.rulerank.desktop.feature.internationalization.LanguageService;
-import pl.jowko.rulerank.desktop.feature.learningtable.LearningTable;
 import pl.jowko.rulerank.desktop.feature.properties.DefaultPropertiesProvider;
+import pl.jowko.rulerank.desktop.feature.properties.RawPropertiesAssembler;
 import pl.jowko.rulerank.desktop.feature.properties.RuleRankProperties;
 import pl.jowko.rulerank.desktop.feature.properties.RunnerPropertiesProvider;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceController;
 import pl.jowko.rulerank.desktop.feature.workspace.WorkspaceItem;
 import pl.jowko.rulerank.desktop.utils.FileExtensionExtractor;
 import pl.jowko.rulerank.logger.RuleRankLogger;
-import pl.poznan.put.cs.idss.jrs.Settings;
-import pl.poznan.put.cs.idss.jrs.ranking.Ranker;
-import pl.poznan.put.cs.idss.jrs.ranking.RankerParameters;
-import pl.poznan.put.cs.idss.jrs.ranking.RankerResults;
+import pl.poznan.put.cs.idss.jrs.utilities.NamedProperties;
+import pl.poznan.put.cs.idss.jrs.wrappers.JRank;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Properties;
 
 import static pl.jowko.rulerank.desktop.utils.BooleanUtils.not;
 import static pl.jowko.rulerank.desktop.utils.StringUtils.isNullOrEmpty;
@@ -33,6 +33,7 @@ public class ExperimentRunner {
 	private RuleRankProperties properties;
 	private ExperimentRunnerValidator validator;
 	private String experimentPath;
+	private WorkspaceItem workspaceItem;
 	
 	/**
 	 * Creates instance of this class. <br>
@@ -54,6 +55,7 @@ public class ExperimentRunner {
 		experimentPath = propertiesItem.getExperimentPath();
 		this.properties = propertiesProvider.getPropertiesWithDefaults();
 		validator = new ExperimentRunnerValidator(this.properties, propertiesItem);
+		this.workspaceItem = propertiesItem;
 	}
 	
 	/**
@@ -65,22 +67,49 @@ public class ExperimentRunner {
 		if(not(validator.isValid())) {
 			return;
 		}
-		LearningTable learningTable = validator.getLearningTable();
-		LearningTable testTable = validator.getTestTable();
-		Settings.getInstance().precision = properties.getPrecision();
 		
-		RankerParameters parameters =  new RankerParametersAssembler(properties, learningTable, testTable).getParameters();
-		RuleRankLogger.info("Performing experiment with parameters:\n" + properties);
+		JRank jRank = new JRank();
 		
-		Ranker ranker = new Ranker();
-		RankerResults results = ranker.run(parameters);
-		RuleRankLogger.info("Output from RuleRank:");
-		for(String msg : ranker.getMessages()) {
-			RuleRankLogger.none(msg);
+		ArrayList<NamedProperties> namedPropertiesList = new ArrayList<>();
+		Properties rawProperties = new RawPropertiesAssembler(properties).toProperties();
+		namedPropertiesList.add(new NamedProperties(workspaceItem.getFileName(), rawProperties));
+		
+		if (readJRankParameters(jRank, namedPropertiesList)) {
+			RuleRankLogger.info("Performing experiment with parameters:\n" + properties);
+			jRank.run();
+			new ResultsSaver(jRank.getJRankResults().getRankerResults(), properties, experimentPath).save();
 		}
 		
-		new ResultsSaver(results, properties, experimentPath).save();
 		WorkspaceController.getInstance().refresh();
+	}
+	
+	/**
+	 * Reads all jRank parameters at once.
+	 * @param jRank with will read and validate parameters
+	 * @param namedPropertiesList named properties list
+	 * @return <code>true</code> if all jRank parameters have been read, <code>false</code> otherwise
+	 */
+	private boolean readJRankParameters(JRank jRank, ArrayList<NamedProperties> namedPropertiesList) {
+		jRank.initializeJRankParameters();
+		
+		String learningDataFile = experimentPath + properties.getLearningDataFile();
+		String testDataFile = experimentPath + properties.getTestDataFile();
+		
+		if(jRank.readLearningAndTestData(learningDataFile, testDataFile)) {
+			if (jRank.readJRankPrivateParameters(namedPropertiesList)) {
+				if (jRank.readPreferenceInformation(namedPropertiesList)) {
+					jRank.readSimpleRankerParameters(namedPropertiesList);
+					jRank.calculatePairsThatCannotBePreserved();
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 	
 	/**
