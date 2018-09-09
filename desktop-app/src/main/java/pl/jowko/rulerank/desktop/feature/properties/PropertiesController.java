@@ -119,7 +119,6 @@ public class PropertiesController implements AbandonableTabForm {
 	@FXML Button clearButton;
 	@FXML Button restoreValuesButton;
 	@FXML Button validateFormButton;
-	@FXML Button validateFormDefaults;
 	
 	private LanguageService labels;
 	private PropertiesControllerHelper controllerHelper;
@@ -155,7 +154,6 @@ public class PropertiesController implements AbandonableTabForm {
 		
 		if(defaultPropertiesEdition) {
 			runExperimentButton.setDisable(true);
-			validateFormDefaults.setDisable(true);
 		}
 	}
 	
@@ -233,17 +231,6 @@ public class PropertiesController implements AbandonableTabForm {
 	}
 	
 	/**
-	 * Validates form and show message if form is valid.
-	 */
-	public void validateFormAction() {
-		if(isFormValid()) {
-			String title = labels.get(Labels.PROP_VALIDATE_DIALOG_TITLE);
-			String content = labels.get(Labels.PROP_VALIDATE_DIALOG_CONTENT);
-			DialogsService.showInfoDialog(title, content);
-		}
-	}
-	
-	/**
 	 * This methods validates properties form with default values. <br>
 	 * When running ruleRank application, all experiment settings are needed. <br>
 	 * So if user will leave some fields empty, they will be replaced with default values. <br>
@@ -252,7 +239,7 @@ public class PropertiesController implements AbandonableTabForm {
 	 * Then it will perform validation on result.
 	 * @see RunnerPropertiesProvider
 	 */
-	public void validateFormDefaultsAction() {
+	public void validateFormAction() {
 		editableProperties = controllerHelper.getPropertiesFromForm();
 		
 		RunnerPropertiesProvider runnerPropertiesProvider = new RunnerPropertiesProvider(editableProperties, defaultProperties);
@@ -375,22 +362,6 @@ public class PropertiesController implements AbandonableTabForm {
 	
 	private void closeTab() {
 		UpperTabsController.getInstance().closeTab(propertiesTab);
-	}
-	
-	/**
-	 * Checks, if form has valid values. <br>
-	 * If form containing errors, they will be displayed to user.
-	 * @return true if form is valid, false otherwise
-	 */
-	private boolean isFormValid() {
-		editableProperties = controllerHelper.getPropertiesFromForm();
-		PropertiesValidator validator = new PropertiesValidator(editableProperties, defaultPropertiesEdition);
-		
-		if(not(validator.isValid())) {
-			DialogsService.showValidationFailedDialog("", validator.getErrorMessages());
-		}
-		
-		return validator.isValid();
 	}
 	
 	/**

@@ -81,7 +81,6 @@ class PropertiesTranslatorHelper extends AbstractTranslator {
 		controller.clearButton.setText(get(Labels.PROP_CLEAR_BUTTON));
 		controller.restoreValuesButton.setText(get(Labels.RESTORE_VALUES_BUTTON));
 		controller.validateFormButton.setText(get(Labels.PROP_VALIDATE_FORM));
-		controller.validateFormDefaults.setText(get(Labels.VALIDATE_FORM_DEFAULTS));
 	}
 	
 }

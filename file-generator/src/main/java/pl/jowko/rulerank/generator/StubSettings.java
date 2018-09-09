@@ -262,7 +262,6 @@ class StubSettings {
 		language.put(Labels.PROP_CLEAR_BUTTON, "Clear form");
 		language.put(Labels.RESTORE_VALUES_BUTTON, "Restore original values");
 		language.put(Labels.PROP_VALIDATE_FORM, "Validate form");
-		language.put(Labels.VALIDATE_FORM_DEFAULTS, "Validate form with defaults");
 		language.put(Labels.PROP_DEFAULT_VALUE, "default (" + MSG + ")");
 	}
 	
@@ -347,7 +346,6 @@ class StubSettings {
 		language.put(Labels.WRITE_LEARNING_EXAMPLES_TOOLTIP, "List learning positive examples of each rule (write LearningPositiveExamples tag) inside [RULESINFO] section of *.rules file? (works only when writeRulesStatistics is true)");
 		
 		language.put(Labels.RESTORE_VALUES_BUTTON_TOOLTIP, "Restore original values from file");
-		language.put(Labels.VALIDATE_FORM_DEFAULTS_TOOLTIP, "Replace empty options with defaults and validate result");
 	}
 	
 	private void createEnglishParametersLabels(Map<String, String> language) {

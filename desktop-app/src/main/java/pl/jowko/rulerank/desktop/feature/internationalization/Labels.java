@@ -152,7 +152,6 @@ public class Labels {
 	public static final String PROP_CLEAR_BUTTON = "PROP_CLEAR_BUTTON";
 	public static final String RESTORE_VALUES_BUTTON = "RESTORE_VALUES_BUTTON";
 	public static final String PROP_VALIDATE_FORM = "PROP_VALIDATE_FORM";
-	public static final String VALIDATE_FORM_DEFAULTS = "VALIDATE_FORM_DEFAULTS";
 	public static final String PROP_DEFAULT_VALUE = "PROP_DEFAULT_VALUE";
 	
 	// Properties form messages
@@ -269,7 +268,6 @@ public class Labels {
 	public static final String WRITE_LEARNING_EXAMPLES_TOOLTIP = "WRITE_LEARNING_EXAMPLES_TOOLTIP";
 	
 	public static final String RESTORE_VALUES_BUTTON_TOOLTIP = "RESTORE_VALUES_BUTTON_TOOLTIP";
-	public static final String VALIDATE_FORM_DEFAULTS_TOOLTIP = "VALIDATE_FORM_DEFAULTS_TOOLTIP";
 	
 	
 	// Properties dialog labels

@@ -1,6 +1,5 @@
 {
   "ENG" : {
-    "VALIDATE_FORM_DEFAULTS" : "Validate form with defaults",
     "PROP_INFO_ADD_S_BUTTON" : "Add S",
     "LEARN_TABLE_DESCRIPTION" : "description, ",
     "ARCS_OUTGOING" : "Outgoing arcs:",
@@ -221,7 +220,6 @@
     "LEARN_TABLE_CUSTOMIZE_ATTRIBUTES" : "Customize attributes",
     "PAIRS_TOOLTIP" : "Comma-separated list of compared pairs; each entry consists of a pair of examples (comma-separated, in {}) and S or Sc flag indicating the result of comparison (e.g., {1, 2} S, {2, 4} Sc)",
     "WRITE_RULES_STAT" : "Write rule statistics:",
-    "VALIDATE_FORM_DEFAULTS_TOOLTIP" : "Replace empty options with defaults and validate result",
     "LEARN_TABLE_REMOVE_EXAMPLES" : "Remove selected examples",
     "PROP_EXT_TEST" : "Test data file extension is not valid. Valid extension: isf",
     "FUZZY_EXHAUSTIVE_SET" : "Incorrect fuzzy satisfaction degrees calculation method for exhaustive set of decision rules.",

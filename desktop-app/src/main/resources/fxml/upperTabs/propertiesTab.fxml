@@ -288,11 +288,6 @@
                   <Insets left="30.0" />
                </FlowPane.margin>
             </Button>
-            <Button fx:id="validateFormDefaults" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#validateFormDefaultsAction" text="Validate form with defaults">
-               <FlowPane.margin>
-                  <Insets left="30.0" />
-               </FlowPane.margin>
-            </Button>
          </children>
          <padding>
             <Insets bottom="20.0" left="50.0" right="10.0" top="20.0" />
