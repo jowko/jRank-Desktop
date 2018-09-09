@@ -5,7 +5,7 @@
  *<br>
  * Created by Piotr on 2018-03-25.
  *
- * @see RuleRankLogger
+ * @see pl.jowko.rulerank.logger.RuleRankLogger
  */
 module RuleRankLoggerModule {
 	

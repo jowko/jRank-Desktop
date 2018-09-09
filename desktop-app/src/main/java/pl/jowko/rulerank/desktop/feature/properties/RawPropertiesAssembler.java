@@ -27,6 +27,7 @@ public class RawPropertiesAssembler {
 	
 	/**
 	 * Converts all RuleRankProperties to Properties object.
+	 * @return Properties object with content of rule rank properties
 	 */
 	public Properties toProperties() {
 		setFilePathProperty(LEARNING_DATA_FILE, ruleRankProperties.getLearningDataFile(), "isf");

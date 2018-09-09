@@ -1,7 +1,6 @@
 package pl.jowko.rulerank.desktop.utils;
 
 import pl.jowko.rulerank.desktop.exception.RuleRankRuntimeException;
-import pl.jowko.rulerank.logger.RuleRankLogger;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -24,6 +23,7 @@ public class Cloner {
 	 * All provided objects should implement Serializable interface
 	 * https://alvinalexander.com/java/java-deep-clone-example-source-code
 	 * @param object to clone
+	 * @param <T> type of object to clone
 	 * @see java.io.Serializable
 	 * @return deep clone of provided object
 	 */
