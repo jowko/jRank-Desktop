@@ -112,14 +112,18 @@ public class Model {
 	}
 	
 	public void addEdge(String sourceId, String targetId) {
-		addEdge(sourceId, targetId, "", Color.GRAY);
+		addEdge(sourceId, targetId, "", "", Color.GRAY);
 	}
 	
 	public void addEdge(String sourceId, String targetId, String label, Color color) {
+		addEdge(sourceId, targetId, label, "", color);
+	}
+	
+	public void addEdge(String sourceId, String targetId, String label, String secondLabel, Color color) {
 		Cell sourceCell = cellMap.get(sourceId);
 		Cell targetCell = cellMap.get(targetId);
 		
-		LabeledEdge edge = new LabeledEdge(sourceCell, targetCell, label, color);
+		LabeledEdge edge = new LabeledEdge(sourceCell, targetCell, label, secondLabel, color);
 		
 		addedEdges.add(edge);
 	}

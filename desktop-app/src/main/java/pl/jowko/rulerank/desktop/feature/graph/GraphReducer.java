@@ -68,7 +68,24 @@ class GraphReducer {
 		
 		if(edges.size() == 2 && validateColor(edges.get(0)) && validateColor(edges.get(1))) {
 			EdgeDto dto = edges.get(0);
-			return new EdgeDto(dto.getSourceId(), dto.getTargetId(), dto.getLabel(), S_SC_COLOR);
+			EdgeDto dto2 = edges.get(1);
+			
+			String atLeastLabel = "";
+			String atMostLabel = "";
+			
+			if(S_COLOR.equals(dto.getColor())) {
+				atLeastLabel = dto.getLabel();
+			} else {
+				atMostLabel = dto.getLabel();
+			}
+			
+			if(SC_COLOR.equals(dto2.getColor())) {
+				atMostLabel = dto2.getLabel();
+			} else {
+				atLeastLabel = dto2.getLabel();
+			}
+			
+			return new EdgeDto(dto.getSourceId(), dto.getTargetId(), atLeastLabel, atMostLabel, S_SC_COLOR);
 		}
 		
 		RuleRankLogger.warn("Some error occurred when reducing edges, edges count for node was different than 1 or 2 or color was not recognized: " + edges.toString());

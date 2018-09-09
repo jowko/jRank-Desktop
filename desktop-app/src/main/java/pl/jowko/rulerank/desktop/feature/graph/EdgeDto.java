@@ -16,6 +16,7 @@ class EdgeDto {
 	private String sourceId;
 	private String targetId;
 	private String label;
+	private String secondLabel;
 	private Color color;
 	
 	/**
@@ -28,6 +29,25 @@ class EdgeDto {
 		this.sourceId = sourceId;
 		this.targetId = targetId;
 		this.label = label;
+		this.color = color;
+		
+		if(color.equals(ERROR_COLOR)) {
+			RuleRankLogger.warn("Color was not recognized for edge: " + toString());
+		}
+	}
+	
+	/**
+	 * @param sourceId of cell in edge
+	 * @param targetId of cell in edge
+	 * @param label from edge with will be displayed in arcs tab
+	 * @param secondLabel from edge with will be displayed in arcs tab in case of edge reduction. In case of reduction, it is assumed that second label represents At most relation.
+	 * @param color of edge
+	 */
+	EdgeDto(String sourceId, String targetId, String label, String secondLabel, Color color) {
+		this.sourceId = sourceId;
+		this.targetId = targetId;
+		this.label = label;
+		this.secondLabel = secondLabel;
 		this.color = color;
 		
 		if(color.equals(ERROR_COLOR)) {
@@ -49,6 +69,10 @@ class EdgeDto {
 	
 	Color getColor() {
 		return color;
+	}
+	
+	String getSecondLabel() {
+		return secondLabel;
 	}
 	
 	@Override

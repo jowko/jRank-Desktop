@@ -45,6 +45,8 @@ class GraphReducerTest extends AbstractGraphTest {
 		assertEquals(2, edges.size());
 		assertEquals("2", edges.get(0).getTargetId());
 		assertEquals("3", edges.get(1).getTargetId());
+		assertEquals("[0.84]", edges.get(0).getLabel());
+		assertEquals("[0.54]", edges.get(0).getSecondLabel());
 	}
 	
 	@Test

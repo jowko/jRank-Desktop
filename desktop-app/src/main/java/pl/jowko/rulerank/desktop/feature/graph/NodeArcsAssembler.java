@@ -1,7 +1,6 @@
 package pl.jowko.rulerank.desktop.feature.graph;
 
 import com.fxgraph.graph.Cell;
-import com.fxgraph.graph.Edge;
 import com.fxgraph.graph.Graph;
 import com.fxgraph.graph.LabeledEdge;
 import javafx.scene.paint.Color;
@@ -45,12 +44,14 @@ class NodeArcsAssembler {
 	NodeArcs assemble() {
 		String nodeId = node.getCellId();
 		
-		List<Edge> outEdges = graph.getModel().getAllEdges().stream()
+		List<LabeledEdge> outEdges = graph.getModel().getAllEdges().stream()
 				.filter(edge -> edge.getSource().getCellId().equals(nodeId))
+				.map(edge -> (LabeledEdge) edge)
 				.collect(Collectors.toList());
 		
-		List<Edge> inEdges = graph.getModel().getAllEdges().stream()
+		List<LabeledEdge> inEdges = graph.getModel().getAllEdges().stream()
 				.filter(edge -> edge.getTarget().getCellId().equals(nodeId))
+				.map(edge -> (LabeledEdge) edge)
 				.collect(Collectors.toList());
 		
 		String outS = getNodesIds(outEdges, S_COLOR, true);
@@ -68,11 +69,11 @@ class NodeArcsAssembler {
 	 * @param isOutRelation determines if source or target value from edge is used
 	 * @return list of nodes id with are from relation S xor Sc
 	 */
-	private String getNodesIds(List<Edge> edges, Color relationColor, boolean isOutRelation) {
+	private String getNodesIds(List<LabeledEdge> edges, Color relationColor, boolean isOutRelation) {
 		StringBuilder builder = new StringBuilder();
 		
 		edges.stream()
-				.filter(edge -> relationColor.equals(edge.getLine().getStroke()) || S_SC_COLOR.equals(edge.getLine().getStroke()))
+				.filter(edge -> relationColor.equals(edge.getLine().getStroke()) || S_SC_COLOR.equals(edge.getLine().getStroke()) || edge.hasSecondLabel())
 				.forEach(edge -> {
 					if(isOutRelation) {
 						builder.append(edge.getTarget().getCellId());
@@ -80,21 +81,37 @@ class NodeArcsAssembler {
 						builder.append(edge.getSource().getCellId());
 					}
 					
-					if(edge instanceof LabeledEdge) {
-						String label = ((LabeledEdge)edge).getLabel();
-						if(isNotNullOrEmpty(label)) {
-							builder.append(' ');
-							builder.append(label);
-						}
-					}
-					
-					builder.append(", ");
+					appendLabel(builder, relationColor, edge);
 				});
 		
 		if(builder.length() > 1)
 			return builder.substring(0, builder.length() - 2);
 		
 		return labels.get(Labels.ARCS_NONE);
+	}
+	
+	/**
+	 * Appends label from edge to builder. <br>
+	 * If considered edge was reduced from two edges to one, it is assumed that label for SC relation is in second label.
+	 * @param builder to with label will be appended
+	 * @param relationColor of current considered relation
+	 * @param edge from with label will be extracted
+	 */
+	private static void appendLabel(StringBuilder builder, Color relationColor, LabeledEdge edge) {
+		String label;
+		
+		if(SC_COLOR.equals(relationColor) && edge.hasSecondLabel()) {
+			label = edge.getSecondLabel();
+		} else {
+			label = edge.getLabel();
+		}
+		
+		if(isNotNullOrEmpty(label)) {
+			builder.append(' ');
+			builder.append(label);
+		}
+		
+		builder.append(", ");
 	}
 	
 }
