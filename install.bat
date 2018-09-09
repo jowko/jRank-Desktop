@@ -35,6 +35,9 @@ COPY README.txt RuleRank
 echo Copying manual file
 COPY doc\Manual.pdf "RuleRank\Manual-1.0.pdf"
 
+echo Copying license file
+COPY LICENSE.txt "RuleRank\LICENSE.txt"
+
 echo creating run.bat file
 @echo java -jar RuleRank-1.0.jar -Xms128m > RuleRank\run.bat
 
