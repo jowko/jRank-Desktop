@@ -1,0 +1,45 @@
+**ATTRIBUTES
+
++ Title: (nominal), none, description
++ Source: (nominal), none, description
++ Year: (integer), none
++ Wordwide_gross: (continuous), gain
++ Budget: (continuous), cost
++ Filmweb_score: (continuous), gain
++ IMDb_score: (continuous), gain
++ Metacritic_metascore: (numbercoded), gain
++ Metacritic_user_score: (numbercoded), gain
+
+
+**PREFERENCES
+
+Title: none
+Source: none
+Year: none
+Wordwide_gross: gain
+Budget: cost
+Filmweb_score: gain
+IMDb_score: gain
+Metacritic_metascore: gain
+Metacritic_user_score: gain
+
+**EXAMPLES
+
+Avengers_Infinity_War, Marvel, 2018, 2046.5, 320.0, 8.3, 8.6, 68, 86
+The_Avengers, Marvel, 2012, 1518.8, 220.0, 7.5, 8.1, 69, 80
+Avengers_Age_of_Ultron, Marvel, 2015, 1405.4, 250.0, 7.3, 7.4, 66, 70
+Black_Panther, Marvel, 2018, 1346.9, 200.0, 6.9, 7.4, 88, 67
+Iron_Man_3, Marvel, 2013, 1214.8, 200.0, 7.4, 7.2, 62, 65
+Incredibles_2, Pixar, 2018, 1166.6, 200.0, 7.9, 8.1, 80, 81
+Captain_America_Civil_War, Marvel, 2016, 1153.3, 250.0, 7.5, 7.8, 75, 82
+The_Dark_Knight_Rises, DC, 2012, 1084.9, 250.0, 7.8, 8.4, 78, 82
+The_Dark_Knight, DC, 2008, 1003.0, 185.0, 8.0, 9.0, 84, 89
+Spider_Man_3, Marvel, 2007, 890.9, 258.0, 6.6, 6.2, 59, 67
+Spider_Man_Homecoming, Marvel, 2017, 880.2, 175.0, 7.2, 7.5, 73, 76
+Batman_v_Superman_Dawn_of_Justice, DC, 2016, 873.6, 250.0, 5.9, 6.6, 44, 70
+Guardians_of_the_Galaxy_Vol_2, Marvel, 2017, 863.8, 200.0, 7.4, 7.7, 67, 77
+Thor_Ragnarok, Marvel, 2017, 854.0, 180.0, 7.8, 7.9, 74, 76
+Wonder_Woman, DC, 2017, 821.8, 149.0, 6.7, 7.5, 76, 77
+Spider_Man, Marvel, 2002, 821.7, 139.0, 6.7, 7.3, 73, 86
+
+**END
