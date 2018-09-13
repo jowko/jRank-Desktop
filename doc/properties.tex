@@ -37,14 +37,14 @@ Below, we describe meaning of all parameters.
 	\item \textbf{Learning data file} - absolute or relative path to learning isf file. Directories must be separated by $\backslash$ character.
 	\item \textbf{Test data file} - absolute or relative path to test isf file. Directories must be separated by $\backslash$ character. If not configured, it is assumed, that learning file is also test file.
 	\item \textbf{Reference ranking} - initial ranking of objects in experiment.
-	\item \textbf{Pairs} - pairs of object in outranking (S) or non-outranking (Sc) relation.
+	\item \textbf{Pairs} - pairs of object in outranking $S$ or non-outranking $S^{c}$ relation.
 	\item \textbf{Type of family criteria} - can be consistent or any.
 	\item \textbf{Type of rules} - can be certain of possible.
 	\item \textbf{Considered set of rules} - if exhaustive, virtual exhaustive set of rules will be considered, if minimal, explicit minimal set of rules induced by VC-DomLEM algorithm will be considered.
-	\item \textbf{Consistency measure} - measure used to calculate lower approximations of S and Sc relations.
+	\item \textbf{Consistency measure} - measure used to calculate lower approximations of $S$ and $S^{c}$ relations.
 	\item \textbf{Consistency measure threshold} - floating point number from [0,1] for epsilon, epsilon* and rough membership, or greater or equal than 0 for epsilon'.
 	\item \textbf{Ranking procedure} - method used for calculating ranking from preference graph.
-	\item \textbf{Dominance} - dominance relation used to calculate approximations of S and Sc relations in PCT.
+	\item \textbf{Dominance} - dominance relation used to calculate approximations of $S$ and $S^{c}$ relations in PCT.
 	\item \textbf{Dominance for pairs of ordinal values} - indicator of the considered definition of dominance pairs of ordinal values in PCT.
 	\item \textbf{Satisfaction degrees in preference graph} - weights in the preference graph. Can be fuzzy (from [0,1]) or crisp (0 or 1). Fuzzy satisfaction degree cannot be used with DRSA with exhaustive set of possible rules and rough membership.
 	\item \textbf{Fuzzy satisfaction degree calculation method} - method for calculating fuzzy satisfaction degree in preference graph. Can be maximum of credibility over covering rules (max credibility) or maximum product of credibility and coverage factor over covering rules.
@@ -114,7 +114,7 @@ Pairs can be configured manually in big text field, but it is not recommended an
 
 By default, objects ID (number of object) is displayed. If you created description attribute, it can be used as label for objects. You can change this in ''Displayed label'' field. 
 
-First and second list contains all objects from experiment. Third list contains compared pairs of this objects with relation S (outranking) or Sc (non-outranking).
+First and second list contains all objects from experiment. Third list contains compared pairs of this objects with relation $S$ (outranking) or $S^{c}$ (non-outranking).
 
 Three actions are available for this screen. Each can be invoked by pressing button, choosing option from context menu or by keyboard shortcut. First two actions are for first two lists, third is for pairs lists:
 \begin{itemize}

@@ -70,10 +70,10 @@ This section provides high level steps for performing experiment. As a result of
  From pairwise comparison table dominance cones are calculated, with represents approximate outranking and non-outranking relations in PCT. Also some metrics are calculated. There are saved in text format to .apx file. 
  See \hyperref[sub:pct-apx]{Partial comparison table section}.
  
- In next step application induces rules from Pairwise Comparison Table. S relation indicates outranking relation, Sc indicates non-outranking relation. Rules can be certain or possible. Also rule statistics are generated and saved in .rules file next to induced rules. 
+ In next step application induces rules from Pairwise Comparison Table. $S$ relation indicates outranking relation, $S^{c}$ indicates non-outranking relation. Rules can be certain or possible. Also rule statistics are generated and saved in .rules file next to induced rules. 
  See \hyperref[section:rules]{Rules section}.
  
- Next, preference graph is generated, in with nodes represents objects from isf table and arcs represents S or Sc relations. Arcs in graph can be also weighted, where weight represents satisfaction degrees of the preference relations. Weight for relation (arc) is calculated by aggregating confidence of covering rules. Preference graph is saved to .graph file.
+ Next, preference graph is generated, in with nodes represents objects from isf table and arcs represents $S$ or $S^{c}$ relations. Arcs in graph can be also weighted, where weight represents satisfaction degrees of the preference relations. Weight for relation (arc) is calculated by aggregating confidence of covering rules. Preference graph is saved to .graph file.
  See \hyperref[section:graph]{Graph visualisation section}.
  
  As the last step, final ranking is calculated from preference graph. It contains objects positions and scores. Ranking is saved to .ranking file. In some cases also report can be generated and saved to .txt file.
