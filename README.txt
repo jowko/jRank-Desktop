@@ -18,5 +18,5 @@ http://www.cs.put.poznan.pl/mszelag/Software/ruleRank/ruleRank.html
 
 # Change log
 
-Release 1.0  [09-09-2018]
+Release 1.0  [09-20-2018]
 - release first stable and public available RUDE application
