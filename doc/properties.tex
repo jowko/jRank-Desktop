@@ -19,18 +19,18 @@ With default user settings, properties form will be opened with hidden sections 
 
 On top of the form, there is learning and test data table path. Learning data file is required field. If you hover on field with default user settings, tooltip with help will be displayed. You should also configure ranking or pairs before running experiment.
 
+\begin{figure*}[!ht] 
+	\centering
+	\makebox[\textwidth]{\includegraphics[width=.75\paperwidth]{properties}}
+	\caption{Properties form with default settings}
+\end{figure*}
+
 On bottom of the screen following actions can be performed:
 \begin{itemize}
 	\item \textbf{Clear form} - clears all fields.
 	\item \textbf{Restore original values} - restores values for all fields, as they were loaded from file again.
 	\item \textbf{Validate form} - performs validation on form for all fields, including default ones. When running experiment, empty values from properties are replaced with default ones. It can discover issues with configuration, when values from form and default properties are not correctly set. If you find such issue, you should change settings in your experiment or in default properties.
 \end{itemize}
-
-\begin{figure*}[!ht] 
-	\centering
-	\makebox[\textwidth]{\includegraphics[width=.65\paperwidth]{properties}}
-	\caption{Properties form with default settings}
-\end{figure*}
 
 Below, we describe meaning of all parameters.
 \begin{itemize}
@@ -70,7 +70,7 @@ When performing experiment, all properties must be set. So if user leave empty f
 
 \begin{figure*}[!ht] 
 	\centering
-	\makebox[\textwidth]{\includegraphics[width=.7\paperwidth]{properties-expanded}}
+	\makebox[\textwidth]{\includegraphics[width=.75\paperwidth]{properties-expanded}}
 	\caption{Properties with default values set from default.properties file}
 \end{figure*}
 
