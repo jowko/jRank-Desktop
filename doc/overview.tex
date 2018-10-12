@@ -23,11 +23,11 @@ On top of main window you can find menu:
 	\item \textbf{Help} - it contains About and Help modal dialogs.
 \end{itemize}
 
-Below menu you can find toolbar with actions, with will be described in \hyperref[section:workspace]{Workspace management section}.
+Below the menu you can find toolbar with actions, which will be described in the \hyperref[section:workspace]{Workspace management section}.
 
 
 \subsection{Tabs management}\label{sub:overview-tab}
-New tab is created after opening file from workspace. You can do this by double clicking on file in workspace tree. Many tabs can be opened at once, but only one for each file. After pressing right click on tab header, you will see context menu containing actions with can close many tabs at once. If you made some changes in editable tab form, you will be asked for confirmation, if you try to close it by context menu action. Same confirmation appears when you try to exit application or close single tab.\\
+New tab is created after opening file from workspace. You can do this by double clicking on file in workspace tree. Many tabs can be opened at once, but only one for each file. After pressing right click on tab header, you will see context menu containing actions which can close many tabs at once. If you made some changes in editable tab form, you will be asked for confirmation, if you try to close it by context menu action. Same confirmation appears when you try to exit application or close single tab.\\
 
 Logs tab display all logs from application. 
 Currently there are three logs levels:
@@ -39,16 +39,16 @@ Currently there are three logs levels:
 
 Logs can be copied by selecting text and pressing Ctrl + C. All logs can be cleared by right clicking on logs panel and choosing ''Clear logs'' option.
 \newline\newline
-Next sections describes all application windows with are available for user.
+Next sections describes all application windows which are available for user.
 
 \subsection{High level workflow}\label{sub:overview-flow}
 
 This section provides high level steps for performing experiment. As a result of experiment, application will produce ranking of objects, from best to worse, basing on gain/cost criteria configured in isf tables and initial pairs comparison/ranking.
 
 \begin{enumerate}
-	\item Create experiment directory with will contain all experiment files.
+	\item Create experiment directory which will contain all experiment files.
 	See \hyperref[section:workspace]{Workspace section}.
-	\item Create learning data file (.isf) containing objects on with ranking will be created.
+	\item Create learning data file (.isf) containing objects on which ranking will be created.
 	See \hyperref[section:isf-table]{Isf edition section}.
 	\item (Optional) Create test data file (.isf)
 	See \hyperref[section:isf-table]{Isf edition section}.
@@ -67,13 +67,13 @@ This section provides high level steps for performing experiment. As a result of
  At first, it will generate Pairwise Comparison Table (PCT), where all objects are compared between each other on all criteria. Partial PCT table will be saved to .isf file, because full table is to big to save.
  See \hyperref[sub:pct-isf]{Partial comparison table section}.
  
- From pairwise comparison table dominance cones are calculated, with represents approximate outranking and non-outranking relations in PCT. Also some metrics are calculated. There are saved in text format to .apx file. 
+ From pairwise comparison table dominance cones are calculated, which represents approximate outranking and non-outranking relations in PCT. Also some metrics are calculated. There are saved in text format to .apx file. 
  See \hyperref[sub:pct-apx]{Partial comparison table section}.
  
  In next step application induces rules from Pairwise Comparison Table. $S$ relation indicates outranking relation, $S^{c}$ indicates non-outranking relation. Rules can be certain or possible. Also rule statistics are generated and saved in .rules file next to induced rules. 
  See \hyperref[section:rules]{Rules section}.
  
- Next, preference graph is generated, in with nodes represents objects from isf table and arcs represents $S$ or $S^{c}$ relations. Arcs in graph can be also weighted, where weight represents satisfaction degrees of the preference relations. Weight for relation (arc) is calculated by aggregating confidence of covering rules. Preference graph is saved to .graph file.
+ Next, preference graph is generated, in which nodes represents objects from isf table and arcs represents $S$ or $S^{c}$ relations. Arcs in graph can be also weighted, where weight represents satisfaction degrees of the preference relations. Weight for relation (arc) is calculated by aggregating confidence of covering rules. Preference graph is saved to .graph file.
  See \hyperref[section:graph]{Graph visualisation section}.
  
  As the last step, final ranking is calculated from preference graph. It contains objects positions and scores. Ranking is saved to .ranking file. In some cases also report can be generated and saved to .txt file.

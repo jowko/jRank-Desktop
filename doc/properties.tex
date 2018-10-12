@@ -5,7 +5,7 @@ In this chapter we will describe experiment configuration. To edit experiment co
 
 Four windows are used to configure experiment:
 \begin{itemize}
-	\item \textbf{Properties form} - this is tab with opens after double click on properties file. It allows to edit experiment configuration.
+	\item \textbf{Properties form} - this is tab which opens after double click on properties file. It allows to edit experiment configuration.
 	\item \textbf{Default properties form} - it is special case of properties form, where default properties for all experiments all configured.
 	\item \textbf{Ranking dialog} - this modal dialog supports user friendly object ranking edition.
 	\item \textbf{Pairs dialog} - this modal dialog supports user friendly comparison pairs edition
@@ -57,16 +57,16 @@ Below, we describe meaning of all parameters.
 	\item \textbf{Write rule statistics} - if true, rule statistics will be saved in .rule file.
 	\item \textbf{Write learning positive examples} - if true, learning positive examples will be written to .rules file.
 	\item \textbf{Precision} - denotes precision of floating point numbers when saving files. -1 disables rounding.
-	\item \textbf{PCT file} - absolute or relative path on with isf file for Partial Pairwise Comparison Table will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using learning data file name.
+	\item \textbf{PCT file} - absolute or relative path on which isf file for Partial Pairwise Comparison Table will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using learning data file name.
 	\item \textbf{PCT Apx file} - absolute or relative path to .apx file, where approximations from PCT table will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using learning data file name.
-	\item \textbf{PCT rules file} - absolute or relative path on with rules will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using learning data file name.
-	\item \textbf{Preference graph file} - absolute or relative path on with graph will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using test data file name.
-	\item \textbf{Ranking file} - absolute or relative path on with ranking file will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using test data file name.
+	\item \textbf{PCT rules file} - absolute or relative path on which rules will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using learning data file name.
+	\item \textbf{Preference graph file} - absolute or relative path on which graph will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using test data file name.
+	\item \textbf{Ranking file} - absolute or relative path on which ranking file will be saved. Directories must be separated by $\backslash$ character. If not given, name of the file will be set using test data file name.
 \end{itemize}
 
 \subsection{Default properties}\label{sub:properties-default}
 
-When performing experiment, all properties must be set. So if user leave empty fields, they must be replaced with some default values. RUDE application have configurable default properties, with should be located in main workspace directory with file name: default.properties. You can edit this file freely, but it is recommended to fill all fields from parameters and write additional information sections.
+When performing experiment, all properties must be set. So if user leave empty fields, they must be replaced with some default values. RUDE application have configurable default properties, which should be located in main workspace directory with file name: default.properties. You can edit this file freely, but it is recommended to fill all fields from parameters and write additional information sections.
 
 \begin{figure*}[!ht] 
 	\centering
@@ -74,7 +74,7 @@ When performing experiment, all properties must be set. So if user leave empty f
 	\caption{Properties with default values set from default.properties file}
 \end{figure*}
 
-Default properties are loaded on each properties form. They are displayed to user in form: default (default value) for ComboBox fields, and as gray placeholder in other fields if they are empty. If you configure field in own experiment, value from your configuration will replace default one when performing experiment. All properties with are used in experiment are displayed in logs before experiment run.
+Default properties are loaded on each properties form. They are displayed to user in form: default (default value) for ComboBox fields, and as gray placeholder in other fields if they are empty. If you configure field in own experiment, value from your configuration will replace default one when performing experiment. All properties which are used in experiment are displayed in logs before experiment run.
 
 
 \subsection{Ranking configuration}\label{sub:properties-ranking}
@@ -93,7 +93,7 @@ By default, objects ID (number of object) is displayed. If you created descripti
 
 You can drag and drop objects from left list to right tree. If you place object on empty cell, new rank position will be created automatically. If you drag object to rank or element in rank, dragged object will be added to existing rank.
 
-On right tree, you can perform two actions, with can be also invoked on selected item by context menu or keyboard shortcut:
+On right tree, you can perform two actions, which can be also invoked on selected item by context menu or keyboard shortcut:
 \begin{itemize}
 	\item \textbf{Remove selected (Delete)} - removes selected object from ranking. Removed object will return to list on the left. If rank was selected, all objects from rank will be removed to.
 	\item \textbf{Add Rank below (A)} - adds new rank position below selected position.
@@ -114,7 +114,7 @@ Pairs can be configured manually in big text field, but it is not recommended an
 
 By default, objects ID (number of object) is displayed. If you created description attribute, it can be used as label for objects. You can change this in ''Displayed label'' field. 
 
-First and second list contains all objects from experiment. Third list contains compared pairs of this objects with relation $S$ (outranking) or $S^{c}$ (non-outranking).
+First and second list contains all objects from experiment. Third list contains compared pairs of these objects with relation $S$ (outranking) or $S^{c}$ (non-outranking).
 
 Three actions are available for this screen. Each can be invoked by pressing button, choosing option from context menu or by keyboard shortcut. First two actions are for first two lists, third is for pairs lists:
 \begin{itemize}
